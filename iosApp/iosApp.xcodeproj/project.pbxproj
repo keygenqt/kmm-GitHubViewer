@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		2FFB897627088DD300CBEED1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFB897527088DD300CBEED1 /* logo.png */; };
 		372AD42AC9384A8C27BD46E2 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19476CBA8DFAC725113E6685 /* Pods_iosApp.framework */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
@@ -16,6 +17,7 @@
 		10275D6ACB7B4D29CF52565E /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		19476CBA8DFAC725113E6685 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		2FFB897527088DD300CBEED1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,13 +36,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FFB897727088E2B00CBEED1 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				2FFB897527088DD300CBEED1 /* logo.png */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		3A9D35C6B07ED5BA92967DAE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				10275D6ACB7B4D29CF52565E /* Pods-iosApp.debug.xcconfig */,
 				E4AB4A2DC6088B34DA81319C /* Pods-iosApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -67,6 +76,7 @@
 			children = (
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
+				2FFB897727088E2B00CBEED1 /* res */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 			);
 			path = iosApp;
@@ -139,6 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FFB897627088DD300CBEED1 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
