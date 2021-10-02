@@ -1,0 +1,13 @@
+[libraries]
+# Timber
+# https://github.com/JakeWharton/timber
+other-timber = { module = "com.jakewharton.timber:timber", version.ref = "timberVersion" }
+# Startup
+# https://developer.android.com/jetpack/androidx/releases/startup
+other-startup = { module = "androidx.startup:startup-runtime", version.ref = "startupVersion" }
+# reflection
+# https://kotlinlang.org/docs/reflection.html
+other-reflection = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinVersion" }
+
+[bundles]
+other = ["other-timber", "other-startup", "other-reflection"]

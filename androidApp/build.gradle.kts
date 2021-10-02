@@ -1,27 +1,64 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
-}
+    id("org.jetbrains.kotlin.android")
 
-dependencies {
-    implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    kotlin("kapt")
 }
 
 android {
-    compileSdkVersion(31)
+
+    compileSdk = libs.versions.compileSdk.get().toInt()
+
     defaultConfig {
+
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+
         applicationId = "com.keygenqt.viewer.android"
-        minSdkVersion(23)
-        targetSdkVersion(31)
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
     }
+
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.get()
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    sourceSets {
+        getByName("main").let { data ->
+            data.res.setSrcDirs(emptySet<String>())
+            file("src/main/res").listFiles()?.toList()?.forEach { dir ->
+                data.res.srcDir(dir)
+            }
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+        )
+    }
+}
+
+// common modules
+dependencies {
+    implementation(project(":shared"))
+}
+
+dependencies {
+    implementation(libs.bundles.accompanist)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.other)
 }
