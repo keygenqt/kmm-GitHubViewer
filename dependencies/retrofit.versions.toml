@@ -1,0 +1,27 @@
+# modules
+[libraries.retrofit-serialization]
+module = "org.jetbrains.kotlinx:kotlinx-serialization-json"
+[libraries.retrofit-converter]
+module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter"
+[libraries.retrofit-retrofit]
+module = "com.squareup.retrofit2:retrofit"
+[libraries.retrofit-logging]
+module = "com.squareup.okhttp3:logging-interceptor"
+
+# versions
+[libraries.retrofit-serialization.version]
+ref = "retrofitSerializationVersions"
+[libraries.retrofit-converter.version]
+ref = "retrofitConverterVersions"
+[libraries.retrofit-retrofit.version]
+ref = "retrofitRetrofitVersions"
+[libraries.retrofit-logging.version]
+ref = "retrofitLoggingVersions"
+
+[bundles]
+retrofit = [
+    "retrofit-serialization",
+    "retrofit-converter",
+    "retrofit-retrofit",
+    "retrofit-logging"
+]

@@ -1,0 +1,17 @@
+# modules
+[libraries.lottie-core]
+module = "com.airbnb.android:lottie"
+[libraries.lottie-compose]
+module = "com.airbnb.android:lottie-compose"
+
+# versions
+[libraries.lottie-core.version]
+ref = "lottieVersions"
+[libraries.lottie-compose.version]
+ref = "lottieVersions"
+
+[bundles]
+lottie = [
+    "lottie-core",
+    "lottie-compose"
+]
