@@ -34,7 +34,7 @@ subprojects {
                         "disabled_rules" to "no-wildcard-imports",
                     )
                 )
-            licenseHeaderFile("$rootDir/copyright")
+            licenseHeaderFile("$rootDir/spotless.copyright")
         }
         format("misc") {
             target("**/*.gradle", "**/*.md", "**/.gitignore")
