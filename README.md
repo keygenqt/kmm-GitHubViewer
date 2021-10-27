@@ -11,7 +11,7 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [SwiftUI](https://developer.apple.com/xcode/swiftui/)
 * [Jetpack Compose](https://developer.android.com/jetpack/compose)
 
-### Base libraries Android
+### Android base libraries
 
 * [Material You](https://m3.material.io/)
 * [Accompanist](https://google.github.io/accompanist/)
@@ -20,7 +20,7 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [Room](https://developer.android.com/training/data-storage/room)
 * [Hilt](https://dagger.dev/hilt/)
 
-### Base libraries iOS
+### iOS base libraries
 
 * [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 * [Kingfisher](https://github.com/onevcat/Kingfisher)
