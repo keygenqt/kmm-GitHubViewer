@@ -50,7 +50,7 @@ fun NavGraph(navController: NavHostController) {
                 ),
                 title = {
                     Text(
-                        text = "Material You",
+                        text = "Compose ❤️ Material You",
                         style = MaterialTheme.typography.titleMedium,
                         color = LocalContentColor.current
                     )
