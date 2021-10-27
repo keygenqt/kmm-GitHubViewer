@@ -1,19 +1,20 @@
 [versions]
 # Base
-kotlinVersion = "1.5.21"
+kotlinVersion = "1.5.31"
 
 # Coil
 coilVersion = "1.3.2"
 appcompatVersion = "1.3.1"
 
 # Jetpack Compose
-composeVersion = "1.0.2"
-activityComposeVersion = "1.3.0"
+composeVersion = "1.0.4"
+activityComposeVersion = "1.4.0"
 constraintLayoutVersion = "1.0.0-beta02"
-accompanistVersion = "0.17.0"
+accompanistVersion = "0.20.0"
+material3Version = "1.0.0-alpha01"
 
 # Hilt
-hiltVersion = "1.0.0"
+hiltVersion = "1.0.0-alpha03"
 hiltCoreVersion = "2.38.1"
 hiltComposeNavigationVersion = "1.0.0-alpha03"
 

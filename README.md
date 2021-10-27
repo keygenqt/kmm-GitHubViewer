@@ -13,6 +13,7 @@ Demo application using open GitHub api and [Kotlin Multiplatform Mobile](https:/
 
 ### Base libraries Android
 
+* [Material You](https://m3.material.io/)
 * [Accompanist](https://google.github.io/accompanist/)
 * [Retrofit](https://square.github.io/retrofit/)
 * [Paging](https://developer.android.com/jetpack/androidx/releases/paging)

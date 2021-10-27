@@ -2,10 +2,18 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
+
 	let greet = Greeting().greeting()
+	@Environment(\.openURL) var openURL
 
 	var body: some View {
-		Text(greet)
+		NavigationView {
+			VStack {
+				Text(greet)
+				Divider().frame(height: 10)
+				Text("Kotlin multiplatform mobile")
+			}.navigationTitle("SwiftUI")
+		}
 	}
 }
 
