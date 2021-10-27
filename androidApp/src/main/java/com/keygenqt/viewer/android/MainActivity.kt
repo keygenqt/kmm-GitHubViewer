@@ -1,85 +1,44 @@
+/*
+ * Copyright 2021 Vitaliy Zarubin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.keygenqt.viewer.android
 
-import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.View
-import android.view.ViewTreeObserver
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.keygenqt.viewer.Greeting
-import com.keygenqt.viewer.android.theme.MainAppTheme
-import kotlinx.coroutines.flow.MutableStateFlow
+import androidx.core.view.WindowCompat
+import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.keygenqt.viewer.android.theme.AppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
-fun greet(): String {
-    return Greeting().greeting()
-}
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    private val isReady: MutableStateFlow<Boolean> = MutableStateFlow(false)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Disable window decor fitting
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        // compose initialization
         setContent {
-            MainAppTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting(greet())
+            AppTheme {
+                ProvideWindowInsets {
+                    NavGraph(rememberNavController())
                 }
             }
         }
-
-        // Splash delay
-        window.decorView.findViewById<View>(android.R.id.content)?.let { content ->
-            content.viewTreeObserver.addOnPreDrawListener(
-                object : ViewTreeObserver.OnPreDrawListener {
-                    override fun onPreDraw(): Boolean {
-                        return if (isReady.value) {
-                            // remove BG splash
-                            this@MainActivity.window.decorView.setBackgroundColor(Color.WHITE)
-                            // done splash remove listener
-                            content.viewTreeObserver.removeOnPreDrawListener(this); true
-                        } else false
-                    }
-                }
-            )
-        }
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            isReady.value = true
-        }, 1000)
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Text(
-            modifier = Modifier
-                .align(Alignment.Center),
-            text = "Hello $name!"
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    MainAppTheme {
-        Greeting("Android")
     }
 }

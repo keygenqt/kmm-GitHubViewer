@@ -1,8 +1,27 @@
-[libraries]
-accompanist-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanist" }
-accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
-accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanist" }
-accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
+# modules
+[libraries.accompanist-insets]
+module = "com.google.accompanist:accompanist-insets"
+[libraries.accompanist-pager]
+module = "com.google.accompanist:accompanist-pager"
+[libraries.accompanist-swiperefresh]
+module = "com.google.accompanist:accompanist-swiperefresh"
+[libraries.accompanist-systemuicontroller]
+module = "com.google.accompanist:accompanist-systemuicontroller"
+
+# versions
+[libraries.accompanist-insets.version]
+ref = "accompanistVersion"
+[libraries.accompanist-pager.version]
+ref = "accompanistVersion"
+[libraries.accompanist-swiperefresh.version]
+ref = "accompanistVersion"
+[libraries.accompanist-systemuicontroller.version]
+ref = "accompanistVersion"
 
 [bundles]
-accompanist = ["accompanist-insets", "accompanist-pager", "accompanist-swiperefresh", "accompanist-systemuicontroller"]
+accompanist = [
+    "accompanist-insets",
+    "accompanist-pager",
+    "accompanist-swiperefresh",
+    "accompanist-systemuicontroller"
+]

@@ -1,27 +1,52 @@
 [versions]
+# Base
+kotlinVersion = "1.5.21"
 
-# Versions android
-compileSdk="30"
-targetSdk="30"
-minSdk="23"
-
-# Kotlin
-kotlinVersion = "1.5.31"
+# Coil
+coilVersion = "1.3.2"
+appcompatVersion = "1.3.1"
 
 # Jetpack Compose
-# https://developer.android.com/jetpack/compose
-compose = "1.0.3"
-activityCompose = "1.3.1"
-constraintLayout = "1.0.0-beta02"
+composeVersion = "1.0.2"
+activityComposeVersion = "1.3.0"
+constraintLayoutVersion = "1.0.0-beta02"
+accompanistVersion = "0.17.0"
 
-# Accompanist
-# https://github.com/google/accompanist
-accompanist = "0.17.0"
+# Hilt
+hiltVersion = "1.0.0"
+hiltCoreVersion = "2.38.1"
+hiltComposeNavigationVersion = "1.0.0-alpha03"
+
+# Retrofit
+retrofitSerializationVersions = "1.2.2"
+retrofitConverterVersions = "0.8.0"
+retrofitRetrofitVersions = "2.9.0"
+retrofitLoggingVersions = "4.9.1"
+
+# Lottie
+lottieVersions = "4.0.0"
 
 # Timber
-# https://github.com/JakeWharton/timber
 timberVersion = "5.0.1"
 
 # Startup
-# https://developer.android.com/jetpack/androidx/releases/startup
 startupVersion = "1.1.0"
+
+# Paging
+pagingComposeVersion = "1.0.0-alpha12"
+
+# Database Room
+roomVersion = "2.4.0-alpha04"
+androidDatabaseSqlcipherVersion = "4.4.3"
+sqliteVersion = "2.0.1"
+
+# Tests
+mockWebServerVersion = "4.9.1"
+mockitoCoreVersion = "3.10.0"
+testJunitVersion = "4.+"
+
+# ktlint
+ktlintVersion = "0.42.1"
+
+# Routing
+composeRoutingVersion = "0.0.1"

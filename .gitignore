@@ -9,6 +9,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-*.xcuserstate
-project.xcworkspace/
-xcuserdata/

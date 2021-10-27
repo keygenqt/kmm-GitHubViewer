@@ -1,13 +1,32 @@
-[libraries]
-# Timber
-# https://github.com/JakeWharton/timber
-other-timber = { module = "com.jakewharton.timber:timber", version.ref = "timberVersion" }
-# Startup
-# https://developer.android.com/jetpack/androidx/releases/startup
-other-startup = { module = "androidx.startup:startup-runtime", version.ref = "startupVersion" }
-# reflection
-# https://kotlinlang.org/docs/reflection.html
-other-reflection = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlinVersion" }
+# modules
+[libraries.other-timber]
+module = "com.jakewharton.timber:timber"
+[libraries.other-startup]
+module = "androidx.startup:startup-runtime"
+[libraries.other-reflection]
+module = "org.jetbrains.kotlin:kotlin-reflect"
+[libraries.other-paging]
+module = "androidx.paging:paging-compose"
+[libraries.other-routing]
+module = "com.keygenqt.routing:compose-routing"
+
+# versions
+[libraries.other-timber.version]
+ref = "timberVersion"
+[libraries.other-startup.version]
+ref = "startupVersion"
+[libraries.other-reflection.version]
+ref = "kotlinVersion"
+[libraries.other-paging.version]
+ref = "pagingComposeVersion"
+[libraries.other-routing.version]
+ref = "composeRoutingVersion"
 
 [bundles]
-other = ["other-timber", "other-startup", "other-reflection"]
+other = [
+    "other-timber",
+    "other-startup",
+    "other-reflection",
+    "other-paging",
+    "other-routing",
+]

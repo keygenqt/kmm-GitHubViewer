@@ -1,23 +1,22 @@
 pluginManagement {
 
-    val gradleVersion: String by settings
+    val spotlessVersions: String by settings
+    val dokkaVersions: String by settings
     val kotlinVersion: String by settings
 
     repositories {
-        google()
         gradlePluginPortal()
+        google()
         mavenCentral()
     }
 
     plugins {
-        id("org.jetbrains.kotlin.android") version kotlinVersion
-        id("com.android.application") version gradleVersion
-
-        kotlin("kapt") version kotlinVersion
+        kotlin("plugin.serialization") version kotlinVersion
+        id("com.diffplug.spotless") version spotlessVersions
+        id("org.jetbrains.dokka") version dokkaVersions
     }
 }
 
-// https://docs.gradle.org/current/userguide/platforms.html#sub:central-declaration-of-dependencies
 enableFeaturePreview("VERSION_CATALOGS")
 
 dependencyResolutionManagement {
@@ -25,6 +24,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://artifactory.keygenqt.com/artifactory/open-source")
     }
     versionCatalogs {
         create("libs") {

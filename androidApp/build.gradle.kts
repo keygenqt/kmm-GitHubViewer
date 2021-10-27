@@ -1,39 +1,48 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
 
+    kotlin("android")
     kotlin("kapt")
+
+    id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization")
 }
+
 
 android {
 
-    compileSdk = libs.versions.compileSdk.get().toInt()
+    compileSdk = findProperty("compileSdk").toString().toInt()
 
     defaultConfig {
 
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        minSdk = findProperty("minSdk").toString().toInt()
+        targetSdk = findProperty("targetSdk").toString().toInt()
 
         applicationId = "com.keygenqt.viewer.android"
+
         versionCode = 1
         versionName = "1.0.0"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
+        kotlinCompilerExtensionVersion = libs.versions.composeVersion.get()
     }
 
     buildFeatures {
         compose = true
     }
 
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+        }
+    }
+
+    // division resources
     sourceSets {
         getByName("main").let { data ->
             data.res.setSrcDirs(emptySet<String>())
@@ -43,22 +52,31 @@ android {
         }
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs = freeCompilerArgs + listOf(
-            "-P",
-            "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
-        )
+    packagingOptions {
+        resources {
+            excludes.add("**/attach_hotspot_windows.dll")
+            excludes.add("META-INF/licenses/**")
+            excludes.add("META-INF/AL2.0")
+            excludes.add("META-INF/LGPL2.1")
+        }
     }
 }
 
-// common modules
 dependencies {
     implementation(project(":shared"))
-}
 
-dependencies {
     implementation(libs.bundles.accompanist)
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.coil)
+    implementation(libs.bundles.hilt)
     implementation(libs.bundles.other)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.bundles.room)
+
+    kapt(libs.bundles.hiltKapt)
+    kapt(libs.bundles.roomKapt)
+
+    testImplementation(libs.bundles.test)
+    debugImplementation(libs.bundles.testDebug)
+    androidTestImplementation(libs.bundles.testAndroid)
 }

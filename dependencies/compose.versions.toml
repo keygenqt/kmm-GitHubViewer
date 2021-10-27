@@ -1,13 +1,37 @@
-# Jetpack Compose
-# https://developer.android.com/jetpack/compose
+# modules
+[libraries.compose-material]
+module = "androidx.compose.material:material"
+[libraries.compose-ui]
+module = "androidx.compose.ui:ui"
+[libraries.compose-tooling]
+module = "androidx.compose.ui:ui-tooling-preview"
+[libraries.compose-activity]
+module = "androidx.activity:activity-compose"
+[libraries.compose-icons]
+module = "androidx.compose.material:material-icons-extended"
+[libraries.compose-constraintlayout]
+module = "androidx.constraintlayout:constraintlayout-compose"
 
-[libraries]
-compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose-tooling = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-compose-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
-compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintLayout" }
+# versions
+[libraries.compose-material.version]
+ref = "composeVersion"
+[libraries.compose-ui.version]
+ref = "composeVersion"
+[libraries.compose-tooling.version]
+ref = "composeVersion"
+[libraries.compose-activity.version]
+ref = "composeVersion"
+[libraries.compose-icons.version]
+ref = "composeVersion"
+[libraries.compose-constraintlayout.version]
+ref = "constraintLayoutVersion"
 
 [bundles]
-compose = ["compose-material", "compose-ui", "compose-tooling", "compose-activity", "compose-icons", "compose-constraintlayout"]
+compose = [
+    "compose-material",
+    "compose-ui",
+    "compose-tooling",
+    "compose-activity",
+    "compose-icons",
+    "compose-constraintlayout"
+]
