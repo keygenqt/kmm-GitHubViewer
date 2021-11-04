@@ -45,7 +45,9 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting
+        System.getenv("GITHUB_REPOSITORY") ?: run {
+            val iosMain by getting
+        }
         val iosTest by getting
     }
 }
