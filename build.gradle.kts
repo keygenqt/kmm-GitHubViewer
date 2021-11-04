@@ -22,7 +22,7 @@ plugins {
 }
 
 tasks.withType<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>().configureEach {
-    outputDirectory.set(rootDir.resolve("api"))
+    outputDirectory.set(rootDir.resolve("docs/api"))
     failOnWarning.set(true)
 }
 

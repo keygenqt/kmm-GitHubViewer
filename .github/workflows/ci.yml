@@ -27,7 +27,7 @@ jobs:
       - name: Api
         run: |
           [ -d docs/api ] && rm -r docs/api
-          mkdir api
+          mkdir docs/api
           gradle dokkaHtmlMultiModule
 
       - name: Build site
