@@ -1,8 +1,6 @@
 GitHub Viewer
 ===================
 
-![picture](data/preview.png)
-
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
 ### Architecture
