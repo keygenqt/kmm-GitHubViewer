@@ -1,0 +1,20 @@
+site_name: GitHub Viewer
+
+# Repository
+repo_name: 'GitHub Viewer'
+repo_url: 'https://github.com/keygenqt/kmm-GitHubViewer'
+
+# Navigation
+nav:
+  - 'Overview': index.md
+
+# Configuration
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'black'
+    accent: 'deep orange'
+  font:
+    text: 'Roboto'
+    code: 'JetBrains Mono'
