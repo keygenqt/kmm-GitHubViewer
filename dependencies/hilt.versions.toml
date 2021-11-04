@@ -1,18 +1,14 @@
 # modules
 [libraries.hilt-android]
 module = "com.google.dagger:hilt-android"
-[libraries.hilt-dagger]
-module = "com.google.dagger:hilt-compiler"
 [libraries.hilt-compiler]
-module = "androidx.hilt:hilt-compiler"
+module = "com.google.dagger:hilt-android-compiler"
 [libraries.hilt-navigation]
 module = "androidx.hilt:hilt-navigation-compose"
 
 # versions
 [libraries.hilt-android.version]
-ref = "hiltCoreVersion"
-[libraries.hilt-dagger.version]
-ref = "hiltCoreVersion"
+ref = "hiltVersion"
 [libraries.hilt-compiler.version]
 ref = "hiltVersion"
 [libraries.hilt-navigation.version]
@@ -24,6 +20,5 @@ hilt = [
     "hilt-navigation"
 ]
 hiltKapt = [
-    "hilt-dagger",
     "hilt-compiler"
 ]

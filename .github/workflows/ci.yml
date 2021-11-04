@@ -23,6 +23,10 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install mkdocs
           python3 -m pip install mkdocs-material
+
+      - name: Api
+        run: |
+          [ -d docs/api ] && rm -r docs/api
           mkdir api
           gradle dokkaHtmlMultiModule
 

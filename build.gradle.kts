@@ -2,7 +2,7 @@ buildscript {
 
     val kotlinVersion: String by project
     val gradleVersion: String by project
-    val hiltCoreVersion: String by project
+    val hiltVersion: String by project
 
     repositories {
         google()
@@ -12,7 +12,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:$gradleVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltCoreVersion")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
     }
 }
 

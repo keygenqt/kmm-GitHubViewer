@@ -14,8 +14,7 @@ accompanistVersion = "0.20.0"
 material3Version = "1.0.0-alpha01"
 
 # Hilt
-hiltVersion = "1.0.0-alpha03"
-hiltCoreVersion = "2.38.1"
+hiltVersion = "2.38.1"
 hiltComposeNavigationVersion = "1.0.0-alpha03"
 
 # Retrofit
