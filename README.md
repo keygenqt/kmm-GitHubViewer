@@ -27,7 +27,7 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [SwiftLint](https://github.com/realm/SwiftLint)
 * [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
 
-### Preview
+### Android Preview
 <p>
 <img src="data/Screen_Recording_2021-11-04_1.gif" width="40%"/>
 <img src="data/Screen_Recording_2021-11-04_2.gif" width="40%"/>
