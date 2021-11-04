@@ -13,6 +13,11 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
