@@ -34,5 +34,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "GitHubViewer"
+
 include(":androidApp")
 include(":shared")
