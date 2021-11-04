@@ -15,130 +15,107 @@
  */
 package com.keygenqt.viewer.android
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
-import androidx.compose.material3.TopAppBarDefaults.pinnedScrollBehavior
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
-import androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher
-import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import com.google.accompanist.insets.navigationBarsWithImePadding
-import com.google.accompanist.insets.rememberImeNestedScrollConnection
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
-import com.keygenqt.githubviewer.Greeting
+import com.keygenqt.viewer.android.base.AppActions
+import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.LocalViewModel
+import com.keygenqt.viewer.android.base.TopBarTitle.Companion.findTitleByRoute
+import com.keygenqt.viewer.android.extensions.AddListenChangeNavigation
+import com.keygenqt.viewer.android.features.followers.navigation.graph.followersNavGraph
+import com.keygenqt.viewer.android.features.other.navigation.graph.otherNavGraph
+import com.keygenqt.viewer.android.features.repos.navigation.graph.reposNavGraph
+import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
+import com.keygenqt.viewer.android.menu.bottomBar
 import timber.log.Timber
-import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(
+    navController: NavHostController,
+    appViewModel: AppViewModel = LocalViewModel.current
+) {
 
-    val navActions = remember(navController) {
-        NavActions(navController)
+    // Actions navigation all app
+    val appActions = remember(navController) {
+        AppActions(navController)
     }
 
-    val scrollState = rememberScrollState()
+    // Disable scroll if page not have scroll
+    val isScroll by appViewModel.isScrollTopBar.collectAsState()
 
-    val scrollBehavior = enterAlwaysScrollBehavior {
-        scrollState.value > 1
+    // Scroll behavior top bar with nestedScrollConnection
+    val scrollBehavior = enterAlwaysScrollBehavior { isScroll }
+
+    // Disable scroll if page change
+    navController.AddListenChangeNavigation {
+        appViewModel.setScrollState(false)
+        appViewModel.setTopAppBarTitle(it.route?.findTitleByRoute()?.titleTopBar)
     }
+
+    val topAppBar by appViewModel.topAppBar.collectAsState()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val bottomBar = remember { bottomBar(appActions) }
+
+    val currentRoute = navBackStackEntry?.destination?.route
+        ?: ReposNav.navReposMain.reposMainScreen.route
 
     Scaffold(
-        modifier = Modifier.statusBarsPadding(),
+        modifier = Modifier
+            .statusBarsPadding()
+            .navigationBarsPadding(),
         scaffoldState = rememberScaffoldState(),
-        topBar = {
-            MediumTopAppBar(
-                scrollBehavior = scrollBehavior,
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                ),
-                title = {
-                    Text(text = "Compose ❤️ Material You")
-                },
-                navigationIcon = {
-                    IconButton(onClick = {
-
-                    }) {
-                        Icon(
-                            imageVector = Icons.Filled.Menu,
-                            contentDescription = "Menu",
-                            tint = MaterialTheme.colorScheme.onPrimary
-                        )
-                    }
-                }
-            )
-        },
-    ) {
-        NavHost(
-            navController = navController,
-            startDestination = NavRoute.Welcome.route
-        ) {
-            composable(NavRoute.Welcome.route) {
-                Box(
-                    Modifier
-                        .nestedScroll(scrollBehavior.nestedScrollConnection)
-                        .navigationBarsWithImePadding()
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .verticalScroll(scrollState)
-                            .background(MaterialTheme.colorScheme.background)
-                    ) {
-                        Column(Modifier.padding(20.dp)) {
-                            Text(
-                                modifier = Modifier,
-                                text = Greeting().greeting()
-                            )
-
-                            Spacer(modifier = Modifier.size(20.dp))
-
-                            Text(
-                                "State: ${scrollState.value}"
-                            )
-
-                            Spacer(modifier = Modifier.size(20.dp))
-
-                            Spacer(
-                                modifier = Modifier
-                                    .height(0.5.dp)
-                                    .fillMaxWidth()
-                                    .background(Color.Gray)
-                            )
-
-                            Spacer(modifier = Modifier.size(20.dp))
-
-                            Text(
-                                modifier = Modifier,
-                                text = "Kotlin multiplatform mobile"
-                            )
-
-                            Spacer(modifier = Modifier.size(1000.dp))
-
-                            Text(
-                                modifier = Modifier,
-                                text = "Scroll bottom"
-                            )
+        topBar = topAppBar?.let { titleId ->
+            {
+                MediumTopAppBar(
+                    scrollBehavior = scrollBehavior,
+                    title = {
+                        Column {
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Text( text = stringResource(id = titleId))
                         }
                     }
-                }
+                )
+            }
+        } ?: {},
+        bottomBar = bottomBar(currentRoute),
+    ) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .nestedScroll(scrollBehavior.nestedScrollConnection)
+        ) {
+            NavHost(
+                navController = navController,
+                startDestination = currentRoute
+            ) {
+                otherNavGraph(
+                    appActions = appActions
+                )
+                reposNavGraph(
+                    appActions = appActions
+                )
+                followersNavGraph(
+                    appActions = appActions
+                )
+                statsNavGraph(
+                    appActions = appActions
+                )
             }
         }
     }

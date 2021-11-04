@@ -18,14 +18,28 @@ package com.keygenqt.viewer.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
+import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    /**
+     * Main ViewModel which is available throughout the application as staticCompositionLocalOf
+     */
+    private val viewModel: AppViewModel by viewModels()
+
+    /**
+     * Main initialization point of view
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,9 +48,14 @@ class MainActivity : ComponentActivity() {
 
         // compose initialization
         setContent {
-            AppTheme {
-                ProvideWindowInsets {
-                    NavGraph(rememberNavController())
+            CompositionLocalProvider(
+                LocalViewModel provides viewModel,
+                LocalBackPressedDispatcher provides this.onBackPressedDispatcher
+            ) {
+                AppTheme {
+                    ProvideWindowInsets {
+                        NavGraph(rememberNavController())
+                    }
                 }
             }
         }
