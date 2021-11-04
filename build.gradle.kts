@@ -18,10 +18,17 @@ buildscript {
 
 plugins {
     id("com.diffplug.spotless")
+    id("org.jetbrains.dokka")
+}
+
+tasks.withType<org.jetbrains.dokka.gradle.DokkaMultiModuleTask>().configureEach {
+    outputDirectory.set(rootDir.resolve("docs/api"))
+    failOnWarning.set(true)
 }
 
 subprojects {
 
+    apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "com.diffplug.spotless")
 
     spotless {
@@ -41,6 +48,16 @@ subprojects {
             trimTrailingWhitespace()
             indentWithSpaces()
             endWithNewline()
+        }
+    }
+
+    tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
+        suppressInheritedMembers.set(true)
+        dokkaSourceSets {
+            configureEach {
+                includes.from("dokka.md")
+                includeNonPublic.set(true)
+            }
         }
     }
 }
