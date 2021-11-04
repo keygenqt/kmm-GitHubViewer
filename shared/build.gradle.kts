@@ -47,8 +47,8 @@ kotlin {
         }
         System.getenv("GITHUB_REPOSITORY") ?: run {
             val iosMain by getting
+            val iosTest by getting
         }
-        val iosTest by getting
     }
 }
 
