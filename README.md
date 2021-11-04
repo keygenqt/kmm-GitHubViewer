@@ -29,8 +29,8 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 
 ### Preview
 <p>
-<img src="data/Screen_Recording_2021-11-04_at_16.30.43.gif" width="40%"/>
-<img src="data/Screen_Recording_2021-11-04_at_16.29.35.gif" width="40%"/>
+<img src="data/Screen_Recording_2021-11-04_1.gif" width="40%"/>
+<img src="data/Screen_Recording_2021-11-04_2.gif" width="40%"/>
 </p>
 
 # License
