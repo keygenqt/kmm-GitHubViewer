@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -18,6 +18,8 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install mkdocs
           python3 -m pip install mkdocs-material
+          mkdir api
+          ./gradlew dokkaHtmlMultiModule
 
       - name: Build site
         run: |
