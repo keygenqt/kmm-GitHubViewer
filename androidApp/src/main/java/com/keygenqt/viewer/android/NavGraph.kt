@@ -42,7 +42,6 @@ import com.keygenqt.viewer.android.features.repos.navigation.graph.reposNavGraph
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
 import com.keygenqt.viewer.android.menu.bottomBar
-import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,7 +86,7 @@ fun NavGraph(
                     title = {
                         Column {
                             Spacer(modifier = Modifier.size(8.dp))
-                            Text( text = stringResource(id = titleId))
+                            Text(text = stringResource(id = titleId))
                         }
                     }
                 )
