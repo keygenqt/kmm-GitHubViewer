@@ -1,0 +1,5 @@
+<resources>
+    <string name="sign_in_title">Sign In</string>
+    <string name="sign_in_form_nickname">Nickname</string>
+    <string name="sign_in_form_button_submit">Submit</string>
+</resources>

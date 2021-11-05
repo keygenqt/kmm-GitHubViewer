@@ -1,0 +1,5 @@
+<resources>
+    <string name="profile_title">Profile</string>
+    <string name="profile_name_text">Welcome %s!</string>
+    <string name="profile_logout">Logout</string>
+</resources>

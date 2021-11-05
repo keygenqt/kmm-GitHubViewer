@@ -20,8 +20,6 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 /**
  * [AppViewModel] Can be used in CompositionLocalProvider to provide values.
- *
- * @author Vitaliy Zarubin
  */
 val LocalViewModel = staticCompositionLocalOf<AppViewModel> {
     error("No AppViewModel found!")
@@ -29,8 +27,6 @@ val LocalViewModel = staticCompositionLocalOf<AppViewModel> {
 
 /**
  * [OnBackPressedDispatcher] Can be used in CompositionLocalProvider to provide values.
- *
- * @author Vitaliy Zarubin
  */
 val LocalBackPressedDispatcher = staticCompositionLocalOf<OnBackPressedDispatcher> {
     error("No Back Dispatcher provided")

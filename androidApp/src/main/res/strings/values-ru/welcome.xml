@@ -1,1 +1,4 @@
-<resources/>
+<resources>
+    <string name="welcome_title">Привет!</string>
+    <string name="welcome_btn_sign_in">Войти</string>
+</resources>

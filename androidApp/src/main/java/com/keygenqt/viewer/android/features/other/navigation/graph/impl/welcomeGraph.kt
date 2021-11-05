@@ -32,8 +32,7 @@ fun NavGraphBuilder.welcomeGraph(
     composable(OtherNav.navWelcome.welcomeScreen.route) {
         WelcomeScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
-                is WelcomeActions.ToLogin -> {
-                }
+                is WelcomeActions.ToSignIn -> appActions.toSignIn()
             }
         }
     }

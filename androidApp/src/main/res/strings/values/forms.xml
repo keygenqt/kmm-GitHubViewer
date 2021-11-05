@@ -1,0 +1,4 @@
+<resources>
+    <string name="is_required">Required field</string>
+    <string name="is_no_symbols">Must not contain symbols</string>
+</resources>

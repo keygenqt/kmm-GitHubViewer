@@ -16,6 +16,8 @@
 package com.keygenqt.viewer.android
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver.OnPreDrawListener
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -58,6 +60,19 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+
+        // Splash delay
+        window.decorView.findViewById<View>(android.R.id.content)?.let { content ->
+            content.viewTreeObserver.addOnPreDrawListener(
+                object : OnPreDrawListener {
+                    override fun onPreDraw(): Boolean {
+                        return if (viewModel.isSplash.value) {
+                            content.viewTreeObserver.removeOnPreDrawListener(this); true
+                        } else false
+                    }
+                }
+            )
         }
     }
 }

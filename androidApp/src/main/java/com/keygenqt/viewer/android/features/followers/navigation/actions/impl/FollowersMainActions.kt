@@ -29,7 +29,11 @@ interface FollowersMainActions {
     /**
      * To main page followers
      */
-    fun toFollowersMain() {
-        controller.navigate(FollowersNav.navFollowersMain.followersMainScreen.route)
+    fun toFollowersMain(popUpTo: String? = null) {
+        controller.navigate(FollowersNav.navFollowersMain.followersMainScreen.route) {
+            popUpTo?.let {
+                popUpTo(popUpTo) { inclusive = true }
+            }
+        }
     }
 }

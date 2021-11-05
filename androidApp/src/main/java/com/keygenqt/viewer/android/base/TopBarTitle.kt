@@ -17,6 +17,8 @@ package com.keygenqt.viewer.android.base
 
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.features.followers.navigation.nav.FollowersNav
+import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
+import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.stats.navigation.nav.StatsNav
 
 /**
@@ -26,6 +28,10 @@ enum class TopBarTitle(
     val route: String,
     val titleTopBar: Int?,
 ) {
+    SIGN_IN(
+        OtherNav.navSignIn.signInScreen.route,
+        R.string.sign_in_title,
+    ),
     FOLLOWERS(
         FollowersNav.navFollowersMain.followersMainScreen.route,
         R.string.followers_title,
@@ -33,6 +39,10 @@ enum class TopBarTitle(
     STATS(
         StatsNav.navStatsMain.statsMainScreen.route,
         R.string.stats_title,
+    ),
+    PROFILE(
+        ProfileNav.navProfileMain.profileMainScreen.route,
+        R.string.profile_title,
     );
 
     companion object {

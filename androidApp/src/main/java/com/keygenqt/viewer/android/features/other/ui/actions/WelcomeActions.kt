@@ -25,5 +25,5 @@ sealed class WelcomeActions {
     /**
      * Open login page
      */
-    object ToLogin : WelcomeActions()
+    object ToSignIn : WelcomeActions()
 }

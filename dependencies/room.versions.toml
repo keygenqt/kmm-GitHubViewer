@@ -5,6 +5,10 @@ module = "androidx.room:room-runtime"
 module = "androidx.room:room-ktx"
 [libraries.room-compiler]
 module = "androidx.room:room-compiler"
+[libraries.room-sqlcipher]
+module = "net.zetetic:android-database-sqlcipher"
+[libraries.room-sqlite]
+module = "androidx.sqlite:sqlite"
 
 # versions
 [libraries.room-core.version]
@@ -13,11 +17,17 @@ ref = "roomVersion"
 ref = "roomVersion"
 [libraries.room-compiler.version]
 ref = "roomVersion"
+[libraries.room-sqlcipher.version]
+ref = "androidDatabaseSqlcipherVersion"
+[libraries.room-sqlite.version]
+ref = "sqliteVersion"
 
 [bundles]
 room = [
     "room-core",
-    "room-ktx"
+    "room-ktx",
+    "room-sqlcipher",
+    "room-sqlite"
 ]
 roomKapt = [
     "room-compiler"

@@ -22,6 +22,9 @@ android {
 
         versionCode = 1
         versionName = "1.0.0"
+
+        // secret token
+        buildConfigField("String", "GITHUB_TOKEN", findProperty("github_token").toString())
     }
 
     composeOptions {
@@ -72,6 +75,7 @@ dependencies {
     implementation(libs.bundles.other)
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.room)
+    implementation(libs.bundles.lottie)
 
     kapt(libs.bundles.hiltKapt)
     kapt(libs.bundles.roomKapt)

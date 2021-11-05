@@ -27,9 +27,13 @@ interface WelcomeActions {
     val controller: NavHostController
 
     /**
-     * To login page
+     * To welcome page
      */
-    fun toWelcome() {
-        controller.navigate(OtherNav.navWelcome.welcomeScreen.route)
+    fun toWelcome(popUpTo: String? = null) {
+        controller.navigate(OtherNav.navWelcome.welcomeScreen.route) {
+            popUpTo?.let {
+                popUpTo(popUpTo) { inclusive = true }
+            }
+        }
     }
 }

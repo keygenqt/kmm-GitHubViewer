@@ -16,12 +16,11 @@
 package com.keygenqt.viewer.android.menu
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BarChart
-import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.features.followers.navigation.nav.FollowersNav
+import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.stats.navigation.nav.StatsNav
 
@@ -40,6 +39,11 @@ enum class MenuTab(
         FollowersNav.navFollowersMain.followersMainScreen.route,
         R.string.followers_title,
         Icons.Filled.People
+    ),
+    PROFILE(
+        ProfileNav.navProfileMain.profileMainScreen.route,
+        R.string.profile_title,
+        Icons.Filled.Person
     ),
     STATS(
         StatsNav.navStatsMain.statsMainScreen.route,

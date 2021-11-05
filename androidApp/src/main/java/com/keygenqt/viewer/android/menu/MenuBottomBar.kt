@@ -28,10 +28,10 @@ import com.keygenqt.viewer.android.features.repos.ui.screens.followersMain.Repos
 import com.keygenqt.viewer.android.menu.MenuTab.Companion.findByRoute
 import com.keygenqt.viewer.android.theme.AppTheme
 
-val bottomBar: (AppActions) -> @Composable (String) -> @Composable () -> Unit = { appActions ->
+val bottomBar: (AppActions) -> @Composable (String?) -> @Composable () -> Unit = { appActions ->
     { route ->
         {
-            route.findByRoute()?.let { tab ->
+            route?.findByRoute()?.let { tab ->
                 MenuBottomBar(
                     currentRoute = tab,
                     appActions = appActions
@@ -57,6 +57,7 @@ fun MenuBottomBar(
                         MenuTab.REPOS -> appActions.toReposMain()
                         MenuTab.FOLLOWERS -> appActions.toFollowersMain()
                         MenuTab.STATS -> appActions.toStatsMain()
+                        MenuTab.PROFILE -> appActions.toProfileMain()
                     }
                 }
             )

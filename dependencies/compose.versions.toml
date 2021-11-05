@@ -11,6 +11,8 @@ module = "androidx.compose.material:material-icons-extended"
 module = "androidx.constraintlayout:constraintlayout-compose"
 [libraries.compose-material3]
 module = "androidx.compose.material3:material3"
+[libraries.compose-material]
+module = "androidx.compose.material:material"
 
 # versions
 [libraries.compose-ui.version]
@@ -25,10 +27,13 @@ ref = "composeVersion"
 ref = "constraintLayoutVersion"
 [libraries.compose-material3.version]
 ref = "material3Version"
+[libraries.compose-material.version]
+ref = "materialVersion"
 
 [bundles]
 compose = [
     "compose-material3",
+    "compose-material",
     "compose-ui",
     "compose-tooling",
     "compose-activity",

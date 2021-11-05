@@ -29,7 +29,11 @@ interface ReposMainActions {
     /**
      * To main page followers
      */
-    fun toReposMain() {
-        controller.navigate(ReposNav.navReposMain.reposMainScreen.route)
+    fun toReposMain(popUpTo: String? = null) {
+        controller.navigate(ReposNav.navReposMain.reposMainScreen.route) {
+            popUpTo?.let {
+                popUpTo(popUpTo) { inclusive = true }
+            }
+        }
     }
 }

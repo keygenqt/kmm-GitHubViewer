@@ -1,0 +1,5 @@
+<resources>
+    <string name="profile_title">Профайл</string>
+    <string name="profile_name_text">Добро пожаловать %s!</string>
+    <string name="profile_logout">Выйти</string>
+</resources>

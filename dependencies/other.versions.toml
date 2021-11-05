@@ -9,6 +9,10 @@ module = "org.jetbrains.kotlin:kotlin-reflect"
 module = "androidx.paging:paging-compose"
 [libraries.other-routing]
 module = "com.keygenqt.routing:compose-routing"
+[libraries.other-form]
+module = "com.keygenqt.forms:compose-forms"
+[libraries.other-emoji]
+module = "com.vdurmont:emoji-java"
 
 # versions
 [libraries.other-timber.version]
@@ -21,6 +25,10 @@ ref = "kotlinVersion"
 ref = "pagingComposeVersion"
 [libraries.other-routing.version]
 ref = "composeRoutingVersion"
+[libraries.other-form.version]
+ref = "composeFormsVersion"
+[libraries.other-emoji.version]
+ref = "emojiVersion"
 
 [bundles]
 other = [
@@ -29,4 +37,6 @@ other = [
     "other-reflection",
     "other-paging",
     "other-routing",
+    "other-form",
+    "other-emoji",
 ]

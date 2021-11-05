@@ -29,7 +29,11 @@ interface StatsMainActions {
     /**
      * To main page followers
      */
-    fun toStatsMain() {
-        controller.navigate(StatsNav.navStatsMain.statsMainScreen.route)
+    fun toStatsMain(popUpTo: String? = null) {
+        controller.navigate(StatsNav.navStatsMain.statsMainScreen.route) {
+            popUpTo?.let {
+                popUpTo(popUpTo) { inclusive = true }
+            }
+        }
     }
 }

@@ -16,21 +16,19 @@
 package com.keygenqt.viewer.android.features.other.ui.screens.welcome
 
 import android.content.res.Configuration
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.keygenqt.githubviewer.Greeting
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
@@ -39,46 +37,45 @@ fun WelcomeBody(
     appViewModel: AppViewModel? = null,
     onActions: (WelcomeActions) -> Unit = {},
 ) {
-    val scrollState = rememberScrollState()
-
-    // disable scroll if page not need scroll
-    appViewModel?.setScrollState(scrollState.value > 0)
-
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(scrollState)
-            .background(MaterialTheme.colorScheme.background)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Column(Modifier.padding(20.dp)) {
-            Text(
+        Column(
+            modifier = Modifier
+                .height(80.dp)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            TextTitleLarge(
                 modifier = Modifier,
-                text = Greeting().greeting()
+                text = stringResource(id = R.string.welcome_title)
             )
-
-            Spacer(modifier = Modifier.size(20.dp))
-
-            Spacer(
-                modifier = Modifier
-                    .height(0.5.dp)
-                    .fillMaxWidth()
-                    .background(Color.Gray)
+        }
+        Column(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+        ) {
+            WelcomeAnimation(
+                modifier = Modifier.fillMaxWidth()
             )
+        }
 
-            Spacer(modifier = Modifier.size(20.dp))
-
-            Text(
-                modifier = Modifier,
-                text = "Kotlin multiplatform mobile"
-            )
-
-            Spacer(modifier = Modifier.size(1000.dp))
-
-            Text(
-                modifier = Modifier,
-                text = "Scroll bottom"
-            )
+        Column(
+            modifier = Modifier
+        ) {
+            Button(
+                onClick = {
+                    onActions(WelcomeActions.ToSignIn)
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = stringResource(id = R.string.welcome_btn_sign_in).uppercase())
+            }
         }
     }
 }

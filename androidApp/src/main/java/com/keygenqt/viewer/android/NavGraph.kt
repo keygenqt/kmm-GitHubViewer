@@ -15,39 +15,49 @@
  */
 package com.keygenqt.viewer.android
 
-import androidx.compose.foundation.layout.*
+import androidx.activity.OnBackPressedDispatcher
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.google.accompanist.insets.navigationBarsPadding
+import com.google.accompanist.insets.navigationBarsWithImePadding
 import com.google.accompanist.insets.statusBarsPadding
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.base.TopBarTitle.Companion.findTitleByRoute
 import com.keygenqt.viewer.android.extensions.AddListenChangeNavigation
 import com.keygenqt.viewer.android.features.followers.navigation.graph.followersNavGraph
 import com.keygenqt.viewer.android.features.other.navigation.graph.otherNavGraph
+import com.keygenqt.viewer.android.features.profile.navigation.graph.profileNavGraph
 import com.keygenqt.viewer.android.features.repos.navigation.graph.reposNavGraph
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
 import com.keygenqt.viewer.android.menu.bottomBar
+import com.keygenqt.viewer.android.utils.ConstantsApp.START_DESTINATION
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavGraph(
     navController: NavHostController,
-    appViewModel: AppViewModel = LocalViewModel.current
+    appViewModel: AppViewModel = LocalViewModel.current,
+    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+    backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current,
 ) {
 
     // Actions navigation all app
@@ -63,26 +73,49 @@ fun NavGraph(
 
     // Disable scroll if page change
     navController.AddListenChangeNavigation {
+        appViewModel.setBackIcon(false)
         appViewModel.setScrollState(false)
         appViewModel.setTopAppBarTitle(it.route?.findTitleByRoute()?.titleTopBar)
     }
 
+    val isLogin by appViewModel.isLogin.collectAsState(null)
     val topAppBar by appViewModel.topAppBar.collectAsState()
+    val isBackIcon by appViewModel.isBackIcon.collectAsState()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val bottomBar = remember { bottomBar(appActions) }
 
-    val currentRoute = navBackStackEntry?.destination?.route
-        ?: ReposNav.navReposMain.reposMainScreen.route
+    isLogin?.let {
+        LaunchedEffect(lifecycleOwner.lifecycle.currentState == Lifecycle.State.CREATED) {
+            if (!it) {
+                appActions.toWelcome()
+            }
+            appViewModel.disableSplash()
+        }
+    }
 
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
-            .navigationBarsPadding(),
+            .navigationBarsWithImePadding(),
         scaffoldState = rememberScaffoldState(),
         topBar = topAppBar?.let { titleId ->
             {
                 MediumTopAppBar(
                     scrollBehavior = scrollBehavior,
+                    navigationIcon = if (isBackIcon) {
+                        {
+                            IconButton(onClick = {
+                                backDispatcher.onBackPressed()
+                            }) {
+                                Icon(
+                                    imageVector = Icons.Filled.ArrowBack,
+                                    contentDescription = "Back"
+                                )
+                            }
+                        }
+                    } else {
+                        {}
+                    },
                     title = {
                         Column {
                             Spacer(modifier = Modifier.size(8.dp))
@@ -92,29 +125,20 @@ fun NavGraph(
                 )
             }
         } ?: {},
-        bottomBar = bottomBar(currentRoute),
+        bottomBar = bottomBar(navBackStackEntry?.destination?.route),
     ) {
         Box(
-            Modifier
-                .fillMaxSize()
-                .nestedScroll(scrollBehavior.nestedScrollConnection)
+            Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
         ) {
             NavHost(
                 navController = navController,
-                startDestination = currentRoute
+                startDestination = START_DESTINATION
             ) {
-                otherNavGraph(
-                    appActions = appActions
-                )
-                reposNavGraph(
-                    appActions = appActions
-                )
-                followersNavGraph(
-                    appActions = appActions
-                )
-                statsNavGraph(
-                    appActions = appActions
-                )
+                otherNavGraph(appActions)
+                reposNavGraph(appActions)
+                followersNavGraph(appActions)
+                statsNavGraph(appActions)
+                profileNavGraph(appActions)
             }
         }
     }

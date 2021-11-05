@@ -7,6 +7,8 @@ module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter"
 module = "com.squareup.retrofit2:retrofit"
 [libraries.retrofit-logging]
 module = "com.squareup.okhttp3:logging-interceptor"
+[libraries.retrofit-response-result]
+module = "com.keygenqt.response:android-response-result"
 
 # versions
 [libraries.retrofit-serialization.version]
@@ -17,11 +19,14 @@ ref = "retrofitConverterVersions"
 ref = "retrofitRetrofitVersions"
 [libraries.retrofit-logging.version]
 ref = "retrofitLoggingVersions"
+[libraries.retrofit-response-result.version]
+ref = "androidResponseResult"
 
 [bundles]
 retrofit = [
     "retrofit-serialization",
     "retrofit-converter",
     "retrofit-retrofit",
-    "retrofit-logging"
+    "retrofit-logging",
+    "retrofit-response-result",
 ]

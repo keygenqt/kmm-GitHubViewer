@@ -16,27 +16,35 @@
 package com.keygenqt.viewer.android.base
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.viewer.android.extensions.withTransaction
+import com.keygenqt.viewer.android.services.apiService.AppApiService
+import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
+import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
  * Main [ViewModel] for app
  */
 @HiltViewModel
-class AppViewModel @Inject constructor() : ViewModel() {
+class AppViewModel @Inject constructor(
+    private val apiService: AppApiService,
+    private val dataService: AppDataService
+) : ViewModel() {
 
     /**
      * [MutableStateFlow] for start app and end splash
      */
-    private val _isReady: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val _isSplash: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     /**
-     * [StateFlow] for [_isReady]
+     * [StateFlow] for [_isSplash]
      */
-    val isReady: StateFlow<Boolean> get() = _isReady.asStateFlow()
+    val isSplash: StateFlow<Boolean> get() = _isSplash.asStateFlow()
 
     /**
      * [MutableStateFlow] for start app and end splash
@@ -59,6 +67,30 @@ class AppViewModel @Inject constructor() : ViewModel() {
     val isScrollTopBar: StateFlow<Boolean> get() = _isScrollTopBar.asStateFlow()
 
     /**
+     * [MutableStateFlow] show icon back
+     */
+    private val _isBackIcon: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    /**
+     * [StateFlow] for [_isBackIcon]
+     */
+    val isBackIcon: StateFlow<Boolean> get() = _isBackIcon.asStateFlow()
+
+    /**
+     * Set is show back icon
+     */
+    fun setBackIcon(state: Boolean) {
+        _isBackIcon.value = state
+    }
+
+    /**
+     * Set is ready true
+     */
+    fun disableSplash() {
+        _isSplash.value = true
+    }
+
+    /**
      * Set scroll state for scroll behavior
      */
     fun setScrollState(state: Boolean) {
@@ -70,5 +102,26 @@ class AppViewModel @Inject constructor() : ViewModel() {
      */
     fun setTopAppBarTitle(title: Int?) {
         _topAppBar.value = title
+    }
+
+    /**
+     * Flow for listen change status user
+     */
+    val isLogin = flow {
+        dataService.getSecurityModel().distinctUntilChanged().collect {
+            emit(it != null)
+        }
+    }
+
+    fun logout(success: () -> Unit) {
+        viewModelScope.launch {
+            dataService.withTransaction<UserModelDataService> {
+                clearUserModel()
+            }
+            dataService.withTransaction<SecurityModelDataService> {
+                clearSecurityModel()
+            }
+            success.invoke()
+        }
     }
 }
