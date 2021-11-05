@@ -4,7 +4,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
 
-//    id("dagger.hilt.android.plugin")
+    id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization")
 }
 
@@ -73,7 +73,7 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.room)
 
-//    kapt(libs.bundles.hiltKapt)
+    kapt(libs.bundles.hiltKapt)
     kapt(libs.bundles.roomKapt)
 
     testImplementation(libs.bundles.test)

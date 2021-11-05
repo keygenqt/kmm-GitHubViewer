@@ -26,7 +26,7 @@ import javax.inject.Inject
  * Main [ViewModel] for app
  */
 @HiltViewModel
-class AppViewModel : ViewModel() {
+class AppViewModel @Inject constructor() : ViewModel() {
 
     /**
      * [MutableStateFlow] for start app and end splash

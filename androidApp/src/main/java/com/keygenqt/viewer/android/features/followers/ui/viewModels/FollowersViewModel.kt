@@ -23,4 +23,4 @@ import javax.inject.Inject
  * [ViewModel] for feature
  */
 @HiltViewModel
-class FollowersViewModel : ViewModel()
+class FollowersViewModel @Inject constructor() : ViewModel()
