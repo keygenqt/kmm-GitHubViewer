@@ -7,6 +7,16 @@ repo_url: 'https://github.com/keygenqt/kmm-GitHubViewer'
 # Navigation
 nav:
   - 'Overview': index.md
+  - 'Android':
+      - 'About': android.md
+      - 'Preview': android-preview.md
+      - 'API': api/androidApp/index.html
+  - 'IOS':
+      - 'About': ios.md
+      - 'Preview': ios-preview.md
+  - 'Shared':
+      - 'About': shared.md
+      - 'API': api/shared/index.html
 
 # Configuration
 theme:

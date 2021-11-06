@@ -5,33 +5,26 @@ GitHub Viewer
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
-### Architecture
+### About android
 
-* [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
-* [SwiftUI](https://developer.apple.com/xcode/swiftui/)
-* [Jetpack Compose](https://developer.android.com/jetpack/compose)
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
+* [Preview](https://keygenqt.github.io/kmm-GitHubViewer/android-preview/)
+* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
 
-### Android base libraries
+### About iOS
 
-* [Material You](https://m3.material.io/)
-* [Accompanist](https://google.github.io/accompanist/)
-* [Retrofit](https://square.github.io/retrofit/)
-* [Paging](https://developer.android.com/jetpack/androidx/releases/paging)
-* [Room](https://developer.android.com/training/data-storage/room)
-* [Hilt](https://dagger.dev/hilt/)
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
 
-### iOS base libraries
+### About Shared module
 
-* [SwiftGen](https://github.com/SwiftGen/SwiftGen)
-* [Kingfisher](https://github.com/onevcat/Kingfisher)
-* [SwiftLint](https://github.com/realm/SwiftLint)
-* [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
+* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/shared/index.html)
 
-### Android Preview
-<p>
-<img src="data/Screen_Recording_2021-11-04_1.gif" width="40%"/>
-<img src="data/Screen_Recording_2021-11-04_2.gif" width="40%"/>
-</p>
+### Roadmap
+
+* Create android application
+* Move components android to shared module
+* Create IOS application with shared module
 
 # License
 
