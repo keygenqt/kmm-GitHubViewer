@@ -6,22 +6,18 @@ GitHub Viewer
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
 ### About android
-
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
 * [Preview](https://keygenqt.github.io/kmm-GitHubViewer/android-preview/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
 
 ### About iOS
-
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
 
 ### About Shared module
-
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/shared/index.html)
 
 ### Roadmap
-
 * Create android application
 * Move components android to shared module
 * Create IOS application with shared module
