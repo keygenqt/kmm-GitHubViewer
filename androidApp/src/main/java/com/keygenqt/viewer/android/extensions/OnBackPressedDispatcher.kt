@@ -44,12 +44,3 @@ fun OnBackPressedDispatcher.EmitByStatus(status: Boolean, emit: () -> Unit) {
         }
     }
 }
-
-/**
- * Clear stack navigation
- */
-fun OnBackPressedDispatcher.clearStack() {
-    while (this.hasEnabledCallbacks()) {
-        this.onBackPressed()
-    }
-}

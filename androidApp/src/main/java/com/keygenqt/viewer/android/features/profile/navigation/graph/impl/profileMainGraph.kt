@@ -22,12 +22,11 @@ import androidx.navigation.compose.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.extensions.clearStack
 import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
 import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
 import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
-import com.keygenqt.viewer.android.utils.ConstantsApp
+import com.keygenqt.viewer.android.utils.ListenDestination.Companion.clearStack
 
 /**
  * NavGraph for [ProfileMainScreen]
@@ -42,8 +41,7 @@ fun NavGraphBuilder.profileMainGraph(
         ProfileMainScreen(viewModel = viewModel) { event ->
             when (event) {
                 is ProfileMainActions.Logout -> appViewModel.logout {
-                    backDispatcher.clearStack()
-                    appActions.toSignIn(ConstantsApp.START_DESTINATION)
+                    appActions.toSignIn(clearStack(backDispatcher))
                 }
             }
         }

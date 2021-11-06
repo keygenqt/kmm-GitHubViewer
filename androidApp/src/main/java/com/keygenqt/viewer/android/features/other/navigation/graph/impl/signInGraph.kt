@@ -21,12 +21,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
-import com.keygenqt.viewer.android.extensions.clearStack
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.features.other.ui.viewModels.OtherViewModel
-import com.keygenqt.viewer.android.utils.ConstantsApp
+import com.keygenqt.viewer.android.utils.ListenDestination.Companion.clearStack
 
 /**
  * NavGraph for [SignInScreen]
@@ -40,8 +39,7 @@ fun NavGraphBuilder.signInGraph(
         SignInScreen(viewModel = viewModel) { event ->
             when (event) {
                 is SignInActions.SignIn -> viewModel.signIn(event.nickname) {
-                    backDispatcher.clearStack()
-                    appActions.toReposMain(OtherNav.navSignIn.signInScreen.route)
+                    appActions.toReposMain(clearStack(backDispatcher))
                 }
             }
         }

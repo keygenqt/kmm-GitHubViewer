@@ -16,7 +16,6 @@
 package com.keygenqt.viewer.android.features.other.ui.screens.signIn
 
 import android.content.res.Configuration
-import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -35,7 +34,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions

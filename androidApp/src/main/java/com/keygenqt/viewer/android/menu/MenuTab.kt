@@ -16,7 +16,10 @@
 package com.keygenqt.viewer.android.menu
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.features.followers.navigation.nav.FollowersNav

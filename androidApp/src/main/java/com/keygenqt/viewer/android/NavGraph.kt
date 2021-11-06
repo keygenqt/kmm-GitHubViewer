@@ -31,6 +31,7 @@ import com.keygenqt.viewer.android.features.profile.navigation.graph.profileNavG
 import com.keygenqt.viewer.android.features.repos.navigation.graph.reposNavGraph
 import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
 import com.keygenqt.viewer.android.utils.ConstantsApp.START_DESTINATION
+import com.keygenqt.viewer.android.utils.ListenDestination
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,26 +48,9 @@ fun NavGraph(
     // set actions for AppScaffold
     appViewModel.setBottomBarActions(appActions)
 
-//
-//    // Disable scroll if page not have scroll
-//    val isScroll by appViewModel.isScrollTopBar.collectAsState()
-//
-//    // Scroll behavior top bar with nestedScrollConnection
-//    val scrollBehavior = enterAlwaysScrollBehavior { isScroll }
-//
-//    // Disable scroll if page change
-//    navController.AddListenChangeNavigation {
-////        appViewModel.setBackIcon(false)
-////        appViewModel.setScrollState(false)
-////        appViewModel.setTopAppBarTitle(it.route?.findTitleByRoute()?.titleTopBar)
-//    }
+    ListenDestination.Init(navController)
 
     val isLogin by appViewModel.isLogin.collectAsState(null)
-
-//    val topAppBar by appViewModel.topAppBar.collectAsState()
-//    val isBackIcon by appViewModel.isBackIcon.collectAsState()
-//    val navBackStackEntry by navController.currentBackStackEntryAsState()
-
 
     isLogin?.let {
         LaunchedEffect(lifecycleOwner.lifecycle.currentState == Lifecycle.State.CREATED) {
@@ -87,45 +71,4 @@ fun NavGraph(
         statsNavGraph(appActions)
         profileNavGraph(appActions)
     }
-
-//    Scaffold(
-//        modifier = Modifier
-//            .statusBarsPadding()
-//            .navigationBarsWithImePadding(),
-//        scaffoldState = rememberScaffoldState(),
-//        topBar = topAppBar?.let { titleId ->
-//            {
-//                MediumTopAppBar(
-//                    scrollBehavior = scrollBehavior,
-//                    navigationIcon = if (isBackIcon) {
-//                        {
-//                            IconButton(onClick = {
-//                                backDispatcher.onBackPressed()
-//                            }) {
-//                                Icon(
-//                                    imageVector = Icons.Filled.ArrowBack,
-//                                    contentDescription = "Back"
-//                                )
-//                            }
-//                        }
-//                    } else {
-//                        {}
-//                    },
-//                    title = {
-//                        Column {
-//                            Spacer(modifier = Modifier.size(8.dp))
-//                            Text(text = stringResource(id = titleId))
-//                        }
-//                    }
-//                )
-//            }
-//        } ?: {},
-//        bottomBar = bottomBar(navBackStackEntry?.destination?.route),
-//    ) {
-//        Box(
-//            Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
-//        ) {
-//
-//        }
-//    }
 }

@@ -23,7 +23,7 @@ import com.keygenqt.viewer.android.interfaces.IAppNavActions
 /**
  * Actions for [ProfileMainScreen]
  */
-interface ProfileMainActions: IAppNavActions {
+interface ProfileMainActions : IAppNavActions {
 
     override val controller: NavHostController
 

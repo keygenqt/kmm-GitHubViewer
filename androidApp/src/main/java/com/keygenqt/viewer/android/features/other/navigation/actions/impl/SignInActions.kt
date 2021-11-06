@@ -23,7 +23,7 @@ import com.keygenqt.viewer.android.interfaces.IAppNavActions
 /**
  * Actions for [SignInScreen]
  */
-interface SignInActions: IAppNavActions {
+interface SignInActions : IAppNavActions {
 
     override val controller: NavHostController
 

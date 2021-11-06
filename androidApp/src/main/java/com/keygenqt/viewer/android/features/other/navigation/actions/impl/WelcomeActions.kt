@@ -23,7 +23,7 @@ import com.keygenqt.viewer.android.interfaces.IAppNavActions
 /**
  * Actions for [WelcomeScreen]
  */
-interface WelcomeActions: IAppNavActions {
+interface WelcomeActions : IAppNavActions {
 
     override val controller: NavHostController
 

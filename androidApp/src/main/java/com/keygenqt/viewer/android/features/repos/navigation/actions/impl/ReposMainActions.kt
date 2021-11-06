@@ -23,7 +23,7 @@ import com.keygenqt.viewer.android.interfaces.IAppNavActions
 /**
  * Actions for [ReposMainScreen]
  */
-interface ReposMainActions: IAppNavActions {
+interface ReposMainActions : IAppNavActions {
 
     override val controller: NavHostController
 

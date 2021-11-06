@@ -81,7 +81,6 @@ fun WelcomeBody(
             }
         }
     }
-
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)

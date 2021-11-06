@@ -23,7 +23,7 @@ import com.keygenqt.viewer.android.interfaces.IAppNavActions
 /**
  * Actions for [FollowersMainScreen]
  */
-interface FollowersMainActions: IAppNavActions {
+interface FollowersMainActions : IAppNavActions {
 
     override val controller: NavHostController
 

@@ -18,7 +18,8 @@ package com.keygenqt.viewer.android.features.other.ui.screens.signIn
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.material3.Text
+import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -61,7 +62,11 @@ fun SignInForm(
             state = formFields.get(SignInNickname),
             imeAction = ImeAction.Done,
             keyboardType = KeyboardType.Text,
-            keyboardActions = KeyboardActions(onDone = { submitClick.invoke() })
+            keyboardActions = KeyboardActions(onDone = { submitClick.invoke() }),
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = MaterialTheme.colorScheme.primaryContainer,
+                textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            )
         )
 
         // Clear focus after end
@@ -80,7 +85,10 @@ private fun Preview() {
     AppTheme {
         SignInForm(
             FormFieldsState().apply {
-                add(SignInNickname, remember { SignInNickname.state.default(DEBUG_CREDENTIAL_LOGIN) })
+                add(
+                    SignInNickname,
+                    remember { SignInNickname.state.default(DEBUG_CREDENTIAL_LOGIN) }
+                )
             }
         )
     }
