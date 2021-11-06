@@ -15,9 +15,12 @@
  */
 package com.keygenqt.viewer.android.base
 
+import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.viewer.android.extensions.withTransaction
+import com.keygenqt.viewer.android.interfaces.IAppNavActions
+import com.keygenqt.viewer.android.menu.bottomBar
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
@@ -47,40 +50,22 @@ class AppViewModel @Inject constructor(
     val isSplash: StateFlow<Boolean> get() = _isSplash.asStateFlow()
 
     /**
-     * [MutableStateFlow] for start app and end splash
+     * Bottom bar
      */
-    private val _topAppBar: MutableStateFlow<Int?> = MutableStateFlow(null)
+    private var _appBottomBar: (@Composable () -> Unit)? = null
 
     /**
-     * [StateFlow] for [_topAppBar]
+     * Set action for bottom bar
      */
-    val topAppBar: StateFlow<Int?> get() = _topAppBar.asStateFlow()
+    fun setBottomBarActions(actions: IAppNavActions) {
+        _appBottomBar = bottomBar.invoke(actions)
+    }
 
     /**
-     * [MutableStateFlow] for start app and end splash
+     * Get bottom bar
      */
-    private val _isScrollTopBar: MutableStateFlow<Boolean> = MutableStateFlow(false)
-
-    /**
-     * [StateFlow] for [_isScrollTopBar]
-     */
-    val isScrollTopBar: StateFlow<Boolean> get() = _isScrollTopBar.asStateFlow()
-
-    /**
-     * [MutableStateFlow] show icon back
-     */
-    private val _isBackIcon: MutableStateFlow<Boolean> = MutableStateFlow(false)
-
-    /**
-     * [StateFlow] for [_isBackIcon]
-     */
-    val isBackIcon: StateFlow<Boolean> get() = _isBackIcon.asStateFlow()
-
-    /**
-     * Set is show back icon
-     */
-    fun setBackIcon(state: Boolean) {
-        _isBackIcon.value = state
+    fun getBottomBar(): (@Composable () -> Unit)? {
+        return _appBottomBar
     }
 
     /**
@@ -88,20 +73,6 @@ class AppViewModel @Inject constructor(
      */
     fun disableSplash() {
         _isSplash.value = true
-    }
-
-    /**
-     * Set scroll state for scroll behavior
-     */
-    fun setScrollState(state: Boolean) {
-        _isScrollTopBar.value = state
-    }
-
-    /**
-     * Set top bar title
-     */
-    fun setTopAppBarTitle(title: Int?) {
-        _topAppBar.value = title
     }
 
     /**

@@ -43,7 +43,7 @@ fun NavGraphBuilder.profileMainGraph(
             when (event) {
                 is ProfileMainActions.Logout -> appViewModel.logout {
                     backDispatcher.clearStack()
-                    appActions.toWelcome(ConstantsApp.START_DESTINATION)
+                    appActions.toSignIn(ConstantsApp.START_DESTINATION)
                 }
             }
         }

@@ -18,13 +18,14 @@ package com.keygenqt.viewer.android.features.stats.navigation.actions.impl
 import androidx.navigation.NavHostController
 import com.keygenqt.viewer.android.features.stats.navigation.nav.StatsNav
 import com.keygenqt.viewer.android.features.stats.ui.screens.statsMain.StatsMainScreen
+import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
 /**
  * Actions for [StatsMainScreen]
  */
-interface StatsMainActions {
+interface StatsMainActions : IAppNavActions {
 
-    val controller: NavHostController
+    override val controller: NavHostController
 
     /**
      * To main page followers

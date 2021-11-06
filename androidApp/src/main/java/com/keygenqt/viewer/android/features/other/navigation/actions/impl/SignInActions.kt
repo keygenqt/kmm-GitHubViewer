@@ -18,13 +18,14 @@ package com.keygenqt.viewer.android.features.other.navigation.actions.impl
 import androidx.navigation.NavHostController
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
+import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
 /**
  * Actions for [SignInScreen]
  */
-interface SignInActions {
+interface SignInActions: IAppNavActions {
 
-    val controller: NavHostController
+    override val controller: NavHostController
 
     /**
      * To login page

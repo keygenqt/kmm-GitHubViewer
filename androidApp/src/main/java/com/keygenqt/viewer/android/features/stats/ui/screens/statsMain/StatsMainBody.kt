@@ -26,11 +26,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.githubviewer.Greeting
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.extensions.navigationBarsPaddingMaterial3
 import com.keygenqt.viewer.android.features.stats.ui.actions.StatsMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -42,45 +45,47 @@ fun StatsMainBody(
 ) {
     val scrollState = rememberScrollState()
 
-    // disable scroll if page not need scroll
-    appViewModel?.setScrollState(scrollState.value > 0)
-
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.tertiaryContainer)
-            .navigationBarsPaddingMaterial3()
-            .verticalScroll(scrollState)
+    AppScaffold(
+        title = stringResource(id = R.string.stats_title),
+        scrollState = scrollState,
     ) {
-        Column(Modifier.padding(20.dp)) {
-            Text(
-                modifier = Modifier,
-                text = Greeting().greeting()
-            )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.tertiaryContainer)
+                .navigationBarsPaddingMaterial3()
+                .verticalScroll(scrollState)
+        ) {
+            Column(Modifier.padding(20.dp)) {
+                Text(
+                    modifier = Modifier,
+                    text = Greeting().greeting()
+                )
 
-            Spacer(modifier = Modifier.size(20.dp))
+                Spacer(modifier = Modifier.size(20.dp))
 
-            Spacer(
-                modifier = Modifier
-                    .height(0.5.dp)
-                    .fillMaxWidth()
-                    .background(Color.Gray)
-            )
+                Spacer(
+                    modifier = Modifier
+                        .height(0.5.dp)
+                        .fillMaxWidth()
+                        .background(Color.Gray)
+                )
 
-            Spacer(modifier = Modifier.size(20.dp))
+                Spacer(modifier = Modifier.size(20.dp))
 
-            Text(
-                modifier = Modifier,
-                text = "Kotlin multiplatform mobile"
-            )
+                Text(
+                    modifier = Modifier,
+                    text = "Kotlin multiplatform mobile"
+                )
 
-            Spacer(modifier = Modifier.size(1000.dp))
+                Spacer(modifier = Modifier.size(1000.dp))
 
-            Text(
-                modifier = Modifier,
-                text = "Scroll bottom"
-            )
+                Text(
+                    modifier = Modifier,
+                    text = "Scroll bottom"
+                )
+            }
         }
     }
 }

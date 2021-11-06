@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -37,47 +38,50 @@ fun WelcomeBody(
     appViewModel: AppViewModel? = null,
     onActions: (WelcomeActions) -> Unit = {},
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
+    AppScaffold {
         Column(
             modifier = Modifier
-                .height(80.dp)
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally,
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            TextTitleLarge(
-                modifier = Modifier,
-                text = stringResource(id = R.string.welcome_title)
-            )
-        }
-        Column(
-            modifier = Modifier
-                .height(200.dp)
-                .fillMaxWidth()
-        ) {
-            WelcomeAnimation(
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-
-        Column(
-            modifier = Modifier
-        ) {
-            Button(
-                onClick = {
-                    onActions(WelcomeActions.ToSignIn)
-                },
-                modifier = Modifier.fillMaxWidth()
+            Column(
+                modifier = Modifier
+                    .height(80.dp)
+                    .fillMaxWidth(),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Text(text = stringResource(id = R.string.welcome_btn_sign_in).uppercase())
+                TextTitleLarge(
+                    modifier = Modifier,
+                    text = stringResource(id = R.string.welcome_title)
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .height(200.dp)
+                    .fillMaxWidth()
+            ) {
+                WelcomeAnimation(
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+
+            Column(
+                modifier = Modifier
+            ) {
+                Button(
+                    onClick = {
+                        onActions(WelcomeActions.ToSignIn)
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = stringResource(id = R.string.welcome_btn_sign_in).uppercase())
+                }
             }
         }
     }
+
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)

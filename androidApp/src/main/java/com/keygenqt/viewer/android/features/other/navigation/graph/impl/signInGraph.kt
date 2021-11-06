@@ -41,7 +41,7 @@ fun NavGraphBuilder.signInGraph(
             when (event) {
                 is SignInActions.SignIn -> viewModel.signIn(event.nickname) {
                     backDispatcher.clearStack()
-                    appActions.toReposMain(ConstantsApp.START_DESTINATION)
+                    appActions.toReposMain(OtherNav.navSignIn.signInScreen.route)
                 }
             }
         }

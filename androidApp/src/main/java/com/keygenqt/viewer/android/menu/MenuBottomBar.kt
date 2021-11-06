@@ -21,17 +21,21 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.repos.ui.screens.followersMain.ReposMainBody
+import com.keygenqt.viewer.android.interfaces.IAppNavActions
 import com.keygenqt.viewer.android.menu.MenuTab.Companion.findByRoute
 import com.keygenqt.viewer.android.theme.AppTheme
 
-val bottomBar: (AppActions) -> @Composable (String?) -> @Composable () -> Unit = { appActions ->
-    { route ->
-        {
-            route?.findByRoute()?.let { tab ->
+val bottomBar: (IAppNavActions) -> @Composable () -> Unit = { appActions ->
+    {
+        if (appActions is AppActions) {
+            val navBackStackEntry by appActions.controller.currentBackStackEntryAsState()
+            navBackStackEntry?.destination?.route?.findByRoute()?.let { tab ->
                 MenuBottomBar(
                     currentRoute = tab,
                     appActions = appActions

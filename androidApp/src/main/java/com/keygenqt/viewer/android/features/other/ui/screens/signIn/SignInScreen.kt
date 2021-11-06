@@ -50,8 +50,6 @@ fun SignInScreen(
         error = error,
         loading = loading,
         onActions = onActions,
-        formFields = formFields,
-        appViewModel = LocalViewModel.current,
-        backDispatcher = LocalBackPressedDispatcher.current,
+        formFields = formFields
     )
 }

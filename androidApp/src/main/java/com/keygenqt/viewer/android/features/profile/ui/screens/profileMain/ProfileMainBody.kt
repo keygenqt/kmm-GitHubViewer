@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.mock.mockUserModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.navigationBarsPaddingMaterial3
@@ -37,31 +38,35 @@ fun ProfileMainBody(
     model: UserModel?,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .navigationBarsPaddingMaterial3()
+    AppScaffold(
+        title = stringResource(id = R.string.profile_title)
     ) {
-        Column(
+        Box(
             modifier = Modifier
-                .padding(16.dp)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween
+                .fillMaxSize()
+                .navigationBarsPaddingMaterial3()
         ) {
-            model?.let {
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                model?.let {
 
-                Text(
-                    modifier = Modifier,
-                    text = stringResource(id = R.string.profile_name_text, model.name)
-                )
+                    Text(
+                        modifier = Modifier,
+                        text = stringResource(id = R.string.profile_name_text, model.name)
+                    )
 
-                OutlinedButton(
-                    onClick = {
-                        onActions(ProfileMainActions.Logout)
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(stringResource(id = R.string.profile_logout).uppercase())
+                    OutlinedButton(
+                        onClick = {
+                            onActions(ProfileMainActions.Logout)
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(stringResource(id = R.string.profile_logout).uppercase())
+                    }
                 }
             }
         }

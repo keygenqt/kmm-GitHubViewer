@@ -18,13 +18,14 @@ package com.keygenqt.viewer.android.features.other.navigation.actions.impl
 import androidx.navigation.NavHostController
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
+import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
 /**
  * Actions for [WelcomeScreen]
  */
-interface WelcomeActions {
+interface WelcomeActions: IAppNavActions {
 
-    val controller: NavHostController
+    override val controller: NavHostController
 
     /**
      * To welcome page

@@ -18,13 +18,14 @@ package com.keygenqt.viewer.android.features.profile.navigation.actions.impl
 import androidx.navigation.NavHostController
 import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
+import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
 /**
  * Actions for [ProfileMainScreen]
  */
-interface ProfileMainActions {
+interface ProfileMainActions: IAppNavActions {
 
-    val controller: NavHostController
+    override val controller: NavHostController
 
     /**
      * To main page followers

@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
@@ -48,15 +49,9 @@ fun SignInBody(
     formFields: FormFieldsState,
     error: String? = null,
     loading: Boolean = false,
-    appViewModel: AppViewModel? = null,
     onActions: (SignInActions) -> Unit = {},
-    backDispatcher: OnBackPressedDispatcher? = null,
 ) {
     val scrollState = rememberScrollState()
-
-    // disable scroll if page not need scroll
-    appViewModel?.setScrollState(scrollState.value > 0)
-    appViewModel?.setBackIcon(backDispatcher?.hasEnabledCallbacks() == true)
 
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
     val localFocusManager = LocalFocusManager.current
@@ -76,38 +71,44 @@ fun SignInBody(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(scrollState),
-        verticalArrangement = Arrangement.SpaceBetween
+    AppScaffold(
+        title = stringResource(id = R.string.sign_in_title),
+        loading = loading,
+        scrollState = scrollState,
     ) {
-
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            error?.let {
-                FormError(text = it)
-                Spacer(modifier = Modifier.size(16.dp))
-                LaunchedEffect(error) { scrollState.animateScrollTo(0) }
+
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                error?.let {
+                    FormError(text = it)
+                    Spacer(modifier = Modifier.size(16.dp))
+                    LaunchedEffect(error) { scrollState.animateScrollTo(0) }
+                }
+
+                SignInForm(
+                    loading = loading,
+                    formFields = formFields,
+                    submitClick = submitClick,
+                )
             }
 
-            SignInForm(
-                loading = loading,
-                formFields = formFields,
-                submitClick = submitClick,
-            )
-        }
-
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Button(
-                enabled = !loading,
-                onClick = { submitClick.invoke() },
-                modifier = Modifier.fillMaxWidth(),
+            Column(
+                modifier = Modifier.padding(16.dp)
             ) {
-                Text(stringResource(id = R.string.sign_in_form_button_submit).uppercase())
+                Button(
+                    enabled = !loading,
+                    onClick = { submitClick.invoke() },
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(stringResource(id = R.string.sign_in_form_button_submit).uppercase())
+                }
             }
         }
     }
