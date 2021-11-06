@@ -1,19 +1,19 @@
-GitHub Viewer
+GitHub Viewer KMM
 ===================
 
 ![picture](data/preview.png)
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
-### About android
+### Android
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
 * [Preview](https://keygenqt.github.io/kmm-GitHubViewer/android-preview/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
 
-### About iOS
+### IOS
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
 
-### About Shared module
+### Shared module
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/shared/index.html)
 
