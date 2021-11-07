@@ -21,7 +21,7 @@ android {
         applicationId = "com.keygenqt.viewer.android"
 
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = "0.0.1"
 
         // secret token
         buildConfigField("String", "GITHUB_TOKEN", findProperty("github_token").toString())

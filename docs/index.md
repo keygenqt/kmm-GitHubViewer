@@ -1,9 +1,11 @@
 GitHub Viewer KMM
 ===================
 
-![picture](data/preview.png)
-
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
+
+<p>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/preview.gif" width="33%"/>
+</p>
 
 ### Android
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)

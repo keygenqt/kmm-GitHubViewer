@@ -1,4 +1,6 @@
 <resources>
-    <string name="welcome_title">Welcome!</string>
-    <string name="welcome_btn_sign_in">Sign In</string>
+    <string name="welcome_title">Welcome to\nGitHub Viewer!</string>
+    <string name="welcome_subtitle">The app is written using the latest stack on ios and android. Keywords: KMM, MVVM, Jetpack Compose, SwiftUI</string>
+    <string name="welcome_version">Version: %s</string>
+    <string name="welcome_btn_sign_in">Get started</string>
 </resources>
