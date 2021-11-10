@@ -12,7 +12,7 @@ module = "com.keygenqt.response:android-response-result"
 
 # versions
 [libraries.retrofit-serialization.version]
-ref = "retrofitSerializationVersions"
+ref = "serializationVersions"
 [libraries.retrofit-converter.version]
 ref = "retrofitConverterVersions"
 [libraries.retrofit-retrofit.version]

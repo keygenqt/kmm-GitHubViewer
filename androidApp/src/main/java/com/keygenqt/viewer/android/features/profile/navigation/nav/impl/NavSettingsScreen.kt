@@ -13,19 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.profile.navigation.graph
+package com.keygenqt.viewer.android.features.profile.navigation.nav.impl
 
-import androidx.navigation.NavGraphBuilder
-import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.profileMainGraph
-import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.settingsGraph
+import com.keygenqt.routing.NavScreen
+import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
 
 /**
- * Base block with graphs for module
+ * Routing for [SettingsScreen]
  */
-fun NavGraphBuilder.profileNavGraph(
-    appActions: AppActions,
-) {
-    profileMainGraph(appActions)
-    settingsGraph(appActions)
+object NavSettingsScreen {
+    val settingsScreen = object : NavScreen {
+        override val route: String = "NavSettingsScreen"
+    }
 }

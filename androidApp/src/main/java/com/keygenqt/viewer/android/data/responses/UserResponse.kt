@@ -19,20 +19,26 @@ import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
 
 /**
- * Response after login
+ * Response user
  *
  * @property id user identifier
- * @property avatar_url for authorization
- * @property name for authorization
- * @property location for authorization
- *
- * @author Vitaliy Zarubin
+ * @property avatar_url avatar URL
+ * @property name name of the user
+ * @property blog blog URL of the user
+ * @property twitter_username Twitter username of the user
+ * @property company company of the user
+ * @property location location of the user
+ * @property bio short biography of the user
  */
 @Immutable
 @Serializable
 data class UserResponse(
     val id: Int = 0,
     val avatar_url: String = "",
-    val name: String = "",
-    val location: String = "",
+    val name: String? = null,
+    val blog: String? = null,
+    val twitter_username: String? = null,
+    val company: String? = null,
+    val location: String? = null,
+    val bio: String? = null,
 )

@@ -1,5 +1,9 @@
 <resources>
     <string name="profile_title">Profile</string>
     <string name="profile_name_text">Welcome %s!</string>
-    <string name="profile_logout">Logout</string>
+
+    <string name="profile_dialog_logout_title">Exit the application</string>
+    <string name="profile_dialog_logout_text">You will be redirected to the login page. Is this what you want?</string>
+    <string name="profile_dialog_logout_confirm">Confirm</string>
+    <string name="profile_dialog_logout_dismiss">Dismiss</string>
 </resources>

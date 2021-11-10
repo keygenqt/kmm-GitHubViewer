@@ -24,15 +24,23 @@ import com.keygenqt.viewer.android.interfaces.IModel
  * User for all app
  *
  * @property id key from api
- * @property avatarUrl url image profile
- * @property name first last names
- * @property location city
+ * @property avatarUrl avatar URL
+ * @property name name of the user
+ * @property blog blog URL of the user
+ * @property twitterUsername Twitter username of the user
+ * @property company company of the user
+ * @property location location of the user
+ * @property bio short biography of the user
  */
 @Entity
 @Immutable
 data class UserModel(
     @PrimaryKey override val id: String,
-    val avatarUrl: String = "",
-    val name: String = "",
-    val location: String = "",
+    val avatarUrl: String,
+    val name: String,
+    val blog: String,
+    val twitterUsername: String,
+    val company: String,
+    val location: String,
+    val bio: String,
 ) : IModel

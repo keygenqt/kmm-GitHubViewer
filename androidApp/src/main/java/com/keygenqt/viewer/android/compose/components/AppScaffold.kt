@@ -59,6 +59,10 @@ fun AppScaffold(
         topBar = title?.let {
             {
                 MediumTopAppBar(
+                    colors = TopAppBarDefaults.mediumTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    ),
                     scrollBehavior = scrollBehavior,
                     navigationIcon = if (backDispatcher.hasEnabledCallbacks()) {
                         {
@@ -67,7 +71,8 @@ fun AppScaffold(
                             }) {
                                 Icon(
                                     imageVector = Icons.Filled.ArrowBack,
-                                    contentDescription = "Back"
+                                    contentDescription = "Back",
+                                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                             }
                         }
@@ -91,7 +96,8 @@ fun AppScaffold(
                             ) {
                                 CircularProgressIndicator(
                                     strokeWidth = 2.dp,
-                                    modifier = Modifier.size(20.dp)
+                                    modifier = Modifier.size(20.dp),
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                             }
                         }

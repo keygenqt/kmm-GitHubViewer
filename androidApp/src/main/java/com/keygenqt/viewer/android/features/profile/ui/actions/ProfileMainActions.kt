@@ -23,6 +23,11 @@ import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.Profi
 sealed class ProfileMainActions {
 
     /**
+     * Open settings page
+     */
+    object ToSettings : ProfileMainActions()
+
+    /**
      * User logout
      */
     object Logout : ProfileMainActions()

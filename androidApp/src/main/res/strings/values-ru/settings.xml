@@ -1,0 +1,11 @@
+<resources>
+    <string name="settings_title">Настройки</string>
+
+    <string name="settings_form_name">Имя</string>
+    <string name="settings_form_blog">Сайт URL</string>
+    <string name="settings_form_twitter_username">Twitter никнейм</string>
+    <string name="settings_form_company">Компания</string>
+    <string name="settings_form_location">Локация</string>
+    <string name="settings_form_bio">О себе</string>
+    <string name="settings_form_button_submit">Submit</string>
+</resources>

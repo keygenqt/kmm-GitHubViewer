@@ -21,7 +21,7 @@ hiltVersion = "2.38.1"
 hiltComposeNavigationVersion = "1.0.0-alpha03"
 
 # Retrofit
-retrofitSerializationVersions = "1.2.2"
+serializationVersions = "1.3.0"
 retrofitConverterVersions = "0.8.0"
 retrofitRetrofitVersions = "2.9.0"
 retrofitLoggingVersions = "4.9.1"

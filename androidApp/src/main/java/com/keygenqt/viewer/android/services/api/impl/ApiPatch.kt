@@ -15,7 +15,19 @@
  */
 package com.keygenqt.viewer.android.services.api.impl
 
+import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
+import com.keygenqt.viewer.android.data.responses.UserResponse
+import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.PATCH
+
 /**
  * The PATCH method is used to apply partial modifications to a resource.
  */
-interface ApiPatch
+interface ApiPatch {
+
+    @PATCH("/user")
+    suspend fun userUpdate(
+        @Body request: UserUpdateRequest
+    ): Response<UserResponse>
+}

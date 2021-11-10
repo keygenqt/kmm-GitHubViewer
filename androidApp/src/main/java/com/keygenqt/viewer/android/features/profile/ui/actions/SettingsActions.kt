@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.profile.navigation.graph
+package com.keygenqt.viewer.android.features.profile.ui.actions
 
-import androidx.navigation.NavGraphBuilder
-import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.profileMainGraph
-import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.settingsGraph
+import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
 
 /**
- * Base block with graphs for module
+ * Actions sealed class for screen [ProfileMainScreen]
  */
-fun NavGraphBuilder.profileNavGraph(
-    appActions: AppActions,
-) {
-    profileMainGraph(appActions)
-    settingsGraph(appActions)
+sealed class SettingsActions {
+
+    /**
+     * User update
+     */
+    data class UserUpdate(
+        val name: String,
+        val blog: String,
+        val twitterUsername: String?,
+        val company: String,
+        val location: String,
+        val bio: String,
+    ) : SettingsActions()
 }

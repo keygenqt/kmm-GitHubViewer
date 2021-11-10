@@ -16,10 +16,12 @@
 package com.keygenqt.viewer.android.features.profile.navigation.nav
 
 import com.keygenqt.viewer.android.features.profile.navigation.nav.impl.NavProfileMainScreen
+import com.keygenqt.viewer.android.features.profile.navigation.nav.impl.NavSettingsScreen
 
 /**
  * Base routing for feature
  */
 object ProfileNav {
     val navProfileMain = NavProfileMainScreen
+    val navSettings = NavSettingsScreen
 }

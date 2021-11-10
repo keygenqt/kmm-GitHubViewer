@@ -16,9 +16,11 @@
 package com.keygenqt.viewer.android.features.profile.navigation.actions
 
 import com.keygenqt.viewer.android.features.profile.navigation.actions.impl.ProfileMainActions
+import com.keygenqt.viewer.android.features.profile.navigation.actions.impl.SettingsActions
 
 /**
  * Base actions for feature
  */
 interface ProfileActions :
-    ProfileMainActions
+    ProfileMainActions,
+    SettingsActions

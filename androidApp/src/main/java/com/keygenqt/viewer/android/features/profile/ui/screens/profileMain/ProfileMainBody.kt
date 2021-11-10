@@ -17,9 +17,16 @@ package com.keygenqt.viewer.android.features.profile.ui.screens.profileMain
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Logout
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
@@ -38,8 +45,30 @@ fun ProfileMainBody(
     model: UserModel?,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
+    var showDialogLogout by remember { mutableStateOf(false) }
+
     AppScaffold(
-        title = stringResource(id = R.string.profile_title)
+        title = stringResource(id = R.string.profile_title),
+        actions = {
+            IconButton(onClick = {
+                showDialogLogout = true
+            }) {
+                Icon(
+                    imageVector = Icons.Default.Logout,
+                    contentDescription = "Logout",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
+            IconButton(onClick = {
+                onActions(ProfileMainActions.ToSettings)
+            }) {
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = "Settings",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
+        }
     ) {
         Box(
             modifier = Modifier
@@ -53,24 +82,60 @@ fun ProfileMainBody(
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 model?.let {
-
                     Text(
                         modifier = Modifier,
                         text = stringResource(id = R.string.profile_name_text, model.name)
                     )
-
-                    OutlinedButton(
-                        onClick = {
-                            onActions(ProfileMainActions.Logout)
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        Text(stringResource(id = R.string.profile_logout).uppercase())
-                    }
                 }
             }
         }
     }
+
+    if (showDialogLogout) {
+        CloseDialog(
+            onDismissRequest = {
+                showDialogLogout = false
+            },
+            confirmButton = {
+                showDialogLogout = false
+                onActions(ProfileMainActions.Logout)
+            },
+            dismissButton = {
+                showDialogLogout = false
+            }
+        )
+    }
+}
+
+@Composable
+fun CloseDialog(
+    onDismissRequest: () -> Unit = {},
+    confirmButton: () -> Unit = {},
+    dismissButton: () -> Unit = {}
+) {
+    AlertDialog(
+        onDismissRequest = onDismissRequest,
+        title = {
+            Text(text = stringResource(id = R.string.profile_dialog_logout_title))
+        },
+        text = {
+            Text(text = stringResource(id = R.string.profile_dialog_logout_text))
+        },
+        confirmButton = {
+            TextButton(
+                onClick = confirmButton
+            ) {
+                Text(stringResource(id = R.string.profile_dialog_logout_confirm))
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = dismissButton
+            ) {
+                Text(stringResource(id = R.string.profile_dialog_logout_dismiss))
+            }
+        }
+    )
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)

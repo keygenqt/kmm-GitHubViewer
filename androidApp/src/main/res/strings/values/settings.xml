@@ -1,0 +1,11 @@
+<resources>
+    <string name="settings_title">Settings</string>
+
+    <string name="settings_form_name">Name</string>
+    <string name="settings_form_blog">Blog URL</string>
+    <string name="settings_form_twitter_username">Twitter nickname</string>
+    <string name="settings_form_company">Company</string>
+    <string name="settings_form_location">Location</string>
+    <string name="settings_form_bio">Bio</string>
+    <string name="settings_form_button_submit">Submit</string>
+</resources>

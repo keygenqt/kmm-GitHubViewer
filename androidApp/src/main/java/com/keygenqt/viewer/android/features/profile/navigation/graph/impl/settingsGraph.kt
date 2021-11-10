@@ -15,34 +15,34 @@
  */
 package com.keygenqt.viewer.android.features.profile.navigation.graph.impl
 
-import androidx.activity.OnBackPressedDispatcher
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
-import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
-import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
-import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
+import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
+import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
 import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
-import com.keygenqt.viewer.android.utils.ListenDestination
 
 /**
- * NavGraph for [ProfileMainScreen]
+ * NavGraph for [SettingsScreen]
  */
-fun NavGraphBuilder.profileMainGraph(
+fun NavGraphBuilder.settingsGraph(
     appActions: AppActions,
 ) {
-    composable(ProfileNav.navProfileMain.profileMainScreen.route) {
-        val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
+    composable(ProfileNav.navSettings.settingsScreen.route) {
         val viewModel: ProfileViewModel = hiltViewModel()
-        val appViewModel = LocalViewModel.current
-        ProfileMainScreen(viewModel = viewModel) { event ->
+        SettingsScreen(viewModel = viewModel) { event ->
             when (event) {
-                is ProfileMainActions.ToSettings -> appActions.toSettings()
-                is ProfileMainActions.Logout -> appViewModel.logout {
-                    appActions.toSignIn(ListenDestination.clearStack(backDispatcher))
+                is SettingsActions.UserUpdate -> viewModel.userUpdate(
+                    name = event.name,
+                    blog = event.blog,
+                    twitterUsername = event.twitterUsername,
+                    company = event.company,
+                    location = event.location,
+                    bio = event.bio,
+                ) {
+
                 }
             }
         }

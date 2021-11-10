@@ -41,10 +41,12 @@ object HttpClientModule {
     /**
      * Builder of the [Json] instance provided by `Json { ... }` factory function.
      */
+    @OptIn(ExperimentalSerializationApi::class)
     private val json = Json {
         ignoreUnknownKeys = true
         isLenient = true
         encodeDefaults = false
+        explicitNulls = false
     }
 
     /**

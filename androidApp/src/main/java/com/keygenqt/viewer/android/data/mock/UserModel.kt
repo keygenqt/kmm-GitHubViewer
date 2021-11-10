@@ -21,5 +21,9 @@ fun mockUserModel() = UserModel(
     id = "id",
     avatarUrl = "https://get.wallhere.com/photo/women-brunette-face-wind-portrait-hair-in-face-depth-of-field-women-outdoors-sea-cliff-motion-blur-blue-eyes-1379479.jpg",
     name = "Vitaliy Zarubin",
+    blog = "https://keygenqt.com/",
+    twitterUsername = "@zarubin_vitaliy",
+    company = "Surf",
     location = "Moscow",
+    bio = "Talk is cheap. Show me the code.",
 )

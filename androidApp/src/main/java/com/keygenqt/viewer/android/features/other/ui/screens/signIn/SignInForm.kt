@@ -22,7 +22,6 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.res.stringResource
@@ -30,12 +29,14 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import com.keygenqt.forms.base.FormFieldState
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.forms.fields.FormField
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.data.models.UserModel
+import com.keygenqt.viewer.android.extensions.textFieldColors
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -52,10 +53,10 @@ fun SignInForm(
     loading: Boolean = false,
     submitClick: () -> Unit = {},
 ) {
-    Column {
-        val scope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
 
-        // Create field email
+    Column {
+
         FormField(
             label = stringResource(id = R.string.sign_in_form_nickname),
             enabled = !loading,
@@ -63,10 +64,7 @@ fun SignInForm(
             imeAction = ImeAction.Done,
             keyboardType = KeyboardType.Text,
             keyboardActions = KeyboardActions(onDone = { submitClick.invoke() }),
-            colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = MaterialTheme.colorScheme.primaryContainer,
-                textColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            )
+            colors = MaterialTheme.textFieldColors()
         )
 
         // Clear focus after end
@@ -85,10 +83,7 @@ private fun Preview() {
     AppTheme {
         SignInForm(
             FormFieldsState().apply {
-                add(
-                    SignInNickname,
-                    remember { SignInNickname.state.default(DEBUG_CREDENTIAL_LOGIN) }
-                )
+                add(SignInNickname, FormFieldState())
             }
         )
     }

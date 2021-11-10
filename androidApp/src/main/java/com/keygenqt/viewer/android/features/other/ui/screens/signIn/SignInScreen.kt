@@ -21,8 +21,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
-import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.features.other.ui.viewModels.OtherViewModel
+import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
 
 /**
@@ -36,13 +36,14 @@ fun SignInScreen(
     viewModel: OtherViewModel,
     onActions: (SignInActions) -> Unit = {},
 ) {
-    // Create from state
-    val formFields = FormFieldsState().apply {
-        add(SignInNickname, remember { SignInNickname.state.default(DEBUG_CREDENTIAL_LOGIN) })
-    }
-
     val error: String? by viewModel.error.collectAsState(null)
     val loading: Boolean by viewModel.loading.collectAsState()
+
+    val formFields = remember {
+        FormFieldsState().apply {
+            add(SignInNickname, SignInNickname.state.default(DEBUG_CREDENTIAL_LOGIN))
+        }
+    }
 
     SignInBody(
         error = error,

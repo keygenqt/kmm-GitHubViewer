@@ -25,8 +25,12 @@ fun UserResponse.toModel(): UserModel {
     return UserModel(
         id = id.toString(),
         avatarUrl = avatar_url,
-        name = name,
-        location = location,
+        name = name ?: "",
+        blog = blog ?: "",
+        twitterUsername = twitter_username ?: "",
+        company = company ?: "",
+        location = location ?: "",
+        bio = bio ?: "",
     )
 }
 

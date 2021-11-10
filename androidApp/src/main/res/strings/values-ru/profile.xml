@@ -1,5 +1,9 @@
 <resources>
     <string name="profile_title">Профайл</string>
     <string name="profile_name_text">Добро пожаловать %s!</string>
-    <string name="profile_logout">Выйти</string>
+
+    <string name="profile_dialog_logout_title">Выход из приложения</string>
+    <string name="profile_dialog_logout_text">Вы будете перенаправлены на страницу входа. Это то чего вы желаете?</string>
+    <string name="profile_dialog_logout_confirm">Подтвердить</string>
+    <string name="profile_dialog_logout_dismiss">Отмена</string>
 </resources>
