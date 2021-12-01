@@ -63,12 +63,13 @@ object HttpClientModule {
             .addInterceptor {
                 val original = it.request()
                 val request = original.newBuilder().apply {
-                    BuildConfig.GITHUB_TOKEN?.let { token ->
-                        header(
-                            "Authorization",
-                            "token $token"
-                        )
-                    }
+                    // @todo
+//                    BuildConfig.GITHUB_TOKEN?.let { token ->
+//                        header(
+//                            "Authorization",
+//                            "token $token"
+//                        )
+//                    }
                 }
                     .method(original.method, original.body)
                     .build()

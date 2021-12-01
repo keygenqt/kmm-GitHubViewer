@@ -1,0 +1,22 @@
+# modules
+[libraries.firebase-analytics]
+module = "com.google.firebase:firebase-analytics"
+[libraries.firebase-crashlytics]
+module = "com.google.firebase:firebase-crashlytics"
+[libraries.firebase-messaging]
+module = "com.google.firebase:firebase-messaging"
+
+# versions
+[libraries.firebase-analytics.version]
+ref = "firebaseAnalyticsVersions"
+[libraries.firebase-crashlytics.version]
+ref = "firebaseCrashlyticsVersions"
+[libraries.firebase-messaging.version]
+ref = "firebaseMessagingVersions"
+
+[bundles]
+firebase = [
+    "firebase-analytics",
+    "firebase-crashlytics",
+    "firebase-messaging"
+]

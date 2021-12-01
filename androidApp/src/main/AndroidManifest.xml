@@ -24,6 +24,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <data android:scheme="https" android:host="keygenqt.com" />
             </intent-filter>
         </activity>
         <provider

@@ -3,6 +3,7 @@ buildscript {
     val kotlinVersion: String by project
     val gradleVersion: String by project
     val hiltVersion: String by project
+    val crashlyticsPluginVersion: String by project
 
     repositories {
         google()
@@ -13,6 +14,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:$gradleVersion")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("com.google.dagger:hilt-android-gradle-plugin:$hiltVersion")
+        classpath("com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion")
     }
 }
 

@@ -21,6 +21,7 @@ import com.keygenqt.response.extensions.responseCheck
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.models.UserModel
+import com.keygenqt.viewer.android.data.responses.AuthResponse
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
@@ -34,21 +35,37 @@ interface ApiServiceGet {
     val api: AppApi
 
     /**
-     * Query login user with callback if success. For example use random query with error response.
+     * Query oauth github app
      *
      * @param nickname login user
-     *
-     * @return ResponseResult with user
      */
-    suspend fun getUser(nickname: String): ResponseResult<UserModel> {
+    suspend fun oauth(nickname: String): ResponseResult<AuthResponse> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
-                api.getUser(nickname)
+                api.oauth(login = nickname)
                     .delay(BuildConfig.DEBUG)
                     .responseCheck()
                     .body()!!
-                    .toModel()
             }
         }
     }
+
+//    /**
+//     * Query login user with callback if success. For example use random query with error response.
+//     *
+//     * @param nickname login user
+//     *
+//     * @return ResponseResult with user
+//     */
+//    suspend fun getUser(nickname: String): ResponseResult<UserModel> {
+//        return withContext(Dispatchers.IO) {
+//            LocalTryExecuteWithResponse.executeWithResponse {
+//                api.getUser(nickname)
+//                    .delay(BuildConfig.DEBUG)
+//                    .responseCheck()
+//                    .body()!!
+//                    .toModel()
+//            }
+//        }
+//    }
 }

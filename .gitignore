@@ -9,3 +9,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+keys/*
+/androidApp/src/debug/google-services.json

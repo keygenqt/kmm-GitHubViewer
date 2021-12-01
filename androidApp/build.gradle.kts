@@ -6,8 +6,8 @@ plugins {
 
     id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization")
+    id("com.google.firebase.crashlytics")
 }
-
 
 android {
 
@@ -24,7 +24,7 @@ android {
         versionName = "0.0.1"
 
         // secret token
-        buildConfigField("String", "GITHUB_TOKEN", findProperty("github_token").toString())
+        buildConfigField("String", "GITHUB_CLIENT_ID", findProperty("github_client_id").toString())
     }
 
     composeOptions {
@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.room)
     implementation(libs.bundles.lottie)
+    implementation(libs.bundles.firebase)
 
     kapt(libs.bundles.hiltKapt)
     kapt(libs.bundles.roomKapt)
