@@ -17,12 +17,22 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.response.extensions.done
+import com.keygenqt.response.extensions.error
+import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.base.ViewModelStates
+import com.keygenqt.viewer.android.data.models.SecurityModel
+import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
+import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -34,6 +44,7 @@ class SignInViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService
 ) : ViewModelStates() {
+
     /**
      * Generate url for open in browser
      *
@@ -55,5 +66,33 @@ class SignInViewModel @Inject constructor(
             appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
             build()
         }.toString())
+    }
+
+    fun signInCode(
+        code: String,
+    ) {
+        viewModelScope.launch {
+            apiService.oauthCode(code = code)
+                .success { model ->
+                    // @todo
+                    Timber.e(model.toString())
+//                    dataService.withTransaction<UserModelDataService> {
+//                        clearUserModel()
+//                        insertUserModel(model)
+//                    }
+//                    dataService.withTransaction<SecurityModelDataService> {
+//                        clearSecurityModel()
+//                        insertSecurityModel(
+//                            SecurityModel(
+//                                nickname = nickname
+//                            )
+//                        )
+//                    }
+//                    success.invoke()
+                }
+                .error {
+                    Timber.e(it)
+                }
+        }
     }
 }

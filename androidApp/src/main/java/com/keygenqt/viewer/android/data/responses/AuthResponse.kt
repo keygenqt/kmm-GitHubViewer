@@ -19,18 +19,15 @@ import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
 
 /**
- * Response user
- *
- * @property client_id The client ID you received from GitHub for your OAuth App.
- * @property client_secret The client secret you received from GitHub for your OAuth App.
- * @property code The code you received as a response to Step 1.
- * @property redirect_uri The URL in your application where users are sent after authorization.
+ * Response auth tokens
  */
 @Immutable
 @Serializable
 data class AuthResponse(
-    val client_id: String,
-    val client_secret: String,
-    val code: String,
-    val redirect_uri: String? = null,
+    val access_token: String,
+    val expires_in: String,
+    val refresh_token: String,
+    val refresh_token_expires_in: String,
+    val scope: String,
+    val token_type: String,
 )

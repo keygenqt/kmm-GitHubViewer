@@ -25,6 +25,7 @@ android {
 
         // secret token
         buildConfigField("String", "GITHUB_CLIENT_ID", findProperty("github_client_id").toString())
+        buildConfigField("String", "GITHUB_CLIENT_SECRET", findProperty("github_client_secret").toString())
     }
 
     composeOptions {

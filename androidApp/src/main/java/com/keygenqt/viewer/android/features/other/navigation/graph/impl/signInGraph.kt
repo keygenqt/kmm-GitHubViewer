@@ -24,6 +24,7 @@ import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
+import timber.log.Timber
 
 /**
  * NavGraph for [SignInScreen]
@@ -33,12 +34,17 @@ fun NavGraphBuilder.signInGraph(
 ) {
     composable(
         route = OtherNav.navSignIn.signInScreen.route,
-        deepLinks = listOf(navDeepLink { uriPattern = "https://keygenqt.com/{code}" })
+        deepLinks = listOf(navDeepLink { uriPattern = "https://kmm.keygenqt.com/?code={code}&state={state}" })
     ) {
         val viewModel: SignInViewModel = hiltViewModel()
-        SignInScreen(viewModel = viewModel) { event ->
+        SignInScreen(
+            viewModel = viewModel,
+            code = it.arguments?.getString("code"),
+            state = it.arguments?.getString("state"),
+        ) { event ->
             when (event) {
                 is SignInActions.SignIn -> viewModel.signIn(event.nickname)
+                is SignInActions.SignInCode -> viewModel.signInCode(event.code)
             }
         }
     }

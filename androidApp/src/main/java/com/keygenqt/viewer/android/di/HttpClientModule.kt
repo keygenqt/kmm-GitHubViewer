@@ -16,7 +16,8 @@
 package com.keygenqt.viewer.android.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.keygenqt.viewer.android.BuildConfig
+import com.keygenqt.viewer.android.extensions.checkValidJson
+import com.keygenqt.viewer.android.utils.AppHelper
 import com.keygenqt.viewer.android.utils.ConstantsApp
 import dagger.Module
 import dagger.Provides
@@ -27,6 +28,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.Call
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody.Companion.toResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import timber.log.Timber
@@ -60,6 +62,9 @@ object HttpClientModule {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             )
+            .addInterceptor {
+                it.proceed(it.request()).checkValidJson()
+            }
             .addInterceptor {
                 val original = it.request()
                 val request = original.newBuilder().apply {

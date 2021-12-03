@@ -18,10 +18,12 @@ package com.keygenqt.viewer.android.features.other.navigation.graph.impl
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import androidx.navigation.navDeepLink
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
 import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
+import timber.log.Timber
 
 /**
  * NavGraph for [WelcomeScreen]
@@ -29,7 +31,9 @@ import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScre
 fun NavGraphBuilder.welcomeGraph(
     appActions: AppActions,
 ) {
-    composable(OtherNav.navWelcome.welcomeScreen.route) {
+    composable(
+        route = OtherNav.navWelcome.welcomeScreen.route
+    ) {
         WelcomeScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
                 is WelcomeActions.ToSignIn -> appActions.toSignIn()

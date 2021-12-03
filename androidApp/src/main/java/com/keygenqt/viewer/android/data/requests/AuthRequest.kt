@@ -13,13 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.services.apiService.impl
+package com.keygenqt.viewer.android.data.requests
 
-import com.keygenqt.viewer.android.services.api.AppApi
+import androidx.compose.runtime.Immutable
+import com.keygenqt.viewer.android.BuildConfig
+import kotlinx.serialization.Serializable
 
 /**
- * The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
+ * Auth request step 2
+ *
+ * @property code
+ * @property client_secret
+ * @property client_id
  */
-interface ApiServiceGet {
-    val api: AppApi
-}
+@Immutable
+@Serializable
+data class AuthRequest(
+    val code: String,
+    val client_secret: String,
+    val client_id: String,
+)

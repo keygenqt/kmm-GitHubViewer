@@ -15,7 +15,20 @@
  */
 package com.keygenqt.viewer.android.services.api.impl
 
+import com.keygenqt.viewer.android.data.requests.AuthRequest
+import com.keygenqt.viewer.android.data.responses.AuthResponse
+import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.POST
+import retrofit2.http.Url
+
 /**
  * The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server.
  */
-interface ApiPost
+interface ApiPost {
+    @POST
+    suspend fun oauth(
+        @Url url: String = "https://github.com/login/oauth/access_token",
+        @Body request: AuthRequest
+    ): Response<AuthResponse>
+}

@@ -15,16 +15,14 @@
  */
 package com.keygenqt.viewer.android.features.other.ui.screens.signIn
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalUriHandler
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
 import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
+import timber.log.Timber
 
 /**
  * Base page fun for initialization
@@ -35,9 +33,17 @@ import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
 @Composable
 fun SignInScreen(
     viewModel: SignInViewModel,
+    code: String? = null,
+    state: String? = null,
     onActions: (SignInActions) -> Unit = {},
 ) {
     val stateViewModel by viewModel.state.collectAsState()
+
+    LaunchedEffect(code) {
+        code?.let {
+            onActions(SignInActions.SignInCode(it))
+        }
+    }
 
     val formFields = remember {
         FormFieldsState().apply {

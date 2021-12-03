@@ -15,31 +15,7 @@
  */
 package com.keygenqt.viewer.android.services.api.impl
 
-import com.keygenqt.viewer.android.BuildConfig.GITHUB_CLIENT_ID
-import com.keygenqt.viewer.android.data.responses.AuthResponse
-import com.keygenqt.viewer.android.data.responses.UserResponse
-import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
-import retrofit2.http.Url
-import java.util.*
-
 /**
  * The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
  */
-interface ApiGet {
-
-    @GET
-    suspend fun oauth(
-        @Url url: String = "https://github.com/login/oauth/authorize",
-        @Query("login") login: String,
-        @Query("state") state: String = UUID.randomUUID().toString(),
-        @Query("redirect_uri") redirectUri: String = "https://keygenqt.com",
-        @Query("allow_signup") allowSignup: Boolean = false,
-        @Query("client_id") clientId: String = GITHUB_CLIENT_ID,
-    ): Response<AuthResponse>
-
-    @GET("/users/{nickname}")
-    suspend fun getUser(@Path("nickname") login: String): Response<UserResponse>
-}
+interface ApiGet
