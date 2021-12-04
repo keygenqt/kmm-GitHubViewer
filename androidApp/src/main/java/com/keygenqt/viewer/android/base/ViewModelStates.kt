@@ -1,9 +1,15 @@
 package com.keygenqt.viewer.android.base
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.response.ResponseResult
+import com.keygenqt.response.extensions.error
+import com.keygenqt.response.extensions.errorUnknownHost
+import com.keygenqt.response.extensions.success
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 open class ViewModelStates : ViewModel() {
 
@@ -39,9 +45,31 @@ open class ViewModelStates : ViewModel() {
     }
 
     /**
+     * Set state exception Error
+     */
+    fun setError(exception: Exception) {
+        _state.value = ViewModelState.Error(exception.message ?: "Exception error")
+    }
+
+    /**
      * Set state Success
      */
     fun <T> setSuccess(data: T) {
         _state.value = ViewModelState.Success(data)
+    }
+
+    /**
+     * Launch query only loading
+     */
+    fun <T> queryLaunch(
+        predicate: suspend () -> ResponseResult<T>
+    ) {
+        setAction()
+        viewModelScope.launch {
+            predicate()
+                .success(::setSuccess)
+                .error(::setError)
+                .errorUnknownHost(::setError)
+        }
     }
 }

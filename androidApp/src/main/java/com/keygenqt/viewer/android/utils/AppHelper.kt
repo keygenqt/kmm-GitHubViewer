@@ -1,5 +1,6 @@
 package com.keygenqt.viewer.android.utils
 
+import com.keygenqt.viewer.android.BuildConfig
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -23,5 +24,9 @@ object AppHelper {
             }
         }
         return true
+    }
+
+    fun getDynamicLinks(path: String): String {
+        return "https://${BuildConfig.dynamicLinksHost}$path"
     }
 }

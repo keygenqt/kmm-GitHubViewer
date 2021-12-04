@@ -18,7 +18,6 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.keygenqt.response.extensions.done
 import com.keygenqt.response.extensions.error
 import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.BuildConfig
@@ -29,7 +28,7 @@ import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
-import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
+import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLinks
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -61,7 +60,7 @@ class SignInViewModel @Inject constructor(
             appendPath("authorize")
             appendQueryParameter("login", nickname)
             appendQueryParameter("state", UUID.randomUUID().toString())
-            appendQueryParameter("redirect_uri", "https://keygenqt.com")
+            appendQueryParameter("redirect_uri", getDynamicLinks("/oauth"))
             appendQueryParameter("allow_signup", false.toString())
             appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
             build()
@@ -71,27 +70,16 @@ class SignInViewModel @Inject constructor(
     fun signInCode(
         code: String,
     ) {
-        viewModelScope.launch {
+        queryLaunch {
             apiService.oauthCode(code = code)
                 .success { model ->
                     // @todo
                     Timber.e(model.toString())
-//                    dataService.withTransaction<UserModelDataService> {
-//                        clearUserModel()
-//                        insertUserModel(model)
-//                    }
-//                    dataService.withTransaction<SecurityModelDataService> {
-//                        clearSecurityModel()
-//                        insertSecurityModel(
-//                            SecurityModel(
-//                                nickname = nickname
-//                            )
-//                        )
-//                    }
-//                    success.invoke()
-                }
-                .error {
-                    Timber.e(it)
+                    // save security tokens
+                    dataService.withTransaction<SecurityModelDataService> {
+                        clearSecurityModel()
+                        insertSecurityModel(model)
+                    }
                 }
         }
     }

@@ -31,4 +31,9 @@ sealed class SignInActions {
      * SignIn by code
      */
     data class SignInCode(val code: String) : SignInActions()
+
+    /**
+     * Open main page if login
+     */
+    object ToMain : SignInActions()
 }

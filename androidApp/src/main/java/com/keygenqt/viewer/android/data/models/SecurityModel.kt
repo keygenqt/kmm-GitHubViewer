@@ -22,12 +22,13 @@ import com.keygenqt.viewer.android.interfaces.IModel
 
 /**
  * Model saved with encryption for access
- *
- * @property nickname user login key
  */
 @Entity
 @Immutable
 data class SecurityModel(
     @PrimaryKey override val id: String = "last",
-    val nickname: String,
+    val accessToken: String,
+    val expiresIn: Int,
+    val refreshToken: String,
+    val refreshTokenExpiresIn: Int,
 ) : IModel

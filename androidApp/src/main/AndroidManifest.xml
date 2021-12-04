@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="kmm.keygenqt.com"
+                    android:host="${dynamicLinksHost}"
                     android:scheme="https" />
             </intent-filter>
         </activity>

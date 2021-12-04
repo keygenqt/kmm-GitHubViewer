@@ -23,9 +23,13 @@ android {
         versionCode = 1
         versionName = "0.0.1"
 
-        // secret token
+        // Secret GitHub
         buildConfigField("String", "GITHUB_CLIENT_ID", findProperty("github_client_id").toString())
         buildConfigField("String", "GITHUB_CLIENT_SECRET", findProperty("github_client_secret").toString())
+
+        // Dynamic Links
+        addManifestPlaceholders(mapOf("dynamicLinksHost" to findProperty("dynamicLinksHost").toString()))
+        buildConfigField("String", "dynamicLinksHost", """"${findProperty("dynamicLinksHost")}"""")
     }
 
     composeOptions {

@@ -15,16 +15,19 @@
  */
 package com.keygenqt.viewer.android.features.other.navigation.graph.impl
 
+import androidx.activity.OnBackPressedDispatcher
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
 import com.keygenqt.viewer.android.base.AppActions
+import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
-import timber.log.Timber
+import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLinks
+import com.keygenqt.viewer.android.utils.ListenDestination
 
 /**
  * NavGraph for [SignInScreen]
@@ -34,8 +37,11 @@ fun NavGraphBuilder.signInGraph(
 ) {
     composable(
         route = OtherNav.navSignIn.signInScreen.route,
-        deepLinks = listOf(navDeepLink { uriPattern = "https://kmm.keygenqt.com/?code={code}&state={state}" })
+        deepLinks = listOf(navDeepLink {
+            uriPattern = getDynamicLinks("/oauth?code={code}&state={state}")
+        })
     ) {
+        val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
         val viewModel: SignInViewModel = hiltViewModel()
         SignInScreen(
             viewModel = viewModel,
@@ -45,6 +51,7 @@ fun NavGraphBuilder.signInGraph(
             when (event) {
                 is SignInActions.SignIn -> viewModel.signIn(event.nickname)
                 is SignInActions.SignInCode -> viewModel.signInCode(event.code)
+                is SignInActions.ToMain -> appActions.toReposMain(ListenDestination.clearStack(backDispatcher))
             }
         }
     }
