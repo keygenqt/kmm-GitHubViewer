@@ -26,6 +26,9 @@ object AppHelper {
         return true
     }
 
+    /**
+     * Generate dynamic links
+     */
     fun getDynamicLinks(path: String): String {
         return "https://${BuildConfig.dynamicLinksHost}$path"
     }

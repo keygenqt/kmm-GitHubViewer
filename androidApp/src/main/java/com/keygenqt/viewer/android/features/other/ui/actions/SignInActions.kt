@@ -33,7 +33,7 @@ sealed class SignInActions {
     data class SignInCode(val code: String) : SignInActions()
 
     /**
-     * Open main page if login
+     * Open start page for loading data user
      */
-    object ToMain : SignInActions()
+    object ToStartPage : SignInActions()
 }

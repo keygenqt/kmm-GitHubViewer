@@ -17,6 +17,8 @@ package com.keygenqt.viewer.android.data.mappers
 
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.data.responses.UserResponse
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.toLocalDateTime
 
 /**
  * Extension for response [UserResponse]
@@ -24,13 +26,37 @@ import com.keygenqt.viewer.android.data.responses.UserResponse
 fun UserResponse.toModel(): UserModel {
     return UserModel(
         id = id.toString(),
-        avatarUrl = avatar_url,
+        login = login ?: "",
+        nodeId = node_id ?: "",
+        avatarUrl = avatar_url ?: "",
+        gravatarId = gravatar_id ?: "",
+        url = url ?: "",
+        htmlUrl = html_url ?: "",
+        followersUrl = followers_url ?: "",
+        followingUrl = following_url ?: "",
+        gistsUrl = gists_url ?: "",
+        starredUrl = starred_url ?: "",
+        subscriptionsUrl = subscriptions_url ?: "",
+        organizationsUrl = organizations_url ?: "",
+        reposUrl = repos_url ?: "",
+        eventsUrl = events_url ?: "",
+        receivedEventsUrl = received_events_url ?: "",
+        type = type ?: "",
+        siteAdmin = site_admin ?: false,
         name = name ?: "",
-        blog = blog ?: "",
-        twitterUsername = twitter_username ?: "",
         company = company ?: "",
+        blog = blog ?: "",
         location = location ?: "",
+        email = email ?: "",
+        hireable = hireable ?: "",
         bio = bio ?: "",
+        twitterUsername = twitter_username ?: "",
+        publicRepos = public_repos,
+        publicGists = public_gists,
+        followers = followers,
+        following = following,
+        createdAt = created_at?.replace("Z", "")?.toLocalDateTime(),
+        updatedAt = updated_at?.replace("Z", "")?.toLocalDateTime()
     )
 }
 

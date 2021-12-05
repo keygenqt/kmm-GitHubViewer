@@ -33,22 +33,22 @@ import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.theme.AppTheme
 
 /**
- * Box with error for forms
+ * Box with success for forms
  *
  * @param modifier Modifier to be applied to the layout
  * @param text text show in error block
  */
 @Composable
-fun FormError(
+fun FormSuccess(
     modifier: Modifier = Modifier,
-    text: String = "Box Text Field Error Preview",
+    text: String = "Box Text Field Success Preview",
     content: (@Composable () -> Unit)? = null
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.errorContainer),
+            .background(MaterialTheme.colorScheme.primaryContainer),
     ) {
         Column(
             modifier = modifier
@@ -59,7 +59,7 @@ fun FormError(
                 text = text,
                 maxLines = 5,
                 modifier = Modifier,
-                color = MaterialTheme.colorScheme.onErrorContainer
+                color = MaterialTheme.colorScheme.onPrimaryContainer
             )
             content?.invoke()
         }

@@ -17,6 +17,9 @@ package com.keygenqt.viewer.android.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.keygenqt.viewer.android.data.converters.LocalDateTimeConverter
+import com.keygenqt.viewer.android.data.converters.ListConverter
 import com.keygenqt.viewer.android.data.dao.UserModelDao
 import com.keygenqt.viewer.android.data.models.UserModel
 
@@ -27,6 +30,12 @@ import com.keygenqt.viewer.android.data.models.UserModel
     entities = [UserModel::class],
     version = 1,
     exportSchema = false
+)
+@TypeConverters(
+    value = [
+        ListConverter::class,
+        LocalDateTimeConverter::class,
+    ]
 )
 abstract class AppDatabase : RoomDatabase() {
     /**

@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.other.navigation.nav
 
 import com.keygenqt.viewer.android.features.other.navigation.nav.impl.NavSignInScreen
+import com.keygenqt.viewer.android.features.other.navigation.nav.impl.NavStartPageScreen
 import com.keygenqt.viewer.android.features.other.navigation.nav.impl.NavWelcomeScreen
 
 /**
@@ -23,5 +24,6 @@ import com.keygenqt.viewer.android.features.other.navigation.nav.impl.NavWelcome
  */
 object OtherNav {
     val navWelcome = NavWelcomeScreen
+    val navStartPage = NavStartPageScreen
     val navSignIn = NavSignInScreen
 }

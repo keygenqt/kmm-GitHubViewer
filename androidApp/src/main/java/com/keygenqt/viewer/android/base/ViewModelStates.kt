@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 open class ViewModelStates : ViewModel() {
 
@@ -69,6 +70,7 @@ open class ViewModelStates : ViewModel() {
             predicate()
                 .success(::setSuccess)
                 .error(::setError)
+                .error { Timber.e(it) }
                 .errorUnknownHost(::setError)
         }
     }

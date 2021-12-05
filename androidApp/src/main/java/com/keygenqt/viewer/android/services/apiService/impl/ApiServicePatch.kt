@@ -19,8 +19,9 @@ import com.keygenqt.response.LocalTryExecuteWithResponse
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.response.extensions.responseCheck
 import com.keygenqt.viewer.android.BuildConfig
+import com.keygenqt.viewer.android.data.mappers.toModel
+import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
-import com.keygenqt.viewer.android.data.responses.UserResponse
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
@@ -40,13 +41,14 @@ interface ApiServicePatch {
      *
      * @return response for get userId and token
      */
-    suspend fun userUpdate(request: UserUpdateRequest): ResponseResult<UserResponse> {
+    suspend fun userUpdate(request: UserUpdateRequest): ResponseResult<UserModel> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
                 api.userUpdate(request)
                     .delay(BuildConfig.DEBUG)
                     .responseCheck()
                     .body()!!
+                    .toModel()
             }
         }
     }

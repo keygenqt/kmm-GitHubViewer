@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.data.mock
+package com.keygenqt.viewer.android.features.other.navigation.nav.impl
 
-import com.keygenqt.viewer.android.data.models.UserModel
+import com.keygenqt.routing.NavScreen
+import com.keygenqt.viewer.android.features.other.ui.screens.startPage.StartPageScreen
 
-fun mockUserModel() = UserModel(
-    id = "id",
-    avatarUrl = "https://get.wallhere.com/photo/women-brunette-face-wind-portrait-hair-in-face-depth-of-field-women-outdoors-sea-cliff-motion-blur-blue-eyes-1379479.jpg",
-    name = "Vitaliy Zarubin",
-    blog = "https://keygenqt.com/",
-    twitterUsername = "@zarubin_vitaliy",
-    company = "Surf",
-    location = "Moscow",
-    bio = "Talk is cheap. Show me the code.",
-)
+/**
+ * Routing for [StartPageScreen]
+ */
+object NavStartPageScreen {
+    val startPageScreen = object : NavScreen {
+        override val route: String = "NavStartPageScreen"
+    }
+}

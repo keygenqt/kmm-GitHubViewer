@@ -13,34 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.utils
+package com.keygenqt.viewer.android.features.other.ui.actions
 
-import com.keygenqt.viewer.android.BuildConfig
-import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.other.ui.screens.startPage.StartPageScreen
 
 /**
- * Base Constants for App
+ * Actions sealed class for screen [StartPageScreen]
  */
-object ConstantsApp {
+sealed class StartPageActions {
 
     /**
-     * Start destination
+     * Start loading data user
      */
-    val START_DESTINATION = OtherNav.navStartPage.startPageScreen.route
+    object ToSignIn : StartPageActions()
 
     /**
-     * Api url
+     * Start loading data user
      */
-    const val API_URL = "https://api.github.com/"
+    object StartLoadingData : StartPageActions()
 
     /**
-     * For simulate slow internet
+     * Open repos page
      */
-    const val DEBUG_DELAY = 1000L
-
-    /**
-     * For debug credential login
-     */
-    val DEBUG_CREDENTIAL_LOGIN get() = if (BuildConfig.DEBUG) "keygenqt" else ""
+    object ToRepos : StartPageActions()
 }

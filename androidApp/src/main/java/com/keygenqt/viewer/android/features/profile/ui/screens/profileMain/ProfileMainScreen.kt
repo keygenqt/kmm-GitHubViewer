@@ -33,11 +33,12 @@ fun ProfileMainScreen(
     viewModel: ProfileViewModel,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
-
     val model: UserModel? by viewModel.user.collectAsState(null)
 
-    ProfileMainBody(
-        model = model,
-        onActions = onActions
-    )
+    model?.let {
+        ProfileMainBody(
+            model = model,
+            onActions = onActions
+        )
+    }
 }

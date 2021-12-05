@@ -13,27 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.profile.ui.viewModels
+package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import androidx.lifecycle.ViewModel
+import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.base.ViewModelStates
-import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
+import com.keygenqt.viewer.android.extensions.withTransaction
+import com.keygenqt.viewer.android.features.other.ui.screens.startPage.StartPageScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
 
 /**
- * [ViewModel] for [ProfileMainScreen]
+ * [ViewModel] for [StartPageScreen]
  */
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
+class StartPageViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService
 ) : ViewModelStates() {
+
     /**
-     * Listen user model
+     * Start loading data user
      */
-    val user = dataService.getUserModel().distinctUntilChanged()
+    fun startLoading() {
+        queryLaunch {
+            apiService.getUser().success {
+                dataService.withTransaction<UserModelDataService> {
+                    clearUserModel()
+                    insertUserModel(it)
+                }
+            }
+        }
+    }
 }

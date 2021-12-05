@@ -44,7 +44,7 @@ fun SignInScreen(
     // open main page if user login
     LaunchedEffect(isLogin) {
         if (isLogin) {
-            onActions(SignInActions.ToMain)
+            onActions(SignInActions.ToStartPage)
         }
     }
 

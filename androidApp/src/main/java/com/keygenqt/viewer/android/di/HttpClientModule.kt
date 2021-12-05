@@ -17,8 +17,8 @@ package com.keygenqt.viewer.android.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.keygenqt.viewer.android.extensions.checkValidJson
-import com.keygenqt.viewer.android.utils.AppHelper
 import com.keygenqt.viewer.android.utils.ConstantsApp
+import com.keygenqt.viewer.android.utils.StaticData
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +28,6 @@ import kotlinx.serialization.json.Json
 import okhttp3.Call
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody.Companion.toResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import timber.log.Timber
@@ -68,16 +67,14 @@ object HttpClientModule {
             .addInterceptor {
                 val original = it.request()
                 val request = original.newBuilder().apply {
-                    // @todo
-//                    BuildConfig.GITHUB_TOKEN?.let { token ->
-//                        header(
-//                            "Authorization",
-//                            "token $token"
-//                        )
-//                    }
+                    StaticData.AuthTokens.token?.let { token ->
+                        header("Authorization", "token $token")
+                        header("Accept", "application/vnd.github.v3+json")
+                    }
                 }
                     .method(original.method, original.body)
                     .build()
+                Timber.d(request.headers.toMultimap().toString())
                 it.proceed(request)
             }
             .build()

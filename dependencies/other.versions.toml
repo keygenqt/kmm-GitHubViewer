@@ -13,6 +13,8 @@ module = "com.keygenqt.routing:compose-routing"
 module = "com.keygenqt.forms:compose-forms"
 [libraries.other-emoji]
 module = "com.vdurmont:emoji-java"
+[libraries.kotlinx-datetime]
+module = "org.jetbrains.kotlinx:kotlinx-datetime"
 
 # versions
 [libraries.other-timber.version]
@@ -29,6 +31,8 @@ ref = "composeRoutingVersion"
 ref = "composeFormsVersion"
 [libraries.other-emoji.version]
 ref = "emojiVersion"
+[libraries.kotlinx-datetime.version]
+ref = "kotlinxDatetimeVersion"
 
 [bundles]
 other = [
@@ -39,4 +43,5 @@ other = [
     "other-routing",
     "other-form",
     "other-emoji",
+    "kotlinx-datetime",
 ]

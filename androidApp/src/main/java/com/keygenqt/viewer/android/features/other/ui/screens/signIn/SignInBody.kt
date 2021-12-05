@@ -41,6 +41,7 @@ import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.theme.AppTheme
+import timber.log.Timber
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -72,6 +73,7 @@ fun SignInBody(
 
     LaunchedEffect(stateViewModel.isSuccess()) {
         stateViewModel.getSuccessData<String>()?.let {
+            Timber.d(it)
             uriHandler?.openUri(it)
         }
     }

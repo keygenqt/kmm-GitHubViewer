@@ -7,5 +7,6 @@
     <string name="settings_form_company">Компания</string>
     <string name="settings_form_location">Локация</string>
     <string name="settings_form_bio">О себе</string>
-    <string name="settings_form_button_submit">Submit</string>
+    <string name="settings_form_button_submit">Отправить</string>
+    <string name="settings_form_successfully">Профиль успешно обновлен</string>
 </resources>

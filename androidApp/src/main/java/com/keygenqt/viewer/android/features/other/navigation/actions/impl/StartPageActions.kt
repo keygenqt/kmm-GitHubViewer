@@ -13,34 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.utils
+package com.keygenqt.viewer.android.features.other.navigation.actions.impl
 
-import com.keygenqt.viewer.android.BuildConfig
+import androidx.navigation.NavHostController
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.other.ui.screens.startPage.StartPageScreen
+import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
 /**
- * Base Constants for App
+ * Actions for [StartPageScreen]
  */
-object ConstantsApp {
+interface StartPageActions : IAppNavActions {
+
+    override val controller: NavHostController
 
     /**
-     * Start destination
+     * To welcome page
      */
-    val START_DESTINATION = OtherNav.navStartPage.startPageScreen.route
-
-    /**
-     * Api url
-     */
-    const val API_URL = "https://api.github.com/"
-
-    /**
-     * For simulate slow internet
-     */
-    const val DEBUG_DELAY = 1000L
-
-    /**
-     * For debug credential login
-     */
-    val DEBUG_CREDENTIAL_LOGIN get() = if (BuildConfig.DEBUG) "keygenqt" else ""
+    fun toStartPage(popUpTo: String? = null) {
+        controller.navigate(OtherNav.navStartPage.startPageScreen.route) {
+            popUpTo?.let {
+                popUpTo(popUpTo) { inclusive = true }
+            }
+        }
+    }
 }

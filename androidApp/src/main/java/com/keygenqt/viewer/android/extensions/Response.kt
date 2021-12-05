@@ -18,6 +18,10 @@ import org.json.JSONObject
 import retrofit2.Response
 import timber.log.Timber
 import kotlin.reflect.full.createInstance
+import okhttp3.ResponseBody
+
+
+
 
 /**
  * Simulate slow internet
@@ -67,37 +71,36 @@ private fun Int.toResponseException(): ResponseException {
  * Validate json from response
  */
 fun okhttp3.Response.checkValidJson(): okhttp3.Response {
-    var response = this
-    body?.let { body ->
-        val data = body.string()
 
-        // check is not valid json
-        if (!isValidJson(data)) {
-            val obj = JSONObject()
+    val data = peekBody(Long.MAX_VALUE).string()
 
-            // check if contains data
-            data.split("&").forEachIndexed { index, s ->
-                if (s.contains("=")) {
-                    val (first, second) = s.split("=")
-                    obj.put(first, second)
-                } else {
-                    obj.put("data_$index", s)
-                }
-            }
+    // check is not valid json
+    return if (!isValidJson(data)) {
+        val obj = JSONObject()
 
-            // if has error data or not
-            response = if (obj.has("error")) {
-                obj.put("code", RESPONSE_JSON_ERROR)
-                response.newBuilder()
-                    .code(RESPONSE_JSON_ERROR)
-                    .body(obj.toString().toResponseBody("application/json".toMediaType()))
-                    .build()
+        // check if contains data
+        data.split("&").forEachIndexed { index, s ->
+            if (s.contains("=")) {
+                val (first, second) = s.split("=")
+                obj.put(first, second)
             } else {
-                response.newBuilder()
-                    .body(obj.toString().toResponseBody("application/json".toMediaType()))
-                    .build()
+                obj.put("data_$index", s)
             }
         }
+
+        // if has error data or not
+        return if (obj.has("error")) {
+            obj.put("code", RESPONSE_JSON_ERROR)
+            newBuilder()
+                .code(RESPONSE_JSON_ERROR)
+                .body(obj.toString().toResponseBody("application/json".toMediaType()))
+                .build()
+        } else {
+            newBuilder()
+                .body(obj.toString().toResponseBody("application/json".toMediaType()))
+                .build()
+        }
+    } else {
+        this
     }
-    return response
 }

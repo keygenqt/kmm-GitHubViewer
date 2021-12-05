@@ -73,8 +73,6 @@ class SignInViewModel @Inject constructor(
         queryLaunch {
             apiService.oauthCode(code = code)
                 .success { model ->
-                    // @todo
-                    Timber.e(model.toString())
                     // save security tokens
                     dataService.withTransaction<SecurityModelDataService> {
                         clearSecurityModel()

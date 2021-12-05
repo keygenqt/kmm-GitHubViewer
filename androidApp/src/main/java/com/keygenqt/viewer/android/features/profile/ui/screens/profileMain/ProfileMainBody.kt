@@ -34,7 +34,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.components.AppScaffold
-import com.keygenqt.viewer.android.data.mock.mockUserModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.navigationBarsPaddingMaterial3
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
@@ -142,6 +141,6 @@ fun CloseDialog(
 @Composable
 private fun Preview() {
     AppTheme {
-        ProfileMainBody(mockUserModel())
+        ProfileMainBody(null)
     }
 }

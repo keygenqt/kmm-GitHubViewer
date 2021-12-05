@@ -19,39 +19,41 @@ import androidx.activity.OnBackPressedDispatcher
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import androidx.navigation.navDeepLink
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
+import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
-import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
-import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
-import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
-import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLinks
+import com.keygenqt.viewer.android.features.other.ui.actions.StartPageActions
+import com.keygenqt.viewer.android.features.other.ui.screens.startPage.StartPageScreen
+import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
+import com.keygenqt.viewer.android.features.other.ui.viewModels.StartPageViewModel
 import com.keygenqt.viewer.android.utils.ListenDestination
 
 /**
- * NavGraph for [SignInScreen]
+ * NavGraph for [WelcomeScreen]
  */
-fun NavGraphBuilder.signInGraph(
+fun NavGraphBuilder.startPageGraph(
     appActions: AppActions,
 ) {
     composable(
-        route = OtherNav.navSignIn.signInScreen.route,
-        deepLinks = listOf(navDeepLink {
-            uriPattern = getDynamicLinks("/oauth?code={code}&state={state}")
-        })
+        route = OtherNav.navStartPage.startPageScreen.route
     ) {
         val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
-        val viewModel: SignInViewModel = hiltViewModel()
-        SignInScreen(
-            viewModel = viewModel,
-            code = it.arguments?.getString("code"),
-            state = it.arguments?.getString("state"),
-        ) { event ->
+        val localViewModel = LocalViewModel.current
+        val viewModel: StartPageViewModel = hiltViewModel()
+        StartPageScreen(viewModel = viewModel) { event ->
             when (event) {
-                is SignInActions.SignIn -> viewModel.signIn(event.nickname)
-                is SignInActions.SignInCode -> viewModel.signInCode(event.code)
-                is SignInActions.ToStartPage -> appActions.toStartPage(
+                is StartPageActions.StartLoadingData -> viewModel.startLoading()
+                is StartPageActions.ToSignIn -> {
+                    localViewModel.logout {
+                        appActions.toSignIn(
+                            ListenDestination.clearStack(
+                                backDispatcher
+                            )
+                        )
+                    }
+                }
+                is StartPageActions.ToRepos -> appActions.toReposMain(
                     ListenDestination.clearStack(
                         backDispatcher
                     )
