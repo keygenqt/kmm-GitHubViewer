@@ -15,8 +15,12 @@
  */
 package com.keygenqt.viewer.android
 
+import android.graphics.Color
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -51,13 +55,19 @@ fun NavGraph(
 
     ListenDestination.Init(navController)
 
+    val context = LocalContext.current
+    val bg = MaterialTheme.colorScheme.background.toArgb()
     val isLogin by appViewModel.isLogin.collectAsState(null)
 
     isLogin?.let {
         LaunchedEffect(lifecycleOwner.lifecycle.currentState == Lifecycle.State.CREATED) {
+            // if not login to welcome
             if (!it && ListenDestination.getActionDestination()?.route != OtherNav.navSignIn.signInScreen.route) {
                 appActions.toWelcome()
             }
+            // remove BG splash
+            (context as MainActivity).window.decorView.setBackgroundColor(bg)
+            // disable splash
             appViewModel.disableSplash()
         }
     }

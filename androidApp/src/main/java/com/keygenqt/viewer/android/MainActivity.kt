@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver.OnPreDrawListener
@@ -68,6 +69,7 @@ class MainActivity : ComponentActivity() {
                 object : OnPreDrawListener {
                     override fun onPreDraw(): Boolean {
                         return if (viewModel.isSplash.value) {
+                            // done splash remove listener
                             content.viewTreeObserver.removeOnPreDrawListener(this); true
                         } else false
                     }
