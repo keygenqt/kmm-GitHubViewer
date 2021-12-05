@@ -25,9 +25,11 @@ import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
+import com.keygenqt.viewer.android.utils.StaticData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -38,6 +40,21 @@ class AppViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService
 ) : ViewModel() {
+
+    init {
+        viewModelScope.launch {
+            dataService.getSecurityModel().distinctUntilChanged().collect {
+                it?.let {
+                    Timber.d("State auth: I am is user")
+                    StaticData.AuthTokens.setTokens(it.accessToken, it.refreshToken)
+                } ?: run {
+                    StaticData.AuthTokens.clear()
+                    dataService.clearCacheAfterLogout()
+                    Timber.d("State auth: I am is guest")
+                }
+            }
+        }
+    }
 
     /**
      * [MutableStateFlow] for start app and end splash

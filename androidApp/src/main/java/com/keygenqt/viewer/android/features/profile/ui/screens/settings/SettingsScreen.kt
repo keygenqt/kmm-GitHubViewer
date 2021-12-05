@@ -15,15 +15,13 @@
  */
 package com.keygenqt.viewer.android.features.profile.ui.screens.settings
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
 import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
+import com.keygenqt.viewer.android.features.profile.ui.viewModels.SettingsViewModel
 
 /**
  * Base page fun for initialization
@@ -33,21 +31,22 @@ import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewMod
  */
 @Composable
 fun SettingsScreen(
-    viewModel: ProfileViewModel,
+    viewModel: SettingsViewModel,
     onActions: (SettingsActions) -> Unit = {},
 ) {
 
+    val stateViewModel by viewModel.state.collectAsState()
     val model: UserModel? by viewModel.user.collectAsState(null)
-    val error: String? by viewModel.error.collectAsState(null)
-    val loading: Boolean by viewModel.loading.collectAsState()
 
-    model?.let {
-        UserUpdateName.state.setValue(it.name)
-        UserUpdateBlog.state.setValue(it.blog)
-        UserUpdateTwitter.state.setValue(it.twitterUsername)
-        UserUpdateCompany.state.setValue(it.company)
-        UserUpdateLocation.state.setValue(it.location)
-        UserUpdateBio.state.setValue(it.bio)
+    LaunchedEffect(model) {
+        model?.let {
+            UserUpdateName.state.setValue(it.name)
+            UserUpdateBlog.state.setValue(it.blog)
+            UserUpdateTwitter.state.setValue(it.twitterUsername)
+            UserUpdateCompany.state.setValue(it.company)
+            UserUpdateLocation.state.setValue(it.location)
+            UserUpdateBio.state.setValue(it.bio)
+        }
     }
 
     val formFields = remember {
@@ -62,8 +61,7 @@ fun SettingsScreen(
     }
 
     SettingsBody(
-        error = error,
-        loading = loading,
+        stateViewModel = stateViewModel,
         formFields = formFields,
         onActions = onActions
     )

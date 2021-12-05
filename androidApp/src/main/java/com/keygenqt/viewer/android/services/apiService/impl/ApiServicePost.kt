@@ -15,11 +15,46 @@
  */
 package com.keygenqt.viewer.android.services.apiService.impl
 
+import com.keygenqt.response.LocalTryExecuteWithResponse
+import com.keygenqt.response.ResponseResult
+import com.keygenqt.viewer.android.BuildConfig
+import com.keygenqt.viewer.android.data.mappers.toModel
+import com.keygenqt.viewer.android.data.models.SecurityModel
+import com.keygenqt.viewer.android.data.requests.AuthRequest
+import com.keygenqt.viewer.android.data.responses.AuthResponse
+import com.keygenqt.viewer.android.extensions.delay
+import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server.
  */
 interface ApiServicePost {
+
     val api: AppApi
+
+    /**
+     * Query oauth github app
+     *
+     * @param code from github api for login user
+     */
+    suspend fun oauthCode(code: String): ResponseResult<SecurityModel> {
+        return withContext(Dispatchers.IO) {
+            LocalTryExecuteWithResponse.executeWithResponse {
+                api.oauth(
+                    request = AuthRequest(
+                        code = code,
+                        client_secret = BuildConfig.GITHUB_CLIENT_SECRET,
+                        client_id = BuildConfig.GITHUB_CLIENT_ID,
+                    )
+                )
+                    .delay(BuildConfig.DEBUG)
+                    .responseCheckApp()
+                    .body()
+                    ?.toModel()!!
+            }
+        }
+    }
 }

@@ -18,6 +18,7 @@ package com.keygenqt.viewer.android.compose.components
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -40,7 +41,8 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @Composable
 fun FormError(
     modifier: Modifier = Modifier,
-    text: String = "Box Text Field Error Preview, Box Text Field Error Preview, Box Text Field Error Preview, Box Text Field Error Preview,Box Text Field Error Preview",
+    text: String = "Box Text Field Error Preview",
+    content: (@Composable () -> Unit)? = null
 ) {
     Box(
         modifier = modifier
@@ -48,7 +50,7 @@ fun FormError(
             .clip(RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.errorContainer),
     ) {
-        Box(
+        Column(
             modifier = modifier
                 .fillMaxWidth()
                 .padding(top = 10.dp, bottom = 8.dp, start = 8.dp, end = 8.dp),
@@ -59,6 +61,7 @@ fun FormError(
                 modifier = Modifier,
                 color = MaterialTheme.colorScheme.onErrorContainer
             )
+            content?.invoke()
         }
     }
 }

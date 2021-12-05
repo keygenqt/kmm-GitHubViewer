@@ -8,4 +8,5 @@
     <string name="settings_form_location">Location</string>
     <string name="settings_form_bio">Bio</string>
     <string name="settings_form_button_submit">Submit</string>
+    <string name="settings_form_successfully">Update user data successfully</string>
 </resources>

@@ -23,11 +23,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,20 +35,21 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldState
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.ViewModelState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
+import timber.log.Timber
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SignInBody(
     formFields: FormFieldsState,
-    error: String? = null,
-    loading: Boolean = false,
+    uriHandler: UriHandler? = null,
     onActions: (SignInActions) -> Unit = {},
+    stateViewModel: ViewModelState = ViewModelState.Start,
 ) {
     val scrollState = rememberScrollState()
 
@@ -70,9 +71,16 @@ fun SignInBody(
         }
     }
 
+    LaunchedEffect(stateViewModel.isSuccess()) {
+        stateViewModel.getSuccessData<String>()?.let {
+            Timber.d(it)
+            uriHandler?.openUri(it)
+        }
+    }
+
     AppScaffold(
         title = stringResource(id = R.string.sign_in_title),
-        loading = loading,
+        loading = stateViewModel.isAction(),
         scrollState = scrollState,
     ) {
         Column(
@@ -85,14 +93,14 @@ fun SignInBody(
             Column(
                 modifier = Modifier.padding(16.dp)
             ) {
-                error?.let {
+                stateViewModel.getErrorMessage()?.let {
                     FormError(text = it)
                     Spacer(modifier = Modifier.size(16.dp))
-                    LaunchedEffect(error) { scrollState.animateScrollTo(0) }
+                    LaunchedEffect(it) { scrollState.animateScrollTo(0) }
                 }
 
                 SignInForm(
-                    loading = loading,
+                    loading = stateViewModel.isAction(),
                     formFields = formFields,
                     submitClick = submitClick,
                 )
@@ -102,7 +110,7 @@ fun SignInBody(
                 modifier = Modifier.padding(16.dp)
             ) {
                 Button(
-                    enabled = !loading,
+                    enabled = stateViewModel.isNotAction(),
                     onClick = { submitClick.invoke() },
                     modifier = Modifier.fillMaxWidth(),
                 ) {

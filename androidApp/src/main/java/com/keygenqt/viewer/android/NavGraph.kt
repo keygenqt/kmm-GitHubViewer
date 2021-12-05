@@ -27,6 +27,7 @@ import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.followers.navigation.graph.followersNavGraph
 import com.keygenqt.viewer.android.features.other.navigation.graph.otherNavGraph
+import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.profile.navigation.graph.profileNavGraph
 import com.keygenqt.viewer.android.features.repos.navigation.graph.reposNavGraph
 import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
@@ -54,7 +55,7 @@ fun NavGraph(
 
     isLogin?.let {
         LaunchedEffect(lifecycleOwner.lifecycle.currentState == Lifecycle.State.CREATED) {
-            if (!it) {
+            if (!it && ListenDestination.getActionDestination()?.route != OtherNav.navSignIn.signInScreen.route) {
                 appActions.toWelcome()
             }
             appViewModel.disableSplash()

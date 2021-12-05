@@ -22,7 +22,7 @@ import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
-import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
+import com.keygenqt.viewer.android.features.profile.ui.viewModels.SettingsViewModel
 
 /**
  * NavGraph for [SettingsScreen]
@@ -31,7 +31,7 @@ fun NavGraphBuilder.settingsGraph(
     appActions: AppActions,
 ) {
     composable(ProfileNav.navSettings.settingsScreen.route) {
-        val viewModel: ProfileViewModel = hiltViewModel()
+        val viewModel: SettingsViewModel = hiltViewModel()
         SettingsScreen(viewModel = viewModel) { event ->
             when (event) {
                 is SettingsActions.UserUpdate -> viewModel.userUpdate(
@@ -41,9 +41,7 @@ fun NavGraphBuilder.settingsGraph(
                     company = event.company,
                     location = event.location,
                     bio = event.bio,
-                ) {
-
-                }
+                )
             }
         }
     }

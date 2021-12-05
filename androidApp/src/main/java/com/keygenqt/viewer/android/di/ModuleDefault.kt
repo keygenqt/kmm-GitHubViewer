@@ -56,6 +56,7 @@ object ModuleDefault {
      * Database with encryption and migrations
      */
     @Provides
+    @Singleton
     @AppDatabaseSecurityQualifier
     fun provideCoreSecurityDatabase(@ApplicationContext context: Context): AppSecurityDatabase {
         val passphrase = SQLiteDatabase.getBytes(password.toCharArray())

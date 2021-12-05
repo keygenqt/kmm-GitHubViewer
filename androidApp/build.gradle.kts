@@ -6,8 +6,8 @@ plugins {
 
     id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization")
+    id("com.google.firebase.crashlytics")
 }
-
 
 android {
 
@@ -23,8 +23,13 @@ android {
         versionCode = 1
         versionName = "0.0.1"
 
-        // secret token
-        buildConfigField("String", "GITHUB_TOKEN", findProperty("github_token").toString())
+        // Secret GitHub
+        buildConfigField("String", "GITHUB_CLIENT_ID", findProperty("github_client_id").toString())
+        buildConfigField("String", "GITHUB_CLIENT_SECRET", findProperty("github_client_secret").toString())
+
+        // Dynamic Links
+        addManifestPlaceholders(mapOf("dynamicLinksHost" to findProperty("dynamicLinksHost").toString()))
+        buildConfigField("String", "dynamicLinksHost", """"${findProperty("dynamicLinksHost")}"""")
     }
 
     composeOptions {
@@ -76,6 +81,7 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.room)
     implementation(libs.bundles.lottie)
+    implementation(libs.bundles.firebase)
 
     kapt(libs.bundles.hiltKapt)
     kapt(libs.bundles.roomKapt)

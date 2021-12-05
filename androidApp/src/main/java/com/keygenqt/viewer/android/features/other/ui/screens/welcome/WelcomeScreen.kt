@@ -18,7 +18,7 @@ package com.keygenqt.viewer.android.features.other.ui.screens.welcome
 import androidx.compose.runtime.Composable
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
-import com.keygenqt.viewer.android.features.other.ui.viewModels.OtherViewModel
+import com.keygenqt.viewer.android.features.other.ui.viewModels.WelcomeViewModel
 
 /**
  * Base page fun for initialization
@@ -28,7 +28,7 @@ import com.keygenqt.viewer.android.features.other.ui.viewModels.OtherViewModel
  */
 @Composable
 fun WelcomeScreen(
-    viewModel: OtherViewModel,
+    viewModel: WelcomeViewModel,
     onActions: (WelcomeActions) -> Unit = {},
 ) {
     WelcomeBody(

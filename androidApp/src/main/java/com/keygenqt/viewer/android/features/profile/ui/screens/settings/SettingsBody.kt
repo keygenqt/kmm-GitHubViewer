@@ -33,8 +33,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.ViewModelState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
+import com.keygenqt.viewer.android.compose.components.FormSuccess
+import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
 import com.keygenqt.viewer.android.features.profile.ui.forms.mockUserUpdateForm
@@ -44,9 +47,8 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @Composable
 fun SettingsBody(
     formFields: FormFieldsState,
-    error: String? = null,
-    loading: Boolean = false,
     onActions: (SettingsActions) -> Unit = {},
+    stateViewModel: ViewModelState = ViewModelState.Start,
 ) {
     val scrollState = rememberScrollState()
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
@@ -79,6 +81,7 @@ fun SettingsBody(
     AppScaffold(
         title = stringResource(id = R.string.settings_title),
         scrollState = scrollState,
+        loading = stateViewModel.isAction()
     ) {
         Column(
             modifier = Modifier
@@ -90,14 +93,20 @@ fun SettingsBody(
             Column(Modifier.padding(start = 16.dp, end = 16.dp)) {
                 Spacer(modifier = Modifier.size(16.dp))
 
-                error?.let {
+                stateViewModel.getErrorMessage()?.let {
                     FormError(text = it)
                     Spacer(modifier = Modifier.size(16.dp))
-                    LaunchedEffect(error) { scrollState.animateScrollTo(0) }
+                    LaunchedEffect(it) { scrollState.animateScrollTo(0) }
+                }
+
+                stateViewModel.getSuccessData<UserModel>()?.let {
+                    FormSuccess(text = stringResource(id = R.string.settings_form_successfully))
+                    Spacer(modifier = Modifier.size(16.dp))
+                    LaunchedEffect(it) { scrollState.animateScrollTo(0) }
                 }
 
                 SettingsForm(
-                    loading = loading,
+                    loading = stateViewModel.isAction(),
                     formFields = formFields,
                 )
 
@@ -106,7 +115,7 @@ fun SettingsBody(
 
             Column(Modifier.padding(start = 16.dp, end = 16.dp)) {
                 Button(
-                    enabled = !loading,
+                    enabled = stateViewModel.isNotAction(),
                     onClick = { submitClick.invoke() },
                     modifier = Modifier.fillMaxWidth(),
                 ) {

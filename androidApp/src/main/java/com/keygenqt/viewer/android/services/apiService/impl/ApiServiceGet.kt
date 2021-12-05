@@ -17,11 +17,11 @@ package com.keygenqt.viewer.android.services.apiService.impl
 
 import com.keygenqt.response.LocalTryExecuteWithResponse
 import com.keygenqt.response.ResponseResult
-import com.keygenqt.response.extensions.responseCheck
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.delay
+import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,18 +34,16 @@ interface ApiServiceGet {
     val api: AppApi
 
     /**
-     * Query login user with callback if success. For example use random query with error response.
+     * Get user data
      *
-     * @param nickname login user
-     *
-     * @return ResponseResult with user
+     * @return ResponseResult<UserModel>
      */
-    suspend fun getUser(nickname: String): ResponseResult<UserModel> {
+    suspend fun getUser(): ResponseResult<UserModel> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
-                api.getUser(nickname)
+                api.getUser()
                     .delay(BuildConfig.DEBUG)
-                    .responseCheck()
+                    .responseCheckApp()
                     .body()!!
                     .toModel()
             }

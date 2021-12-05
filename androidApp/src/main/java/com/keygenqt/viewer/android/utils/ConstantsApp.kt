@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.utils
 
 import com.keygenqt.viewer.android.BuildConfig
+import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 
 /**
@@ -26,7 +27,7 @@ object ConstantsApp {
     /**
      * Start destination
      */
-    val START_DESTINATION = ReposNav.navReposMain.reposMainScreen.route
+    val START_DESTINATION = OtherNav.navStartPage.startPageScreen.route
 
     /**
      * Api url

@@ -15,15 +15,15 @@
  */
 package com.keygenqt.viewer.android.features.other.ui.screens.signIn
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalUriHandler
 import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
-import com.keygenqt.viewer.android.features.other.ui.viewModels.OtherViewModel
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
+import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
 import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
+import timber.log.Timber
 
 /**
  * Base page fun for initialization
@@ -33,11 +33,27 @@ import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
  */
 @Composable
 fun SignInScreen(
-    viewModel: OtherViewModel,
+    viewModel: SignInViewModel,
+    code: String? = null,
+    state: String? = null,
     onActions: (SignInActions) -> Unit = {},
 ) {
-    val error: String? by viewModel.error.collectAsState(null)
-    val loading: Boolean by viewModel.loading.collectAsState()
+    val stateViewModel by viewModel.state.collectAsState()
+    val isLogin by LocalViewModel.current.isLogin.collectAsState(false)
+
+    // open main page if user login
+    LaunchedEffect(isLogin) {
+        if (isLogin) {
+            onActions(SignInActions.ToStartPage)
+        }
+    }
+
+    // query by code
+    LaunchedEffect(code) {
+        code?.let {
+            onActions(SignInActions.SignInCode(it))
+        }
+    }
 
     val formFields = remember {
         FormFieldsState().apply {
@@ -46,9 +62,9 @@ fun SignInScreen(
     }
 
     SignInBody(
-        error = error,
-        loading = loading,
         onActions = onActions,
-        formFields = formFields
+        formFields = formFields,
+        stateViewModel = stateViewModel,
+        uriHandler = LocalUriHandler.current
     )
 }

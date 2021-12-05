@@ -21,8 +21,19 @@ import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
  * Actions sealed class for screen [SignInScreen]
  */
 sealed class SignInActions {
+
     /**
-     * Sign in user
+     * Open oauth github
      */
     data class SignIn(val nickname: String) : SignInActions()
+
+    /**
+     * SignIn by code
+     */
+    data class SignInCode(val code: String) : SignInActions()
+
+    /**
+     * Open start page for loading data user
+     */
+    object ToStartPage : SignInActions()
 }

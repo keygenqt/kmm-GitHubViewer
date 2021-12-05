@@ -19,6 +19,8 @@ import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.keygenqt.viewer.android.interfaces.IModel
+import kotlinx.datetime.LocalDateTime
+import java.util.*
 
 /**
  * User for all app
@@ -36,11 +38,35 @@ import com.keygenqt.viewer.android.interfaces.IModel
 @Immutable
 data class UserModel(
     @PrimaryKey override val id: String,
+    val login: String,
+    val nodeId: String,
     val avatarUrl: String,
+    val gravatarId: String,
+    val url: String,
+    val htmlUrl: String,
+    val followersUrl: String,
+    val followingUrl: String,
+    val gistsUrl: String,
+    val starredUrl: String,
+    val subscriptionsUrl: String,
+    val organizationsUrl: String,
+    val reposUrl: String,
+    val eventsUrl: String,
+    val receivedEventsUrl: String,
+    val type: String,
+    val siteAdmin: Boolean,
     val name: String,
-    val blog: String,
-    val twitterUsername: String,
     val company: String,
+    val blog: String,
     val location: String,
+    val email: String,
+    val hireable: String,
     val bio: String,
+    val twitterUsername: String,
+    val publicRepos: Int,
+    val publicGists: Int,
+    val followers: Int,
+    val following: Int,
+    val createdAt: LocalDateTime?,
+    val updatedAt: LocalDateTime?,
 ) : IModel

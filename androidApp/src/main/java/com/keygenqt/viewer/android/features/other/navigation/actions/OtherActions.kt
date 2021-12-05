@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.other.navigation.actions
 
 import com.keygenqt.viewer.android.features.other.navigation.actions.impl.SignInActions
+import com.keygenqt.viewer.android.features.other.navigation.actions.impl.StartPageActions
 import com.keygenqt.viewer.android.features.other.navigation.actions.impl.WelcomeActions
 
 /**
@@ -23,4 +24,5 @@ import com.keygenqt.viewer.android.features.other.navigation.actions.impl.Welcom
  */
 interface OtherActions :
     SignInActions,
-    WelcomeActions
+    WelcomeActions,
+    StartPageActions

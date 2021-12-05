@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.data.mock
+package com.keygenqt.viewer.android.features.other.ui.viewModels
 
-import com.keygenqt.viewer.android.data.models.UserModel
+import androidx.lifecycle.ViewModel
+import com.keygenqt.viewer.android.base.ViewModelStates
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
 
-fun mockUserModel() = UserModel(
-    id = "id",
-    avatarUrl = "https://get.wallhere.com/photo/women-brunette-face-wind-portrait-hair-in-face-depth-of-field-women-outdoors-sea-cliff-motion-blur-blue-eyes-1379479.jpg",
-    name = "Vitaliy Zarubin",
-    blog = "https://keygenqt.com/",
-    twitterUsername = "@zarubin_vitaliy",
-    company = "Surf",
-    location = "Moscow",
-    bio = "Talk is cheap. Show me the code.",
-)
+/**
+ * [ViewModel] for [WelcomeScreen]
+ */
+@HiltViewModel
+class WelcomeViewModel @Inject constructor() : ViewModelStates()
