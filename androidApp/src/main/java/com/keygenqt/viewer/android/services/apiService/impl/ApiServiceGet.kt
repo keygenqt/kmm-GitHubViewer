@@ -20,6 +20,7 @@ import com.keygenqt.response.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.models.UserModel
+import com.keygenqt.viewer.android.data.responses.RepoResponse
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi
@@ -46,6 +47,22 @@ interface ApiServiceGet {
                     .responseCheckApp()
                     .body()!!
                     .toModel()
+            }
+        }
+    }
+
+    /**
+     * Get user repos
+     *
+     * @return ResponseResult<*>
+     */
+    suspend fun getUserRepos(): ResponseResult<List<RepoResponse>> {
+        return withContext(Dispatchers.IO) {
+            LocalTryExecuteWithResponse.executeWithResponse {
+                api.getUserRepos()
+                    .delay(BuildConfig.DEBUG)
+                    .responseCheckApp()
+                    .body()!!
             }
         }
     }

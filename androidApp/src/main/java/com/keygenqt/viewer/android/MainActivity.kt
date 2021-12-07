@@ -15,7 +15,6 @@
  */
 package com.keygenqt.viewer.android
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver.OnPreDrawListener
@@ -26,7 +25,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
-import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.theme.AppTheme

@@ -20,12 +20,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.base.ViewModelState
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.other.ui.actions.StartPageActions
-import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
 import com.keygenqt.viewer.android.features.other.ui.viewModels.StartPageViewModel
-import com.keygenqt.viewer.android.features.other.ui.viewModels.WelcomeViewModel
 
 /**
  * Start page for loading required data

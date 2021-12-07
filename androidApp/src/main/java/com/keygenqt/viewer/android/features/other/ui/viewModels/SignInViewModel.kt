@@ -17,12 +17,9 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.keygenqt.response.extensions.error
 import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.BuildConfig
-import com.keygenqt.viewer.android.base.ViewModelStates
-import com.keygenqt.viewer.android.data.models.SecurityModel
+import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
@@ -30,8 +27,6 @@ import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
 import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLinks
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -47,10 +42,10 @@ class SignInViewModel @Inject constructor(
     /**
      * Generate url for open in browser
      *
-     * @param nickname login user
+     * @param login login user
      */
     fun signIn(
-        nickname: String,
+        login: String,
     ) {
         setSuccess(Uri.Builder().apply {
             scheme("https")
@@ -58,8 +53,8 @@ class SignInViewModel @Inject constructor(
             appendPath("login")
             appendPath("oauth")
             appendPath("authorize")
-            appendQueryParameter("login", nickname)
-            appendQueryParameter("state", UUID.randomUUID().toString())
+            appendQueryParameter("login", login)
+            appendQueryParameter("state", login)
             appendQueryParameter("redirect_uri", getDynamicLinks("/oauth"))
             appendQueryParameter("allow_signup", false.toString())
             appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
@@ -68,10 +63,11 @@ class SignInViewModel @Inject constructor(
     }
 
     fun signInCode(
+        login: String,
         code: String,
     ) {
         queryLaunch {
-            apiService.oauthCode(code = code)
+            apiService.oauthCode(login = login, code = code)
                 .success { model ->
                     // save security tokens
                     dataService.withTransaction<SecurityModelDataService> {

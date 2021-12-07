@@ -1,4 +1,4 @@
-package com.keygenqt.viewer.android.base
+package com.keygenqt.viewer.android.base.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

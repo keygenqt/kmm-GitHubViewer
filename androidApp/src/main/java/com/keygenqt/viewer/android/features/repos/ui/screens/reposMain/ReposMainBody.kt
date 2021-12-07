@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.screens.followersMain
+package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
@@ -26,7 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
 import com.keygenqt.viewer.android.theme.AppTheme

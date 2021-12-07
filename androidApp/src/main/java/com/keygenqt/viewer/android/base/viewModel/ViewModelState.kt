@@ -1,4 +1,4 @@
-package com.keygenqt.viewer.android.base
+package com.keygenqt.viewer.android.base.viewModel
 
 sealed class ViewModelState {
 

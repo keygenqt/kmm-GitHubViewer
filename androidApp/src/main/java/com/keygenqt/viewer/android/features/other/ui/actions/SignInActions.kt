@@ -30,7 +30,7 @@ sealed class SignInActions {
     /**
      * SignIn by code
      */
-    data class SignInCode(val code: String) : SignInActions()
+    data class SignInCode(val login: String, val code: String) : SignInActions()
 
     /**
      * Open start page for loading data user

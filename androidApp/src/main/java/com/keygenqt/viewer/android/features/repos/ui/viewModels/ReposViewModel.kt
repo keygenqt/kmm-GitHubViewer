@@ -16,6 +16,13 @@
 package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
 import androidx.lifecycle.ViewModel
+import com.keygenqt.response.extensions.success
+import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
+import com.keygenqt.viewer.android.extensions.withTransaction
+import com.keygenqt.viewer.android.services.apiService.AppApiService
+import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
+import com.keygenqt.viewer.android.utils.StaticData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -23,4 +30,19 @@ import javax.inject.Inject
  * [ViewModel] for feature
  */
 @HiltViewModel
-class ReposViewModel @Inject constructor() : ViewModel()
+class ReposViewModel @Inject constructor(
+    private val apiService: AppApiService,
+    private val dataService: AppDataService
+) : ViewModelStates() {
+
+    /**
+     * Start loading data user
+     */
+    fun startLoading() {
+        queryLaunch {
+            apiService.getUserRepos().success {
+
+            }
+        }
+    }
+}

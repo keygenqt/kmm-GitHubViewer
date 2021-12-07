@@ -13,6 +13,6 @@ data class DataException(
     val error: String = "",
     val error_description: String = "",
     val error_uri: String = "",
-    override val message: String = "",
+    override val message: String = "Something wrong",
     val documentation_url: String = "",
 ): RuntimeException()

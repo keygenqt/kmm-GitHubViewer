@@ -50,8 +50,8 @@ fun SignInScreen(
 
     // query by code
     LaunchedEffect(code) {
-        code?.let {
-            onActions(SignInActions.SignInCode(it))
+        if (code != null && state != null) {
+            onActions(SignInActions.SignInCode(login = state, code = code))
         }
     }
 

@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.screens.followersMain
+package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import com.keygenqt.viewer.android.base.LocalViewModel
+import com.keygenqt.viewer.android.features.other.ui.actions.StartPageActions
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
 import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposViewModel
 
@@ -31,6 +33,11 @@ fun ReposMainScreen(
     viewModel: ReposViewModel,
     onActions: (ReposMainActions) -> Unit = {},
 ) {
+
+    LaunchedEffect(Unit) {
+        onActions(ReposMainActions.StartLoadingData)
+    }
+
     ReposMainBody(
         onActions = onActions,
         appViewModel = LocalViewModel.current

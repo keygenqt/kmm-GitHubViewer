@@ -16,7 +16,7 @@
 package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.keygenqt.viewer.android.base.ViewModelStates
+import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen

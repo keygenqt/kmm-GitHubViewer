@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.features.repos.ui.screens.followersMain.ReposMainBody
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainBody
 import com.keygenqt.viewer.android.interfaces.IAppNavActions
 import com.keygenqt.viewer.android.menu.MenuTab.Companion.findByRoute
 import com.keygenqt.viewer.android.theme.AppTheme

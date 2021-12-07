@@ -50,7 +50,10 @@ fun NavGraphBuilder.signInGraph(
         ) { event ->
             when (event) {
                 is SignInActions.SignIn -> viewModel.signIn(event.nickname)
-                is SignInActions.SignInCode -> viewModel.signInCode(event.code)
+                is SignInActions.SignInCode -> viewModel.signInCode(
+                    login = event.login,
+                    code = event.code
+                )
                 is SignInActions.ToStartPage -> appActions.toStartPage(
                     ListenDestination.clearStack(
                         backDispatcher

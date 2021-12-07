@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.base
+package com.keygenqt.viewer.android.base.viewModel
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
@@ -45,7 +45,8 @@ class AppViewModel @Inject constructor(
         viewModelScope.launch {
             dataService.getSecurityModel().distinctUntilChanged().collect {
                 it?.let {
-                    Timber.d("State auth: I am is user")
+                    Timber.d("State auth: I am is ${it.login}")
+                    StaticData.DataUser.setLogin(it.login)
                     StaticData.AuthTokens.setTokens(it.accessToken, it.refreshToken)
                 } ?: run {
                     StaticData.AuthTokens.clear()
