@@ -21,9 +21,9 @@ import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
-import com.keygenqt.viewer.android.utils.StaticData
+import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -40,8 +40,15 @@ class ReposViewModel @Inject constructor(
      */
     fun startLoading() {
         queryLaunch {
-            apiService.getUserRepos().success {
-
+            apiService.getUserRepos().success { models ->
+                // @todo
+                models.forEach { model ->
+                    Timber.e(model.toString())
+                }
+                dataService.withTransaction<RepoModelDataService> {
+                    clearRepoModel()
+                    insertRepoModel(*models.toTypedArray())
+                }
             }
         }
     }

@@ -19,7 +19,6 @@ import com.keygenqt.viewer.android.data.responses.RepoResponse
 import com.keygenqt.viewer.android.data.responses.UserResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 
 /**
  * The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.

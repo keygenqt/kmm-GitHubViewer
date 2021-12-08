@@ -13,16 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.extensions
+package com.keygenqt.viewer.android.data.converters
 
-import androidx.navigation.NavBackStackEntry
+import androidx.room.TypeConverter
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 /**
- * Get string argument
- *
- * @author Vitaliy Zarubin
+ * Converter for map value
  */
-fun NavBackStackEntry.getString(key: String): String? {
-    val value = arguments?.getString(key)
-    return if (value != "{$key}") value else null
+class MapConverter {
+    @TypeConverter
+    fun fromMap(value: Map<String, String?>): String {
+        return Json.encodeToString(value)
+    }
+
+    @TypeConverter
+    fun toMap(value: String): Map<String, String?> {
+        return Json.decodeFromString(value)
+    }
 }

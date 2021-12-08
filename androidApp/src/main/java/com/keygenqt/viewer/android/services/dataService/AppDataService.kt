@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.services.dataService
 
 import com.keygenqt.viewer.android.data.AppDatabase
 import com.keygenqt.viewer.android.data.AppSecurityDatabase
+import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 
@@ -28,7 +29,7 @@ import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataServic
 class AppDataService(
     override val db: AppDatabase,
     override val dbSecurity: AppSecurityDatabase,
-) : SecurityModelDataService, UserModelDataService {
+) : SecurityModelDataService, UserModelDataService, RepoModelDataService {
 
     /**
      * Performed when the user logs out
@@ -36,5 +37,6 @@ class AppDataService(
     override fun clearCacheAfterLogout() {
         super<SecurityModelDataService>.clearCacheAfterLogout()
         super<UserModelDataService>.clearCacheAfterLogout()
+        super<RepoModelDataService>.clearCacheAfterLogout()
     }
 }

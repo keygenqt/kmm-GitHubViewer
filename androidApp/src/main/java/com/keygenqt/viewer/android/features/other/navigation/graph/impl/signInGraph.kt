@@ -37,9 +37,11 @@ fun NavGraphBuilder.signInGraph(
 ) {
     composable(
         route = OtherNav.navSignIn.signInScreen.route,
-        deepLinks = listOf(navDeepLink {
-            uriPattern = getDynamicLinks("/oauth?code={code}&state={state}")
-        })
+        deepLinks = listOf(
+            navDeepLink {
+                uriPattern = getDynamicLinks("/oauth?code={code}&state={state}")
+            }
+        )
     ) {
         val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
         val viewModel: SignInViewModel = hiltViewModel()

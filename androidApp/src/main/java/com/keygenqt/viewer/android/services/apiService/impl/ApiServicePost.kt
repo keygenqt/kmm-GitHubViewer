@@ -21,7 +21,6 @@ import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.models.SecurityModel
 import com.keygenqt.viewer.android.data.requests.AuthRequest
-import com.keygenqt.viewer.android.data.responses.AuthResponse
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi

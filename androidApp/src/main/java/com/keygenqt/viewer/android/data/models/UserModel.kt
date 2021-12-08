@@ -23,16 +23,7 @@ import kotlinx.datetime.LocalDateTime
 import java.util.*
 
 /**
- * User for all app
- *
- * @property id key from api
- * @property avatarUrl avatar URL
- * @property name name of the user
- * @property blog blog URL of the user
- * @property twitterUsername Twitter username of the user
- * @property company company of the user
- * @property location location of the user
- * @property bio short biography of the user
+ * User model
  */
 @Entity
 @Immutable

@@ -47,19 +47,21 @@ class SignInViewModel @Inject constructor(
     fun signIn(
         login: String,
     ) {
-        setSuccess(Uri.Builder().apply {
-            scheme("https")
-            authority("github.com")
-            appendPath("login")
-            appendPath("oauth")
-            appendPath("authorize")
-            appendQueryParameter("login", login)
-            appendQueryParameter("state", login)
-            appendQueryParameter("redirect_uri", getDynamicLinks("/oauth"))
-            appendQueryParameter("allow_signup", false.toString())
-            appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
-            build()
-        }.toString())
+        setSuccess(
+            Uri.Builder().apply {
+                scheme("https")
+                authority("github.com")
+                appendPath("login")
+                appendPath("oauth")
+                appendPath("authorize")
+                appendQueryParameter("login", login)
+                appendQueryParameter("state", login)
+                appendQueryParameter("redirect_uri", getDynamicLinks("/oauth"))
+                appendQueryParameter("allow_signup", false.toString())
+                appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
+                build()
+            }.toString()
+        )
     }
 
     fun signInCode(

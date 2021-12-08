@@ -17,7 +17,6 @@ package com.keygenqt.viewer.android.data.mappers
 
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.data.responses.UserResponse
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.toLocalDateTime
 
 /**

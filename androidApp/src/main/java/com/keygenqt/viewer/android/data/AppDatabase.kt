@@ -18,21 +18,28 @@ package com.keygenqt.viewer.android.data
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.keygenqt.viewer.android.data.converters.LocalDateTimeConverter
 import com.keygenqt.viewer.android.data.converters.ListConverter
+import com.keygenqt.viewer.android.data.converters.LocalDateTimeConverter
+import com.keygenqt.viewer.android.data.converters.MapConverter
+import com.keygenqt.viewer.android.data.dao.RepoModelDao
 import com.keygenqt.viewer.android.data.dao.UserModelDao
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
 
 /**
  * Database configuration [RoomDatabase]
  */
 @Database(
-    entities = [UserModel::class],
+    entities = [
+        UserModel::class,
+        RepoModel::class,
+    ],
     version = 1,
     exportSchema = false
 )
 @TypeConverters(
     value = [
+        MapConverter::class,
         ListConverter::class,
         LocalDateTimeConverter::class,
     ]
@@ -42,4 +49,9 @@ abstract class AppDatabase : RoomDatabase() {
      * Dao for model [UserModel]
      */
     abstract fun userModelDao(): UserModelDao
+
+    /**
+     * Dao for model [RepoModel]
+     */
+    abstract fun repoModelDao(): RepoModelDao
 }

@@ -19,8 +19,9 @@ import com.keygenqt.response.LocalTryExecuteWithResponse
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
+import com.keygenqt.viewer.android.data.mappers.toModels
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
-import com.keygenqt.viewer.android.data.responses.RepoResponse
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi
@@ -56,13 +57,14 @@ interface ApiServiceGet {
      *
      * @return ResponseResult<*>
      */
-    suspend fun getUserRepos(): ResponseResult<List<RepoResponse>> {
+    suspend fun getUserRepos(): ResponseResult<List<RepoModel>> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
                 api.getUserRepos()
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()
                     .body()!!
+                    .toModels()
             }
         }
     }

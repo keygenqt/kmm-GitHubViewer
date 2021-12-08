@@ -16,7 +16,6 @@
 package com.keygenqt.viewer.android.data.requests
 
 import androidx.compose.runtime.Immutable
-import com.keygenqt.viewer.android.BuildConfig
 import kotlinx.serialization.Serializable
 
 /**

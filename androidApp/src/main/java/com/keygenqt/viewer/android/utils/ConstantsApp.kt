@@ -17,7 +17,6 @@ package com.keygenqt.viewer.android.utils
 
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 
 /**
  * Base Constants for App
