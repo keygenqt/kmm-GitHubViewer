@@ -15,7 +15,6 @@
  */
 package com.keygenqt.viewer.android
 
-import android.graphics.Color
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
@@ -27,8 +26,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.viewer.android.base.LocalViewModel
+import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 import com.keygenqt.viewer.android.features.followers.navigation.graph.followersNavGraph
 import com.keygenqt.viewer.android.features.other.navigation.graph.otherNavGraph
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav

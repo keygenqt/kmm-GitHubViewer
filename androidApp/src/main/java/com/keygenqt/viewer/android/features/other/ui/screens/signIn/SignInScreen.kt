@@ -23,7 +23,6 @@ import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
 import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
-import timber.log.Timber
 
 /**
  * Base page fun for initialization
@@ -50,8 +49,8 @@ fun SignInScreen(
 
     // query by code
     LaunchedEffect(code) {
-        code?.let {
-            onActions(SignInActions.SignInCode(it))
+        if (code != null && state != null) {
+            onActions(SignInActions.SignInCode(login = state, code = code))
         }
     }
 

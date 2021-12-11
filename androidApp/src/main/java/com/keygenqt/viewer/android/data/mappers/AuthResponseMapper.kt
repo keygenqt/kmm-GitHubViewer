@@ -21,8 +21,9 @@ import com.keygenqt.viewer.android.data.responses.AuthResponse
 /**
  * Extension for response [AuthResponse]
  */
-fun AuthResponse.toModel(): SecurityModel {
+fun AuthResponse.toModel(login: String): SecurityModel {
     return SecurityModel(
+        login = login,
         accessToken = access_token,
         expiresIn = expires_in.toInt(),
         refreshToken = refresh_token,
@@ -33,6 +34,6 @@ fun AuthResponse.toModel(): SecurityModel {
 /**
  * Extension for list response [AuthResponse]
  */
-fun List<AuthResponse>.toModels(): List<SecurityModel> {
-    return map { it.toModel() }
+fun List<AuthResponse>.toModels(login: String): List<SecurityModel> {
+    return map { it.toModel(login) }
 }

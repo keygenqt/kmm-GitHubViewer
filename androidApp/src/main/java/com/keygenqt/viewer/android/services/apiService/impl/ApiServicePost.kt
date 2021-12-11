@@ -21,7 +21,6 @@ import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.models.SecurityModel
 import com.keygenqt.viewer.android.data.requests.AuthRequest
-import com.keygenqt.viewer.android.data.responses.AuthResponse
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi
@@ -40,7 +39,7 @@ interface ApiServicePost {
      *
      * @param code from github api for login user
      */
-    suspend fun oauthCode(code: String): ResponseResult<SecurityModel> {
+    suspend fun oauthCode(login: String, code: String): ResponseResult<SecurityModel> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
                 api.oauth(
@@ -53,7 +52,7 @@ interface ApiServicePost {
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()
                     .body()
-                    ?.toModel()!!
+                    ?.toModel(login)!!
             }
         }
     }

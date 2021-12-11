@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.base
 
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.runtime.staticCompositionLocalOf
+import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 
 /**
  * [AppViewModel] Can be used in CompositionLocalProvider to provide values.

@@ -18,7 +18,6 @@ package com.keygenqt.viewer.android.compose.components
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -28,9 +27,10 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.navigationBarsWithImePadding
 import com.google.accompanist.insets.statusBarsPadding
-import com.keygenqt.viewer.android.base.AppViewModel
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
+import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 
 /**
  * Main scaffold for app
@@ -41,6 +41,7 @@ fun AppScaffold(
     title: String? = null,
     loading: Boolean = false,
     scrollState: ScrollState? = null,
+    refreshState: SwipeRefreshState? = null,
     appViewModel: AppViewModel = LocalViewModel.current,
     backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current,
     actions: @Composable ((RowScope) -> Unit)? = null,
@@ -48,7 +49,7 @@ fun AppScaffold(
 ) {
     // Scroll behavior top bar with nestedScrollConnection
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior {
-        scrollState?.value ?: 0 > 0
+        refreshState?.isSwipeInProgress == true || scrollState?.value ?: 0 > 0
     }
 
     Scaffold(
@@ -90,16 +91,7 @@ fun AppScaffold(
                         actions?.invoke(this)
                         // show loading indicator
                         if (loading) {
-                            IconButton(
-                                enabled = false,
-                                onClick = {}
-                            ) {
-                                CircularProgressIndicator(
-                                    strokeWidth = 2.dp,
-                                    modifier = Modifier.size(20.dp),
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer
-                                )
-                            }
+                            LoadingBlockAnimation()
                         }
                     }
                 )
@@ -108,7 +100,9 @@ fun AppScaffold(
         bottomBar = appViewModel.getBottomBar() ?: {}
     ) {
         Box(
-            Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+            Modifier
+                .nestedScroll(scrollBehavior.nestedScrollConnection)
+                .padding(it)
         ) {
             content.invoke()
         }

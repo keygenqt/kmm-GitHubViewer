@@ -20,7 +20,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
-import com.keygenqt.viewer.android.features.repos.ui.screens.followersMain.ReposMainScreen
+import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainScreen
+import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposViewModel
 
 /**
  * NavGraph for [ReposMainScreen]
@@ -29,6 +31,11 @@ fun NavGraphBuilder.reposMainGraph(
     appActions: AppActions,
 ) {
     composable(ReposNav.navReposMain.reposMainScreen.route) {
-        ReposMainScreen(viewModel = hiltViewModel())
+        val viewModel: ReposViewModel = hiltViewModel()
+        ReposMainScreen(viewModel = viewModel) { event ->
+            when (event) {
+                ReposMainActions.SortToggle -> viewModel.sortToggle()
+            }
+        }
     }
 }

@@ -33,7 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.ViewModelState
+import com.keygenqt.viewer.android.base.viewModel.ViewModelState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.compose.components.FormSuccess

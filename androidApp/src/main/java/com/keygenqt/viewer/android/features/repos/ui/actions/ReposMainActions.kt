@@ -15,9 +15,15 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.actions
 
-import com.keygenqt.viewer.android.features.repos.ui.screens.followersMain.ReposMainScreen
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainScreen
 
 /**
  * Actions sealed class for screen [ReposMainScreen]
  */
-sealed class ReposMainActions
+sealed class ReposMainActions {
+
+    /**
+     * Sort repos
+     */
+    object SortToggle : ReposMainActions()
+}

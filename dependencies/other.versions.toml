@@ -5,16 +5,16 @@ module = "com.jakewharton.timber:timber"
 module = "androidx.startup:startup-runtime"
 [libraries.other-reflection]
 module = "org.jetbrains.kotlin:kotlin-reflect"
-[libraries.other-paging]
+[libraries.room-paging]
+module = "androidx.room:room-paging"
+[libraries.paging-compose]
 module = "androidx.paging:paging-compose"
-[libraries.other-routing]
-module = "com.keygenqt.routing:compose-routing"
-[libraries.other-form]
-module = "com.keygenqt.forms:compose-forms"
 [libraries.other-emoji]
 module = "com.vdurmont:emoji-java"
 [libraries.kotlinx-datetime]
 module = "org.jetbrains.kotlinx:kotlinx-datetime"
+[libraries.security-crypto]
+module = "androidx.security:security-crypto"
 
 # versions
 [libraries.other-timber.version]
@@ -23,25 +23,25 @@ ref = "timberVersion"
 ref = "startupVersion"
 [libraries.other-reflection.version]
 ref = "kotlinVersion"
-[libraries.other-paging.version]
+[libraries.room-paging.version]
+ref = "roomPagingVersion"
+[libraries.paging-compose.version]
 ref = "pagingComposeVersion"
-[libraries.other-routing.version]
-ref = "composeRoutingVersion"
-[libraries.other-form.version]
-ref = "composeFormsVersion"
 [libraries.other-emoji.version]
 ref = "emojiVersion"
 [libraries.kotlinx-datetime.version]
 ref = "kotlinxDatetimeVersion"
+[libraries.security-crypto.version]
+ref = "securityCryptoVersion"
 
 [bundles]
 other = [
     "other-timber",
     "other-startup",
     "other-reflection",
-    "other-paging",
-    "other-routing",
-    "other-form",
+    "room-paging",
+    "paging-compose",
     "other-emoji",
     "kotlinx-datetime",
+    "security-crypto",
 ]

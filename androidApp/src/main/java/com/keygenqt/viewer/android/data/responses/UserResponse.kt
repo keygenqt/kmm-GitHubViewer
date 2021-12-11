@@ -22,13 +22,6 @@ import kotlinx.serialization.Serializable
  * Response user
  *
  * @property id user identifier
- * @property avatar_url avatar URL
- * @property name name of the user
- * @property blog blog URL of the user
- * @property twitter_username Twitter username of the user
- * @property company company of the user
- * @property location location of the user
- * @property bio short biography of the user
  */
 @Immutable
 @Serializable

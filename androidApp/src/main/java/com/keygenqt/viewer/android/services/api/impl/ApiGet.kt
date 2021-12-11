@@ -15,9 +15,13 @@
  */
 package com.keygenqt.viewer.android.services.api.impl
 
+import androidx.annotation.IntRange
+import com.keygenqt.viewer.android.data.responses.RepoResponse
 import com.keygenqt.viewer.android.data.responses.UserResponse
+import com.keygenqt.viewer.android.utils.ConstantsPaging.PAGE_LIMIT
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
@@ -26,4 +30,13 @@ interface ApiGet {
 
     @GET("/user")
     suspend fun getUser(): Response<UserResponse>
+
+    @GET("user/repos")
+    suspend fun getUserRepos(
+        @Query("page") @IntRange(from = 1) page: Int = 1,
+        @Query("per_page") @IntRange(from = 1) perPage: Int = PAGE_LIMIT,
+        @Query("type") type: String = "owner",
+        @Query("sort") sort: String = "created",
+        @Query("direction") direction: String = "asc"
+    ): Response<List<RepoResponse>>
 }

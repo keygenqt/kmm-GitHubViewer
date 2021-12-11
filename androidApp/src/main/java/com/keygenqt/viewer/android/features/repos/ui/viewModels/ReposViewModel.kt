@@ -16,11 +16,60 @@
 package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
 import androidx.lifecycle.ViewModel
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
+import com.keygenqt.viewer.android.data.models.RepoModel
+import com.keygenqt.viewer.android.data.paging.ReposRemoteMediator
+import com.keygenqt.viewer.android.data.preferences.BasePreferences
+import com.keygenqt.viewer.android.services.apiService.AppApiService
+import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.utils.ConstantsPaging
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 /**
  * [ViewModel] for feature
  */
 @HiltViewModel
-class ReposViewModel @Inject constructor() : ViewModel()
+class ReposViewModel @Inject constructor(
+    private val apiService: AppApiService,
+    private val dataService: AppDataService,
+    private val preferences: BasePreferences,
+) : ViewModelStates() {
+
+    /**
+     * Is sort desc
+     */
+    private val _isSortDescListRepo: MutableStateFlow<Boolean> = MutableStateFlow(preferences.isSortDescListRepo)
+
+    /**
+     * StateFlow is sort desc
+     */
+    val isSortDescListRepo: StateFlow<Boolean> get() = _isSortDescListRepo.asStateFlow()
+
+    /**
+     * Paging remote mediator [RepoModel]
+     */
+    @OptIn(ExperimentalPagingApi::class)
+    val listRepo: Flow<PagingData<RepoModel>> = Pager(
+        config = PagingConfig(pageSize = ConstantsPaging.PAGE_LIMIT),
+        remoteMediator = ReposRemoteMediator(apiService, dataService, preferences)
+    ) {
+        dataService.pagingSourceRepoModels()
+    }.flow
+
+    /**
+     * Toggle type sort
+     */
+    fun sortToggle() {
+        preferences.isSortDescListRepo = !preferences.isSortDescListRepo
+        _isSortDescListRepo.value = preferences.isSortDescListRepo
+    }
+}

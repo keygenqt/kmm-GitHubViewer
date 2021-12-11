@@ -15,10 +15,13 @@
  */
 package com.keygenqt.viewer.android.services.apiService.impl
 
+import androidx.annotation.IntRange
 import com.keygenqt.response.LocalTryExecuteWithResponse
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
+import com.keygenqt.viewer.android.data.mappers.toModels
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.extensions.responseCheckApp
@@ -46,6 +49,29 @@ interface ApiServiceGet {
                     .responseCheckApp()
                     .body()!!
                     .toModel()
+            }
+        }
+    }
+
+    /**
+     * Get user repos
+     *
+     * @return ResponseResult<*>
+     */
+    suspend fun getUserRepos(
+        @IntRange(from = 1) page: Int = 1,
+        isSortDesc: Boolean = false,
+    ): ResponseResult<List<RepoModel>> {
+        return withContext(Dispatchers.IO) {
+            LocalTryExecuteWithResponse.executeWithResponse {
+                api.getUserRepos(
+                    page = page,
+                    direction = if (isSortDesc) "desc" else "asc"
+                )
+                    .delay(BuildConfig.DEBUG)
+                    .responseCheckApp()
+                    .body()!!
+                    .toModels()
             }
         }
     }

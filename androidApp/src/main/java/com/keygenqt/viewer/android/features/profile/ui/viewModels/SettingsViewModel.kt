@@ -19,7 +19,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.response.extensions.done
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.ViewModelStates
+import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
 import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen

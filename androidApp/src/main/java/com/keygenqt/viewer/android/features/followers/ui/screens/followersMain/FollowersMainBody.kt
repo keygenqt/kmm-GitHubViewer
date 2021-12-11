@@ -28,9 +28,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 import com.keygenqt.viewer.android.compose.components.AppScaffold
-import com.keygenqt.viewer.android.extensions.navigationBarsPaddingMaterial3
 import com.keygenqt.viewer.android.features.followers.ui.actions.FollowersMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
@@ -46,7 +45,6 @@ fun FollowersMainBody(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.errorContainer)
-                .navigationBarsPaddingMaterial3()
         ) {
             Text(
                 modifier = Modifier.align(Alignment.Center),

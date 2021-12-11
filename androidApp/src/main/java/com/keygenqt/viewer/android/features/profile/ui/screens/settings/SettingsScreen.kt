@@ -20,7 +20,6 @@ import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
-import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
 import com.keygenqt.viewer.android.features.profile.ui.viewModels.SettingsViewModel
 
 /**

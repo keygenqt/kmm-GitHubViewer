@@ -25,12 +25,12 @@ sealed class StartPageActions {
     /**
      * Start loading data user
      */
-    object ToSignIn : StartPageActions()
+    object StartLoadingData : StartPageActions()
 
     /**
      * Start loading data user
      */
-    object StartLoadingData : StartPageActions()
+    object ToSignIn : StartPageActions()
 
     /**
      * Open repos page
