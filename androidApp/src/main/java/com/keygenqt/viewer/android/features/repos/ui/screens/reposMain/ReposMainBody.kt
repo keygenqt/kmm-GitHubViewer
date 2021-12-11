@@ -16,37 +16,44 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 import com.keygenqt.viewer.android.compose.components.AppScaffold
+import com.keygenqt.viewer.android.compose.components.AppSwipeRefreshList
+import com.keygenqt.viewer.android.compose.components.RotateIconSort
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable
 fun ReposMainBody(
-    appViewModel: AppViewModel? = null,
+    isSortDescListRepo: Boolean = false,
+    models: LazyPagingItems<RepoModel>,
     onActions: (ReposMainActions) -> Unit = {},
 ) {
+    val refreshState = rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)
+
     AppScaffold(
-        title = stringResource(id = R.string.repos_title)
+        refreshState = refreshState,
+        title = stringResource(id = R.string.repos_title),
+        actions = {
+            RotateIconSort(isRotate = isSortDescListRepo) {
+                onActions(ReposMainActions.SortToggle)
+                models.refresh()
+            }
+        }
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            Text(
-                modifier = Modifier.align(Alignment.Center),
-                text = "Repos"
-            )
+        AppSwipeRefreshList(
+            refreshState = refreshState,
+            items = models,
+        ) { index, item ->
+            ReposItem(index, item)
         }
     }
 }
@@ -55,6 +62,6 @@ fun ReposMainBody(
 @Composable
 private fun Preview() {
     AppTheme {
-        ReposMainBody()
+//        ReposMainBody()
     }
 }

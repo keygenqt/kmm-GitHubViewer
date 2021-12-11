@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.models.UserModel
-import com.keygenqt.viewer.android.extensions.navigationBarsPaddingMaterial3
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
@@ -72,7 +71,6 @@ fun ProfileMainBody(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .navigationBarsPaddingMaterial3()
         ) {
             Column(
                 modifier = Modifier

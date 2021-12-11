@@ -1,0 +1,32 @@
+# modules
+[libraries.compose-modifier-ext]
+module = "com.keygenqt.modifier:compose-modifier-ext"
+[libraries.android-response-result]
+module = "com.keygenqt.response:android-response-result"
+[libraries.compose-routing]
+module = "com.keygenqt.routing:compose-routing"
+[libraries.surf-accompanist]
+module = "com.keygenqt.accompanist:surf-accompanist"
+[libraries.compose-forms]
+module = "com.keygenqt.forms:compose-forms"
+
+# versions
+[libraries.compose-modifier-ext.version]
+ref = "composeModifierExtVersion"
+[libraries.android-response-result.version]
+ref = "androidResponseResultVersion"
+[libraries.compose-routing.version]
+ref = "composeRoutingVersion"
+[libraries.surf-accompanist.version]
+ref = "surfAccompanistVersion"
+[libraries.compose-forms.version]
+ref = "composeFormsVersion"
+
+[bundles]
+custom = [
+    "compose-modifier-ext",
+    "android-response-result",
+    "compose-routing",
+    "surf-accompanist",
+    "compose-forms",
+]

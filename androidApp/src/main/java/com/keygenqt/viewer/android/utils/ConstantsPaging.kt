@@ -1,5 +1,5 @@
-/*
- * Copyright 2021 Vitaliy Zarubin
+/**
+ * Copyright 2021 Surf LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.extensions
+package com.keygenqt.viewer.android.utils
 
+import java.util.concurrent.TimeUnit
 
+/**
+ * Constants for paging lists
+ *
+ * @author Vitaliy Zarubin
+ */
+object ConstantsPaging {
+
+    /**
+     * Lists refresh once per hour
+     */
+    val CACHE_TIMEOUT = TimeUnit.HOURS.toMillis(1)
+
+    /**
+     * Max count list items
+     */
+    const val MAX_PAGE_SIZE = 100
+
+    /**
+     * Query page size
+     */
+    const val PAGE_LIMIT = 10
+}

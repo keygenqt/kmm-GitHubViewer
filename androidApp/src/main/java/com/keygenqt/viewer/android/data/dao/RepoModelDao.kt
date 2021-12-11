@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.data.dao
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -27,6 +28,10 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface RepoModelDao {
+
+    @Query("SELECT * FROM RepoModel")
+    fun pagingSource(): PagingSource<Int, RepoModel>
+
     @Query("SELECT * FROM RepoModel")
     fun getModels(): Flow<List<RepoModel>>
 
@@ -35,7 +40,4 @@ interface RepoModelDao {
 
     @Query("DELETE FROM RepoModel")
     suspend fun clear()
-
-    @Query("SELECT COUNT(*) FROM RepoModel")
-    fun count(): Int
 }

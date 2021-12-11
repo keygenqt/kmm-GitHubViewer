@@ -34,7 +34,7 @@ fun NavGraphBuilder.reposMainGraph(
         val viewModel: ReposViewModel = hiltViewModel()
         ReposMainScreen(viewModel = viewModel) { event ->
             when (event) {
-                ReposMainActions.StartLoadingData -> viewModel.startLoading()
+                ReposMainActions.SortToggle -> viewModel.sortToggle()
             }
         }
     }

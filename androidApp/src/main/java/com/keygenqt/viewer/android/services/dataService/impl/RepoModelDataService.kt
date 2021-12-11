@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.services.dataService.impl
 
+import androidx.paging.PagingSource
 import com.keygenqt.viewer.android.data.AppDatabase
 import com.keygenqt.viewer.android.data.dao.RepoModelDao
 import com.keygenqt.viewer.android.data.models.RepoModel
@@ -49,6 +50,13 @@ interface RepoModelDataService : IAppDatabase {
      */
     suspend fun insertRepoModel(vararg models: RepoModel) {
         dao.insertModels(*models)
+    }
+
+    /**
+     * Get [PagingSource] for paging list
+     */
+    fun pagingSourceRepoModels(): PagingSource<Int, RepoModel> {
+        return dao.pagingSource()
     }
 
     /**

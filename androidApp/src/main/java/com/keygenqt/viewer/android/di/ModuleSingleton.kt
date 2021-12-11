@@ -38,7 +38,7 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-object ModuleDefault {
+object ModuleSingleton {
 
     /**
      * Base encryption key
@@ -65,7 +65,7 @@ object ModuleDefault {
             .databaseBuilder(
                 context,
                 AppSecurityDatabase::class.java,
-                "${ModuleDefault::class.qualifiedName}.security.db"
+                "${ModuleSingleton::class.qualifiedName}.security.db"
             )
 
         migrations.forEach {
@@ -88,7 +88,7 @@ object ModuleDefault {
         return Room.databaseBuilder(
             application,
             AppDatabase::class.java,
-            "${ModuleDefault::class.qualifiedName}.db"
+            "${ModuleSingleton::class.qualifiedName}.db"
         )
             .fallbackToDestructiveMigration()
             .build()

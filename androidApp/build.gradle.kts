@@ -83,6 +83,16 @@ dependencies {
     implementation(libs.bundles.lottie)
     implementation(libs.bundles.firebase)
 
+    if (findProperty("internalLibrariesEnable").toString().toBoolean()) {
+        implementation(project(":android-response-result"))
+        implementation(project(":compose-forms"))
+        implementation(project(":compose-modifier-ext"))
+        implementation(project(":compose-routing"))
+        implementation(project(":surf-accompanist"))
+    } else {
+        implementation(libs.bundles.custom)
+    }
+
     kapt(libs.bundles.hiltKapt)
     kapt(libs.bundles.roomKapt)
 

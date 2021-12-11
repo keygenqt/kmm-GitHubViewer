@@ -16,8 +16,11 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import com.keygenqt.viewer.android.base.LocalViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
 import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposViewModel
 
@@ -33,12 +36,12 @@ fun ReposMainScreen(
     onActions: (ReposMainActions) -> Unit = {},
 ) {
 
-    LaunchedEffect(Unit) {
-        onActions(ReposMainActions.StartLoadingData)
-    }
+    val lazyRepos: LazyPagingItems<RepoModel> = viewModel.listRepo.collectAsLazyPagingItems()
+    val isSortDescListRepo: Boolean by viewModel.isSortDescListRepo.collectAsState()
 
     ReposMainBody(
+        isSortDescListRepo = isSortDescListRepo,
+        models = lazyRepos,
         onActions = onActions,
-        appViewModel = LocalViewModel.current
     )
 }

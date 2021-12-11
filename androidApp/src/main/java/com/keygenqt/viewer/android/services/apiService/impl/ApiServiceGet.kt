@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.services.apiService.impl
 
+import androidx.annotation.IntRange
 import com.keygenqt.response.LocalTryExecuteWithResponse
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
@@ -57,10 +58,16 @@ interface ApiServiceGet {
      *
      * @return ResponseResult<*>
      */
-    suspend fun getUserRepos(): ResponseResult<List<RepoModel>> {
+    suspend fun getUserRepos(
+        @IntRange(from = 1) page: Int = 1,
+        isSortDesc: Boolean = false,
+    ): ResponseResult<List<RepoModel>> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
-                api.getUserRepos()
+                api.getUserRepos(
+                    page = page,
+                    direction = if (isSortDesc) "desc" else "asc"
+                )
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()
                     .body()!!

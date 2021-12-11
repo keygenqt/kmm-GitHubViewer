@@ -23,7 +23,7 @@ import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMain
 sealed class ReposMainActions {
 
     /**
-     * Start loading data repos
+     * Sort repos
      */
-    object StartLoadingData : ReposMainActions()
+    object SortToggle : ReposMainActions()
 }

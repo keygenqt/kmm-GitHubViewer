@@ -15,12 +15,18 @@
  */
 package com.keygenqt.viewer.android.di
 
+import android.content.Context
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
+import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.services.api.AppApi
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ViewModelScoped
 import retrofit2.Retrofit
 
 /**
@@ -28,7 +34,7 @@ import retrofit2.Retrofit
  */
 @Module
 @InstallIn(ViewModelComponent::class)
-object ModuleNetwork {
+object ModuleViewModel {
 
     /**
      * HTTP API into a interface
@@ -41,4 +47,21 @@ object ModuleNetwork {
      */
     @Provides
     fun provideUsersApiService(api: AppApi) = AppApiService(api)
+
+    /**
+     * Shared preferences
+     */
+    @Provides
+    @ViewModelScoped
+    fun provideSharedPreferences(@ApplicationContext context: Context): BasePreferences {
+        return BasePreferences(
+            EncryptedSharedPreferences.create(
+                BasePreferences::class.java.simpleName,
+                MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
+                context,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+        )
+    }
 }
