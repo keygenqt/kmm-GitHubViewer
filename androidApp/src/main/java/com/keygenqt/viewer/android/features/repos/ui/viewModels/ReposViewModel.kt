@@ -69,7 +69,9 @@ class ReposViewModel @Inject constructor(
      * Toggle type sort
      */
     fun sortToggle() {
-        preferences.isSortDescListRepo = !preferences.isSortDescListRepo
-        _isSortDescListRepo.value = preferences.isSortDescListRepo
+        with(preferences) {
+            isSortDescListRepo = !isSortDescListRepo
+            _isSortDescListRepo.value = isSortDescListRepo
+        }
     }
 }

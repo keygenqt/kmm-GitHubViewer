@@ -70,6 +70,6 @@ androidResponseResultVersion = "0.0.8"
 # https://github.com/keygenqt/compose-routing
 composeRoutingVersion = "0.0.1"
 # https://github.com/keygenqt/surf-accompanist/
-surfAccompanistVersion = "0.0.11"
+surfAccompanistVersion = "0.0.12"
 # https://github.com/keygenqt/compose-forms
 composeFormsVersion = "0.0.16"

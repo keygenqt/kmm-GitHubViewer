@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.compose.components
+package com.keygenqt.viewer.android.compose.components.lottie
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.*
 import com.keygenqt.viewer.android.R
 
@@ -28,7 +30,7 @@ import com.keygenqt.viewer.android.R
  * Page animation
  */
 @Composable
-fun ListEmptyAnimation(
+fun StartPageAnimation(
     modifier: Modifier = Modifier,
 ) {
     val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.start_page))
@@ -40,7 +42,9 @@ fun ListEmptyAnimation(
         LottieAnimation(
             composition = composition,
             progress = progress,
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier
+                .widthIn(max = 280.dp)
+                .align(Alignment.Center)
         )
     }
 }

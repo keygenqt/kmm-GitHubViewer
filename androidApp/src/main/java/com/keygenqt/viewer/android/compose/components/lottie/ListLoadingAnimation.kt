@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.compose.components
+package com.keygenqt.viewer.android.compose.components.lottie
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,25 +30,19 @@ import com.keygenqt.viewer.android.R
  * Page animation
  */
 @Composable
-fun LoadingBlockAnimation(
+fun ListLoadingAnimation(
     modifier: Modifier = Modifier,
 ) {
-    val composition by rememberLottieComposition(
-        spec = LottieCompositionSpec.RawRes(
-            R.raw.block_loader
-        )
-    )
+    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.windy_icon))
     val progress by animateLottieCompositionAsState(
         composition = composition,
         iterations = LottieConstants.IterateForever
     )
-    Box(modifier = modifier) {
+    Box(modifier = modifier.fillMaxSize()) {
         LottieAnimation(
             composition = composition,
             progress = progress,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .size(60.dp)
+            modifier = Modifier.align(Alignment.Center).size(200.dp)
         )
     }
 }

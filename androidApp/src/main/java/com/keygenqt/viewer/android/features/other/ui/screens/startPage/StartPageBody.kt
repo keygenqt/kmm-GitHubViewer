@@ -33,6 +33,7 @@ import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 import com.keygenqt.viewer.android.base.viewModel.ViewModelState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
+import com.keygenqt.viewer.android.compose.components.lottie.StartPageAnimation
 import com.keygenqt.viewer.android.features.other.ui.actions.StartPageActions
 import com.keygenqt.viewer.android.theme.AppTheme
 

@@ -16,7 +16,9 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
 
 import android.content.res.Configuration
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,6 +32,7 @@ import com.keygenqt.viewer.android.compose.components.RotateIconSort
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
+import kotlinx.coroutines.launch
 
 @Composable
 fun ReposMainBody(
@@ -37,19 +40,28 @@ fun ReposMainBody(
     models: LazyPagingItems<RepoModel>,
     onActions: (ReposMainActions) -> Unit = {},
 ) {
+    val scope = rememberCoroutineScope()
+    val listState = rememberLazyListState()
     val refreshState = rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)
 
     AppScaffold(
         refreshState = refreshState,
         title = stringResource(id = R.string.repos_title),
         actions = {
-            RotateIconSort(isRotate = isSortDescListRepo) {
+            RotateIconSort(
+                enabled = models.loadState.refresh !is LoadState.Loading,
+                isRotate = isSortDescListRepo
+            ) {
+                scope.launch {
+                    listState.animateScrollToItem(index = 0)
+                }
                 onActions(ReposMainActions.SortToggle)
                 models.refresh()
             }
         }
     ) {
         AppSwipeRefreshList(
+            listState = listState,
             refreshState = refreshState,
             items = models,
         ) { index, item ->

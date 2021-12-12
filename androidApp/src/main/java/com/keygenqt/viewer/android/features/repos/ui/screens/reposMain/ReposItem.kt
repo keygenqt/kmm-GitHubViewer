@@ -56,7 +56,6 @@ fun ReposItem(
     ) {
         Box(
             modifier = Modifier.clickable(onClick = {
-
             })
         ) {
             Column(
@@ -163,7 +162,6 @@ private fun ReposItemCount(
             }
         }
     }
-
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)

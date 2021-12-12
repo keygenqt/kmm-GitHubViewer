@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.other.ui.screens.startPage
+package com.keygenqt.viewer.android.compose.components.lottie
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.*
 import com.keygenqt.viewer.android.R
 
@@ -25,17 +29,25 @@ import com.keygenqt.viewer.android.R
  * Page animation
  */
 @Composable
-fun StartPageAnimation(
+fun LoadingBlockAnimation(
     modifier: Modifier = Modifier,
 ) {
-    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.start_page))
+    val composition by rememberLottieComposition(
+        spec = LottieCompositionSpec.RawRes(
+            R.raw.block_loader
+        )
+    )
     val progress by animateLottieCompositionAsState(
         composition = composition,
         iterations = LottieConstants.IterateForever
     )
-    LottieAnimation(
-        composition = composition,
-        progress = progress,
-        modifier = modifier
-    )
+    Box(modifier = modifier) {
+        LottieAnimation(
+            composition = composition,
+            progress = progress,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .size(60.dp)
+        )
+    }
 }

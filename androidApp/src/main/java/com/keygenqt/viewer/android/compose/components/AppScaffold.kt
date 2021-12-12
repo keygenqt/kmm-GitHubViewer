@@ -31,6 +31,7 @@ import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.base.viewModel.AppViewModel
+import com.keygenqt.viewer.android.compose.components.lottie.LoadingBlockAnimation
 
 /**
  * Main scaffold for app
