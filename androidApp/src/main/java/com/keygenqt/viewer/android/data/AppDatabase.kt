@@ -21,8 +21,10 @@ import androidx.room.TypeConverters
 import com.keygenqt.viewer.android.data.converters.ListConverter
 import com.keygenqt.viewer.android.data.converters.LocalDateTimeConverter
 import com.keygenqt.viewer.android.data.converters.MapConverter
+import com.keygenqt.viewer.android.data.dao.FollowerModelDao
 import com.keygenqt.viewer.android.data.dao.RepoModelDao
 import com.keygenqt.viewer.android.data.dao.UserModelDao
+import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
 
@@ -33,6 +35,7 @@ import com.keygenqt.viewer.android.data.models.UserModel
     entities = [
         UserModel::class,
         RepoModel::class,
+        FollowerModel::class,
     ],
     version = 1,
     exportSchema = false
@@ -54,4 +57,9 @@ abstract class AppDatabase : RoomDatabase() {
      * Dao for model [RepoModel]
      */
     abstract fun repoModelDao(): RepoModelDao
+
+    /**
+     * Dao for model [FollowerModel]
+     */
+    abstract fun followerModelDao(): FollowerModelDao
 }

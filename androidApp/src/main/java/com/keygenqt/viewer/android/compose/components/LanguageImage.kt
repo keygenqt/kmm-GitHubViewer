@@ -46,6 +46,7 @@ import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_PYTHON
 import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_RUBY
 import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_RUST
 import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_SCALA
+import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_SWIFT
 import java.util.*
 
 @Composable
@@ -53,6 +54,7 @@ fun LanguageImage(
     language: String,
 ) {
     val resId = when (language.lowercase(Locale.getDefault())) {
+        LANGUAGE_SWIFT -> R.drawable.ic_pl_swift_plain
         LANGUAGE_BASH -> R.drawable.ic_pl_bash_plain
         LANGUAGE_C -> R.drawable.ic_pl_c_plain
         LANGUAGE_CPLUSPLUS -> R.drawable.ic_pl_cplusplus_plain

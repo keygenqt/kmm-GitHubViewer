@@ -23,21 +23,21 @@ import com.keygenqt.response.extensions.error
 import com.keygenqt.response.extensions.isEmpty
 import com.keygenqt.response.extensions.isError
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.data.models.RepoModel
+import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
+import com.keygenqt.viewer.android.services.dataService.impl.FollowerModelDataService
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
 @ExperimentalPagingApi
-class ReposRemoteMediator(
+class FollowersRemoteMediator(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
     private val preferences: BasePreferences,
-) : RemoteMediator<Int, RepoModel>() {
+) : RemoteMediator<Int, FollowerModel>() {
 
     companion object {
         private var sizeList: Int = 0
@@ -47,7 +47,7 @@ class ReposRemoteMediator(
         // clear count
         sizeList = 0
         // Refresh once per hour
-        return if (System.currentTimeMillis() - preferences.lastUpdateListRepos >= TimeUnit.HOURS.toMillis(1)) {
+        return if (System.currentTimeMillis() - preferences.lastUpdateListFollowers >= TimeUnit.HOURS.toMillis(1)) {
             InitializeAction.LAUNCH_INITIAL_REFRESH
         } else {
             InitializeAction.SKIP_INITIAL_REFRESH
@@ -56,7 +56,7 @@ class ReposRemoteMediator(
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, RepoModel>
+        state: PagingState<Int, FollowerModel>
     ): MediatorResult {
         return try {
 
@@ -68,23 +68,22 @@ class ReposRemoteMediator(
                     .plus(1)
             }
 
-            val response = apiService.getUserRepos(
+            val response = apiService.getUserFollowers(
                 page = loadPage ?: 1,
-                isSortDesc = preferences.isSortDescListRepos
             )
                 .success { models ->
                     // save data
-                    dataService.withTransaction<RepoModelDataService> {
+                    dataService.withTransaction<FollowerModelDataService> {
                         if (loadType == LoadType.REFRESH) {
                             // change update timer
-                            preferences.lastUpdateListRepos = System.currentTimeMillis()
+                            preferences.lastUpdateListFollowers = System.currentTimeMillis()
                             // clear data
-                            clearRepoModel()
+                            clearFollowerModel()
                             // clear count
                             sizeList = 0
                         }
                         if (models.isNotEmpty() || loadType != LoadType.APPEND) {
-                            insertRepoModel(*models.toTypedArray())
+                            insertFollowerModel(*models.toTypedArray())
                         }
                     }
                     // change count

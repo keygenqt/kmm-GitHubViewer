@@ -24,6 +24,7 @@ import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.paging.ReposRemoteMediator
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.utils.ConstantsPaging
@@ -35,7 +36,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 /**
- * [ViewModel] for feature
+ * [ViewModel] for screen [ReposMainScreen]
  */
 @HiltViewModel
 class ReposViewModel @Inject constructor(
@@ -47,7 +48,8 @@ class ReposViewModel @Inject constructor(
     /**
      * Is sort desc
      */
-    private val _isSortDescListRepo: MutableStateFlow<Boolean> = MutableStateFlow(preferences.isSortDescListRepo)
+    private val _isSortDescListRepo: MutableStateFlow<Boolean> =
+        MutableStateFlow(preferences.isSortDescListRepos)
 
     /**
      * StateFlow is sort desc
@@ -70,8 +72,8 @@ class ReposViewModel @Inject constructor(
      */
     fun sortToggle() {
         with(preferences) {
-            isSortDescListRepo = !isSortDescListRepo
-            _isSortDescListRepo.value = isSortDescListRepo
+            isSortDescListRepos = !isSortDescListRepos
+            _isSortDescListRepo.value = isSortDescListRepos
         }
     }
 }

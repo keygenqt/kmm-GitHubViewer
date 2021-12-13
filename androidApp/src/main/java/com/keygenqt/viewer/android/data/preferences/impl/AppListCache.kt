@@ -35,8 +35,9 @@ interface AppListCache : IAppPreferences {
      * We put the keys in enum
      */
     enum class KEYS {
-        IS_SORT_DESC_LIST_REPO,
-        LAST_UPDATE_LIST_REPO,
+        IS_SORT_DESC_LIST_REPOS,
+        LAST_UPDATE_LIST_REPOS,
+        LAST_UPDATE_LIST_FOLLOWERS,
     }
 
     /**
@@ -44,21 +45,29 @@ interface AppListCache : IAppPreferences {
      */
     override fun clearCacheAfterLogout() {
         Timber.d("Clear cache: AppListCache")
-        isSortDescListRepo = false
-        lastUpdateListRepo = 0L
+        isSortDescListRepos = false
+        lastUpdateListRepos = 0L
+        lastUpdateListFollowers = 0L
     }
 
     /**
      * Saving sort list
      */
-    var isSortDescListRepo: Boolean
-        get() = p.getBoolean(KEYS.IS_SORT_DESC_LIST_REPO.name, false)
-        set(value) = p.edit().putBoolean(KEYS.IS_SORT_DESC_LIST_REPO.name, value).apply()
+    var isSortDescListRepos: Boolean
+        get() = p.getBoolean(KEYS.IS_SORT_DESC_LIST_REPOS.name, false)
+        set(value) = p.edit().putBoolean(KEYS.IS_SORT_DESC_LIST_REPOS.name, value).apply()
 
     /**
      * Saving list update data
      */
-    var lastUpdateListRepo: Long
-        get() = p.getLong(KEYS.LAST_UPDATE_LIST_REPO.name, 0L)
-        set(value) = p.edit().putLong(KEYS.LAST_UPDATE_LIST_REPO.name, value).apply()
+    var lastUpdateListRepos: Long
+        get() = p.getLong(KEYS.LAST_UPDATE_LIST_REPOS.name, 0L)
+        set(value) = p.edit().putLong(KEYS.LAST_UPDATE_LIST_REPOS.name, value).apply()
+
+    /**
+     * Saving list update data
+     */
+    var lastUpdateListFollowers: Long
+        get() = p.getLong(KEYS.LAST_UPDATE_LIST_FOLLOWERS.name, 0L)
+        set(value) = p.edit().putLong(KEYS.LAST_UPDATE_LIST_FOLLOWERS.name, value).apply()
 }

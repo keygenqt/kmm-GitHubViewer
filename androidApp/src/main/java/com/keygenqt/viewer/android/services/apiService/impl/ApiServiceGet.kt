@@ -21,6 +21,7 @@ import com.keygenqt.response.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.mappers.toModels
+import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.delay
@@ -38,8 +39,6 @@ interface ApiServiceGet {
 
     /**
      * Get user data
-     *
-     * @return ResponseResult<UserModel>
      */
     suspend fun getUser(): ResponseResult<UserModel> {
         return withContext(Dispatchers.IO) {
@@ -55,8 +54,6 @@ interface ApiServiceGet {
 
     /**
      * Get user repos
-     *
-     * @return ResponseResult<*>
      */
     suspend fun getUserRepos(
         @IntRange(from = 1) page: Int = 1,
@@ -68,6 +65,23 @@ interface ApiServiceGet {
                     page = page,
                     direction = if (isSortDesc) "desc" else "asc"
                 )
+                    .delay(BuildConfig.DEBUG)
+                    .responseCheckApp()
+                    .body()!!
+                    .toModels()
+            }
+        }
+    }
+
+    /**
+     * Get user repos
+     */
+    suspend fun getUserFollowers(
+        @IntRange(from = 1) page: Int = 1
+    ): ResponseResult<List<FollowerModel>> {
+        return withContext(Dispatchers.IO) {
+            LocalTryExecuteWithResponse.executeWithResponse {
+                api.getUserFollowers(page = page)
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()
                     .body()!!

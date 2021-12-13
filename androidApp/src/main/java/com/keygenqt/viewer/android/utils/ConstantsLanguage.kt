@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.utils
 
 object ConstantsLanguage {
+    const val LANGUAGE_SWIFT = "swift"
     const val LANGUAGE_BASH = "shell"
     const val LANGUAGE_C = "c"
     const val LANGUAGE_CPLUSPLUS = "c++"

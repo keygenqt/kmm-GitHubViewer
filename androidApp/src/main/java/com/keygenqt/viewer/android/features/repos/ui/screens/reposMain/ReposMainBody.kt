@@ -23,7 +23,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.components.AppScaffold
@@ -32,6 +34,7 @@ import com.keygenqt.viewer.android.compose.components.RotateIconSort
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 @Composable
@@ -65,7 +68,11 @@ fun ReposMainBody(
             refreshState = refreshState,
             items = models,
         ) { index, item ->
-            ReposItem(index, item)
+            ReposItem(
+                index = index,
+                model = item,
+                onActions = onActions
+            )
         }
     }
 }
@@ -74,6 +81,14 @@ fun ReposMainBody(
 @Composable
 private fun Preview() {
     AppTheme {
-//        ReposMainBody()
+        AppTheme {
+            ReposMainBody(
+                models = flowOf(
+                    PagingData.from(
+                        listOf<RepoModel>()
+                    )
+                ).collectAsLazyPagingItems()
+            )
+        }
     }
 }

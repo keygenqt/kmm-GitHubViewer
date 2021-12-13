@@ -16,7 +16,10 @@
 package com.keygenqt.viewer.android.features.followers.ui.screens.followersMain
 
 import androidx.compose.runtime.Composable
-import com.keygenqt.viewer.android.base.LocalViewModel
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.features.followers.ui.actions.FollowersMainActions
 import com.keygenqt.viewer.android.features.followers.ui.viewModels.FollowersViewModel
 
@@ -31,8 +34,12 @@ fun FollowersMainScreen(
     viewModel: FollowersViewModel,
     onActions: (FollowersMainActions) -> Unit = {},
 ) {
+
+    val listFollowers = viewModel.listFollowers.collectAsLazyPagingItems()
+
     FollowersMainBody(
-        onActions = onActions,
-        appViewModel = LocalViewModel.current
+        models = listFollowers,
+        uriHandler = LocalUriHandler.current,
+        onActions = onActions
     )
 }

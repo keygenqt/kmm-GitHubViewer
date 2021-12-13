@@ -29,6 +29,8 @@ import okhttp3.Call
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONArray
+import org.json.JSONObject
 import retrofit2.Retrofit
 import timber.log.Timber
 
@@ -57,7 +59,17 @@ object HttpClientModule {
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(
-                HttpLoggingInterceptor { message -> Timber.i(message) }.apply {
+                HttpLoggingInterceptor { message ->
+                    try {
+                        Timber.d(JSONObject(message).toString(2))
+                    } catch (e: Exception) {
+                        try {
+                            Timber.d(JSONArray(message).toString(2))
+                        } catch (e: Exception) {
+                            Timber.d(message)
+                        }
+                    }
+                }.apply {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             )

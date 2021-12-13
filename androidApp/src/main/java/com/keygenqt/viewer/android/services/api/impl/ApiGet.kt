@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.services.api.impl
 
 import androidx.annotation.IntRange
+import com.keygenqt.viewer.android.data.responses.FollowerResponse
 import com.keygenqt.viewer.android.data.responses.RepoResponse
 import com.keygenqt.viewer.android.data.responses.UserResponse
 import com.keygenqt.viewer.android.utils.ConstantsPaging.PAGE_LIMIT
@@ -39,4 +40,10 @@ interface ApiGet {
         @Query("sort") sort: String = "created",
         @Query("direction") direction: String = "asc"
     ): Response<List<RepoResponse>>
+
+    @GET("user/followers")
+    suspend fun getUserFollowers(
+        @Query("page") @IntRange(from = 1) page: Int = 1,
+        @Query("per_page") @IntRange(from = 1) perPage: Int = PAGE_LIMIT,
+    ): Response<List<FollowerResponse>>
 }

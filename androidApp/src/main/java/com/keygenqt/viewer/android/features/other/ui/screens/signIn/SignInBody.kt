@@ -73,7 +73,6 @@ fun SignInBody(
 
     LaunchedEffect(stateViewModel.isSuccess()) {
         stateViewModel.getSuccessData<String>()?.let {
-            Timber.d(it)
             uriHandler?.openUri(it)
         }
     }
