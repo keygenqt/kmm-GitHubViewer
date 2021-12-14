@@ -88,11 +88,12 @@ fun AppScaffold(
                         }
                     },
                     actions = {
-                        // custom actions
-                        actions?.invoke(this)
-                        // show loading indicator
                         if (loading) {
+                            // show loading indicator
                             LoadingBlockAnimation()
+                        } else {
+                            // custom actions
+                            actions?.invoke(this)
                         }
                     }
                 )
@@ -105,7 +106,9 @@ fun AppScaffold(
                 .nestedScroll(scrollBehavior.nestedScrollConnection)
                 .padding(it)
         ) {
-            content.invoke()
+            if (!loading) {
+                content.invoke()
+            }
         }
     }
 }

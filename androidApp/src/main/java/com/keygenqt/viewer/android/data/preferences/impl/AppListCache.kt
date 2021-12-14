@@ -45,7 +45,7 @@ interface AppListCache : IAppPreferences {
      */
     override fun clearCacheAfterLogout() {
         Timber.d("Clear cache: AppListCache")
-        isSortDescListRepos = false
+        isSortDescListRepos = true
         lastUpdateListRepos = 0L
         lastUpdateListFollowers = 0L
     }
@@ -54,7 +54,7 @@ interface AppListCache : IAppPreferences {
      * Saving sort list
      */
     var isSortDescListRepos: Boolean
-        get() = p.getBoolean(KEYS.IS_SORT_DESC_LIST_REPOS.name, false)
+        get() = p.getBoolean(KEYS.IS_SORT_DESC_LIST_REPOS.name, true)
         set(value) = p.edit().putBoolean(KEYS.IS_SORT_DESC_LIST_REPOS.name, value).apply()
 
     /**

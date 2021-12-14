@@ -20,6 +20,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.keygenqt.viewer.android.interfaces.IModel
 import kotlinx.datetime.LocalDateTime
+import kotlinx.serialization.Serializable
 import java.util.*
 
 /**
@@ -27,6 +28,7 @@ import java.util.*
  */
 @Entity
 @Immutable
+@Serializable
 data class UserModel(
     @PrimaryKey override val id: String,
     val login: String,

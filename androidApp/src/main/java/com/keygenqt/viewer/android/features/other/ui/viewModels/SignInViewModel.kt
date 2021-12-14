@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
@@ -27,6 +28,8 @@ import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
 import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLinks
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -47,21 +50,25 @@ class SignInViewModel @Inject constructor(
     fun signIn(
         login: String,
     ) {
-        setSuccess(
-            Uri.Builder().apply {
-                scheme("https")
-                authority("github.com")
-                appendPath("login")
-                appendPath("oauth")
-                appendPath("authorize")
-                appendQueryParameter("login", login)
-                appendQueryParameter("state", login)
-                appendQueryParameter("redirect_uri", getDynamicLinks("/oauth"))
-                appendQueryParameter("allow_signup", false.toString())
-                appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
-                build()
-            }.toString()
-        )
+        setAction()
+        viewModelScope.launch {
+            delay(100)
+            setSuccess(
+                Uri.Builder().apply {
+                    scheme("https")
+                    authority("github.com")
+                    appendPath("login")
+                    appendPath("oauth")
+                    appendPath("authorize")
+                    appendQueryParameter("login", login)
+                    appendQueryParameter("state", login)
+                    appendQueryParameter("redirect_uri", getDynamicLinks("/oauth"))
+                    appendQueryParameter("allow_signup", false.toString())
+                    appendQueryParameter("client_id", BuildConfig.GITHUB_CLIENT_ID)
+                    build()
+                }.toString()
+            )
+        }
     }
 
     fun signInCode(

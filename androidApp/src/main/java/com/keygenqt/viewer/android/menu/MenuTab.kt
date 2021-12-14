@@ -47,12 +47,13 @@ enum class MenuTab(
         ProfileNav.navProfileMain.profileMainScreen.route,
         R.string.profile_title,
         Icons.Filled.Person
-    ),
-    STATS(
-        StatsNav.navStatsMain.statsMainScreen.route,
-        R.string.stats_title,
-        Icons.Filled.BarChart
     );
+//    @todo
+//    STATS(
+//        StatsNav.navStatsMain.statsMainScreen.route,
+//        R.string.stats_title,
+//        Icons.Filled.BarChart
+//    );
 
     companion object {
         fun String.findByRoute(): MenuTab? {

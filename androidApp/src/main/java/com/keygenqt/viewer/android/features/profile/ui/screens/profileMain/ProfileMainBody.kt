@@ -40,12 +40,13 @@ import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable
 fun ProfileMainBody(
-    model: UserModel?,
+    model: Any?,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
     var showDialogLogout by remember { mutableStateOf(false) }
 
     AppScaffold(
+        loading = model == false,
         title = stringResource(id = R.string.profile_title),
         actions = {
             IconButton(onClick = {
@@ -78,11 +79,8 @@ fun ProfileMainBody(
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                model?.let {
-                    Text(
-                        modifier = Modifier,
-                        text = stringResource(id = R.string.profile_name_text, model.name)
-                    )
+                when (model) {
+                    is UserModel -> ProfileMainInfo(model)
                 }
             }
         }

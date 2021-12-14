@@ -42,12 +42,17 @@ fun LoadingBlockAnimation(
         iterations = LottieConstants.IterateForever
     )
     Box(modifier = modifier) {
-        LottieAnimation(
-            composition = composition,
-            progress = progress,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .size(60.dp)
-        )
+        Box(modifier = Modifier
+            .size(50.dp)
+            .align(Alignment.Center)
+        ) {
+            LottieAnimation(
+                composition = composition,
+                progress = progress,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(60.dp)
+            )
+        }
     }
 }

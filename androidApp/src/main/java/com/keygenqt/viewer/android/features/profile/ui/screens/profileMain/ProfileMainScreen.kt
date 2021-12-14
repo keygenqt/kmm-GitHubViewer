@@ -33,7 +33,7 @@ fun ProfileMainScreen(
     viewModel: ProfileViewModel,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
-    val model: UserModel? by viewModel.user.collectAsState(null)
+    val model by viewModel.user.collectAsState(false)
 
     ProfileMainBody(
         model = model,

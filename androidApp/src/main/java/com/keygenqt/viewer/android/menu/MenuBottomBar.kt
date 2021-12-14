@@ -55,7 +55,7 @@ fun MenuBottomBar(
                     when (tab) {
                         MenuTab.REPOS -> appActions.toReposMain()
                         MenuTab.FOLLOWERS -> appActions.toFollowersMain()
-                        MenuTab.STATS -> appActions.toStatsMain()
+                        // MenuTab.STATS -> appActions.toStatsMain() @todo
                         MenuTab.PROFILE -> appActions.toProfileMain()
                     }
                 }
