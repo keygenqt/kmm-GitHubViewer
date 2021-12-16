@@ -1,7 +1,14 @@
 <resources>
     <string name="profile_title">Profile</string>
-    <string name="profile_name_text">Welcome %s!</string>
-
+    <string name="profile_label_bio">Bio</string>
+    <string name="profile_label_item_count_public_repos">Pub Repos</string>
+    <string name="profile_label_item_count_followers">Followers</string>
+    <string name="profile_label_item_count_following">Following</string>
+    <string name="profile_label_email">Email</string>
+    <string name="profile_label_company">Company</string>
+    <string name="profile_label_blog">Blog</string>
+    <string name="profile_label_location">Location</string>
+    <string name="profile_label_created_at">Date created profile</string>
     <string name="profile_dialog_logout_title">Exit the application</string>
     <string name="profile_dialog_logout_text">You will be redirected to the login page. Is this what you want?</string>
     <string name="profile_dialog_logout_confirm">Confirm</string>

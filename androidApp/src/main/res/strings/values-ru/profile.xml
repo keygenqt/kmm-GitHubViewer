@@ -1,7 +1,14 @@
 <resources>
     <string name="profile_title">Профайл</string>
-    <string name="profile_name_text">Добро пожаловать %s!</string>
-
+    <string name="profile_label_item_count_public_repos">Pub Repos</string>
+    <string name="profile_label_item_count_followers">Followers</string>
+    <string name="profile_label_item_count_following">Following</string>
+    <string name="profile_label_bio">Биография</string>
+    <string name="profile_label_email">Email</string>
+    <string name="profile_label_company">Компания</string>
+    <string name="profile_label_blog">Сайт</string>
+    <string name="profile_label_location">Местонахождение</string>
+    <string name="profile_label_created_at">Дата создания профиля</string>
     <string name="profile_dialog_logout_title">Выход из приложения</string>
     <string name="profile_dialog_logout_text">Вы будете перенаправлены на страницу входа. Это то чего вы желаете?</string>
     <string name="profile_dialog_logout_confirm">Подтвердить</string>

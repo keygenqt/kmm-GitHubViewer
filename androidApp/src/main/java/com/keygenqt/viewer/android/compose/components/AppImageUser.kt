@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -41,16 +42,10 @@ fun AppImageUser(
                         .fillMaxSize()
                         .background(Color(0XFFC5C5C5))
                 ) {
-                    LoadingBlockAnimation()
+                    LoadingBlockAnimation(
+                        modifier = Modifier.align(Alignment.Center)
+                    )
                 }
-            }
-            is ImagePainter.State.Empty -> {
-                Image(
-                    painter = painterResource(R.drawable.user_default),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxSize()
-                )
             }
             is ImagePainter.State.Error -> {
                 Image(
@@ -60,6 +55,7 @@ fun AppImageUser(
                         .fillMaxSize()
                 )
             }
+            is ImagePainter.State.Empty -> {}
             is ImagePainter.State.Success -> {}
         }
     }

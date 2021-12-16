@@ -17,6 +17,8 @@ package com.keygenqt.viewer.android.features.profile.ui.screens.profileMain
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -43,10 +45,12 @@ fun ProfileMainBody(
     model: Any?,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
+    val scrollState = rememberScrollState()
     var showDialogLogout by remember { mutableStateOf(false) }
 
     AppScaffold(
         loading = model == false,
+        scrollState = scrollState,
         title = stringResource(id = R.string.profile_title),
         actions = {
             IconButton(onClick = {
@@ -69,19 +73,13 @@ fun ProfileMainBody(
             }
         }
     ) {
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(scrollState)
         ) {
-            Column(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
-                when (model) {
-                    is UserModel -> ProfileMainInfo(model)
-                }
+            when (model) {
+                is UserModel -> ProfileMainInfo(model)
             }
         }
     }

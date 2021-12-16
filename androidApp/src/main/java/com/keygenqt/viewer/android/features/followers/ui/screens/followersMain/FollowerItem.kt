@@ -46,8 +46,6 @@ fun FollowerItem(
     model: FollowerModel,
     uriHandler: UriHandler? = null,
 ) {
-
-
     Box(
         modifier = Modifier
     ) {
