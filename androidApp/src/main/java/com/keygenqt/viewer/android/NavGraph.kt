@@ -15,7 +15,7 @@
  */
 package com.keygenqt.viewer.android
 
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.toArgb
@@ -24,7 +24,7 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
+import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.base.viewModel.AppViewModel
@@ -37,7 +37,7 @@ import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
 import com.keygenqt.viewer.android.utils.ConstantsApp.START_DESTINATION
 import com.keygenqt.viewer.android.utils.ListenDestination
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun NavGraph(
     navController: NavHostController,
@@ -71,7 +71,7 @@ fun NavGraph(
         }
     }
 
-    NavHost(
+    AnimatedNavHost(
         navController = navController,
         startDestination = START_DESTINATION
     ) {

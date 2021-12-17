@@ -24,7 +24,7 @@ import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.paging.ReposRemoteMediator
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
-import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainScreen
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.utils.ConstantsPaging
@@ -36,10 +36,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 /**
- * [ViewModel] for screen [ReposMainScreen]
+ * [ViewModel] for screen [ReposListScreen]
  */
 @HiltViewModel
-class ReposViewModel @Inject constructor(
+class ReposListViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
     private val preferences: BasePreferences,

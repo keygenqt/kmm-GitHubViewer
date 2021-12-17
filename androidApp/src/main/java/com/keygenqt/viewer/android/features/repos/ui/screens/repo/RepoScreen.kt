@@ -13,16 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.nav.impl
+package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
-import com.keygenqt.routing.NavScreen
-import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainScreen
+import androidx.compose.runtime.Composable
+import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
+import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 
 /**
- * Routing for [ReposMainScreen]
+ * Base page fun for initialization
+ *
+ * @param viewModel page view model
+ * @param onActions actions for page
  */
-object NavReposMainScreen {
-    val reposMainScreen = object : NavScreen {
-        override val route: String = "NavReposMainScreen"
-    }
+@Composable
+fun RepoScreen(
+    viewModel: RepoViewModel,
+    onActions: (ReposListActions) -> Unit = {},
+) {
+
 }

@@ -57,7 +57,6 @@ fun AppScaffold(
         modifier = Modifier
             .statusBarsPadding()
             .navigationBarsWithImePadding(),
-        scaffoldState = rememberScaffoldState(),
         topBar = title?.let {
             {
                 MediumTopAppBar(

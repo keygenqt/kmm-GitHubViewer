@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
+package com.keygenqt.viewer.android.features.repos.ui.screens.reposList
 
 import android.content.res.Configuration
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -32,16 +32,19 @@ import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.AppSwipeRefreshList
 import com.keygenqt.viewer.android.compose.components.RotateIconSort
 import com.keygenqt.viewer.android.data.models.RepoModel
-import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
+import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 import com.keygenqt.viewer.android.theme.AppTheme
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
+/**
+ * Body for [ReposListScreen]
+ */
 @Composable
-fun ReposMainBody(
+fun ReposListBody(
     isSortDescListRepo: Boolean = false,
     models: LazyPagingItems<RepoModel>,
-    onActions: (ReposMainActions) -> Unit = {},
+    onActions: (ReposListActions) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
@@ -58,7 +61,7 @@ fun ReposMainBody(
                 scope.launch {
                     listState.animateScrollToItem(index = 0)
                 }
-                onActions(ReposMainActions.SortToggle)
+                onActions(ReposListActions.SortToggle)
                 models.refresh()
             }
         }
@@ -67,9 +70,8 @@ fun ReposMainBody(
             listState = listState,
             refreshState = refreshState,
             items = models,
-        ) { index, item ->
-            ReposItem(
-                index = index,
+        ) { _, item ->
+            ReposListItem(
                 model = item,
                 onActions = onActions
             )
@@ -82,7 +84,7 @@ fun ReposMainBody(
 private fun Preview() {
     AppTheme {
         AppTheme {
-            ReposMainBody(
+            ReposListBody(
                 models = flowOf(
                     PagingData.from(
                         listOf<RepoModel>()

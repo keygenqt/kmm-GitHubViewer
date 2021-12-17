@@ -16,9 +16,13 @@
 package com.keygenqt.viewer.android.features.other.navigation.graph.impl
 
 import androidx.activity.OnBackPressedDispatcher
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
@@ -32,11 +36,24 @@ import com.keygenqt.viewer.android.utils.ListenDestination
 /**
  * NavGraph for [WelcomeScreen]
  */
+@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.startPageGraph(
     appActions: AppActions,
 ) {
     composable(
-        route = OtherNav.navStartPage.startPageScreen.route
+        route = OtherNav.navStartPage.startPageScreen.route,
+        enterTransition = {
+            slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(700))
+        },
+        exitTransition = {
+            slideOutHorizontally(targetOffsetX = { -1000 }, animationSpec = tween(700))
+        },
+        popEnterTransition = {
+            slideInHorizontally(initialOffsetX = { -1000 }, animationSpec = tween(700))
+        },
+        popExitTransition = {
+            slideOutHorizontally(targetOffsetX = { 1000 }, animationSpec = tween(700))
+        }
     ) {
         val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
         val localViewModel = LocalViewModel.current

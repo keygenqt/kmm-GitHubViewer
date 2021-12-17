@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
+package com.keygenqt.viewer.android.features.repos.ui.screens.reposList
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,8 +21,8 @@ import androidx.compose.runtime.getValue
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.keygenqt.viewer.android.data.models.RepoModel
-import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
-import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposViewModel
+import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
+import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposListViewModel
 
 /**
  * Base page fun for initialization
@@ -31,15 +31,15 @@ import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposViewModel
  * @param onActions actions for page
  */
 @Composable
-fun ReposMainScreen(
-    viewModel: ReposViewModel,
-    onActions: (ReposMainActions) -> Unit = {},
+fun ReposListScreen(
+    viewModel: ReposListViewModel,
+    onActions: (ReposListActions) -> Unit = {},
 ) {
 
     val lazyRepos: LazyPagingItems<RepoModel> = viewModel.listRepo.collectAsLazyPagingItems()
     val isSortDescListRepo: Boolean by viewModel.isSortDescListRepo.collectAsState()
 
-    ReposMainBody(
+    ReposListBody(
         isSortDescListRepo = isSortDescListRepo,
         models = lazyRepos,
         onActions = onActions,

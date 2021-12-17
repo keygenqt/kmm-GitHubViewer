@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.features.repos.navigation.nav.impl
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import com.keygenqt.routing.NavScreen
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
 
 /**
- * Base actions for feature
+ * Routing for [ReposListScreen]
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions
+object NavReposListScreen {
+    val reposMainScreen = object : NavScreen {
+        override val route: String = "NavReposMainScreen"
+    }
+}

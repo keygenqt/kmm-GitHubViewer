@@ -15,9 +15,10 @@
  */
 package com.keygenqt.viewer.android.features.other.navigation.graph.impl
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
@@ -26,6 +27,7 @@ import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScre
 /**
  * NavGraph for [WelcomeScreen]
  */
+@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.welcomeGraph(
     appActions: AppActions,
 ) {

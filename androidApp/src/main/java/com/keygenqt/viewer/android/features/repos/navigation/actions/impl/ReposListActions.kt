@@ -17,13 +17,13 @@ package com.keygenqt.viewer.android.features.repos.navigation.actions.impl
 
 import androidx.navigation.NavHostController
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
-import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainScreen
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
 import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
 /**
- * Actions for [ReposMainScreen]
+ * Actions for [ReposListScreen]
  */
-interface ReposMainActions : IAppNavActions {
+interface ReposListActions : IAppNavActions {
 
     override val controller: NavHostController
 
@@ -31,7 +31,7 @@ interface ReposMainActions : IAppNavActions {
      * To main page followers
      */
     fun toReposMain(popUpTo: String? = null) {
-        controller.navigate(ReposNav.navReposMain.reposMainScreen.route) {
+        controller.navigate(ReposNav.navReposList.reposMainScreen.route) {
             popUpTo?.let {
                 popUpTo(popUpTo) { inclusive = true }
             }

@@ -13,14 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.features.repos.ui.actions
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
 
 /**
- * Base actions for feature
+ * Actions sealed class for screen [ReposListScreen]
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions
+sealed class ReposListActions {
+
+    /**
+     * Sort repos
+     */
+    object SortToggle : ReposListActions()
+
+    /**
+     * Top repo view page
+     */
+    data class ToRepoView(val id: String) : ReposListActions()
+}

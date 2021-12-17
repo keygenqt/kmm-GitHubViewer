@@ -15,9 +15,10 @@
  */
 package com.keygenqt.viewer.android.features.profile.navigation.graph.impl
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
@@ -27,6 +28,7 @@ import com.keygenqt.viewer.android.features.profile.ui.viewModels.SettingsViewMo
 /**
  * NavGraph for [SettingsScreen]
  */
+@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.settingsGraph(
     appActions: AppActions,
 ) {

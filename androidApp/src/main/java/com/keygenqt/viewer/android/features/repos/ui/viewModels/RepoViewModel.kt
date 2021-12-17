@@ -13,14 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import androidx.lifecycle.ViewModel
+import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
+import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /**
- * Base actions for feature
+ * [ViewModel] for screen [RepoScreen]
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions
+@HiltViewModel
+class RepoViewModel @Inject constructor() : ViewModelStates() {
+
+    private var _id: String? = null
+
+    fun setId(id: String?) {
+        _id = id
+    }
+
+}

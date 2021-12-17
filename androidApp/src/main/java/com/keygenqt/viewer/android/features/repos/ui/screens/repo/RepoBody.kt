@@ -13,14 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import androidx.compose.runtime.Composable
+import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
+import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 
 /**
- * Base actions for feature
+ * Body for [RepoScreen]
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions
+@Composable
+fun RepoBody(
+    viewModel: RepoViewModel,
+    onActions: (ReposListActions) -> Unit = {},
+) {
+
+}

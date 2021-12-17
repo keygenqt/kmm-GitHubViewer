@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.actions
+package com.keygenqt.viewer.android.features.repos.navigation.nav.impl
 
-import com.keygenqt.viewer.android.features.repos.ui.screens.reposMain.ReposMainScreen
+import com.keygenqt.routing.NavScreenWithArgument
+import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
 
 /**
- * Actions sealed class for screen [ReposMainScreen]
+ * Routing for [ReposListScreen]
  */
-sealed class ReposMainActions {
-
-    /**
-     * Sort repos
-     */
-    object SortToggle : ReposMainActions()
+object NavRepoScreen {
+    val repoScreen = object : NavScreenWithArgument {
+        override val argument0: String = "id"
+        override val routeWithArgument: String = "NavRepoScreen/{$argument0}"
+    }
 }

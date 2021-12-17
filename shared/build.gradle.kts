@@ -12,22 +12,22 @@ kotlin {
     android()
 
     System.getenv("GITHUB_REPOSITORY") ?: run {
-
-        val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
-            System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
-            System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
-            else -> ::iosX64
-        }
-
-        iosTarget("ios") {}
-
-        cocoapods {
-            summary = "Some description for the Shared Module"
-            homepage = "Link to the Shared Module homepage"
-            ios.deploymentTarget = "14.1"
-            frameworkName = "shared"
-            podfile = project.file("../iosApp/Podfile")
-        }
+//        TODO
+//        val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
+//            System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
+//            System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
+//            else -> ::iosX64
+//        }
+//
+//        iosTarget("ios") {}
+//
+//        cocoapods {
+//            summary = "Some description for the Shared Module"
+//            homepage = "Link to the Shared Module homepage"
+//            ios.deploymentTarget = "14.1"
+//            frameworkName = "shared"
+//            podfile = project.file("../iosApp/Podfile")
+//        }
     }
 
     sourceSets {
@@ -46,8 +46,9 @@ kotlin {
             }
         }
         System.getenv("GITHUB_REPOSITORY") ?: run {
-            val iosMain by getting
-            val iosTest by getting
+//            TODO
+//            val iosMain by getting
+//            val iosTest by getting
         }
     }
 }

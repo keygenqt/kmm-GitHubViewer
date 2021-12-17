@@ -21,10 +21,12 @@ import android.view.ViewTreeObserver.OnPreDrawListener
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.base.viewModel.AppViewModel
@@ -42,6 +44,7 @@ class MainActivity : ComponentActivity() {
     /**
      * Main initialization point of view
      */
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,7 +59,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 AppTheme {
                     ProvideWindowInsets {
-                        NavGraph(rememberNavController())
+                        NavGraph(rememberAnimatedNavController())
                     }
                 }
             }

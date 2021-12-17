@@ -34,7 +34,7 @@ enum class MenuTab(
 ) {
 
     REPOS(
-        ReposNav.navReposMain.reposMainScreen.route,
+        ReposNav.navReposList.reposMainScreen.route,
         null,
         Icons.Filled.List
     ),

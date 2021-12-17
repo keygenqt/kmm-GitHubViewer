@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.screens.reposMain
+package com.keygenqt.viewer.android.features.repos.ui.screens.reposList
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
@@ -36,15 +36,14 @@ import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.compose.texts.TextTitleMedium
 import com.keygenqt.viewer.android.data.models.RepoModel
-import com.keygenqt.viewer.android.features.repos.ui.actions.ReposMainActions
+import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 import com.keygenqt.viewer.android.theme.AppTheme
 import androidx.compose.material.MaterialTheme as MaterialTheme2
 
 @Composable
-fun ReposItem(
-    index: Int,
+fun ReposListItem(
     model: RepoModel,
-    onActions: (ReposMainActions) -> Unit = {},
+    onActions: (ReposListActions) -> Unit = {},
 ) {
     Card(
         shape = MaterialTheme2.shapes.medium,
@@ -56,6 +55,7 @@ fun ReposItem(
     ) {
         Box(
             modifier = Modifier.clickable(onClick = {
+                onActions(ReposListActions.ToRepoView(model.id))
             })
         ) {
             Column(

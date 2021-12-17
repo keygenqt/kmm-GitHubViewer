@@ -15,9 +15,10 @@
  */
 package com.keygenqt.viewer.android.features.followers.navigation.graph.impl
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.followers.navigation.nav.FollowersNav
 import com.keygenqt.viewer.android.features.followers.ui.screens.followersMain.FollowersMainScreen
@@ -25,6 +26,7 @@ import com.keygenqt.viewer.android.features.followers.ui.screens.followersMain.F
 /**
  * NavGraph for [FollowersMainScreen]
  */
+@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.followersMainGraph(
     appActions: AppActions,
 ) {
