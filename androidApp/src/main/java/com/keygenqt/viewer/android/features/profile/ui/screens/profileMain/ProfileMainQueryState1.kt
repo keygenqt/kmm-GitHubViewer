@@ -13,15 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.other.ui.viewModels
+package com.keygenqt.viewer.android.features.profile.ui.screens.profileMain
 
-import androidx.lifecycle.ViewModel
-import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import androidx.compose.runtime.Composable
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActionsState
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 
-/**
- * [ViewModel] for [WelcomeScreen]
- */
-@HiltViewModel
-class WelcomeViewModel @Inject constructor() : ViewModel()
+@Composable
+fun ProfileMainQueryState1(
+    state: QueryState = QueryState.Start,
+    loadingUser: () -> Unit = {},
+    clear: () -> Unit = {}
+) {
+    QueryActionsState(state) {
+        clear.invoke()
+        when (this) {
+            is QueryState.Action -> loadingUser.invoke()
+            else -> {}
+        }
+    }
+}

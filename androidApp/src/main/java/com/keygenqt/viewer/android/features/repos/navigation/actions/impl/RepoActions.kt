@@ -34,7 +34,6 @@ interface RepoActions : IAppNavActions {
         ReposNav.navRepo.repoScreen.apply {
             controller.navigate(getRoute(id)) {
                 anim {
-
                 }
                 popUpTo?.let {
                     popUpTo(popUpTo) { inclusive = true }

@@ -33,24 +33,15 @@ import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
 @Composable
 fun SignInScreen(
     viewModel: SignInViewModel,
-    code: String? = null,
-    state: String? = null,
     onActions: (SignInActions) -> Unit = {},
 ) {
-    val stateViewModel by viewModel.state.collectAsState()
+    val state1 by viewModel.query1.state.collectAsState()
     val isLogin by LocalViewModel.current.isLogin.collectAsState(false)
 
     // open main page if user login
     LaunchedEffect(isLogin) {
         if (isLogin) {
             onActions(SignInActions.ToStartPage)
-        }
-    }
-
-    // query by code
-    LaunchedEffect(code) {
-        if (code != null && state != null) {
-            onActions(SignInActions.SignInCode(login = state, code = code))
         }
     }
 
@@ -61,9 +52,9 @@ fun SignInScreen(
     }
 
     SignInBody(
+        state1 = state1,
         onActions = onActions,
         formFields = formFields,
-        stateViewModel = stateViewModel,
         uriHandler = LocalUriHandler.current
     )
 }

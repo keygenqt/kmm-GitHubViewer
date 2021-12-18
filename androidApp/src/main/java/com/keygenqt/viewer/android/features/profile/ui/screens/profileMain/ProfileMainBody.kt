@@ -16,7 +16,8 @@
 package com.keygenqt.viewer.android.features.profile.ui.screens.profileMain
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
@@ -33,8 +34,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
@@ -43,16 +44,29 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @Composable
 fun ProfileMainBody(
     model: Any?,
+    state1: QueryState = QueryState.Start,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
     val scrollState = rememberScrollState()
     var showDialogLogout by remember { mutableStateOf(false) }
 
+    // state query 1
+    var loadingUser by remember { mutableStateOf(false) }
+
+    ProfileMainQueryState1(
+        state = state1,
+        loadingUser = {
+            loadingUser = true
+        },
+        clear = {
+            loadingUser = false
+        }
+    )
+
     AppScaffold(
-        loading = model == false,
-        scrollState = scrollState,
-        title = stringResource(id = R.string.profile_title),
-        actions = {
+        topBarLoading = model == false,
+        topBarTitle = stringResource(id = R.string.profile_title),
+        topBarActions = {
             IconButton(onClick = {
                 showDialogLogout = true
             }) {
@@ -71,7 +85,13 @@ fun ProfileMainBody(
                     tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
-        }
+        },
+        scrollState = scrollState,
+        swipeRefreshEnable = true,
+        swipeRefreshLoading = loadingUser,
+        swipeRefreshAction = {
+            onActions(ProfileMainActions.ActionUpdateUser)
+        },
     ) {
         Column(
             modifier = Modifier
@@ -91,7 +111,7 @@ fun ProfileMainBody(
             },
             confirmButton = {
                 showDialogLogout = false
-                onActions(ProfileMainActions.Logout)
+                onActions(ProfileMainActions.ActionLogout)
             },
             dismissButton = {
                 showDialogLogout = false

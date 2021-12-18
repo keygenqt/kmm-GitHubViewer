@@ -21,7 +21,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,20 +29,40 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.viewModel.AppViewModel
-import com.keygenqt.viewer.android.base.viewModel.ViewModelState
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.compose.components.lottie.StartPageAnimation
 import com.keygenqt.viewer.android.features.other.ui.actions.StartPageActions
+import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInQueryState1
 import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable
 fun StartPageBody(
-    appViewModel: AppViewModel? = null,
+    state1: QueryState = QueryState.Start,
     onActions: (StartPageActions) -> Unit = {},
-    stateViewModel: ViewModelState = ViewModelState.Start,
 ) {
+    // state query 1
+    var loading by remember { mutableStateOf(false) }
+    var error: String? by remember { mutableStateOf(null) }
+
+    SignInQueryState1(
+        state = state1,
+        loading = {
+            loading = true
+        },
+        error = {
+            error = it
+        },
+        success = {
+            onActions(StartPageActions.ToRepos)
+        },
+        clear = {
+            loading = false
+            error = null
+        }
+    )
+
     AppScaffold {
         Box(Modifier) {
             Column(
@@ -59,7 +79,7 @@ fun StartPageBody(
                     .align(Alignment.TopCenter)
                     .fillMaxWidth()
             ) {
-                stateViewModel.getErrorMessage()?.let {
+                error?.let {
                     FormError(text = it) {
                         Spacer(modifier = Modifier.size(8.dp))
                         OutlinedButton(
@@ -72,7 +92,7 @@ fun StartPageBody(
                             colors = ButtonDefaults.outlinedButtonColors(
                                 contentColor = MaterialTheme.colorScheme.outline
                             ),
-                            enabled = stateViewModel.isNotAction(),
+                            enabled = !loading,
                             onClick = { onActions(StartPageActions.StartLoadingData) },
                         ) {
                             Text(stringResource(id = R.string.start_page_try_again))
@@ -81,7 +101,7 @@ fun StartPageBody(
                 }
             }
 
-            stateViewModel.getErrorMessage()?.let {
+            error?.let {
                 Column(
                     modifier = Modifier
                         .padding(16.dp)
@@ -97,7 +117,7 @@ fun StartPageBody(
                         colors = ButtonDefaults.outlinedButtonColors(
                             contentColor = MaterialTheme.colorScheme.outline
                         ),
-                        enabled = stateViewModel.isNotAction(),
+                        enabled = !loading,
                         onClick = { onActions(StartPageActions.ToSignIn) },
                     ) {
                         Text(stringResource(id = R.string.start_page_logout))

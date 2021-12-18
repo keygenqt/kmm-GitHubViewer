@@ -15,14 +15,11 @@
  */
 package com.keygenqt.viewer.android.features.repos.navigation.graph.impl
 
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.*
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
+import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
@@ -35,21 +32,7 @@ import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposListViewMod
 fun NavGraphBuilder.reposMainGraph(
     appActions: AppActions,
 ) {
-    composable(
-        route = ReposNav.navReposList.reposMainScreen.route,
-        enterTransition = {
-            slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(700))
-        },
-        exitTransition = {
-            slideOutHorizontally(targetOffsetX = { -1000 }, animationSpec = tween(700))
-        },
-        popEnterTransition = {
-            slideInHorizontally(initialOffsetX = { -1000 }, animationSpec = tween(700))
-        },
-        popExitTransition = {
-            slideOutHorizontally(targetOffsetX = { 1000 }, animationSpec = tween(700))
-        },
-    ) {
+    composableAnimation(ReposNav.navReposList.reposMainScreen.route) {
         val viewModel: ReposListViewModel = hiltViewModel()
         ReposListScreen(viewModel = viewModel) { event ->
             when (event) {

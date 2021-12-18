@@ -13,15 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.other.ui.viewModels
+package com.keygenqt.viewer.android.base.viewModel.queryActions
 
-import androidx.lifecycle.ViewModel
-import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+sealed class QueryState {
 
-/**
- * [ViewModel] for [WelcomeScreen]
- */
-@HiltViewModel
-class WelcomeViewModel @Inject constructor() : ViewModel()
+    /**
+     * Start state
+     */
+    object Start : QueryState()
+
+    /**
+     * Stop state
+     */
+    object Stop : QueryState()
+
+    /**
+     * Action state
+     */
+    object Action : QueryState()
+
+    /**
+     * Error state with value error
+     */
+    data class Error(val exception: Exception) : QueryState()
+
+    /**
+     * Success state with data
+     */
+    data class Success<T>(val data: T) : QueryState()
+}

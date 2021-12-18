@@ -17,7 +17,7 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.other.ui.screens.startPage.StartPageScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
@@ -33,13 +33,18 @@ import javax.inject.Inject
 class StartPageViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService
-) : ViewModelStates() {
+) : ViewModel() {
+
+    /**
+     * State actions
+     */
+    val query1 = QueryActions(this)
 
     /**
      * Start loading data user
      */
     fun startLoading() {
-        queryLaunch {
+        query1.queryLaunch {
             apiService.getUser().success {
                 dataService.withTransaction<UserModelDataService> {
                     clearUserModel()

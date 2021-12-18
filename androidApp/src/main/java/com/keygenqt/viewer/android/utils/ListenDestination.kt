@@ -33,9 +33,10 @@ class ListenDestination {
          * Init ListenDestination listen change navigation
          */
         @Composable
-        fun Init(controller: NavHostController) {
+        fun Init(controller: NavHostController, onChange: (destination: NavDestination) -> Unit) {
             controller.AddListenChangeNavigation {
                 ACTION_DESTINATION.add(it)
+                onChange.invoke(it)
             }
         }
 

@@ -15,22 +15,33 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
+import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
+import com.keygenqt.viewer.android.services.apiService.AppApiService
+import com.keygenqt.viewer.android.services.dataService.AppDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
 
 /**
  * [ViewModel] for screen [RepoScreen]
  */
 @HiltViewModel
-class RepoViewModel @Inject constructor() : ViewModelStates() {
+class RepoViewModel @Inject constructor(
+    private val apiService: AppApiService,
+    private val dataService: AppDataService,
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
-    private var _id: String? = null
+    /**
+     * Repo id
+     */
+    val id: String = savedStateHandle.get(ReposNav.navRepo.repoScreen.argument0) ?: ""
 
-    fun setId(id: String?) {
-        _id = id
-    }
-
+    /**
+     * Listen repo model
+     */
+    val repo = dataService.getRepoModelById(id).distinctUntilChanged()
 }

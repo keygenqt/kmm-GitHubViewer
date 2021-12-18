@@ -19,10 +19,10 @@ import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
+import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
 import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
@@ -36,14 +36,15 @@ import com.keygenqt.viewer.android.utils.ListenDestination
 fun NavGraphBuilder.profileMainGraph(
     appActions: AppActions,
 ) {
-    composable(ProfileNav.navProfileMain.profileMainScreen.route) {
+    composableAnimation(ProfileNav.navProfileMain.profileMainScreen.route) {
         val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
         val viewModel: ProfileViewModel = hiltViewModel()
         val appViewModel = LocalViewModel.current
         ProfileMainScreen(viewModel = viewModel) { event ->
             when (event) {
                 is ProfileMainActions.ToSettings -> appActions.toSettings()
-                is ProfileMainActions.Logout -> appViewModel.logout {
+                is ProfileMainActions.ActionUpdateUser -> viewModel.updateProfile()
+                is ProfileMainActions.ActionLogout -> appViewModel.logout {
                     appActions.toSignIn(ListenDestination.clearStack(backDispatcher))
                 }
             }

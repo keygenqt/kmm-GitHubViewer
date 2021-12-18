@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.data.models
 
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity
+import kotlinx.serialization.Serializable
 import java.util.*
 
 /**
@@ -24,6 +25,7 @@ import java.util.*
  */
 @Entity
 @Immutable
+@Serializable
 data class RepoOwnerModel(
     val ownerId: String,
     val ownerLogin: String? = null,

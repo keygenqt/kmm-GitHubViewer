@@ -17,9 +17,7 @@ package com.keygenqt.viewer.android.features.followers.ui.screens.followersMain
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.features.followers.ui.actions.FollowersMainActions
 import com.keygenqt.viewer.android.features.followers.ui.viewModels.FollowersViewModel
 

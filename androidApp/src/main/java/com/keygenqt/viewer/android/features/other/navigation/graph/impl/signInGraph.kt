@@ -20,15 +20,14 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navDeepLink
-import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
+import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
-import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
-import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLinks
-import com.keygenqt.viewer.android.utils.ListenDestination
+import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLink
+import com.keygenqt.viewer.android.utils.ListenDestination.Companion.clearStack
 
 /**
  * NavGraph for [SignInScreen]
@@ -37,32 +36,18 @@ import com.keygenqt.viewer.android.utils.ListenDestination
 fun NavGraphBuilder.signInGraph(
     appActions: AppActions,
 ) {
-    composable(
+    composableAnimation(
         route = OtherNav.navSignIn.signInScreen.route,
         deepLinks = listOf(
             navDeepLink {
-                uriPattern = getDynamicLinks("/oauth?code={code}&state={state}")
+                uriPattern = getDynamicLink("/oauth?code={code}&state={state}")
             }
         )
     ) {
         val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
-        val viewModel: SignInViewModel = hiltViewModel()
-        SignInScreen(
-            viewModel = viewModel,
-            code = it.arguments?.getString("code"),
-            state = it.arguments?.getString("state"),
-        ) { event ->
+        SignInScreen(hiltViewModel()) { event ->
             when (event) {
-                is SignInActions.SignIn -> viewModel.signIn(event.nickname)
-                is SignInActions.SignInCode -> viewModel.signInCode(
-                    login = event.login,
-                    code = event.code
-                )
-                is SignInActions.ToStartPage -> appActions.toStartPage(
-                    ListenDestination.clearStack(
-                        backDispatcher
-                    )
-                )
+                is SignInActions.ToStartPage -> appActions.toStartPage(clearStack(backDispatcher))
             }
         }
     }

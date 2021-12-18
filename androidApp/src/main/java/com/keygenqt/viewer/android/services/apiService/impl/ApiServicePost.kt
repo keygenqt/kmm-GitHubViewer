@@ -39,7 +39,7 @@ interface ApiServicePost {
      *
      * @param code from github api for login user
      */
-    suspend fun oauthCode(login: String, code: String): ResponseResult<SecurityModel> {
+    suspend fun oauthCode(code: String): ResponseResult<SecurityModel> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
                 api.oauth(
@@ -52,7 +52,7 @@ interface ApiServicePost {
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()
                     .body()
-                    ?.toModel(login)!!
+                    ?.toModel()!!
             }
         }
     }

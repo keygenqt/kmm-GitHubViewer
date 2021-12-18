@@ -16,7 +16,6 @@
 package com.keygenqt.viewer.android.menu
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.Person
@@ -25,7 +24,6 @@ import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.features.followers.navigation.nav.FollowersNav
 import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
-import com.keygenqt.viewer.android.features.stats.navigation.nav.StatsNav
 
 enum class MenuTab(
     val route: String,

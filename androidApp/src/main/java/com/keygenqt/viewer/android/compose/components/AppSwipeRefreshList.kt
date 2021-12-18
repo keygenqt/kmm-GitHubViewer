@@ -20,13 +20,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
-import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.keygenqt.accompanist.SwipeRefreshList
 import com.keygenqt.viewer.android.compose.components.lottie.ListEmptyAnimation
@@ -48,13 +45,8 @@ fun <T : Any> AppSwipeRefreshList(
         refreshState = refreshState,
         listState = listState,
         items = items,
-        indicator = { s, trigger ->
-            SwipeRefreshIndicator(
-                state = s,
-                refreshTriggerDistance = trigger,
-                backgroundColor = MaterialTheme.colorScheme.primary,
-                contentColor = Color.White
-            )
+        indicator = { st, tr ->
+            AppSwipeRefreshIndicator(st, tr)
         },
         contentLoadState = {
             Column {

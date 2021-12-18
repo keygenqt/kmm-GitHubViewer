@@ -20,7 +20,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.other.ui.actions.StartPageActions
 import com.keygenqt.viewer.android.features.other.ui.viewModels.StartPageViewModel
 
@@ -36,7 +35,7 @@ fun StartPageScreen(
     onActions: (StartPageActions) -> Unit = {}
 ) {
 
-    val stateViewModel by viewModel.state.collectAsState()
+    val state1 by viewModel.query1.state.collectAsState()
     val isReady: Boolean by LocalViewModel.current.isSplash.collectAsState()
 
     LaunchedEffect(isReady) {
@@ -45,15 +44,8 @@ fun StartPageScreen(
         }
     }
 
-    LaunchedEffect(stateViewModel.isSuccess()) {
-        stateViewModel.getSuccessData<UserModel>()?.let {
-            onActions(StartPageActions.ToRepos)
-        }
-    }
-
     StartPageBody(
+        state1 = state1,
         onActions = onActions,
-        appViewModel = LocalViewModel.current,
-        stateViewModel = stateViewModel,
     )
 }

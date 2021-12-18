@@ -13,29 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.screens.repo
+package com.keygenqt.viewer.android.features.profile.ui.screens.settings
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
-import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActionsState
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 
-/**
- * Base page fun for initialization
- *
- * @param viewModel page view model
- * @param onActions actions for page
- */
 @Composable
-fun RepoScreen(
-    viewModel: RepoViewModel,
-    onActions: (ReposListActions) -> Unit = {},
+fun SettingsQueryState1(
+    state: QueryState = QueryState.Start,
+    loading: () -> Unit = {},
+    error: (String?) -> Unit = {},
+    clear: () -> Unit = {}
 ) {
-    val model by viewModel.repo.collectAsState(false)
-
-    RepoBody(
-        model = model,
-        onActions = onActions
-    )
+    QueryActionsState(state) {
+        clear.invoke()
+        when (this) {
+            is QueryState.Action -> loading.invoke()
+            is QueryState.Error -> error.invoke(exception.message)
+            else -> {}
+        }
+    }
 }

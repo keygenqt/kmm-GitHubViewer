@@ -27,7 +27,6 @@ import com.keygenqt.viewer.android.interfaces.IModel
 @Immutable
 data class SecurityModel(
     @PrimaryKey override val id: String = "last",
-    val login: String,
     val accessToken: String,
     val expiresIn: Int,
     val refreshToken: String,

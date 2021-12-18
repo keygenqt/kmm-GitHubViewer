@@ -20,7 +20,6 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.paging.ReposRemoteMediator
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
@@ -43,7 +42,7 @@ class ReposListViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
     private val preferences: BasePreferences,
-) : ViewModelStates() {
+) : ViewModel() {
 
     /**
      * Is sort desc

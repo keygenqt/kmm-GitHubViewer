@@ -21,8 +21,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
@@ -35,21 +34,21 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldState
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.viewModel.ViewModelState
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.theme.AppTheme
-import timber.log.Timber
+import com.keygenqt.viewer.android.utils.AppHelper
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SignInBody(
     formFields: FormFieldsState,
     uriHandler: UriHandler? = null,
+    state1: QueryState = QueryState.Start,
     onActions: (SignInActions) -> Unit = {},
-    stateViewModel: ViewModelState = ViewModelState.Start,
 ) {
     val scrollState = rememberScrollState()
 
@@ -65,21 +64,33 @@ fun SignInBody(
             // clear focuses
             localFocusManager.clearFocus()
             // submit query
-            onActions(SignInActions.SignIn(formFields.get(SignInNickname).getValue()))
+            uriHandler?.openUri(AppHelper.getOauthLink(formFields.get(SignInNickname).getValue()))
             // hide keyboard
             softwareKeyboardController?.hide()
         }
     }
 
-    LaunchedEffect(stateViewModel.isSuccess()) {
-        stateViewModel.getSuccessData<String>()?.let {
-            uriHandler?.openUri(it)
+    // state query 1
+    var loading by remember { mutableStateOf(false) }
+    var error: String? by remember { mutableStateOf(null) }
+
+    SignInQueryState1(
+        state = state1,
+        loading = {
+            loading = true
+        },
+        error = {
+            error = it
+        },
+        clear = {
+            loading = false
+            error = null
         }
-    }
+    )
 
     AppScaffold(
-        title = stringResource(id = R.string.sign_in_title),
-        loading = stateViewModel.isAction(),
+        topBarTitle = stringResource(id = R.string.sign_in_title),
+        topBarLoading = loading,
         scrollState = scrollState,
     ) {
         Column(
@@ -92,14 +103,14 @@ fun SignInBody(
             Column(
                 modifier = Modifier.padding(16.dp)
             ) {
-                stateViewModel.getErrorMessage()?.let {
+                error?.let {
                     FormError(text = it)
                     Spacer(modifier = Modifier.size(16.dp))
                     LaunchedEffect(it) { scrollState.animateScrollTo(0) }
                 }
 
                 SignInForm(
-                    loading = stateViewModel.isAction(),
+                    loading = loading,
                     formFields = formFields,
                     submitClick = submitClick,
                 )
@@ -109,7 +120,7 @@ fun SignInBody(
                 modifier = Modifier.padding(16.dp)
             ) {
                 Button(
-                    enabled = stateViewModel.isNotAction(),
+                    enabled = !loading,
                     onClick = { submitClick.invoke() },
                     modifier = Modifier.fillMaxWidth(),
                 ) {

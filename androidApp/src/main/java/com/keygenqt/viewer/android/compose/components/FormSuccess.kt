@@ -48,7 +48,7 @@ fun FormSuccess(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.primaryContainer),
+            .background(MaterialTheme.colorScheme.inverseSurface),
     ) {
         Column(
             modifier = modifier
@@ -59,7 +59,7 @@ fun FormSuccess(
                 text = text,
                 maxLines = 5,
                 modifier = Modifier,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
+                color = MaterialTheme.colorScheme.inverseOnSurface
             )
             content?.invoke()
         }

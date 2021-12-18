@@ -13,29 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.screens.repo
+package com.keygenqt.viewer.android.compose.components
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
-import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 
 /**
- * Base page fun for initialization
- *
- * @param viewModel page view model
- * @param onActions actions for page
+ * Common swipe refresh indicator
  */
 @Composable
-fun RepoScreen(
-    viewModel: RepoViewModel,
-    onActions: (ReposListActions) -> Unit = {},
+fun AppSwipeRefreshIndicator(
+    state: SwipeRefreshState,
+    refreshTrigger: Dp
 ) {
-    val model by viewModel.repo.collectAsState(false)
-
-    RepoBody(
-        model = model,
-        onActions = onActions
+    SwipeRefreshIndicator(
+        state = state,
+        refreshTriggerDistance = refreshTrigger,
+        backgroundColor = MaterialTheme.colorScheme.primary,
+        contentColor = Color.White
     )
 }

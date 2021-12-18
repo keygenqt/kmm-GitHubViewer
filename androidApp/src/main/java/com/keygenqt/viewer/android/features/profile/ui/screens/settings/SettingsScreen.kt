@@ -34,7 +34,7 @@ fun SettingsScreen(
     onActions: (SettingsActions) -> Unit = {},
 ) {
 
-    val stateViewModel by viewModel.state.collectAsState()
+    val state1 by viewModel.query1.state.collectAsState()
     val model: UserModel? by viewModel.user.collectAsState(null)
 
     LaunchedEffect(model) {
@@ -60,7 +60,7 @@ fun SettingsScreen(
     }
 
     SettingsBody(
-        stateViewModel = stateViewModel,
+        state1 = state1,
         formFields = formFields,
         onActions = onActions
     )

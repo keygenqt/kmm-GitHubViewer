@@ -17,7 +17,6 @@ package com.keygenqt.viewer.android.data.mappers
 
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.responses.FollowerResponse
-import com.keygenqt.viewer.android.data.responses.RepoResponse
 
 /**
  * Extension for response [FollowerResponse]

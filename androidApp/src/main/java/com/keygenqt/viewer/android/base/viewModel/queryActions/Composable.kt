@@ -13,15 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.other.ui.viewModels
+package com.keygenqt.viewer.android.base.viewModel.queryActions
 
-import androidx.lifecycle.ViewModel
-import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 
-/**
- * [ViewModel] for [WelcomeScreen]
- */
-@HiltViewModel
-class WelcomeViewModel @Inject constructor() : ViewModel()
+@Composable
+fun QueryActionsState(
+    state: QueryState,
+    block: QueryState.() -> Unit
+) {
+    var statusSaved: String? by rememberSaveable { mutableStateOf(null) }
+    if (statusSaved != state.toString()) {
+        statusSaved = state.toString()
+        block.invoke(state)
+    }
+}

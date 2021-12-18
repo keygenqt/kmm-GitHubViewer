@@ -21,8 +21,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
@@ -33,11 +32,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.viewModel.ViewModelState
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.compose.components.FormSuccess
-import com.keygenqt.viewer.android.data.models.UserModel
+import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInQueryState1
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
 import com.keygenqt.viewer.android.features.profile.ui.forms.mockUserUpdateForm
@@ -47,8 +46,8 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @Composable
 fun SettingsBody(
     formFields: FormFieldsState,
+    state1: QueryState = QueryState.Start,
     onActions: (SettingsActions) -> Unit = {},
-    stateViewModel: ViewModelState = ViewModelState.Start,
 ) {
     val scrollState = rememberScrollState()
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
@@ -78,10 +77,33 @@ fun SettingsBody(
         }
     }
 
+    // state query 1
+    var loading by remember { mutableStateOf(false) }
+    var success by remember { mutableStateOf(false) }
+    var error: String? by remember { mutableStateOf(null) }
+
+    SignInQueryState1(
+        state = state1,
+        loading = {
+            loading = true
+        },
+        error = {
+            error = it
+        },
+        success = {
+            success = true
+        },
+        clear = {
+            success = false
+            loading = false
+            error = null
+        }
+    )
+
     AppScaffold(
-        title = stringResource(id = R.string.settings_title),
+        topBarLoading = loading,
+        topBarTitle = stringResource(id = R.string.settings_title),
         scrollState = scrollState,
-        loading = stateViewModel.isAction()
     ) {
         Column(
             modifier = Modifier
@@ -93,20 +115,20 @@ fun SettingsBody(
             Column(Modifier.padding(start = 16.dp, end = 16.dp)) {
                 Spacer(modifier = Modifier.size(16.dp))
 
-                stateViewModel.getErrorMessage()?.let {
+                error?.let {
                     FormError(text = it)
                     Spacer(modifier = Modifier.size(16.dp))
                     LaunchedEffect(it) { scrollState.animateScrollTo(0) }
                 }
 
-                stateViewModel.getSuccessData<UserModel>()?.let {
+                if (success) {
                     FormSuccess(text = stringResource(id = R.string.settings_form_successfully))
                     Spacer(modifier = Modifier.size(16.dp))
-                    LaunchedEffect(it) { scrollState.animateScrollTo(0) }
+                    LaunchedEffect(Unit) { scrollState.animateScrollTo(0) }
                 }
 
                 SettingsForm(
-                    loading = stateViewModel.isAction(),
+                    loading = loading,
                     formFields = formFields,
                 )
 
@@ -115,7 +137,7 @@ fun SettingsBody(
 
             Column(Modifier.padding(start = 16.dp, end = 16.dp)) {
                 Button(
-                    enabled = stateViewModel.isNotAction(),
+                    enabled = !loading,
                     onClick = { submitClick.invoke() },
                     modifier = Modifier.fillMaxWidth(),
                 ) {

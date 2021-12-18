@@ -20,46 +20,42 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.navigation.compose.currentBackStackEntryAsState
-import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.interfaces.IAppNavActions
-import com.keygenqt.viewer.android.menu.MenuTab.Companion.findByRoute
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.NavDestination
+import com.keygenqt.viewer.android.NavGraph
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-val bottomBar: (IAppNavActions) -> @Composable () -> Unit = { appActions ->
-    {
-        if (appActions is AppActions) {
-            val navBackStackEntry by appActions.controller.currentBackStackEntryAsState()
-            navBackStackEntry?.destination?.route?.findByRoute()?.let { tab ->
-                MenuBottomBar(
-                    currentRoute = tab,
-                    appActions = appActions
-                )
-            }
-        }
-    }
+/**
+ * Callback click bottom bar for [NavGraph]
+ */
+object MenuBottomBar {
+    var onClick: ((MenuTab) -> Unit)? = null
 }
 
+/**
+ * Bottom bar app
+ */
 @Composable
 fun MenuBottomBar(
-    appActions: AppActions,
-    currentRoute: MenuTab = MenuTab.REPOS,
+    destination: NavDestination?,
 ) {
-    NavigationBar {
-        MenuTab.values().forEach { tab ->
-            NavigationBarItem(
-                icon = { Icon(tab.icon, contentDescription = null) },
-                label = { Text(tab.name) },
-                selected = tab.route == currentRoute.route,
-                onClick = {
-                    when (tab) {
-                        MenuTab.REPOS -> appActions.toReposMain()
-                        MenuTab.FOLLOWERS -> appActions.toFollowersMain()
-                        // MenuTab.STATS -> appActions.toStatsMain() @todo
-                        MenuTab.PROFILE -> appActions.toProfileMain()
+    val scope = rememberCoroutineScope()
+    if (MenuTab.values().any { it.route == destination?.route }) {
+        NavigationBar {
+            MenuTab.values().forEach { tab ->
+                NavigationBarItem(
+                    icon = { Icon(tab.icon, contentDescription = null) },
+                    label = { Text(tab.name) },
+                    selected = tab.route == destination?.route,
+                    onClick = {
+                        scope.launch {
+                            delay(50)
+                            MenuBottomBar.onClick?.invoke(tab)
+                        }
                     }
-                }
-            )
+                )
+            }
         }
     }
 }

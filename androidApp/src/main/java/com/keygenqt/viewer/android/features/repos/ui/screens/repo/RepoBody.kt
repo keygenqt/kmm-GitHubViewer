@@ -15,17 +15,45 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.compose.components.AppScaffold
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
-import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 
 /**
  * Body for [RepoScreen]
  */
 @Composable
 fun RepoBody(
-    viewModel: RepoViewModel,
+    model: Any?,
     onActions: (ReposListActions) -> Unit = {},
 ) {
+    val scrollState = rememberScrollState()
 
+    AppScaffold(
+        topBarLoading = model == false,
+        topBarTitle = stringResource(id = R.string.repo_title),
+        scrollState = scrollState,
+        swipeRefreshEnable = true,
+        swipeRefreshLoading = false,
+        swipeRefreshAction = {
+        },
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState)
+        ) {
+            when (model) {
+                is RepoModel -> RepoInfo(model)
+            }
+        }
+    }
 }

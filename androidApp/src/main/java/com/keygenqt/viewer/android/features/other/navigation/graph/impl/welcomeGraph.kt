@@ -18,8 +18,8 @@ package com.keygenqt.viewer.android.features.other.navigation.graph.impl
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import com.google.accompanist.navigation.animation.composable
 import com.keygenqt.viewer.android.base.AppActions
+import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
 import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
@@ -31,7 +31,7 @@ import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScre
 fun NavGraphBuilder.welcomeGraph(
     appActions: AppActions,
 ) {
-    composable(
+    composableAnimation(
         route = OtherNav.navWelcome.welcomeScreen.route
     ) {
         WelcomeScreen(viewModel = hiltViewModel()) { event ->

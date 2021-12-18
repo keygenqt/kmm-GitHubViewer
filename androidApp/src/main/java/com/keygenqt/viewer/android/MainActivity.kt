@@ -23,8 +23,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.core.view.WindowCompat
-import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
     /**
      * Main initialization point of view
      */
-    @OptIn(ExperimentalAnimationApi::class)
+    @OptIn(ExperimentalAnimationApi::class, ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

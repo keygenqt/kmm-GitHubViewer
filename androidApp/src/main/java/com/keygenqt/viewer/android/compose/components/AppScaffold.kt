@@ -27,11 +27,13 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.navigationBarsWithImePadding
 import com.google.accompanist.insets.statusBarsPadding
+import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
-import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.base.viewModel.AppViewModel
 import com.keygenqt.viewer.android.compose.components.lottie.LoadingBlockAnimation
+import com.keygenqt.viewer.android.menu.MenuBottomBar
+import com.keygenqt.viewer.android.utils.ListenDestination
 
 /**
  * Main scaffold for app
@@ -39,13 +41,20 @@ import com.keygenqt.viewer.android.compose.components.lottie.LoadingBlockAnimati
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppScaffold(
-    title: String? = null,
-    loading: Boolean = false,
+    // top bar
+    topBarTitle: String? = null,
+    topBarLoading: Boolean = false,
+    topBarActions: @Composable ((RowScope) -> Unit)? = null,
+    // swipe refresh
+    swipeRefreshEnable: Boolean = false,
+    swipeRefreshLoading: Boolean = false,
+    swipeRefreshAction: () -> Unit = {},
+    // for nested scroll state
     scrollState: ScrollState? = null,
     refreshState: SwipeRefreshState? = null,
-    appViewModel: AppViewModel = LocalViewModel.current,
+    // locals
     backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current,
-    actions: @Composable ((RowScope) -> Unit)? = null,
+    // content
     content: @Composable () -> Unit
 ) {
     // Scroll behavior top bar with nestedScrollConnection
@@ -57,7 +66,7 @@ fun AppScaffold(
         modifier = Modifier
             .statusBarsPadding()
             .navigationBarsWithImePadding(),
-        topBar = title?.let {
+        topBar = topBarTitle?.let {
             {
                 MediumTopAppBar(
                     colors = TopAppBarDefaults.mediumTopAppBarColors(
@@ -83,29 +92,43 @@ fun AppScaffold(
                     title = {
                         Column {
                             Spacer(modifier = Modifier.size(8.dp))
-                            Text(text = title)
+                            Text(text = topBarTitle)
                         }
                     },
                     actions = {
-                        if (loading) {
+                        if (topBarLoading) {
                             // show loading indicator
                             LoadingBlockAnimation()
                         } else {
                             // custom actions
-                            actions?.invoke(this)
+                            topBarActions?.invoke(this)
                         }
                     }
                 )
             }
         } ?: {},
-        bottomBar = appViewModel.getBottomBar() ?: {}
+        bottomBar = {
+            MenuBottomBar(ListenDestination.getActionDestination())
+        }
     ) {
         Box(
             Modifier
                 .nestedScroll(scrollBehavior.nestedScrollConnection)
                 .padding(it)
         ) {
-            if (!loading) {
+            if (swipeRefreshEnable) {
+                SwipeRefresh(
+                    state = rememberSwipeRefreshState(swipeRefreshLoading),
+                    onRefresh = swipeRefreshAction,
+                    indicator = { st, tr ->
+                        AppSwipeRefreshIndicator(st, tr)
+                    },
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    content.invoke()
+                }
+            } else {
                 content.invoke()
             }
         }

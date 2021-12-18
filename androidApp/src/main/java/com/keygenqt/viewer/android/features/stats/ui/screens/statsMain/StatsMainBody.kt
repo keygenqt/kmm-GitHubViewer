@@ -45,7 +45,7 @@ fun StatsMainBody(
     val scrollState = rememberScrollState()
 
     AppScaffold(
-        title = stringResource(id = R.string.stats_title),
+        topBarTitle = stringResource(id = R.string.stats_title),
         scrollState = scrollState,
     ) {
         Column(

@@ -16,10 +16,8 @@
 package com.keygenqt.viewer.android.features.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.keygenqt.response.extensions.done
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
 import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
@@ -27,9 +25,7 @@ import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -39,7 +35,13 @@ import javax.inject.Inject
 class SettingsViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService
-) : ViewModelStates() {
+) : ViewModel() {
+
+    /**
+     * State actions
+     */
+    val query1 = QueryActions(this)
+
     /**
      * Listen user model
      */
@@ -63,7 +65,7 @@ class SettingsViewModel @Inject constructor(
         location: String,
         bio: String,
     ) {
-        queryLaunch {
+        query1.queryLaunch {
             apiService.userUpdate(
                 UserUpdateRequest(
                     name = name,
@@ -77,13 +79,6 @@ class SettingsViewModel @Inject constructor(
                 dataService.withTransaction<UserModelDataService> {
                     clearUserModel()
                     insertUserModel(it)
-                }
-            }.done {
-                viewModelScope.launch {
-                    delay(1500)
-                    if (state.value.isSuccess()) {
-                        setStop()
-                    }
                 }
             }
         }

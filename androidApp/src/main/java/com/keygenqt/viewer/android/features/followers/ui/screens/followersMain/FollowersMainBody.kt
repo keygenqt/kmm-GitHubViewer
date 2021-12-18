@@ -46,7 +46,7 @@ fun FollowersMainBody(
 
     AppScaffold(
         refreshState = refreshState,
-        title = stringResource(id = R.string.followers_title)
+        topBarTitle = stringResource(id = R.string.followers_title)
     ) {
         AppSwipeRefreshList(
             listState = listState,

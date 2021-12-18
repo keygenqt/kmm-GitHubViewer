@@ -99,7 +99,6 @@ fun FollowerItem(
             }
         }
     }
-
 }
 
 @Composable

@@ -28,7 +28,12 @@ sealed class ProfileMainActions {
     object ToSettings : ProfileMainActions()
 
     /**
+     * User update
+     */
+    object ActionUpdateUser : ProfileMainActions()
+
+    /**
      * User logout
      */
-    object Logout : ProfileMainActions()
+    object ActionLogout : ProfileMainActions()
 }

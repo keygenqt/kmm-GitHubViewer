@@ -16,18 +16,12 @@
 package com.keygenqt.viewer.android.features.repos.navigation.graph.impl
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavType
-import com.google.accompanist.navigation.animation.composable
-import androidx.navigation.navArgument
 import com.keygenqt.viewer.android.base.AppActions
+import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
-import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 
 /**
  * NavGraph for [RepoScreen]
@@ -36,36 +30,8 @@ import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 fun NavGraphBuilder.repoGraph(
     appActions: AppActions,
 ) {
-    with(ReposNav.navRepo.repoScreen) {
-        composable(
-            route = routeWithArgument,
-            enterTransition = {
-                slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(700))
-            },
-            exitTransition = {
-                slideOutHorizontally(targetOffsetX = { -1000 }, animationSpec = tween(700))
-            },
-            popEnterTransition = {
-                slideInHorizontally(initialOffsetX = { -1000 }, animationSpec = tween(700))
-            },
-            popExitTransition = {
-                slideOutHorizontally(targetOffsetX = { 1000 }, animationSpec = tween(700))
-            },
-            arguments = listOf(
-                navArgument(argument0) {
-                    type = NavType.StringType
-                }
-            )
-        ) { backStackEntry ->
-            backStackEntry.arguments?.let {
-                val viewModel: RepoViewModel = hiltViewModel()
-                viewModel.setId(it.getString(argument0))
-                RepoScreen(
-                    viewModel = viewModel,
-                ) { event ->
-
-                }
-            }
+    composableAnimation(ReposNav.navRepo.repoScreen.routeWithArgument) {
+        RepoScreen(viewModel = hiltViewModel()) { event ->
         }
     }
 }

@@ -52,8 +52,8 @@ fun ReposListBody(
 
     AppScaffold(
         refreshState = refreshState,
-        title = stringResource(id = R.string.repos_title),
-        actions = {
+        topBarTitle = stringResource(id = R.string.repos_title),
+        topBarActions = {
             RotateIconSort(
                 enabled = models.loadState.refresh !is LoadState.Loading,
                 isRotate = isSortDescListRepo

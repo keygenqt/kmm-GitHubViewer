@@ -16,10 +16,13 @@
 package com.keygenqt.viewer.android.features.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.keygenqt.viewer.android.base.viewModel.ViewModelStates
+import com.keygenqt.response.extensions.success
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
+import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
@@ -31,9 +34,33 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService
-) : ViewModelStates() {
+) : ViewModel() {
+
+    /**
+     * State actions
+     */
+    val query1 = QueryActions(this)
+
     /**
      * Listen user model
      */
     val user = dataService.getUserModel().distinctUntilChanged()
+
+    init {
+        updateProfile()
+    }
+
+    /**
+     * Query update profile
+     */
+    fun updateProfile() {
+        query1.queryLaunch {
+            apiService.getUser().success {
+                dataService.withTransaction<UserModelDataService> {
+                    clearUserModel()
+                    insertUserModel(it)
+                }
+            }
+        }
+    }
 }

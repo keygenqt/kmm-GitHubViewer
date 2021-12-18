@@ -110,9 +110,12 @@ fun ProfileMainInfo(
 
         Spacer(modifier = Modifier.size(6.dp))
 
-        Column {
+        Column(
+            modifier = Modifier.background(MaterialTheme.colorScheme.surfaceVariant)
+        ) {
+            Spacer(modifier = Modifier.size(20.dp))
+
             InfoBlock(
-                isTop = true,
                 label = stringResource(id = R.string.profile_label_email),
                 text = model.email
             )
@@ -138,7 +141,6 @@ fun ProfileMainInfo(
             )
         }
     }
-
 }
 
 @Composable
@@ -171,20 +173,15 @@ fun InfoBlockCount(
 
 @Composable
 fun InfoBlock(
-    isTop: Boolean = false,
     label: String,
     text: String
 ) {
     if (text.isNotEmpty()) {
         Column(
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.surfaceVariant)
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
         ) {
-            if (isTop) {
-                Spacer(modifier = Modifier.size(20.dp))
-            }
             TextLabelLarge(text = label)
             Spacer(modifier = Modifier.size(2.dp))
             TextBodyMedium(text = text)

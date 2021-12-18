@@ -13,31 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.profile.ui.screens.profileMain
+package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
+import android.content.res.Configuration
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
+import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
+import com.keygenqt.viewer.android.data.mock.mock
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
-import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
+import com.keygenqt.viewer.android.theme.AppTheme
 
-/**
- * Base page fun for initialization
- *
- * @param viewModel page view model
- * @param onActions actions for page
- */
 @Composable
-fun ProfileMainScreen(
-    viewModel: ProfileViewModel,
+fun RepoInfo(
+    model: RepoModel,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
-    val model by viewModel.user.collectAsState(false)
-    val state1 by viewModel.query1.state.collectAsState()
+    Column {
+        TextLabelLarge(text = model.language)
+    }
+}
 
-    ProfileMainBody(
-        model = model,
-        state1 = state1,
-        onActions = onActions
-    )
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Composable
+private fun Preview() {
+    AppTheme {
+        RepoInfo(RepoModel.mock())
+    }
 }

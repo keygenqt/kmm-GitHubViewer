@@ -15,12 +15,9 @@
  */
 package com.keygenqt.viewer.android.base.viewModel
 
-import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.viewer.android.extensions.withTransaction
-import com.keygenqt.viewer.android.interfaces.IAppNavActions
-import com.keygenqt.viewer.android.menu.bottomBar
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
@@ -45,8 +42,7 @@ class AppViewModel @Inject constructor(
         viewModelScope.launch {
             dataService.getSecurityModel().distinctUntilChanged().collect {
                 it?.let {
-                    Timber.d("State auth: I am is ${it.login}")
-                    StaticData.DataUser.setLogin(it.login)
+                    Timber.d("State auth: I am is user")
                     StaticData.AuthTokens.setTokens(it.accessToken, it.refreshToken)
                 } ?: run {
                     StaticData.AuthTokens.clear()
@@ -66,25 +62,6 @@ class AppViewModel @Inject constructor(
      * [StateFlow] for [_isSplash]
      */
     val isSplash: StateFlow<Boolean> get() = _isSplash.asStateFlow()
-
-    /**
-     * Bottom bar
-     */
-    private var _appBottomBar: (@Composable () -> Unit)? = null
-
-    /**
-     * Set action for bottom bar
-     */
-    fun setBottomBarActions(actions: IAppNavActions) {
-        _appBottomBar = bottomBar.invoke(actions)
-    }
-
-    /**
-     * Get bottom bar
-     */
-    fun getBottomBar(): (@Composable () -> Unit)? {
-        return _appBottomBar
-    }
 
     /**
      * Set is ready true

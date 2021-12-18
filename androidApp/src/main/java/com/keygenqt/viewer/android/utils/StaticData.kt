@@ -21,28 +21,6 @@ package com.keygenqt.viewer.android.utils
 class StaticData {
 
     /**
-     * Data static user
-     */
-    object DataUser {
-        /**
-         * Auth token
-         */
-        private var LOGIN: String? = null
-
-        /**
-         * Get value for [LOGIN]
-         */
-        val login: String get() = LOGIN!!
-
-        /**
-         * Set login
-         */
-        fun setLogin(login: String) {
-            LOGIN = login
-        }
-    }
-
-    /**
      * Auth tokens user
      */
     object AuthTokens {

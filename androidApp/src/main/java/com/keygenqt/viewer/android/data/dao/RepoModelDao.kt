@@ -35,6 +35,9 @@ interface RepoModelDao {
     @Query("SELECT * FROM RepoModel")
     fun getModels(): Flow<List<RepoModel>>
 
+    @Query("SELECT * FROM RepoModel WHERE id = :id")
+    fun getModel(id: String): Flow<RepoModel>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertModels(vararg models: RepoModel)
 

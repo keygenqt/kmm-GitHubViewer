@@ -67,6 +67,13 @@ interface RepoModelDataService : IAppDatabase {
     }
 
     /**
+     * Get [Flow] model by id
+     */
+    fun getRepoModelById(id: String): Flow<RepoModel> {
+        return dao.getModel(id)
+    }
+
+    /**
      * Remove all models
      */
     suspend fun clearRepoModel() {
