@@ -23,8 +23,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.models.RepoModel
+import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
+import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainQueryState1
+import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 
 /**
@@ -33,17 +37,32 @@ import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 @Composable
 fun RepoBody(
     model: Any?,
-    onActions: (ReposListActions) -> Unit = {},
+    state1: QueryState = QueryState.Start,
+    onActions: (RepoActions) -> Unit = {},
 ) {
     val scrollState = rememberScrollState()
+
+    // state query 1
+    var loadingRepo by remember { mutableStateOf(false) }
+
+    RepoQueryState1(
+        state = state1,
+        loadingRepo = {
+            loadingRepo = true
+        },
+        clear = {
+            loadingRepo = false
+        }
+    )
 
     AppScaffold(
         topBarLoading = model == false,
         topBarTitle = stringResource(id = R.string.repo_title),
         scrollState = scrollState,
         swipeRefreshEnable = true,
-        swipeRefreshLoading = false,
+        swipeRefreshLoading = loadingRepo,
         swipeRefreshAction = {
+            onActions(RepoActions.ActionUpdateRepo)
         },
     ) {
         Column(

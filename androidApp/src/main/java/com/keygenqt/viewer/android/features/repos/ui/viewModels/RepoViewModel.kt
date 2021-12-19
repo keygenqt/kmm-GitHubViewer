@@ -15,14 +15,23 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
+import android.net.Uri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.response.extensions.success
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
+import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
+import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -36,12 +45,39 @@ class RepoViewModel @Inject constructor(
 ) : ViewModel() {
 
     /**
+     * State actions
+     */
+    val query1 = QueryActions(this)
+
+    /**
      * Repo id
      */
     val id: String = savedStateHandle.get(ReposNav.navRepo.repoScreen.argument0) ?: ""
 
     /**
+     * Repo id
+     */
+    val url: String = savedStateHandle.get(ReposNav.navRepo.repoScreen.argument1) ?: ""
+
+    /**
      * Listen repo model
      */
     val repo = dataService.getRepoModelById(id).distinctUntilChanged()
+
+    init {
+        updateRepo()
+    }
+
+    /**
+     * Query update profile
+     */
+    fun updateRepo() {
+        query1.queryLaunch {
+            apiService.getRepo(url).success {
+                dataService.withTransaction<RepoModelDataService> {
+                    updateRepoModel(it)
+                }
+            }
+        }
+    }
 }

@@ -16,10 +16,7 @@
 package com.keygenqt.viewer.android.data.dao
 
 import androidx.paging.PagingSource
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.keygenqt.viewer.android.data.models.RepoModel
 import kotlinx.coroutines.flow.Flow
 
@@ -37,6 +34,9 @@ interface RepoModelDao {
 
     @Query("SELECT * FROM RepoModel WHERE id = :id")
     fun getModel(id: String): Flow<RepoModel>
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateModel(model: RepoModel)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertModels(vararg models: RepoModel)

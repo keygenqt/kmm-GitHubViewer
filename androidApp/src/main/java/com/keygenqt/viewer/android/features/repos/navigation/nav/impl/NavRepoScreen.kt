@@ -15,15 +15,16 @@
  */
 package com.keygenqt.viewer.android.features.repos.navigation.nav.impl
 
-import com.keygenqt.routing.NavScreenWithArgument
+import com.keygenqt.routing.NavScreenWithArgument2
 import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
 
 /**
  * Routing for [ReposListScreen]
  */
 object NavRepoScreen {
-    val repoScreen = object : NavScreenWithArgument {
+    val repoScreen = object : NavScreenWithArgument2 {
         override val argument0: String = "id"
-        override val routeWithArgument: String = "NavRepoScreen/{$argument0}"
+        override val argument1: String = "url"
+        override val routeWithArgument: String = "NavRepoScreen/{$argument0}/{$argument1}"
     }
 }

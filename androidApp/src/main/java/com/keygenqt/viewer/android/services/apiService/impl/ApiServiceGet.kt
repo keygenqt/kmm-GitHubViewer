@@ -53,6 +53,21 @@ interface ApiServiceGet {
     }
 
     /**
+     * Get repo data
+     */
+    suspend fun getRepo(url: String): ResponseResult<RepoModel> {
+        return withContext(Dispatchers.IO) {
+            LocalTryExecuteWithResponse.executeWithResponse {
+                api.getRepo(url)
+                    .delay(BuildConfig.DEBUG)
+                    .responseCheckApp()
+                    .body()!!
+                    .toModel()
+            }
+        }
+    }
+
+    /**
      * Get user repos
      */
     suspend fun getUserRepos(

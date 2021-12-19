@@ -13,17 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.ui.actions
+package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
-import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
+import androidx.compose.runtime.Composable
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActionsState
+import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 
-/**
- * Actions sealed class for screen [RepoScreen]
- */
-sealed class RepoActions {
-
-    /**
-     * Repo update
-     */
-    object ActionUpdateRepo : RepoActions()
+@Composable
+fun RepoQueryState1(
+    state: QueryState = QueryState.Start,
+    loadingRepo: () -> Unit = {},
+    clear: () -> Unit = {}
+) {
+    QueryActionsState(state) {
+        clear.invoke()
+        when (this) {
+            is QueryState.Action -> loadingRepo.invoke()
+            else -> {}
+        }
+    }
 }

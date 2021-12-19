@@ -18,6 +18,7 @@ package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 
@@ -30,12 +31,14 @@ import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 @Composable
 fun RepoScreen(
     viewModel: RepoViewModel,
-    onActions: (ReposListActions) -> Unit = {},
+    onActions: (RepoActions) -> Unit = {},
 ) {
     val model by viewModel.repo.collectAsState(false)
+    val state1 by viewModel.query1.state.collectAsState()
 
     RepoBody(
         model = model,
+        state1 = state1,
         onActions = onActions
     )
 }

@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.actions
 
+import android.net.Uri
 import com.keygenqt.viewer.android.features.repos.ui.screens.reposList.ReposListScreen
 
 /**
@@ -30,5 +31,5 @@ sealed class ReposListActions {
     /**
      * Top repo view page
      */
-    data class ToRepoView(val id: String) : ReposListActions()
+    data class ToRepoView(val id: String, val url: Uri) : ReposListActions()
 }

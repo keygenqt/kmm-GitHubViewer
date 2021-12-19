@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.reposList
 
 import android.content.res.Configuration
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -55,7 +56,7 @@ fun ReposListItem(
     ) {
         Box(
             modifier = Modifier.clickable(onClick = {
-                onActions(ReposListActions.ToRepoView(model.id))
+                onActions(ReposListActions.ToRepoView(model.id, Uri.parse(model.url)))
             })
         ) {
             Column(

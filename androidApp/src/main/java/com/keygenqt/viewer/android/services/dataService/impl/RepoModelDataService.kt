@@ -53,6 +53,13 @@ interface RepoModelDataService : IAppDatabase {
     }
 
     /**
+     * Fun for update model
+     */
+    suspend fun updateRepoModel(model: RepoModel) {
+        dao.updateModel(model)
+    }
+
+    /**
      * Get [PagingSource] for paging list
      */
     fun pagingSourceRepoModels(): PagingSource<Int, RepoModel> {

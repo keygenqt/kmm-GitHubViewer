@@ -37,7 +37,7 @@ fun NavGraphBuilder.reposMainGraph(
         ReposListScreen(viewModel = viewModel) { event ->
             when (event) {
                 is ReposListActions.SortToggle -> viewModel.sortToggle()
-                is ReposListActions.ToRepoView -> appActions.toRepo(event.id)
+                is ReposListActions.ToRepoView -> appActions.toRepo(event.id, event.url)
             }
         }
     }

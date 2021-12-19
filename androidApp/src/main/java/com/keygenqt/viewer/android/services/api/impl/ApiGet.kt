@@ -23,6 +23,7 @@ import com.keygenqt.viewer.android.utils.ConstantsPaging.PAGE_LIMIT
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 /**
  * The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
@@ -31,6 +32,11 @@ interface ApiGet {
 
     @GET("/user")
     suspend fun getUser(): Response<UserResponse>
+
+    @GET
+    suspend fun getRepo(
+        @Url url: String,
+    ): Response<RepoResponse>
 
     @GET("user/repos")
     suspend fun getUserRepos(
