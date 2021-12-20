@@ -15,10 +15,8 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
-import android.net.Uri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
 import com.keygenqt.viewer.android.extensions.withTransaction
@@ -27,11 +25,8 @@ import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
-import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
