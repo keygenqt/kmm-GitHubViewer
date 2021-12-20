@@ -15,21 +15,14 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.models.RepoModel
-import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
-import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainQueryState1
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
-import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 
 /**
  * Body for [RepoScreen]
@@ -40,7 +33,7 @@ fun RepoBody(
     state1: QueryState = QueryState.Start,
     onActions: (RepoActions) -> Unit = {},
 ) {
-    val scrollState = rememberScrollState()
+    val lazyListState = rememberLazyListState()
 
     // state query 1
     var loadingRepo by remember { mutableStateOf(false) }
@@ -58,21 +51,18 @@ fun RepoBody(
     AppScaffold(
         topBarLoading = model == false,
         topBarTitle = stringResource(id = R.string.repo_title),
-        scrollState = scrollState,
+        lazyListState = lazyListState,
         swipeRefreshEnable = true,
         swipeRefreshLoading = loadingRepo,
         swipeRefreshAction = {
             onActions(RepoActions.ActionUpdateRepo)
         },
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(scrollState)
-        ) {
-            when (model) {
-                is RepoModel -> RepoInfo(model)
-            }
+        when (model) {
+            is RepoModel -> RepoInfo(
+                model = model,
+                lazyListState = lazyListState
+            )
         }
     }
 }

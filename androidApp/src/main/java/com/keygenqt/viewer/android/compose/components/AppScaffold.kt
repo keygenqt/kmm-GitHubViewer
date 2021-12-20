@@ -18,6 +18,7 @@ package com.keygenqt.viewer.android.compose.components
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -51,6 +52,7 @@ fun AppScaffold(
     swipeRefreshAction: () -> Unit = {},
     // for nested scroll state
     scrollState: ScrollState? = null,
+    lazyListState: LazyListState? = null,
     refreshState: SwipeRefreshState? = null,
     // locals
     backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current,
@@ -59,7 +61,9 @@ fun AppScaffold(
 ) {
     // Scroll behavior top bar with nestedScrollConnection
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior {
-        refreshState?.isSwipeInProgress == true || scrollState?.value ?: 0 > 0
+        refreshState?.isSwipeInProgress == true ||
+            scrollState?.value ?: 0 > 0 ||
+            lazyListState?.isScrollInProgress == true
     }
 
     Scaffold(
