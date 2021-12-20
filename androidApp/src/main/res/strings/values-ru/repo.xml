@@ -1,3 +1,15 @@
 <resources>
     <string name="repo_title">Repo</string>
+
+    <string name="repo_label_size">Size</string>
+    <string name="repo_open_watchers">Watchers</string>
+    <string name="repo_open_issue">Issue</string>
+
+    <string name="repo_label_full_name">Полное имя</string>
+    <string name="repo_label_license">Лицензия</string>
+    <string name="repo_label_visibility">Тип видимости</string>
+    <string name="repo_label_owner">Создатель</string>
+    <string name="repo_label_updated_at">Обновлено</string>
+    <string name="repo_label_created_at">Создано</string>
+    <string name="repo_label_description">Описание</string>
 </resources>

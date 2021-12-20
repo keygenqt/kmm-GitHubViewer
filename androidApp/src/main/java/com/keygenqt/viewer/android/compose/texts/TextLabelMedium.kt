@@ -30,7 +30,7 @@ fun TextLabelMedium(
     maxLines: Int = Int.MAX_VALUE,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     color: Color = MaterialTheme.colorScheme.onBackground
-) = TextDisplay(
+) = AppText(
     maxLines = maxLines,
     overflow = overflow,
     textAlign = textAlign,

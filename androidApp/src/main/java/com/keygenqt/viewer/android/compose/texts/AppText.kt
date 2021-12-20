@@ -24,7 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 
 @Composable
-fun TextDisplay(
+fun AppText(
     text: String,
     modifier: Modifier = Modifier,
     textAlign: TextAlign?,

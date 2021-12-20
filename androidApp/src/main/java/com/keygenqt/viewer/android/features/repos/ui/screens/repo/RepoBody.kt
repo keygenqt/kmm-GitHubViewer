@@ -17,8 +17,6 @@ package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.*
-import androidx.compose.ui.res.stringResource
-import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.models.RepoModel
@@ -50,7 +48,7 @@ fun RepoBody(
 
     AppScaffold(
         topBarLoading = model == false,
-        topBarTitle = stringResource(id = R.string.repo_title),
+        topBarTitle = (model as? RepoModel)?.name ?: "",
         lazyListState = lazyListState,
         swipeRefreshEnable = true,
         swipeRefreshLoading = loadingRepo,
