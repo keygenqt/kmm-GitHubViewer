@@ -86,4 +86,11 @@ interface RepoModelDataService : IAppDatabase {
     suspend fun clearRepoModel() {
         dao.clear()
     }
+
+    /**
+     * Count all models
+     */
+    suspend fun countRepoModel(): Int {
+        return dao.count()
+    }
 }

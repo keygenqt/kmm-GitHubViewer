@@ -40,4 +40,7 @@ interface FollowerModelDao {
 
     @Query("DELETE FROM FollowerModel")
     suspend fun clear()
+
+    @Query("SELECT COUNT(*) FROM FollowerModel")
+    suspend fun count(): Int
 }

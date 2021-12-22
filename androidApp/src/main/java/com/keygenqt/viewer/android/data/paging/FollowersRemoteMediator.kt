@@ -44,8 +44,10 @@ class FollowersRemoteMediator(
     }
 
     override suspend fun initialize(): InitializeAction {
-        // clear count
-        sizeList = 0
+        // set count cache
+        dataService.withTransaction<FollowerModelDataService> {
+            sizeList = countFollowerModel()
+        }
         // Refresh once per hour
         return if (System.currentTimeMillis() - preferences.lastUpdateListFollowers >= TimeUnit.HOURS.toMillis(1)) {
             InitializeAction.LAUNCH_INITIAL_REFRESH
@@ -61,7 +63,7 @@ class FollowersRemoteMediator(
         return try {
 
             val loadPage = when (loadType) {
-                LoadType.REFRESH -> null
+                LoadType.REFRESH -> { sizeList = 0; 1 }
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> (sizeList / state.config.pageSize.toFloat())
                     .roundToInt()
@@ -69,7 +71,7 @@ class FollowersRemoteMediator(
             }
 
             val response = apiService.getUserFollowers(
-                page = loadPage ?: 1,
+                page = loadPage,
             )
                 .success { models ->
                     // save data
@@ -79,15 +81,11 @@ class FollowersRemoteMediator(
                             preferences.lastUpdateListFollowers = System.currentTimeMillis()
                             // clear data
                             clearFollowerModel()
-                            // clear count
-                            sizeList = 0
                         }
-                        if (models.isNotEmpty() || loadType != LoadType.APPEND) {
-                            insertFollowerModel(*models.toTypedArray())
-                        }
+                        insertFollowerModel(*models.toTypedArray())
+                        // add items count
+                        sizeList = countFollowerModel()
                     }
-                    // change count
-                    sizeList += models.size
                 }.error {
                     throw it
                 }

@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RepoModelDao {
 
+    //    @Query("SELECT * FROM RepoModel ORDER BY CAST(createdAt AS DATETIME) DESC")
     @Query("SELECT * FROM RepoModel")
     fun pagingSource(): PagingSource<Int, RepoModel>
 
@@ -43,4 +44,7 @@ interface RepoModelDao {
 
     @Query("DELETE FROM RepoModel")
     suspend fun clear()
+
+    @Query("SELECT COUNT(*) FROM RepoModel")
+    suspend fun count(): Int
 }

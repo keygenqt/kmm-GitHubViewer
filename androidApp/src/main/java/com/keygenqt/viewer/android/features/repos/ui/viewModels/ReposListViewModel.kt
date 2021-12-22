@@ -16,10 +16,8 @@
 package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import androidx.lifecycle.viewModelScope
+import androidx.paging.*
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.paging.ReposRemoteMediator
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
@@ -64,7 +62,7 @@ class ReposListViewModel @Inject constructor(
         remoteMediator = ReposRemoteMediator(apiService, dataService, preferences)
     ) {
         dataService.pagingSourceRepoModels()
-    }.flow
+    }.flow.cachedIn(viewModelScope)
 
     /**
      * Toggle type sort

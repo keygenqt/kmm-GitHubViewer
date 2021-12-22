@@ -29,6 +29,8 @@ import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
+import timber.log.Timber
+import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
@@ -44,8 +46,10 @@ class ReposRemoteMediator(
     }
 
     override suspend fun initialize(): InitializeAction {
-        // clear count
-        sizeList = 0
+        // set count cache
+        dataService.withTransaction<RepoModelDataService> {
+            sizeList = countRepoModel()
+        }
         // Refresh once per hour
         return if (System.currentTimeMillis() - preferences.lastUpdateListRepos >= TimeUnit.HOURS.toMillis(1)) {
             InitializeAction.LAUNCH_INITIAL_REFRESH
@@ -61,7 +65,7 @@ class ReposRemoteMediator(
         return try {
 
             val loadPage = when (loadType) {
-                LoadType.REFRESH -> null
+                LoadType.REFRESH -> { sizeList = 0; 1 }
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> (sizeList / state.config.pageSize.toFloat())
                     .roundToInt()
@@ -69,7 +73,7 @@ class ReposRemoteMediator(
             }
 
             val response = apiService.getUserRepos(
-                page = loadPage ?: 1,
+                page = loadPage,
                 isSortDesc = preferences.isSortDescListRepos
             )
                 .success { models ->
@@ -80,15 +84,11 @@ class ReposRemoteMediator(
                             preferences.lastUpdateListRepos = System.currentTimeMillis()
                             // clear data
                             clearRepoModel()
-                            // clear count
-                            sizeList = 0
                         }
-                        if (models.isNotEmpty() || loadType != LoadType.APPEND) {
-                            insertRepoModel(*models.toTypedArray())
-                        }
+                        insertRepoModel(*models.toTypedArray())
+                        // add items count
+                        sizeList = countRepoModel()
                     }
-                    // change count
-                    sizeList += models.size
                 }.error {
                     throw it
                 }

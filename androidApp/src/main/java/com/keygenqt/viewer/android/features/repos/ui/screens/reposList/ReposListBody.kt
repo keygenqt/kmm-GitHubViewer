@@ -34,6 +34,7 @@ import com.keygenqt.viewer.android.compose.components.RotateIconSort
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 import com.keygenqt.viewer.android.theme.AppTheme
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
@@ -60,9 +61,9 @@ fun ReposListBody(
             ) {
                 scope.launch {
                     listState.animateScrollToItem(index = 0)
+                    onActions(ReposListActions.SortToggle)
+                    models.refresh()
                 }
-                onActions(ReposListActions.SortToggle)
-                models.refresh()
             }
         }
     ) {

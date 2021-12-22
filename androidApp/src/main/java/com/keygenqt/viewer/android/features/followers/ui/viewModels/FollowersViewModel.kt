@@ -16,10 +16,8 @@
 package com.keygenqt.viewer.android.features.followers.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import androidx.lifecycle.viewModelScope
+import androidx.paging.*
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.paging.FollowersRemoteMediator
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
@@ -50,5 +48,5 @@ class FollowersViewModel @Inject constructor(
         remoteMediator = FollowersRemoteMediator(apiService, dataService, preferences)
     ) {
         dataService.pagingSourceFollowerModels()
-    }.flow
+    }.flow.cachedIn(viewModelScope)
 }

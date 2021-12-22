@@ -2,7 +2,7 @@
 [libraries.compose-ui]
 module = "androidx.compose.ui:ui"
 [libraries.compose-tooling]
-module = "androidx.compose.ui:ui-tooling-preview"
+module = "androidx.compose.ui:ui-tooling"
 [libraries.compose-activity]
 module = "androidx.activity:activity-compose"
 [libraries.compose-icons]

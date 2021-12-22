@@ -72,4 +72,11 @@ interface FollowerModelDataService : IAppDatabase {
     suspend fun clearFollowerModel() {
         dao.clear()
     }
+
+    /**
+     * Count all models
+     */
+    suspend fun countFollowerModel(): Int {
+        return dao.count()
+    }
 }
