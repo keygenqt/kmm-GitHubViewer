@@ -91,7 +91,6 @@ fun SignInBody(
     AppScaffold(
         topBarTitle = stringResource(id = R.string.sign_in_title),
         topBarLoading = loading,
-        scrollState = scrollState,
     ) {
         Column(
             modifier = Modifier

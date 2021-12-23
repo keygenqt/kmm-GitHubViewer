@@ -15,21 +15,21 @@
  */
 package com.keygenqt.viewer.android.compose.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.keygenqt.accompanist.SwipeRefreshList
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.components.lottie.ListEmptyAnimation
 import com.keygenqt.viewer.android.compose.components.lottie.ListErrorAnimation
-import com.keygenqt.viewer.android.compose.components.lottie.ListLoadingAnimation
 import com.keygenqt.viewer.android.compose.components.lottie.LoadingBlockAnimation
+import com.keygenqt.viewer.android.compose.texts.TextTitleMedium
 
 /**
  * Overload for app [SwipeRefreshList]
@@ -55,7 +55,12 @@ fun <T : Any> AppSwipeRefreshList(
             }
         },
         contentLoading = {
-            ListLoadingAnimation()
+            Box(modifier = Modifier.fillMaxSize()) {
+                TextTitleMedium(
+                    modifier = Modifier.align(Alignment.Center),
+                    text = stringResource(id = R.string.app_loading)
+                )
+            }
         },
         contentEmpty = {
             ListEmptyAnimation()

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.profile.ui.screens.settings
+package com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
@@ -24,8 +24,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.focus.FocusManager
+import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,22 +36,25 @@ import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.compose.components.FormSuccess
-import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInQueryState1
-import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
-import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
-import com.keygenqt.viewer.android.features.profile.ui.forms.mockUserUpdateForm
+import com.keygenqt.viewer.android.data.models.RepoVisibility
+import com.keygenqt.viewer.android.features.repos.ui.actions.RepoUpdateActions
+import com.keygenqt.viewer.android.features.repos.ui.forms.mockRepoUpdateForm
 import com.keygenqt.viewer.android.theme.AppTheme
+import com.keygenqt.viewer.android.features.repos.ui.forms.RepoUpdateForm.*
 
+/**
+ * Body for [RepoUpdateScreen]
+ */
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SettingsBody(
+fun RepoUpdateBody(
     formFields: FormFieldsState,
     state1: QueryState = QueryState.Start,
-    onActions: (SettingsActions) -> Unit = {},
+    localFocusManager: FocusManager? = null,
+    softwareKeyboardController: SoftwareKeyboardController? = null,
+    onActions: (RepoUpdateActions) -> Unit = {},
 ) {
     val scrollState = rememberScrollState()
-    val softwareKeyboardController = LocalSoftwareKeyboardController.current
-    val localFocusManager = LocalFocusManager.current
 
     // click submit
     val submitClick = {
@@ -60,18 +63,17 @@ fun SettingsBody(
         // check has errors
         if (!formFields.hasErrors()) {
             // clear focuses
-            localFocusManager.clearFocus()
+            localFocusManager?.clearFocus()
             // submit query
-            onActions(
-                SettingsActions.UserUpdate(
-                    name = formFields.get(UserUpdateName).getValue(),
-                    blog = formFields.get(UserUpdateBlog).getValue(),
-                    twitterUsername = formFields.get(UserUpdateTwitter).getValue(),
-                    company = formFields.get(UserUpdateCompany).getValue(),
-                    location = formFields.get(UserUpdateLocation).getValue(),
-                    bio = formFields.get(UserUpdateBio).getValue()
+            with(formFields) {
+                onActions(
+                    RepoUpdateActions.RepoUpdate(
+                        name = get(RepoUpdateName).getValue(),
+                        isPrivate = get(RepoUpdatePrivate).getValue().toBoolean(),
+                        description = get(RepoUpdateDescription).getValue(),
+                    )
                 )
-            )
+            }
             // hide keyboard
             softwareKeyboardController?.hide()
         }
@@ -82,7 +84,7 @@ fun SettingsBody(
     var success by remember { mutableStateOf(false) }
     var error: String? by remember { mutableStateOf(null) }
 
-    SignInQueryState1(
+    RepoUpdateQueryState1(
         state = state1,
         loading = {
             loading = true
@@ -103,7 +105,7 @@ fun SettingsBody(
     AppScaffold(
         topBarIsSmall = true,
         topBarLoading = loading,
-        topBarTitle = stringResource(id = R.string.settings_title),
+        topBarTitle = stringResource(id = R.string.repo_update_title),
     ) {
         Column(
             modifier = Modifier
@@ -127,7 +129,7 @@ fun SettingsBody(
                     LaunchedEffect(Unit) { scrollState.animateScrollTo(0) }
                 }
 
-                SettingsForm(
+                RepoUpdateForm(
                     loading = loading,
                     formFields = formFields,
                 )
@@ -150,10 +152,11 @@ fun SettingsBody(
     }
 }
 
+@ExperimentalComposeUiApi
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {
-        SettingsBody(mockUserUpdateForm())
+        RepoUpdateBody(mockRepoUpdateForm())
     }
 }

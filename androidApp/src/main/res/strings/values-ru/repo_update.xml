@@ -1,0 +1,7 @@
+<resources>
+    <string name="repo_update_title">Обновление</string>
+    <string name="repo_update_name">Имя</string>
+    <string name="repo_update_is_private">Приватный</string>
+    <string name="repo_update_visibility">Видимость</string>
+    <string name="repo_update_description">Описание</string>
+</resources>

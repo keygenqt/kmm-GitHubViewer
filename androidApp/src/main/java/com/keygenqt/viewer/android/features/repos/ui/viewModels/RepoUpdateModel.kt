@@ -19,21 +19,25 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
+import com.keygenqt.viewer.android.data.models.RepoVisibility
+import com.keygenqt.viewer.android.data.requests.RepoUpdateRequest
+import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
-import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
+import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
+import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
 
 /**
- * [ViewModel] for screen [RepoScreen]
+ * [ViewModel] for screen [RepoUpdateScreen]
  */
 @HiltViewModel
-class RepoViewModel @Inject constructor(
+class RepoUpdateModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
     private val savedStateHandle: SavedStateHandle
@@ -47,30 +51,41 @@ class RepoViewModel @Inject constructor(
     /**
      * Repo id
      */
-    val id: String = savedStateHandle.get(ReposNav.navRepo.repoScreen.argument0) ?: ""
+    val id: String = savedStateHandle.get(ReposNav.navRepoUpdate.repoUpdateScreen.argument0) ?: ""
 
     /**
      * Repo url for update
      */
-    val url: String = savedStateHandle.get(ReposNav.navRepo.repoScreen.argument1) ?: ""
+    val url: String = savedStateHandle.get(ReposNav.navRepoUpdate.repoUpdateScreen.argument1) ?: ""
 
     /**
      * Listen repo model
      */
     val repo = dataService.getRepoModelById(id).distinctUntilChanged()
 
-    init {
-        updateRepo()
-    }
-
     /**
-     * Query update repo
+     * Update user profile
+     *
+     * @property name the new name of the user
+     * @property isPrivate the new blog URL of the user
+     * @property description the new company of the user
      */
-    fun updateRepo() {
+    fun repoUpdate(
+        name: String,
+        isPrivate: Boolean,
+        description: String,
+    ) {
         query1.queryLaunch {
-            apiService.getRepo(url).success {
+            apiService.repoUpdate(
+                url = url,
+                request = RepoUpdateRequest(
+                    name = name,
+                    isPrivate = isPrivate,
+                    description = description,
+                )
+            ).success { model ->
                 dataService.withTransaction<RepoModelDataService> {
-                    updateRepoModel(it)
+                    updateRepoModel(model)
                 }
             }
         }

@@ -17,6 +17,8 @@ package com.keygenqt.viewer.android.features.profile.ui.screens.profileMain
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -28,20 +30,20 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Modifier.Companion.then
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.components.AppImageUser
-import com.keygenqt.viewer.android.compose.texts.TextBodyMedium
-import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
-import com.keygenqt.viewer.android.compose.texts.TextLabelSmall
-import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
+import com.keygenqt.viewer.android.compose.texts.*
 import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.formatDate
@@ -51,7 +53,7 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @Composable
 fun ProfileMainInfo(
     model: UserModel,
-    onActions: (ProfileMainActions) -> Unit = {},
+    uriHandler: UriHandler? = null,
 ) {
     Column {
         Box(
@@ -125,7 +127,10 @@ fun ProfileMainInfo(
             )
             InfoBlock(
                 label = stringResource(id = R.string.profile_label_blog),
-                text = model.blog
+                text = model.blog,
+                onClick = {
+                    uriHandler?.openUri(model.blog)
+                }
             )
             InfoBlock(
                 label = stringResource(id = R.string.profile_label_location),
@@ -139,6 +144,7 @@ fun ProfileMainInfo(
                 label = stringResource(id = R.string.profile_label_bio),
                 text = model.bio
             )
+            Spacer(modifier = Modifier.size(20.dp))
         }
     }
 }
@@ -174,18 +180,44 @@ fun InfoBlockCount(
 @Composable
 fun InfoBlock(
     label: String,
-    text: String
+    text: String,
+    onClick: (() -> Unit)? = null
 ) {
     if (text.isNotEmpty()) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .let { modifier ->
+                    onClick?.let {
+                        then(modifier.clickable { onClick.invoke() })
+                    } ?: run {
+                        modifier
+                    }
+                }
                 .padding(start = 16.dp, end = 16.dp)
         ) {
+            Spacer(modifier = Modifier.size(10.dp))
+
             TextLabelLarge(text = label)
+
             Spacer(modifier = Modifier.size(2.dp))
-            TextBodyMedium(text = text)
-            Spacer(modifier = Modifier.size(20.dp))
+
+            if (onClick == null) {
+                TextBodyMedium(text)
+            } else {
+                AppText(
+                    text = text,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        textDecoration = TextDecoration.Underline
+                    ),
+                    color = if (isSystemInDarkTheme()) {
+                        MaterialTheme.colorScheme.primaryContainer
+                    } else {
+                        MaterialTheme.colorScheme.primary
+                    }
+                )
+            }
+            Spacer(modifier = Modifier.size(10.dp))
         }
     }
 }

@@ -26,7 +26,9 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.BugReport
+import androidx.compose.material.icons.filled.Storage
+import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -50,11 +52,11 @@ import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
 import com.keygenqt.viewer.android.compose.texts.TextLabelSmall
 import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
+import com.keygenqt.viewer.android.extensions.capitalize
 import com.keygenqt.viewer.android.extensions.formatDate
 import com.keygenqt.viewer.android.extensions.graphicsCollapse
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
-import java.util.*
 
 @Composable
 fun RepoInfo(
@@ -201,8 +203,8 @@ fun RepoInfo(
                     vectorImage = Icons.Default.Storage,
                     count = Formatter.formatShortFileSize(
                         LocalContext.current,
-                        model.size.toLong()
-                    ) // @todo size == bytes ??
+                        model.size.toLong() * 10000
+                    )
                 )
             }
         }
@@ -225,11 +227,7 @@ fun RepoInfo(
                     )
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_visibility),
-                        text = model.visibility.replaceFirstChar {
-                            if (it.isLowerCase()) it.titlecase(
-                                Locale.getDefault()
-                            ) else it.toString()
-                        }
+                        text = model.visibility.name.capitalize()
                     )
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_owner),
@@ -248,6 +246,7 @@ fun RepoInfo(
                         label = stringResource(id = R.string.repo_label_description),
                         text = model.description
                     )
+                    Spacer(modifier = Modifier.size(20.dp))
                 }
             }
         }
@@ -293,10 +292,11 @@ fun InfoBlock(
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
         ) {
+            Spacer(modifier = Modifier.size(10.dp))
             TextLabelLarge(text = label)
             Spacer(modifier = Modifier.size(2.dp))
             TextBodyMedium(text = text)
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(10.dp))
         }
     }
 }

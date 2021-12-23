@@ -13,16 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.features.repos.ui.actions
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoUpdateActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
 
 /**
- * Base actions for feature
+ * Actions sealed class for screen [RepoUpdateScreen]
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions,
-    RepoUpdateActions
+sealed class RepoUpdateActions {
+    /**
+     * Repo update
+     */
+    data class RepoUpdate(
+        val name: String,
+        val isPrivate: Boolean,
+        val description: String,
+    ) : RepoUpdateActions()
+}

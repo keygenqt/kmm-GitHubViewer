@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GitHub Viewer</string>
+    <string name="app_loading">Загрузка…</string>
 </resources>

@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.data.mock
 
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.RepoOwnerModel
+import com.keygenqt.viewer.android.data.models.RepoVisibility
 import kotlinx.datetime.toLocalDateTime
 import java.util.*
 
@@ -107,7 +108,7 @@ fun RepoModel.Companion.mock() = RepoModel(
     hasDownloads = false,
     archived = false,
     disabled = false,
-    visibility = "",
+    visibility = RepoVisibility.PUBLIC,
     pushedAt = "2014-11-10T23:38:30".toLocalDateTime(),
     createdAt = "2014-11-10T23:38:30".toLocalDateTime(),
     updatedAt = "2014-11-10T23:38:30".toLocalDateTime(),

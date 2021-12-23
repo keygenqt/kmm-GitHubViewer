@@ -16,12 +16,14 @@
 package com.keygenqt.viewer.android.features.repos.navigation.nav
 
 import com.keygenqt.viewer.android.features.repos.navigation.nav.impl.NavRepoScreen
+import com.keygenqt.viewer.android.features.repos.navigation.nav.impl.NavRepoUpdateScreen
 import com.keygenqt.viewer.android.features.repos.navigation.nav.impl.NavReposListScreen
 
 /**
  * Base routing for feature
  */
 object ReposNav {
-    val navReposList = NavReposListScreen
     val navRepo = NavRepoScreen
+    val navReposList = NavReposListScreen
+    val navRepoUpdate = NavRepoUpdateScreen
 }

@@ -45,7 +45,6 @@ fun FollowersMainBody(
     val refreshState = rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)
 
     AppScaffold(
-        refreshState = refreshState,
         topBarTitle = stringResource(id = R.string.followers_title)
     ) {
         AppSwipeRefreshList(

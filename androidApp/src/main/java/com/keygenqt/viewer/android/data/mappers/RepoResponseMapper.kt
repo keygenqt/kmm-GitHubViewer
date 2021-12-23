@@ -18,7 +18,9 @@ package com.keygenqt.viewer.android.data.mappers
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.RepoOwnerModel
 import com.keygenqt.viewer.android.data.responses.RepoResponse
+import com.keygenqt.viewer.android.extensions.toRepoVisibility
 import kotlinx.datetime.toLocalDateTime
+import timber.log.Timber
 
 /**
  * Extension for response [RepoResponse]
@@ -113,7 +115,7 @@ fun RepoResponse.toModel(): RepoModel {
         hasDownloads = has_downloads ?: false,
         archived = archived ?: false,
         disabled = disabled ?: false,
-        visibility = visibility ?: "",
+        visibility = visibility.toRepoVisibility(),
         pushedAt = pushed_at?.replace("Z", "")?.toLocalDateTime(),
         createdAt = created_at?.replace("Z", "")?.toLocalDateTime(),
         updatedAt = updated_at?.replace("Z", "")?.toLocalDateTime(),

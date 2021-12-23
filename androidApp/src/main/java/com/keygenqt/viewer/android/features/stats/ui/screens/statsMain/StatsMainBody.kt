@@ -46,7 +46,6 @@ fun StatsMainBody(
 
     AppScaffold(
         topBarTitle = stringResource(id = R.string.stats_title),
-        scrollState = scrollState,
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

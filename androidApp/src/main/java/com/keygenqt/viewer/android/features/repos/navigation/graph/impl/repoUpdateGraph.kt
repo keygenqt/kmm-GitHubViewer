@@ -21,23 +21,27 @@ import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
-import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
+import com.keygenqt.viewer.android.features.repos.ui.actions.RepoUpdateActions
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
-import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
+import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
+import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoUpdateModel
 
 /**
  * NavGraph for [RepoScreen]
  */
 @OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.repoGraph(
+fun NavGraphBuilder.repoUpdateGraph(
     appActions: AppActions,
 ) {
-    composableAnimation(ReposNav.navRepo.repoScreen.routeWithArgument) {
-        val viewModel: RepoViewModel = hiltViewModel()
-        RepoScreen(viewModel = viewModel) { event ->
+    composableAnimation(ReposNav.navRepoUpdate.repoUpdateScreen.routeWithArgument) {
+        val viewModel: RepoUpdateModel = hiltViewModel()
+        RepoUpdateScreen(viewModel = viewModel) { event ->
             when (event) {
-                is RepoActions.ActionUpdateRepo -> viewModel.updateRepo()
-                is RepoActions.ToUpdateRepo -> appActions.toRepoUpdate(event.id, event.url)
+                is RepoUpdateActions.RepoUpdate -> viewModel.repoUpdate(
+                    name = event.name,
+                    isPrivate = event.isPrivate,
+                    description = event.description,
+                )
             }
         }
     }

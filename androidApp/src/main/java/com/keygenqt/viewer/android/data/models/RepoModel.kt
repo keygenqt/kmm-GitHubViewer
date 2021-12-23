@@ -25,6 +25,15 @@ import kotlinx.serialization.Serializable
 import java.util.*
 
 /**
+ * Enum for visibility model [RepoModel]
+ */
+enum class RepoVisibility {
+    PUBLIC,
+    PRIVATE,
+    INTERNAL,
+}
+
+/**
  * Repo model
  */
 @Entity
@@ -98,7 +107,7 @@ data class RepoModel(
     val hasDownloads: Boolean,
     val archived: Boolean,
     val disabled: Boolean,
-    val visibility: String,
+    val visibility: RepoVisibility,
     val pushedAt: LocalDateTime?,
     val createdAt: LocalDateTime?,
     val updatedAt: LocalDateTime?,
@@ -117,3 +126,4 @@ data class RepoModel(
     val openIssues: Int,
     val watchers: Int,
 ) : IModel
+

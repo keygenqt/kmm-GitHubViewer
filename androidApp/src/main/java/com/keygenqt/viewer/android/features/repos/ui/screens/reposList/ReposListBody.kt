@@ -52,7 +52,6 @@ fun ReposListBody(
     val refreshState = rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)
 
     AppScaffold(
-        refreshState = refreshState,
         topBarTitle = stringResource(id = R.string.repos_title),
         topBarActions = {
             RotateIconSort(

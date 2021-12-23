@@ -20,7 +20,9 @@ import com.keygenqt.response.ResponseResult
 import com.keygenqt.response.extensions.responseCheck
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
+import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
+import com.keygenqt.viewer.android.data.requests.RepoUpdateRequest
 import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.delay
 import com.keygenqt.viewer.android.services.api.AppApi
@@ -36,15 +38,26 @@ interface ApiServicePatch {
 
     /**
      * Update user profile
-     *
-     * @param request body request
-     *
-     * @return response for get userId and token
      */
     suspend fun userUpdate(request: UserUpdateRequest): ResponseResult<UserModel> {
         return withContext(Dispatchers.IO) {
             LocalTryExecuteWithResponse.executeWithResponse {
                 api.userUpdate(request)
+                    .delay(BuildConfig.DEBUG)
+                    .responseCheck()
+                    .body()!!
+                    .toModel()
+            }
+        }
+    }
+
+    /**
+     * Update repo
+     */
+    suspend fun repoUpdate(url: String, request: RepoUpdateRequest): ResponseResult<RepoModel> {
+        return withContext(Dispatchers.IO) {
+            LocalTryExecuteWithResponse.executeWithResponse {
+                api.repoUpdate(url, request)
                     .delay(BuildConfig.DEBUG)
                     .responseCheck()
                     .body()!!

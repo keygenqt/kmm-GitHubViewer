@@ -44,7 +44,6 @@ import kotlinx.coroutines.launch
  * Form page [SettingsBody]
  *
  * @param loading state call query to api
- * @param submitClick submit
  */
 @Composable
 fun SettingsForm(

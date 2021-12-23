@@ -31,6 +31,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,13 +41,16 @@ import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
+import kotlinx.coroutines.launch
 
 @Composable
 fun ProfileMainBody(
     model: Any?,
+    uriHandler: UriHandler? = null,
     state1: QueryState = QueryState.Start,
     onActions: (ProfileMainActions) -> Unit = {},
 ) {
+    val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
     var showDialogLogout by remember { mutableStateOf(false) }
 
@@ -77,7 +81,10 @@ fun ProfileMainBody(
                 )
             }
             IconButton(onClick = {
-                onActions(ProfileMainActions.ToSettings)
+                scope.launch {
+                    scrollState.animateScrollTo(0)
+                    onActions(ProfileMainActions.ToSettings)
+                }
             }) {
                 Icon(
                     imageVector = Icons.Default.Settings,
@@ -86,7 +93,6 @@ fun ProfileMainBody(
                 )
             }
         },
-        scrollState = scrollState,
         swipeRefreshEnable = true,
         swipeRefreshLoading = loadingUser,
         swipeRefreshAction = {
@@ -98,9 +104,7 @@ fun ProfileMainBody(
                 .fillMaxSize()
                 .verticalScroll(scrollState)
         ) {
-            when (model) {
-                is UserModel -> ProfileMainInfo(model)
-            }
+            (model as? UserModel)?.let { ProfileMainInfo(it, uriHandler) }
         }
     }
 

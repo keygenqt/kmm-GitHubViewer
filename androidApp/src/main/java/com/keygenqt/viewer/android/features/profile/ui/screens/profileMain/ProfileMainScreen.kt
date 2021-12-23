@@ -18,6 +18,7 @@ package com.keygenqt.viewer.android.features.profile.ui.screens.profileMain
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.platform.LocalUriHandler
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
 import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
 
@@ -38,6 +39,7 @@ fun ProfileMainScreen(
     ProfileMainBody(
         model = model,
         state1 = state1,
-        onActions = onActions
+        onActions = onActions,
+        uriHandler = LocalUriHandler.current
     )
 }

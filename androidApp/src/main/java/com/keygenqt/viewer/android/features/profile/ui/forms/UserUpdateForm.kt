@@ -21,7 +21,7 @@ import com.keygenqt.forms.base.FormStates
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
 
 /**
- * Form states for sign in
+ * Form states for update profile
  */
 enum class UserUpdateForm(val state: FormFieldState) : FormStates {
     UserUpdateName(FormFieldState()),

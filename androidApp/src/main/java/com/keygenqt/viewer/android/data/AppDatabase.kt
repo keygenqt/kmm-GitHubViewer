@@ -21,6 +21,7 @@ import androidx.room.TypeConverters
 import com.keygenqt.viewer.android.data.converters.ListConverter
 import com.keygenqt.viewer.android.data.converters.LocalDateTimeConverter
 import com.keygenqt.viewer.android.data.converters.MapConverter
+import com.keygenqt.viewer.android.data.converters.RepoVisibilityConverter
 import com.keygenqt.viewer.android.data.dao.FollowerModelDao
 import com.keygenqt.viewer.android.data.dao.RepoModelDao
 import com.keygenqt.viewer.android.data.dao.UserModelDao
@@ -45,6 +46,7 @@ import com.keygenqt.viewer.android.data.models.UserModel
         MapConverter::class,
         ListConverter::class,
         LocalDateTimeConverter::class,
+        RepoVisibilityConverter::class,
     ]
 )
 abstract class AppDatabase : RoomDatabase() {

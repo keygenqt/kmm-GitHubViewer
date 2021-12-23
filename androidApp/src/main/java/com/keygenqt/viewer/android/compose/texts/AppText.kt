@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.compose.texts
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -26,12 +27,12 @@ import androidx.compose.ui.text.style.TextOverflow
 @Composable
 fun AppText(
     text: String,
-    modifier: Modifier = Modifier,
-    textAlign: TextAlign?,
-    maxLines: Int,
-    overflow: TextOverflow,
     style: TextStyle,
-    color: Color
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null,
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Ellipsis,
+    color: Color = MaterialTheme.colorScheme.onBackground
 ) = Text(
     maxLines = maxLines,
     overflow = overflow,

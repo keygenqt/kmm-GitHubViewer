@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.actions
 
+import android.net.Uri
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
 
 /**
@@ -26,4 +27,9 @@ sealed class RepoActions {
      * Repo update
      */
     object ActionUpdateRepo : RepoActions()
+
+    /**
+     * To repo update from
+     */
+    data class ToUpdateRepo(val id: String, val url: Uri) : RepoActions()
 }

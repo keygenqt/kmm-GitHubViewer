@@ -1,0 +1,7 @@
+<resources>
+    <string name="repo_update_title">Repo Update</string>
+    <string name="repo_update_name">Name</string>
+    <string name="repo_update_is_private">Private Repo</string>
+    <string name="repo_update_visibility">Visibility</string>
+    <string name="repo_update_description">Description</string>
+</resources>

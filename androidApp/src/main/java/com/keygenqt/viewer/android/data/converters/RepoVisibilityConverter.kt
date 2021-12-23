@@ -13,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.data.converters
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoUpdateActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import androidx.room.TypeConverter
+import com.keygenqt.viewer.android.data.models.RepoModel
+import com.keygenqt.viewer.android.data.models.RepoVisibility
 
 /**
- * Base actions for feature
+ * Converter for [RepoModel]
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions,
-    RepoUpdateActions
+class RepoVisibilityConverter {
+    @TypeConverter
+    fun toRepoVisibility(value: String) = enumValueOf<RepoVisibility>(value)
+
+    @TypeConverter
+    fun fromRepoVisibility(value: RepoVisibility) = value.name
+}

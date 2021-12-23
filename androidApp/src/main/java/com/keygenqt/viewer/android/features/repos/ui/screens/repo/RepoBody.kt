@@ -15,12 +15,19 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
+import android.net.Uri
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
+import kotlinx.coroutines.launch
 
 /**
  * Body for [RepoScreen]
@@ -31,6 +38,7 @@ fun RepoBody(
     state1: QueryState = QueryState.Start,
     onActions: (RepoActions) -> Unit = {},
 ) {
+    val scope = rememberCoroutineScope()
     val lazyListState = rememberLazyListState()
 
     // state query 1
@@ -49,7 +57,22 @@ fun RepoBody(
     AppScaffold(
         topBarLoading = model == false,
         topBarTitle = (model as? RepoModel)?.name ?: "",
-        lazyListState = lazyListState,
+        topBarActions = {
+            IconButton(onClick = {
+                scope.launch {
+                    lazyListState.animateScrollToItem(0)
+                    (model as? RepoModel)?.let {
+                        onActions(RepoActions.ToUpdateRepo(it.id, Uri.parse(it.url)))
+                    }
+                }
+            }) {
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = "Settings",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
+        },
         swipeRefreshEnable = true,
         swipeRefreshLoading = loadingRepo,
         swipeRefreshAction = {

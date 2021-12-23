@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.features.repos.navigation.nav.impl
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoUpdateActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import com.keygenqt.routing.NavScreenWithArgument2
+import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
 
 /**
- * Base actions for feature
+ * Routing for [RepoUpdateScreen]
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions,
-    RepoUpdateActions
+object NavRepoUpdateScreen {
+    val repoUpdateScreen = object : NavScreenWithArgument2 {
+        override val argument0: String = "id"
+        override val argument1: String = "url"
+        override val routeWithArgument: String = "NavRepoUpdateScreen/{$argument0}/{$argument1}"
+    }
+}

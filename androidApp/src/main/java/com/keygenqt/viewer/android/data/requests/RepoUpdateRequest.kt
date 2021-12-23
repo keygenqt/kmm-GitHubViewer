@@ -13,16 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.repos.navigation.actions
+package com.keygenqt.viewer.android.data.requests
 
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.RepoUpdateActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.impl.ReposListActions
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
 /**
- * Base actions for feature
+ * @Body request update user data
+ *
+ * @property name The name of the repository.
+ * @property isPrivate Either true to make the repository private or false to make it public. Default: false.
+ * @property description A short description of the repository.
  */
-interface ReposActions :
-    RepoActions,
-    ReposListActions,
-    RepoUpdateActions
+@Immutable
+@Serializable
+data class RepoUpdateRequest(
+    val name: String,
+    val isPrivate: Boolean,
+    val description: String,
+)

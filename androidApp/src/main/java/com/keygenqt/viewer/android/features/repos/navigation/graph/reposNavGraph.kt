@@ -18,6 +18,7 @@ package com.keygenqt.viewer.android.features.repos.navigation.graph
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.features.repos.navigation.graph.impl.repoGraph
+import com.keygenqt.viewer.android.features.repos.navigation.graph.impl.repoUpdateGraph
 import com.keygenqt.viewer.android.features.repos.navigation.graph.impl.reposMainGraph
 
 /**
@@ -28,4 +29,5 @@ fun NavGraphBuilder.reposNavGraph(
 ) {
     reposMainGraph(appActions)
     repoGraph(appActions)
+    repoUpdateGraph(appActions)
 }
