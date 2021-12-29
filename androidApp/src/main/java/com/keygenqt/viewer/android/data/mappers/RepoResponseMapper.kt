@@ -20,7 +20,6 @@ import com.keygenqt.viewer.android.data.models.RepoOwnerModel
 import com.keygenqt.viewer.android.data.responses.RepoResponse
 import com.keygenqt.viewer.android.extensions.toRepoVisibility
 import kotlinx.datetime.toLocalDateTime
-import timber.log.Timber
 
 /**
  * Extension for response [RepoResponse]

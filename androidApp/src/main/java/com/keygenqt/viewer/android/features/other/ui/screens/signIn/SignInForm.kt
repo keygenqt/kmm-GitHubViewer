@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.res.stringResource
@@ -32,11 +31,11 @@ import com.keygenqt.forms.base.FormFieldState
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.forms.fields.FormField
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
+import com.keygenqt.viewer.android.extensions.LaunchedEffectAnimation
 import com.keygenqt.viewer.android.extensions.textFieldColors
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.theme.AppTheme
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 /**
  * Form page [SignInBody]
@@ -65,10 +64,8 @@ fun SignInForm(
             colors = MaterialTheme.textFieldColors()
         )
 
-        // Clear focus after end
-        LaunchedEffect(Unit) {
-            scope.launch {
-                delay(10)
+        LaunchedEffectAnimation { state ->
+            if (state == AnimatedNavGraphState.END) {
                 formFields.get(SignInNickname).requestFocus()
             }
         }

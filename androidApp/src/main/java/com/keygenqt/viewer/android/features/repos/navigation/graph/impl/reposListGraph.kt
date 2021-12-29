@@ -15,7 +15,7 @@
  */
 package com.keygenqt.viewer.android.features.repos.navigation.graph.impl
 
-import androidx.compose.animation.*
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions

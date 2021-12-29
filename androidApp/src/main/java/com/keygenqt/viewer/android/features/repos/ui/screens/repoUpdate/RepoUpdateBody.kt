@@ -36,11 +36,10 @@ import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.components.AppScaffold
 import com.keygenqt.viewer.android.compose.components.FormError
 import com.keygenqt.viewer.android.compose.components.FormSuccess
-import com.keygenqt.viewer.android.data.models.RepoVisibility
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoUpdateActions
+import com.keygenqt.viewer.android.features.repos.ui.forms.RepoUpdateForm.*
 import com.keygenqt.viewer.android.features.repos.ui.forms.mockRepoUpdateForm
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.android.features.repos.ui.forms.RepoUpdateForm.*
 
 /**
  * Body for [RepoUpdateScreen]

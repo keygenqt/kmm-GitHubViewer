@@ -20,5 +20,4 @@ package com.keygenqt.viewer.android.interfaces
  */
 interface IModel {
     val id: String
-    companion object
 }

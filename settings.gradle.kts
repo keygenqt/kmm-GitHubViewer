@@ -71,7 +71,7 @@ if (internalLibrariesEnable.toBoolean()) {
     include(":compose-routing")
     project(":compose-routing").projectDir = File(settingsDir, "../libs/compose-routing")
 
-    // git@github.com:keygenqt/surf-accompanist.git
-    include(":surf-accompanist")
-    project(":surf-accompanist").projectDir = File(settingsDir, "../libs/surf-accompanist")
+    // git@github.com:keygenqt/keygenqt-accompanist.git
+    include(":keygenqt-accompanist")
+    project(":keygenqt-accompanist").projectDir = File(settingsDir, "../libs/keygenqt-accompanist")
 }

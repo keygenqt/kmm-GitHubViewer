@@ -9,8 +9,6 @@ module = "org.jetbrains.kotlin:kotlin-reflect"
 module = "androidx.room:room-paging"
 [libraries.paging-compose]
 module = "androidx.paging:paging-compose"
-[libraries.other-emoji]
-module = "com.vdurmont:emoji-java"
 [libraries.kotlinx-datetime]
 module = "org.jetbrains.kotlinx:kotlinx-datetime"
 [libraries.security-crypto]
@@ -27,8 +25,6 @@ ref = "kotlinVersion"
 ref = "roomPagingVersion"
 [libraries.paging-compose.version]
 ref = "pagingComposeVersion"
-[libraries.other-emoji.version]
-ref = "emojiVersion"
 [libraries.kotlinx-datetime.version]
 ref = "kotlinxDatetimeVersion"
 [libraries.security-crypto.version]
@@ -41,7 +37,6 @@ other = [
     "other-reflection",
     "room-paging",
     "paging-compose",
-    "other-emoji",
     "kotlinx-datetime",
     "security-crypto",
 ]

@@ -1,7 +1,6 @@
 package com.keygenqt.viewer.android.extensions
 
 import com.keygenqt.viewer.android.data.models.RepoVisibility
-import timber.log.Timber
 import java.util.*
 
 /**

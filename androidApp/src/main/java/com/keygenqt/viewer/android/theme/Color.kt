@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.keygenqt.viewer.android.theme
+
 import androidx.compose.ui.graphics.Color
 
 val md_theme_light_primary = Color(0xFF9F7AFF)

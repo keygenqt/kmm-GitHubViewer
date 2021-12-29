@@ -21,7 +21,6 @@ import androidx.room.PrimaryKey
 import com.keygenqt.viewer.android.interfaces.IModel
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
-import java.util.*
 
 /**
  * User model

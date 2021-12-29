@@ -26,7 +26,6 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -40,8 +39,6 @@ import com.keygenqt.viewer.android.compose.texts.TextTitleMedium
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 import com.keygenqt.viewer.android.theme.AppTheme
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import androidx.compose.material.MaterialTheme as MaterialTheme2
 
 @Composable

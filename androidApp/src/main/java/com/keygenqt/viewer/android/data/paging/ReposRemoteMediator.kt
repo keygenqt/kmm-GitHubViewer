@@ -29,8 +29,6 @@ import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
-import timber.log.Timber
-import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 

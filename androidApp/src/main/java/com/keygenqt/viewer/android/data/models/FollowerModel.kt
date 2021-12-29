@@ -19,7 +19,6 @@ import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.keygenqt.viewer.android.interfaces.IModel
-import java.util.*
 
 /**
  * Follower model

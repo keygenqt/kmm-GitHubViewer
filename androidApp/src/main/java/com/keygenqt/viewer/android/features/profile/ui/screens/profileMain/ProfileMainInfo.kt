@@ -47,7 +47,6 @@ import com.keygenqt.viewer.android.compose.texts.*
 import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.formatDate
-import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable

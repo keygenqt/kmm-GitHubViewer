@@ -33,6 +33,8 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.forms.fields.FormField
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
+import com.keygenqt.viewer.android.extensions.LaunchedEffectAnimation
 import com.keygenqt.viewer.android.extensions.textFieldColors
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
 import com.keygenqt.viewer.android.features.profile.ui.forms.mockUserUpdateForm
@@ -134,10 +136,8 @@ fun SettingsForm(
         colors = MaterialTheme.textFieldColors()
     )
 
-    // Clear focus after end
-    LaunchedEffect(Unit) {
-        scope.launch {
-            delay(10)
+    LaunchedEffectAnimation { state ->
+        if (state == AnimatedNavGraphState.END) {
             formFields.get(UserUpdateName).requestFocus()
         }
     }

@@ -18,7 +18,6 @@ package com.keygenqt.viewer.android.data.models
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import kotlinx.serialization.Serializable
-import java.util.*
 
 /**
  * Repo owner model

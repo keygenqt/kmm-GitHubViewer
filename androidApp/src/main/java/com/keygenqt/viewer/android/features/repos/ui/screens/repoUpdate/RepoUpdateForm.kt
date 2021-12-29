@@ -22,7 +22,6 @@ import androidx.compose.material.Switch
 import androidx.compose.material.SwitchDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,12 +35,12 @@ import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.forms.fields.FormField
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
+import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
+import com.keygenqt.viewer.android.extensions.LaunchedEffectAnimation
 import com.keygenqt.viewer.android.extensions.textFieldColors
 import com.keygenqt.viewer.android.features.repos.ui.forms.RepoUpdateForm.*
 import com.keygenqt.viewer.android.features.repos.ui.forms.mockRepoUpdateForm
 import com.keygenqt.viewer.android.theme.AppTheme
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Composable
 fun RepoUpdateForm(
@@ -86,10 +85,8 @@ fun RepoUpdateForm(
         formFields.get(RepoUpdatePrivate).setValue(checked.toString())
     }
 
-    // Clear focus after end
-    LaunchedEffect(Unit) {
-        scope.launch {
-            delay(10)
+    LaunchedEffectAnimation { state ->
+        if (state == AnimatedNavGraphState.END) {
             formFields.get(RepoUpdateName).requestFocus()
         }
     }
@@ -103,7 +100,9 @@ private fun BlockSwitch(
     onCheckedChange: (Boolean) -> Unit = {}
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(start = 4.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {

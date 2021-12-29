@@ -126,4 +126,3 @@ data class RepoModel(
     val openIssues: Int,
     val watchers: Int,
 ) : IModel
-

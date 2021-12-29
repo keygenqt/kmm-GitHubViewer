@@ -19,16 +19,13 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
-import com.keygenqt.viewer.android.data.models.RepoVisibility
 import com.keygenqt.viewer.android.data.requests.RepoUpdateRequest
-import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
 import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
-import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject

@@ -34,7 +34,6 @@ import com.keygenqt.viewer.android.compose.components.RotateIconSort
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposListActions
 import com.keygenqt.viewer.android.theme.AppTheme
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 

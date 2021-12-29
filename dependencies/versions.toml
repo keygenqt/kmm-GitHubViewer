@@ -13,7 +13,6 @@ constraintLayoutVersion = "1.0.0-rc02"
 accompanistVersion = "0.21.5-rc"
 materialVersion = "1.0.3"
 material3Version = "1.0.0-alpha02"
-emojiVersion = "5.1.1"
 
 # Hilt
 hiltVersion = "2.40.5"
@@ -63,13 +62,13 @@ ktlintVersion = "0.42.1"
 kotlinxDatetimeVersion = "0.3.1"
 
 # Custom
-# https://github.com/keygenqt/compose-modifier-ext
-composeModifierExtVersion = "0.0.11"
 # https://github.com/keygenqt/android-response-result
-androidResponseResultVersion = "0.0.10"
+androidResponseResultVersion = "0.0.11"
+# https://github.com/keygenqt/compose-forms
+composeFormsVersion = "0.0.20"
+# https://github.com/keygenqt/compose-modifier-ext
+composeModifierExtVersion = "0.0.12"
 # https://github.com/keygenqt/compose-routing
 composeRoutingVersion = "0.0.1"
-# https://github.com/keygenqt/surf-accompanist/
-surfAccompanistVersion = "0.0.12"
-# https://github.com/keygenqt/compose-forms
-composeFormsVersion = "0.0.18"
+# https://github.com/keygenqt/keygenqt-accompanist/
+keygenqtAccompanistVersion = "0.0.13"
