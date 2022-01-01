@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.features.other.navigation.graph
 
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
+import com.keygenqt.viewer.android.features.other.navigation.graph.impl.onboardingGraph
 import com.keygenqt.viewer.android.features.other.navigation.graph.impl.signInGraph
 import com.keygenqt.viewer.android.features.other.navigation.graph.impl.welcomeGraph
 
@@ -26,6 +27,7 @@ import com.keygenqt.viewer.android.features.other.navigation.graph.impl.welcomeG
 fun NavGraphBuilder.otherNavGraph(
     appActions: AppActions,
 ) {
+    onboardingGraph(appActions)
     welcomeGraph(appActions)
     signInGraph(appActions)
 }

@@ -43,7 +43,7 @@ fun AppScaffold(
     // top bar
     topBarTitle: String? = null,
     topBarLoading: Boolean = false,
-    topBarIsSmall: Boolean = false,
+    topBarIsSmall: Boolean = true,
     topBarActions: @Composable ((RowScope) -> Unit)? = null,
     // swipe refresh
     swipeRefreshEnable: Boolean = false,

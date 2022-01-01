@@ -53,14 +53,15 @@ fun NavGraph(
         AppActions(controller)
     }
 
+    val isOnboardingDone by LocalViewModel.current.isOnboardingDone
     val isSplash by LocalViewModel.current.isSplash.collectAsState()
 
     val startDestination by remember {
         mutableStateOf(
-            if (AuthUser.isLogin) {
-                ReposNavRoute.repos.default.route
-            } else {
-                OtherNavRoute.welcome.default.route
+            when {
+                !isOnboardingDone -> OtherNavRoute.onboarding.default.route
+                AuthUser.isLogin -> ReposNavRoute.repos.default.route
+                else -> OtherNavRoute.welcome.default.route
             }
         )
     }

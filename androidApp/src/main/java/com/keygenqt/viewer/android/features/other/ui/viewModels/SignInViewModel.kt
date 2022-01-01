@@ -21,7 +21,6 @@ import com.keygenqt.response.extensions.success
 import com.keygenqt.viewer.android.base.queryActions.QueryActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.utils.AuthUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -32,8 +31,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SignInViewModel @Inject constructor(
     private val apiService: AppApiService,
-    private val dataService: AppDataService,
-    private val savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     /**

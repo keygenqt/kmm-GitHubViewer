@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.features.other.navigation.route
 
+import com.keygenqt.viewer.android.features.other.navigation.route.impl.OnboardingRoute
 import com.keygenqt.viewer.android.features.other.navigation.route.impl.SignInRoute
 import com.keygenqt.viewer.android.features.other.navigation.route.impl.WelcomeRoute
 
@@ -22,6 +23,7 @@ import com.keygenqt.viewer.android.features.other.navigation.route.impl.WelcomeR
  * Base routing for feature
  */
 object OtherNavRoute {
+    val onboarding = OnboardingRoute
     val welcome = WelcomeRoute
     val signIn = SignInRoute
 }

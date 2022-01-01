@@ -102,7 +102,6 @@ fun RepoUpdateBody(
     )
 
     AppScaffold(
-        topBarIsSmall = true,
         topBarLoading = loading,
         topBarTitle = stringResource(id = R.string.repo_update_title),
     ) {

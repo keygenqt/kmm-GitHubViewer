@@ -13,16 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.other.navigation.actions
+package com.keygenqt.viewer.android.features.other.ui.screens.onboarding
 
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.OnboardingActions
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.SignInActions
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.WelcomeActions
+import androidx.compose.runtime.*
+import com.keygenqt.viewer.android.features.other.ui.actions.OnboardingActions
+import com.keygenqt.viewer.android.features.other.ui.viewModels.OnboardingViewModel
 
 /**
- * Base actions for feature
+ * Onboarding page fun for initialization
+ *
+ * @param viewModel page view model
+ * @param onActions actions for page
  */
-interface OtherNavActions :
-    OnboardingActions,
-    SignInActions,
-    WelcomeActions
+@Composable
+fun OnboardingScreen(
+    viewModel: OnboardingViewModel,
+    onActions: (OnboardingActions) -> Unit = {},
+) {
+    OnboardingBody(
+        onActions = onActions
+    )
+}

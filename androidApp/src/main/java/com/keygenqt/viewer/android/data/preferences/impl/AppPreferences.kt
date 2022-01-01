@@ -35,7 +35,7 @@ interface AppPreferences : IAppPreferences {
      * We put the keys in enum
      */
     enum class KEYS {
-        IS_FIRST_OPEN,
+        IS_ONBOARDING_DONE,
     }
 
     /**
@@ -48,7 +48,7 @@ interface AppPreferences : IAppPreferences {
     /**
      * An example of a possible variable
      */
-    var isFirstOpen: Boolean
-        get() = p.getBoolean(KEYS.IS_FIRST_OPEN.name, true)
-        set(value) = p.edit().putBoolean(KEYS.IS_FIRST_OPEN.name, value).apply()
+    var isOnboardingDone: Boolean
+        get() = p.getBoolean(KEYS.IS_ONBOARDING_DONE.name, false)
+        set(value) = p.edit().putBoolean(KEYS.IS_ONBOARDING_DONE.name, value).apply()
 }

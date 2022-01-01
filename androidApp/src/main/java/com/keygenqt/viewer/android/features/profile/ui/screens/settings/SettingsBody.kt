@@ -101,7 +101,6 @@ fun SettingsBody(
     )
 
     AppScaffold(
-        topBarIsSmall = true,
         topBarLoading = loading,
         topBarTitle = stringResource(id = R.string.settings_title),
     ) {

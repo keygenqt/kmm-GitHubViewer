@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.other.navigation.actions
+package com.keygenqt.viewer.android.features.other.ui.actions
 
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.OnboardingActions
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.SignInActions
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.WelcomeActions
+import com.keygenqt.viewer.android.features.other.ui.screens.onboarding.OnboardingScreen
 
 /**
- * Base actions for feature
+ * Actions sealed class for screen [OnboardingScreen]
  */
-interface OtherNavActions :
-    OnboardingActions,
-    SignInActions,
-    WelcomeActions
+sealed class OnboardingActions {
+
+    /**
+     * Close onboarding and open start page
+     */
+    object DoneOnboarding : OnboardingActions()
+}

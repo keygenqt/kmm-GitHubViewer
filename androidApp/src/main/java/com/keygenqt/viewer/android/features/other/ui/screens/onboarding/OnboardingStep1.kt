@@ -13,38 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.compose.lottie
+package com.keygenqt.viewer.android.features.other.ui.screens.onboarding
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.compose.*
-import com.keygenqt.viewer.android.R
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
+import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
+import com.keygenqt.viewer.android.theme.AppTheme
 
-/**
- * Page animation
- */
 @Composable
-fun StartPageAnimation(
-    modifier: Modifier = Modifier,
-) {
-    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.start_page))
-    val progress by animateLottieCompositionAsState(
-        composition = composition,
-        iterations = LottieConstants.IterateForever
-    )
-    Box(modifier = modifier.fillMaxSize()) {
-        LottieAnimation(
-            composition = composition,
-            progress = progress,
-            modifier = Modifier
-                .widthIn(max = 280.dp)
-                .align(Alignment.Center)
+fun OnboardingStep1() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        TextLabelLarge(
+            modifier = Modifier.align(Alignment.Center),
+            text = "Step 1"
         )
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Composable
+private fun Preview() {
+    AppTheme {
+        OnboardingStep1()
     }
 }

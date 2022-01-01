@@ -24,7 +24,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 
 /**
  * Collapse list item animation
@@ -43,8 +47,6 @@ fun Modifier.graphicsCollapse(
 
 /**
  * No Ripple Clickable
- *
- * @author Vitaliy Zarubin
  */
 inline fun Modifier.noRippleClickable(crossinline onClick: () -> Unit): Modifier = composed {
     clickable(
@@ -54,3 +56,21 @@ inline fun Modifier.noRippleClickable(crossinline onClick: () -> Unit): Modifier
         onClick()
     }
 }
+
+/**
+ * Disable vertical pointer
+ */
+fun Modifier.disableVerticalPointerInputScroll() =
+    this.nestedScroll(object : NestedScrollConnection {
+        override fun onPreScroll(available: Offset, source: NestedScrollSource) =
+            available.copy(x = 0f)
+    })
+
+/**
+ * Disable horizontal pointer
+ */
+fun Modifier.disableHorizontalPointerInputScroll() =
+    this.nestedScroll(object : NestedScrollConnection {
+        override fun onPreScroll(available: Offset, source: NestedScrollSource) =
+            available.copy(y = 0f)
+    })

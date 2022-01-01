@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.features.other.navigation.actions
+package com.keygenqt.viewer.android.features.other.navigation.route.impl
 
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.OnboardingActions
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.SignInActions
-import com.keygenqt.viewer.android.features.other.navigation.actions.impl.WelcomeActions
+import com.keygenqt.routing.NavScreen
+import com.keygenqt.viewer.android.features.other.ui.screens.onboarding.OnboardingScreen
 
 /**
- * Base actions for feature
+ * Routing for [OnboardingScreen]
  */
-interface OtherNavActions :
-    OnboardingActions,
-    SignInActions,
-    WelcomeActions
+object OnboardingRoute {
+    val default = object : NavScreen {
+        override val route: String = "OnboardingRouteDefault"
+    }
+}

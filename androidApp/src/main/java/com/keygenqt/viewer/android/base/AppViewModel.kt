@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.response.extensions.isSucceeded
 import com.keygenqt.response.extensions.success
+import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
@@ -41,7 +42,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AppViewModel @Inject constructor(
     private val apiService: AppApiService,
-    private val dataService: AppDataService
+    private val dataService: AppDataService,
+    private val preferences: BasePreferences,
 ) : ViewModel() {
 
     /**
@@ -53,6 +55,11 @@ class AppViewModel @Inject constructor(
      * [StateFlow] for [_isSplash]
      */
     val isSplash: StateFlow<Boolean> get() = _isSplash.asStateFlow()
+
+    /**
+     * Check is show onboarding
+     */
+    var isOnboardingDone = lazy { preferences.isOnboardingDone }
 
     init {
         // Listen auth user change
