@@ -15,19 +15,18 @@
  */
 package com.keygenqt.viewer.android.features.other.navigation.graph.impl
 
-import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navDeepLink
 import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.extensions.composableAnimation
-import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
+import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLink
-import com.keygenqt.viewer.android.utils.ListenDestination.Companion.clearStack
 
 /**
  * NavGraph for [SignInScreen]
@@ -37,17 +36,20 @@ fun NavGraphBuilder.signInGraph(
     appActions: AppActions,
 ) {
     composableAnimation(
-        route = OtherNav.navSignIn.signInScreen.route,
+        route = OtherNavRoute.signIn.default.route,
         deepLinks = listOf(
             navDeepLink {
                 uriPattern = getDynamicLink("/oauth?code={code}&state={state}")
             }
         )
     ) {
-        val backDispatcher: OnBackPressedDispatcher = LocalBackPressedDispatcher.current
+        val navDispatcher: NavigationDispatcher = LocalNavigationDispatcher.current
+
         SignInScreen(hiltViewModel()) { event ->
             when (event) {
-                is SignInActions.ToStartPage -> appActions.toStartPage(clearStack(backDispatcher))
+                is SignInActions.ToRepos -> {
+                    navDispatcher.toRoutePopStack(appActions::toRepos)
+                }
             }
         }
     }

@@ -18,9 +18,9 @@ package com.keygenqt.viewer.android.features.repos.ui.viewModels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
+import com.keygenqt.viewer.android.base.queryActions.QueryActions
 import com.keygenqt.viewer.android.extensions.withTransaction
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
@@ -47,12 +47,12 @@ class RepoViewModel @Inject constructor(
     /**
      * Repo id
      */
-    val id: String = savedStateHandle.get(ReposNav.navRepo.repoScreen.argument0) ?: ""
+    val id: String = savedStateHandle.get(ReposNavRoute.repo.default.argument0) ?: ""
 
     /**
      * Repo url for update
      */
-    val url: String = savedStateHandle.get(ReposNav.navRepo.repoScreen.argument1) ?: ""
+    val url: String = savedStateHandle.get(ReposNavRoute.repo.default.argument1) ?: ""
 
     /**
      * Listen repo model

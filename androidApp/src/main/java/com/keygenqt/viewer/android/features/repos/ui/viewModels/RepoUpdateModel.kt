@@ -18,10 +18,10 @@ package com.keygenqt.viewer.android.features.repos.ui.viewModels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
+import com.keygenqt.viewer.android.base.queryActions.QueryActions
 import com.keygenqt.viewer.android.data.requests.RepoUpdateRequest
 import com.keygenqt.viewer.android.extensions.withTransaction
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
@@ -48,12 +48,12 @@ class RepoUpdateModel @Inject constructor(
     /**
      * Repo id
      */
-    val id: String = savedStateHandle.get(ReposNav.navRepoUpdate.repoUpdateScreen.argument0) ?: ""
+    val id: String = savedStateHandle.get(ReposNavRoute.repoUpdate.default.argument0) ?: ""
 
     /**
      * Repo url for update
      */
-    val url: String = savedStateHandle.get(ReposNav.navRepoUpdate.repoUpdateScreen.argument1) ?: ""
+    val url: String = savedStateHandle.get(ReposNavRoute.repoUpdate.default.argument1) ?: ""
 
     /**
      * Listen repo model

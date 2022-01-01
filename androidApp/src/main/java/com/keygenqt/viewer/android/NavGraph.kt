@@ -16,85 +16,93 @@
 package com.keygenqt.viewer.android
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.platform.SoftwareKeyboardController
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.base.viewModel.AppViewModel
+import com.keygenqt.viewer.android.extensions.noRippleClickable
 import com.keygenqt.viewer.android.features.followers.navigation.graph.followersNavGraph
 import com.keygenqt.viewer.android.features.other.navigation.graph.otherNavGraph
-import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
+import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.profile.navigation.graph.profileNavGraph
 import com.keygenqt.viewer.android.features.repos.navigation.graph.reposNavGraph
+import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
 import com.keygenqt.viewer.android.menu.MenuBottomBar
 import com.keygenqt.viewer.android.menu.MenuTab
-import com.keygenqt.viewer.android.utils.ConstantsApp.START_DESTINATION
-import com.keygenqt.viewer.android.utils.ListenDestination
+import com.keygenqt.viewer.android.utils.AuthUser
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalComposeUiApi::class)
 @Composable
 fun NavGraph(
-    navController: NavHostController,
-    appViewModel: AppViewModel = LocalViewModel.current,
-    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-    softwareKeyboardController: SoftwareKeyboardController? = LocalSoftwareKeyboardController.current
+    controller: NavHostController
 ) {
-    // Actions navigation all app
-    val appActions = remember(navController) {
-        AppActions(navController)
+    val appActions = remember(controller) {
+        AppActions(controller)
     }
 
-    // Listen change navigation
-    ListenDestination.Init(navController) {
-        softwareKeyboardController?.hide()
-    }
+    val isSplash by LocalViewModel.current.isSplash.collectAsState()
 
-    val context = LocalContext.current
-    val bg = MaterialTheme.colorScheme.background.toArgb()
-    val isLogin by appViewModel.isLogin.collectAsState(null)
-
-    isLogin?.let {
-        LaunchedEffect(lifecycleOwner.lifecycle.currentState == Lifecycle.State.CREATED) {
-            // if not login to welcome
-            if (!it && ListenDestination.getActionDestination()?.route != OtherNav.navSignIn.signInScreen.route) {
-                appActions.toWelcome()
+    val startDestination by remember {
+        mutableStateOf(
+            if (AuthUser.isLogin) {
+                ReposNavRoute.repos.default.route
+            } else {
+                OtherNavRoute.welcome.default.route
             }
-            // remove BG splash
-            (context as MainActivity).window.decorView.setBackgroundColor(bg)
-            // disable splash
-            appViewModel.disableSplash()
-        }
+        )
     }
 
-    AnimatedNavHost(
-        navController = navController,
-        startDestination = START_DESTINATION
-    ) {
-        otherNavGraph(appActions)
-        reposNavGraph(appActions)
-        followersNavGraph(appActions)
-        statsNavGraph(appActions)
-        profileNavGraph(appActions)
+    Box(Modifier.fillMaxSize()) {
+
+        AnimatedNavHost(
+            navController = controller,
+            startDestination = startDestination
+        ) {
+            otherNavGraph(appActions)
+            reposNavGraph(appActions)
+            followersNavGraph(appActions)
+            statsNavGraph(appActions)
+            profileNavGraph(appActions)
+        }
+
+        if (isSplash) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .noRippleClickable {}
+                    .background(MaterialTheme.colorScheme.primary)
+            ) {
+                Image(
+                    modifier = Modifier
+                        .size(120.dp)
+                        .align(Alignment.Center),
+                    contentDescription = null,
+                    painter = painterResource(id = R.drawable.launcher),
+                )
+            }
+        }
     }
 
     // navigation bottom bar
     MenuBottomBar.onClick = { tab ->
         when (tab) {
-            MenuTab.REPOS -> appActions.toReposMain()
-            MenuTab.FOLLOWERS -> appActions.toFollowersMain()
+            MenuTab.REPOS -> appActions.toRepos()
+            MenuTab.FOLLOWERS -> appActions.toFollowers()
             // MenuTab.STATS -> appActions.toStatsMain() @todo
-            MenuTab.PROFILE -> appActions.toProfileMain()
+            MenuTab.PROFILE -> appActions.toProfile()
         }
     }
 }

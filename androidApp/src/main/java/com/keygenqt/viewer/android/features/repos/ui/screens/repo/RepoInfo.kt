@@ -55,14 +55,14 @@ import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.extensions.capitalize
 import com.keygenqt.viewer.android.extensions.formatDate
 import com.keygenqt.viewer.android.extensions.graphicsCollapse
-import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileMainActions
+import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable
 fun RepoInfo(
     model: RepoModel,
     lazyListState: LazyListState = rememberLazyListState(),
-    onActions: (ProfileMainActions) -> Unit = {},
+    onActions: (ProfileActions) -> Unit = {},
 ) {
 
     LazyColumn(

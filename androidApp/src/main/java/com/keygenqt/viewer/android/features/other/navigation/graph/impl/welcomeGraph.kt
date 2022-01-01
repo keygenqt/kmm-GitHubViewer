@@ -20,7 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.extensions.composableAnimation
-import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
+import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
 import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
 
@@ -32,7 +32,7 @@ fun NavGraphBuilder.welcomeGraph(
     appActions: AppActions,
 ) {
     composableAnimation(
-        route = OtherNav.navWelcome.welcomeScreen.route
+        route = OtherNavRoute.welcome.default.route
     ) {
         WelcomeScreen(viewModel = hiltViewModel()) { event ->
             when (event) {

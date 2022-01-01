@@ -20,7 +20,6 @@ import com.keygenqt.viewer.android.data.dao.UserModelDao
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.interfaces.IAppDatabase
 import kotlinx.coroutines.flow.Flow
-import timber.log.Timber
 
 /**
  * Service part for work with model [UserModel]
@@ -40,8 +39,8 @@ interface UserModelDataService : IAppDatabase {
     /**
      * Performed when the user logs out
      */
-    override fun clearCacheAfterLogout() {
-        Timber.e("Clear cache: UserModelDataService")
+    override suspend fun clearCacheAfterLogout() {
+        clearUserModel()
     }
 
     /**

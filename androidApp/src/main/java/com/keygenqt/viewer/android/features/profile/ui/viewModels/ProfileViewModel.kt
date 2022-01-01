@@ -17,9 +17,9 @@ package com.keygenqt.viewer.android.features.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
+import com.keygenqt.viewer.android.base.queryActions.QueryActions
 import com.keygenqt.viewer.android.extensions.withTransaction
-import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
+import com.keygenqt.viewer.android.features.profile.ui.screens.profile.ProfileScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
@@ -28,7 +28,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
 
 /**
- * [ViewModel] for [ProfileMainScreen]
+ * [ViewModel] for [ProfileScreen]
  */
 @HiltViewModel
 class ProfileViewModel @Inject constructor(

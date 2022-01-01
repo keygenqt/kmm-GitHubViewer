@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver.OnPreDrawListener
@@ -23,13 +24,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.keygenqt.viewer.android.base.LocalBackPressedDispatcher
+import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.base.viewModel.AppViewModel
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,13 +56,18 @@ class MainActivity : ComponentActivity() {
 
         // compose initialization
         setContent {
-            CompositionLocalProvider(
-                LocalViewModel provides viewModel,
-                LocalBackPressedDispatcher provides this.onBackPressedDispatcher
-            ) {
-                AppTheme {
-                    ProvideWindowInsets {
-                        NavGraph(rememberAnimatedNavController())
+            rememberAnimatedNavController().let {
+                CompositionLocalProvider(
+                    LocalViewModel provides viewModel,
+                    LocalNavigationDispatcher provides NavigationDispatcher(
+                        controller = it,
+                        backPressedDispatcher = this.onBackPressedDispatcher
+                    )
+                ) {
+                    AppTheme {
+                        ProvideWindowInsets {
+                            NavGraph(it)
+                        }
                     }
                 }
             }
@@ -70,7 +78,9 @@ class MainActivity : ComponentActivity() {
             content.viewTreeObserver.addOnPreDrawListener(
                 object : OnPreDrawListener {
                     override fun onPreDraw(): Boolean {
-                        return if (viewModel.isSplash.value) {
+                        return if (!viewModel.isSplash.value) {
+                            // remove BG splash
+                            this@MainActivity.window.decorView.setBackgroundColor(Color.WHITE)
                             // done splash remove listener
                             content.viewTreeObserver.removeOnPreDrawListener(this); true
                         } else false

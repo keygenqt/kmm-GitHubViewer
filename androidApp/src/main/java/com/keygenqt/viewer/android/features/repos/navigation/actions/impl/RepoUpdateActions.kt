@@ -17,7 +17,7 @@ package com.keygenqt.viewer.android.features.repos.navigation.actions.impl
 
 import android.net.Uri
 import androidx.navigation.NavHostController
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
 import com.keygenqt.viewer.android.interfaces.IAppNavActions
 import java.net.URLEncoder
@@ -32,18 +32,14 @@ interface RepoUpdateActions : IAppNavActions {
     /**
      * To repo update
      */
-    fun toRepoUpdate(id: String, url: Uri, popUpTo: String? = null) {
-        ReposNav.navRepoUpdate.repoUpdateScreen.apply {
+    fun toRepoUpdate(id: String, url: Uri) {
+        ReposNavRoute.repoUpdate.default.apply {
             controller.navigate(
                 getRoute(
                     argument0 = id,
                     argument1 = URLEncoder.encode(url.toString(), Charsets.UTF_8.name())
                 )
-            ) {
-                popUpTo?.let {
-                    popUpTo(popUpTo) { inclusive = true }
-                }
-            }
+            )
         }
     }
 }

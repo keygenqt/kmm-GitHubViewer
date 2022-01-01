@@ -29,7 +29,7 @@ import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.FollowerModelDataService
-import java.util.concurrent.TimeUnit
+import com.keygenqt.viewer.android.utils.ConstantsPaging.CACHE_TIMEOUT
 import kotlin.math.roundToInt
 
 @ExperimentalPagingApi
@@ -49,7 +49,7 @@ class FollowersRemoteMediator(
             sizeList = countFollowerModel()
         }
         // Refresh once per hour
-        return if (System.currentTimeMillis() - preferences.lastUpdateListFollowers >= TimeUnit.HOURS.toMillis(1)) {
+        return if (System.currentTimeMillis() - preferences.lastUpdateListFollowers >= CACHE_TIMEOUT) {
             InitializeAction.LAUNCH_INITIAL_REFRESH
         } else {
             InitializeAction.SKIP_INITIAL_REFRESH
@@ -63,7 +63,9 @@ class FollowersRemoteMediator(
         return try {
 
             val loadPage = when (loadType) {
-                LoadType.REFRESH -> { sizeList = 0; 1 }
+                LoadType.REFRESH -> {
+                    sizeList = 0; 1
+                }
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> (sizeList / state.config.pageSize.toFloat())
                     .roundToInt()

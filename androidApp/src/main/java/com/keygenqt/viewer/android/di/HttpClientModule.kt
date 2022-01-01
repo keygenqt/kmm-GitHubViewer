@@ -17,8 +17,8 @@ package com.keygenqt.viewer.android.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.keygenqt.viewer.android.extensions.checkValidJson
+import com.keygenqt.viewer.android.utils.AuthUser
 import com.keygenqt.viewer.android.utils.ConstantsApp
-import com.keygenqt.viewer.android.utils.StaticData
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -79,7 +79,7 @@ object HttpClientModule {
             .addInterceptor {
                 val original = it.request()
                 val request = original.newBuilder().apply {
-                    StaticData.AuthTokens.token?.let { token ->
+                    AuthUser.data?.accessToken?.let { token ->
                         header("Authorization", "token $token")
                         header("Accept", "application/vnd.github.v3+json")
                     }

@@ -22,5 +22,5 @@ import androidx.room.RoomDatabase
  */
 interface IAppDatabase {
     val db: RoomDatabase
-    fun clearCacheAfterLogout()
+    suspend fun clearCacheAfterLogout()
 }

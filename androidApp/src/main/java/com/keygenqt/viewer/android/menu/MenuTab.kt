@@ -21,9 +21,9 @@ import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.features.followers.navigation.nav.FollowersNav
-import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.followers.navigation.route.FollowersNavRoute
+import com.keygenqt.viewer.android.features.profile.navigation.route.ProfileNavRoute
+import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 
 enum class MenuTab(
     val route: String,
@@ -32,17 +32,17 @@ enum class MenuTab(
 ) {
 
     REPOS(
-        ReposNav.navReposList.reposMainScreen.route,
+        ReposNavRoute.repos.default.route,
         null,
         Icons.Filled.List
     ),
     FOLLOWERS(
-        FollowersNav.navFollowersMain.followersMainScreen.route,
+        FollowersNavRoute.followers.default.route,
         R.string.followers_title,
         Icons.Filled.People
     ),
     PROFILE(
-        ProfileNav.navProfileMain.profileMainScreen.route,
+        ProfileNavRoute.profile.default.route,
         R.string.profile_title,
         Icons.Filled.Person
     );

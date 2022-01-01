@@ -21,7 +21,6 @@ import com.keygenqt.viewer.android.data.dao.FollowerModelDao
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.interfaces.IAppDatabase
 import kotlinx.coroutines.flow.Flow
-import timber.log.Timber
 
 /**
  * Service part for work with model [FollowerModel]
@@ -41,8 +40,8 @@ interface FollowerModelDataService : IAppDatabase {
     /**
      * Performed when the user logs out
      */
-    override fun clearCacheAfterLogout() {
-        Timber.e("Clear cache: FollowerModelDataService")
+    override suspend fun clearCacheAfterLogout() {
+        clearFollowerModel()
     }
 
     /**

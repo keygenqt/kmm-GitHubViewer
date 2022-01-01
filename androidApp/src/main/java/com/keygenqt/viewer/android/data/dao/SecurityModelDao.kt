@@ -27,8 +27,12 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface SecurityModelDao {
+
     @Query("SELECT * FROM SecurityModel LIMIT 1")
-    fun getModel(): Flow<SecurityModel?>
+    fun getModelFlow(): Flow<SecurityModel?>
+
+    @Query("SELECT * FROM SecurityModel LIMIT 1")
+    fun getModel(): SecurityModel?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertModels(vararg models: SecurityModel)

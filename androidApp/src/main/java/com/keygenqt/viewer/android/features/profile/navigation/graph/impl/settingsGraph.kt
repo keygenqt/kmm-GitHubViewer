@@ -20,7 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.extensions.composableAnimation
-import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
+import com.keygenqt.viewer.android.features.profile.navigation.route.ProfileNavRoute
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
 import com.keygenqt.viewer.android.features.profile.ui.viewModels.SettingsViewModel
@@ -32,7 +32,7 @@ import com.keygenqt.viewer.android.features.profile.ui.viewModels.SettingsViewMo
 fun NavGraphBuilder.settingsGraph(
     appActions: AppActions,
 ) {
-    composableAnimation(ProfileNav.navSettings.settingsScreen.route) {
+    composableAnimation(ProfileNavRoute.settings.default.route) {
         val viewModel: SettingsViewModel = hiltViewModel()
         SettingsScreen(viewModel = viewModel) { event ->
             when (event) {

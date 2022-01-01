@@ -17,7 +17,7 @@ package com.keygenqt.viewer.android.features.profile.navigation.graph
 
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
-import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.profileMainGraph
+import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.profileGraph
 import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.settingsGraph
 
 /**
@@ -26,6 +26,6 @@ import com.keygenqt.viewer.android.features.profile.navigation.graph.impl.settin
 fun NavGraphBuilder.profileNavGraph(
     appActions: AppActions,
 ) {
-    profileMainGraph(appActions)
+    profileGraph(appActions)
     settingsGraph(appActions)
 }

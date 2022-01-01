@@ -21,7 +21,6 @@ import com.keygenqt.viewer.android.data.dao.RepoModelDao
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.interfaces.IAppDatabase
 import kotlinx.coroutines.flow.Flow
-import timber.log.Timber
 
 /**
  * Service part for work with model [RepoModel]
@@ -41,8 +40,8 @@ interface RepoModelDataService : IAppDatabase {
     /**
      * Performed when the user logs out
      */
-    override fun clearCacheAfterLogout() {
-        Timber.e("Clear cache: RepoModelDataService")
+    override suspend fun clearCacheAfterLogout() {
+        clearRepoModel()
     }
 
     /**

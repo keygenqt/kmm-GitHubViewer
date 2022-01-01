@@ -16,7 +16,7 @@
 package com.keygenqt.viewer.android.features.other.navigation.actions.impl
 
 import androidx.navigation.NavHostController
-import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
+import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
@@ -30,11 +30,7 @@ interface SignInActions : IAppNavActions {
     /**
      * To login page
      */
-    fun toSignIn(popUpTo: String? = null) {
-        controller.navigate(OtherNav.navSignIn.signInScreen.route) {
-            popUpTo?.let {
-                popUpTo(popUpTo) { inclusive = true }
-            }
-        }
+    fun toSignIn() {
+        controller.navigate(OtherNavRoute.signIn.default.route)
     }
 }

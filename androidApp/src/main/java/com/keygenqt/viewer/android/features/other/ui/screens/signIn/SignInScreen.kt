@@ -18,7 +18,6 @@ package com.keygenqt.viewer.android.features.other.ui.screens.signIn
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalUriHandler
 import com.keygenqt.forms.base.FormFieldsState
-import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
@@ -36,14 +35,6 @@ fun SignInScreen(
     onActions: (SignInActions) -> Unit = {},
 ) {
     val state1 by viewModel.query1.state.collectAsState()
-    val isLogin by LocalViewModel.current.isLogin.collectAsState(false)
-
-    // open main page if user login
-    LaunchedEffect(isLogin) {
-        if (isLogin) {
-            onActions(SignInActions.ToStartPage)
-        }
-    }
 
     val formFields = remember {
         FormFieldsState().apply {

@@ -23,8 +23,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
-import com.keygenqt.viewer.android.compose.components.AppScaffold
+import com.keygenqt.viewer.android.base.queryActions.QueryState
+import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
 import kotlinx.coroutines.launch

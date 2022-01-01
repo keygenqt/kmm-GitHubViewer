@@ -16,15 +16,15 @@
 package com.keygenqt.viewer.android.base
 
 import androidx.navigation.NavHostController
-import com.keygenqt.viewer.android.features.followers.navigation.actions.FollowersActions
-import com.keygenqt.viewer.android.features.other.navigation.actions.OtherActions
-import com.keygenqt.viewer.android.features.profile.navigation.actions.ProfileActions
-import com.keygenqt.viewer.android.features.repos.navigation.actions.ReposActions
-import com.keygenqt.viewer.android.features.stats.navigation.actions.StatsActions
+import com.keygenqt.viewer.android.features.followers.navigation.actions.FollowersNavActions
+import com.keygenqt.viewer.android.features.other.navigation.actions.OtherNavActions
+import com.keygenqt.viewer.android.features.profile.navigation.actions.ProfileNavActions
+import com.keygenqt.viewer.android.features.repos.navigation.actions.ReposNavActions
+import com.keygenqt.viewer.android.features.stats.navigation.actions.StatsNavActions
 
 class AppActions(override val controller: NavHostController) :
-    ProfileActions,
-    FollowersActions,
-    ReposActions,
-    StatsActions,
-    OtherActions
+    ProfileNavActions,
+    FollowersNavActions,
+    ReposNavActions,
+    StatsNavActions,
+    OtherNavActions

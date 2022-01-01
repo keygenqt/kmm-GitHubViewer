@@ -21,7 +21,7 @@ import androidx.paging.*
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.paging.FollowersRemoteMediator
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
-import com.keygenqt.viewer.android.features.followers.ui.screens.followersMain.FollowersMainScreen
+import com.keygenqt.viewer.android.features.followers.ui.screens.followers.FollowersScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.utils.ConstantsPaging
@@ -30,7 +30,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /**
- * [ViewModel] for screen [FollowersMainScreen]
+ * [ViewModel] for screen [FollowersScreen]
  */
 @HiltViewModel
 class FollowersViewModel @Inject constructor(

@@ -16,8 +16,8 @@
 package com.keygenqt.viewer.android.features.profile.ui.screens.settings
 
 import androidx.compose.runtime.Composable
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActionsState
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
+import com.keygenqt.viewer.android.base.queryActions.QueryActionsState
+import com.keygenqt.viewer.android.base.queryActions.QueryState
 
 @Composable
 fun SettingsQueryState1(

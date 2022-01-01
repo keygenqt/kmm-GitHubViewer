@@ -16,7 +16,7 @@
 package com.keygenqt.viewer.android.features.profile.navigation.actions.impl
 
 import androidx.navigation.NavHostController
-import com.keygenqt.viewer.android.features.profile.navigation.nav.ProfileNav
+import com.keygenqt.viewer.android.features.profile.navigation.route.ProfileNavRoute
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
 import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
@@ -28,13 +28,9 @@ interface SettingsActions : IAppNavActions {
     override val controller: NavHostController
 
     /**
-     * To main page followers
+     * To page settings
      */
-    fun toSettings(popUpTo: String? = null) {
-        controller.navigate(ProfileNav.navSettings.settingsScreen.route) {
-            popUpTo?.let {
-                popUpTo(popUpTo) { inclusive = true }
-            }
-        }
+    fun toSettings() {
+        controller.navigate(ProfileNavRoute.settings.default.route)
     }
 }

@@ -18,12 +18,11 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
-import com.keygenqt.viewer.android.extensions.withTransaction
+import com.keygenqt.viewer.android.base.queryActions.QueryActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
+import com.keygenqt.viewer.android.utils.AuthUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -60,14 +59,7 @@ class SignInViewModel @Inject constructor(
 
     private fun signInCode(code: String) {
         query1.queryLaunch {
-            apiService.oauthCode(code = code)
-                .success { model ->
-                    // save security tokens
-                    dataService.withTransaction<SecurityModelDataService> {
-                        clearSecurityModel()
-                        insertSecurityModel(model)
-                    }
-                }
+            apiService.oauthCode(code = code).success { AuthUser.login(it) }
         }
     }
 }

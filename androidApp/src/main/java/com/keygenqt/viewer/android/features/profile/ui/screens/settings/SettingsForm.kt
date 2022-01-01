@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -39,8 +38,6 @@ import com.keygenqt.viewer.android.extensions.textFieldColors
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
 import com.keygenqt.viewer.android.features.profile.ui.forms.mockUserUpdateForm
 import com.keygenqt.viewer.android.theme.AppTheme
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 /**
  * Form page [SettingsBody]

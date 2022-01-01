@@ -16,7 +16,7 @@
 package com.keygenqt.viewer.android.features.other.navigation.actions.impl
 
 import androidx.navigation.NavHostController
-import com.keygenqt.viewer.android.features.other.navigation.nav.OtherNav
+import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.other.ui.screens.welcome.WelcomeScreen
 import com.keygenqt.viewer.android.interfaces.IAppNavActions
 
@@ -30,11 +30,7 @@ interface WelcomeActions : IAppNavActions {
     /**
      * To welcome page
      */
-    fun toWelcome(popUpTo: String? = null) {
-        controller.navigate(OtherNav.navWelcome.welcomeScreen.route) {
-            popUpTo?.let {
-                popUpTo(popUpTo) { inclusive = true }
-            }
-        }
+    fun toWelcome() {
+        controller.navigate(OtherNavRoute.welcome.default.route)
     }
 }

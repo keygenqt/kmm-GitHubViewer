@@ -38,7 +38,7 @@ class AppDataService(
     /**
      * Performed when the user logs out
      */
-    override fun clearCacheAfterLogout() {
+    override suspend fun clearCacheAfterLogout() {
         super<SecurityModelDataService>.clearCacheAfterLogout()
         super<UserModelDataService>.clearCacheAfterLogout()
         super<RepoModelDataService>.clearCacheAfterLogout()

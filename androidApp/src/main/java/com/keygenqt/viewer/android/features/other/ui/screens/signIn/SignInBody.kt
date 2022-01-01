@@ -34,9 +34,9 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldState
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
-import com.keygenqt.viewer.android.compose.components.AppScaffold
-import com.keygenqt.viewer.android.compose.components.FormError
+import com.keygenqt.viewer.android.base.queryActions.QueryState
+import com.keygenqt.viewer.android.compose.base.AppScaffold
+import com.keygenqt.viewer.android.compose.base.FormError
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -81,6 +81,9 @@ fun SignInBody(
         },
         error = {
             error = it
+        },
+        success = {
+            onActions(SignInActions.ToRepos)
         },
         clear = {
             loading = false

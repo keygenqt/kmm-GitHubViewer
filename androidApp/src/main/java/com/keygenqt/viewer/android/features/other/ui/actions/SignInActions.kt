@@ -25,5 +25,5 @@ sealed class SignInActions {
     /**
      * Open start page for loading data user
      */
-    object ToStartPage : SignInActions()
+    object ToRepos : SignInActions()
 }

@@ -17,7 +17,7 @@ package com.keygenqt.viewer.android.features.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActions
+import com.keygenqt.viewer.android.base.queryActions.QueryActions
 import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen

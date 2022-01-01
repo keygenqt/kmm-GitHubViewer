@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -50,8 +49,6 @@ fun SignInForm(
     loading: Boolean = false,
     submitClick: () -> Unit = {},
 ) {
-    val scope = rememberCoroutineScope()
-
     Column {
 
         FormField(

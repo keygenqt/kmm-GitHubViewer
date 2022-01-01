@@ -44,8 +44,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.viewModel.AppViewModel
-import com.keygenqt.viewer.android.compose.components.AppScaffold
+import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextDisplayMedium
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions

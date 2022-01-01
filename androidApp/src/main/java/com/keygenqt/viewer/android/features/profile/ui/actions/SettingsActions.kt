@@ -15,10 +15,10 @@
  */
 package com.keygenqt.viewer.android.features.profile.ui.actions
 
-import com.keygenqt.viewer.android.features.profile.ui.screens.profileMain.ProfileMainScreen
+import com.keygenqt.viewer.android.features.profile.ui.screens.profile.ProfileScreen
 
 /**
- * Actions sealed class for screen [ProfileMainScreen]
+ * Actions sealed class for screen [ProfileScreen]
  */
 sealed class SettingsActions {
 

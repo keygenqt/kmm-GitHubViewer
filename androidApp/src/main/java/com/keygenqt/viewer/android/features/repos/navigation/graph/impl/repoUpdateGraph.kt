@@ -20,7 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.extensions.composableAnimation
-import com.keygenqt.viewer.android.features.repos.navigation.nav.ReposNav
+import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoUpdateActions
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
 import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
@@ -33,7 +33,7 @@ import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoUpdateModel
 fun NavGraphBuilder.repoUpdateGraph(
     appActions: AppActions,
 ) {
-    composableAnimation(ReposNav.navRepoUpdate.repoUpdateScreen.routeWithArgument) {
+    composableAnimation(ReposNavRoute.repoUpdate.default.routeWithArgument) {
         val viewModel: RepoUpdateModel = hiltViewModel()
         RepoUpdateScreen(viewModel = viewModel) { event ->
             when (event) {

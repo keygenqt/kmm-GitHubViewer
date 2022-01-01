@@ -20,7 +20,6 @@ import com.keygenqt.viewer.android.data.dao.SecurityModelDao
 import com.keygenqt.viewer.android.data.models.SecurityModel
 import com.keygenqt.viewer.android.interfaces.IAppDatabase
 import kotlinx.coroutines.flow.Flow
-import timber.log.Timber
 
 /**
  * Service part for work with model [SecurityModel]
@@ -40,8 +39,8 @@ interface SecurityModelDataService : IAppDatabase {
     /**
      * Performed when the user logs out
      */
-    override fun clearCacheAfterLogout() {
-        Timber.e("Clear cache: SecurityModelDataService")
+    override suspend fun clearCacheAfterLogout() {
+        clearSecurityModel()
     }
 
     /**
@@ -54,7 +53,14 @@ interface SecurityModelDataService : IAppDatabase {
     /**
      * Get [Flow] model
      */
-    fun getSecurityModel(): Flow<SecurityModel?> {
+    fun getSecurityModelFlow(): Flow<SecurityModel?> {
+        return dao.getModelFlow()
+    }
+
+    /**
+     * Get [Flow] model
+     */
+    fun getSecurityModel(): SecurityModel? {
         return dao.getModel()
     }
 

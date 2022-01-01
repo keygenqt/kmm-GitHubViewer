@@ -15,6 +15,8 @@
  */
 package com.keygenqt.viewer.android.extensions
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,5 +38,19 @@ fun Modifier.graphicsCollapse(
         scrolledY += state.firstVisibleItemScrollOffset - previousOffset
         translationY = scrolledY * 0.5f
         previousOffset = state.firstVisibleItemScrollOffset
+    }
+}
+
+/**
+ * No Ripple Clickable
+ *
+ * @author Vitaliy Zarubin
+ */
+inline fun Modifier.noRippleClickable(crossinline onClick: () -> Unit): Modifier = composed {
+    clickable(
+        indication = null,
+        interactionSource = remember { MutableInteractionSource() }
+    ) {
+        onClick()
     }
 }

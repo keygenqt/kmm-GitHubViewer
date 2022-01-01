@@ -16,8 +16,8 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
 import androidx.compose.runtime.Composable
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryActionsState
-import com.keygenqt.viewer.android.base.viewModel.queryActions.QueryState
+import com.keygenqt.viewer.android.base.queryActions.QueryActionsState
+import com.keygenqt.viewer.android.base.queryActions.QueryState
 
 @Composable
 fun RepoQueryState1(
