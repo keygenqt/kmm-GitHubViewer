@@ -15,12 +15,19 @@
  */
 package com.keygenqt.viewer.android.base.exceptions
 
-/**
- * Error auth
- */
-const val RESPONSE_JSON_ERROR = 499
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
 /**
- * Not found
+ * Error server response
  */
-const val RESPONSE_NOT_FOUND = 404
+@Immutable
+@Serializable
+data class ErrorModel(
+    val code: Int = 0,
+    val error: String = "",
+    val error_description: String = "",
+    val error_uri: String = "",
+    val message: String = "Something wrong",
+    val documentation_url: String = "",
+)

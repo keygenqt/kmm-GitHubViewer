@@ -15,10 +15,18 @@
  */
 package com.keygenqt.viewer.android.extensions
 
-import com.keygenqt.viewer.android.base.exceptions.DataException
-import com.keygenqt.viewer.android.base.exceptions.RESPONSE_JSON_ERROR
+import com.keygenqt.response.LocalTryExecuteWithResponse
+import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
+import com.keygenqt.response.ResponseResult
+import com.keygenqt.response.extensions.success
+import com.keygenqt.viewer.android.BuildConfig
+import com.keygenqt.viewer.android.base.exceptions.ErrorModel
 import com.keygenqt.viewer.android.base.exceptions.ResponseException
+import com.keygenqt.viewer.android.data.mappers.toModel
+import com.keygenqt.viewer.android.data.requests.RefreshTokenRequest
+import com.keygenqt.viewer.android.services.api.impl.ApiRefreshToken
 import com.keygenqt.viewer.android.utils.AppHelper.isValidJson
+import com.keygenqt.viewer.android.utils.AuthUser
 import com.keygenqt.viewer.android.utils.ConstantsApp
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -55,7 +63,7 @@ fun <T> Response<T>.responseCheckApp(): Response<T> {
         errorBody()?.let {
             val string = it.string()
             if (string.isNotBlank()) {
-                throw Json.decodeFromString<DataException>(string)
+                throw Json.decodeFromString<ErrorModel>(string).code.toResponseException()
             }
         }
         throw code().toResponseException()
@@ -94,12 +102,12 @@ fun okhttp3.Response.checkValidJson(): okhttp3.Response {
                 obj.put("data_$index", s)
             }
         }
-
         // if has error data or not
         return if (obj.has("error")) {
-            obj.put("code", RESPONSE_JSON_ERROR)
+            val code = ResponseException.JsonParse().code
+            obj.put("code", code)
             newBuilder()
-                .code(RESPONSE_JSON_ERROR)
+                .code(code)
                 .body(obj.toString().toResponseBody("application/json".toMediaType()))
                 .build()
         } else {
@@ -109,5 +117,42 @@ fun okhttp3.Response.checkValidJson(): okhttp3.Response {
         }
     } else {
         this
+    }
+}
+
+/**
+ * [executeWithResponse] with refresh token
+ */
+suspend inline fun <T> executeRefreshToken(
+    api: ApiRefreshToken,
+    body: () -> T
+): ResponseResult<T> {
+    return try {
+        ResponseResult.Success(body.invoke())
+    } catch (e: Exception) {
+        // get refresh
+        val refreshToken = AuthUser.data?.refreshToken
+        // check
+        if (e is ResponseException.TokenExpired && refreshToken != null) {
+            // query refresh
+            executeWithResponse(emit = false) {
+                api.refreshToken(
+                    request = RefreshTokenRequest(
+                        refresh_token = refreshToken,
+                        client_secret = BuildConfig.GITHUB_CLIENT_SECRET,
+                        client_id = BuildConfig.GITHUB_CLIENT_ID,
+                    )
+                ).body()!!.toModel()
+            }.success {
+                AuthUser.login(it)
+            }
+            // re query
+            executeWithResponse {
+                body.invoke()
+            }
+        } else {
+            LocalTryExecuteWithResponse.tryEmit(e)
+            ResponseResult.Error(e)
+        }
     }
 }

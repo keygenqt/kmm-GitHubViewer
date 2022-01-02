@@ -13,11 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.services.api
+package com.keygenqt.viewer.android.data.requests
 
-import com.keygenqt.viewer.android.services.api.impl.*
+import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
 /**
- * Base interfaces for retrofit separate by HTTP methods
+ * Auth request step 2
+ *
+ * @property refresh_token The token generated when the GitHub App owner enables expiring tokens and issues a new user access token.
+ * @property client_secret The client ID for your GitHub App.
+ * @property client_id The client secret for your GitHub App.
  */
-interface AppApi : ApiDelete, ApiGet, ApiPatch, ApiPost, ApiPut, ApiRefreshToken
+@Immutable
+@Serializable
+data class RefreshTokenRequest(
+    val refresh_token: String,
+    val client_secret: String,
+    val client_id: String,
+)

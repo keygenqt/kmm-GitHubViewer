@@ -16,8 +16,8 @@
 package com.keygenqt.viewer.android.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
+import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.base.AppDatabaseQualifier
 import com.keygenqt.viewer.android.base.AppDatabaseSecurityQualifier
 import com.keygenqt.viewer.android.data.AppDatabase
@@ -27,7 +27,6 @@ import com.keygenqt.viewer.android.services.dataService.AppDataService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
@@ -58,12 +57,14 @@ object ModuleSingleton {
     @Provides
     @Singleton
     @AppDatabaseSecurityQualifier
-    fun provideCoreSecurityDatabase(@ApplicationContext context: Context): AppSecurityDatabase {
+    fun provideCoreSecurityDatabase(application: Application): AppSecurityDatabase {
+
         val passphrase = SQLiteDatabase.getBytes(password.toCharArray())
         val factory = SupportFactory(passphrase)
+
         val builder = Room
             .databaseBuilder(
-                context,
+                application,
                 AppSecurityDatabase::class.java,
                 "${ModuleSingleton::class.qualifiedName}.security.db"
             )
@@ -72,8 +73,11 @@ object ModuleSingleton {
             builder.addMigrations(it)
         }
 
+        if (!BuildConfig.DEBUG) {
+            builder.openHelperFactory(factory)
+        }
+
         return builder.fallbackToDestructiveMigration()
-            .openHelperFactory(factory)
             .allowMainThreadQueries()
             .build()
     }

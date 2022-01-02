@@ -25,6 +25,7 @@ import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.delay
+import com.keygenqt.viewer.android.extensions.executeRefreshToken
 import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +44,7 @@ interface ApiServiceGet {
      */
     suspend fun getUser(): ResponseResult<UserModel> {
         return withContext(Dispatchers.IO) {
-            LocalTryExecuteWithResponse.executeWithResponse {
+            executeRefreshToken(api) {
                 api.getUser()
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()
@@ -58,7 +59,7 @@ interface ApiServiceGet {
      */
     suspend fun getRepo(url: String): ResponseResult<RepoModel> {
         return withContext(Dispatchers.IO) {
-            LocalTryExecuteWithResponse.executeWithResponse {
+            executeRefreshToken(api) {
                 api.getRepo(url)
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()
@@ -76,7 +77,7 @@ interface ApiServiceGet {
         isSortDesc: Boolean = false,
     ): ResponseResult<List<RepoModel>> {
         return withContext(Dispatchers.IO) {
-            LocalTryExecuteWithResponse.executeWithResponse {
+            executeRefreshToken(api) {
                 api.getUserRepos(
                     page = page,
                     direction = if (isSortDesc) "desc" else "asc"
@@ -96,7 +97,7 @@ interface ApiServiceGet {
         @IntRange(from = 1) page: Int = 1
     ): ResponseResult<List<FollowerModel>> {
         return withContext(Dispatchers.IO) {
-            LocalTryExecuteWithResponse.executeWithResponse {
+            executeRefreshToken(api) {
                 api.getUserFollowers(page = page)
                     .delay(BuildConfig.DEBUG)
                     .responseCheckApp()

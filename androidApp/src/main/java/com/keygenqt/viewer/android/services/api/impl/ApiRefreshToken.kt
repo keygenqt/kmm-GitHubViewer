@@ -13,21 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.base.exceptions
+package com.keygenqt.viewer.android.services.api.impl
 
-import androidx.compose.runtime.Immutable
-import kotlinx.serialization.Serializable
+import com.keygenqt.viewer.android.data.requests.RefreshTokenRequest
+import com.keygenqt.viewer.android.data.responses.AuthResponse
+import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.POST
+import retrofit2.http.Url
 
 /**
- * Error server response
+ * Api for refresh token
  */
-@Immutable
-@Serializable
-data class DataException(
-    val code: Int = 0,
-    val error: String = "",
-    val error_description: String = "",
-    val error_uri: String = "",
-    override val message: String = "Something wrong",
-    val documentation_url: String = "",
-) : RuntimeException()
+interface ApiRefreshToken {
+    @POST
+    suspend fun refreshToken(
+        @Url url: String = "https://github.com/login/oauth/access_token",
+        @Body request: RefreshTokenRequest
+    ): Response<AuthResponse>
+}

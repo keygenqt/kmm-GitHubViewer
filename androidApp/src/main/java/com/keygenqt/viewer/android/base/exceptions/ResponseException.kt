@@ -20,20 +20,25 @@ package com.keygenqt.viewer.android.base.exceptions
  *
  * @author Vitaliy Zarubin
  */
-sealed class ResponseException(val code: Int, error: String) : RuntimeException(error) {
+sealed class ResponseException(val code: Int) : RuntimeException() {
 
     /**
-     * Exception 404
+     * Token expired exception
      */
-    class NotFound(
-        error: String = "Not found"
-    ) : ResponseException(RESPONSE_NOT_FOUND, error)
+    class TokenExpired(code: Int = 300) : ResponseException(code)
+
+    /**
+     * Not found exception
+     */
+    class NotFound(code: Int = 404) : ResponseException(code)
+
+    /**
+     * Exception parse response
+     */
+    class JsonParse(code: Int = 1) : ResponseException(code)
 
     /**
      * Exception unhandled
      */
-    class ExceptionUnknown(
-        code: Int = -1,
-        error: String = "Unknown error"
-    ) : ResponseException(code, error)
+    class ExceptionUnknown(code: Int = -1) : ResponseException(code)
 }
