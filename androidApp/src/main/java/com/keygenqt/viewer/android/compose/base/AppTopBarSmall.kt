@@ -22,13 +22,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.lottie.LoadingBlockAnimation
+import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
+import com.keygenqt.viewer.android.extensions.LaunchedEffectAnimation
 import kotlinx.coroutines.launch
 
 /**
@@ -44,17 +44,34 @@ fun AppTopBarSmall(
 ) {
     val scope = rememberCoroutineScope()
 
+    // remember has callbacks
+    var hasEnabledCallbacks: Boolean by remember {
+        mutableStateOf(navigationDispatcher?.hasEnabledCallbacks() == true)
+    }
+
+    // update hasEnabledCallbacks if animation end
+    LaunchedEffectAnimation { state ->
+        if (state == AnimatedNavGraphState.END) {
+            hasEnabledCallbacks = navigationDispatcher?.hasEnabledCallbacks() == true
+        }
+    }
+
+    // update hasEnabledCallbacks if pager change
+    navigationDispatcher?.listenChangePager {
+        hasEnabledCallbacks = navigationDispatcher.hasEnabledCallbacks() == true
+    }
+
     SmallTopAppBar(
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
         ),
         scrollBehavior = scrollBehavior,
-        navigationIcon = if (navigationDispatcher?.hasEnabledCallbacks() == true) {
+        navigationIcon = if (hasEnabledCallbacks) {
             {
                 IconButton(onClick = {
                     scope.launch {
-                        navigationDispatcher.onBackPressed()
+                        navigationDispatcher?.onBackPressed()
                     }
                 }) {
                     Icon(

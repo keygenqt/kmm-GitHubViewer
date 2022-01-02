@@ -28,6 +28,8 @@ import androidx.compose.ui.Modifier.Companion.then
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import com.google.accompanist.insets.navigationBarsWithImePadding
 import com.google.accompanist.insets.statusBarsPadding
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.PagerState
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
@@ -45,7 +47,6 @@ fun AppScaffold(
     // top bar
     topBarTitle: String? = null,
     topBarLoading: Boolean = false,
-    topBarIsSmall: Boolean = true,
     topBarActions: @Composable ((RowScope) -> Unit)? = null,
     // swipe refresh
     swipeRefreshEnable: Boolean = false,
@@ -54,31 +55,19 @@ fun AppScaffold(
     // content
     content: @Composable () -> Unit
 ) {
-    val scrollBehavior = enterAlwaysScrollBehavior()
-
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
             .navigationBarsWithImePadding(),
         topBar = topBarTitle?.let {
             {
-                if (topBarIsSmall) {
-                    AppTopBarSmall(
-                        title = topBarTitle,
-                        navigationDispatcher = navigationDispatcher,
-                        scrollBehavior = scrollBehavior,
-                        loading = topBarLoading,
-                        actions = topBarActions
-                    )
-                } else {
-                    AppTopBarMedium(
-                        title = topBarTitle,
-                        navigationDispatcher = navigationDispatcher,
-                        scrollBehavior = scrollBehavior,
-                        loading = topBarLoading,
-                        actions = topBarActions
-                    )
-                }
+                AppTopBarSmall(
+                    title = topBarTitle,
+                    navigationDispatcher = navigationDispatcher,
+                    scrollBehavior = enterAlwaysScrollBehavior(),
+                    loading = topBarLoading,
+                    actions = topBarActions
+                )
             }
         } ?: {},
         bottomBar = {
@@ -86,15 +75,7 @@ fun AppScaffold(
         }
     ) {
         Box(
-            Modifier
-                .let { modifier ->
-                    if (topBarIsSmall) {
-                        modifier
-                    } else {
-                        then(modifier.nestedScroll(scrollBehavior.nestedScrollConnection))
-                    }
-                }
-                .padding(it)
+            Modifier.padding(it)
         ) {
             if (swipeRefreshEnable) {
                 SwipeRefresh(

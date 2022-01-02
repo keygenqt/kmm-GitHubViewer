@@ -18,6 +18,8 @@ package com.keygenqt.viewer.android.base
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.runtime.snapshotFlow
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -25,10 +27,9 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
+
 
 /**
  * Navigation dispatcher for routing
@@ -37,9 +38,9 @@ import timber.log.Timber
 class NavigationDispatcher(
     private val scope: CoroutineScope,
     private val controller: NavHostController,
-    private val lifecycleOwner: LifecycleOwner,
+    private val lifecycle: Lifecycle,
     private val backPressedDispatcher: OnBackPressedDispatcher
-) {
+) : DefaultLifecycleObserver {
     /**
      * Save start destination
      */
@@ -49,6 +50,11 @@ class NavigationDispatcher(
      * Save count open start destination
      */
     private var _firstDestinationCount: Int = 0
+
+    /**
+     * Change destination direction
+     */
+    private var _isBack: Boolean = false
 
     /**
      * Save current destination
@@ -76,7 +82,11 @@ class NavigationDispatcher(
     val currentDestination get() = _currentDestination
 
     /**
-     * @todo fix problem lifecycleOwner
+     * Lifecycle owner
+     */
+    private var lifecycleOwner: LifecycleOwner? = null
+
+    /**
      * Custom navigator callback
      */
     private val navigatorCallback = object : OnBackPressedCallback(true) {
@@ -85,28 +95,48 @@ class NavigationDispatcher(
         }
     }
 
-    init {
-        // listen change destination
-        val callback = NavController.OnDestinationChangedListener { controller, _, _ ->
-            controller.currentDestination?.let { destination ->
-                // clear pager
-                _pager = null
-                // add start destination
-                if (_startDestination == null) {
-                    _startDestination = destination
-                }
-                // change counter open start destination
-                if (_startDestination?.route == destination.route) {
-                    _firstDestinationCount += 1
-                }
-                // save current destination
-                _currentDestination = destination
+    /**
+     * Callback listen change destination
+     */
+    private val callback = NavController.OnDestinationChangedListener { controller, _, _ ->
+        controller.currentDestination?.let { destination ->
+            // clear pager
+            _pager = null
+            // add start destination
+            if (_startDestination == null) {
+                _startDestination = destination
+                _firstDestinationCount = 0
             }
+            // change counter open start destination
+            if (_startDestination?.route == destination.route && !_isBack) {
+                _firstDestinationCount++
+            }
+            // save current destination
+            _currentDestination = destination
+            // disable destination direction
+            _isBack = false
         }
-        // add listener
-        controller.addOnDestinationChangedListener(callback)
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        // save lifecycle owner
+        lifecycleOwner = owner
         // add custom callback
-        backPressedDispatcher.addCallback(lifecycleOwner, navigatorCallback)
+        backPressedDispatcher.addCallback(owner, navigatorCallback)
+    }
+
+    override fun onPause(owner: LifecycleOwner) {
+        // clear lifecycle owner
+        lifecycleOwner = null
+        // remove callback
+        navigatorCallback.remove()
+    }
+
+    init {
+        // add listener changed destination
+        controller.addOnDestinationChangedListener(callback)
+        // add lifecycle
+        lifecycle.addObserver(this)
     }
 
     /**
@@ -118,7 +148,7 @@ class NavigationDispatcher(
             return true
         }
         // check root destination
-        if (_startDestination?.route == currentDestination?.route && _firstDestinationCount == 1) {
+        if (_startDestination?.route == _currentDestination?.route && _firstDestinationCount <= 1) {
             return false
         }
         // check BackPressedDispatcher
@@ -148,16 +178,19 @@ class NavigationDispatcher(
      * Press back [OnBackPressedDispatcher] with counter
      */
     private fun backPressed() {
-        // change counter close start destination
-        if (_startDestination?.route == currentDestination?.route) {
-            _firstDestinationCount -= 1
+        _isBack = true
+        // change counter open start destination
+        if (_startDestination?.route == _currentDestination?.route) {
+            _firstDestinationCount--
         }
         // disable callback
         navigatorCallback.remove()
         // onBackPressed
         backPressedDispatcher.onBackPressed()
         // enable callback
-        backPressedDispatcher.addCallback(lifecycleOwner, navigatorCallback)
+        lifecycleOwner?.let {
+            backPressedDispatcher.addCallback(it, navigatorCallback)
+        }
     }
 
     /**
@@ -183,11 +216,20 @@ class NavigationDispatcher(
     /**
      * Set pager [PagerState] and callback change
      */
-    fun setPager(state: PagerState, change: (Int) -> Unit = {}) {
+    fun setPager(state: PagerState) {
         if (_pager == null) {
             _pager = state
+
+        }
+    }
+
+    /**
+     * Add listen change pager
+     */
+    fun listenChangePager(change: (Int) -> Unit = {}) {
+        _pager?.let {
             scope.launch {
-                snapshotFlow { state.currentPage }.collect {
+                snapshotFlow { it.currentPage }.collect {
                     change.invoke(it)
                 }
             }

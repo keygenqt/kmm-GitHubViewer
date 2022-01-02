@@ -63,8 +63,8 @@ class MainActivity : ComponentActivity() {
                     LocalNavigationDispatcher provides NavigationDispatcher(
                         scope = rememberCoroutineScope(),
                         controller = animatedNavController,
-                        lifecycleOwner = LocalLifecycleOwner.current,
-                        backPressedDispatcher = this.onBackPressedDispatcher
+                        lifecycle = lifecycle,
+                        backPressedDispatcher = onBackPressedDispatcher
                     )
                 ) {
                     AppTheme {
