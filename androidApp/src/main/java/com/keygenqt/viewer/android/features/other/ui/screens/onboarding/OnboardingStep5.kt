@@ -35,7 +35,7 @@ import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable
-fun OnboardingStep1() {
+fun OnboardingStep5() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +56,7 @@ fun OnboardingStep1() {
             TextTitleLarge(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                text = stringResource(id = R.string.onboarding_step1_title)
+                text = stringResource(id = R.string.onboarding_step5_title)
             )
 
             Spacer(modifier = Modifier.size(20.dp))
@@ -64,7 +64,7 @@ fun OnboardingStep1() {
             TextBodyLarge(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                text = stringResource(id = R.string.onboarding_step1_text)
+                text = stringResource(id = R.string.onboarding_step5_text)
             )
         }
 
@@ -77,7 +77,7 @@ private fun OnboardingAnimation(
 ) {
     val composition by rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(
-            R.raw.step1
+            R.raw.step5
         )
     )
     val progress by animateLottieCompositionAsState(
@@ -100,6 +100,6 @@ private fun OnboardingAnimation(
 @Composable
 private fun Preview() {
     AppTheme {
-        OnboardingStep1()
+        OnboardingStep5()
     }
 }

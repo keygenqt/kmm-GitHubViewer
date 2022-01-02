@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
@@ -35,7 +36,7 @@ import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable
-fun OnboardingStep1() {
+fun OnboardingStep4() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +57,7 @@ fun OnboardingStep1() {
             TextTitleLarge(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                text = stringResource(id = R.string.onboarding_step1_title)
+                text = stringResource(id = R.string.onboarding_step4_title)
             )
 
             Spacer(modifier = Modifier.size(20.dp))
@@ -64,7 +65,7 @@ fun OnboardingStep1() {
             TextBodyLarge(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                text = stringResource(id = R.string.onboarding_step1_text)
+                text = stringResource(id = R.string.onboarding_step4_text)
             )
         }
 
@@ -77,20 +78,25 @@ private fun OnboardingAnimation(
 ) {
     val composition by rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(
-            R.raw.step1
+            R.raw.step4
         )
     )
     val progress by animateLottieCompositionAsState(
         composition = composition,
         iterations = LottieConstants.IterateForever
     )
-    Box(modifier = modifier) {
+    Box(
+        modifier = modifier
+            .height(180.dp)
+            .width(230.dp)
+            .offset(y = 30.dp)
+    ) {
         LottieAnimation(
             composition = composition,
             progress = progress,
             modifier = Modifier
+                .fillMaxSize()
                 .align(Alignment.Center)
-                .size(150.dp)
         )
     }
 }
@@ -100,6 +106,6 @@ private fun OnboardingAnimation(
 @Composable
 private fun Preview() {
     AppTheme {
-        OnboardingStep1()
+        OnboardingStep4()
     }
 }

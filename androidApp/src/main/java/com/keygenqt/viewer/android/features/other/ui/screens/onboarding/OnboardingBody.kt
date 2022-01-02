@@ -28,12 +28,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
@@ -54,11 +56,13 @@ fun OnboardingBody(
         val step1 = 0
         val step2 = 1
         val step3 = 2
+        val step4 = 3
+        val step5 = 4
 
         // override
         override val scope = rememberCoroutineScope()
         override val state = rememberPagerState()
-        override val count = 3
+        override val count = 5
     }
 
     val done = { onActions(OnboardingActions.DoneOnboarding) }
@@ -67,10 +71,10 @@ fun OnboardingBody(
 
     AppScaffold(
         navigationDispatcher = navDispatcher,
-        topBarTitle = if (pages.isFirst) "Hello!" else "",
+        topBarTitle = if (pages.isFirst) stringResource(id = R.string.onboarding_title) else "",
         topBarActions = {
             IconButton(onClick = done) {
-                TextLabelLarge(text = "Skip")
+                TextLabelLarge(text = stringResource(id = R.string.onboarding_skip))
             }
         },
     ) {
@@ -84,8 +88,10 @@ fun OnboardingBody(
             ) { page ->
                 when (page) {
                     pages.step1 -> OnboardingStep1()
-                    pages.step2 -> OnboardingStep1()
-                    pages.step3 -> OnboardingStep1()
+                    pages.step2 -> OnboardingStep2()
+                    pages.step3 -> OnboardingStep3()
+                    pages.step4 -> OnboardingStep4()
+                    pages.step5 -> OnboardingStep5()
                 }
             }
             Box(
