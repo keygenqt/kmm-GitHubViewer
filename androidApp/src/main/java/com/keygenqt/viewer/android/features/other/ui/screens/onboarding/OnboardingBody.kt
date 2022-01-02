@@ -24,6 +24,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -34,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
 import com.keygenqt.viewer.android.extensions.disableHorizontalPointerInputScroll
@@ -44,6 +46,7 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun OnboardingBody(
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (OnboardingActions) -> Unit = {},
 ) {
     val pages = object : IPagerState {
@@ -61,7 +64,10 @@ fun OnboardingBody(
 
     val done = { onActions(OnboardingActions.DoneOnboarding) }
 
+    navDispatcher?.setPager(pages.state)
+
     AppScaffold(
+        navigationDispatcher = navDispatcher,
         topBarTitle = if (pages.isFirst) "Hello!" else "",
         topBarActions = {
             IconButton(onClick = done) {
@@ -118,6 +124,7 @@ fun OnboardingBody(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {

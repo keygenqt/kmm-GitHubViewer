@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalUriHandler
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions
 import com.keygenqt.viewer.android.features.profile.ui.viewModels.ProfileViewModel
 
@@ -40,6 +41,7 @@ fun ProfileScreen(
         model = model,
         state1 = state1,
         onActions = onActions,
-        uriHandler = LocalUriHandler.current
+        uriHandler = LocalUriHandler.current,
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

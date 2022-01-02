@@ -302,6 +302,7 @@ fun InfoBlock(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {

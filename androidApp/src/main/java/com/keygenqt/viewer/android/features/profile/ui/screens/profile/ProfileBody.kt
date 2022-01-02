@@ -36,8 +36,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.base.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.base.AppScaffold
+import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -48,6 +50,7 @@ fun ProfileBody(
     model: Any?,
     uriHandler: UriHandler? = null,
     state1: QueryState = QueryState.Start,
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (ProfileActions) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
@@ -68,6 +71,7 @@ fun ProfileBody(
     )
 
     AppScaffold(
+        navigationDispatcher = navDispatcher,
         topBarLoading = model == false,
         topBarTitle = stringResource(id = R.string.profile_title),
         topBarActions = {
@@ -156,9 +160,10 @@ fun CloseDialog(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {
-        ProfileBody(null)
+        ProfileBody(UserModel.mock())
     }
 }

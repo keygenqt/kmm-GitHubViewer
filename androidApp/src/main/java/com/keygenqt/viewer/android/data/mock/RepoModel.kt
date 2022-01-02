@@ -23,7 +23,7 @@ import java.util.*
 
 fun RepoModel.Companion.mock() = RepoModel(
     id = UUID.randomUUID().toString(),
-    name = "",
+    name = "GitHub Viewer",
     fullName = "",
     owner = RepoOwnerModel(
         ownerId = UUID.randomUUID().toString(),
@@ -47,7 +47,7 @@ fun RepoModel.Companion.mock() = RepoModel(
     ),
     isPrivate = false,
     htmlUrl = "",
-    description = "",
+    description = "Kotlin Multiplatform Mobile version GitHubViewer",
     fork = false,
     url = "",
     archiveUrl = "",
@@ -123,7 +123,7 @@ fun RepoModel.Companion.mock() = RepoModel(
     subscribersCount = 0,
     networkCount = 0,
     license = mapOf(),
-    forks = 0,
-    openIssues = 0,
-    watchers = 0
+    forks = 5,
+    openIssues = 1,
+    watchers = 2
 )

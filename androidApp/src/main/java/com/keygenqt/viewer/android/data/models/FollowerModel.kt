@@ -19,12 +19,14 @@ import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.keygenqt.viewer.android.interfaces.IModel
+import kotlinx.serialization.Serializable
 
 /**
  * Follower model
  */
 @Entity
 @Immutable
+@Serializable
 data class FollowerModel(
     @PrimaryKey override val id: String,
     val login: String,

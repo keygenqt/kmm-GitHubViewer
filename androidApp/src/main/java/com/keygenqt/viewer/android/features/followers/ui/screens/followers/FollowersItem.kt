@@ -35,21 +35,21 @@ import coil.annotation.ExperimentalCoilApi
 import com.keygenqt.viewer.android.compose.base.AppImageUser
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
+import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.FollowerModel
+import com.keygenqt.viewer.android.features.repos.ui.screens.repos.ReposItem
 import com.keygenqt.viewer.android.theme.AppTheme
 import androidx.compose.material.MaterialTheme as MaterialTheme2
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 fun FollowersItem(
-    index: Int,
     model: FollowerModel,
     uriHandler: UriHandler? = null,
 ) {
     Box(
-        modifier = Modifier
+        modifier = Modifier.height(IntrinsicSize.Min)
     ) {
-
         Card(
             shape = MaterialTheme2.shapes.medium,
             backgroundColor = MaterialTheme.colorScheme.surface,
@@ -101,47 +101,11 @@ fun FollowersItem(
     }
 }
 
-@Composable
-private fun ReposItemCount(
-    modifier: Modifier = Modifier,
-    vectorImage: ImageVector,
-    count: Int? = null
-) {
-    Row(modifier = modifier) {
-        if (count != 0) {
-            Box(
-                modifier = Modifier.size(18.dp),
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .padding(bottom = 2.dp)
-                        .size(14.dp)
-                        .align(Alignment.Center),
-                    imageVector = vectorImage,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer
-                )
-            }
-        }
-        if (count != null && count != 0) {
-            Box(
-                modifier = Modifier.size(18.dp),
-            ) {
-                TextBodySmall(
-                    modifier = Modifier
-                        .align(Alignment.Center),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    text = count.toString()
-                )
-            }
-        }
-    }
-}
-
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {
-//        ReposItem()
+        FollowersItem(FollowerModel.mock())
     }
 }

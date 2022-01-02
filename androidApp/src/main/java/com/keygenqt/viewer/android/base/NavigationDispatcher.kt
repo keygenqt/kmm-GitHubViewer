@@ -15,17 +15,30 @@
  */
 package com.keygenqt.viewer.android.base
 
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
+import androidx.compose.runtime.snapshotFlow
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.PagerState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Navigation dispatcher for routing
  */
+@OptIn(ExperimentalPagerApi::class)
 class NavigationDispatcher(
-    val controller: NavHostController,
-    val backPressedDispatcher: OnBackPressedDispatcher
+    private val scope: CoroutineScope,
+    private val controller: NavHostController,
+    private val lifecycleOwner: LifecycleOwner,
+    private val backPressedDispatcher: OnBackPressedDispatcher
 ) {
     /**
      * Save start destination
@@ -43,6 +56,16 @@ class NavigationDispatcher(
     private var _currentDestination: NavDestination? = null
 
     /**
+     * Navigation [PagerState]
+     */
+    private var _pager: PagerState? = null
+
+    /**
+     * State navigation [PagerState]
+     */
+    private var _pagerEnable: Boolean = true
+
+    /**
      * Get start destination
      */
     val startDestination get() = _startDestination
@@ -52,16 +75,28 @@ class NavigationDispatcher(
      */
     val currentDestination get() = _currentDestination
 
+    /**
+     * @todo fix problem lifecycleOwner
+     * Custom navigator callback
+     */
+    private val navigatorCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            onBackPressed()
+        }
+    }
+
     init {
         // listen change destination
         val callback = NavController.OnDestinationChangedListener { controller, _, _ ->
             controller.currentDestination?.let { destination ->
+                // clear pager
+                _pager = null
                 // add start destination
                 if (_startDestination == null) {
                     _startDestination = destination
                 }
-                // counter open start destination
-                if (_startDestination!!.route == destination.route) {
+                // change counter open start destination
+                if (_startDestination?.route == destination.route) {
                     _firstDestinationCount += 1
                 }
                 // save current destination
@@ -70,20 +105,59 @@ class NavigationDispatcher(
         }
         // add listener
         controller.addOnDestinationChangedListener(callback)
+        // add custom callback
+        backPressedDispatcher.addCallback(lifecycleOwner, navigatorCallback)
     }
 
     /**
      * Check is navigation stack empty
      */
     fun hasEnabledCallbacks(): Boolean {
+        // check pager
+        if (_pager != null && _pagerEnable && _pager!!.currentPage > 0) {
+            return true
+        }
+        // check root destination
+        if (_startDestination?.route == currentDestination?.route && _firstDestinationCount == 1) {
+            return false
+        }
+        // check BackPressedDispatcher
         return backPressedDispatcher.hasEnabledCallbacks()
     }
 
     /**
-     * Step to back on navigation
+     * Step to back on navigation or pager
      */
     fun onBackPressed() {
+        _pager?.let {
+            if (!it.isScrollInProgress) {
+                if (it.currentPage > 0 && _pagerEnable) {
+                    scope.launch {
+                        it.animateScrollToPage(it.currentPage - 1)
+                    }
+                } else {
+                    backPressed()
+                }
+            }
+        } ?: run {
+            backPressed()
+        }
+    }
+
+    /**
+     * Press back [OnBackPressedDispatcher] with counter
+     */
+    private fun backPressed() {
+        // change counter close start destination
+        if (_startDestination?.route == currentDestination?.route) {
+            _firstDestinationCount -= 1
+        }
+        // disable callback
+        navigatorCallback.remove()
+        // onBackPressed
         backPressedDispatcher.onBackPressed()
+        // enable callback
+        backPressedDispatcher.addCallback(lifecycleOwner, navigatorCallback)
     }
 
     /**
@@ -104,5 +178,33 @@ class NavigationDispatcher(
                 it.invoke()
             }
         }
+    }
+
+    /**
+     * Set pager [PagerState] and callback change
+     */
+    fun setPager(state: PagerState, change: (Int) -> Unit = {}) {
+        if (_pager == null) {
+            _pager = state
+            scope.launch {
+                snapshotFlow { state.currentPage }.collect {
+                    change.invoke(it)
+                }
+            }
+        }
+    }
+
+    /**
+     * Enable navigation pager
+     */
+    fun enablePager() {
+        _pagerEnable = true
+    }
+
+    /**
+     * Disable navigation pager
+     */
+    fun disablePager() {
+        _pagerEnable = false
     }
 }

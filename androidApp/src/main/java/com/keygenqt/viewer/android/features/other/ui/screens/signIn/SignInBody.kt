@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldState
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.base.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.base.FormError
@@ -48,6 +49,7 @@ fun SignInBody(
     formFields: FormFieldsState,
     uriHandler: UriHandler? = null,
     state1: QueryState = QueryState.Start,
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (SignInActions) -> Unit = {},
 ) {
     val scrollState = rememberScrollState()
@@ -92,6 +94,7 @@ fun SignInBody(
     )
 
     AppScaffold(
+        navigationDispatcher = navDispatcher,
         topBarTitle = stringResource(id = R.string.sign_in_title),
         topBarLoading = loading,
     ) {
@@ -134,6 +137,7 @@ fun SignInBody(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {

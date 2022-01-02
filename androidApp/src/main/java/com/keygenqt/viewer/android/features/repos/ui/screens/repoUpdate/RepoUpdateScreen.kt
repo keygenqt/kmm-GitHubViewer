@@ -20,6 +20,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoUpdateActions
 import com.keygenqt.viewer.android.features.repos.ui.forms.RepoUpdateForm.*
 import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoUpdateModel
@@ -60,6 +61,7 @@ fun RepoUpdateScreen(
         state1 = state1,
         onActions = onActions,
         localFocusManager = LocalFocusManager.current,
-        softwareKeyboardController = LocalSoftwareKeyboardController.current
+        softwareKeyboardController = LocalSoftwareKeyboardController.current,
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

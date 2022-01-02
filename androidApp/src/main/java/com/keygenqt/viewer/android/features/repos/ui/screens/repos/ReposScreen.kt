@@ -20,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposActions
 import com.keygenqt.viewer.android.features.repos.ui.viewModels.ReposViewModel
@@ -43,5 +44,6 @@ fun ReposScreen(
         isSortDescListRepo = isSortDescListRepo,
         models = lazyRepos,
         onActions = onActions,
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

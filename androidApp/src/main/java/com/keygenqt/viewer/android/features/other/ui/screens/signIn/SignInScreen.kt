@@ -18,6 +18,7 @@ package com.keygenqt.viewer.android.features.other.ui.screens.signIn
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalUriHandler
 import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
@@ -46,6 +47,7 @@ fun SignInScreen(
         state1 = state1,
         onActions = onActions,
         formFields = formFields,
-        uriHandler = LocalUriHandler.current
+        uriHandler = LocalUriHandler.current,
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

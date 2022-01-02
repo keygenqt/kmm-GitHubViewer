@@ -23,11 +23,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.lottie.LoadingBlockAnimation
+import kotlinx.coroutines.launch
 
 /**
  * App top bar small material 3
@@ -36,20 +38,24 @@ import com.keygenqt.viewer.android.compose.lottie.LoadingBlockAnimation
 fun AppTopBarSmall(
     title: String,
     scrollBehavior: TopAppBarScrollBehavior,
+    navigationDispatcher: NavigationDispatcher?,
     loading: Boolean = false,
     actions: @Composable ((RowScope) -> Unit)? = null,
-    navDispatcher: NavigationDispatcher = LocalNavigationDispatcher.current,
 ) {
+    val scope = rememberCoroutineScope()
+
     SmallTopAppBar(
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
         ),
         scrollBehavior = scrollBehavior,
-        navigationIcon = if (navDispatcher.hasEnabledCallbacks()) {
+        navigationIcon = if (navigationDispatcher?.hasEnabledCallbacks() == true) {
             {
                 IconButton(onClick = {
-                    navDispatcher.onBackPressed()
+                    scope.launch {
+                        navigationDispatcher.onBackPressed()
+                    }
                 }) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,

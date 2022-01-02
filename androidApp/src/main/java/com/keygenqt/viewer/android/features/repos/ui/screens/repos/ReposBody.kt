@@ -28,9 +28,11 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.base.RotateIconSortIcon
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshList
+import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -44,6 +46,7 @@ import kotlinx.coroutines.launch
 fun ReposBody(
     isSortDescListRepo: Boolean = false,
     models: LazyPagingItems<RepoModel>,
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (ReposActions) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
@@ -51,6 +54,7 @@ fun ReposBody(
     val refreshState = rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)
 
     AppScaffold(
+        navigationDispatcher = navDispatcher,
         topBarTitle = stringResource(id = R.string.repos_title),
         topBarActions = {
             RotateIconSortIcon(
@@ -78,7 +82,10 @@ fun ReposBody(
     }
 }
 
+// @todo preview items not working
+// https://issuetracker.google.com/issues/194544557
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {
@@ -86,7 +93,7 @@ private fun Preview() {
             ReposBody(
                 models = flowOf(
                     PagingData.from(
-                        listOf<RepoModel>()
+                        listOf(RepoModel.mock(), RepoModel.mock(), RepoModel.mock())
                     )
                 ).collectAsLazyPagingItems()
             )

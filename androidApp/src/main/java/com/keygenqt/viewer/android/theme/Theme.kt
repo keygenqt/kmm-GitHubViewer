@@ -83,7 +83,7 @@ fun AppTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val systemUiController = rememberSystemUiController()
+//    val systemUiController = rememberSystemUiController()
 
     val colors = if (!useDarkTheme) {
         LightThemeColors
@@ -97,10 +97,10 @@ fun AppTheme(
         content = content
     )
 
-    SideEffect {
-        systemUiController.setSystemBarsColor(
-            color = colors.primary,
-            darkIcons = false
-        )
-    }
+//    SideEffect {
+//        systemUiController.setSystemBarsColor(
+//            color = colors.primary,
+//            darkIcons = false
+//        )
+//    }
 }

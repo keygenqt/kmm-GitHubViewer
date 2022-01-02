@@ -36,6 +36,7 @@ import com.keygenqt.viewer.android.compose.base.LanguageImage
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.compose.texts.TextTitleMedium
+import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -166,9 +167,10 @@ private fun ReposItemCount(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {
-//        ReposItem()
+        ReposItem(RepoModel.mock())
     }
 }

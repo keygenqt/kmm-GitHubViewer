@@ -31,6 +31,7 @@ import com.google.accompanist.insets.statusBarsPadding
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshIndicator
 import com.keygenqt.viewer.android.menu.MenuBottomBar
 
@@ -40,6 +41,7 @@ import com.keygenqt.viewer.android.menu.MenuBottomBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppScaffold(
+    navigationDispatcher: NavigationDispatcher?,
     // top bar
     topBarTitle: String? = null,
     topBarLoading: Boolean = false,
@@ -52,7 +54,6 @@ fun AppScaffold(
     // content
     content: @Composable () -> Unit
 ) {
-    val navigationDispatcher = LocalNavigationDispatcher.current
     val scrollBehavior = enterAlwaysScrollBehavior()
 
     Scaffold(
@@ -64,6 +65,7 @@ fun AppScaffold(
                 if (topBarIsSmall) {
                     AppTopBarSmall(
                         title = topBarTitle,
+                        navigationDispatcher = navigationDispatcher,
                         scrollBehavior = scrollBehavior,
                         loading = topBarLoading,
                         actions = topBarActions
@@ -71,6 +73,7 @@ fun AppScaffold(
                 } else {
                     AppTopBarMedium(
                         title = topBarTitle,
+                        navigationDispatcher = navigationDispatcher,
                         scrollBehavior = scrollBehavior,
                         loading = topBarLoading,
                         actions = topBarActions
@@ -79,7 +82,7 @@ fun AppScaffold(
             }
         } ?: {},
         bottomBar = {
-            MenuBottomBar(navigationDispatcher.currentDestination)
+            MenuBottomBar(navigationDispatcher?.currentDestination)
         }
     ) {
         Box(

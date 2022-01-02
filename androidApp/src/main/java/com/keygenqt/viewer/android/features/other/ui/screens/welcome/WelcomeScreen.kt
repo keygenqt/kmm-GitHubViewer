@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.other.ui.screens.welcome
 
 import androidx.compose.runtime.Composable
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.other.ui.actions.WelcomeActions
 import com.keygenqt.viewer.android.features.other.ui.viewModels.WelcomeViewModel
@@ -33,6 +34,7 @@ fun WelcomeScreen(
 ) {
     WelcomeBody(
         onActions = onActions,
-        appViewModel = LocalViewModel.current
+        appViewModel = LocalViewModel.current,
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

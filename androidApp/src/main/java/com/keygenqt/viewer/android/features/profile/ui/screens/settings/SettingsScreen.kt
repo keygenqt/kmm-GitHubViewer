@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.features.profile.ui.screens.settings
 
 import androidx.compose.runtime.*
 import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.SettingsActions
 import com.keygenqt.viewer.android.features.profile.ui.forms.UserUpdateForm.*
@@ -62,6 +63,7 @@ fun SettingsScreen(
     SettingsBody(
         state1 = state1,
         formFields = formFields,
-        onActions = onActions
+        onActions = onActions,
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

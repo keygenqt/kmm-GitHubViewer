@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.stats.ui.screens.stats
 
 import androidx.compose.runtime.Composable
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
 import com.keygenqt.viewer.android.features.stats.ui.actions.StatsActions
 import com.keygenqt.viewer.android.features.stats.ui.viewModels.StatsViewModel
@@ -33,6 +34,6 @@ fun StatsScreen(
 ) {
     StatsBody(
         onActions = onActions,
-        appViewModel = LocalViewModel.current
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

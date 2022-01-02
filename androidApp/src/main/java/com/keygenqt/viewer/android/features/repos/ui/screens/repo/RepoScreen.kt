@@ -18,6 +18,7 @@ package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
 import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoViewModel
 
@@ -38,6 +39,7 @@ fun RepoScreen(
     RepoBody(
         model = model,
         state1 = state1,
-        onActions = onActions
+        onActions = onActions,
+        navDispatcher = LocalNavigationDispatcher.current
     )
 }

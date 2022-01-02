@@ -33,18 +33,20 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.githubviewer.Greeting
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.features.stats.ui.actions.StatsActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
 @Composable
 fun StatsBody(
-    appViewModel: AppViewModel? = null,
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (StatsActions) -> Unit = {},
 ) {
     val scrollState = rememberScrollState()
 
     AppScaffold(
+        navigationDispatcher = navDispatcher,
         topBarTitle = stringResource(id = R.string.stats_title),
     ) {
         Column(
@@ -88,6 +90,7 @@ fun StatsBody(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {

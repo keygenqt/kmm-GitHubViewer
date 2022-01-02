@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextDisplayMedium
@@ -54,9 +55,12 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @Composable
 fun WelcomeBody(
     appViewModel: AppViewModel? = null,
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (WelcomeActions) -> Unit = {},
 ) {
-    AppScaffold {
+    AppScaffold(
+        navigationDispatcher = navDispatcher,
+    ) {
         Box {
             Image(
                 painterResource(id = if (isSystemInDarkTheme()) R.drawable.bg_welcome_dark else R.drawable.bg_welcome),
@@ -197,6 +201,7 @@ fun WelcomeBodySubtitle(
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {

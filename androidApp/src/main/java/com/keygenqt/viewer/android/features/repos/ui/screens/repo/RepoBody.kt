@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
+import android.content.res.Configuration
 import android.net.Uri
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Icon
@@ -23,10 +24,20 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.paging.PagingData
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.base.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.base.AppScaffold
+import com.keygenqt.viewer.android.data.mock.mock
+import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.models.RepoModel
+import com.keygenqt.viewer.android.features.followers.ui.screens.followers.FollowersBody
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
+import com.keygenqt.viewer.android.theme.AppTheme
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 /**
@@ -36,6 +47,7 @@ import kotlinx.coroutines.launch
 fun RepoBody(
     model: Any?,
     state1: QueryState = QueryState.Start,
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (RepoActions) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
@@ -55,6 +67,7 @@ fun RepoBody(
     )
 
     AppScaffold(
+        navigationDispatcher = navDispatcher,
         topBarLoading = model == false,
         topBarTitle = (model as? RepoModel)?.name ?: "",
         topBarActions = {
@@ -85,5 +98,14 @@ fun RepoBody(
                 lazyListState = lazyListState
             )
         }
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
+@Composable
+private fun Preview() {
+    AppTheme {
+        RepoBody(RepoModel.mock())
     }
 }

@@ -28,8 +28,10 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshList
+import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.features.followers.ui.actions.FollowersActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -39,21 +41,22 @@ import kotlinx.coroutines.flow.flowOf
 fun FollowersBody(
     models: LazyPagingItems<FollowerModel>,
     uriHandler: UriHandler? = null,
+    navDispatcher: NavigationDispatcher? = null,
     onActions: (FollowersActions) -> Unit = {},
 ) {
     val listState = rememberLazyListState()
     val refreshState = rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)
 
     AppScaffold(
+        navigationDispatcher = navDispatcher,
         topBarTitle = stringResource(id = R.string.followers_title)
     ) {
         AppSwipeRefreshList(
             listState = listState,
             refreshState = refreshState,
             items = models,
-        ) { index, item ->
+        ) { _, item ->
             FollowersItem(
-                index = index,
                 model = item,
                 uriHandler = uriHandler
             )
@@ -61,14 +64,17 @@ fun FollowersBody(
     }
 }
 
+// @todo preview items not working
+// https://issuetracker.google.com/issues/194544557
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
 @Composable
 private fun Preview() {
     AppTheme {
         FollowersBody(
             models = flowOf(
                 PagingData.from(
-                    listOf<FollowerModel>()
+                    listOf(FollowerModel.mock(), FollowerModel.mock(), FollowerModel.mock())
                 )
             ).collectAsLazyPagingItems()
         )
