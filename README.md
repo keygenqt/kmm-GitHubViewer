@@ -4,13 +4,12 @@ GitHub Viewer KMM
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/preview.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2021-12-05.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.08.49.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.07.05.gif" width="33%"/>
 </p>
 
 ### Android
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
-* [Preview](https://keygenqt.github.io/kmm-GitHubViewer/android-preview/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
 
 ### IOS

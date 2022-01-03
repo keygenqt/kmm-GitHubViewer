@@ -1,5 +1,10 @@
 Android part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.html)
 
+<p>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.08.49.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.07.05.gif" width="33%"/>
+</p>
+
 ### Architecture
 * [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
 * [Jetpack Compose](https://developer.android.com/jetpack/compose)
