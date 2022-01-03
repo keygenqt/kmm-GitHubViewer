@@ -32,7 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.githubviewer.Greeting
 import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.features.stats.ui.actions.StatsActions

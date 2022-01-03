@@ -1,0 +1,9 @@
+<resources>
+    <string name="error_401">Token expired</string>
+    <string name="error_bad_credentials">Bad credentials</string>
+    <string name="error_something_wrong">Something wrong</string>
+    <string name="error_404">@string/error_something_wrong</string>
+    <string name="error_json_parse">@string/error_something_wrong</string>
+    <string name="error_success_error">@string/error_something_wrong</string>
+    <string name="error_exception_unknown">@string/error_something_wrong</string>
+</resources>

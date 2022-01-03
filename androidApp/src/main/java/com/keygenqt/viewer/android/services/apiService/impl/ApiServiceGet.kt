@@ -16,20 +16,18 @@
 package com.keygenqt.viewer.android.services.apiService.impl
 
 import androidx.annotation.IntRange
-import com.keygenqt.response.LocalTryExecuteWithResponse
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
+import com.keygenqt.viewer.android.base.exceptions.executeRefreshToken
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.mappers.toModels
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.delay
-import com.keygenqt.viewer.android.extensions.executeRefreshToken
 import com.keygenqt.viewer.android.extensions.responseCheckApp
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 /**

@@ -23,11 +23,11 @@ import kotlinx.serialization.Serializable
  */
 @Immutable
 @Serializable
-data class ErrorModel(
+data class DataException(
     val code: Int = 0,
     val error: String = "",
     val error_description: String = "",
     val error_uri: String = "",
-    val message: String = "Something wrong",
+    override val message: String = "Something wrong",
     val documentation_url: String = "",
-)
+) : RuntimeException()

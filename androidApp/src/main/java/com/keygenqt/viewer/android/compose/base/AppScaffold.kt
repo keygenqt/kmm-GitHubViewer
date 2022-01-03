@@ -22,19 +22,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.Modifier.Companion.then
-import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.navigation.NavDestination
 import com.google.accompanist.insets.navigationBarsWithImePadding
 import com.google.accompanist.insets.statusBarsPadding
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.PagerState
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshIndicator
+import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
+import com.keygenqt.viewer.android.extensions.LaunchedEffectAnimation
 import com.keygenqt.viewer.android.menu.MenuBottomBar
 
 /**
@@ -55,6 +53,19 @@ fun AppScaffold(
     // content
     content: @Composable () -> Unit
 ) {
+
+    // currentDestination
+    var currentDestination: NavDestination? by remember {
+        mutableStateOf(navigationDispatcher?.currentDestination)
+    }
+
+    // update currentDestination
+    LaunchedEffectAnimation { state ->
+        if (state == AnimatedNavGraphState.END) {
+            currentDestination = navigationDispatcher?.currentDestination
+        }
+    }
+
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
@@ -71,7 +82,7 @@ fun AppScaffold(
             }
         } ?: {},
         bottomBar = {
-            MenuBottomBar(navigationDispatcher?.currentDestination)
+            MenuBottomBar(currentDestination)
         }
     ) {
         Box(

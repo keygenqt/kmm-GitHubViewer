@@ -15,10 +15,7 @@
  */
 package com.keygenqt.viewer.android.compose.base
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -27,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.lottie.LoadingBlockAnimation
+import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
 import com.keygenqt.viewer.android.extensions.LaunchedEffectAnimation
 import kotlinx.coroutines.launch
@@ -57,8 +55,10 @@ fun AppTopBarSmall(
     }
 
     // update hasEnabledCallbacks if pager change
-    navigationDispatcher?.listenChangePager {
-        hasEnabledCallbacks = navigationDispatcher.hasEnabledCallbacks() == true
+    LaunchedEffect(Unit) {
+        navigationDispatcher?.listenChangePager(scope) {
+            hasEnabledCallbacks = navigationDispatcher.hasEnabledCallbacks() == true
+        }
     }
 
     SmallTopAppBar(
@@ -85,9 +85,11 @@ fun AppTopBarSmall(
             {}
         },
         title = {
-            Column {
+            Column(
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Spacer(modifier = Modifier.size(8.dp))
-                Text(text = title)
+                TextTitleLarge(text = title, maxLines = 1)
             }
         },
         actions = {

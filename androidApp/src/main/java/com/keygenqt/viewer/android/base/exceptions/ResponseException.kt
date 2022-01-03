@@ -15,30 +15,52 @@
  */
 package com.keygenqt.viewer.android.base.exceptions
 
+import com.keygenqt.viewer.android.R
+
 /**
  * Response exception
  *
  * @author Vitaliy Zarubin
  */
-sealed class ResponseException(val code: Int) : RuntimeException() {
+sealed class ResponseException(val code: Int, val resId: Int) : RuntimeException() {
 
     /**
      * Token expired exception
      */
-    class TokenExpired(code: Int = 300) : ResponseException(code)
+    class TokenExpired(
+        code: Int = 401,
+        resId: Int = R.string.error_401
+    ) : ResponseException(code, resId)
 
     /**
      * Not found exception
      */
-    class NotFound(code: Int = 404) : ResponseException(code)
+    class NotFound(
+        code: Int = 404,
+        resId: Int = R.string.error_404
+    ) : ResponseException(code, resId)
 
     /**
      * Exception parse response
      */
-    class JsonParse(code: Int = 1) : ResponseException(code)
+    class JsonParse(
+        code: Int = 1,
+        resId: Int = R.string.error_json_parse
+    ) : ResponseException(code, resId)
+
+    /**
+     * Exception with response 200
+     */
+    class SuccessError(
+        code: Int = 2,
+        resId: Int = R.string.error_success_error
+    ) : ResponseException(code, resId)
 
     /**
      * Exception unhandled
      */
-    class ExceptionUnknown(code: Int = -1) : ResponseException(code)
+    class ExceptionUnknown(
+        code: Int = -1,
+        resId: Int = R.string.error_exception_unknown
+    ) : ResponseException(code, resId)
 }

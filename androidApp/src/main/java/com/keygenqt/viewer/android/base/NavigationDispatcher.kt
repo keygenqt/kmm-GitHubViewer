@@ -30,17 +30,21 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-
 /**
  * Navigation dispatcher for routing
  */
 @OptIn(ExperimentalPagerApi::class)
 class NavigationDispatcher(
-    private val scope: CoroutineScope,
+    lifecycle: Lifecycle,
     private val controller: NavHostController,
-    private val lifecycle: Lifecycle,
     private val backPressedDispatcher: OnBackPressedDispatcher
 ) : DefaultLifecycleObserver {
+
+    /**
+     * CoroutineScope fro pager
+     */
+    private var _scope: CoroutineScope? = null
+
     /**
      * Save start destination
      */
@@ -102,6 +106,7 @@ class NavigationDispatcher(
         controller.currentDestination?.let { destination ->
             // clear pager
             _pager = null
+            _scope = null
             // add start destination
             if (_startDestination == null) {
                 _startDestination = destination
@@ -162,7 +167,7 @@ class NavigationDispatcher(
         _pager?.let {
             if (!it.isScrollInProgress) {
                 if (it.currentPage > 0 && _pagerEnable) {
-                    scope.launch {
+                    _scope?.launch {
                         it.animateScrollToPage(it.currentPage - 1)
                     }
                 } else {
@@ -216,17 +221,17 @@ class NavigationDispatcher(
     /**
      * Set pager [PagerState] and callback change
      */
-    fun setPager(state: PagerState) {
+    fun setPager(scope: CoroutineScope, state: PagerState) {
         if (_pager == null) {
             _pager = state
-
+            _scope = scope
         }
     }
 
     /**
      * Add listen change pager
      */
-    fun listenChangePager(change: (Int) -> Unit = {}) {
+    fun listenChangePager(scope: CoroutineScope, change: (Int) -> Unit = {}) {
         _pager?.let {
             scope.launch {
                 snapshotFlow { it.currentPage }.collect {

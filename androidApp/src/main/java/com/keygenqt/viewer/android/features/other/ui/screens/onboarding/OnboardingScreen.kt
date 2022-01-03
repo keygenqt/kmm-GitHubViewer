@@ -15,7 +15,7 @@
  */
 package com.keygenqt.viewer.android.features.other.ui.screens.onboarding
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.features.other.ui.actions.OnboardingActions
 import com.keygenqt.viewer.android.features.other.ui.viewModels.OnboardingViewModel

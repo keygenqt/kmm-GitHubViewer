@@ -23,8 +23,21 @@ android {
         versionCode = 1
         versionName = "0.0.1"
 
+        // Secret DB
+        buildConfigField(
+            "String",
+            "SECRET_DB",
+            findProperty("secret_db").toString()
+        )
+
+        // Client ID GitHub
+        buildConfigField(
+            "String",
+            "GITHUB_CLIENT_ID",
+            findProperty("github_client_id").toString()
+        )
+
         // Secret GitHub
-        buildConfigField("String", "GITHUB_CLIENT_ID", findProperty("github_client_id").toString())
         buildConfigField(
             "String",
             "GITHUB_CLIENT_SECRET",

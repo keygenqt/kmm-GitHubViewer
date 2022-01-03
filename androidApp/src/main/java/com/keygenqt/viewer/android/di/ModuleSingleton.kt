@@ -40,11 +40,6 @@ import javax.inject.Singleton
 object ModuleSingleton {
 
     /**
-     * Base encryption key
-     */
-    private const val password = "AnTjRKeqmTi7OyTfdein"
-
-    /**
      * List with migrations for the database
      */
     private val migrations = listOf(
@@ -59,7 +54,7 @@ object ModuleSingleton {
     @AppDatabaseSecurityQualifier
     fun provideCoreSecurityDatabase(application: Application): AppSecurityDatabase {
 
-        val passphrase = SQLiteDatabase.getBytes(password.toCharArray())
+        val passphrase = SQLiteDatabase.getBytes(BuildConfig.SECRET_DB.toCharArray())
         val factory = SupportFactory(passphrase)
 
         val builder = Room

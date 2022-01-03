@@ -15,19 +15,12 @@
  */
 package com.keygenqt.viewer.android.extensions
 
-import com.keygenqt.response.LocalTryExecuteWithResponse
-import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
-import com.keygenqt.response.ResponseResult
-import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.BuildConfig
-import com.keygenqt.viewer.android.base.exceptions.ErrorModel
+import com.keygenqt.viewer.android.base.exceptions.DataException
 import com.keygenqt.viewer.android.base.exceptions.ResponseException
-import com.keygenqt.viewer.android.data.mappers.toModel
-import com.keygenqt.viewer.android.data.requests.RefreshTokenRequest
-import com.keygenqt.viewer.android.services.api.impl.ApiRefreshToken
+import com.keygenqt.viewer.android.base.exceptions.toResponseException
 import com.keygenqt.viewer.android.utils.AppHelper.isValidJson
-import com.keygenqt.viewer.android.utils.AuthUser
 import com.keygenqt.viewer.android.utils.ConstantsApp
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
@@ -36,7 +29,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.json.JSONObject
 import retrofit2.Response
-import kotlin.reflect.full.createInstance
 
 /**
  * Simulate slow internet
@@ -44,7 +36,7 @@ import kotlin.reflect.full.createInstance
 fun <T> Response<T>.delay(enable: Boolean): Response<T> {
     if (enable) {
         runBlocking {
-            kotlinx.coroutines.delay(ConstantsApp.DEBUG_DELAY)
+            delay(ConstantsApp.DEBUG_DELAY)
         }
     }
     return this
@@ -52,8 +44,6 @@ fun <T> Response<T>.delay(enable: Boolean): Response<T> {
 
 /**
  * Check status HTTP response retrofit2
- *
- * @author Vitaliy Zarubin
  */
 @OptIn(ExperimentalSerializationApi::class)
 fun <T> Response<T>.responseCheckApp(): Response<T> {
@@ -63,23 +53,14 @@ fun <T> Response<T>.responseCheckApp(): Response<T> {
         errorBody()?.let {
             val string = it.string()
             if (string.isNotBlank()) {
-                throw Json.decodeFromString<ErrorModel>(string).code.toResponseException()
+                val error = Json.decodeFromString<DataException>(string)
+                if (error.code != 0) {
+                    throw error
+                }
             }
         }
         throw code().toResponseException()
     }
-}
-
-/**
- * Code to class
- *
- * @author Vitaliy Zarubin
- */
-private fun Int.toResponseException(): ResponseException {
-    return ResponseException::class.sealedSubclasses
-        .map { it.objectInstance ?: it.createInstance() }
-        .firstOrNull { it.code == this }
-        ?: ResponseException.ExceptionUnknown(code = this)
 }
 
 /**
@@ -111,48 +92,32 @@ fun okhttp3.Response.checkValidJson(): okhttp3.Response {
                 .body(obj.toString().toResponseBody("application/json".toMediaType()))
                 .build()
         } else {
+            obj.put("code", code)
             newBuilder()
+                .code(code)
                 .body(obj.toString().toResponseBody("application/json".toMediaType()))
                 .build()
         }
     } else {
-        this
-    }
-}
-
-/**
- * [executeWithResponse] with refresh token
- */
-suspend inline fun <T> executeRefreshToken(
-    api: ApiRefreshToken,
-    body: () -> T
-): ResponseResult<T> {
-    return try {
-        ResponseResult.Success(body.invoke())
-    } catch (e: Exception) {
-        // get refresh
-        val refreshToken = AuthUser.data?.refreshToken
-        // check
-        if (e is ResponseException.TokenExpired && refreshToken != null) {
-            // query refresh
-            executeWithResponse(emit = false) {
-                api.refreshToken(
-                    request = RefreshTokenRequest(
-                        refresh_token = refreshToken,
-                        client_secret = BuildConfig.GITHUB_CLIENT_SECRET,
-                        client_id = BuildConfig.GITHUB_CLIENT_ID,
-                    )
-                ).body()!!.toModel()
-            }.success {
-                AuthUser.login(it)
-            }
-            // re query
-            executeWithResponse {
-                body.invoke()
+        if (code == 200) {
+            try {
+                // check error with 200
+                val obj = JSONObject(data)
+                if (obj.has("error") || obj.has("message") && obj.has("documentation_url")) {
+                    val code = ResponseException.SuccessError().code
+                    obj.put("code", code)
+                    newBuilder()
+                        .code(code)
+                        .body(obj.toString().toResponseBody("application/json".toMediaType()))
+                        .build()
+                } else {
+                    this
+                }
+            } catch (e: Exception) {
+                this
             }
         } else {
-            LocalTryExecuteWithResponse.tryEmit(e)
-            ResponseResult.Error(e)
+            this
         }
     }
 }

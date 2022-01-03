@@ -30,7 +30,7 @@ import retrofit2.http.Url
  */
 interface ApiGet {
 
-    @GET("/user1")
+    @GET("/user")
     suspend fun getUser(): Response<UserResponse>
 
     @GET

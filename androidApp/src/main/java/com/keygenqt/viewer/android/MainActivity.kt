@@ -24,9 +24,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -57,19 +55,18 @@ class MainActivity : ComponentActivity() {
 
         // compose initialization
         setContent {
-            rememberAnimatedNavController().let { animatedNavController ->
+            rememberAnimatedNavController().let { controller ->
                 CompositionLocalProvider(
                     LocalViewModel provides viewModel,
                     LocalNavigationDispatcher provides NavigationDispatcher(
-                        scope = rememberCoroutineScope(),
-                        controller = animatedNavController,
                         lifecycle = lifecycle,
+                        controller = controller,
                         backPressedDispatcher = onBackPressedDispatcher
                     )
                 ) {
                     AppTheme {
                         ProvideWindowInsets {
-                            NavGraph(animatedNavController)
+                            NavGraph(controller)
                         }
                     }
                 }

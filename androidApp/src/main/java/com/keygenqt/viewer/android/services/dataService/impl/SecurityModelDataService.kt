@@ -51,6 +51,13 @@ interface SecurityModelDataService : IAppDatabase {
     }
 
     /**
+     * Fun for insert models
+     */
+    suspend fun updateSecurityModel(model: SecurityModel) {
+        dao.updateModels(model)
+    }
+
+    /**
      * Get [Flow] model
      */
     fun getSecurityModelFlow(): Flow<SecurityModel?> {

@@ -15,10 +15,7 @@
  */
 package com.keygenqt.viewer.android.data.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.keygenqt.viewer.android.data.models.SecurityModel
 import kotlinx.coroutines.flow.Flow
 
@@ -36,6 +33,9 @@ interface SecurityModelDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertModels(vararg models: SecurityModel)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateModels(model: SecurityModel)
 
     @Query("DELETE FROM SecurityModel")
     suspend fun clear()

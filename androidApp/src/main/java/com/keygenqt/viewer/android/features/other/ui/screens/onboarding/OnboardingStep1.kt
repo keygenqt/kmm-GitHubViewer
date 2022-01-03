@@ -67,7 +67,6 @@ fun OnboardingStep1() {
                 text = stringResource(id = R.string.onboarding_step1_text)
             )
         }
-
     }
 }
 

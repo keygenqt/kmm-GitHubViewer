@@ -18,7 +18,6 @@ package com.keygenqt.viewer.android.interfaces
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
-import com.keygenqt.viewer.android.base.NavigationDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

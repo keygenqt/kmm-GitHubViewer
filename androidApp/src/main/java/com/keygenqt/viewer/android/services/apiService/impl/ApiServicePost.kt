@@ -15,7 +15,7 @@
  */
 package com.keygenqt.viewer.android.services.apiService.impl
 
-import com.keygenqt.response.LocalTryExecuteWithResponse
+import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
@@ -41,7 +41,7 @@ interface ApiServicePost {
      */
     suspend fun oauthCode(code: String): ResponseResult<SecurityModel> {
         return withContext(Dispatchers.IO) {
-            LocalTryExecuteWithResponse.executeWithResponse {
+            executeWithResponse(emit = false) {
                 api.oauth(
                     request = AuthRequest(
                         code = code,

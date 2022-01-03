@@ -1,5 +1,5 @@
 <resources>
-    <string name="repo_title">Repo</string>
+    <string name="repo_title">Репозиторий</string>
 
     <string name="repo_label_size">Size</string>
     <string name="repo_open_watchers">Watchers</string>

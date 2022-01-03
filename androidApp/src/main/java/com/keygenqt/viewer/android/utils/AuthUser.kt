@@ -25,12 +25,18 @@ import kotlinx.coroutines.launch
 
 object AuthUser {
 
-    var job: Job? = null
+    var jobAuth: Job? = null
+    var jobRefresh: Job? = null
 
     /**
      * For listen and relations with db
      */
     private val STATE: MutableSharedFlow<AuthUser> = MutableSharedFlow()
+
+    /**
+     * For listen refresh and relations with db
+     */
+    private val STATE_REFRESH: MutableSharedFlow<AuthUser> = MutableSharedFlow()
 
     /**
      * Auth token
@@ -64,14 +70,38 @@ object AuthUser {
     }
 
     /**
-     * Clear tokens
+     * Refresh model
      */
-    suspend fun singleCollect(action: suspend (value: AuthUser) -> Unit) {
-        job?.cancel()
+    suspend fun refresh(model: SecurityModel) {
+        DATA = model
+        STATE_REFRESH.emit(this)
+    }
+
+    /**
+     * Auth user collect
+     */
+    suspend fun singleCollectAuth(action: suspend (value: AuthUser) -> Unit) {
+        jobAuth?.cancel()
         coroutineScope {
-            job = launch {
+            jobAuth = launch {
                 STATE.asSharedFlow().collect {
                     action.invoke(it)
+                }
+            }
+        }
+    }
+
+    /**
+     * Refresh user collect
+     */
+    suspend fun singleCollectRefresh(action: suspend (value: SecurityModel) -> Unit) {
+        jobRefresh?.cancel()
+        coroutineScope {
+            jobRefresh = launch {
+                STATE_REFRESH.asSharedFlow().collect {
+                    it.DATA?.let { model ->
+                        action.invoke(model)
+                    }
                 }
             }
         }

@@ -67,7 +67,7 @@ fun OnboardingBody(
 
     val done = { onActions(OnboardingActions.DoneOnboarding) }
 
-    navDispatcher?.setPager(pages.state)
+    navDispatcher?.setPager(pages.scope, pages.state)
 
     AppScaffold(
         navigationDispatcher = navDispatcher,

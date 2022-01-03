@@ -22,6 +22,7 @@ import kotlinx.serialization.Serializable
  * Auth request step 2
  *
  * @property refresh_token The token generated when the GitHub App owner enables expiring tokens and issues a new user access token.
+ * @property grant_type Value must be refresh_token (required by the OAuth specification).
  * @property client_secret The client ID for your GitHub App.
  * @property client_id The client secret for your GitHub App.
  */
@@ -29,6 +30,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RefreshTokenRequest(
     val refresh_token: String,
+    val grant_type: String,
     val client_secret: String,
     val client_id: String,
 )

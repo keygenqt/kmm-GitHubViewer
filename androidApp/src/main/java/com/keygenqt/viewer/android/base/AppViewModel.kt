@@ -15,10 +15,13 @@
  */
 package com.keygenqt.viewer.android.base
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.response.extensions.isSucceeded
 import com.keygenqt.response.extensions.success
+import com.keygenqt.viewer.android.base.exceptions.singleCollectResponseErrors
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
@@ -27,6 +30,7 @@ import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataSe
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import com.keygenqt.viewer.android.utils.AuthUser
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -44,6 +48,7 @@ class AppViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
     private val preferences: BasePreferences,
+    @ApplicationContext context: Context
 ) : ViewModel() {
 
     /**
@@ -62,24 +67,45 @@ class AppViewModel @Inject constructor(
     var isOnboardingDone = lazy { preferences.isOnboardingDone }
 
     init {
+        // Listen errors responses
+        viewModelScope.launch {
+            singleCollectResponseErrors(context) { exception, message ->
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+                Timber.e(exception)
+            }
+        }
+
+        // Listen refresh auth user
+        viewModelScope.launch {
+            AuthUser.singleCollectRefresh {
+                dataService.withTransaction<SecurityModelDataService> {
+                    updateSecurityModel(it)
+                }
+                Timber.e("Refresh token User")
+            }
+        }
+
         // Listen auth user change
         viewModelScope.launch {
-            AuthUser.singleCollect {
+            AuthUser.singleCollectAuth {
                 _isSplash.value = true
-                if (it.isLogin) {
-                    // queries after login
-                    queryRequiredForApp()
-                    // get security model
-                    val model = it.data!!
-                    // update security model
-                    dataService.withTransaction<SecurityModelDataService> {
-                        clearSecurityModel()
-                        insertSecurityModel(model)
+                when {
+                    it.isLogin -> {
+                        // queries after login
+                        queryRequiredForApp()
+                        // get security model
+                        val model = it.data!!
+                        // update security model
+                        dataService.withTransaction<SecurityModelDataService> {
+                            clearSecurityModel()
+                            insertSecurityModel(model)
+                        }
+                        Timber.e("Start app User")
                     }
-                    Timber.e("Start app User")
-                } else {
-                    dataService.clearCacheAfterLogout()
-                    Timber.e("Start app Guest")
+                    else -> {
+                        dataService.clearCacheAfterLogout()
+                        Timber.e("Start app Guest")
+                    }
                 }
                 _isSplash.value = false
             }

@@ -15,10 +15,10 @@
  */
 package com.keygenqt.viewer.android.services.apiService.impl
 
-import com.keygenqt.response.LocalTryExecuteWithResponse
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.response.extensions.responseCheck
 import com.keygenqt.viewer.android.BuildConfig
+import com.keygenqt.viewer.android.base.exceptions.executeRefreshToken
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
@@ -41,7 +41,7 @@ interface ApiServicePatch {
      */
     suspend fun userUpdate(request: UserUpdateRequest): ResponseResult<UserModel> {
         return withContext(Dispatchers.IO) {
-            LocalTryExecuteWithResponse.executeWithResponse {
+            executeRefreshToken(api = api, emit = false) {
                 api.userUpdate(request)
                     .delay(BuildConfig.DEBUG)
                     .responseCheck()
@@ -56,7 +56,7 @@ interface ApiServicePatch {
      */
     suspend fun repoUpdate(url: String, request: RepoUpdateRequest): ResponseResult<RepoModel> {
         return withContext(Dispatchers.IO) {
-            LocalTryExecuteWithResponse.executeWithResponse {
+            executeRefreshToken(api = api, emit = false) {
                 api.repoUpdate(url, request)
                     .delay(BuildConfig.DEBUG)
                     .responseCheck()
