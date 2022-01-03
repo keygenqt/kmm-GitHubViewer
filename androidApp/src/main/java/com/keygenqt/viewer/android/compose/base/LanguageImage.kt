@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.compose.base
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -28,8 +29,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.theme.AppTheme
 import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_BASH
 import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_C
 import com.keygenqt.viewer.android.utils.ConstantsLanguage.LANGUAGE_CPLUSPLUS
@@ -112,5 +116,14 @@ fun LanguageImage(
             painter = painterResource(resId),
             contentDescription = null,
         )
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
+@Composable
+private fun Preview() {
+    AppTheme {
+        LanguageImage(LANGUAGE_SWIFT)
     }
 }

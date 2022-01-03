@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.Flow
  */
 @Dao
 interface UserModelDao {
+
     @Query("SELECT * FROM UserModel LIMIT 1")
     fun getModel(): Flow<UserModel?>
 

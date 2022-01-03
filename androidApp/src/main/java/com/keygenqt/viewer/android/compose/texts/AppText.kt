@@ -24,6 +24,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 
+/**
+ * Base test for app
+ */
 @Composable
 fun AppText(
     text: String,

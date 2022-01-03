@@ -60,13 +60,6 @@ interface SecurityModelDataService : IAppDatabase {
     /**
      * Get [Flow] model
      */
-    fun getSecurityModelFlow(): Flow<SecurityModel?> {
-        return dao.getModelFlow()
-    }
-
-    /**
-     * Get [Flow] model
-     */
     fun getSecurityModel(): SecurityModel? {
         return dao.getModel()
     }

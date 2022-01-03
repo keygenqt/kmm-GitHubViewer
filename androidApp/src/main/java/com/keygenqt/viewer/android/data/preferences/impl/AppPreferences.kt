@@ -42,7 +42,7 @@ interface AppPreferences : IAppPreferences {
      * Performed when the user logs out
      */
     override fun clearCacheAfterLogout() {
-        Timber.d("Clear cache: AppPreferences")
+
     }
 
     /**

@@ -89,7 +89,7 @@ interface ApiServiceGet {
     }
 
     /**
-     * Get user repos
+     * Get user followers
      */
     suspend fun getUserFollowers(
         @IntRange(from = 1) page: Int = 1

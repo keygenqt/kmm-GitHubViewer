@@ -66,13 +66,6 @@ interface RepoModelDataService : IAppDatabase {
     }
 
     /**
-     * Get [Flow] model
-     */
-    fun getRepoModels(): Flow<List<RepoModel>> {
-        return dao.getModels()
-    }
-
-    /**
      * Get [Flow] model by id
      */
     fun getRepoModelById(id: String): Flow<RepoModel> {

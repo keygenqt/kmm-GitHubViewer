@@ -18,6 +18,9 @@ package com.keygenqt.viewer.android.extensions
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 
+/**
+ * Darken the color
+ */
 fun Color.darkenColor(value: Float = 0.3f): Color {
     return Color(
         android.graphics.Color.HSVToColor(

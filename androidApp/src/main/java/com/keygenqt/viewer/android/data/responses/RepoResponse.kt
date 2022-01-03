@@ -20,8 +20,6 @@ import kotlinx.serialization.Serializable
 
 /**
  * Response repo
- *
- * @property id repo identifier
  */
 @Immutable
 @Serializable

@@ -30,7 +30,6 @@ enum class MenuTab(
     val titleTopBar: Int?,
     val icon: ImageVector,
 ) {
-
     REPOS(
         ReposNavRoute.repos.default.route,
         null,
@@ -52,15 +51,4 @@ enum class MenuTab(
 //        R.string.stats_title,
 //        Icons.Filled.BarChart
 //    );
-
-    companion object {
-        fun String.findByRoute(): MenuTab? {
-            for (tab in values()) {
-                if (tab.route == this) {
-                    return tab
-                }
-            }
-            return null
-        }
-    }
 }

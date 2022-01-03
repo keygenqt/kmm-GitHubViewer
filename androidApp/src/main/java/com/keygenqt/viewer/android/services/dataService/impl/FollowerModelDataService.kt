@@ -59,13 +59,6 @@ interface FollowerModelDataService : IAppDatabase {
     }
 
     /**
-     * Get [Flow] model
-     */
-    fun getFollowerModels(): Flow<List<FollowerModel>> {
-        return dao.getModels()
-    }
-
-    /**
      * Remove all models
      */
     suspend fun clearFollowerModel() {

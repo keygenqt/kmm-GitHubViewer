@@ -44,7 +44,6 @@ interface AppListCache : IAppPreferences {
      * Performed when the user logs out
      */
     override fun clearCacheAfterLogout() {
-        Timber.d("Clear cache: AppListCache")
         isSortDescListRepos = true
         lastUpdateListRepos = 0L
         lastUpdateListFollowers = 0L

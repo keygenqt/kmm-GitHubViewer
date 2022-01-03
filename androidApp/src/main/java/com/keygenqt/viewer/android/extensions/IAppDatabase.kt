@@ -20,8 +20,6 @@ import com.keygenqt.viewer.android.interfaces.IAppDatabase
 
 /**
  * Extensions for easy transaction
- *
- * @property body suspend lambda fun
  */
 @Suppress("UNCHECKED_CAST")
 suspend fun <T> IAppDatabase.withTransaction(body: suspend T.() -> Unit) {

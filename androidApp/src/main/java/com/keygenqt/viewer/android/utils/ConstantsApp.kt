@@ -23,6 +23,11 @@ import com.keygenqt.viewer.android.BuildConfig
 object ConstantsApp {
 
     /**
+     * Api url auth
+     */
+    const val AUTH_URL = "https://github.com/login/oauth/access_token"
+
+    /**
      * Api url
      */
     const val API_URL = "https://api.github.com/"

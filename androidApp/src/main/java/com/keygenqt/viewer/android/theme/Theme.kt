@@ -48,6 +48,7 @@ private val LightThemeColors = lightColorScheme(
     inverseOnSurface = md_theme_light_inverseOnSurface,
     inverseSurface = md_theme_light_inverseSurface,
 )
+
 private val DarkThemeColors = darkColorScheme(
     primary = md_theme_dark_primary,
     onPrimary = md_theme_dark_onPrimary,
@@ -81,14 +82,12 @@ fun AppTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (!useDarkTheme) {
-        LightThemeColors
-    } else {
-        DarkThemeColors
-    }
-
     MaterialTheme(
-        colorScheme = colors,
+        colorScheme = if (!useDarkTheme) {
+            LightThemeColors
+        } else {
+            DarkThemeColors
+        },
         typography = AppTypography,
         content = content
     )

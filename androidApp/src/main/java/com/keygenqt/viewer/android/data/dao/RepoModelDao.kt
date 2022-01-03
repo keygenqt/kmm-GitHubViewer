@@ -26,12 +26,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RepoModelDao {
 
-    //    @Query("SELECT * FROM RepoModel ORDER BY CAST(createdAt AS DATETIME) DESC")
     @Query("SELECT * FROM RepoModel")
     fun pagingSource(): PagingSource<Int, RepoModel>
-
-    @Query("SELECT * FROM RepoModel")
-    fun getModels(): Flow<List<RepoModel>>
 
     @Query("SELECT * FROM RepoModel WHERE id = :id")
     fun getModel(id: String): Flow<RepoModel>

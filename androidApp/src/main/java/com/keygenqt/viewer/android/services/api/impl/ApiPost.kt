@@ -17,6 +17,7 @@ package com.keygenqt.viewer.android.services.api.impl
 
 import com.keygenqt.viewer.android.data.requests.AuthRequest
 import com.keygenqt.viewer.android.data.responses.AuthResponse
+import com.keygenqt.viewer.android.utils.ConstantsApp
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -28,7 +29,7 @@ import retrofit2.http.Url
 interface ApiPost {
     @POST
     suspend fun oauth(
-        @Url url: String = "https://github.com/login/oauth/access_token",
+        @Url url: String = ConstantsApp.AUTH_URL,
         @Body request: AuthRequest
     ): Response<AuthResponse>
 }

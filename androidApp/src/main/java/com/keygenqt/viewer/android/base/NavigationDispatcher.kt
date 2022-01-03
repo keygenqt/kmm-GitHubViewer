@@ -31,7 +31,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
- * Navigation dispatcher for routing
+ * Navigation dispatcher for routing with pager
  */
 @OptIn(ExperimentalPagerApi::class)
 class NavigationDispatcher(
@@ -41,7 +41,7 @@ class NavigationDispatcher(
 ) : DefaultLifecycleObserver {
 
     /**
-     * CoroutineScope fro pager
+     * CoroutineScope for pager
      */
     private var _scope: CoroutineScope? = null
 

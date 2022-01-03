@@ -21,6 +21,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 
+/**
+ * Listen in compose state query
+ */
 @Composable
 fun QueryActionsState(
     state: QueryState,

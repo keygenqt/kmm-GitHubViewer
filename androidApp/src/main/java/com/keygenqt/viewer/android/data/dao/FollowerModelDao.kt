@@ -32,9 +32,6 @@ interface FollowerModelDao {
     @Query("SELECT * FROM FollowerModel")
     fun pagingSource(): PagingSource<Int, FollowerModel>
 
-    @Query("SELECT * FROM FollowerModel")
-    fun getModels(): Flow<List<FollowerModel>>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertModels(vararg models: FollowerModel)
 

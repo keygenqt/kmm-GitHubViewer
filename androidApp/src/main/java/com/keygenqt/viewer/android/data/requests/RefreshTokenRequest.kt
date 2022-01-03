@@ -19,7 +19,7 @@ import androidx.compose.runtime.Immutable
 import kotlinx.serialization.Serializable
 
 /**
- * Auth request step 2
+ * Refresh token request
  *
  * @property refresh_token The token generated when the GitHub App owner enables expiring tokens and issues a new user access token.
  * @property grant_type Value must be refresh_token (required by the OAuth specification).

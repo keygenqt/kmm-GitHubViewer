@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android.compose.base
 
+import android.content.res.Configuration
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -26,6 +27,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
+import com.keygenqt.viewer.android.theme.AppTheme
+import com.keygenqt.viewer.android.utils.ConstantsLanguage
 
 @Composable
 fun RotateIconSortIcon(
@@ -60,5 +65,14 @@ fun RotateIconSortIcon(
             contentDescription = "Sort",
             tint = MaterialTheme.colorScheme.onPrimaryContainer
         )
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, device = Devices.PIXEL_4)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, device = Devices.PIXEL_4)
+@Composable
+private fun Preview() {
+    AppTheme {
+        RotateIconSortIcon()
     }
 }

@@ -20,8 +20,6 @@ import kotlinx.serialization.Serializable
 
 /**
  * Response user
- *
- * @property id user identifier
  */
 @Immutable
 @Serializable
