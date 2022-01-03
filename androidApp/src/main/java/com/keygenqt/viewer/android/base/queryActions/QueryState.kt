@@ -15,6 +15,8 @@
  */
 package com.keygenqt.viewer.android.base.queryActions
 
+import com.keygenqt.viewer.android.base.exceptions.ResponseException
+
 sealed class QueryState {
 
     /**
@@ -30,7 +32,7 @@ sealed class QueryState {
     /**
      * Error state with value error
      */
-    data class Error(val exception: Exception) : QueryState()
+    data class Error(val exception: ResponseException) : QueryState()
 
     /**
      * Success state with data

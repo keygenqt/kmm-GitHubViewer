@@ -27,7 +27,7 @@ import androidx.compose.runtime.setValue
 @Composable
 fun QueryActionsState(
     state: QueryState,
-    block: QueryState.() -> Unit
+    block: @Composable QueryState.() -> Unit
 ) {
     var statusSaved: String? by rememberSaveable { mutableStateOf(null) }
     if (statusSaved != state.toString()) {

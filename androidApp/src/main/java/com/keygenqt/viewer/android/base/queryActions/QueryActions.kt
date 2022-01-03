@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.response.ResponseResult
 import com.keygenqt.response.extensions.*
+import com.keygenqt.viewer.android.base.exceptions.ResponseException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -67,6 +68,9 @@ class QueryActions(val viewModel: ViewModel) {
      * Set state exception Error
      */
     private fun setError(exception: Exception) {
-        _state.value = QueryState.Error(exception)
+        when (exception) {
+            is ResponseException -> _state.value = QueryState.Error(exception)
+            else -> _state.value = QueryState.Error(ResponseException.ExceptionUnknown())
+        }
     }
 }

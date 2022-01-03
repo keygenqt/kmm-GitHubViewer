@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import com.keygenqt.viewer.android.base.queryActions.QueryActionsState
 import com.keygenqt.viewer.android.base.queryActions.QueryState
 
@@ -32,7 +33,7 @@ fun RepoUpdateQueryState1(
         when (this) {
             is QueryState.Action -> loading.invoke()
             is QueryState.Success<*> -> success.invoke()
-            is QueryState.Error -> error.invoke(exception.message)
+            is QueryState.Error -> error.invoke(stringResource(id = exception.resId))
             else -> {}
         }
     }

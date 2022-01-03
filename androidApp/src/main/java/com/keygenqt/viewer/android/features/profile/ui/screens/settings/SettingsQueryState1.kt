@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.profile.ui.screens.settings
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import com.keygenqt.viewer.android.base.queryActions.QueryActionsState
 import com.keygenqt.viewer.android.base.queryActions.QueryState
 
@@ -23,6 +24,7 @@ import com.keygenqt.viewer.android.base.queryActions.QueryState
 fun SettingsQueryState1(
     state: QueryState = QueryState.Start,
     loading: () -> Unit = {},
+    success: () -> Unit = {},
     error: (String?) -> Unit = {},
     clear: () -> Unit = {}
 ) {
@@ -30,7 +32,8 @@ fun SettingsQueryState1(
         clear.invoke()
         when (this) {
             is QueryState.Action -> loading.invoke()
-            is QueryState.Error -> error.invoke(exception.message)
+            is QueryState.Success<*> -> success.invoke()
+            is QueryState.Error -> error.invoke(stringResource(id = exception.resId))
             else -> {}
         }
     }

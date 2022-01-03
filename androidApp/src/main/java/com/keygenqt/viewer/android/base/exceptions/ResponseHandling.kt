@@ -52,13 +52,6 @@ suspend fun singleCollectResponseErrors(
                 with(context) {
                     val message = when (it) {
                         is ResponseException -> getString(it.resId)
-                        is DataException -> {
-                            when (it.message) {
-                                "Bad credentials" -> getString(R.string.error_bad_credentials)
-                                "Something wrong" -> getString(R.string.error_something_wrong)
-                                else -> it.message
-                            }
-                        }
                         else -> it.message
                     }
                     action.invoke(it, message ?: getString(R.string.error_something_wrong))

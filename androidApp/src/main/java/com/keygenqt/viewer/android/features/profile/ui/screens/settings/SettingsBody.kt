@@ -84,7 +84,7 @@ fun SettingsBody(
     var success by remember { mutableStateOf(false) }
     var error: String? by remember { mutableStateOf(null) }
 
-    SignInQueryState1(
+    SettingsQueryState1(
         state = state1,
         loading = {
             loading = true
