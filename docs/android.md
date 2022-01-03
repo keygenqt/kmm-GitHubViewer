@@ -14,7 +14,6 @@ Android part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.h
 * WindowInsets
 * Material 3 theme
 * Custom Font
-* Custom NavigationDispatcher
 * Split of graphs
 * Routing
 * Graph animation
@@ -23,11 +22,19 @@ Android part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.h
 * Security Database
 * Security SharedPreferences
 * Serialization
+* OAuth with [Dynamic Links](https://firebase.google.com/docs/dynamic-links)
 * Error handling
-* Five custom libs [KeyGenQt Accompanist](https://github.com/keygenqt/keygenqt-accompanist), [Compose Modifier Extension](https://github.com/keygenqt/compose-modifier-ext), [Compose Forms](https://github.com/keygenqt/compose-forms), [Android Response Result](https://github.com/keygenqt/android-response-result), [Compose Routing](https://github.com/keygenqt/compose-routing)
 * States query for viewModel
+* Custom NavigationDispatcher
 * Paging with RemoteMediator
 * And much more
+
+### Custom libs
+* [KeyGenQt Accompanist](https://github.com/keygenqt/keygenqt-accompanist)
+* [Compose Modifier Extension](https://github.com/keygenqt/compose-modifier-ext)
+* [Compose Forms](https://github.com/keygenqt/compose-forms)
+* [Compose Routing](https://github.com/keygenqt/compose-routing)
+* [Android Response Result](https://github.com/keygenqt/android-response-result)
 
 ### Base Libraries
 * [Material You](https://m3.material.io/)
