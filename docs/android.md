@@ -8,8 +8,22 @@ Android part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.h
 ### Architecture
 * [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
 * [Jetpack Compose](https://developer.android.com/jetpack/compose)
+* [GitHub REST API](https://docs.github.com/en/rest)
 
-### Libraries
+### Contains
+* WindowInsets
+* Material 3 theme
+* Custom Font
+* Custom NavigationDispatcher
+* Split of graphs
+* Routing
+* Graph animation
+* Service layer API
+* Service layer DB
+* Error handling
+* And much more
+
+### Base Libraries
 * [Material You](https://m3.material.io/)
 * [Accompanist](https://google.github.io/accompanist/)
 * [Retrofit](https://square.github.io/retrofit/)
