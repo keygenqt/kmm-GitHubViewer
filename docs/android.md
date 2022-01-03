@@ -20,7 +20,13 @@ Android part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.h
 * Graph animation
 * Service layer API
 * Service layer DB
+* Security Database
+* Security SharedPreferences
+* Serialization
 * Error handling
+* Five custom libs [KeyGenQt Accompanist](https://github.com/keygenqt/keygenqt-accompanist), [Compose Modifier Extension](https://github.com/keygenqt/compose-modifier-ext), [Compose Forms](https://github.com/keygenqt/compose-forms), [Android Response Result](https://github.com/keygenqt/android-response-result), [Compose Routing](https://github.com/keygenqt/compose-routing)
+* States query for viewModel
+* Paging with RemoteMediator
 * And much more
 
 ### Base Libraries
