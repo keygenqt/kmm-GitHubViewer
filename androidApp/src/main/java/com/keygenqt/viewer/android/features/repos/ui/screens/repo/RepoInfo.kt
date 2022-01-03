@@ -46,6 +46,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.keygenqt.modifier.graphicsCollapse
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.texts.TextBodyMedium
 import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
@@ -54,7 +55,6 @@ import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.extensions.capitalize
 import com.keygenqt.viewer.android.extensions.formatDate
-import com.keygenqt.viewer.android.extensions.graphicsCollapse
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions
 import com.keygenqt.viewer.android.theme.AppTheme
 
@@ -64,7 +64,6 @@ fun RepoInfo(
     lazyListState: LazyListState = rememberLazyListState(),
     onActions: (ProfileActions) -> Unit = {},
 ) {
-
     LazyColumn(
         modifier = Modifier,
         state = lazyListState

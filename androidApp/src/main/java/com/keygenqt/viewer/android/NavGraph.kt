@@ -30,9 +30,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.keygenqt.modifier.interceptionClickable
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.extensions.noRippleClickable
 import com.keygenqt.viewer.android.features.followers.navigation.graph.followersNavGraph
 import com.keygenqt.viewer.android.features.other.navigation.graph.otherNavGraph
 import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
@@ -83,7 +83,7 @@ fun NavGraph(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .noRippleClickable {}
+                    .interceptionClickable()
                     .background(MaterialTheme.colorScheme.primary)
             ) {
                 Image(

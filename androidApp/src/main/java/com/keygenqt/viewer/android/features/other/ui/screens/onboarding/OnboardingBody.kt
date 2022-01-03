@@ -35,11 +35,11 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.keygenqt.modifier.disableHorizontalScroll
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
-import com.keygenqt.viewer.android.extensions.disableHorizontalPointerInputScroll
 import com.keygenqt.viewer.android.features.other.ui.actions.OnboardingActions
 import com.keygenqt.viewer.android.interfaces.IPagerState
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -82,7 +82,7 @@ fun OnboardingBody(
             modifier = Modifier.fillMaxSize(),
         ) {
             HorizontalPager(
-                modifier = Modifier.disableHorizontalPointerInputScroll(),
+                modifier = Modifier.disableHorizontalScroll(),
                 state = pages.state,
                 count = pages.count
             ) { page ->

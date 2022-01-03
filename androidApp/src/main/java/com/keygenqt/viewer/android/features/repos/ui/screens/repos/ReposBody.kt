@@ -36,6 +36,7 @@ import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposActions
 import com.keygenqt.viewer.android.theme.AppTheme
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
@@ -63,8 +64,11 @@ fun ReposBody(
             ) {
                 scope.launch {
                     listState.animateScrollToItem(index = 0)
-                    onActions(ReposActions.SortToggle)
-                    models.refresh()
+                    launch {
+                        delay(10)
+                        onActions(ReposActions.SortToggle)
+                        models.refresh()
+                    }
                 }
             }
         }
