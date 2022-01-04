@@ -46,7 +46,7 @@ fun <T> Response<T>.delay(enable: Boolean): Response<T> {
  * Check status HTTP response retrofit2
  */
 @OptIn(ExperimentalSerializationApi::class)
-fun <T> Response<T>.responseCheckApp(): Response<T> {
+fun <T> Response<T>.responseCheck(): Response<T> {
     if (isSuccessful) {
         return this
     } else {

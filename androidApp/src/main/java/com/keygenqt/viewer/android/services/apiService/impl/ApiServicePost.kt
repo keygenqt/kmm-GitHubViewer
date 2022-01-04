@@ -15,14 +15,14 @@
  */
 package com.keygenqt.viewer.android.services.apiService.impl
 
-import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
-import com.keygenqt.response.ResponseResult
+import com.keygenqt.requests.RequestHandler.executeRequest
+import com.keygenqt.requests.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.models.SecurityModel
 import com.keygenqt.viewer.android.data.requests.AuthRequest
 import com.keygenqt.viewer.android.extensions.delay
-import com.keygenqt.viewer.android.extensions.responseCheckApp
+import com.keygenqt.viewer.android.extensions.responseCheck
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -41,7 +41,7 @@ interface ApiServicePost {
      */
     suspend fun oauthCode(code: String): ResponseResult<SecurityModel> {
         return withContext(Dispatchers.IO) {
-            executeWithResponse(emit = false) {
+            executeRequest(emit = false) {
                 api.oauth(
                     request = AuthRequest(
                         code = code,
@@ -50,7 +50,7 @@ interface ApiServicePost {
                     )
                 )
                     .delay(BuildConfig.DEBUG)
-                    .responseCheckApp()
+                    .responseCheck()
                     .body()
                     ?.toModel()!!
             }

@@ -15,49 +15,22 @@
  */
 package com.keygenqt.viewer.android.base.exceptions
 
-import android.content.Context
-import com.keygenqt.response.LocalTryExecuteWithResponse
-import com.keygenqt.response.LocalTryExecuteWithResponse.executeWithResponse
-import com.keygenqt.response.ResponseResult
-import com.keygenqt.response.extensions.isSucceeded
-import com.keygenqt.response.extensions.success
+import com.keygenqt.requests.*
+import com.keygenqt.requests.RequestHandler.executeRequest
 import com.keygenqt.viewer.android.BuildConfig
-import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.data.mappers.toModel
 import com.keygenqt.viewer.android.data.requests.RefreshTokenRequest
 import com.keygenqt.viewer.android.services.api.impl.ApiRefreshToken
 import com.keygenqt.viewer.android.utils.AuthUser
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import kotlin.reflect.full.createInstance
 
 /**
- * Job single collect response errors
+ * Custom error handler
  */
-var jobSingleCollectResponseErrors: Job? = null
-
-/**
- * Single collect response errors
- */
-suspend fun singleCollectResponseErrors(
-    context: Context,
-    action: suspend (exception: Exception, message: String) -> Unit
-) {
-    jobSingleCollectResponseErrors?.cancel()
-    coroutineScope {
-        jobSingleCollectResponseErrors = launch {
-            LocalTryExecuteWithResponse.current.collect {
-                with(context) {
-                    val message = when (it) {
-                        is ResponseException -> getString(it.resId)
-                        else -> it.message
-                    }
-                    action.invoke(it, message ?: getString(R.string.error_something_wrong))
-                }
-            }
-        }
+fun errorHandlerStates(exception: Exception): ResponseState {
+    return when (exception) {
+        is ResponseException -> ResponseState.Error(exception)
+        else -> ResponseState.Error(ResponseException.ExceptionUnknown())
     }
 }
 
@@ -72,12 +45,12 @@ fun Int.toResponseException(): ResponseException {
 }
 
 /**
- * [executeWithResponse] + refresh token
+ * [executeRequest] + refresh token
  */
 suspend inline fun <T> executeRefreshToken(
     api: ApiRefreshToken,
     emit: Boolean = true,
-    body: () -> T
+    crossinline body: suspend () -> T
 ): ResponseResult<T> {
     return try {
         ResponseResult.Success(body.invoke())
@@ -87,7 +60,7 @@ suspend inline fun <T> executeRefreshToken(
         // check
         if (e is ResponseException.TokenExpired && refreshToken != null) {
             // query refresh
-            val response = executeWithResponse(emit = false) {
+            val response = executeRequest(emit = false) {
                 api.refreshToken(
                     request = RefreshTokenRequest(
                         refresh_token = refreshToken,
@@ -101,16 +74,16 @@ suspend inline fun <T> executeRefreshToken(
             }
             // re query
             if (response.isSucceeded) {
-                executeWithResponse { body.invoke() }
+                executeRequest { body.invoke() }
             } else {
                 if (emit) {
-                    LocalTryExecuteWithResponse.tryEmit(e)
+                    RequestHandler.emit(e)
                 }
                 ResponseResult.Error(e)
             }
         } else {
             if (emit) {
-                LocalTryExecuteWithResponse.tryEmit(e)
+                RequestHandler.emit(e)
             }
             ResponseResult.Error(e)
         }

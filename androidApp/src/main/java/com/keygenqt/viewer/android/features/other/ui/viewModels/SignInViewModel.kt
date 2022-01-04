@@ -17,8 +17,9 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.queryActions.QueryActions
+import com.keygenqt.requests.ResponseStates
+import com.keygenqt.requests.success
+import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.utils.AuthUser
@@ -37,7 +38,7 @@ class SignInViewModel @Inject constructor(
     /**
      * State actions
      */
-    val query1 = QueryActions(this)
+    val query1 = ResponseStates(this, ::errorHandlerStates)
 
     /**
      * Arg deep link code

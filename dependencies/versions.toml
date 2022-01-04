@@ -62,8 +62,8 @@ ktlintVersion = "0.42.1"
 kotlinxDatetimeVersion = "0.3.1"
 
 # Custom
-# https://github.com/keygenqt/android-response-result
-androidResponseResultVersion = "0.0.11"
+# https://github.com/keygenqt/compose-requests
+composeRequestsVersion = "0.0.12"
 # https://github.com/keygenqt/compose-forms
 composeFormsVersion = "0.0.20"
 # https://github.com/keygenqt/compose-modifier-ext

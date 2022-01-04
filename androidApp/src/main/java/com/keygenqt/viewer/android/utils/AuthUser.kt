@@ -25,8 +25,8 @@ import kotlinx.coroutines.launch
 
 object AuthUser {
 
-    var jobAuth: Job? = null
-    var jobRefresh: Job? = null
+    private var jobAuth: Job? = null
+    private var jobRefresh: Job? = null
 
     /**
      * For listen and relations with db

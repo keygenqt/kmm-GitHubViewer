@@ -26,8 +26,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import com.keygenqt.requests.ResponseState
 import com.keygenqt.viewer.android.base.NavigationDispatcher
-import com.keygenqt.viewer.android.base.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
@@ -41,7 +41,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun RepoBody(
     model: Any?,
-    state1: QueryState = QueryState.Start,
+    state1: ResponseState = ResponseState.Start,
     navDispatcher: NavigationDispatcher? = null,
     onActions: (RepoActions) -> Unit = {},
 ) {

@@ -35,9 +35,9 @@ import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import com.keygenqt.requests.ResponseState
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.NavigationDispatcher
-import com.keygenqt.viewer.android.base.queryActions.QueryState
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.UserModel
@@ -49,7 +49,7 @@ import kotlinx.coroutines.launch
 fun ProfileBody(
     model: Any?,
     uriHandler: UriHandler? = null,
-    state1: QueryState = QueryState.Start,
+    state1: ResponseState = ResponseState.Start,
     navDispatcher: NavigationDispatcher? = null,
     onActions: (ProfileActions) -> Unit = {},
 ) {

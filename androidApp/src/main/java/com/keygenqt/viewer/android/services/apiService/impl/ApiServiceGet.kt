@@ -16,7 +16,7 @@
 package com.keygenqt.viewer.android.services.apiService.impl
 
 import androidx.annotation.IntRange
-import com.keygenqt.response.ResponseResult
+import com.keygenqt.requests.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.base.exceptions.executeRefreshToken
 import com.keygenqt.viewer.android.data.mappers.toModel
@@ -25,7 +25,7 @@ import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.extensions.delay
-import com.keygenqt.viewer.android.extensions.responseCheckApp
+import com.keygenqt.viewer.android.extensions.responseCheck
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -45,7 +45,7 @@ interface ApiServiceGet {
             executeRefreshToken(api) {
                 api.getUser()
                     .delay(BuildConfig.DEBUG)
-                    .responseCheckApp()
+                    .responseCheck()
                     .body()!!
                     .toModel()
             }
@@ -60,7 +60,7 @@ interface ApiServiceGet {
             executeRefreshToken(api) {
                 api.getRepo(url)
                     .delay(BuildConfig.DEBUG)
-                    .responseCheckApp()
+                    .responseCheck()
                     .body()!!
                     .toModel()
             }
@@ -81,7 +81,7 @@ interface ApiServiceGet {
                     direction = if (isSortDesc) "desc" else "asc"
                 )
                     .delay(BuildConfig.DEBUG)
-                    .responseCheckApp()
+                    .responseCheck()
                     .body()!!
                     .toModels()
             }
@@ -98,7 +98,7 @@ interface ApiServiceGet {
             executeRefreshToken(api) {
                 api.getUserFollowers(page = page)
                     .delay(BuildConfig.DEBUG)
-                    .responseCheckApp()
+                    .responseCheck()
                     .body()!!
                     .toModels()
             }

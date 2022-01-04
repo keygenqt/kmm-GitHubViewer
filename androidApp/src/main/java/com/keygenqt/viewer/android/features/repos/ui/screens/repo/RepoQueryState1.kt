@@ -16,19 +16,19 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
 import androidx.compose.runtime.Composable
-import com.keygenqt.viewer.android.base.queryActions.QueryActionsState
-import com.keygenqt.viewer.android.base.queryActions.QueryState
+import com.keygenqt.requests.ResponseComposable
+import com.keygenqt.requests.ResponseState
 
 @Composable
 fun RepoQueryState1(
-    state: QueryState = QueryState.Start,
+    state: ResponseState = ResponseState.Start,
     loadingRepo: () -> Unit = {},
     clear: () -> Unit = {}
 ) {
-    QueryActionsState(state) {
+    ResponseComposable(state) {
         clear.invoke()
         when (this) {
-            is QueryState.Action -> loadingRepo.invoke()
+            is ResponseState.Action -> loadingRepo.invoke()
             else -> {}
         }
     }

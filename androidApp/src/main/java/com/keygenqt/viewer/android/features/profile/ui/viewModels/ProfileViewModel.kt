@@ -16,8 +16,9 @@
 package com.keygenqt.viewer.android.features.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.queryActions.QueryActions
+import com.keygenqt.requests.ResponseStates
+import com.keygenqt.requests.success
+import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.profile.ProfileScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
@@ -39,7 +40,7 @@ class ProfileViewModel @Inject constructor(
     /**
      * State actions
      */
-    val query1 = QueryActions(this)
+    val query1 = ResponseStates(this, ::errorHandlerStates)
 
     /**
      * Listen user model

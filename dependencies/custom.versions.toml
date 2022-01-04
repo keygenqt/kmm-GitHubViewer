@@ -1,8 +1,8 @@
 # modules
 [libraries.compose-modifier-ext]
 module = "com.keygenqt.modifier:compose-modifier-ext"
-[libraries.android-response-result]
-module = "com.keygenqt.response:android-response-result"
+[libraries.compose-requests]
+module = "com.keygenqt.response:compose-requests"
 [libraries.compose-routing]
 module = "com.keygenqt.routing:compose-routing"
 [libraries.keygenqt-accompanist]
@@ -13,8 +13,8 @@ module = "com.keygenqt.forms:compose-forms"
 # versions
 [libraries.compose-modifier-ext.version]
 ref = "composeModifierExtVersion"
-[libraries.android-response-result.version]
-ref = "androidResponseResultVersion"
+[libraries.compose-requests.version]
+ref = "composeRequestsVersion"
 [libraries.compose-routing.version]
 ref = "composeRoutingVersion"
 [libraries.keygenqt-accompanist.version]
@@ -25,7 +25,7 @@ ref = "composeFormsVersion"
 [bundles]
 custom = [
     "compose-modifier-ext",
-    "android-response-result",
+    "compose-requests",
     "compose-routing",
     "keygenqt-accompanist",
     "compose-forms",

@@ -19,9 +19,11 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.keygenqt.response.extensions.isSucceeded
-import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.exceptions.singleCollectResponseErrors
+import com.keygenqt.requests.RequestHandler
+import com.keygenqt.requests.isSucceeded
+import com.keygenqt.requests.success
+import com.keygenqt.viewer.android.R
+import com.keygenqt.viewer.android.base.exceptions.ResponseException
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
@@ -69,9 +71,15 @@ class AppViewModel @Inject constructor(
     init {
         // Listen errors responses
         viewModelScope.launch {
-            singleCollectResponseErrors(context) { exception, message ->
+            RequestHandler.singleCollect {
+                val message = (it as? ResponseException)
+                    ?.let { ex -> context.getString(ex.resId) }
+                    ?: it.message
+                    ?: context.getString(R.string.error_something_wrong)
+                // show toast
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-                Timber.e(exception)
+                // logcat
+                Timber.e(it)
             }
         }
 

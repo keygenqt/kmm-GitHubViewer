@@ -55,9 +55,9 @@ val internalLibrariesEnable: String by settings
 // access for ./gradlew :{module}:artifactoryPublish - keygenqt@gmail.com || zarubin@surfstudio.ru
 if (internalLibrariesEnable.toBoolean()) {
     // git@github.com:keygenqt/android-response-result.git
-    include(":android-response-result")
-    project(":android-response-result").projectDir =
-        File(settingsDir, "../libs/android-response-result")
+    include(":compose-requests")
+    project(":compose-requests").projectDir =
+        File(settingsDir, "../libs/compose-requests")
 
     // git@github.com:keygenqt/compose-forms.git
     include(":compose-forms")

@@ -101,7 +101,7 @@ dependencies {
     implementation(libs.bundles.firebase)
 
     if (findProperty("internalLibrariesEnable").toString().toBoolean()) {
-        implementation(project(":android-response-result"))
+        implementation(project(":compose-requests"))
         implementation(project(":compose-forms"))
         implementation(project(":compose-modifier-ext"))
         implementation(project(":compose-routing"))

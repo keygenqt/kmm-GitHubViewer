@@ -16,8 +16,9 @@
 package com.keygenqt.viewer.android.features.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.keygenqt.response.extensions.success
-import com.keygenqt.viewer.android.base.queryActions.QueryActions
+import com.keygenqt.requests.ResponseStates
+import com.keygenqt.requests.success
+import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
 import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
@@ -40,7 +41,7 @@ class SettingsViewModel @Inject constructor(
     /**
      * State actions
      */
-    val query1 = QueryActions(this)
+    val query1 = ResponseStates(this, ::errorHandlerStates)
 
     /**
      * Listen user model

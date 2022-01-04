@@ -19,10 +19,10 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.keygenqt.response.extensions.error
-import com.keygenqt.response.extensions.isEmpty
-import com.keygenqt.response.extensions.isError
-import com.keygenqt.response.extensions.success
+import com.keygenqt.requests.error
+import com.keygenqt.requests.isEmpty
+import com.keygenqt.requests.isError
+import com.keygenqt.requests.success
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction

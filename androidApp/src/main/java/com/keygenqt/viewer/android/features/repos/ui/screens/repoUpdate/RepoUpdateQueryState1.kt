@@ -17,23 +17,24 @@ package com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.keygenqt.viewer.android.base.queryActions.QueryActionsState
-import com.keygenqt.viewer.android.base.queryActions.QueryState
+import com.keygenqt.requests.ResponseComposable
+import com.keygenqt.requests.ResponseState
+import com.keygenqt.viewer.android.base.exceptions.ResponseException
 
 @Composable
 fun RepoUpdateQueryState1(
-    state: QueryState = QueryState.Start,
+    state: ResponseState = ResponseState.Start,
+    clear: () -> Unit = {},
     loading: () -> Unit = {},
-    error: (String?) -> Unit = {},
     success: () -> Unit = {},
-    clear: () -> Unit = {}
+    error: @Composable (ResponseException) -> Unit = {},
 ) {
-    QueryActionsState(state) {
+    ResponseComposable(state) {
         clear.invoke()
         when (this) {
-            is QueryState.Action -> loading.invoke()
-            is QueryState.Success<*> -> success.invoke()
-            is QueryState.Error -> error.invoke(stringResource(id = exception.resId))
+            is ResponseState.Action -> loading.invoke()
+            is ResponseState.Success<*> -> success.invoke()
+            is ResponseState.Error -> error.invoke(exception as ResponseException)
             else -> {}
         }
     }

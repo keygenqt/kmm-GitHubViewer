@@ -16,19 +16,19 @@
 package com.keygenqt.viewer.android.features.profile.ui.screens.profile
 
 import androidx.compose.runtime.Composable
-import com.keygenqt.viewer.android.base.queryActions.QueryActionsState
-import com.keygenqt.viewer.android.base.queryActions.QueryState
+import com.keygenqt.requests.ResponseComposable
+import com.keygenqt.requests.ResponseState
 
 @Composable
 fun ProfileQueryState1(
-    state: QueryState = QueryState.Start,
+    state: ResponseState = ResponseState.Start,
     loadingUser: () -> Unit = {},
     clear: () -> Unit = {}
 ) {
-    QueryActionsState(state) {
+    ResponseComposable(state) {
         clear.invoke()
         when (this) {
-            is QueryState.Action -> loadingUser.invoke()
+            is ResponseState.Action -> loadingUser.invoke()
             else -> {}
         }
     }

@@ -15,8 +15,7 @@
  */
 package com.keygenqt.viewer.android.services.apiService.impl
 
-import com.keygenqt.response.ResponseResult
-import com.keygenqt.response.extensions.responseCheck
+import com.keygenqt.requests.ResponseResult
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.base.exceptions.executeRefreshToken
 import com.keygenqt.viewer.android.data.mappers.toModel
@@ -25,6 +24,7 @@ import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.data.requests.RepoUpdateRequest
 import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
 import com.keygenqt.viewer.android.extensions.delay
+import com.keygenqt.viewer.android.extensions.responseCheck
 import com.keygenqt.viewer.android.services.api.AppApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
