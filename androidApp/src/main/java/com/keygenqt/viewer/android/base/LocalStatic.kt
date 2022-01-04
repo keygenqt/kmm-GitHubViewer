@@ -27,7 +27,7 @@ val LocalViewModel = staticCompositionLocalOf<AppViewModel> {
 }
 
 /**
- * [OnBackPressedDispatcher] Can be used in CompositionLocalProvider to provide values.
+ * [NavigationDispatcher] Can be used in CompositionLocalProvider to provide values.
  */
 val LocalNavigationDispatcher = staticCompositionLocalOf<NavigationDispatcher> {
     error("No Back Dispatcher provided")
