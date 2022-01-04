@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.requests.ResponseState
-import com.keygenqt.viewer.android.base.NavigationDispatcher
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel

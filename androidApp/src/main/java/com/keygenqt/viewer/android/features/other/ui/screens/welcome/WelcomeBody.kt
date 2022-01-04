@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
-import com.keygenqt.viewer.android.base.NavigationDispatcher
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextDisplayMedium

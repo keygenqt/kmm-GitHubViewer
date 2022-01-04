@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import com.google.accompanist.insets.navigationBarsWithImePadding
 import com.google.accompanist.insets.statusBarsPadding
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.keygenqt.viewer.android.base.NavigationDispatcher
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshIndicator
 import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
 import com.keygenqt.viewer.android.extensions.LaunchedEffectAnimation

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ interface RepoActions : IAppNavActions {
     fun toRepo(id: String, url: Uri) {
         ReposNavRoute.repo.default.apply {
             controller.navigate(
-                getRoute(
+                routeWithArguments(
                     argument0 = id,
                     argument1 = URLEncoder.encode(url.toString(), Charsets.UTF_8.name())
                 )

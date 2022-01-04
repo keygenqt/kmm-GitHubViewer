@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,16 @@
  */
 package com.keygenqt.viewer.android.features.repos.navigation.route.impl
 
-import com.keygenqt.routing.NavScreenWithArgument2
+import com.keygenqt.routing.NavigationRouteArgument2
 import com.keygenqt.viewer.android.features.repos.ui.screens.repos.ReposScreen
 
 /**
  * Routing for [ReposScreen]
  */
 object RepoRoute {
-    val default = object : NavScreenWithArgument2 {
+    val default = object : NavigationRouteArgument2 {
         override val argument0: String = "id"
         override val argument1: String = "url"
-        override val routeWithArgument: String = "RepoRouteDefault/{$argument0}/{$argument1}"
+        override val route: String = "RepoRouteDefault/{$argument0}/{$argument1}"
     }
 }

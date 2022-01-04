@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
-import com.keygenqt.viewer.android.base.NavigationDispatcher
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.profile.navigation.route.ProfileNavRoute
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions

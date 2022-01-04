@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.viewer.android.base.NavigationDispatcher
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 

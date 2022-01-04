@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Vitaliy Zarubin
+ * Copyright 2022 Vitaliy Zarubin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ import com.keygenqt.viewer.android.features.repos.ui.viewModels.RepoUpdateModel
 fun NavGraphBuilder.repoUpdateGraph(
     appActions: AppActions,
 ) {
-    composableAnimation(ReposNavRoute.repoUpdate.default.routeWithArgument) {
+    composableAnimation(ReposNavRoute.repoUpdate.default.route) {
         val viewModel: RepoUpdateModel = hiltViewModel()
         RepoUpdateScreen(viewModel = viewModel) { event ->
             when (event) {
