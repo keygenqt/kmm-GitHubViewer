@@ -74,7 +74,7 @@ fun SignInBody(
 
     // state query 1
     var loading by remember { mutableStateOf(false) }
-    var error: String? by remember { mutableStateOf(null) }
+    var error: Int? by remember { mutableStateOf(null) }
 
     SignInQueryState1(
         state = state1,
@@ -82,7 +82,7 @@ fun SignInBody(
             loading = true
         },
         error = {
-            error = stringResource(id = it.resId)
+            error = it.resId
         },
         success = {
             onActions(SignInActions.ToRepos)
@@ -109,7 +109,7 @@ fun SignInBody(
                 modifier = Modifier.padding(16.dp)
             ) {
                 error?.let {
-                    FormError(text = it)
+                    FormError(text = stringResource(id = it))
                     Spacer(modifier = Modifier.size(16.dp))
                     LaunchedEffect(it) { scrollState.animateScrollTo(0) }
                 }

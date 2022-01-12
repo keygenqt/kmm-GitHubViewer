@@ -26,7 +26,7 @@ fun SettingsQueryState1(
     clear: () -> Unit = {},
     loading: () -> Unit = {},
     success: () -> Unit = {},
-    error: @Composable (ResponseException) -> Unit = {},
+    error: (ResponseException) -> Unit = {},
 ) {
     ResponseComposable(state, clear = clear) {
         when (this) {

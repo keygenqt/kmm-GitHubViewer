@@ -63,7 +63,7 @@ kotlinxDatetimeVersion = "0.3.1"
 
 # Custom
 # https://github.com/keygenqt/compose-requests
-composeRequestsVersion = "0.0.13"
+composeRequestsVersion = "0.0.14"
 # https://github.com/keygenqt/compose-forms
 composeFormsVersion = "0.0.20"
 # https://github.com/keygenqt/compose-modifier-ext

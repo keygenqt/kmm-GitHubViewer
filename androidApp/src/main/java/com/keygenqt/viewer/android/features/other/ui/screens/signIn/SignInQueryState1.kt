@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import com.keygenqt.requests.ResponseComposable
 import com.keygenqt.requests.ResponseState
 import com.keygenqt.viewer.android.base.exceptions.ResponseException
+import timber.log.Timber
 
 @Composable
 fun SignInQueryState1(
@@ -26,7 +27,7 @@ fun SignInQueryState1(
     clear: () -> Unit = {},
     loading: () -> Unit = {},
     success: () -> Unit = {},
-    error: @Composable (ResponseException) -> Unit = {},
+    error: (ResponseException) -> Unit = {},
 ) {
     ResponseComposable(state, clear = clear) {
         when (this) {

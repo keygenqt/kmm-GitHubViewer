@@ -83,7 +83,7 @@ fun RepoUpdateBody(
     // state query 1
     var loading by remember { mutableStateOf(false) }
     var success by remember { mutableStateOf(false) }
-    var error: String? by remember { mutableStateOf(null) }
+    var error: Int? by remember { mutableStateOf(null) }
 
     RepoUpdateQueryState1(
         state = state1,
@@ -91,7 +91,7 @@ fun RepoUpdateBody(
             loading = true
         },
         error = {
-            error = stringResource(id = it.resId)
+            error = it.resId
         },
         success = {
             success = true
@@ -119,7 +119,7 @@ fun RepoUpdateBody(
                 Spacer(modifier = Modifier.size(16.dp))
 
                 error?.let {
-                    FormError(text = it)
+                    FormError(text = stringResource(id = it))
                     Spacer(modifier = Modifier.size(16.dp))
                     LaunchedEffect(it) { scrollState.animateScrollTo(0) }
                 }
