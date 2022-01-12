@@ -25,8 +25,7 @@ fun ProfileQueryState1(
     loadingUser: () -> Unit = {},
     clear: () -> Unit = {}
 ) {
-    ResponseComposable(state) {
-        clear.invoke()
+    ResponseComposable(state, clear = clear) {
         when (this) {
             is ResponseState.Action -> loadingUser.invoke()
             else -> {}

@@ -28,8 +28,7 @@ fun SignInQueryState1(
     success: () -> Unit = {},
     error: @Composable (ResponseException) -> Unit = {},
 ) {
-    ResponseComposable(state) {
-        clear.invoke()
+    ResponseComposable(state, clear = clear) {
         when (this) {
             is ResponseState.Action -> loading.invoke()
             is ResponseState.Success<*> -> success.invoke()

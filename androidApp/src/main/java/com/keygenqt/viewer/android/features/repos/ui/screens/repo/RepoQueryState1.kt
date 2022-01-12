@@ -25,8 +25,7 @@ fun RepoQueryState1(
     loadingRepo: () -> Unit = {},
     clear: () -> Unit = {}
 ) {
-    ResponseComposable(state) {
-        clear.invoke()
+    ResponseComposable(state, clear = clear) {
         when (this) {
             is ResponseState.Action -> loadingRepo.invoke()
             else -> {}
