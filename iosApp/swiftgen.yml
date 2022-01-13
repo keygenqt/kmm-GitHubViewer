@@ -1,0 +1,25 @@
+xcassets:
+  - inputs:
+      - Resources/Colors/Colors.xcassets
+      - Resources/Images/Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: Generated/Resources/GeneratedResources.swift
+        params:
+          enumName: Resources
+          publicAccess: false
+
+strings:
+  inputs: Resources/Strings/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Generated/Strings/GeneratedStrings.swift
+      params:
+        publicAccess: false
+        
+fonts:
+  inputs:
+    - Resources/Fonts
+  outputs:
+    - templateName: swift5
+      output: Generated/Fonts/GeneratedFonts.swift

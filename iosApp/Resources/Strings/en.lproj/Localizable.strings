@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 05.10.2021.
+  
+*/
+
+"Other.titleBio" = "Bio";
+"Other.typePrivate" = "Private";
+"Other.typePublic" = "Public";
+"Other.typeRepo" = "Type";
+"Other.createdAt" = "Created At";
