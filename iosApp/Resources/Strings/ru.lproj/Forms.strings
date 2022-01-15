@@ -1,0 +1,10 @@
+/* 
+  Forms.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"is_required" = "Обязательное поле";
+"is_no_symbols" = "Не должно содержать символы";

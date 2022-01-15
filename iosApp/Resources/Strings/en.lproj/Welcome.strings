@@ -1,0 +1,12 @@
+/* 
+  Welcome.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"title" = "Welcome to\nGitHub Viewer!";
+"subtitle" = "The app is written using the latest stack on ios and android. Keywords: KMM, MVVM, Jetpack Compose, SwiftUI";
+"version" = "Version: %s";
+"btn_sign_in" = "Get started";

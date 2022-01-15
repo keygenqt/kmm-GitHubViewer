@@ -1,0 +1,25 @@
+/* 
+  Other.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"title" = "Hello!";
+"skip" = "Skip";
+
+"step1_title" = "About the app";
+"step1_text" = "This is a demo application using the open GitHub REST API. The application is under development. Develop will take place in 3 stages.";
+
+"step2_title" = "First stage";
+"step2_text" = "Jetpack Compose application, MVVM and the whole latest stack surrounding this technology";
+
+"step3_title" = "About the app";
+"step3_text" = "Development of a shared KMM module for interacting with an ios application";
+
+"step4_title" = "About the app";
+"step4_text" = "Application for ios on Swift using the previously developed shared module using KMM";
+
+"step5_title" = "About the app";
+"step5_text" = "This app uses the latest Google & JetBrains & Apple. Thank them for this opportunity! Thank you for your interest! Thanks to my wife for your patience :)";

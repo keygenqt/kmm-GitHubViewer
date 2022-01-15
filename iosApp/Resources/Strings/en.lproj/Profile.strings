@@ -1,0 +1,22 @@
+/* 
+  Profile.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"title" = "Profile";
+"label_bio" = "Bio";
+"label_item_count_public_repos" = "Pub Repos";
+"label_item_count_followers" = "Followers";
+"label_item_count_following" = "Following";
+"label_email" = "Email";
+"label_company" = "Company";
+"label_blog" = "Blog";
+"label_location" = "Location";
+"label_created_at" = "Date created profile";
+"dialog_logout_title" = "Exit the application";
+"dialog_logout_text" = "You will be redirected to the login page. Is this what you want?";
+"dialog_logout_confirm" = "Confirm";
+"dialog_logout_dismiss" = "Dismiss";

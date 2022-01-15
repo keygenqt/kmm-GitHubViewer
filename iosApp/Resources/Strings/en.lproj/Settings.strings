@@ -1,0 +1,18 @@
+/* 
+  Settings.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"title" = "Settings";
+
+"form_name" = "Name";
+"form_blog" = "Blog URL";
+"form_twitter_username" = "Twitter nickname";
+"form_company" = "Company";
+"form_location" = "Location";
+"form_bio" = "Bio";
+"form_button_submit" = "Submit";
+"form_successfully" = "Update user data successfully";

@@ -10,12 +10,91 @@ xcassets:
           publicAccess: false
 
 strings:
-  inputs: Resources/Strings/en.lproj/Localizable.strings
-  outputs:
-    - templateName: structured-swift5
-      output: Generated/Strings/GeneratedStrings.swift
+  - inputs: Resources/Strings/en.lproj/App.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/AppStrings.swift
       params:
+        enumName: L10nApp
         publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Onboarding.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/OnboardingStrings.swift
+      params:
+        enumName: L10nOnboarding
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Welcome.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/WelcomeStrings.swift
+      params:
+        enumName: L10nWelcome
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/SignIn.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/SignInStrings.swift
+      params:
+        enumName: L10nSignIn
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Repos.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/ReposStrings.swift
+      params:
+        enumName: L10nRepos
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Repo.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/RepoStrings.swift
+      params:
+        enumName: L10nRepo
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/RepoUpdate.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/RepoUpdateStrings.swift
+      params:
+        enumName: L10nRepoUpdate
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Followers.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/FollowersStrings.swift
+      params:
+        enumName: L10nFollowers
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Profile.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/ProfileStrings.swift
+      params:
+        enumName: L10nProfile
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Settings.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/SettingsStrings.swift
+      params:
+        enumName: L10nSettings
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Errors.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/ErrorsStrings.swift
+      params:
+        enumName: L10nErrors
+        publicAccess: false
+  - inputs: Resources/Strings/en.lproj/Forms.strings
+    outputs:
+      templateName: structured-swift5
+      output: Generated/Strings/FormsStrings.swift
+      params:
+        enumName: L10nForms
+        publicAccess: false
+
         
 fonts:
   inputs:

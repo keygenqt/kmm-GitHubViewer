@@ -1,0 +1,13 @@
+/* 
+  RepoUpdate.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"title" = "Repo Update";
+"name" = "Name";
+"is_private" = "Private Repo";
+"visibility" = "Visibility";
+"description" = "Description";

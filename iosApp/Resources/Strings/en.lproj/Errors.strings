@@ -1,0 +1,15 @@
+/* 
+  Errors.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"error_401" = "Token expired";
+"error_bad_credentials" = "Bad credentials";
+"error_something_wrong" = "Something wrong";
+"error_404" = "Something wrong";
+"error_json_parse" = "Something wrong";
+"error_success_error" = "Something wrong";
+"error_exception_unknown" = "Something wrong";

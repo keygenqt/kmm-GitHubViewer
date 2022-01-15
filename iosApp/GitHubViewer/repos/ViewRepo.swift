@@ -42,12 +42,12 @@ struct ViewRepo: View {
 
                     HStack {
                         if model.isPrivate ?? false {
-                            Text(L10n.Other.typePrivate)
+                            // Text(L10nApp.typePrivate)
                         } else {
-                            Text(L10n.Other.typePublic)
+                            // Text(L10nApp.typePublic)
                         }
                         Spacer()
-                        Text(L10n.Other.typeRepo)
+                        // Text(L10nApp.typeRepo)
                     }
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -57,7 +57,7 @@ struct ViewRepo: View {
                     HStack {
                         Text(model.createdAt!)
                         Spacer()
-                        Text(L10n.Other.createdAt)
+                        // Text(L10nApp.createdAt)
                     }
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -65,7 +65,7 @@ struct ViewRepo: View {
                     Divider()
 
                     if model.description != nil {
-                        Text(L10n.Other.titleBio).font(.title2)
+                        // Text(L10nApp.titleBio).font(.title2)
                         Text(model.description!).padding(.top, 0.5)
                     }
                 }

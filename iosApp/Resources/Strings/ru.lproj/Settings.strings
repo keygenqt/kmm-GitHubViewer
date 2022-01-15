@@ -1,0 +1,18 @@
+/* 
+  Settings.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"title" = "Настройки";
+
+"form_name" = "Имя";
+"form_blog" = "Сайт URL";
+"form_twitter_username" = "Twitter никнейм";
+"form_company" = "Компания";
+"form_location" = "Локация";
+"form_bio" = "О себе";
+"form_button_submit" = "Отправить";
+"form_successfully" = "Профиль успешно обновлен";

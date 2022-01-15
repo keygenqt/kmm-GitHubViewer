@@ -4,6 +4,7 @@ target 'GitHubViewer' do
   
   use_frameworks!
   
+  pod 'lottie-ios'              # lottie
   pod 'SwiftGen', '6.5.1'       # gen resources
   pod 'RealmSwift'              # db
   pod 'Kingfisher', '~> 7.0'    # images

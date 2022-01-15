@@ -1,0 +1,21 @@
+/* 
+  Repo.strings
+  GitHubViewer
+
+  Created by Виталий Зарубин on 15.01.2022.
+  
+*/
+
+"title" = "Repo";
+
+"label_size" = "Size";
+"open_watchers" = "Watchers";
+"open_issue" = "Issue";
+
+"label_full_name" = "Full name";
+"label_license" = "License";
+"label_visibility" = "Is visibility";
+"label_owner" = "Owner";
+"label_updated_at" = "Updated";
+"label_created_at" = "Created";
+"label_description" = "Description";
