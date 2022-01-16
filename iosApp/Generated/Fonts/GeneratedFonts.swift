@@ -18,15 +18,28 @@ internal typealias Font = FontConvertible.Font
 
 // swiftlint:disable identifier_name line_length type_body_length
 internal enum FontFamily {
-  internal enum Montserrat {
-    internal static let bold = FontConvertible(name: "Montserrat-Bold", family: "Montserrat", path: "montserrat_bold.ttf")
-    internal static let extraBold = FontConvertible(name: "Montserrat-ExtraBold", family: "Montserrat", path: "montserrat_extra_bold.ttf")
-    internal static let medium = FontConvertible(name: "Montserrat-Medium", family: "Montserrat", path: "montserrat_medium.ttf")
-    internal static let regular = FontConvertible(name: "Montserrat-Regular", family: "Montserrat", path: "montserrat_regular.ttf")
-    internal static let semiBold = FontConvertible(name: "Montserrat-SemiBold", family: "Montserrat", path: "montserrat_semi_bold.ttf")
-    internal static let all: [FontConvertible] = [bold, extraBold, medium, regular, semiBold]
+  internal enum Poppins {
+    internal static let black = FontConvertible(name: "Poppins-Black", family: "Poppins", path: "poppins_black.ttf")
+    internal static let blackItalic = FontConvertible(name: "Poppins-BlackItalic", family: "Poppins", path: "poppins_black_italic.ttf")
+    internal static let bold = FontConvertible(name: "Poppins-Bold", family: "Poppins", path: "poppins_bold.ttf")
+    internal static let boldItalic = FontConvertible(name: "Poppins-BoldItalic", family: "Poppins", path: "poppins_bold_italic.ttf")
+    internal static let extraBold = FontConvertible(name: "Poppins-ExtraBold", family: "Poppins", path: "poppins_extra_bold.ttf")
+    internal static let extraBoldItalic = FontConvertible(name: "Poppins-ExtraBoldItalic", family: "Poppins", path: "poppins_extra_bold_italic.ttf")
+    internal static let extraLight = FontConvertible(name: "Poppins-ExtraLight", family: "Poppins", path: "poppins_extra_light.ttf")
+    internal static let extraLightItalic = FontConvertible(name: "Poppins-ExtraLightItalic", family: "Poppins", path: "poppins_extra_light_italic.ttf")
+    internal static let italic = FontConvertible(name: "Poppins-Italic", family: "Poppins", path: "poppins_italic.ttf")
+    internal static let light = FontConvertible(name: "Poppins-Light", family: "Poppins", path: "poppins_light.ttf")
+    internal static let lightItalic = FontConvertible(name: "Poppins-LightItalic", family: "Poppins", path: "poppins_light_italic.ttf")
+    internal static let medium = FontConvertible(name: "Poppins-Medium", family: "Poppins", path: "poppins_medium.ttf")
+    internal static let mediumItalic = FontConvertible(name: "Poppins-MediumItalic", family: "Poppins", path: "poppins_medium_italic.ttf")
+    internal static let regular = FontConvertible(name: "Poppins-Regular", family: "Poppins", path: "poppins_regular.ttf")
+    internal static let semiBold = FontConvertible(name: "Poppins-SemiBold", family: "Poppins", path: "poppins_semi_bold.ttf")
+    internal static let semiBoldItalic = FontConvertible(name: "Poppins-SemiBoldItalic", family: "Poppins", path: "poppins_semi_bold_italic.ttf")
+    internal static let thin = FontConvertible(name: "Poppins-Thin", family: "Poppins", path: "poppins_thin.ttf")
+    internal static let thinItalic = FontConvertible(name: "Poppins-ThinItalic", family: "Poppins", path: "poppins_thin_italic.ttf")
+    internal static let all: [FontConvertible] = [black, blackItalic, bold, boldItalic, extraBold, extraBoldItalic, extraLight, extraLightItalic, italic, light, lightItalic, medium, mediumItalic, regular, semiBold, semiBoldItalic, thin, thinItalic]
   }
-  internal static let allCustomFonts: [FontConvertible] = [Montserrat.all].flatMap { $0 }
+  internal static let allCustomFonts: [FontConvertible] = [Poppins.all].flatMap { $0 }
   internal static func registerAllCustomFonts() {
     allCustomFonts.forEach { $0.register() }
   }

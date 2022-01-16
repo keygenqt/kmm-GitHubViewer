@@ -1,9 +1,10 @@
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 target 'GitHubViewer' do
   
   use_frameworks!
   
+  pod 'AlertToast', '1.3.7'     # toast
   pod 'lottie-ios'              # lottie
   pod 'SwiftGen', '6.5.1'       # gen resources
   pod 'RealmSwift'              # db

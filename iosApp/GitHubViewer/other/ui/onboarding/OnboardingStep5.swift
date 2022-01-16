@@ -10,7 +10,21 @@ import SwiftUI
 struct OnboardingStep5: View {
     var body: some View {
         VStack {
-            Text("Acknowledgments")
+            LottieView(name: "step5").frame(width: 150, height: 150)
+
+            Spacer().frame(height: 30)
+
+            TextTitleLarge(
+                text: L10nOnboarding.step5Title,
+                alignment: .center
+            )
+
+            Spacer().frame(height: 20)
+
+            TextBodyLarge(
+                text: L10nOnboarding.step5Text,
+                alignment: .center
+            )
         }
     }
 }

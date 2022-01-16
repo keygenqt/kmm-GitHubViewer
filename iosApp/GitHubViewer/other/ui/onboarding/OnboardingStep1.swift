@@ -12,8 +12,20 @@ struct OnboardingStep1: View {
     var body: some View {
         VStack {
             LottieView(name: "step1").frame(width: 150, height: 150)
-            Text(L10nApp.appName)
-            Text(L10nApp.appLoading)
+
+            Spacer().frame(height: 30)
+
+            TextTitleLarge(
+                text: L10nOnboarding.step1Title,
+                alignment: .center
+            )
+
+            Spacer().frame(height: 20)
+
+            TextBodyLarge(
+                text: L10nOnboarding.step1Text,
+                alignment: .center
+            )
         }
     }
 }

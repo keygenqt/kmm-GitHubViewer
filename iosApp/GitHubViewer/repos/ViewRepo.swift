@@ -15,7 +15,7 @@ struct ViewRepo: View {
     var titleName: AttributedString {
         var attributedString = AttributedString("Name: \(model.name ?? "nil")")
         attributedString.foregroundColor = .textTitle
-        attributedString.font = .navigationBarTitle
+        // attributedString.font = .navigationBarTitle
         return attributedString
     }
 
