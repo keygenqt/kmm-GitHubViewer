@@ -2,24 +2,35 @@
 //  LottieView.swift
 //  GitHubViewer
 //
-//  Created by Виталий Зарубин on 15.01.2022.
+//  Created by Виталий Зарубин on 18.01.2022.
 //
 
 import Lottie
 import SwiftUI
 
-struct LottieView: UIViewRepresentable {
+struct LottieView: View {
     var name: String
-    var loopMode: LottieLoopMode = .loop
+    @State private var lottieID = UUID()
 
+    var body: some View {
+        LottieUIView(name: name)
+            .id(lottieID)
+            .onAppear {
+                lottieID = UUID()
+            }
+    }
+}
+
+private struct LottieUIView: UIViewRepresentable {
+    var name: String
     var animationView = AnimationView()
 
-    func makeUIView(context _: UIViewRepresentableContext<LottieView>) -> UIView {
+    func makeUIView(context _: UIViewRepresentableContext<LottieUIView>) -> UIView {
         let view = UIView(frame: .zero)
 
         animationView.animation = Animation.named(name)
         animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = loopMode
+        animationView.loopMode = .loop
         animationView.play()
 
         animationView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,5 +44,5 @@ struct LottieView: UIViewRepresentable {
         return view
     }
 
-    func updateUIView(_: UIView, context _: UIViewRepresentableContext<LottieView>) {}
+    func updateUIView(_: UIView, context _: UIViewRepresentableContext<LottieUIView>) {}
 }

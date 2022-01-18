@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10nOnboarding {
+  /// Back
+  internal static let back = L10nOnboarding.tr("Onboarding", "back")
   /// Skip
   internal static let skip = L10nOnboarding.tr("Onboarding", "skip")
   /// This is a demo application using the open GitHub REST API. The application is under development. Develop will take place in 3 stages.

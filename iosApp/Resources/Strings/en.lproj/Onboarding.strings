@@ -8,6 +8,7 @@
 
 "title" = "Hello!";
 "skip" = "Skip";
+"back" = "Back";
 
 "step1_title" = "About the app";
 "step1_text" = "This is a demo application using the open GitHub REST API. The application is under development. Develop will take place in 3 stages.";

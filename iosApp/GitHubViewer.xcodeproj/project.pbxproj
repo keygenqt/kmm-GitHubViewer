@@ -41,6 +41,7 @@
 		2F37DC79271C1932005DB8C4 /* FollowerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F37DC78271C1932005DB8C4 /* FollowerNetwork.swift */; };
 		2F37DC7B271C1A5C005DB8C4 /* FollowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F37DC7A271C1A5C005DB8C4 /* FollowerViewModel.swift */; };
 		2F3DC5EA2796A34C003D6916 /* CircularProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DC5E92796A34C003D6916 /* CircularProgressIndicator.swift */; };
+		2F3DC5EC27974A42003D6916 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3DC5EB27974A42003D6916 /* LottieView.swift */; };
 		2F4157A12712E2A4005BE2D2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2F4157A02712E2A4005BE2D2 /* .swiftlint.yml */; };
 		2F4157AF2712F033005BE2D2 /* GeneratedResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4157AE2712F033005BE2D2 /* GeneratedResources.swift */; };
 		2F4157B12712F039005BE2D2 /* GeneratedFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4157B02712F038005BE2D2 /* GeneratedFonts.swift */; };
@@ -127,7 +128,6 @@
 		2FDF456A2792B706008DC714 /* step4.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45612792B706008DC714 /* step4.json */; };
 		2FDF456B2792B706008DC714 /* android_apple.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45622792B706008DC714 /* android_apple.json */; };
 		2FDF456C2792B706008DC714 /* step2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45632792B706008DC714 /* step2.json */; };
-		2FDF456E2792B730008DC714 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDF456D2792B730008DC714 /* LottieView.swift */; };
 		2FDF45712792B976008DC714 /* Onboarding.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF456F2792B976008DC714 /* Onboarding.strings */; };
 		2FDF45742792B985008DC714 /* Onboarding.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45722792B985008DC714 /* Onboarding.strings */; };
 		2FF932AF271C3475003DA3D8 /* ReposData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF932AE271C3475003DA3D8 /* ReposData.swift */; };
@@ -174,6 +174,7 @@
 		2F37DC78271C1932005DB8C4 /* FollowerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerNetwork.swift; sourceTree = "<group>"; };
 		2F37DC7A271C1A5C005DB8C4 /* FollowerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerViewModel.swift; sourceTree = "<group>"; };
 		2F3DC5E92796A34C003D6916 /* CircularProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressIndicator.swift; sourceTree = "<group>"; };
+		2F3DC5EB27974A42003D6916 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		2F4157A02712E2A4005BE2D2 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		2F4157AE2712F033005BE2D2 /* GeneratedResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedResources.swift; sourceTree = "<group>"; };
 		2F4157B02712F038005BE2D2 /* GeneratedFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedFonts.swift; sourceTree = "<group>"; };
@@ -261,7 +262,6 @@
 		2FDF45612792B706008DC714 /* step4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = step4.json; sourceTree = "<group>"; };
 		2FDF45622792B706008DC714 /* android_apple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = android_apple.json; sourceTree = "<group>"; };
 		2FDF45632792B706008DC714 /* step2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = step2.json; sourceTree = "<group>"; };
-		2FDF456D2792B730008DC714 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		2FDF45702792B976008DC714 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Onboarding.strings; sourceTree = "<group>"; };
 		2FDF45732792B985008DC714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Onboarding.strings; sourceTree = "<group>"; };
 		2FF932AE271C3475003DA3D8 /* ReposData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposData.swift; sourceTree = "<group>"; };
@@ -692,7 +692,7 @@
 		2FDF45472792B5F2008DC714 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				2FDF456D2792B730008DC714 /* LottieView.swift */,
+				2F3DC5EB27974A42003D6916 /* LottieView.swift */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -981,6 +981,7 @@
 				2F2D0BA02794268F009D4FEC /* TextBodyMedium.swift in Sources */,
 				2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */,
 				2F3253AC271B1E340010BDC8 /* RepoRealm.swift in Sources */,
+				2F3DC5EC27974A42003D6916 /* LottieView.swift in Sources */,
 				2F2D0BBA2794273E009D4FEC /* TextTitleSmall.swift in Sources */,
 				2F37DC79271C1932005DB8C4 /* FollowerNetwork.swift in Sources */,
 				2F2D0BAC279426E5009D4FEC /* TextHeadlineMedium.swift in Sources */,
@@ -1009,7 +1010,6 @@
 				2F66A3C52790A51A004EB4B5 /* OnboardingScreen.swift in Sources */,
 				2F66A3CF2790A93F004EB4B5 /* OnboardingStep4.swift in Sources */,
 				2FF932B1271C3486003DA3D8 /* FollowerData.swift in Sources */,
-				2FDF456E2792B730008DC714 /* LottieView.swift in Sources */,
 				2F2D0BB427942716009D4FEC /* TextLabelSmall.swift in Sources */,
 				2F2D0BA4279426AC009D4FEC /* TextDisplayLarge.swift in Sources */,
 				2F37DC77271C1324005DB8C4 /* LanguageExt.swift in Sources */,

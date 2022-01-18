@@ -11,7 +11,9 @@ import SwiftUI
 struct OnboardingStep1: View {
     var body: some View {
         VStack {
-            LottieView(name: "step1").frame(width: 150, height: 150)
+            LottieView(
+                name: "step1"
+            ).frame(width: 150, height: 150)
 
             Spacer().frame(height: 30)
 
