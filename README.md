@@ -12,6 +12,11 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
 
+<p>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.53.42.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.52.44.gif" width="33%"/>
+</p>
+
 ### IOS
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
 
