@@ -3,22 +3,22 @@ GitHub Viewer KMM
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
-<p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.08.49.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.07.05.gif" width="33%"/>
-</p>
-
 ### Android
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.53.42.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.52.44.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.08.49.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.07.05.gif" width="33%"/>
 </p>
 
 ### IOS
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
+
+<p>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.53.42.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.52.44.gif" width="33%"/>
+</p>
 
 ### Shared module
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
