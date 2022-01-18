@@ -10,7 +10,7 @@ import SwiftUI
 struct TextTitleMedium: View {
     var text: String
     var maxLines = Int.max
-    var color = Color.black
+    var color = Color.onBackground
     var alignment: TextAlignment = .leading
 
     var body: some View {

@@ -25,7 +25,7 @@ struct OnboardingStep5: View {
                 text: L10nOnboarding.step5Text,
                 alignment: .center
             )
-        }
+        }.padding(20)
     }
 }
 

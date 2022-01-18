@@ -13,6 +13,12 @@ struct OnboardingScreen: View {
 
     @State private var tabSelection = 1
     @State private var showToast = false
+    @State var progress: Float = 1
+
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.onBackground)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.onBackground).withAlphaComponent(0.2)
+    }
 
     var body: some View {
         NavigationView {
@@ -24,20 +30,29 @@ struct OnboardingScreen: View {
                     OnboardingStep4().tag(4)
                     OnboardingStep5().tag(5)
                 }
-                .tabViewStyle(PageTabViewStyle())
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
 
-                Button {
-                    withAnimation {
-                        self.tabSelection = tabSelection >= 5 ? 1 : tabSelection + 1
+                ZStack {
+                    CircularProgressIndicator(progress: progress)
+
+                    Button {
+                        withAnimation {
+                            self.tabSelection = tabSelection >= 5 ? 1 : tabSelection + 1
+                            self.progress = 1 - Float(tabSelection - 1) / Float(5 - 1)
+                        }
+                    } label: {
+                        Image(systemName: "chevron.forward")
+                            .frame(width: 60, height: 60)
+                            .foregroundColor(Color.onPrimary)
+                            .background(Color.primary)
+                            .clipShape(Circle())
                     }
-                } label: {
-                    Text("Next")
                 }
             }
             .toast(isPresenting: $showToast) {
-                AlertToast(type: .regular, title: "Message Sent!")
+                AlertToast(displayMode: .banner(.slide), type: .regular, title: "Message Sent!")
             }
-            .padding(20)
+            .padding(.bottom, 20)
             .navigationTitle(L10nOnboarding.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -47,6 +62,7 @@ struct OnboardingScreen: View {
                     TextLabelLarge(text: L10nOnboarding.skip)
                 }
             }
+            .background(Color.background)
         }
     }
 }

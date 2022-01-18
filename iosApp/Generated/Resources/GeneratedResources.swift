@@ -30,7 +30,31 @@ internal enum Resources {
     internal static let user = ImageAsset(name: "user")
   }
   internal enum Colors {
-    internal static let title = ColorAsset(name: "title")
+    internal static let background = ColorAsset(name: "background")
+    internal static let error = ColorAsset(name: "error")
+    internal static let errorContainer = ColorAsset(name: "errorContainer")
+    internal static let inverseOnSurface = ColorAsset(name: "inverseOnSurface")
+    internal static let inverseSurface = ColorAsset(name: "inverseSurface")
+    internal static let onBackground = ColorAsset(name: "onBackground")
+    internal static let onError = ColorAsset(name: "onError")
+    internal static let onErrorContainer = ColorAsset(name: "onErrorContainer")
+    internal static let onPrimary = ColorAsset(name: "onPrimary")
+    internal static let onPrimaryContainer = ColorAsset(name: "onPrimaryContainer")
+    internal static let onSecondary = ColorAsset(name: "onSecondary")
+    internal static let onSecondaryContainer = ColorAsset(name: "onSecondaryContainer")
+    internal static let onSurface = ColorAsset(name: "onSurface")
+    internal static let onSurfaceVariant = ColorAsset(name: "onSurfaceVariant")
+    internal static let onTertiary = ColorAsset(name: "onTertiary")
+    internal static let onTertiaryContainer = ColorAsset(name: "onTertiaryContainer")
+    internal static let outline = ColorAsset(name: "outline")
+    internal static let primary = ColorAsset(name: "primary")
+    internal static let primaryContainer = ColorAsset(name: "primaryContainer")
+    internal static let secondary = ColorAsset(name: "secondary")
+    internal static let secondaryContainer = ColorAsset(name: "secondaryContainer")
+    internal static let surface = ColorAsset(name: "surface")
+    internal static let surfaceVariant = ColorAsset(name: "surfaceVariant")
+    internal static let tertiary = ColorAsset(name: "tertiary")
+    internal static let tertiaryContainer = ColorAsset(name: "tertiaryContainer")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
