@@ -35,6 +35,7 @@ struct OnboardingScreen: View {
                     Button {
                         withAnimation {
                             if self.tabSelection >= 5 {
+                                viewModel.disableOnboarding()
                                 print("TEST")
                             } else {
                                 self.tabSelection += 1
@@ -68,6 +69,7 @@ struct OnboardingScreen: View {
                 }) : nil)
             .toolbar {
                 Button {
+                    viewModel.disableOnboarding()
                     print("TEST")
                 } label: {
                     TextLabelLarge(text: L10nOnboarding.skip)

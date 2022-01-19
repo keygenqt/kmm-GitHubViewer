@@ -15,8 +15,11 @@ class ReposViewModel: ObservableObject, Identifiable {
 
     var serviceNetwork = ReposNetwork()
     var serviceData = ReposData()
+    var preferences = BasePreferences()
 
     init() {
+        preferences.clearCache()
+
         let list = serviceData.getList()
         if list.isEmpty {
             Task {
