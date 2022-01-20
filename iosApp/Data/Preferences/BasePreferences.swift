@@ -11,7 +11,6 @@ class BasePreferences: AppPreferences, AppPreferences2 {
     var test = 1
 
     func clearCache() {
-        
         print("TEST")
     }
 }
