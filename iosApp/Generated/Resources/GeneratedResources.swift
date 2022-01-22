@@ -27,7 +27,7 @@ internal enum Resources {
     internal static let arrowForward = ImageAsset(name: "arrow_forward")
     internal static let phone = ImageAsset(name: "phone")
     internal static let bgWelcome = ImageAsset(name: "bg_welcome")
-    internal static let launcher = ImageAsset(name: "launcher")
+    internal static let splash = ImageAsset(name: "splash")
     internal static let user = ImageAsset(name: "user")
   }
   internal enum Colors {
