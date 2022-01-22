@@ -82,13 +82,13 @@ struct NavGraph: View {
 //    }
 // }
 //
-//// struct NavigationView1: View {
-////    @StateObject var router = AppRouting1()
-////
-////    var body: some View {
-////        ContentView().environmentObject(router)
-////    }
-//// }
+// struct NavigationView1: View {
+//    @StateObject var router = AppRouting1()
+//
+//    var body: some View {
+//        ContentView().environmentObject(router)
+//    }
+// }
 //
 // struct ContentView: View {
 //    @EnvironmentObject var router: AppRouting1
@@ -166,13 +166,13 @@ struct NavGraph: View {
 //    }
 // }
 //
-//// struct NavigationView2: View {
-////    @StateObject var router = AppRouting2()
-////
-////    var body: some View {
-////        ContentView().environmentObject(router)
-////    }
-//// }
+// struct NavigationView2: View {
+//    @StateObject var router = AppRouting2()
+//
+//    var body: some View {
+//        ContentView().environmentObject(router)
+//    }
+// }
 //
 // struct ContentView10: View {
 //    @EnvironmentObject var router: AppRouting2

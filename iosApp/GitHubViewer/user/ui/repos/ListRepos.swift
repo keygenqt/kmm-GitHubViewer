@@ -20,7 +20,6 @@ struct ListRepos: View {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .orange))
             }
-            .navigationTitle("Repos")
         } else {
             List(viewModel.models) { model in
                 NavigationLink(destination: ViewRepo(model: model)) {
@@ -35,7 +34,6 @@ struct ListRepos: View {
             .refreshable {
                 await viewModel.refresh()
             }
-            .navigationTitle("Repos")
         }
     }
 }

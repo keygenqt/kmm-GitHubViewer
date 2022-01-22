@@ -17,7 +17,6 @@ struct ListFollower: View {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .orange))
             }
-            .navigationTitle("Followers")
         } else {
             List(viewModel.models) { model in
                 NavigationLink(destination: Button("Visit to GitHub \(model.login!)") { openURL(URL(string: model.url!)!) }) {

@@ -14,5 +14,5 @@ enum Graph {
 }
 
 class GraphObservable: ObservableObject {
-    @Published var route: Graph = UserDefaults.standard.bool(forKey: "currentLevel") ? .guest : .onboarding
+    @Published var route: Graph = UserDefaults.standard.bool(forKey: "currentLevel") ? .onboarding : .onboarding
 }

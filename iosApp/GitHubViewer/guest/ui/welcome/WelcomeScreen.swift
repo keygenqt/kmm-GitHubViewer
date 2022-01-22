@@ -22,8 +22,9 @@ struct WelcomeScreen: View {
                 Text("To signIn")
             }
             .isDetailLink(false)
-            .navigationBarTitle("Welcome")
         }
+        .navigationBarTitle("Welcome")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

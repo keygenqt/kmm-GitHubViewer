@@ -13,10 +13,9 @@ struct ViewRepo: View {
     @State var heightKFImage = 30.0
 
     var titleName: AttributedString {
-        var attributedString = AttributedString("Name: \(model.name ?? "nil")")
         // attributedString.foregroundColor = .textTitle
         // attributedString.font = .navigationBarTitle
-        return attributedString
+        return AttributedString("Name: \(model.name ?? "nil")")
     }
 
     var body: some View {
@@ -77,6 +76,8 @@ struct ViewRepo: View {
             .padding(.bottom)
             .navigationBarTitle("", displayMode: .inline)
         }
+        .navigationBarTitle("Repo")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

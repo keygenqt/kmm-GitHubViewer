@@ -8,25 +8,34 @@
 import SwiftUI
 
 struct UserTabs: View {
-    @State var selectedView = 1
-    @State private var showingAlert = false
+    @State private var selection = 0
 
     var body: some View {
-        TabView {
-            ListRepos()
-                .tabItem {
-                    Image(systemName: "list.bullet.circle")
-                        .font(.largeTitle)
-                }
-                .tag(1)
+        TabView(selection: $selection) {
+            NavigationView {
+                ListRepos()
+                    .navigationBarTitle(Text("Repos"))
+                    .navigationBarTitleDisplayMode(.large)
+            }
+            .tabItem {
+                Image(systemName: "list.bullet.circle")
+                    .font(.largeTitle)
+            }
+            .tag(0)
 
-            ListFollower()
-                .tabItem {
-                    Image(systemName: "person.circle")
-                        .font(.largeTitle)
-                }
-                .tag(2)
-        }.accentColor(.orange)
+            NavigationView {
+                ListFollower()
+                    .navigationBarTitle(Text("Followers"))
+                    .navigationBarTitleDisplayMode(.large)
+            }
+            .tabItem {
+                Image(systemName: "person.circle")
+                    .font(.largeTitle)
+            }
+            .tag(1)
+        }
+        .accentColor(.orange)
+        .navigationBarHidden(true)
     }
 }
 
