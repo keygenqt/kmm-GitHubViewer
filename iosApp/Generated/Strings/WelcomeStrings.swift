@@ -14,8 +14,7 @@ internal enum L10nWelcome {
   internal static let btnSignIn = L10nWelcome.tr("Welcome", "btn_sign_in")
   /// The app is written using the latest stack on ios and android. Keywords: KMM, MVVM, Jetpack Compose, SwiftUI
   internal static let subtitle = L10nWelcome.tr("Welcome", "subtitle")
-  /// Welcome to
-  /// GitHub Viewer!
+  /// Welcome!
   internal static let title = L10nWelcome.tr("Welcome", "title")
   /// Version: %s
   internal static func version(_ p1: UnsafePointer<CChar>) -> String {
