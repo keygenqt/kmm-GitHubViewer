@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-struct FormButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .foregroundColor(.white)
-            .background(configuration.isPressed ? Color.gray : Color.black)
-            .clipShape(Capsule())
-            .scaleEffect(configuration.isPressed ? 0.99 : 1)
-            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-    }
-}
-
 struct SignInScreen: View {
     // model
     @ObservedObject var viewModel = SignInViewModel()
@@ -26,14 +14,14 @@ struct SignInScreen: View {
     @EnvironmentObject var graph: GraphObservable
     // router
     @EnvironmentObject var router: RouterGuest
-    // page states
+    // page values
     @State private var username: String = ""
 
     var body: some View {
         Form {
             Section {
-                TextField(text: $username, prompt: Text("Nickname")) {
-                    Text("Nickname")
+                TextField(text: $username, prompt: Text(L10nSignIn.formNickname)) {
+                    Text(L10nSignIn.formNickname)
                 }
                 .keyboardType(.asciiCapable)
             }
@@ -44,19 +32,19 @@ struct SignInScreen: View {
                 }, label: {
                     HStack {
                         Spacer()
-                        Text("Save")
+                        Text(L10nSignIn.formButtonSubmit)
                             .font(.headline)
                             .foregroundColor(.white)
                         Spacer()
                     }
                 })
-                .buttonStyle(FormButton())
+                .buttonStyle(BottomPrimaryStyle())
                 .listRowInsets(.init())
                 .listRowBackground(Color.clear)
             }
             .listRowBackground(Color.clear)
         }
-        .navigationBarTitle("SignIn")
+        .navigationBarTitle(L10nSignIn.title)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-struct FormButton2: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .foregroundColor(Color.onPrimary)
-            .background(configuration.isPressed ? Color.outline : Color.primary)
-            .clipShape(Capsule())
-            .scaleEffect(configuration.isPressed ? 0.99 : 1)
-            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-    }
-}
-
 struct WelcomeScreen: View {
     // model
     @ObservedObject var viewModel = WelcomeViewModel()
@@ -48,9 +36,18 @@ struct WelcomeScreen: View {
 
                 Spacer()
 
-                Button(action: {
-                    router.route = .signIn
-                }, label: {
+                VStack {
+                    LottieView(
+                        name: "welcome"
+                    ).frame(width: 320, height: 320)
+                }.padding(.bottom, 70)
+
+                Spacer()
+
+                NavigationLink(
+                    destination: SignInScreen(),
+                    isActive: router.isActive(for: .welcome)
+                ) {
                     HStack {
                         Spacer()
                         Text(L10nWelcome.btnSignIn)
@@ -58,10 +55,9 @@ struct WelcomeScreen: View {
                             .foregroundColor(.white)
                         Spacer()
                     }
-                })
-                .buttonStyle(FormButton2())
-                .listRowInsets(.init())
-                .listRowBackground(Color.clear)
+                }
+                .isDetailLink(false)
+                .buttonStyle(BottomPrimaryStyle())
 
                 HStack {
                     Spacer()

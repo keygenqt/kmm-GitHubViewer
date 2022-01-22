@@ -28,7 +28,7 @@ import com.keygenqt.viewer.android.R
 fun WelcomeAnimation(
     modifier: Modifier = Modifier,
 ) {
-    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.android_apple))
+    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.welcome))
     val progress by animateLottieCompositionAsState(
         composition = composition,
         iterations = LottieConstants.IterateForever

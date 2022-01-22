@@ -6,7 +6,7 @@
   
 */
 
-"title" = "Welcome!";
+"title" = "Welcome";
 "subtitle" = "The app is written using the latest stack on ios and android. Keywords: KMM, MVVM, Jetpack Compose, SwiftUI";
 "version" = "Version: %s";
 "btn_sign_in" = "Get started";

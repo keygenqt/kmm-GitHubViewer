@@ -94,21 +94,11 @@ fun WelcomeBody(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Card(
-                        elevation = 10.dp,
-                        shape = RoundedCornerShape(0.dp),
+                    WelcomeAnimation(
                         modifier = Modifier
-                            .background(Color.White)
-                            .height(130.dp)
-                            .width(130.dp)
-                            .fillMaxWidth()
-                    ) {
-                        WelcomeAnimation(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 20.dp)
-                        )
-                    }
+                            .size(340.dp, 340.dp)
+                            .padding(bottom = 60.dp)
+                    )
                 }
 
                 Column(

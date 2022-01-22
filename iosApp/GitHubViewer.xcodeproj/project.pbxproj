@@ -126,6 +126,8 @@
 		2FDBE2DF279BF27A0072D7BA /* RouteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2DE279BF27A0072D7BA /* RouteUser.swift */; };
 		2FDBE2EA279BF95A0072D7BA /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2E9279BF95A0072D7BA /* RepoViewModel.swift */; };
 		2FDBE2EE279BFA1E0072D7BA /* UserTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2ED279BFA1E0072D7BA /* UserTabs.swift */; };
+		2FDBE2F0279C7B9C0072D7BA /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDBE2EF279C7B9C0072D7BA /* welcome.json */; };
+		2FDBE2F3279C814F0072D7BA /* BottomPrimaryStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2F2279C814F0072D7BA /* BottomPrimaryStyle.swift */; };
 		2FDF45642792B706008DC714 /* error_500.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF455B2792B706008DC714 /* error_500.json */; };
 		2FDF45652792B706008DC714 /* step5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF455C2792B706008DC714 /* step5.json */; };
 		2FDF45662792B706008DC714 /* tumbleweed_rolling.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF455D2792B706008DC714 /* tumbleweed_rolling.json */; };
@@ -133,7 +135,6 @@
 		2FDF45682792B706008DC714 /* block_loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF455F2792B706008DC714 /* block_loader.json */; };
 		2FDF45692792B706008DC714 /* step1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45602792B706008DC714 /* step1.json */; };
 		2FDF456A2792B706008DC714 /* step4.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45612792B706008DC714 /* step4.json */; };
-		2FDF456B2792B706008DC714 /* android_apple.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45622792B706008DC714 /* android_apple.json */; };
 		2FDF456C2792B706008DC714 /* step2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45632792B706008DC714 /* step2.json */; };
 		2FDF45712792B976008DC714 /* Onboarding.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF456F2792B976008DC714 /* Onboarding.strings */; };
 		2FDF45742792B985008DC714 /* Onboarding.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45722792B985008DC714 /* Onboarding.strings */; };
@@ -267,6 +268,8 @@
 		2FDBE2DE279BF27A0072D7BA /* RouteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteUser.swift; sourceTree = "<group>"; };
 		2FDBE2E9279BF95A0072D7BA /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		2FDBE2ED279BFA1E0072D7BA /* UserTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabs.swift; sourceTree = "<group>"; };
+		2FDBE2EF279C7B9C0072D7BA /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
+		2FDBE2F2279C814F0072D7BA /* BottomPrimaryStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPrimaryStyle.swift; sourceTree = "<group>"; };
 		2FDF455B2792B706008DC714 /* error_500.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error_500.json; sourceTree = "<group>"; };
 		2FDF455C2792B706008DC714 /* step5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = step5.json; sourceTree = "<group>"; };
 		2FDF455D2792B706008DC714 /* tumbleweed_rolling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tumbleweed_rolling.json; sourceTree = "<group>"; };
@@ -274,7 +277,6 @@
 		2FDF455F2792B706008DC714 /* block_loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = block_loader.json; sourceTree = "<group>"; };
 		2FDF45602792B706008DC714 /* step1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = step1.json; sourceTree = "<group>"; };
 		2FDF45612792B706008DC714 /* step4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = step4.json; sourceTree = "<group>"; };
-		2FDF45622792B706008DC714 /* android_apple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = android_apple.json; sourceTree = "<group>"; };
 		2FDF45632792B706008DC714 /* step2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = step2.json; sourceTree = "<group>"; };
 		2FDF45702792B976008DC714 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Onboarding.strings; sourceTree = "<group>"; };
 		2FDF45732792B985008DC714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Onboarding.strings; sourceTree = "<group>"; };
@@ -598,6 +600,7 @@
 		2FAA2632270C1D5B00DE66FE = {
 			isa = PBXGroup;
 			children = (
+				2FDBE2F1279C81390072D7BA /* Styles */,
 				2FF80ACB2799339500125B49 /* Routing */,
 				2FCF3F572797EA7C00A30F9A /* Data */,
 				2FDF45472792B5F2008DC714 /* Lottie */,
@@ -787,6 +790,14 @@
 			path = tabs;
 			sourceTree = "<group>";
 		};
+		2FDBE2F1279C81390072D7BA /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				2FDBE2F2279C814F0072D7BA /* BottomPrimaryStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		2FDF45472792B5F2008DC714 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,7 +809,7 @@
 		2FDF455A2792B6D4008DC714 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				2FDF45622792B706008DC714 /* android_apple.json */,
+				2FDBE2EF279C7B9C0072D7BA /* welcome.json */,
 				2FDF455F2792B706008DC714 /* block_loader.json */,
 				2FDF455B2792B706008DC714 /* error_500.json */,
 				2FDF45602792B706008DC714 /* step1.json */,
@@ -933,6 +944,7 @@
 				2F484DA3270CCD5D002EB917 /* App.strings in Resources */,
 				2FDF456C2792B706008DC714 /* step2.json in Resources */,
 				2FD91D6D2792E3DC00037359 /* poppins_medium.ttf in Resources */,
+				2FDBE2F0279C7B9C0072D7BA /* welcome.json in Resources */,
 				2F484DA0270CCD3E002EB917 /* App.strings in Resources */,
 				2FD91D112792C32600037359 /* Settings.strings in Resources */,
 				2FD91D022792C2D200037359 /* Forms.strings in Resources */,
@@ -963,7 +975,6 @@
 				2FDF45742792B985008DC714 /* Onboarding.strings in Resources */,
 				2F123044270E321800D0269E /* Assets.xcassets in Resources */,
 				2FDF45652792B706008DC714 /* step5.json in Resources */,
-				2FDF456B2792B706008DC714 /* android_apple.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,6 +1084,7 @@
 				2FDBE2EA279BF95A0072D7BA /* RepoViewModel.swift in Sources */,
 				2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */,
 				2FD91D432792C5BB00037359 /* SettingsStrings.swift in Sources */,
+				2FDBE2F3279C814F0072D7BA /* BottomPrimaryStyle.swift in Sources */,
 				2F2D0BB827942731009D4FEC /* TextTitleMedium.swift in Sources */,
 				2FDBE2DD279BF2680072D7BA /* RouteOnboarding.swift in Sources */,
 				2FD91D482792C5BB00037359 /* RepoStrings.swift in Sources */,
