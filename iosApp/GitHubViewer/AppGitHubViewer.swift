@@ -11,12 +11,7 @@ import SwiftUI
 struct AppGitHubViewer: App {
     var body: some Scene {
         WindowGroup {
-            NavGraphGuest()
-//            if UserDefaults.standard.bool(forKey: "currentLevel") {
-//                NavGraphUser()
-//            } else {
-//                NavGraphGuest()
-//            }
+            NavGraph()
         }
     }
 }

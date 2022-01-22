@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct SignInScreen: View {
+    // model
     @ObservedObject var viewModel = SignInViewModel()
+    // graph
+    @EnvironmentObject var graph: GraphObservable
 
     var body: some View {
-        NavigationView {
-            VStack {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
-            }
-            .navigationTitle("SignInScreen")
+        VStack {
+            Button(action: {
+                self.graph.route = .user
+            }, label: {
+                Text("To user graph")
+            })
         }
     }
 }

@@ -1,13 +1,13 @@
 //
-//  NavTab.swift
+//  UserTabs.swift
 //  GitHubViewer
 //
-//  Created by Виталий Зарубин on 16.10.2021.
+//  Created by Виталий Зарубин on 22.01.2022.
 //
 
 import SwiftUI
 
-struct NavGraphUser: View {
+struct UserTabs: View {
     @State var selectedView = 1
     @State private var showingAlert = false
 
@@ -30,8 +30,8 @@ struct NavGraphUser: View {
     }
 }
 
-struct NavGraphUser_Previews: PreviewProvider {
+struct UserTabs_Previews: PreviewProvider {
     static var previews: some View {
-        NavGraphUser()
+        UserTabs()
     }
 }

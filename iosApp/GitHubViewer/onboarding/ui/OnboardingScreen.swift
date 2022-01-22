@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct OnboardingScreen<Router: Routing>: View where Router.Route == OnboardingRoute {
-    let router: Router
-    ///
+struct OnboardingScreen: View {
+    // model
     @ObservedObject var viewModel = OnboardingViewModel()
+    // graph
+    @EnvironmentObject var graph: GraphObservable
+    // page states
     @State private var tabSelection = 1
     @State var progress: Float = 1
-    @State var activeNavigation: OnboardingRoute?
 
-//    init() {
-//        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.onBackground)
-//        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.onBackground).withAlphaComponent(0.2)
-//    }
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.onBackground)
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.onBackground).withAlphaComponent(0.2)
+    }
 
     var body: some View {
         VStack {
@@ -37,8 +38,7 @@ struct OnboardingScreen<Router: Routing>: View where Router.Route == OnboardingR
                     withAnimation {
                         if self.tabSelection >= 5 {
                             viewModel.disableOnboarding()
-                            print("TEST")
-                            self.activeNavigation = .welcome
+                            graph.route = .guest
                         } else {
                             self.tabSelection += 1
                         }
@@ -72,27 +72,17 @@ struct OnboardingScreen<Router: Routing>: View where Router.Route == OnboardingR
         .toolbar {
             Button {
                 viewModel.disableOnboarding()
-                print("TEST")
-                self.activeNavigation = .welcome
+                graph.route = .guest
             } label: {
                 TextLabelLarge(text: L10nOnboarding.skip)
             }
         }
         .background(Color.background)
-
-        NavigationLink(
-            destination: router.view(for: .welcome),
-            tag: .welcome,
-            selection: $activeNavigation,
-            label: {
-                EmptyView()
-            }
-        )
     }
 }
 
-// struct OnboardingScreen_Previews: PreviewProvider {
-//    static var previews: some View {
-//        // OnboardingScreen()
-//    }
-// }
+struct OnboardingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingScreen()
+    }
+}
