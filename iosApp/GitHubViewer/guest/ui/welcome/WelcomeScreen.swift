@@ -11,6 +11,8 @@ struct WelcomeScreen: View {
     // model
     @ObservedObject var viewModel = WelcomeViewModel()
     // graph
+    @EnvironmentObject var graph: GraphObservable
+    // router
     @EnvironmentObject var router: RouterGuest
 
     var body: some View {

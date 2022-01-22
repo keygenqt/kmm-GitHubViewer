@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct ListFollower: View {
+    // model
     @ObservedObject var viewModel = FollowerViewModel()
+    // graph
+    @EnvironmentObject var graph: GraphObservable
+    // router
+    @EnvironmentObject var router: RouterUser
+    // page values
     @Environment(\.openURL) var openURL
 
     var body: some View {
@@ -19,7 +25,10 @@ struct ListFollower: View {
             }
         } else {
             List(viewModel.models) { model in
-                NavigationLink(destination: Button("Visit to GitHub \(model.login!)") { openURL(URL(string: model.url!)!) }) {
+                NavigationLink(destination: Button("Visit to GitHub \(model.login!)") {
+                    // openURL(URL(string: model.url!)!)
+                    graph.route = .guest
+                }) {
                     ListFollowerItem(model: model)
                 }
             }

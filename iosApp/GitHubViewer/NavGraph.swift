@@ -16,20 +16,24 @@ struct NavGraph: View {
     @StateObject var routerUser = RouterUser()
 
     var body: some View {
-        NavigationView {
-            switch graph.route {
-            case .onboarding:
+        switch graph.route {
+        case .onboarding:
+            NavigationView {
                 OnboardingScreen()
-            case .guest:
-                WelcomeScreen()
-            case .user:
-                UserTabs()
             }
+            .environmentObject(graph)
+            .environmentObject(routerOnboarding)
+        case .guest:
+            NavigationView {
+                WelcomeScreen()
+            }
+            .environmentObject(graph)
+            .environmentObject(routerGuest)
+        case .user:
+            UserTabs()
+                .environmentObject(graph)
+                .environmentObject(routerUser)
         }
-        .environmentObject(graph)
-        .environmentObject(routerOnboarding)
-        .environmentObject(routerGuest)
-        .environmentObject(routerUser)
     }
 }
 

@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct UserTabs: View {
+    // graph
+    @EnvironmentObject var graph: GraphObservable
+    // router
+    @EnvironmentObject var router: RouterUser
+    // page values
     @State private var selection = 0
 
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
                 ListRepos()
-                    .navigationBarTitle(Text("Repos"))
+                    .navigationBarTitle("Repos")
                     .navigationBarTitleDisplayMode(.large)
             }
             .tabItem {
@@ -25,7 +30,7 @@ struct UserTabs: View {
 
             NavigationView {
                 ListFollower()
-                    .navigationBarTitle(Text("Followers"))
+                    .navigationBarTitle("Followers")
                     .navigationBarTitleDisplayMode(.large)
             }
             .tabItem {
@@ -35,7 +40,6 @@ struct UserTabs: View {
             .tag(1)
         }
         .accentColor(.orange)
-        .navigationBarHidden(true)
     }
 }
 

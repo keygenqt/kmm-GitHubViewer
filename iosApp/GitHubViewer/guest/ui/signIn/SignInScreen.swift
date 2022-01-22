@@ -24,6 +24,8 @@ struct SignInScreen: View {
     @ObservedObject var viewModel = SignInViewModel()
     // graph
     @EnvironmentObject var graph: GraphObservable
+    // router
+    @EnvironmentObject var router: RouterGuest
     // page states
     @State private var username: String = ""
 
@@ -38,6 +40,7 @@ struct SignInScreen: View {
             Section {
                 Button(action: {
                     graph.route = .user
+                    router.route = .welcome
                 }, label: {
                     HStack {
                         Spacer()

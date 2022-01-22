@@ -76,8 +76,6 @@ struct ViewRepo: View {
             .padding(.bottom)
             .navigationBarTitle("", displayMode: .inline)
         }
-        .navigationBarTitle("Repo")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

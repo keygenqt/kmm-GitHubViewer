@@ -12,6 +12,8 @@ struct ListRepos: View {
     // model
     @ObservedObject var viewModel = ReposViewModel()
     // graph
+    @EnvironmentObject var graph: GraphObservable
+    // router
     @EnvironmentObject var router: RouterUser
 
     var body: some View {
