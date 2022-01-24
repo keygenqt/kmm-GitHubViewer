@@ -16,8 +16,8 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.53.42.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-18_at_22.52.44.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-24_at_10.07.38.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-24_at_10.08.55.gif" width="33%"/>
 </p>
 
 ### Shared module
