@@ -10,15 +10,4 @@ import SwiftUI
 /**
  * Genearte AttributedString for texts app
  */
-extension String {
-    func getAttributedString(
-        font: FontConvertible,
-        color: Color,
-        size: CGFloat
-    ) -> AttributedString {
-        var attributedString = AttributedString(self)
-        attributedString.foregroundColor = color
-        attributedString.font = font.font(size: size)
-        return attributedString
-    }
-}
+extension String {}

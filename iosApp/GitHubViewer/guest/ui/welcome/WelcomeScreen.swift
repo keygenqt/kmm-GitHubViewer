@@ -48,13 +48,7 @@ struct WelcomeScreen: View {
                     destination: SignInScreen(),
                     isActive: router.isActive(for: .welcome)
                 ) {
-                    HStack {
-                        Spacer()
-                        Text(L10nWelcome.btnSignIn)
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        Spacer()
-                    }
+                    Text(L10nWelcome.btnSignIn)
                 }
                 .isDetailLink(false)
                 .buttonStyle(BottomPrimaryStyle())

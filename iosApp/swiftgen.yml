@@ -96,9 +96,9 @@ strings:
         publicAccess: false
 
         
-fonts:
-  inputs:
-    - Resources/Fonts
-  outputs:
-    - templateName: swift5
-      output: Generated/Fonts/GeneratedFonts.swift
+#fonts:
+#  inputs:
+#    - Resources/Fonts
+#  outputs:
+#    - templateName: swift5
+#      output: Generated/Fonts/GeneratedFonts.swift

@@ -14,14 +14,12 @@ struct TextDisplayLarge: View {
     var alignment: TextAlignment = .leading
 
     var body: some View {
-        Text(text.getAttributedString(
-            font: FontFamily.Poppins.regular,
-            color: color,
-            size: 57
-        ))
-        .fontWeight(.regular)
-        .lineSpacing(-0.25)
-        .lineLimit(maxLines)
-        .multilineTextAlignment(alignment)
+        Text(text)
+            .font(Font.custom(PoppinsName(.Regular), size: 57))
+            .foregroundColor(color)
+            .fontWeight(.regular)
+            .lineSpacing(-0.25)
+            .lineLimit(maxLines)
+            .multilineTextAlignment(alignment)
     }
 }

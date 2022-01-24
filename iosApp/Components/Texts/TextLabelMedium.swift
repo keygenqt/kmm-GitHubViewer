@@ -14,14 +14,12 @@ struct TextLabelMedium: View {
     var alignment: TextAlignment = .leading
 
     var body: some View {
-        Text(text.getAttributedString(
-            font: FontFamily.Poppins.medium,
-            color: color,
-            size: 12
-        ))
-        .fontWeight(.medium)
-        .lineSpacing(0.5)
-        .lineLimit(maxLines)
-        .multilineTextAlignment(alignment)
+        Text(text)
+            .font(Font.custom(PoppinsName(.Medium), size: 12))
+            .foregroundColor(color)
+            .fontWeight(.medium)
+            .lineSpacing(0.5)
+            .lineLimit(maxLines)
+            .multilineTextAlignment(alignment)
     }
 }

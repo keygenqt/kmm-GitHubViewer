@@ -10,7 +10,10 @@ import SwiftUI
 struct BottomPrimaryStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding()
+            .padding(.vertical, 11)
+            .padding(.horizontal, 20)
+            .frame(maxWidth: .infinity)
+            .font(Font.custom(PoppinsName(.Medium), size: 20))
             .foregroundColor(Color.onPrimary)
             .background(configuration.isPressed ? Color.outline : Color.primary)
             .clipShape(Capsule())
