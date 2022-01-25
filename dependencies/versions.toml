@@ -69,6 +69,6 @@ composeFormsVersion = "0.0.20"
 # https://github.com/keygenqt/compose-modifier-ext
 composeModifierExtVersion = "0.0.13"
 # https://github.com/keygenqt/compose-routing
-composeRoutingVersion = "0.0.2"
+composeRoutingVersion = "0.0.3"
 # https://github.com/keygenqt/keygenqt-accompanist/
 keygenqtAccompanistVersion = "0.0.14"

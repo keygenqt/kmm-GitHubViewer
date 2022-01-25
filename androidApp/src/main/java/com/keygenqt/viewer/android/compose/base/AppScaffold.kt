@@ -52,6 +52,36 @@ fun AppScaffold(
     swipeRefreshAction: () -> Unit = {},
     // content
     content: @Composable () -> Unit
+) = AppScaffold(
+    backData = null,
+    navigationDispatcher = navigationDispatcher,
+    topBarTitle = topBarTitle,
+    topBarLoading = topBarLoading,
+    topBarActions = topBarActions,
+    swipeRefreshEnable = swipeRefreshEnable,
+    swipeRefreshLoading = swipeRefreshLoading,
+    swipeRefreshAction = swipeRefreshAction,
+    content = content,
+)
+
+/**
+ * Main scaffold for app
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun <T> AppScaffold(
+    backData: T? = null,
+    navigationDispatcher: NavigationDispatcher?,
+    // top bar
+    topBarTitle: String? = null,
+    topBarLoading: Boolean = false,
+    topBarActions: @Composable ((RowScope) -> Unit)? = null,
+    // swipe refresh
+    swipeRefreshEnable: Boolean = false,
+    swipeRefreshLoading: Boolean = false,
+    swipeRefreshAction: () -> Unit = {},
+    // content
+    content: @Composable () -> Unit
 ) {
 
     // currentDestination
@@ -73,6 +103,7 @@ fun AppScaffold(
         topBar = topBarTitle?.let {
             {
                 AppTopBarSmall(
+                    backData = backData,
                     title = topBarTitle,
                     navigationDispatcher = navigationDispatcher,
                     scrollBehavior = enterAlwaysScrollBehavior(),

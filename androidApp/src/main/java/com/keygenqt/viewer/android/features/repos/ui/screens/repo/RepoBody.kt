@@ -62,6 +62,7 @@ fun RepoBody(
     )
 
     AppScaffold(
+        backData = model as? RepoModel,
         navigationDispatcher = navDispatcher,
         topBarLoading = model == false,
         topBarTitle = (model as? RepoModel)?.name ?: "",

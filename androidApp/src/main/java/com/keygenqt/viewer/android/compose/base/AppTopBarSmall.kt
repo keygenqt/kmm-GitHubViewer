@@ -33,10 +33,11 @@ import kotlinx.coroutines.launch
  * App top bar small material 3
  */
 @Composable
-fun AppTopBarSmall(
+fun <T> AppTopBarSmall(
     title: String,
     scrollBehavior: TopAppBarScrollBehavior,
     navigationDispatcher: NavigationDispatcher?,
+    backData: T? = null,
     loading: Boolean = false,
     actions: @Composable ((RowScope) -> Unit)? = null,
 ) {
@@ -71,7 +72,11 @@ fun AppTopBarSmall(
             {
                 IconButton(onClick = {
                     scope.launch {
-                        navigationDispatcher?.onBackPressed()
+                        backData?.let {
+                            navigationDispatcher?.onBackPressed(it)
+                        } ?: run {
+                            navigationDispatcher?.onBackPressed()
+                        }
                     }
                 }) {
                     Icon(

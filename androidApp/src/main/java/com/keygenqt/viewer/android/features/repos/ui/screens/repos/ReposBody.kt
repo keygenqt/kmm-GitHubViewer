@@ -18,6 +18,8 @@ package com.keygenqt.viewer.android.features.repos.ui.screens.repos
 import android.content.res.Configuration
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
@@ -39,6 +41,7 @@ import com.keygenqt.viewer.android.theme.AppTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Body for [ReposScreen]
@@ -53,6 +56,14 @@ fun ReposBody(
     val scope = rememberCoroutineScope()
     val listState = rememberLazyListState()
     val refreshState = rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)
+
+    // demo data routing
+    navDispatcher?.let {
+        // get flow
+        val dataBack by it.onBackPressedData<RepoModel?>(null).collectAsState()
+        // Data after back press
+        Timber.e(dataBack.toString())
+    }
 
     AppScaffold(
         navigationDispatcher = navDispatcher,
