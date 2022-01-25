@@ -17,7 +17,6 @@ struct TextDisplayMedium: View {
         Text(text)
             .font(Font.custom(PoppinsName(.Regular), size: 45))
             .foregroundColor(color)
-            .fontWeight(.regular)
             .lineSpacing(0)
             .lineLimit(maxLines)
             .multilineTextAlignment(alignment)

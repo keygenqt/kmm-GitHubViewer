@@ -511,13 +511,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		2F484D98270CCC0B002EB917 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		2F484D9A270CCCCB002EB917 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,7 +588,6 @@
 				2FDBE2F1279C81390072D7BA /* Styles */,
 				2FF80ACB2799339500125B49 /* Routing */,
 				2FCF3F572797EA7C00A30F9A /* Data */,
-				2FDF45472792B5F2008DC714 /* Lottie */,
 				2FF932B2271C9E09003DA3D8 /* Components */,
 				2F37DC66271BF603005DB8C4 /* Services */,
 				2F2D11612716171200572FDE /* Utility */,
@@ -603,7 +595,6 @@
 				2F4157A22712EBF2005BE2D2 /* Generated */,
 				2F4784D827118226006FE3A5 /* Model */,
 				2F4784D127117E5B006FE3A5 /* BuildScripts */,
-				2F484D98270CCC0B002EB917 /* Library */,
 				2F484D97270CCBF8002EB917 /* Resources */,
 				2FAA263D270C1D5B00DE66FE /* GitHubViewer */,
 				2FAA263C270C1D5B00DE66FE /* Products */,
@@ -828,6 +819,7 @@
 		2FF932B2271C9E09003DA3D8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2FDF45472792B5F2008DC714 /* Lottie */,
 				2F3DC5E82796A339003D6916 /* Base */,
 				2FD91D4A2792E33D00037359 /* Texts */,
 				2FF932B3271C9E1E003DA3D8 /* ErrorView.swift */,

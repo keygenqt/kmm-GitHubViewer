@@ -15,9 +15,8 @@ struct TextTitleMedium: View {
 
     var body: some View {
         Text(text)
-            .font(Font.custom(PoppinsName(.Medium), size: 18))
+            .font(Font.custom(PoppinsName(.Regular), size: 18))
             .foregroundColor(color)
-            .fontWeight(.medium)
             .lineSpacing(0.1)
             .lineLimit(maxLines)
             .multilineTextAlignment(alignment)

@@ -17,7 +17,6 @@ struct TextHeadlineLarge: View {
         Text(text)
             .font(Font.custom(PoppinsName(.Regular), size: 32))
             .foregroundColor(color)
-            .fontWeight(.regular)
             .lineSpacing(0)
             .lineLimit(maxLines)
             .multilineTextAlignment(alignment)

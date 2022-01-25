@@ -31,19 +31,6 @@ struct SignInScreen: View {
                     .buttonStyle(BottomPrimaryStyle())
                     .listRowInsets(.init())
                     .listRowBackground(Color.clear)
-
-//                Button(action: {
-//                    graph.route = .user
-//                    router.route = .welcome
-//                }, label: {
-//                    HStack {
-//                        Spacer()
-//                        Text(L10nSignIn.formButtonSubmit)
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                        Spacer()
-//                    }
-//                })
             }
             .listRowBackground(Color.clear)
         }

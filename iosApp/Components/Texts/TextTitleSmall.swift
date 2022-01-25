@@ -15,9 +15,8 @@ struct TextTitleSmall: View {
 
     var body: some View {
         Text(text)
-            .font(Font.custom(PoppinsName(.Medium), size: 14))
+            .font(Font.custom(PoppinsName(.Regular), size: 14))
             .foregroundColor(color)
-            .fontWeight(.medium)
             .lineSpacing(0.1)
             .lineLimit(maxLines)
             .multilineTextAlignment(alignment)

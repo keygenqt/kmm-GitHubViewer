@@ -94,11 +94,3 @@ strings:
       params:
         enumName: L10nForms
         publicAccess: false
-
-        
-#fonts:
-#  inputs:
-#    - Resources/Fonts
-#  outputs:
-#    - templateName: swift5
-#      output: Generated/Fonts/GeneratedFonts.swift
