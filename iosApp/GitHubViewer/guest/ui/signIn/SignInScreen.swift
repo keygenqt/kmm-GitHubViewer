@@ -55,21 +55,22 @@ struct AppTextField: View {
 struct AppForm<Content: View>: View {
     var content: () -> Content
 
-    @State private var isShowError: Bool = false
+    @Binding var error: String?
 
-    init(@ViewBuilder content: @escaping () -> Content) {
+    init(error: Binding<String?>, @ViewBuilder content: @escaping () -> Content) {
         self.content = content
+        _error = error
     }
 
     var body: some View {
         Form(content: content)
             .navigationBarTitle(L10nSignIn.title)
             .navigationBarTitleDisplayMode(.inline)
-            .toast(isPresenting: $isShowError) {
+            .toast(isPresenting: Binding(get: { self.error != nil }, set: { self.error = $0 ? "" : nil })) {
                 AlertToast(
                     displayMode: .banner(.pop),
                     type: .systemImage("exclamationmark.circle.fill", .error),
-                    title: "Error validation",
+                    title: error ?? "Error validation",
                     style: .style(
                         backgroundColor: .errorContainer,
                         titleColor: .onErrorContainer,
@@ -97,35 +98,10 @@ struct SignInScreen: View {
     @Environment(\.openURL) var openURL
 
     var body: some View {
-        AppForm {
+        AppForm(error: $usernameError) {
             Section {
                 AppTextField(clickError: { error in
                     usernameError = error
-                    if error != nil {
-                        // isShowError = true
-                    }
-                })
-
-                AppTextField(clickError: { error in
-                    usernameError = error
-                    if error != nil {
-                        // isShowError = true
-                    }
-                })
-
-                AppTextField(clickError: { error in
-                    usernameError = error
-                    if error != nil {
-                        // isShowError = true
-                    }
-                })
-            }
-            Section {
-                AppTextField(clickError: { error in
-                    usernameError = error
-                    if error != nil {
-                        // isShowError = true
-                    }
                 })
             }
             Section {
