@@ -52,6 +52,36 @@ struct AppTextField: View {
     }
 }
 
+struct AppForm<Content: View>: View {
+    var content: () -> Content
+
+    @State private var isShowError: Bool = false
+
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    var body: some View {
+        Form(content: content)
+            .navigationBarTitle(L10nSignIn.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toast(isPresenting: $isShowError) {
+                AlertToast(
+                    displayMode: .banner(.pop),
+                    type: .systemImage("exclamationmark.circle.fill", .error),
+                    title: "Error validation",
+                    style: .style(
+                        backgroundColor: .errorContainer,
+                        titleColor: .onErrorContainer,
+                        subTitleColor: .onErrorContainer,
+                        titleFont: Font.custom(PoppinsName(.Medium), size: 16),
+                        subTitleFont: Font.custom(PoppinsName(.Medium), size: 12)
+                    )
+                )
+            }
+    }
+}
+
 struct SignInScreen: View {
     // model
     @ObservedObject var viewModel = SignInViewModel()
@@ -62,17 +92,39 @@ struct SignInScreen: View {
     // form states
     @State private var username: String = ""
     @State private var usernameError: String?
-    @State private var isShowError: Bool = false
+
     // page values
     @Environment(\.openURL) var openURL
 
     var body: some View {
-        Form {
+        AppForm {
             Section {
                 AppTextField(clickError: { error in
                     usernameError = error
                     if error != nil {
-                        isShowError = true
+                        // isShowError = true
+                    }
+                })
+
+                AppTextField(clickError: { error in
+                    usernameError = error
+                    if error != nil {
+                        // isShowError = true
+                    }
+                })
+
+                AppTextField(clickError: { error in
+                    usernameError = error
+                    if error != nil {
+                        // isShowError = true
+                    }
+                })
+            }
+            Section {
+                AppTextField(clickError: { error in
+                    usernameError = error
+                    if error != nil {
+                        // isShowError = true
                     }
                 })
             }
@@ -85,22 +137,6 @@ struct SignInScreen: View {
                 .listRowBackground(Color.clear)
             }
             .listRowBackground(Color.clear)
-        }
-        .navigationBarTitle(L10nSignIn.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .toast(isPresenting: $isShowError) {
-            AlertToast(
-                displayMode: .banner(.pop),
-                type: .systemImage("exclamationmark.circle.fill", .error),
-                title: usernameError ?? "Error validation",
-                style: .style(
-                    backgroundColor: .errorContainer,
-                    titleColor: .onErrorContainer,
-                    subTitleColor: .onErrorContainer,
-                    titleFont: Font.custom(PoppinsName(.Medium), size: 16),
-                    subTitleFont: Font.custom(PoppinsName(.Medium), size: 12)
-                )
-            )
         }
     }
 }
