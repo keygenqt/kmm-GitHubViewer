@@ -120,6 +120,9 @@
 		2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D3F2792C5BB00037359 /* ReposStrings.swift */; };
 		2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D6F2792E52000037359 /* TextBodyLarge.swift */; };
 		2FD91D722792EB0B00037359 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D712792EB0B00037359 /* StringExt.swift */; };
+		2FDA857227AC5CA80004F829 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857127AC5CA80004F829 /* Validate.swift */; };
+		2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857527AC707E0004F829 /* AppTextField.swift */; };
+		2FDA857827AC709B0004F829 /* AppForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857727AC709B0004F829 /* AppForm.swift */; };
 		2FDBE2D8279BF0170072D7BA /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2D7279BF0170072D7BA /* Graph.swift */; };
 		2FDBE2DA279BF1C40072D7BA /* RouteGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2D9279BF1C40072D7BA /* RouteGuest.swift */; };
 		2FDBE2DD279BF2680072D7BA /* RouteOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2DC279BF2680072D7BA /* RouteOnboarding.swift */; };
@@ -262,6 +265,9 @@
 		2FD91D3F2792C5BB00037359 /* ReposStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposStrings.swift; sourceTree = "<group>"; };
 		2FD91D6F2792E52000037359 /* TextBodyLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBodyLarge.swift; sourceTree = "<group>"; };
 		2FD91D712792EB0B00037359 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		2FDA857127AC5CA80004F829 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		2FDA857527AC707E0004F829 /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
+		2FDA857727AC709B0004F829 /* AppForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppForm.swift; sourceTree = "<group>"; };
 		2FDBE2D7279BF0170072D7BA /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		2FDBE2D9279BF1C40072D7BA /* RouteGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteGuest.swift; sourceTree = "<group>"; };
 		2FDBE2DC279BF2680072D7BA /* RouteOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOnboarding.swift; sourceTree = "<group>"; };
@@ -585,6 +591,7 @@
 		2FAA2632270C1D5B00DE66FE = {
 			isa = PBXGroup;
 			children = (
+				2FDA857027AC5C000004F829 /* Form */,
 				2FDBE2F1279C81390072D7BA /* Styles */,
 				2FF80ACB2799339500125B49 /* Routing */,
 				2FCF3F572797EA7C00A30F9A /* Data */,
@@ -668,6 +675,16 @@
 				2F2D0BB92794273E009D4FEC /* TextTitleSmall.swift */,
 			);
 			path = Texts;
+			sourceTree = "<group>";
+		};
+		2FDA857027AC5C000004F829 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				2FDA857127AC5CA80004F829 /* Validate.swift */,
+				2FDA857527AC707E0004F829 /* AppTextField.swift */,
+				2FDA857727AC709B0004F829 /* AppForm.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		2FDBE2E0279BF8650072D7BA /* onboarding */ = {
@@ -1082,6 +1099,7 @@
 				2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */,
 				2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */,
 				2F3253A0271ADB380010BDC8 /* ListRepos.swift in Sources */,
+				2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */,
 				2F4784E027118374006FE3A5 /* FollowerModel.swift in Sources */,
 				2F2D0BA8279426CA009D4FEC /* TextDisplaySmall.swift in Sources */,
 				2F3253A2271ADBFF0010BDC8 /* ListReposItem.swift in Sources */,
@@ -1101,11 +1119,13 @@
 				2FD91D452792C5BB00037359 /* SignInStrings.swift in Sources */,
 				2FCF3F5D2797EAF800A30F9A /* AppPreferences.swift in Sources */,
 				2F3DC5EA2796A34C003D6916 /* CircularProgressIndicator.swift in Sources */,
+				2FDA857827AC709B0004F829 /* AppForm.swift in Sources */,
 				2F37DC6F271C028F005DB8C4 /* ReposViewModel.swift in Sources */,
 				2F66A3C32790A501004EB4B5 /* SignInScreen.swift in Sources */,
 				2F66A3BD2790A49E004EB4B5 /* SignInViewModel.swift in Sources */,
 				2FD91CF92792C0A100037359 /* AppStrings.swift in Sources */,
 				2F37DC71271C02FA005DB8C4 /* ReposNetwork.swift in Sources */,
+				2FDA857227AC5CA80004F829 /* Validate.swift in Sources */,
 				2FD91CF62792BF9C00037359 /* OnboardingStrings.swift in Sources */,
 				2F4157AF2712F033005BE2D2 /* GeneratedResources.swift in Sources */,
 				2F66A3BB2790A489004EB4B5 /* OnboardingViewModel.swift in Sources */,

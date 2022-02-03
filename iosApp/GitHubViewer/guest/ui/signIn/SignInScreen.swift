@@ -5,83 +5,7 @@
 //  Created by Виталий Зарубин on 13.01.2022.
 //
 
-import AlertToast
 import SwiftUI
-
-public extension View {
-    @inlinable func validate(of: String, error: @escaping (_ error: String?) -> Void) -> some View {
-        onChange(of: of, perform: { value in
-            error(nil)
-            if value.contains("0") {
-                error("Nickname contains numbers")
-            } else if value.count > 10 {
-                error("Nickname too long")
-            }
-        })
-    }
-}
-
-struct AppTextField: View {
-    var clickError: (_ error: String?) -> Void
-
-    @State private var username: String = ""
-    @State private var usernameError: String?
-
-    var body: some View {
-        ZStack {
-            TextField(text: $username, prompt: Text(L10nSignIn.formNickname)) {
-                Text(L10nSignIn.formNickname)
-            }
-            .validate(of: username, error: { value in
-                usernameError = value
-            })
-            .keyboardType(.asciiCapable)
-            .padding(.trailing, usernameError != nil ? 30 : 0)
-
-            HStack {
-                Spacer()
-                if usernameError != nil {
-                    Image(systemName: "exclamationmark.circle.fill")
-                        .foregroundColor(.error)
-                        .onTapGesture(count: 1) {
-                            clickError(usernameError)
-                        }
-                }
-            }
-        }
-    }
-}
-
-struct AppForm<Content: View>: View {
-    var content: () -> Content
-
-    @Binding var error: String?
-
-    init(error: Binding<String?>, @ViewBuilder content: @escaping () -> Content) {
-        self.content = content
-        _error = error
-    }
-
-    var body: some View {
-        Form(content: content)
-            .navigationBarTitle(L10nSignIn.title)
-            .navigationBarTitleDisplayMode(.inline)
-            .toast(isPresenting: Binding(get: { self.error != nil }, set: { self.error = $0 ? "" : nil })) {
-                AlertToast(
-                    displayMode: .banner(.pop),
-                    type: .systemImage("exclamationmark.circle.fill", .error),
-                    title: error ?? "Error validation",
-                    style: .style(
-                        backgroundColor: .errorContainer,
-                        titleColor: .onErrorContainer,
-                        subTitleColor: .onErrorContainer,
-                        titleFont: Font.custom(PoppinsName(.Medium), size: 16),
-                        subTitleFont: Font.custom(PoppinsName(.Medium), size: 12)
-                    )
-                )
-            }
-    }
-}
 
 struct SignInScreen: View {
     // model
@@ -91,18 +15,23 @@ struct SignInScreen: View {
     // router
     @EnvironmentObject var router: RouterGuest
     // form states
-    @State private var username: String = ""
-    @State private var usernameError: String?
+    @State private var error: String?
+    // form value
+    @State private var nicknameValue: String = "12"
 
     // page values
     @Environment(\.openURL) var openURL
 
     var body: some View {
-        AppForm(error: $usernameError) {
+        AppForm(error: $error) {
             Section {
-                AppTextField(clickError: { error in
-                    usernameError = error
-                })
+                AppTextField(
+                    label: L10nSignIn.formNickname,
+                    value: $nicknameValue,
+                    validates: [validateIsBlank, validateIsLong]
+                ) { error in
+                    self.error = error
+                }
             }
             Section {
                 Button(L10nSignIn.formButtonSubmit) {
