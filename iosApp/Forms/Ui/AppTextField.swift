@@ -9,24 +9,27 @@ import Foundation
 import SwiftUI
 
 struct AppTextField: View {
-    var label: String
-    @Binding var value: String
-    var validates: [(String, String) -> String?] = []
+    @Binding var field: IField
     var actionError: (_ error: String?) -> Void = { _ in }
 
     @State private var error: String?
 
     var body: some View {
         ZStack {
-            TextField(text: $value, prompt: Text(label)) {
-                Text(label)
+            TextField(text: $field.value, prompt: Text(field.label)) {
+                Text(field.label)
             }
-            .onChange(of: value, perform: { text in
-                for validate in validates {
-                    error = validate(label, text)
+            .onChange(of: field.value, perform: { text in
+                for validate in field.validates {
+                    error = validate(field.label, text)
                     if error != nil {
                         break
                     }
+                }
+                if error != nil {
+                    field.isValid = false
+                } else {
+                    field.isValid = true
                 }
             })
             .keyboardType(.asciiCapable)

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BottomPrimaryStyle: ButtonStyle {
+    @Environment(\.isEnabled) var isEnabled
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(.vertical, 11)
@@ -15,7 +17,7 @@ struct BottomPrimaryStyle: ButtonStyle {
             .frame(maxWidth: .infinity)
             .font(Font.custom(PoppinsName(.Medium), size: 20))
             .foregroundColor(Color.onPrimary)
-            .background(configuration.isPressed ? Color.outline : Color.primary)
+            .background(isEnabled ? (configuration.isPressed ? Color.outline : Color.primary) : Color.gray)
             .clipShape(Capsule())
             .scaleEffect(configuration.isPressed ? 0.99 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)

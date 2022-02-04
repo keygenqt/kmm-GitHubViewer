@@ -17,7 +17,9 @@ struct SignInScreen: View {
     // form states
     @State private var error: String?
     // form value
-    @State private var nicknameValue: String = "12"
+    @State private var fields: [IField] = [
+        NicknameField(),
+    ]
 
     // page values
     @Environment(\.openURL) var openURL
@@ -25,19 +27,18 @@ struct SignInScreen: View {
     var body: some View {
         AppForm(error: $error) {
             Section {
-                AppTextField(
-                    label: L10nSignIn.formNickname,
-                    value: $nicknameValue,
-                    validates: [validateIsBlank, validateIsLong]
-                ) { error in
-                    self.error = error
+                ForEach(0 ... fields.count - 1, id: \.self) {
+                    AppTextField(field: $fields[$0]) { error in
+                        self.error = error
+                    }
                 }
             }
             Section {
                 Button(L10nSignIn.formButtonSubmit) {
-                    openURL(URL(string: "https://www.apple.com")!)
+                    openURL(URL(string: "https://github.com/\(fields[0].value)")!)
                 }
                 .buttonStyle(BottomPrimaryStyle())
+                .disabled(fields.isNotValid())
                 .listRowInsets(.init())
                 .listRowBackground(Color.clear)
             }

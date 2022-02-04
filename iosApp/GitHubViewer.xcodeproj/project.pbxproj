@@ -82,6 +82,9 @@
 		2F66A3CD2790A933004EB4B5 /* OnboardingStep3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3CC2790A933004EB4B5 /* OnboardingStep3.swift */; };
 		2F66A3CF2790A93F004EB4B5 /* OnboardingStep4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3CE2790A93F004EB4B5 /* OnboardingStep4.swift */; };
 		2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3D02790A94A004EB4B5 /* OnboardingStep5.swift */; };
+		2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBC27ADA1F7005A96B2 /* IField.swift */; };
+		2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBE27ADA232005A96B2 /* Extension.swift */; };
+		2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABC127ADA38B005A96B2 /* NicknameField.swift */; };
 		2FAA263F270C1D5B00DE66FE /* AppGitHubViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */; };
 		2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */; };
 		2FCF3F5A2797EAD400A30F9A /* BasePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F592797EAD400A30F9A /* BasePreferences.swift */; };
@@ -120,7 +123,6 @@
 		2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D3F2792C5BB00037359 /* ReposStrings.swift */; };
 		2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D6F2792E52000037359 /* TextBodyLarge.swift */; };
 		2FD91D722792EB0B00037359 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D712792EB0B00037359 /* StringExt.swift */; };
-		2FDA857227AC5CA80004F829 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857127AC5CA80004F829 /* Validate.swift */; };
 		2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857527AC707E0004F829 /* AppTextField.swift */; };
 		2FDA857827AC709B0004F829 /* AppForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857727AC709B0004F829 /* AppForm.swift */; };
 		2FDBE2D8279BF0170072D7BA /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2D7279BF0170072D7BA /* Graph.swift */; };
@@ -226,6 +228,9 @@
 		2F66A3CC2790A933004EB4B5 /* OnboardingStep3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3.swift; sourceTree = "<group>"; };
 		2F66A3CE2790A93F004EB4B5 /* OnboardingStep4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep4.swift; sourceTree = "<group>"; };
 		2F66A3D02790A94A004EB4B5 /* OnboardingStep5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep5.swift; sourceTree = "<group>"; };
+		2F68ABBC27ADA1F7005A96B2 /* IField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IField.swift; sourceTree = "<group>"; };
+		2F68ABBE27ADA232005A96B2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		2F68ABC127ADA38B005A96B2 /* NicknameField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameField.swift; sourceTree = "<group>"; };
 		2FAA263B270C1D5B00DE66FE /* GitHubViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGitHubViewer.swift; sourceTree = "<group>"; };
 		2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepo.swift; sourceTree = "<group>"; };
@@ -265,7 +270,6 @@
 		2FD91D3F2792C5BB00037359 /* ReposStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposStrings.swift; sourceTree = "<group>"; };
 		2FD91D6F2792E52000037359 /* TextBodyLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBodyLarge.swift; sourceTree = "<group>"; };
 		2FD91D712792EB0B00037359 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
-		2FDA857127AC5CA80004F829 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		2FDA857527AC707E0004F829 /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		2FDA857727AC709B0004F829 /* AppForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppForm.swift; sourceTree = "<group>"; };
 		2FDBE2D7279BF0170072D7BA /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -575,6 +579,7 @@
 		2F66A3B82790A44C004EB4B5 /* signIn */ = {
 			isa = PBXGroup;
 			children = (
+				2F68ABC027ADA379005A96B2 /* fields */,
 				2F66A3C22790A501004EB4B5 /* SignInScreen.swift */,
 			);
 			path = signIn;
@@ -588,10 +593,36 @@
 			path = welcome;
 			sourceTree = "<group>";
 		};
+		2F68ABB727ADA0FC005A96B2 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				2FDA857527AC707E0004F829 /* AppTextField.swift */,
+				2FDA857727AC709B0004F829 /* AppForm.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
+		2F68ABBB27ADA1B1005A96B2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2F68ABBC27ADA1F7005A96B2 /* IField.swift */,
+				2F68ABBE27ADA232005A96B2 /* Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		2F68ABC027ADA379005A96B2 /* fields */ = {
+			isa = PBXGroup;
+			children = (
+				2F68ABC127ADA38B005A96B2 /* NicknameField.swift */,
+			);
+			path = fields;
+			sourceTree = "<group>";
+		};
 		2FAA2632270C1D5B00DE66FE = {
 			isa = PBXGroup;
 			children = (
-				2FDA857027AC5C000004F829 /* Form */,
+				2FDA857027AC5C000004F829 /* Forms */,
 				2FDBE2F1279C81390072D7BA /* Styles */,
 				2FF80ACB2799339500125B49 /* Routing */,
 				2FCF3F572797EA7C00A30F9A /* Data */,
@@ -677,14 +708,13 @@
 			path = Texts;
 			sourceTree = "<group>";
 		};
-		2FDA857027AC5C000004F829 /* Form */ = {
+		2FDA857027AC5C000004F829 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
-				2FDA857127AC5CA80004F829 /* Validate.swift */,
-				2FDA857527AC707E0004F829 /* AppTextField.swift */,
-				2FDA857727AC709B0004F829 /* AppForm.swift */,
+				2F68ABB727ADA0FC005A96B2 /* Ui */,
+				2F68ABBB27ADA1B1005A96B2 /* Utils */,
 			);
-			path = Form;
+			path = Forms;
 			sourceTree = "<group>";
 		};
 		2FDBE2E0279BF8650072D7BA /* onboarding */ = {
@@ -1121,11 +1151,11 @@
 				2F3DC5EA2796A34C003D6916 /* CircularProgressIndicator.swift in Sources */,
 				2FDA857827AC709B0004F829 /* AppForm.swift in Sources */,
 				2F37DC6F271C028F005DB8C4 /* ReposViewModel.swift in Sources */,
+				2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */,
 				2F66A3C32790A501004EB4B5 /* SignInScreen.swift in Sources */,
 				2F66A3BD2790A49E004EB4B5 /* SignInViewModel.swift in Sources */,
 				2FD91CF92792C0A100037359 /* AppStrings.swift in Sources */,
 				2F37DC71271C02FA005DB8C4 /* ReposNetwork.swift in Sources */,
-				2FDA857227AC5CA80004F829 /* Validate.swift in Sources */,
 				2FD91CF62792BF9C00037359 /* OnboardingStrings.swift in Sources */,
 				2F4157AF2712F033005BE2D2 /* GeneratedResources.swift in Sources */,
 				2F66A3BB2790A489004EB4B5 /* OnboardingViewModel.swift in Sources */,
@@ -1153,7 +1183,9 @@
 				2F66A3C12790A4F1004EB4B5 /* WelcomeScreen.swift in Sources */,
 				2F2D0BA22794269C009D4FEC /* TextBodySmall.swift in Sources */,
 				2F66A3CD2790A933004EB4B5 /* OnboardingStep3.swift in Sources */,
+				2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */,
 				2F3253AA271B1E260010BDC8 /* FollowerRealm.swift in Sources */,
+				2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */,
 				2FDBE2DF279BF27A0072D7BA /* RouteUser.swift in Sources */,
 				2F2D0BB22794270A009D4FEC /* TextLabelMedium.swift in Sources */,
 				2FF932AF271C3475003DA3D8 /* ReposData.swift in Sources */,
