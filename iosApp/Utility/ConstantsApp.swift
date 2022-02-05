@@ -11,6 +11,9 @@ struct ConstantsApp {
     // Base URL
     static let API_URL = "https://api.github.com/"
 
+    // Dynamic Link URL
+    static let DYNAMIC_LINK_URL = "https://kmm.keygenqt.com/"
+
     // GitHub user nick
     static let GITHUB_USER = "keygenqt"
 

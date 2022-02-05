@@ -35,7 +35,7 @@ struct SignInScreen: View {
             }
             Section {
                 Button(L10nSignIn.formButtonSubmit) {
-                    openURL(URL(string: "https://github.com/\(fields[0].value)")!)
+                    openURL(AppHelper.getOauthLink(fields[0].value))
                 }
                 .buttonStyle(BottomPrimaryStyle())
                 .disabled(fields.isNotValid())

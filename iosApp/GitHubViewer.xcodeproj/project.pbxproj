@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F123040270E2E5E00D0269E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F12303F270E2E5E00D0269E /* Colors.xcassets */; };
 		2F123044270E321800D0269E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F123043270E321800D0269E /* Assets.xcassets */; };
-		2F123046270E360700D0269E /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F123045270E360700D0269E /* ColorExt.swift */; };
+		2F123046270E360700D0269E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F123045270E360700D0269E /* Color.swift */; };
 		2F12D676279F2ED600FCD261 /* poppins_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F12D664279F2ED600FCD261 /* poppins_medium.ttf */; };
 		2F12D677279F2ED600FCD261 /* poppins_thin_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F12D665279F2ED600FCD261 /* poppins_thin_italic.ttf */; };
 		2F12D678279F2ED600FCD261 /* poppins_black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F12D666279F2ED600FCD261 /* poppins_black.ttf */; };
@@ -85,6 +85,9 @@
 		2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBC27ADA1F7005A96B2 /* IField.swift */; };
 		2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBE27ADA232005A96B2 /* Extension.swift */; };
 		2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABC127ADA38B005A96B2 /* NicknameField.swift */; };
+		2F9205A927AE7CCF00D000C5 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205A827AE7CCF00D000C5 /* AppHelper.swift */; };
+		2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */; };
+		2F9205AD27AE804000D000C5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AC27AE804000D000C5 /* URL.swift */; };
 		2FAA263F270C1D5B00DE66FE /* AppGitHubViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */; };
 		2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */; };
 		2FCF3F5A2797EAD400A30F9A /* BasePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F592797EAD400A30F9A /* BasePreferences.swift */; };
@@ -122,7 +125,7 @@
 		2FD91D482792C5BB00037359 /* RepoStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D3E2792C5BA00037359 /* RepoStrings.swift */; };
 		2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D3F2792C5BB00037359 /* ReposStrings.swift */; };
 		2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D6F2792E52000037359 /* TextBodyLarge.swift */; };
-		2FD91D722792EB0B00037359 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D712792EB0B00037359 /* StringExt.swift */; };
+		2FD91D722792EB0B00037359 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D712792EB0B00037359 /* String.swift */; };
 		2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857527AC707E0004F829 /* AppTextField.swift */; };
 		2FDA857827AC709B0004F829 /* AppForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857727AC709B0004F829 /* AppForm.swift */; };
 		2FDBE2D8279BF0170072D7BA /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2D7279BF0170072D7BA /* Graph.swift */; };
@@ -155,7 +158,7 @@
 		0B60559C93BCB8414C2B29BE /* Pods-GitHubViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubViewer.debug.xcconfig"; path = "Target Support Files/Pods-GitHubViewer/Pods-GitHubViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		2F12303F270E2E5E00D0269E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2F123043270E321800D0269E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2F123045270E360700D0269E /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		2F123045270E360700D0269E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2F12D664279F2ED600FCD261 /* poppins_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = poppins_medium.ttf; sourceTree = "<group>"; };
 		2F12D665279F2ED600FCD261 /* poppins_thin_italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = poppins_thin_italic.ttf; sourceTree = "<group>"; };
 		2F12D666279F2ED600FCD261 /* poppins_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = poppins_black.ttf; sourceTree = "<group>"; };
@@ -231,6 +234,9 @@
 		2F68ABBC27ADA1F7005A96B2 /* IField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IField.swift; sourceTree = "<group>"; };
 		2F68ABBE27ADA232005A96B2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2F68ABC127ADA38B005A96B2 /* NicknameField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameField.swift; sourceTree = "<group>"; };
+		2F9205A827AE7CCF00D000C5 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
+		2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFuncs.swift; sourceTree = "<group>"; };
+		2F9205AC27AE804000D000C5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		2FAA263B270C1D5B00DE66FE /* GitHubViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGitHubViewer.swift; sourceTree = "<group>"; };
 		2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepo.swift; sourceTree = "<group>"; };
@@ -269,7 +275,7 @@
 		2FD91D3E2792C5BA00037359 /* RepoStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoStrings.swift; sourceTree = "<group>"; };
 		2FD91D3F2792C5BB00037359 /* ReposStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposStrings.swift; sourceTree = "<group>"; };
 		2FD91D6F2792E52000037359 /* TextBodyLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBodyLarge.swift; sourceTree = "<group>"; };
-		2FD91D712792EB0B00037359 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		2FD91D712792EB0B00037359 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2FDA857527AC707E0004F829 /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		2FDA857727AC709B0004F829 /* AppForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppForm.swift; sourceTree = "<group>"; };
 		2FDBE2D7279BF0170072D7BA /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -336,12 +342,10 @@
 		2F2D11612716171200572FDE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				2F2D11622716173100572FDE /* Extension */,
 				2F37DC69271BF7A7005DB8C4 /* ConstantsApp.swift */,
-				2F37DC72271C033E005DB8C4 /* APIHandler.swift */,
 				2F37DC74271C1237005DB8C4 /* ConstantsLanguage.swift */,
-				2FF932B5271CA15C003DA3D8 /* NetworkError.swift */,
-				2F12D688279F301600FCD261 /* FontPoppins.swift */,
+				2F9205A827AE7CCF00D000C5 /* AppHelper.swift */,
+				2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -349,9 +353,10 @@
 		2F2D11622716173100572FDE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				2FD91D712792EB0B00037359 /* StringExt.swift */,
-				2F123045270E360700D0269E /* ColorExt.swift */,
+				2FD91D712792EB0B00037359 /* String.swift */,
+				2F123045270E360700D0269E /* Color.swift */,
 				2F37DC76271C1324005DB8C4 /* LanguageExt.swift */,
+				2F9205AC27AE804000D000C5 /* URL.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -482,13 +487,13 @@
 			path = BuildScripts;
 			sourceTree = "<group>";
 		};
-		2F4784D827118226006FE3A5 /* Model */ = {
+		2F4784D827118226006FE3A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				2F4784DA2711827E006FE3A5 /* Server */,
 				2F4784D927118270006FE3A5 /* Database */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		2F4784D927118270006FE3A5 /* Database */ = {
@@ -619,22 +624,47 @@
 			path = fields;
 			sourceTree = "<group>";
 		};
+		2F9205A527AE790600D000C5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2F9205A727AE7C7700D000C5 /* Exceptions */,
+				2F4157A22712EBF2005BE2D2 /* Generated */,
+				2F1627592714A7D300C2AB0B /* Storyboard */,
+				2FF80ACB2799339500125B49 /* Routing */,
+				2FDA857027AC5C000004F829 /* Forms */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2F9205A627AE7C1100D000C5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2F12D688279F301600FCD261 /* FontPoppins.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2F9205A727AE7C7700D000C5 /* Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				2FF932B5271CA15C003DA3D8 /* NetworkError.swift */,
+				2F37DC72271C033E005DB8C4 /* APIHandler.swift */,
+			);
+			path = Exceptions;
+			sourceTree = "<group>";
+		};
 		2FAA2632270C1D5B00DE66FE = {
 			isa = PBXGroup;
 			children = (
-				2FDA857027AC5C000004F829 /* Forms */,
-				2FDBE2F1279C81390072D7BA /* Styles */,
-				2FF80ACB2799339500125B49 /* Routing */,
+				2FAA263D270C1D5B00DE66FE /* GitHubViewer */,
+				2F9205A527AE790600D000C5 /* Base */,
 				2FCF3F572797EA7C00A30F9A /* Data */,
 				2FF932B2271C9E09003DA3D8 /* Components */,
 				2F37DC66271BF603005DB8C4 /* Services */,
 				2F2D11612716171200572FDE /* Utility */,
-				2F1627592714A7D300C2AB0B /* Storyboard */,
-				2F4157A22712EBF2005BE2D2 /* Generated */,
-				2F4784D827118226006FE3A5 /* Model */,
-				2F4784D127117E5B006FE3A5 /* BuildScripts */,
+				2F2D11622716173100572FDE /* Extension */,
 				2F484D97270CCBF8002EB917 /* Resources */,
-				2FAA263D270C1D5B00DE66FE /* GitHubViewer */,
+				2F4784D127117E5B006FE3A5 /* BuildScripts */,
 				2FAA263C270C1D5B00DE66FE /* Products */,
 				C92C2F3B6261FE712760EE3B /* Pods */,
 				1E575A0D52DD20C8C6837524 /* Frameworks */,
@@ -664,6 +694,7 @@
 		2FCF3F572797EA7C00A30F9A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2F4784D827118226006FE3A5 /* Models */,
 				2FCF3F582797EA8B00A30F9A /* Preferences */,
 			);
 			path = Data;
@@ -866,6 +897,8 @@
 		2FF932B2271C9E09003DA3D8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2FDBE2F1279C81390072D7BA /* Styles */,
+				2F9205A627AE7C1100D000C5 /* Fonts */,
 				2FDF45472792B5F2008DC714 /* Lottie */,
 				2F3DC5E82796A339003D6916 /* Base */,
 				2FD91D4A2792E33D00037359 /* Texts */,
@@ -1113,6 +1146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FDBE2EA279BF95A0072D7BA /* RepoViewModel.swift in Sources */,
+				2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */,
 				2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */,
 				2FD91D432792C5BB00037359 /* SettingsStrings.swift in Sources */,
 				2FDBE2F3279C814F0072D7BA /* BottomPrimaryStyle.swift in Sources */,
@@ -1124,7 +1158,7 @@
 				2FF932B6271CA15C003DA3D8 /* NetworkError.swift in Sources */,
 				2F2D0BA6279426B9009D4FEC /* TextDisplayMedium.swift in Sources */,
 				2FD91D472792C5BB00037359 /* RepoUpdateStrings.swift in Sources */,
-				2FD91D722792EB0B00037359 /* StringExt.swift in Sources */,
+				2FD91D722792EB0B00037359 /* String.swift in Sources */,
 				2F2D0BAE279426F1009D4FEC /* TextHeadlineSmall.swift in Sources */,
 				2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */,
 				2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */,
@@ -1137,6 +1171,7 @@
 				2FDBE2DA279BF1C40072D7BA /* RouteGuest.swift in Sources */,
 				2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */,
 				2F3253AC271B1E340010BDC8 /* RepoRealm.swift in Sources */,
+				2F9205A927AE7CCF00D000C5 /* AppHelper.swift in Sources */,
 				2F3DC5EC27974A42003D6916 /* LottieView.swift in Sources */,
 				2F2D0BBA2794273E009D4FEC /* TextTitleSmall.swift in Sources */,
 				2F37DC79271C1932005DB8C4 /* FollowerNetwork.swift in Sources */,
@@ -1163,12 +1198,13 @@
 				2FD91D442792C5BB00037359 /* WelcomeStrings.swift in Sources */,
 				2FDBE2EE279BFA1E0072D7BA /* UserTabs.swift in Sources */,
 				2F2D0BB0279426FE009D4FEC /* TextLabelLarge.swift in Sources */,
-				2F123046270E360700D0269E /* ColorExt.swift in Sources */,
+				2F123046270E360700D0269E /* Color.swift in Sources */,
 				2FCF3F5A2797EAD400A30F9A /* BasePreferences.swift in Sources */,
 				2FD91D422792C5BB00037359 /* FormsStrings.swift in Sources */,
 				2F2D0BAA279426D8009D4FEC /* TextHeadlineLarge.swift in Sources */,
 				2F66A3C52790A51A004EB4B5 /* OnboardingScreen.swift in Sources */,
 				2F66A3CF2790A93F004EB4B5 /* OnboardingStep4.swift in Sources */,
+				2F9205AD27AE804000D000C5 /* URL.swift in Sources */,
 				2FF932B1271C3486003DA3D8 /* FollowerData.swift in Sources */,
 				2F2D0BB427942716009D4FEC /* TextLabelSmall.swift in Sources */,
 				2F2D0BA4279426AC009D4FEC /* TextDisplayLarge.swift in Sources */,
