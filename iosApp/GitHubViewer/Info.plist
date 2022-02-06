@@ -23,5 +23,9 @@
 		<string>poppins_thin_italic.ttf</string>
 		<string>poppins_thin.ttf</string>
 	</array>
+	<key>github_client_id</key>
+	<string>$(github_client_id)</string>
+	<key>github_client_secret</key>
+	<string>$(github_client_secret)</string>
 </dict>
 </plist>

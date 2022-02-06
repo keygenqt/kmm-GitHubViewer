@@ -8,7 +8,6 @@
 import Foundation
 
 struct AppHelper {
-    
     /// Generate DynamicLink
     static func getDynamicLink(_ path: String) -> String {
         return "\(ConstantsApp.DYNAMIC_LINK_URL)\(path)"

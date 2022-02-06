@@ -85,6 +85,8 @@
 		2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBC27ADA1F7005A96B2 /* IField.swift */; };
 		2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBE27ADA232005A96B2 /* Extension.swift */; };
 		2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABC127ADA38B005A96B2 /* NicknameField.swift */; };
+		2F7DBF0B27AFB75B00718B36 /* Environment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */; };
+		2F7DBF1027AFBB7A00718B36 /* EnvironmentSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */; };
 		2F9205A927AE7CCF00D000C5 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205A827AE7CCF00D000C5 /* AppHelper.swift */; };
 		2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */; };
 		2F9205AD27AE804000D000C5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AC27AE804000D000C5 /* URL.swift */; };
@@ -234,6 +236,8 @@
 		2F68ABBC27ADA1F7005A96B2 /* IField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IField.swift; sourceTree = "<group>"; };
 		2F68ABBE27ADA232005A96B2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2F68ABC127ADA38B005A96B2 /* NicknameField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameField.swift; sourceTree = "<group>"; };
+		2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Environment.xcconfig; sourceTree = "<group>"; };
+		2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSecret.swift; sourceTree = "<group>"; };
 		2F9205A827AE7CCF00D000C5 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFuncs.swift; sourceTree = "<group>"; };
 		2F9205AC27AE804000D000C5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
@@ -517,6 +521,7 @@
 		2F484D97270CCBF8002EB917 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F7DBF0E27AFBB5E00718B36 /* Environment */,
 				2FDF455A2792B6D4008DC714 /* Lottie */,
 				2F4157A72712EE6F005BE2D2 /* Fonts */,
 				2F12303E270E2E4B00D0269E /* Colors */,
@@ -622,6 +627,15 @@
 				2F68ABC127ADA38B005A96B2 /* NicknameField.swift */,
 			);
 			path = fields;
+			sourceTree = "<group>";
+		};
+		2F7DBF0E27AFBB5E00718B36 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */,
+				2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 		2F9205A527AE790600D000C5 /* Base */ = {
@@ -1004,6 +1018,7 @@
 				2F12D687279F2ED600FCD261 /* poppins_thin.ttf in Resources */,
 				2F12D686279F2ED600FCD261 /* poppins_light.ttf in Resources */,
 				2F12D678279F2ED600FCD261 /* poppins_black.ttf in Resources */,
+				2F7DBF0B27AFB75B00718B36 /* Environment.xcconfig in Resources */,
 				2F4784D527117FDD006FE3A5 /* swiftgen.sh in Resources */,
 				2FD91D202792C3CD00037359 /* Forms.strings in Resources */,
 				2F12D683279F2ED600FCD261 /* poppins_semi_bold.ttf in Resources */,
@@ -1229,6 +1244,7 @@
 				2F37DC75271C1237005DB8C4 /* ConstantsLanguage.swift in Sources */,
 				2F66A3BF2790A4B9004EB4B5 /* WelcomeViewModel.swift in Sources */,
 				2F37DC6A271BF7A7005DB8C4 /* ConstantsApp.swift in Sources */,
+				2F7DBF1027AFBB7A00718B36 /* EnvironmentSecret.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1432,6 +1448,7 @@
 /* Begin XCBuildConfiguration section */
 		2FAA2647270C1D5C00DE66FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1494,6 +1511,7 @@
 		};
 		2FAA2648270C1D5C00DE66FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1563,6 +1581,7 @@
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubViewer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1598,6 +1617,7 @@
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubViewer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
