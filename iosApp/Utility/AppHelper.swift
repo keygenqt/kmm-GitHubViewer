@@ -24,7 +24,7 @@ struct AppHelper {
             URLQueryItem(name: "state", value: NSUUID().uuidString),
             URLQueryItem(name: "redirect_uri", value: AppHelper.getDynamicLink("oauth")),
             URLQueryItem(name: "allow_signup", value: "false"),
-            URLQueryItem(name: "client_id", value: "{secret}"),
+            URLQueryItem(name: "client_id", value: EnvironmentSecret.clientId),
         ]
         return components.url!
     }
