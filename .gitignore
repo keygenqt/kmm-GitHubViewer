@@ -13,3 +13,4 @@ keys/*
 /androidApp/src/debug/google-services.json
 *.hprof
 /iosApp/env.conf
+/iosApp/Resources/Environment/Environment.xcconfig
