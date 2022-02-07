@@ -1,8 +1,11 @@
+# common
+.DS_Store
+
+# android
 *.iml
 .gradle
 /local.properties
 .idea
-.DS_Store
 /build
 */build
 /captures
@@ -10,7 +13,12 @@
 .cxx
 local.properties
 keys/*
-/androidApp/src/debug/google-services.json
+
+# ios
 *.hprof
 /iosApp/env.conf
 /iosApp/Resources/Environment/Environment.xcconfig
+
+# google services
+/androidApp/src/debug/google-services.json
+/iosApp/GoogleService-Info.plist

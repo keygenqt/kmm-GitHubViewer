@@ -87,6 +87,7 @@
 		2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABC127ADA38B005A96B2 /* NicknameField.swift */; };
 		2F7DBF0B27AFB75B00718B36 /* Environment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */; };
 		2F7DBF1027AFBB7A00718B36 /* EnvironmentSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */; };
+		2F7EE42627B188F400E8E1D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7EE42527B188F400E8E1D1 /* GoogleService-Info.plist */; };
 		2F9205A927AE7CCF00D000C5 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205A827AE7CCF00D000C5 /* AppHelper.swift */; };
 		2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */; };
 		2F9205AD27AE804000D000C5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AC27AE804000D000C5 /* URL.swift */; };
@@ -238,6 +239,8 @@
 		2F68ABC127ADA38B005A96B2 /* NicknameField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameField.swift; sourceTree = "<group>"; };
 		2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Environment.xcconfig; sourceTree = "<group>"; };
 		2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSecret.swift; sourceTree = "<group>"; };
+		2F7EE42527B188F400E8E1D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2F7EE42727B18BBC00E8E1D1 /* GitHubViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubViewer.entitlements; sourceTree = "<group>"; };
 		2F9205A827AE7CCF00D000C5 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFuncs.swift; sourceTree = "<group>"; };
 		2F9205AC27AE804000D000C5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
@@ -521,6 +524,7 @@
 		2F484D97270CCBF8002EB917 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F7EE42427B188DB00E8E1D1 /* Firebase */,
 				2F7DBF0E27AFBB5E00718B36 /* Environment */,
 				2FDF455A2792B6D4008DC714 /* Lottie */,
 				2F4157A72712EE6F005BE2D2 /* Fonts */,
@@ -638,6 +642,14 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
+		2F7EE42427B188DB00E8E1D1 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				2F7EE42527B188F400E8E1D1 /* GoogleService-Info.plist */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		2F9205A527AE790600D000C5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,6 +708,7 @@
 		2FAA263D270C1D5B00DE66FE /* GitHubViewer */ = {
 			isa = PBXGroup;
 			children = (
+				2F7EE42727B18BBC00E8E1D1 /* GitHubViewer.entitlements */,
 				2FDBE2E0279BF8650072D7BA /* onboarding */,
 				2FDBE2E2279BF88A0072D7BA /* guest */,
 				2FDBE2E1279BF8840072D7BA /* user */,
@@ -1049,6 +1062,7 @@
 				2F12D682279F2ED600FCD261 /* poppins_italic.ttf in Resources */,
 				2FD91D082792C2F000037359 /* Repo.strings in Resources */,
 				2FD91CFF2792C2C500037359 /* Followers.strings in Resources */,
+				2F7EE42627B188F400E8E1D1 /* GoogleService-Info.plist in Resources */,
 				2FD91D322792C43500037359 /* SignIn.strings in Resources */,
 				2FDF45742792B985008DC714 /* Onboarding.strings in Resources */,
 				2F12D680279F2ED600FCD261 /* poppins_regular.ttf in Resources */,
@@ -1573,6 +1587,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = GitHubViewer/GitHubViewer.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1581,6 +1597,7 @@
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubViewer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GitHubViewer;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1594,8 +1611,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.keygenqt.viewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keygenqt.viewer.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1609,6 +1627,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = GitHubViewer/GitHubViewer.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1617,6 +1637,7 @@
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubViewer/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GitHubViewer;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1630,8 +1651,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.keygenqt.viewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keygenqt.viewer.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
