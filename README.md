@@ -3,6 +3,8 @@ GitHub Viewer KMM
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
+*The main part of the application is ready - android & ios base, unfortunately the project has stalled in anticipation of free time for ios. Now I decided to concentrate on jetpack compose. Just FYI.)
+
 ### Android
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
