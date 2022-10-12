@@ -26,7 +26,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import coil.annotation.ExperimentalCoilApi
+import coil.compose.AsyncImagePainter
 import coil.compose.ImagePainter
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.lottie.LoadingBlockAnimation
@@ -40,7 +42,7 @@ fun AppImageUser(
     url: String,
     modifier: Modifier = Modifier,
 ) {
-    val painter = rememberImagePainter(url)
+    val painter = rememberAsyncImagePainter(url)
 
     Box(
         modifier = modifier
@@ -54,7 +56,7 @@ fun AppImageUser(
         )
 
         when (painter.state) {
-            is ImagePainter.State.Loading -> {
+            is AsyncImagePainter.State.Loading -> {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -65,7 +67,7 @@ fun AppImageUser(
                     )
                 }
             }
-            is ImagePainter.State.Error -> {
+            is AsyncImagePainter.State.Error -> {
                 Image(
                     painter = painterResource(R.drawable.user_default),
                     contentDescription = null,
@@ -73,8 +75,8 @@ fun AppImageUser(
                         .fillMaxSize()
                 )
             }
-            is ImagePainter.State.Empty -> {}
-            is ImagePainter.State.Success -> {}
+            is AsyncImagePainter.State.Empty -> {}
+            is AsyncImagePainter.State.Success -> {}
         }
     }
 }

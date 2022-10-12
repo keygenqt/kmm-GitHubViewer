@@ -50,7 +50,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeVersion.get()
+        kotlinCompilerExtensionVersion = findProperty("composeCompilerVersion").toString()
     }
 
     buildFeatures {
@@ -88,7 +88,16 @@ android {
 }
 
 dependencies {
+    // kmm
     implementation(project(":shared"))
+    // libs
+    implementation(project(":android-response-result"))
+    implementation(project(":compose-forms"))
+    implementation(project(":compose-modifier-ext"))
+    implementation(project(":compose-routing"))
+    implementation(project(":keygenqt-accompanist"))
+}
+dependencies {
 
     implementation(libs.bundles.accompanist)
     implementation(libs.bundles.compose)
@@ -100,20 +109,6 @@ dependencies {
     implementation(libs.bundles.lottie)
     implementation(libs.bundles.firebase)
 
-    if (findProperty("internalLibrariesEnable").toString().toBoolean()) {
-        implementation(project(":compose-requests"))
-        implementation(project(":compose-forms"))
-        implementation(project(":compose-modifier-ext"))
-        implementation(project(":compose-routing"))
-        implementation(project(":keygenqt-accompanist"))
-    } else {
-        implementation(libs.bundles.custom)
-    }
-
     kapt(libs.bundles.hiltKapt)
     kapt(libs.bundles.roomKapt)
-
-    testImplementation(libs.bundles.test)
-    debugImplementation(libs.bundles.testDebug)
-    androidTestImplementation(libs.bundles.testAndroid)
 }

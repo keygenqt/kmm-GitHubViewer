@@ -1,42 +1,32 @@
 # modules
-[libraries.other-timber]
+[libraries.other_timber]
 module = "com.jakewharton.timber:timber"
-[libraries.other-startup]
+[libraries.other_startup]
 module = "androidx.startup:startup-runtime"
-[libraries.other-reflection]
-module = "org.jetbrains.kotlin:kotlin-reflect"
-[libraries.room-paging]
-module = "androidx.room:room-paging"
-[libraries.paging-compose]
-module = "androidx.paging:paging-compose"
-[libraries.kotlinx-datetime]
-module = "org.jetbrains.kotlinx:kotlinx-datetime"
-[libraries.security-crypto]
+[libraries.security_crypto]
 module = "androidx.security:security-crypto"
+[libraries.kotlinx_datetime]
+module = "org.jetbrains.kotlinx:kotlinx-datetime"
+[libraries.other_reflection]
+module = "org.jetbrains.kotlin:kotlin-reflect"
 
 # versions
-[libraries.other-timber.version]
+[libraries.other_timber.version]
 ref = "timberVersion"
-[libraries.other-startup.version]
+[libraries.other_startup.version]
 ref = "startupVersion"
-[libraries.other-reflection.version]
-ref = "kotlinVersion"
-[libraries.room-paging.version]
-ref = "roomPagingVersion"
-[libraries.paging-compose.version]
-ref = "pagingComposeVersion"
-[libraries.kotlinx-datetime.version]
-ref = "kotlinxDatetimeVersion"
-[libraries.security-crypto.version]
+[libraries.security_crypto.version]
 ref = "securityCryptoVersion"
+[libraries.kotlinx_datetime.version]
+ref = "kotlinxDatetimeVersion"
+[libraries.other_reflection.version]
+ref = "kotlinVersion"
 
 [bundles]
 other = [
-    "other-timber",
-    "other-startup",
-    "other-reflection",
-    "room-paging",
-    "paging-compose",
-    "kotlinx-datetime",
-    "security-crypto",
+    "other_timber",
+    "other_startup",
+    "security_crypto",
+    "kotlinx_datetime",
+    "other_reflection",
 ]

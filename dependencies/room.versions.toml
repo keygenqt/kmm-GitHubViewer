@@ -1,34 +1,39 @@
 # modules
-[libraries.room-core]
+[libraries.room_core]
 module = "androidx.room:room-runtime"
-[libraries.room-ktx]
+[libraries.room_ktx]
 module = "androidx.room:room-ktx"
-[libraries.room-compiler]
+[libraries.room_compiler]
 module = "androidx.room:room-compiler"
-[libraries.room-sqlcipher]
+[libraries.room_sqlcipher]
 module = "net.zetetic:android-database-sqlcipher"
-[libraries.room-sqlite]
+[libraries.room_sqlite]
 module = "androidx.sqlite:sqlite"
+[libraries.room_paging]
+module = "androidx.room:room-paging"
 
 # versions
-[libraries.room-core.version]
+[libraries.room_core.version]
 ref = "roomVersion"
-[libraries.room-ktx.version]
+[libraries.room_ktx.version]
 ref = "roomVersion"
-[libraries.room-compiler.version]
+[libraries.room_compiler.version]
 ref = "roomVersion"
-[libraries.room-sqlcipher.version]
+[libraries.room_paging.version]
+ref = "roomVersion"
+[libraries.room_sqlcipher.version]
 ref = "androidDatabaseSqlcipherVersion"
-[libraries.room-sqlite.version]
+[libraries.room_sqlite.version]
 ref = "sqliteVersion"
 
 [bundles]
 room = [
-    "room-core",
-    "room-ktx",
-    "room-sqlcipher",
-    "room-sqlite"
+    "room_core",
+    "room_ktx",
+    "room_sqlcipher",
+    "room_sqlite",
+    "room_paging",
 ]
 roomKapt = [
-    "room-compiler"
+    "room_compiler"
 ]

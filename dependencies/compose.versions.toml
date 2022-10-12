@@ -1,42 +1,47 @@
 # modules
-[libraries.compose-ui]
+[libraries.compose_ui]
 module = "androidx.compose.ui:ui"
-[libraries.compose-tooling]
+[libraries.compose_tooling]
 module = "androidx.compose.ui:ui-tooling"
-[libraries.compose-activity]
+[libraries.compose_activity]
 module = "androidx.activity:activity-compose"
-[libraries.compose-icons]
+[libraries.compose_icons]
 module = "androidx.compose.material:material-icons-extended"
-[libraries.compose-constraintlayout]
+[libraries.compose_constraintlayout]
 module = "androidx.constraintlayout:constraintlayout-compose"
-[libraries.compose-material3]
+[libraries.compose_material3]
 module = "androidx.compose.material3:material3"
-[libraries.compose-material]
+[libraries.compose_material]
 module = "androidx.compose.material:material"
+[libraries.compose_paging]
+module = "androidx.paging:paging-compose"
 
 # versions
-[libraries.compose-ui.version]
+[libraries.compose_ui.version]
 ref = "composeVersion"
-[libraries.compose-tooling.version]
+[libraries.compose_tooling.version]
 ref = "composeVersion"
-[libraries.compose-activity.version]
+[libraries.compose_activity.version]
 ref = "composeVersion"
-[libraries.compose-icons.version]
+[libraries.compose_icons.version]
 ref = "composeVersion"
-[libraries.compose-constraintlayout.version]
+[libraries.compose_constraintlayout.version]
 ref = "constraintLayoutVersion"
-[libraries.compose-material3.version]
+[libraries.compose_material3.version]
 ref = "material3Version"
-[libraries.compose-material.version]
+[libraries.compose_material.version]
 ref = "materialVersion"
+[libraries.compose_paging.version]
+ref = "pagingComposeVersion"
 
 [bundles]
 compose = [
-    "compose-material3",
-    "compose-material",
-    "compose-ui",
-    "compose-tooling",
-    "compose-activity",
-    "compose-icons",
-    "compose-constraintlayout"
+    "compose_ui",
+    "compose_tooling",
+    "compose_activity",
+    "compose_icons",
+    "compose_constraintlayout",
+    "compose_material3",
+    "compose_material",
+    "compose_paging",
 ]

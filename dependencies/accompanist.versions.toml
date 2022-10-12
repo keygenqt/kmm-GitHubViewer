@@ -1,32 +1,27 @@
 # modules
-[libraries.accompanist-insets]
-module = "com.google.accompanist:accompanist-insets"
-[libraries.accompanist-pager]
+[libraries.accompanist_pager]
 module = "com.google.accompanist:accompanist-pager"
-[libraries.accompanist-swiperefresh]
+[libraries.accompanist_swiperefresh]
 module = "com.google.accompanist:accompanist-swiperefresh"
-[libraries.accompanist-systemuicontroller]
+[libraries.accompanist_systemuicontroller]
 module = "com.google.accompanist:accompanist-systemuicontroller"
-[libraries.accompanist-navigation-animation]
+[libraries.accompanist_navigation_animation]
 module = "com.google.accompanist:accompanist-navigation-animation"
 
 # versions
-[libraries.accompanist-insets.version]
+[libraries.accompanist_pager.version]
 ref = "accompanistVersion"
-[libraries.accompanist-pager.version]
+[libraries.accompanist_swiperefresh.version]
 ref = "accompanistVersion"
-[libraries.accompanist-swiperefresh.version]
+[libraries.accompanist_systemuicontroller.version]
 ref = "accompanistVersion"
-[libraries.accompanist-systemuicontroller.version]
-ref = "accompanistVersion"
-[libraries.accompanist-navigation-animation.version]
+[libraries.accompanist_navigation_animation.version]
 ref = "accompanistVersion"
 
 [bundles]
 accompanist = [
-    "accompanist-insets",
-    "accompanist-pager",
-    "accompanist-swiperefresh",
-    "accompanist-systemuicontroller",
-    "accompanist-navigation-animation"
+    "accompanist_pager",
+    "accompanist_swiperefresh",
+    "accompanist_systemuicontroller",
+    "accompanist_navigation_animation"
 ]

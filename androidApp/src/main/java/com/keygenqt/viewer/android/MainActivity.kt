@@ -24,14 +24,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.core.view.WindowCompat
-import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
-import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,7 +44,7 @@ class MainActivity : ComponentActivity() {
     /**
      * Main initialization point of view
      */
-    @OptIn(ExperimentalAnimationApi::class, ExperimentalComposeUiApi::class)
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -65,9 +63,7 @@ class MainActivity : ComponentActivity() {
                     )
                 ) {
                     AppTheme {
-                        ProvideWindowInsets {
-                            NavGraph(controller)
-                        }
+                        NavGraph(controller)
                     }
                 }
             }
@@ -75,18 +71,16 @@ class MainActivity : ComponentActivity() {
 
         // Splash delay
         window.decorView.findViewById<View>(android.R.id.content)?.let { content ->
-            content.viewTreeObserver.addOnPreDrawListener(
-                object : OnPreDrawListener {
-                    override fun onPreDraw(): Boolean {
-                        return if (!viewModel.isSplash.value) {
-                            // remove BG splash
-                            this@MainActivity.window.decorView.setBackgroundColor(Color.WHITE)
-                            // done splash remove listener
-                            content.viewTreeObserver.removeOnPreDrawListener(this); true
-                        } else false
-                    }
+            content.viewTreeObserver.addOnPreDrawListener(object : OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    return if (!viewModel.isSplash.value) {
+                        // remove BG splash
+                        this@MainActivity.window.decorView.setBackgroundColor(Color.WHITE)
+                        // done splash remove listener
+                        content.viewTreeObserver.removeOnPreDrawListener(this); true
+                    } else false
                 }
-            )
+            })
         }
     }
 }

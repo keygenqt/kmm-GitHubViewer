@@ -32,6 +32,7 @@ import kotlinx.coroutines.launch
 /**
  * App top bar small material 3
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun <T> AppTopBarSmall(
     title: String,

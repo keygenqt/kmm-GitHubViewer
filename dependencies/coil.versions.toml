@@ -1,17 +1,17 @@
 # modules
-[libraries.coil-compose]
+[libraries.coil_compose]
 module = "io.coil-kt:coil-compose"
-[libraries.coil-appcompat]
+[libraries.coil_appcompat]
 module = "androidx.appcompat:appcompat"
 
 # versions
-[libraries.coil-compose.version]
+[libraries.coil_compose.version]
 ref = "coilVersion"
-[libraries.coil-appcompat.version]
+[libraries.coil_appcompat.version]
 ref = "appcompatVersion"
 
 [bundles]
 coil = [
-    "coil-compose",
-    "coil-appcompat"
+    "coil_compose",
+    "coil_appcompat"
 ]
