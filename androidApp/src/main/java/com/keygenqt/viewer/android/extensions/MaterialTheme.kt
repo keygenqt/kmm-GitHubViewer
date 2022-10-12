@@ -16,9 +16,10 @@
 package com.keygenqt.viewer.android.extensions
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.TextFieldColors
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.keygenqt.viewer.android.extensions.DarkenColorLabel.getDarkenColor
@@ -34,13 +35,13 @@ object DarkenColorLabel {
 /**
  * Custom colors for material 3 theme for material 2
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MaterialTheme.textFieldColors(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
 ): TextFieldColors {
     val labelColor = if (useDarkTheme) colorScheme.primaryContainer else getDarkenColor(colorScheme.primary)
     return TextFieldDefaults.textFieldColors(
-        backgroundColor = colorScheme.surfaceVariant,
         textColor = colorScheme.onSurfaceVariant,
         cursorColor = colorScheme.onSurfaceVariant,
         focusedLabelColor = labelColor,
