@@ -12,6 +12,5 @@ xcuserdata
 *.xcuserstate
 *.xcscmblueprint
 
-
-
-
+/Resources/Environment/Environment.xcconfig
+/debug-env.xcconfig

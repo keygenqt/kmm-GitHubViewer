@@ -24,7 +24,7 @@ public enum EnvironmentSecret {
     /// Get clientId
     static let clientId: String = {
         guard let value = EnvironmentSecret.infoDictionary[Keys.clientId] as? String else {
-            fatalError("Client Id not set in  plist")
+            fatalError("Client Id not set in plist")
         }
         return value
     }()
@@ -32,7 +32,7 @@ public enum EnvironmentSecret {
     /// Get clientSecret
     static let clientSecret: String = {
         guard let value = EnvironmentSecret.infoDictionary[Keys.clientSecret] as? String else {
-            fatalError("Client Secret not set in  plist")
+            fatalError("Client Secret not set in plist")
         }
         return value
     }()

@@ -14,4 +14,8 @@ extension String {
     func matches(_ regex: String) -> Bool {
         return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
+
+    func toUrl() -> URL {
+        return URL(string: self)!
+    }
 }

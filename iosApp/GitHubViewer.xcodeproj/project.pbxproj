@@ -63,13 +63,15 @@
 		2F4157A12712E2A4005BE2D2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2F4157A02712E2A4005BE2D2 /* .swiftlint.yml */; };
 		2F4157AF2712F033005BE2D2 /* GeneratedResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4157AE2712F033005BE2D2 /* GeneratedResources.swift */; };
 		2F4157BE271302BA005BE2D2 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 2F4157BD271302BA005BE2D2 /* .swiftformat */; };
-		2F4784D327117E74006FE3A5 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2F4784D227117E74006FE3A5 /* swiftgen.yml */; };
 		2F4784D527117FDD006FE3A5 /* swiftgen.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2F4784D427117FDD006FE3A5 /* swiftgen.sh */; };
 		2F4784D727117FF7006FE3A5 /* init.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2F4784D627117FF7006FE3A5 /* init.sh */; };
 		2F4784DE2711835B006FE3A5 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4784DD2711835B006FE3A5 /* RepoModel.swift */; };
 		2F4784E027118374006FE3A5 /* FollowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4784DF27118374006FE3A5 /* FollowerModel.swift */; };
 		2F484DA0270CCD3E002EB917 /* App.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F484D9E270CCD3E002EB917 /* App.strings */; };
 		2F484DA3270CCD5D002EB917 /* App.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F484DA1270CCD5D002EB917 /* App.strings */; };
+		2F6598E428F5667100683022 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6598E328F5667100683022 /* GoogleService-Info.plist */; };
+		2F6598E828F56A9600683022 /* debug-env.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2F6598E728F56A9600683022 /* debug-env.xcconfig */; };
+		2F6598EA28F56B1900683022 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2F6598E928F56B1900683022 /* .gitignore */; };
 		2F66A3BB2790A489004EB4B5 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3BA2790A489004EB4B5 /* OnboardingViewModel.swift */; };
 		2F66A3BD2790A49E004EB4B5 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3BC2790A49E004EB4B5 /* SignInViewModel.swift */; };
 		2F66A3BF2790A4B9004EB4B5 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3BE2790A4B9004EB4B5 /* WelcomeViewModel.swift */; };
@@ -85,14 +87,14 @@
 		2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBC27ADA1F7005A96B2 /* IField.swift */; };
 		2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBE27ADA232005A96B2 /* Extension.swift */; };
 		2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABC127ADA38B005A96B2 /* NicknameField.swift */; };
-		2F7DBF0B27AFB75B00718B36 /* Environment.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */; };
 		2F7DBF1027AFBB7A00718B36 /* EnvironmentSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */; };
-		2F7EE42627B188F400E8E1D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7EE42527B188F400E8E1D1 /* GoogleService-Info.plist */; };
 		2F9205A927AE7CCF00D000C5 /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205A827AE7CCF00D000C5 /* AppHelper.swift */; };
 		2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */; };
 		2F9205AD27AE804000D000C5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AC27AE804000D000C5 /* URL.swift */; };
+		2FA5B97728F5544B0010DCFE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2FA5B97628F5544B0010DCFE /* swiftgen.yml */; };
 		2FAA263F270C1D5B00DE66FE /* AppGitHubViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */; };
 		2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */; };
+		2FCD977128F6AE86005B27C8 /* AppKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD977028F6AE86005B27C8 /* AppKeyValue.swift */; };
 		2FCF3F5A2797EAD400A30F9A /* BasePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F592797EAD400A30F9A /* BasePreferences.swift */; };
 		2FCF3F5D2797EAF800A30F9A /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F5C2797EAF800A30F9A /* AppPreferences.swift */; };
 		2FD91CF62792BF9C00037359 /* OnboardingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91CF42792BF9B00037359 /* OnboardingStrings.swift */; };
@@ -215,13 +217,16 @@
 		2F4157A02712E2A4005BE2D2 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		2F4157AE2712F033005BE2D2 /* GeneratedResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedResources.swift; sourceTree = "<group>"; };
 		2F4157BD271302BA005BE2D2 /* .swiftformat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftformat; sourceTree = SOURCE_ROOT; };
-		2F4784D227117E74006FE3A5 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = swiftgen.yml; path = ../swiftgen.yml; sourceTree = "<group>"; };
 		2F4784D427117FDD006FE3A5 /* swiftgen.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = swiftgen.sh; sourceTree = SOURCE_ROOT; };
 		2F4784D627117FF7006FE3A5 /* init.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = init.sh; sourceTree = SOURCE_ROOT; };
 		2F4784DD2711835B006FE3A5 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		2F4784DF27118374006FE3A5 /* FollowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerModel.swift; sourceTree = "<group>"; };
 		2F484D9F270CCD3E002EB917 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = App.strings; sourceTree = "<group>"; };
 		2F484DA2270CCD5D002EB917 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = App.strings; sourceTree = "<group>"; };
+		2F6598E328F5667100683022 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2F6598E728F56A9600683022 /* debug-env.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "debug-env.xcconfig"; sourceTree = SOURCE_ROOT; };
+		2F6598E928F56B1900683022 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
+		2F6598ED28F56D8000683022 /* GitHubViewerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubViewerDebug.entitlements; sourceTree = "<group>"; };
 		2F66A3BA2790A489004EB4B5 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		2F66A3BC2790A49E004EB4B5 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		2F66A3BE2790A4B9004EB4B5 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -237,16 +242,16 @@
 		2F68ABBC27ADA1F7005A96B2 /* IField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IField.swift; sourceTree = "<group>"; };
 		2F68ABBE27ADA232005A96B2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2F68ABC127ADA38B005A96B2 /* NicknameField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameField.swift; sourceTree = "<group>"; };
-		2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Environment.xcconfig; sourceTree = "<group>"; };
 		2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSecret.swift; sourceTree = "<group>"; };
-		2F7EE42527B188F400E8E1D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2F7EE42727B18BBC00E8E1D1 /* GitHubViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubViewer.entitlements; sourceTree = "<group>"; };
 		2F9205A827AE7CCF00D000C5 /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFuncs.swift; sourceTree = "<group>"; };
 		2F9205AC27AE804000D000C5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		2FA5B97628F5544B0010DCFE /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
 		2FAA263B270C1D5B00DE66FE /* GitHubViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGitHubViewer.swift; sourceTree = "<group>"; };
 		2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepo.swift; sourceTree = "<group>"; };
+		2FCD977028F6AE86005B27C8 /* AppKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeyValue.swift; sourceTree = "<group>"; };
 		2FCF3F592797EAD400A30F9A /* BasePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePreferences.swift; sourceTree = "<group>"; };
 		2FCF3F5C2797EAF800A30F9A /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
 		2FD91CF42792BF9B00037359 /* OnboardingStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStrings.swift; sourceTree = "<group>"; };
@@ -353,6 +358,7 @@
 				2F37DC74271C1237005DB8C4 /* ConstantsLanguage.swift */,
 				2F9205A827AE7CCF00D000C5 /* AppHelper.swift */,
 				2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */,
+				2FCD977028F6AE86005B27C8 /* AppKeyValue.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -482,18 +488,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		2F4784D127117E5B006FE3A5 /* BuildScripts */ = {
-			isa = PBXGroup;
-			children = (
-				2F4157BD271302BA005BE2D2 /* .swiftformat */,
-				2F4157A02712E2A4005BE2D2 /* .swiftlint.yml */,
-				2F4784D627117FF7006FE3A5 /* init.sh */,
-				2F4784D427117FDD006FE3A5 /* swiftgen.sh */,
-				2F4784D227117E74006FE3A5 /* swiftgen.yml */,
-			);
-			path = BuildScripts;
-			sourceTree = "<group>";
-		};
 		2F4784D827118226006FE3A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,7 +518,6 @@
 		2F484D97270CCBF8002EB917 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2F7EE42427B188DB00E8E1D1 /* Firebase */,
 				2F7DBF0E27AFBB5E00718B36 /* Environment */,
 				2FDF455A2792B6D4008DC714 /* Lottie */,
 				2F4157A72712EE6F005BE2D2 /* Fonts */,
@@ -590,6 +583,21 @@
 			path = ru.lproj;
 			sourceTree = "<group>";
 		};
+		2F6598EC28F56BD000683022 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				2F6598E928F56B1900683022 /* .gitignore */,
+				2F6598E728F56A9600683022 /* debug-env.xcconfig */,
+				2F6598E328F5667100683022 /* GoogleService-Info.plist */,
+				2FA5B97628F5544B0010DCFE /* swiftgen.yml */,
+				2F4157BD271302BA005BE2D2 /* .swiftformat */,
+				2F4157A02712E2A4005BE2D2 /* .swiftlint.yml */,
+				2F4784D627117FF7006FE3A5 /* init.sh */,
+				2F4784D427117FDD006FE3A5 /* swiftgen.sh */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
 		2F66A3B82790A44C004EB4B5 /* signIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,18 +644,9 @@
 		2F7DBF0E27AFBB5E00718B36 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */,
 				2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */,
 			);
 			path = Environment;
-			sourceTree = "<group>";
-		};
-		2F7EE42427B188DB00E8E1D1 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				2F7EE42527B188F400E8E1D1 /* GoogleService-Info.plist */,
-			);
-			path = Firebase;
 			sourceTree = "<group>";
 		};
 		2F9205A527AE790600D000C5 /* Base */ = {
@@ -690,7 +689,7 @@
 				2F2D11612716171200572FDE /* Utility */,
 				2F2D11622716173100572FDE /* Extension */,
 				2F484D97270CCBF8002EB917 /* Resources */,
-				2F4784D127117E5B006FE3A5 /* BuildScripts */,
+				2F6598EC28F56BD000683022 /* System */,
 				2FAA263C270C1D5B00DE66FE /* Products */,
 				C92C2F3B6261FE712760EE3B /* Pods */,
 				1E575A0D52DD20C8C6837524 /* Frameworks */,
@@ -708,6 +707,7 @@
 		2FAA263D270C1D5B00DE66FE /* GitHubViewer */ = {
 			isa = PBXGroup;
 			children = (
+				2F6598ED28F56D8000683022 /* GitHubViewerDebug.entitlements */,
 				2F7EE42727B18BBC00E8E1D1 /* GitHubViewer.entitlements */,
 				2FDBE2E0279BF8650072D7BA /* onboarding */,
 				2FDBE2E2279BF88A0072D7BA /* guest */,
@@ -1012,13 +1012,14 @@
 				2FDF45642792B706008DC714 /* error_500.json in Resources */,
 				2F12D677279F2ED600FCD261 /* poppins_thin_italic.ttf in Resources */,
 				2FDF45662792B706008DC714 /* tumbleweed_rolling.json in Resources */,
+				2FA5B97728F5544B0010DCFE /* swiftgen.yml in Resources */,
 				2F12D67E279F2ED600FCD261 /* poppins_light_italic.ttf in Resources */,
 				2F4157A12712E2A4005BE2D2 /* .swiftlint.yml in Resources */,
 				2F12D67B279F2ED600FCD261 /* poppins_semi_bold_italic.ttf in Resources */,
 				2FD91CFC2792C2A500037359 /* Errors.strings in Resources */,
 				2FD91D142792C33100037359 /* SignIn.strings in Resources */,
 				2F123040270E2E5E00D0269E /* Colors.xcassets in Resources */,
-				2F4784D327117E74006FE3A5 /* swiftgen.yml in Resources */,
+				2F6598EA28F56B1900683022 /* .gitignore in Resources */,
 				2FDF45692792B706008DC714 /* step1.json in Resources */,
 				2F16275B2714A7E500C2AB0B /* Splash.storyboard in Resources */,
 				2FD91D292792C3F600037359 /* Repos.strings in Resources */,
@@ -1031,7 +1032,6 @@
 				2F12D687279F2ED600FCD261 /* poppins_thin.ttf in Resources */,
 				2F12D686279F2ED600FCD261 /* poppins_light.ttf in Resources */,
 				2F12D678279F2ED600FCD261 /* poppins_black.ttf in Resources */,
-				2F7DBF0B27AFB75B00718B36 /* Environment.xcconfig in Resources */,
 				2F4784D527117FDD006FE3A5 /* swiftgen.sh in Resources */,
 				2FD91D202792C3CD00037359 /* Forms.strings in Resources */,
 				2F12D683279F2ED600FCD261 /* poppins_semi_bold.ttf in Resources */,
@@ -1049,6 +1049,7 @@
 				2F12D685279F2ED600FCD261 /* poppins_extra_bold_italic.ttf in Resources */,
 				2FD91D1A2792C3B100037359 /* Errors.strings in Resources */,
 				2FD91D262792C3E800037359 /* Repo.strings in Resources */,
+				2F6598E828F56A9600683022 /* debug-env.xcconfig in Resources */,
 				2F12D684279F2ED600FCD261 /* poppins_black_italic.ttf in Resources */,
 				2F12D67C279F2ED600FCD261 /* poppins_extra_light_italic.ttf in Resources */,
 				2FD91D1D2792C3BF00037359 /* Followers.strings in Resources */,
@@ -1062,7 +1063,7 @@
 				2F12D682279F2ED600FCD261 /* poppins_italic.ttf in Resources */,
 				2FD91D082792C2F000037359 /* Repo.strings in Resources */,
 				2FD91CFF2792C2C500037359 /* Followers.strings in Resources */,
-				2F7EE42627B188F400E8E1D1 /* GoogleService-Info.plist in Resources */,
+				2F6598E428F5667100683022 /* GoogleService-Info.plist in Resources */,
 				2FD91D322792C43500037359 /* SignIn.strings in Resources */,
 				2FDF45742792B985008DC714 /* Onboarding.strings in Resources */,
 				2F12D680279F2ED600FCD261 /* poppins_regular.ttf in Resources */,
@@ -1225,6 +1226,7 @@
 				2F66A3BB2790A489004EB4B5 /* OnboardingViewModel.swift in Sources */,
 				2F66A3C92790A914004EB4B5 /* OnboardingStep1.swift in Sources */,
 				2FD91D442792C5BB00037359 /* WelcomeStrings.swift in Sources */,
+				2FCD977128F6AE86005B27C8 /* AppKeyValue.swift in Sources */,
 				2FDBE2EE279BFA1E0072D7BA /* UserTabs.swift in Sources */,
 				2F2D0BB0279426FE009D4FEC /* TextLabelLarge.swift in Sources */,
 				2F123046270E360700D0269E /* Color.swift in Sources */,
@@ -1462,7 +1464,7 @@
 /* Begin XCBuildConfiguration section */
 		2FAA2647270C1D5C00DE66FE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */;
+			baseConfigurationReference = 2F6598E728F56A9600683022 /* debug-env.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1525,7 +1527,6 @@
 		};
 		2FAA2648270C1D5C00DE66FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F7DBF0A27AFB75B00718B36 /* Environment.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1587,12 +1588,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = GitHubViewer/GitHubViewer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = GitHubViewer/GitHubViewerDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 3KNN9A24BM;
+				DEVELOPMENT_TEAM = EFAAG9GXN4;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1632,7 +1633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 3KNN9A24BM;
+				DEVELOPMENT_TEAM = EFAAG9GXN4;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;

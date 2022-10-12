@@ -9,10 +9,7 @@ import Combine
 import Foundation
 
 class OnboardingViewModel: ObservableObject, Identifiable {
-    let currentLevelKey = "currentLevel"
-    let preferences = UserDefaults.standard
-
     func disableOnboarding() {
-        preferences.set(true, forKey: currentLevelKey)
+        AppKeyValue.setOnboarding(false)
     }
 }

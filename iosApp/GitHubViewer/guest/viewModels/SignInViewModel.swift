@@ -8,4 +8,10 @@
 import Combine
 import Foundation
 
-class SignInViewModel: ObservableObject, Identifiable {}
+class SignInViewModel: ObservableObject, Identifiable {
+    func authUser(_ tappedUrl: URLComponents?) -> Bool {
+        AppKeyValue.setAuth(true)
+
+        return tappedUrl?.path == "/oauth"
+    }
+}

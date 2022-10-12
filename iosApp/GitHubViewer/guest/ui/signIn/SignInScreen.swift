@@ -43,6 +43,10 @@ struct SignInScreen: View {
                 .listRowBackground(Color.clear)
             }
             .listRowBackground(Color.clear)
+        }.onOpenURL { url in
+            if viewModel.authUser(URLComponents(url: url, resolvingAgainstBaseURL: true)) {
+                graph.route = .user
+            }
         }
     }
 }

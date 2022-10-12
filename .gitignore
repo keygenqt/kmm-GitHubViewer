@@ -17,7 +17,7 @@ keys/*
 # ios
 *.hprof
 /iosApp/env.conf
-/iosApp/Resources/Environment/Environment.xcconfig
+/iosApp/Resources/Environment/debug-env.xcconfig
 
 # google services
 /androidApp/src/debug/google-services.json

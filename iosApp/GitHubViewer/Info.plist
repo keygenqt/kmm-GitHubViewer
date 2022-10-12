@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FirebaseDeepLinkPasteboardRetrievalEnabled</key>
+	<string>NO</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>poppins_black_italic.ttf</string>
