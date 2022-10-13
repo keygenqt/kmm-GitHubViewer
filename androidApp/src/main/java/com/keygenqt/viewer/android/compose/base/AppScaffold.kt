@@ -24,6 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.keygenqt.modifier.ifFalse
+import com.keygenqt.modifier.ifTrue
 import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshIndicator
 import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState
@@ -35,6 +37,7 @@ import com.keygenqt.viewer.android.menu.MenuBottomBar
  */
 @Composable
 fun AppScaffold(
+    modifier: Modifier = Modifier,
     navigationDispatcher: NavigationDispatcher?,
     // top bar
     topBarTitle: String? = null,
@@ -47,6 +50,7 @@ fun AppScaffold(
     // content
     content: @Composable () -> Unit
 ) = AppScaffold(
+    modifier = modifier,
     backData = null,
     navigationDispatcher = navigationDispatcher,
     topBarTitle = topBarTitle,
@@ -64,6 +68,7 @@ fun AppScaffold(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun <T> AppScaffold(
+    modifier: Modifier = Modifier,
     backData: T? = null,
     navigationDispatcher: NavigationDispatcher?,
     // top bar
@@ -91,10 +96,10 @@ fun <T> AppScaffold(
     }
 
     Scaffold(
-        modifier = Modifier
-            .statusBarsPadding()
-            .navigationBarsPadding()
-            .imePadding(),
+        modifier = modifier,
+//            .statusBarsPadding()
+//            .navigationBarsPadding()
+//            .imePadding(),
         topBar = topBarTitle?.let {
             {
                 AppTopBarSmall(

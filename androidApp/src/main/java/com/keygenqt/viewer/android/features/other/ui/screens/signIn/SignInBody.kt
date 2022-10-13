@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.android.features.other.ui.screens.signIn
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -24,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.UriHandler
@@ -33,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldState
 import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.modifier.imePaddingWithOutNavigationBars
 import com.keygenqt.requests.ResponseState
 import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.R
@@ -101,10 +104,10 @@ fun SignInBody(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .imePaddingWithOutNavigationBars()
                 .verticalScroll(scrollState),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-
             Column(
                 modifier = Modifier.padding(16.dp)
             ) {

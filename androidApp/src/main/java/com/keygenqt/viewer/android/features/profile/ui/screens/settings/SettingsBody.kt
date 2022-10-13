@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.modifier.imePaddingWithOutNavigationBars
 import com.keygenqt.requests.ResponseState
 import com.keygenqt.viewer.android.R
 import com.keygenqt.routing.NavigationDispatcher
@@ -109,6 +110,7 @@ fun SettingsBody(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .imePaddingWithOutNavigationBars()
                 .verticalScroll(scrollState),
             verticalArrangement = Arrangement.SpaceBetween
         ) {

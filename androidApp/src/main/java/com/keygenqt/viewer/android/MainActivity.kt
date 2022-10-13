@@ -30,6 +30,7 @@ import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.base.LocalViewModel
+import com.keygenqt.viewer.android.extensions.getDeeplink
 import com.keygenqt.viewer.android.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -63,7 +64,10 @@ class MainActivity : ComponentActivity() {
                     )
                 ) {
                     AppTheme {
-                        NavGraph(controller)
+                        NavGraph(
+                            controller = controller,
+                            deepLink = intent?.getDeeplink(),
+                        )
                     }
                 }
             }

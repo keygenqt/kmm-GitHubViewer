@@ -43,12 +43,12 @@ class SignInViewModel @Inject constructor(
     /**
      * Arg deep link code
      */
-    val code: String? = savedStateHandle.get("code")
+    val code: String? = savedStateHandle["code"]
 
     /**
      * Arg deep link state
      */
-    val state: String? = savedStateHandle.get("state")
+    val state: String? = savedStateHandle["state"]
 
     init {
         code?.let {

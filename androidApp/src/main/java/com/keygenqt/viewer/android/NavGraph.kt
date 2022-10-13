@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.android
 
+import android.net.Uri
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,7 +25,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -43,12 +43,16 @@ import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
 import com.keygenqt.viewer.android.menu.MenuBottomBar
 import com.keygenqt.viewer.android.menu.MenuTab
 import com.keygenqt.viewer.android.utils.AuthUser
+import timber.log.Timber
 
-@OptIn(ExperimentalAnimationApi::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun NavGraph(
-    controller: NavHostController
+    controller: NavHostController,
+    deepLink: Uri?,
 ) {
+    Timber.d(deepLink.toString())
+
     val appActions = remember(controller) {
         AppActions(controller)
     }
