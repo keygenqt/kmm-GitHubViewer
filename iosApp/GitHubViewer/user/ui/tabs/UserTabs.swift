@@ -19,25 +19,45 @@ struct UserTabs: View {
         TabView(selection: $selection) {
             NavigationView {
                 ListRepos()
-                    .navigationBarTitle("Repos")
+                    .navigationBarTitle(L10nRepos.title)
                     .navigationBarTitleDisplayMode(.large)
             }
             .tabItem {
-                Image(systemName: "list.bullet.circle")
-                    .font(.largeTitle)
+                VStack {
+                    Image(systemName: "list.bullet.circle")
+                        .font(.largeTitle)
+                    Text(L10nRepos.title)
+                }
             }
             .tag(0)
 
             NavigationView {
                 ListFollower()
-                    .navigationBarTitle("Followers")
+                    .navigationBarTitle(L10nFollowers.title)
                     .navigationBarTitleDisplayMode(.large)
             }
             .tabItem {
-                Image(systemName: "person.circle")
-                    .font(.largeTitle)
+                VStack {
+                    Image(systemName: "person.2.circle")
+                        .font(.largeTitle)
+                    Text(L10nFollowers.title)
+                }
             }
             .tag(1)
+
+            NavigationView {
+                ListFollower()
+                    .navigationBarTitle(L10nProfile.title)
+                    .navigationBarTitleDisplayMode(.large)
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "person.circle")
+                        .font(.largeTitle)
+                    Text(L10nProfile.title)
+                }
+            }
+            .tag(2)
         }
         .accentColor(.orange)
     }

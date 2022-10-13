@@ -12,6 +12,7 @@ import SwiftUI
  * Extension for easy way get color
  */
 extension Color {
+    // Theme
     static let primary = Color(Resources.Colors.primary.color.cgColor)
     static let onPrimary = Color(Resources.Colors.onPrimary.color.cgColor)
     static let primaryContainer = Color(Resources.Colors.primaryContainer.color.cgColor)
@@ -37,4 +38,21 @@ extension Color {
     static let outline = Color(Resources.Colors.outline.color.cgColor)
     static let inverseOnSurface = Color(Resources.Colors.inverseOnSurface.color.cgColor)
     static let inverseSurface = Color(Resources.Colors.inverseSurface.color.cgColor)
+    // Languages
+    static let bashColor = Color(Resources.Colors.bashColor.color.cgColor)
+    static let cColor = Color(Resources.Colors.cColor.color.cgColor)
+    static let cplusColor = Color(Resources.Colors.cplusColor.color.cgColor)
+    static let dartColor = Color(Resources.Colors.dartColor.color.cgColor)
+    static let elixirColor = Color(Resources.Colors.elixirColor.color.cgColor)
+    static let erlangColor = Color(Resources.Colors.erlangColor.color.cgColor)
+    static let groovyColor = Color(Resources.Colors.groovyColor.color.cgColor)
+    static let haskellColor = Color(Resources.Colors.haskellColor.color.cgColor)
+    static let javaColor = Color(Resources.Colors.javaColor.color.cgColor)
+    static let jsColor = Color(Resources.Colors.jsColor.color.cgColor)
+    static let kotlinColor = Color(Resources.Colors.kotlinColor.color.cgColor)
+    static let phpColor = Color(Resources.Colors.phpColor.color.cgColor)
+    static let pythonColor = Color(Resources.Colors.pythonColor.color.cgColor)
+    static let rubyColor = Color(Resources.Colors.rubyColor.color.cgColor)
+    static let rustColor = Color(Resources.Colors.rustColor.color.cgColor)
+    static let scalaColor = Color(Resources.Colors.scalaColor.color.cgColor)
 }
