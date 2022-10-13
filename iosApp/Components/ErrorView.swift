@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ErrorView: View {
     @State var error: NetworkError?
+    var action: (() -> Void)?
 
     var body: some View {
         if let error = error {
@@ -17,7 +18,9 @@ struct ErrorView: View {
                     Text(error.description)
                         .bold()
                     HStack {
+                        Spacer()
                         Button("Dismiss") {
+                            action?()
                             self.error = nil
                         }.padding(.top, 5)
                     }

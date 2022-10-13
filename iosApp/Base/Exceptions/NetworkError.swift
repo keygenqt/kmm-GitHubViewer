@@ -17,7 +17,7 @@ extension NetworkError: LocalizedError {
         switch self {
         case .notFound:
             return "The 404 error status code indicates that the REST API can't map the client's URI to a resource but may be available in the future."
-        case .unexpected:
+        default:
             return "The server either does not recognize the request method, or it cannot fulfill the request."
         }
     }

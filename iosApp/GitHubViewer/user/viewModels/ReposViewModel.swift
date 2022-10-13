@@ -18,6 +18,7 @@ class ReposViewModel: ObservableObject, Identifiable {
     var preferences = BasePreferences()
 
     init() {
+        print(AppKeyValue.getAuth().toString())
         preferences.clearCache()
 
         let list = serviceData.getList()

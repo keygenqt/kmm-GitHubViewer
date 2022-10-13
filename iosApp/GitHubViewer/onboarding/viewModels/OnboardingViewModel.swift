@@ -10,6 +10,6 @@ import Foundation
 
 class OnboardingViewModel: ObservableObject, Identifiable {
     func disableOnboarding() {
-        AppKeyValue.setOnboarding(false)
+        AppKeyValue.setPassOnboarding(true)
     }
 }

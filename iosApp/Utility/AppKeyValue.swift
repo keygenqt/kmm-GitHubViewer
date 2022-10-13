@@ -10,22 +10,26 @@ import Foundation
 struct AppKeyValue {
     static let preferences = UserDefaults.standard
 
-    static let keyAuth = "keyAuth"
     static let keyOnboarding = "keyOnboarding"
+    static let keyUserAuth = "keyUserAuth"
+
+    static func isPassOnboarding() -> Bool {
+        return preferences.bool(forKey: keyOnboarding)
+    }
+
+    static func setPassOnboarding(_ state: Bool) {
+        preferences.set(state, forKey: keyOnboarding)
+    }
 
     static func isAuth() -> Bool {
-        return UserDefaults.standard.bool(forKey: keyAuth)
+        return preferences.string(forKey: keyUserAuth) != nil
     }
 
-    static func setAuth(_ state: Bool) {
-        preferences.set(state, forKey: keyAuth)
+    static func setAuth(_ model: AuthModel) {
+        preferences.set(model.toString(), forKey: keyUserAuth)
     }
 
-    static func isOnboarding() -> Bool {
-        return UserDefaults.standard.bool(forKey: keyOnboarding)
-    }
-
-    static func setOnboarding(_ state: Bool) {
-        preferences.set(state, forKey: keyOnboarding)
+    static func getAuth() -> AuthModel {
+        return AuthModel(preferences.string(forKey: keyUserAuth) ?? "")
     }
 }
