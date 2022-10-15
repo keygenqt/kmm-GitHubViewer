@@ -17,25 +17,63 @@ struct ListRepos: View {
     @EnvironmentObject var router: RouterUser
 
     var body: some View {
-        if viewModel.isShowProgressView {
+        if viewModel.models.isEmpty && viewModel.error == nil {
             VStack {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .orange))
             }
         } else {
-            List(viewModel.models) { model in
-                NavigationLink(destination: ViewRepo(model: model)) {
-                    ListReposItem(model: model)
+            ScrollViewReader { sc in
+                List {
+                    Section(footer: HStack {
+                        if viewModel.error != nil || viewModel.isEnd {
+                            EmptyView()
+                        } else {
+                            HStack {
+                                Spacer()
+                                LottieView(
+                                    name: "block_loader"
+                                ).frame(width: 40, height: 40)
+                                Spacer()
+                            }.onAppear {
+                                if !viewModel.isLoading {
+                                    Task { await viewModel.load() }
+                                }
+                            }
+                        }
+
+                        ErrorListItemView(error: viewModel.error) {
+                            if viewModel.models.isEmpty {
+                                viewModel.clearError()
+                                Task { await viewModel.reload() }
+                            } else {
+                                Task { await viewModel.load() }
+                            }
+                        }
+                        .listRowBackground(Color.red)
+
+                    }.listRowInsets(EdgeInsets(top: 15, leading: 5, bottom: 25, trailing: 5))) {
+                        ForEach(viewModel.models) { model in
+                            NavigationLink(destination: ViewRepo(model: model)) {
+                                ListReposItem(model: model)
+                            }.id(model.id)
+                        }
+                    }
                 }
-            }
-            .overlay(alignment: .bottom) {
-                if viewModel.error != nil {
-                    ErrorView(error: viewModel.error)
+                .refreshable {
+                    await viewModel.reload()
                 }
-            }
-            .refreshable {
-                await viewModel.refresh()
-            }
+                .onChange(of: viewModel.error) { error in
+                    if error != nil {
+                        if let lastElement = viewModel.models.last {
+                            withAnimation {
+                                sc.scrollTo(lastElement.id, anchor: .top)
+                            }
+                        }
+                    }
+                }
+
+            }.listStyle(.insetGrouped)
         }
     }
 }

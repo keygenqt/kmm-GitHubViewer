@@ -55,19 +55,19 @@ struct ListReposItem: View {
                     HStack {
                         Image(systemName: "star")
                             .font(.caption2)
-                        Text("12")
+                        Text(model.stargazersCount != nil ? String(model.stargazersCount!) : "")
                             .font(.caption2)
                     }
                     HStack {
                         Image(systemName: "arrow.triangle.branch")
                             .font(.caption2)
-                        Text("12")
+                        Text(model.forks != nil ? String(model.forks!) : "")
                             .font(.caption2)
                     }
                     HStack {
                         Image(systemName: "eye")
                             .font(.caption2)
-                        Text("12")
+                        Text(model.watchers != nil ? String(model.watchers!) : "")
                             .font(.caption2)
                     }
 
