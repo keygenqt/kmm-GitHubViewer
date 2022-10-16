@@ -18,27 +18,11 @@ struct ListFollower: View {
     @Environment(\.openURL) var openURL
 
     var body: some View {
-        if viewModel.isShowProgressView {
-            VStack {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
-            }
-        } else {
-            List(viewModel.models) { model in
-                NavigationLink(destination: Button("Visit to GitHub \(model.login!)") {
-                    // openURL(URL(string: model.url!)!)
-                    graph.route = .guest
-                }) {
-                    ListFollowerItem(model: model)
-                }
-            }
-            .overlay(alignment: .bottom) {
-                if viewModel.error != nil {
-                    ErrorView(error: viewModel.error)
-                }
-            }
-            .refreshable {
-                await viewModel.refresh()
+        AppList(viewModel: viewModel) { model in
+            NavigationLink(destination: Button("Visit to GitHub \(model.login!)") {
+                openURL(URL(string: model.url!)!)
+            }) {
+                ListFollowerItem(model: model)
             }
         }
     }

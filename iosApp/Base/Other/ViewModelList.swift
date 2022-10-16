@@ -49,7 +49,14 @@ class ViewModelList<T>: ObservableObject, Identifiable {
                 self.models.append(contentsOf: response)
                 self.page = (self.models.count + ConstantsApp.PAGE_LIMIT) / ConstantsApp.PAGE_LIMIT
                 self.isEnd = response.count < ConstantsApp.PAGE_LIMIT
+
+                print("+++++++++++++++")
+                print("page \(self.page)")
+                print("page \(self.isEnd)")
+                print("+++++++++++++++")
+
             } else {
+                print("+++++++++++++++ error")
                 self.error = error
             }
         }

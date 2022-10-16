@@ -24,5 +24,5 @@ struct ConstantsApp {
     static let RANDOM_IMAGE = "https://picsum.photos/1920/1080?random"
 
     // Size list page
-    static let PAGE_LIMIT = 5
+    static let PAGE_LIMIT = 8
 }

@@ -21,19 +21,21 @@ struct AppList<T: Identifiable, Content: View>: View {
             ScrollViewReader { sc in
                 List {
                     Section(footer: HStack {
-                        if viewModel.error != nil || viewModel.isEnd {
-                            EmptyView()
-                        } else {
-                            HStack {
-                                Spacer()
+                        HStack {
+                            Spacer()
+                            if viewModel.error != nil || viewModel.isEnd {
+                                LottieView(
+                                    name: "end_flow_bw"
+                                ).frame(width: 60, height: 40)
+                            } else {
                                 LottieView(
                                     name: "block_loader"
                                 ).frame(width: 40, height: 40)
-                                Spacer()
-                            }.onAppear {
-                                if !viewModel.isLoading {
-                                    Task { await viewModel.load() }
-                                }
+                            }
+                            Spacer()
+                        }.onAppear {
+                            if !viewModel.isLoading && viewModel.error == nil && !viewModel.isEnd {
+                                Task { await viewModel.load() }
                             }
                         }
 
