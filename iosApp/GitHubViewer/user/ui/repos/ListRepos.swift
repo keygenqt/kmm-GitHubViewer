@@ -5,7 +5,6 @@
 //  Created by Виталий Зарубин on 16.10.2021.
 //
 
-import Alamofire
 import SwiftUI
 
 struct ListRepos: View {

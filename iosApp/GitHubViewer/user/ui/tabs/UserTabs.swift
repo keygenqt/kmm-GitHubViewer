@@ -46,7 +46,7 @@ struct UserTabs: View {
             .tag(1)
 
             NavigationView {
-                ListFollower()
+                Profile()
                     .navigationBarTitle(L10nProfile.title)
                     .navigationBarTitleDisplayMode(.large)
             }

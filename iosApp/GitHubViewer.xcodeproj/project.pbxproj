@@ -95,6 +95,11 @@
 		2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */; };
 		2F9205AD27AE804000D000C5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9205AC27AE804000D000C5 /* URL.swift */; };
 		2F9ADC0C28FC12D100B0F77E /* end_flow_bw.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F9ADC0B28FC12D100B0F77E /* end_flow_bw.json */; };
+		2F9ADC1028FC1C4800B0F77E /* NavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9ADC0F28FC1C4800B0F77E /* NavigationLink.swift */; };
+		2F9ADC1328FC1E3E00B0F77E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9ADC1228FC1E3E00B0F77E /* Profile.swift */; };
+		2F9ADC1528FC1E4D00B0F77E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9ADC1428FC1E4D00B0F77E /* Settings.swift */; };
+		2F9ADC1728FC1E8000B0F77E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9ADC1628FC1E8000B0F77E /* ProfileViewModel.swift */; };
+		2F9ADC1928FC1E8C00B0F77E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9ADC1828FC1E8C00B0F77E /* SettingsViewModel.swift */; };
 		2FA5B97728F5544B0010DCFE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2FA5B97628F5544B0010DCFE /* swiftgen.yml */; };
 		2FAA263F270C1D5B00DE66FE /* AppGitHubViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */; };
 		2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */; };
@@ -259,6 +264,11 @@
 		2F9205AA27AE7D8100D000C5 /* ScopeFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFuncs.swift; sourceTree = "<group>"; };
 		2F9205AC27AE804000D000C5 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		2F9ADC0B28FC12D100B0F77E /* end_flow_bw.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = end_flow_bw.json; sourceTree = "<group>"; };
+		2F9ADC0F28FC1C4800B0F77E /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
+		2F9ADC1228FC1E3E00B0F77E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		2F9ADC1428FC1E4D00B0F77E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		2F9ADC1628FC1E8000B0F77E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		2F9ADC1828FC1E8C00B0F77E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2FA5B97628F5544B0010DCFE /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
 		2FAA263B270C1D5B00DE66FE /* GitHubViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGitHubViewer.swift; sourceTree = "<group>"; };
@@ -387,6 +397,7 @@
 				2F37DC76271C1324005DB8C4 /* LanguageExt.swift */,
 				2F9205AC27AE804000D000C5 /* URL.swift */,
 				2F7FB77C28FAEA7700CA31BD /* View.swift */,
+				2F9ADC0F28FC1C4800B0F77E /* NavigationLink.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -708,6 +719,22 @@
 			path = Exceptions;
 			sourceTree = "<group>";
 		};
+		2F9ADC0D28FC192300B0F77E /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				2F9ADC1228FC1E3E00B0F77E /* Profile.swift */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		2F9ADC1128FC1E1B00B0F77E /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				2F9ADC1428FC1E4D00B0F77E /* Settings.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
 		2FAA2632270C1D5B00DE66FE = {
 			isa = PBXGroup;
 			children = (
@@ -874,6 +901,8 @@
 		2FDBE2E7279BF92C0072D7BA /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				2F9ADC1128FC1E1B00B0F77E /* settings */,
+				2F9ADC0D28FC192300B0F77E /* profile */,
 				2FDBE2EC279BF9E10072D7BA /* tabs */,
 				2F3253A3271B11820010BDC8 /* repos */,
 				2FDBE2EB279BF9780072D7BA /* repo */,
@@ -888,6 +917,8 @@
 				2F37DC7A271C1A5C005DB8C4 /* FollowerViewModel.swift */,
 				2F37DC6E271C028F005DB8C4 /* ReposViewModel.swift */,
 				2FDBE2E9279BF95A0072D7BA /* RepoViewModel.swift */,
+				2F9ADC1628FC1E8000B0F77E /* ProfileViewModel.swift */,
+				2F9ADC1828FC1E8C00B0F77E /* SettingsViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -1232,6 +1263,7 @@
 				2FD91D472792C5BB00037359 /* RepoUpdateStrings.swift in Sources */,
 				2FD91D722792EB0B00037359 /* String.swift in Sources */,
 				2F2D0BAE279426F1009D4FEC /* TextHeadlineSmall.swift in Sources */,
+				2F9ADC1328FC1E3E00B0F77E /* Profile.swift in Sources */,
 				2FE9BB9C28FB793C00FE0E4D /* AppList.swift in Sources */,
 				2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */,
 				2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */,
@@ -1242,6 +1274,7 @@
 				2F2D0BA8279426CA009D4FEC /* TextDisplaySmall.swift in Sources */,
 				2F3253A2271ADBFF0010BDC8 /* ListReposItem.swift in Sources */,
 				2F2D0BA02794268F009D4FEC /* TextBodyMedium.swift in Sources */,
+				2F9ADC1928FC1E8C00B0F77E /* SettingsViewModel.swift in Sources */,
 				2FDBE2DA279BF1C40072D7BA /* RouteGuest.swift in Sources */,
 				2F7FB77D28FAEA7700CA31BD /* View.swift in Sources */,
 				2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */,
@@ -1249,6 +1282,7 @@
 				2F9205A927AE7CCF00D000C5 /* AppHelper.swift in Sources */,
 				2F3DC5EC27974A42003D6916 /* LottieView.swift in Sources */,
 				2F2D0BBA2794273E009D4FEC /* TextTitleSmall.swift in Sources */,
+				2F9ADC1728FC1E8000B0F77E /* ProfileViewModel.swift in Sources */,
 				2F37DC79271C1932005DB8C4 /* FollowerNetwork.swift in Sources */,
 				2F2D0BAC279426E5009D4FEC /* TextHeadlineMedium.swift in Sources */,
 				2FE9BB9A28FB789900FE0E4D /* ViewModelList.swift in Sources */,
@@ -1297,6 +1331,7 @@
 				2FD91D402792C5BB00037359 /* FollowersStrings.swift in Sources */,
 				2F66A3C12790A4F1004EB4B5 /* WelcomeScreen.swift in Sources */,
 				2F2D0BA22794269C009D4FEC /* TextBodySmall.swift in Sources */,
+				2F9ADC1028FC1C4800B0F77E /* NavigationLink.swift in Sources */,
 				2F66A3CD2790A933004EB4B5 /* OnboardingStep3.swift in Sources */,
 				2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */,
 				2F3253AA271B1E260010BDC8 /* FollowerRealm.swift in Sources */,
@@ -1304,6 +1339,7 @@
 				2FDBE2DF279BF27A0072D7BA /* RouteUser.swift in Sources */,
 				2F2D0BB22794270A009D4FEC /* TextLabelMedium.swift in Sources */,
 				2FF932AF271C3475003DA3D8 /* ReposData.swift in Sources */,
+				2F9ADC1528FC1E4D00B0F77E /* Settings.swift in Sources */,
 				2F12D689279F301600FCD261 /* FontPoppins.swift in Sources */,
 				2F37DC75271C1237005DB8C4 /* ConstantsLanguage.swift in Sources */,
 				2F66A3BF2790A4B9004EB4B5 /* WelcomeViewModel.swift in Sources */,

@@ -19,11 +19,11 @@ struct ListFollower: View {
 
     var body: some View {
         AppList(viewModel: viewModel) { model in
-            NavigationLink(destination: Button("Visit to GitHub \(model.login!)") {
-                openURL(URL(string: model.url!)!)
-            }) {
-                ListFollowerItem(model: model)
-            }
+            Link(destination: URL(string: model.url!)!) {
+                NavigationLink(destination: EmptyView()) {
+                    ListFollowerItem(model: model)
+                }
+            }.accentColor(.black)
         }
     }
 }
