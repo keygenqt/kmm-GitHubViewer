@@ -156,6 +156,8 @@
 		2FDF456C2792B706008DC714 /* step2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45632792B706008DC714 /* step2.json */; };
 		2FDF45712792B976008DC714 /* Onboarding.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF456F2792B976008DC714 /* Onboarding.strings */; };
 		2FDF45742792B985008DC714 /* Onboarding.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF45722792B985008DC714 /* Onboarding.strings */; };
+		2FE9BB9A28FB789900FE0E4D /* ViewModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE9BB9928FB789900FE0E4D /* ViewModelList.swift */; };
+		2FE9BB9C28FB793C00FE0E4D /* AppList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE9BB9B28FB793C00FE0E4D /* AppList.swift */; };
 		2FF932AF271C3475003DA3D8 /* ReposData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF932AE271C3475003DA3D8 /* ReposData.swift */; };
 		2FF932B1271C3486003DA3D8 /* FollowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF932B0271C3486003DA3D8 /* FollowerData.swift */; };
 		2FF932B4271C9E1E003DA3D8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF932B3271C9E1E003DA3D8 /* ErrorView.swift */; };
@@ -318,6 +320,8 @@
 		2FDF45632792B706008DC714 /* step2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = step2.json; sourceTree = "<group>"; };
 		2FDF45702792B976008DC714 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Onboarding.strings; sourceTree = "<group>"; };
 		2FDF45732792B985008DC714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Onboarding.strings; sourceTree = "<group>"; };
+		2FE9BB9928FB789900FE0E4D /* ViewModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelList.swift; sourceTree = "<group>"; };
+		2FE9BB9B28FB793C00FE0E4D /* AppList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppList.swift; sourceTree = "<group>"; };
 		2FF932AE271C3475003DA3D8 /* ReposData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposData.swift; sourceTree = "<group>"; };
 		2FF932B0271C3486003DA3D8 /* FollowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerData.swift; sourceTree = "<group>"; };
 		2FF932B3271C9E1E003DA3D8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				2F3DC5E92796A34C003D6916 /* CircularProgressIndicator.swift */,
+				2FE9BB9B28FB793C00FE0E4D /* AppList.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -674,6 +679,7 @@
 		2F9205A527AE790600D000C5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				2FE9BB9D28FB7E7B00FE0E4D /* Other */,
 				2F9205A727AE7C7700D000C5 /* Exceptions */,
 				2F4157A22712EBF2005BE2D2 /* Generated */,
 				2F1627592714A7D300C2AB0B /* Storyboard */,
@@ -931,6 +937,14 @@
 				2FDF455D2792B706008DC714 /* tumbleweed_rolling.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		2FE9BB9D28FB7E7B00FE0E4D /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2FE9BB9928FB789900FE0E4D /* ViewModelList.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		2FF80ACB2799339500125B49 /* Routing */ = {
@@ -1214,6 +1228,7 @@
 				2FD91D472792C5BB00037359 /* RepoUpdateStrings.swift in Sources */,
 				2FD91D722792EB0B00037359 /* String.swift in Sources */,
 				2F2D0BAE279426F1009D4FEC /* TextHeadlineSmall.swift in Sources */,
+				2FE9BB9C28FB793C00FE0E4D /* AppList.swift in Sources */,
 				2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */,
 				2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */,
 				2F3253A0271ADB380010BDC8 /* ListRepos.swift in Sources */,
@@ -1232,6 +1247,7 @@
 				2F2D0BBA2794273E009D4FEC /* TextTitleSmall.swift in Sources */,
 				2F37DC79271C1932005DB8C4 /* FollowerNetwork.swift in Sources */,
 				2F2D0BAC279426E5009D4FEC /* TextHeadlineMedium.swift in Sources */,
+				2FE9BB9A28FB789900FE0E4D /* ViewModelList.swift in Sources */,
 				2F66A3CB2790A927004EB4B5 /* OnboardingStep2.swift in Sources */,
 				2FF932B4271C9E1E003DA3D8 /* ErrorView.swift in Sources */,
 				2F4784DE2711835B006FE3A5 /* RepoModel.swift in Sources */,

@@ -8,21 +8,11 @@
 import Alamofire
 import Foundation
 
-// @todo
-var todo = 0
-
 class ReposNetwork: APIHandler {
     @discardableResult
     func getListRepo(page: Int) async throws -> [RepoModel] {
         return try await withCheckedThrowingContinuation { continuation in
-
-            // @todo
-            if page == 4 {
-                todo += 1
-            }
-
-            // @todo
-            AF.request("\(ConstantsApp.API_URL)user/repos\(page == 4 && todo < 3 ? "1" : "")", method: .get, parameters: [
+            AF.request("\(ConstantsApp.API_URL)user/repos", method: .get, parameters: [
                 "page": page,
                 "per_page": ConstantsApp.PAGE_LIMIT,
                 "type": "owner",
