@@ -28,9 +28,6 @@ class ViewModelList<T>: ObservableObject, Identifiable {
 
     init() {
         models = getPageRealm()
-        if !models.isEmpty {
-            page = 2
-        }
         Task { await self.load() }
     }
 

@@ -11,8 +11,6 @@
 "label_item_count_followers" = "Followers";
 "label_item_count_following" = "Following";
 "label_bio" = "Биография";
-"label_email" = "Email";
-"label_company" = "Компания";
 "label_blog" = "Сайт";
 "label_location" = "Местонахождение";
 "label_created_at" = "Дата создания профиля";

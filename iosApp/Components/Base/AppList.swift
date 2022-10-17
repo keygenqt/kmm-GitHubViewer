@@ -21,21 +21,23 @@ struct AppList<T: Identifiable, Content: View>: View {
             ScrollViewReader { sc in
                 List {
                     Section(footer: HStack {
-                        HStack {
-                            Spacer()
-                            if viewModel.error != nil || viewModel.isEnd {
-                                LottieView(
-                                    name: "end_flow_bw"
-                                ).frame(width: 60, height: 40)
-                            } else {
-                                LottieView(
-                                    name: "block_loader"
-                                ).frame(width: 40, height: 40)
-                            }
-                            Spacer()
-                        }.onAppear {
-                            if !viewModel.isLoading && viewModel.error == nil && !viewModel.isEnd {
-                                Task { await viewModel.load() }
+                        if viewModel.error == nil {
+                            HStack {
+                                Spacer()
+                                if viewModel.error != nil || viewModel.isEnd {
+                                    LottieView(
+                                        name: "end_flow_bw"
+                                    ).frame(width: 60, height: 40)
+                                } else {
+                                    LottieView(
+                                        name: "block_loader"
+                                    ).frame(width: 40, height: 40)
+                                }
+                                Spacer()
+                            }.onAppear {
+                                if !viewModel.isLoading && !viewModel.isEnd {
+                                    Task { await viewModel.load() }
+                                }
                             }
                         }
 
@@ -59,7 +61,7 @@ struct AppList<T: Identifiable, Content: View>: View {
                     await viewModel.reload()
                 }
                 .onChange(of: viewModel.error) { error in
-                    if error != nil {
+                    if error != nil, viewModel.page != 1 {
                         if let lastElement = viewModel.models.last {
                             withAnimation {
                                 sc.scrollTo(lastElement.id, anchor: .top)

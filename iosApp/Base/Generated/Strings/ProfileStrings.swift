@@ -22,12 +22,8 @@ internal enum L10nProfile {
   internal static let labelBio = L10nProfile.tr("Profile", "label_bio")
   /// Blog
   internal static let labelBlog = L10nProfile.tr("Profile", "label_blog")
-  /// Company
-  internal static let labelCompany = L10nProfile.tr("Profile", "label_company")
   /// Date created profile
   internal static let labelCreatedAt = L10nProfile.tr("Profile", "label_created_at")
-  /// Email
-  internal static let labelEmail = L10nProfile.tr("Profile", "label_email")
   /// Followers
   internal static let labelItemCountFollowers = L10nProfile.tr("Profile", "label_item_count_followers")
   /// Following

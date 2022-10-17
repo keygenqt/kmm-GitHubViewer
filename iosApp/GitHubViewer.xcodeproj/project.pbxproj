@@ -106,6 +106,11 @@
 		2FCD977128F6AE86005B27C8 /* AppKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD977028F6AE86005B27C8 /* AppKeyValue.swift */; };
 		2FCF3F5A2797EAD400A30F9A /* BasePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F592797EAD400A30F9A /* BasePreferences.swift */; };
 		2FCF3F5D2797EAF800A30F9A /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F5C2797EAF800A30F9A /* AppPreferences.swift */; };
+		2FD6D58D28FD2C1900F7BF93 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D58C28FD2C1900F7BF93 /* UserModel.swift */; };
+		2FD6D58F28FD2C8D00F7BF93 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D58E28FD2C8D00F7BF93 /* UserRealm.swift */; };
+		2FD6D59128FD335800F7BF93 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59028FD335800F7BF93 /* UserData.swift */; };
+		2FD6D59328FD359F00F7BF93 /* UserNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59228FD359F00F7BF93 /* UserNetwork.swift */; };
+		2FD6D59528FD5A1B00F7BF93 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59428FD5A1B00F7BF93 /* Double.swift */; };
 		2FD91CF62792BF9C00037359 /* OnboardingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91CF42792BF9B00037359 /* OnboardingStrings.swift */; };
 		2FD91CF92792C0A100037359 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91CF82792C0A100037359 /* AppStrings.swift */; };
 		2FD91CFC2792C2A500037359 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FD91CFA2792C2A500037359 /* Errors.strings */; };
@@ -276,6 +281,11 @@
 		2FCD977028F6AE86005B27C8 /* AppKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeyValue.swift; sourceTree = "<group>"; };
 		2FCF3F592797EAD400A30F9A /* BasePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePreferences.swift; sourceTree = "<group>"; };
 		2FCF3F5C2797EAF800A30F9A /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
+		2FD6D58C28FD2C1900F7BF93 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		2FD6D58E28FD2C8D00F7BF93 /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
+		2FD6D59028FD335800F7BF93 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		2FD6D59228FD359F00F7BF93 /* UserNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetwork.swift; sourceTree = "<group>"; };
+		2FD6D59428FD5A1B00F7BF93 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		2FD91CF42792BF9B00037359 /* OnboardingStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStrings.swift; sourceTree = "<group>"; };
 		2FD91CF82792C0A100037359 /* AppStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		2FD91CFB2792C2A500037359 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Errors.strings; sourceTree = "<group>"; };
@@ -398,6 +408,7 @@
 				2F9205AC27AE804000D000C5 /* URL.swift */,
 				2F7FB77C28FAEA7700CA31BD /* View.swift */,
 				2F9ADC0F28FC1C4800B0F77E /* NavigationLink.swift */,
+				2FD6D59428FD5A1B00F7BF93 /* Double.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -435,6 +446,7 @@
 				2F37DC70271C02FA005DB8C4 /* ReposNetwork.swift */,
 				2F37DC78271C1932005DB8C4 /* FollowerNetwork.swift */,
 				2FDE1E2728F813A100FEBD9F /* AuthNetwork.swift */,
+				2FD6D59228FD359F00F7BF93 /* UserNetwork.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -444,6 +456,7 @@
 			children = (
 				2FF932AE271C3475003DA3D8 /* ReposData.swift */,
 				2FF932B0271C3486003DA3D8 /* FollowerData.swift */,
+				2FD6D59028FD335800F7BF93 /* UserData.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -532,6 +545,7 @@
 			children = (
 				2F3253A9271B1E260010BDC8 /* FollowerRealm.swift */,
 				2F3253AB271B1E340010BDC8 /* RepoRealm.swift */,
+				2FD6D58E28FD2C8D00F7BF93 /* UserRealm.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -542,6 +556,7 @@
 				2F4784DD2711835B006FE3A5 /* RepoModel.swift */,
 				2F4784DF27118374006FE3A5 /* FollowerModel.swift */,
 				2FDE1E2928F813E400FEBD9F /* AuthModel.swift */,
+				2FD6D58C28FD2C1900F7BF93 /* UserModel.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -1257,6 +1272,7 @@
 				2FD91D482792C5BB00037359 /* RepoStrings.swift in Sources */,
 				2FD91D412792C5BB00037359 /* ErrorsStrings.swift in Sources */,
 				2F66A3C72790A6F9004EB4B5 /* NavGraph.swift in Sources */,
+				2FD6D58F28FD2C8D00F7BF93 /* UserRealm.swift in Sources */,
 				2FDE1E2828F813A100FEBD9F /* AuthNetwork.swift in Sources */,
 				2FF932B6271CA15C003DA3D8 /* NetworkError.swift in Sources */,
 				2F2D0BA6279426B9009D4FEC /* TextDisplayMedium.swift in Sources */,
@@ -1267,6 +1283,7 @@
 				2FE9BB9C28FB793C00FE0E4D /* AppList.swift in Sources */,
 				2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */,
 				2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */,
+				2FD6D59328FD359F00F7BF93 /* UserNetwork.swift in Sources */,
 				2F3253A0271ADB380010BDC8 /* ListRepos.swift in Sources */,
 				2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */,
 				2F4784E027118374006FE3A5 /* FollowerModel.swift in Sources */,
@@ -1278,6 +1295,7 @@
 				2FDBE2DA279BF1C40072D7BA /* RouteGuest.swift in Sources */,
 				2F7FB77D28FAEA7700CA31BD /* View.swift in Sources */,
 				2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */,
+				2FD6D59128FD335800F7BF93 /* UserData.swift in Sources */,
 				2F3253AC271B1E340010BDC8 /* RepoRealm.swift in Sources */,
 				2F9205A927AE7CCF00D000C5 /* AppHelper.swift in Sources */,
 				2F3DC5EC27974A42003D6916 /* LottieView.swift in Sources */,
@@ -1290,6 +1308,7 @@
 				2FF932B4271C9E1E003DA3D8 /* ErrorView.swift in Sources */,
 				2F4784DE2711835B006FE3A5 /* RepoModel.swift in Sources */,
 				2F7FB77B28FAD48E00CA31BD /* ButtonOutlineStyle.swift in Sources */,
+				2FD6D58D28FD2C1900F7BF93 /* UserModel.swift in Sources */,
 				2F37DC7B271C1A5C005DB8C4 /* FollowerViewModel.swift in Sources */,
 				2F2D0BB627942724009D4FEC /* TextTitleLarge.swift in Sources */,
 				2FD91D452792C5BB00037359 /* SignInStrings.swift in Sources */,
@@ -1333,6 +1352,7 @@
 				2F2D0BA22794269C009D4FEC /* TextBodySmall.swift in Sources */,
 				2F9ADC1028FC1C4800B0F77E /* NavigationLink.swift in Sources */,
 				2F66A3CD2790A933004EB4B5 /* OnboardingStep3.swift in Sources */,
+				2FD6D59528FD5A1B00F7BF93 /* Double.swift in Sources */,
 				2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */,
 				2F3253AA271B1E260010BDC8 /* FollowerRealm.swift in Sources */,
 				2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */,

@@ -21,7 +21,7 @@ struct ConstantsApp {
     static let GITHUB_USER = "keygenqt"
 
     // Random image
-    static let RANDOM_IMAGE = "https://picsum.photos/1920/1080?random"
+    static let RANDOM_IMAGE = "https://media.sproutsocial.com/uploads/2017/08/Social-Media-Video-Specs-Feature-Image.png"
 
     // Size list page
     static let PAGE_LIMIT = 8

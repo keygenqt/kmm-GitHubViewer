@@ -38,15 +38,24 @@ extension DataRequest {
             // @todo emulate slow query
             sleep(2)
             completionHandler(response)
-            switch response.result {
-            case let .success(decodedResponse):
-                continuation.resume(returning: decodedResponse)
-            case let .failure(error):
-                if error.responseCode == 404 {
+
+            let errors: (Int?) -> Void = { responseCode in
+                if responseCode == 404 {
                     continuation.resume(throwing: NetworkError.notFound)
                 } else {
-                    continuation.resume(throwing: NetworkError.unexpected(code: error.responseCode ?? -1))
+                    continuation.resume(throwing: NetworkError.unexpected(code: responseCode ?? -1))
                 }
+            }
+
+            if response.response?.statusCode == 200 {
+                switch response.result {
+                case let .success(decodedResponse):
+                    continuation.resume(returning: decodedResponse)
+                case let .failure(error):
+                    errors(error.responseCode)
+                }
+            } else {
+                errors(response.response?.statusCode)
             }
         }
     }
