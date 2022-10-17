@@ -13,6 +13,8 @@
 "form_twitter_username" = "Twitter никнейм";
 "form_company" = "Компания";
 "form_location" = "Локация";
-"form_bio" = "О себе";
+"form_group_about" = "Основное";
+"form_group_links" = "Ссылки";
+"form_group_bio" = "О себе";
 "form_button_submit" = "Отправить";
 "form_successfully" = "Профиль успешно обновлен";

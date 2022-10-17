@@ -14,7 +14,6 @@ struct UserTabs: View {
     @EnvironmentObject var router: RouterUser
     // page values
     @State private var selection = 0
-    @State private var isShowLogout: Bool = false
 
     var body: some View {
         TabView(selection: $selection) {
@@ -50,26 +49,6 @@ struct UserTabs: View {
                 Profile()
                     .navigationBarTitle(L10nProfile.title)
                     .navigationBarTitleDisplayMode(.large)
-                    .navigationBarItems(trailing: HStack {
-                        Button {
-                            isShowLogout = true
-                        } label: {
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
-                                .imageScale(.medium)
-                        }
-                        NavigationLink(destination: Settings().navigationBarTitle(L10nSettings.title)) {
-                            Image(systemName: "gearshape")
-                                .imageScale(.medium)
-                        }
-
-                    }).confirmationDialog(L10nProfile.dialogLogoutTitle, isPresented: $isShowLogout) {
-                        Button(L10nProfile.dialogLogoutConfirm, role: .destructive) {
-                            graph.route = .guest
-                            AppKeyValue.clear()
-                        }
-                    } message: {
-                        Text(L10nProfile.dialogLogoutText)
-                    }
             }
             .tabItem {
                 VStack {

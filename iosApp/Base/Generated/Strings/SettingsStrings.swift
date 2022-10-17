@@ -10,14 +10,18 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10nSettings {
-  /// Bio
-  internal static let formBio = L10nSettings.tr("Settings", "form_bio")
   /// Blog URL
   internal static let formBlog = L10nSettings.tr("Settings", "form_blog")
   /// Submit
   internal static let formButtonSubmit = L10nSettings.tr("Settings", "form_button_submit")
   /// Company
   internal static let formCompany = L10nSettings.tr("Settings", "form_company")
+  /// About
+  internal static let formGroupAbout = L10nSettings.tr("Settings", "form_group_about")
+  /// Bio
+  internal static let formGroupBio = L10nSettings.tr("Settings", "form_group_bio")
+  /// Links
+  internal static let formGroupLinks = L10nSettings.tr("Settings", "form_group_links")
   /// Location
   internal static let formLocation = L10nSettings.tr("Settings", "form_location")
   /// Name

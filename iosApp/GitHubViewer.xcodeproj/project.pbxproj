@@ -111,6 +111,12 @@
 		2FD6D59128FD335800F7BF93 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59028FD335800F7BF93 /* UserData.swift */; };
 		2FD6D59328FD359F00F7BF93 /* UserNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59228FD359F00F7BF93 /* UserNetwork.swift */; };
 		2FD6D59528FD5A1B00F7BF93 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59428FD5A1B00F7BF93 /* Double.swift */; };
+		2FD6D59828FD8D8000F7BF93 /* NameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59728FD8D8000F7BF93 /* NameField.swift */; };
+		2FD6D59A28FD8E3400F7BF93 /* BlogField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59928FD8E3400F7BF93 /* BlogField.swift */; };
+		2FD6D59C28FD8E4F00F7BF93 /* TwitterField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59B28FD8E4F00F7BF93 /* TwitterField.swift */; };
+		2FD6D59E28FD8E6800F7BF93 /* CompanyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59D28FD8E6800F7BF93 /* CompanyField.swift */; };
+		2FD6D5A028FD8E7800F7BF93 /* LocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D59F28FD8E7800F7BF93 /* LocationField.swift */; };
+		2FD6D5A228FD8E8600F7BF93 /* BioField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D5A128FD8E8600F7BF93 /* BioField.swift */; };
 		2FD91CF62792BF9C00037359 /* OnboardingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91CF42792BF9B00037359 /* OnboardingStrings.swift */; };
 		2FD91CF92792C0A100037359 /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91CF82792C0A100037359 /* AppStrings.swift */; };
 		2FD91CFC2792C2A500037359 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FD91CFA2792C2A500037359 /* Errors.strings */; };
@@ -286,6 +292,12 @@
 		2FD6D59028FD335800F7BF93 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		2FD6D59228FD359F00F7BF93 /* UserNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetwork.swift; sourceTree = "<group>"; };
 		2FD6D59428FD5A1B00F7BF93 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		2FD6D59728FD8D8000F7BF93 /* NameField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameField.swift; sourceTree = "<group>"; };
+		2FD6D59928FD8E3400F7BF93 /* BlogField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogField.swift; sourceTree = "<group>"; };
+		2FD6D59B28FD8E4F00F7BF93 /* TwitterField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterField.swift; sourceTree = "<group>"; };
+		2FD6D59D28FD8E6800F7BF93 /* CompanyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyField.swift; sourceTree = "<group>"; };
+		2FD6D59F28FD8E7800F7BF93 /* LocationField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationField.swift; sourceTree = "<group>"; };
+		2FD6D5A128FD8E8600F7BF93 /* BioField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioField.swift; sourceTree = "<group>"; };
 		2FD91CF42792BF9B00037359 /* OnboardingStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingStrings.swift; sourceTree = "<group>"; };
 		2FD91CF82792C0A100037359 /* AppStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		2FD91CFB2792C2A500037359 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Errors.strings; sourceTree = "<group>"; };
@@ -745,6 +757,7 @@
 		2F9ADC1128FC1E1B00B0F77E /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				2FD6D59628FD8D5700F7BF93 /* fields */,
 				2F9ADC1428FC1E4D00B0F77E /* Settings.swift */,
 			);
 			path = settings;
@@ -814,6 +827,19 @@
 				2FCF3F5C2797EAF800A30F9A /* AppPreferences.swift */,
 			);
 			path = impl;
+			sourceTree = "<group>";
+		};
+		2FD6D59628FD8D5700F7BF93 /* fields */ = {
+			isa = PBXGroup;
+			children = (
+				2FD6D59728FD8D8000F7BF93 /* NameField.swift */,
+				2FD6D59928FD8E3400F7BF93 /* BlogField.swift */,
+				2FD6D59B28FD8E4F00F7BF93 /* TwitterField.swift */,
+				2FD6D59D28FD8E6800F7BF93 /* CompanyField.swift */,
+				2FD6D59F28FD8E7800F7BF93 /* LocationField.swift */,
+				2FD6D5A128FD8E8600F7BF93 /* BioField.swift */,
+			);
+			path = fields;
 			sourceTree = "<group>";
 		};
 		2FD91D4A2792E33D00037359 /* Texts */ = {
@@ -1262,16 +1288,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FD6D59E28FD8E6800F7BF93 /* CompanyField.swift in Sources */,
 				2FDBE2EA279BF95A0072D7BA /* RepoViewModel.swift in Sources */,
 				2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */,
 				2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */,
 				2FD91D432792C5BB00037359 /* SettingsStrings.swift in Sources */,
 				2FDBE2F3279C814F0072D7BA /* BottomPrimaryStyle.swift in Sources */,
 				2F2D0BB827942731009D4FEC /* TextTitleMedium.swift in Sources */,
+				2FD6D5A228FD8E8600F7BF93 /* BioField.swift in Sources */,
 				2FDBE2DD279BF2680072D7BA /* RouteOnboarding.swift in Sources */,
 				2FD91D482792C5BB00037359 /* RepoStrings.swift in Sources */,
 				2FD91D412792C5BB00037359 /* ErrorsStrings.swift in Sources */,
 				2F66A3C72790A6F9004EB4B5 /* NavGraph.swift in Sources */,
+				2FD6D59C28FD8E4F00F7BF93 /* TwitterField.swift in Sources */,
 				2FD6D58F28FD2C8D00F7BF93 /* UserRealm.swift in Sources */,
 				2FDE1E2828F813A100FEBD9F /* AuthNetwork.swift in Sources */,
 				2FF932B6271CA15C003DA3D8 /* NetworkError.swift in Sources */,
@@ -1294,6 +1323,7 @@
 				2F9ADC1928FC1E8C00B0F77E /* SettingsViewModel.swift in Sources */,
 				2FDBE2DA279BF1C40072D7BA /* RouteGuest.swift in Sources */,
 				2F7FB77D28FAEA7700CA31BD /* View.swift in Sources */,
+				2FD6D59A28FD8E3400F7BF93 /* BlogField.swift in Sources */,
 				2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */,
 				2FD6D59128FD335800F7BF93 /* UserData.swift in Sources */,
 				2F3253AC271B1E340010BDC8 /* RepoRealm.swift in Sources */,
@@ -1333,6 +1363,7 @@
 				2F123046270E360700D0269E /* Color.swift in Sources */,
 				2FCF3F5A2797EAD400A30F9A /* BasePreferences.swift in Sources */,
 				2FD91D422792C5BB00037359 /* FormsStrings.swift in Sources */,
+				2FD6D59828FD8D8000F7BF93 /* NameField.swift in Sources */,
 				2F2D0BAA279426D8009D4FEC /* TextHeadlineLarge.swift in Sources */,
 				2F66A3C52790A51A004EB4B5 /* OnboardingScreen.swift in Sources */,
 				2F66A3CF2790A93F004EB4B5 /* OnboardingStep4.swift in Sources */,
@@ -1341,6 +1372,7 @@
 				2F2D0BB427942716009D4FEC /* TextLabelSmall.swift in Sources */,
 				2F2D0BA4279426AC009D4FEC /* TextDisplayLarge.swift in Sources */,
 				2F37DC77271C1324005DB8C4 /* LanguageExt.swift in Sources */,
+				2FD6D5A028FD8E7800F7BF93 /* LocationField.swift in Sources */,
 				2F37DC73271C033E005DB8C4 /* APIHandler.swift in Sources */,
 				2F3253A8271B1BCD0010BDC8 /* ListFollowerItem.swift in Sources */,
 				2F3253A6271B1BBD0010BDC8 /* ListFollower.swift in Sources */,
@@ -1710,7 +1742,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = Splash;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1750,7 +1782,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = Splash;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

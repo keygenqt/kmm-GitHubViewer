@@ -11,5 +11,6 @@ protocol IField {
     var label: String { get set }
     var value: String { get set }
     var isValid: Bool { get set }
+    var lineLimit: ClosedRange<Int> { get set }
     var validates: [(String, String) -> String?] { get set }
 }

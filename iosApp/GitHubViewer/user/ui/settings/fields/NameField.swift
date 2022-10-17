@@ -1,8 +1,8 @@
 //
-//  NicknameTextField.swift
+//  NameField.swift
 //  GitHubViewer
 //
-//  Created by Виталий Зарубин on 04.02.2022.
+//  Created by Виталий Зарубин on 17.10.2022.
 //
 
 import Foundation
@@ -29,13 +29,13 @@ private func checkSymbolDouble(label: String, text: String) -> String? {
 }
 
 private func getErrorIsNotMatch(label: String, text: String) -> String? {
-    return !text.matches("^[A-Za-z\\d-]+$") ? "\(label) does not match" : nil
+    return !text.matches("^[A-Za-z\\d-\\s]+$") ? "\(label) does not match" : nil
 }
 
 // field
-struct NicknameField: IField {
+struct NameField: IField {
     // params field
-    var label: String = L10nSignIn.formNickname
+    var label: String = L10nSettings.formName
     var value: String = ""
     var isValid: Bool = false
     var lineLimit = 1 ... 1

@@ -64,6 +64,8 @@ struct SignInScreen: View {
                     router.route = .welcome
                 }
             }
+            .navigationBarTitle(L10nSignIn.title)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

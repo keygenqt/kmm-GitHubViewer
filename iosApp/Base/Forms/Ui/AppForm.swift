@@ -21,8 +21,6 @@ struct AppForm<Content: View>: View {
 
     var body: some View {
         Form(content: content)
-            .navigationBarTitle(L10nSignIn.title)
-            .navigationBarTitleDisplayMode(.inline)
             .toast(isPresenting: Binding(get: { self.error != nil }, set: { self.error = $0 ? "" : nil })) {
                 AlertToast(
                     displayMode: .banner(.pop),

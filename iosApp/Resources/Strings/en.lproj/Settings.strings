@@ -13,6 +13,8 @@
 "form_twitter_username" = "Twitter nickname";
 "form_company" = "Company";
 "form_location" = "Location";
-"form_bio" = "Bio";
+"form_group_about" = "About";
+"form_group_links" = "Links";
+"form_group_bio" = "Bio";
 "form_button_submit" = "Submit";
 "form_successfully" = "Update user data successfully";
