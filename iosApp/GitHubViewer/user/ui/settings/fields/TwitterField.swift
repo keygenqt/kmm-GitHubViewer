@@ -7,11 +7,6 @@
 
 import Foundation
 
-// validates
-private func checkIsBlank(label: String, text: String) -> String? {
-    return text.isEmpty ? "\(label) is required" : nil
-}
-
 // field
 struct TwitterField: IField {
     // params field
@@ -19,5 +14,5 @@ struct TwitterField: IField {
     var value: String = ""
     var isValid: Bool = false
     var lineLimit = 1 ... 1
-    var validates = [checkIsBlank]
+    var validates: [(String, String) -> String?] = []
 }

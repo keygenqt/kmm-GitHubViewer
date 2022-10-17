@@ -186,7 +186,6 @@ struct Profile: View {
                 Image(systemName: "gearshape")
                     .imageScale(.medium)
             }
-
         }).confirmationDialog(L10nProfile.dialogLogoutTitle, isPresented: $isShowLogout) {
             Button(L10nProfile.dialogLogoutConfirm, role: .destructive) {
                 graph.route = .guest
@@ -194,6 +193,9 @@ struct Profile: View {
             }
         } message: {
             Text(L10nProfile.dialogLogoutText)
+        }
+        .onAppear {
+            viewModel.readDb()
         }
     }
 }

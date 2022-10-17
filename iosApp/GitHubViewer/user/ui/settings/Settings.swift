@@ -37,40 +37,63 @@ struct Settings: View {
     }
 
     var body: some View {
-        AppForm(error: $error) {
-            Section(header: Text(L10nSettings.formGroupAbout)) {
-                ForEach(0 ... fieldsAbout.count - 1, id: \.self) {
-                    AppTextField(field: $fieldsAbout[$0], initValidate: true) { error in
-                        self.error = error
+        VStack {
+            if viewModel.error != nil {
+                VStack {
+                    ErrorView(error: viewModel.error) {
+                        viewModel.retry()
                     }
                 }
-            }
-            Section(header: Text(L10nSettings.formGroupLinks)) {
-                ForEach(0 ... fieldsLinks.count - 1, id: \.self) {
-                    AppTextField(field: $fieldsLinks[$0], initValidate: true) { error in
-                        self.error = error
+            } else {
+                AppForm(error: $error) {
+                    Section(header: Text(L10nSettings.formGroupAbout)) {
+                        ForEach(0 ... fieldsAbout.count - 1, id: \.self) {
+                            AppTextField(field: $fieldsAbout[$0], initValidate: true) { error in
+                                self.error = error
+                            }
+                        }
                     }
-                }
-            }
-            Section(header: Text(L10nSettings.formGroupBio)) {
-                ForEach(0 ... fieldsBio.count - 1, id: \.self) {
-                    AppTextField(field: $fieldsBio[$0], initValidate: true) { error in
-                        self.error = error
+                    Section(header: Text(L10nSettings.formGroupLinks)) {
+                        ForEach(0 ... fieldsLinks.count - 1, id: \.self) {
+                            AppTextField(field: $fieldsLinks[$0], initValidate: true) { error in
+                                self.error = error
+                            }
+                        }
                     }
+                    Section(header: Text(L10nSettings.formGroupBio)) {
+                        ForEach(0 ... fieldsBio.count - 1, id: \.self) {
+                            AppTextField(field: $fieldsBio[$0], initValidate: true) { error in
+                                self.error = error
+                            }
+                        }
+                    }
+                    Section {
+                        Button(L10nSettings.formButtonSubmit) {
+                            viewModel.update(
+                                name: fieldsAbout[0].value,
+                                blog: fieldsLinks[0].value,
+                                twitterUsername: fieldsLinks[1].value,
+                                company: fieldsAbout[1].value,
+                                location: fieldsAbout[2].value,
+                                bio: fieldsBio[0].value
+                            )
+                        }
+                        .buttonStyle(BottomPrimaryStyle())
+                        .disabled(fieldsAbout.isNotValid() || fieldsLinks.isNotValid() || fieldsBio.isNotValid() || viewModel.loading)
+                        .listRowInsets(.init())
+                        .listRowBackground(Color.clear)
+                    }
+                    .listRowBackground(Color.clear)
                 }
             }
-            Section {
-                Button(L10nSettings.formButtonSubmit) {
-                    print("Submit")
-                }
-                .buttonStyle(BottomPrimaryStyle())
-                .disabled(fieldsAbout.isNotValid() || fieldsLinks.isNotValid() || fieldsBio.isNotValid())
-                .listRowInsets(.init())
-                .listRowBackground(Color.clear)
-            }
-            .listRowBackground(Color.clear)
         }
         .navigationBarTitle(L10nSettings.title)
         .navigationBarTitleDisplayMode(.large)
+        .navigationBarItems(trailing: HStack {
+            if viewModel.loading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+            }
+        })
     }
 }

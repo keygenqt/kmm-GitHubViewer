@@ -19,7 +19,7 @@ class ProfileViewModel: ObservableObject, Identifiable {
         Task { await load() }
     }
 
-    func update(
+    func updateUI(
         response: UserModel? = nil,
         error: NetworkError? = nil
     ) {
@@ -34,6 +34,12 @@ class ProfileViewModel: ObservableObject, Identifiable {
         }
     }
 
+    func readDb() {
+        DispatchQueue.main.async {
+            self.model = self.serviceData.getUser()?.toModel()
+        }
+    }
+
     func retry() {
         DispatchQueue.main.async {
             self.error = nil
@@ -43,12 +49,12 @@ class ProfileViewModel: ObservableObject, Identifiable {
     }
 
     func load() async {
-        update()
+        updateUI()
         do {
             let response = try await serviceNetwork.getUser()
-            update(response: response)
+            updateUI(response: response)
         } catch let networkError as NetworkError {
-            update(error: networkError)
+            updateUI(error: networkError)
         } catch {
             print("Unexpected error: \(error).")
         }
