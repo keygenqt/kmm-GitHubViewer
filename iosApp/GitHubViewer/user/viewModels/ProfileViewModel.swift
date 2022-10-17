@@ -26,7 +26,6 @@ class ProfileViewModel: ObservableObject, Identifiable {
         DispatchQueue.main.async {
             if response == nil {
                 self.error = error
-                self.model = nil
             } else {
                 self.model = response
                 self.serviceData.clear()
@@ -36,7 +35,10 @@ class ProfileViewModel: ObservableObject, Identifiable {
     }
 
     func retry() {
-        update()
+        DispatchQueue.main.async {
+            self.error = nil
+            self.model = nil
+        }
         Task { await load() }
     }
 
