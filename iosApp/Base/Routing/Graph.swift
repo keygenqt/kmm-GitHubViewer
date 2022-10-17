@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Graph {
+enum Graph: String {
     case onboarding
     case guest
     case user

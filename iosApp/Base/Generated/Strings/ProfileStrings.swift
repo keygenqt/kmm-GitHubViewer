@@ -14,7 +14,8 @@ internal enum L10nProfile {
   internal static let dialogLogoutConfirm = L10nProfile.tr("Profile", "dialog_logout_confirm")
   /// Dismiss
   internal static let dialogLogoutDismiss = L10nProfile.tr("Profile", "dialog_logout_dismiss")
-  /// You will be redirected to the login page. Is this what you want?
+  /// You will be redirected to the login page.
+  /// Is this what you want?
   internal static let dialogLogoutText = L10nProfile.tr("Profile", "dialog_logout_text")
   /// Exit the application
   internal static let dialogLogoutTitle = L10nProfile.tr("Profile", "dialog_logout_title")

@@ -8,28 +8,37 @@
 import Foundation
 
 struct AppKeyValue {
-    static let preferences = UserDefaults.standard
+    static let storage = UserDefaults.standard
 
     static let keyOnboarding = "keyOnboarding"
     static let keyUserAuth = "keyUserAuth"
 
     static func isPassOnboarding() -> Bool {
-        return preferences.bool(forKey: keyOnboarding)
+        return storage.bool(forKey: keyOnboarding)
     }
 
     static func setPassOnboarding(_ state: Bool) {
-        preferences.set(state, forKey: keyOnboarding)
+        storage.set(state, forKey: keyOnboarding)
     }
 
     static func isAuth() -> Bool {
-        return preferences.string(forKey: keyUserAuth) != nil
+        return storage.string(forKey: keyUserAuth) != nil
     }
 
     static func setAuth(_ model: AuthModel) {
-        preferences.set(model.toString(), forKey: keyUserAuth)
+        storage.set(model.toString(), forKey: keyUserAuth)
     }
 
     static func getAuth() -> AuthModel {
-        return AuthModel(preferences.string(forKey: keyUserAuth) ?? "")
+        return AuthModel(storage.string(forKey: keyUserAuth) ?? "")
+    }
+
+    static func clear() {
+        let dictionary = storage.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            if key != keyOnboarding {
+                storage.removeObject(forKey: key)
+            }
+        }
     }
 }

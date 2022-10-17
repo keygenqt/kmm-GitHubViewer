@@ -15,6 +15,6 @@
 "label_location" = "Местонахождение";
 "label_created_at" = "Дата создания профиля";
 "dialog_logout_title" = "Выход из приложения";
-"dialog_logout_text" = "Вы будете перенаправлены на страницу входа. Это то чего вы желаете?";
+"dialog_logout_text" = "Вы будете перенаправлены на страницу входа.\nЭто то чего вы желаете?";
 "dialog_logout_confirm" = "Подтвердить";
 "dialog_logout_dismiss" = "Отмена";

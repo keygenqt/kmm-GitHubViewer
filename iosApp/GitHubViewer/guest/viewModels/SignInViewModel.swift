@@ -29,11 +29,15 @@ class SignInViewModel: ObservableObject, Identifiable {
     }
 
     func authUser(code: String, action: (() -> Void)?) async {
-        error = nil
+        DispatchQueue.main.async {
+            self.error = nil
+        }
         do {
             let response = try await serviceNetwork.oauthCode(code: code)
             AppKeyValue.setAuth(response)
-            action?()
+            DispatchQueue.main.async {
+                action?()
+            }
         } catch let networkError as NetworkError {
             self.error = networkError
         } catch {

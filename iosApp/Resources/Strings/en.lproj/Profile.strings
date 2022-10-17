@@ -15,6 +15,6 @@
 "label_location" = "Location";
 "label_created_at" = "Date created profile";
 "dialog_logout_title" = "Exit the application";
-"dialog_logout_text" = "You will be redirected to the login page. Is this what you want?";
+"dialog_logout_text" = "You will be redirected to the login page.\nIs this what you want?";
 "dialog_logout_confirm" = "Confirm";
 "dialog_logout_dismiss" = "Dismiss";

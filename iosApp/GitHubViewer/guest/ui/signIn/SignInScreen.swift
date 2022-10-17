@@ -61,6 +61,7 @@ struct SignInScreen: View {
             }.onOpenURL { url in
                 viewModel.authUser(url: url) {
                     graph.route = .user
+                    router.route = .welcome
                 }
             }
         }
