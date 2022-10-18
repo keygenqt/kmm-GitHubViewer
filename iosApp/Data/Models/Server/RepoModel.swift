@@ -13,10 +13,12 @@ class RepoModel: Decodable, Identifiable {
     var language: String?
     var createdAt: String?
     var description: String?
+    var url: String?
     var isPrivate: Bool?
     var stargazersCount: Int?
     var forks: Int?
     var watchers: Int?
+    var isList: Bool = true
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -24,6 +26,7 @@ class RepoModel: Decodable, Identifiable {
         case language
         case created_at
         case description
+        case url
         case `private`
         case stargazers_count
         case forks
@@ -46,6 +49,7 @@ class RepoModel: Decodable, Identifiable {
         language = try? container.decode(String.self, forKey: .language)
         createdAt = try? container.decode(String.self, forKey: .created_at)
         description = try? container.decode(String.self, forKey: .description)
+        url = try? container.decode(String.self, forKey: .url)
         isPrivate = try? container.decode(Bool.self, forKey: .private)
         stargazersCount = try? container.decode(Int.self, forKey: .stargazers_count)
         forks = try? container.decode(Int.self, forKey: .forks)
@@ -71,10 +75,12 @@ extension RepoModel {
         realmModel.language = language ?? ""
         realmModel.createdAt = createdAt ?? ""
         realmModel.desc = description ?? ""
+        realmModel.url = url ?? ""
         realmModel.isPrivate = isPrivate ?? false
         realmModel.stargazersCount = stargazersCount ?? 0
         realmModel.forks = forks ?? 0
         realmModel.watchers = watchers ?? 0
+        realmModel.isList = isList
         return realmModel
     }
 

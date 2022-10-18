@@ -12,7 +12,9 @@ struct ReposData {
     func getList() -> [RepoRealm] {
         do {
             let realm = try Realm()
-            return realm.objects(RepoRealm.self).map { $0 }
+            return realm.objects(RepoRealm.self)
+                .filter("isList=true")
+                .map { $0 }
         } catch {
             // handle error
             print(error)
@@ -26,6 +28,45 @@ struct ReposData {
             try realm.write {
                 realm.add(models)
             }
+        } catch {
+            // handle error
+            print(error)
+        }
+    }
+
+    func getModel(_ url: String) -> RepoRealm? {
+        do {
+            let realm = try Realm()
+            return realm.object(ofType: RepoRealm.self, forPrimaryKey: url)
+        } catch {
+            // handle error
+            print(error)
+        }
+        return nil
+    }
+
+    func save(_ model: RepoRealm) {
+        do {
+            let realm = try Realm()
+            if let obj = getModel(model.url) {
+                try realm.write {
+                    obj.id = model.id
+                    obj.name = model.name
+                    obj.language = model.language
+                    obj.createdAt = model.createdAt
+                    obj.desc = model.desc
+                    obj.isPrivate = model.isPrivate
+                    obj.stargazersCount = model.stargazersCount
+                    obj.forks = model.forks
+                    obj.watchers = model.watchers
+                }
+            } else {
+                model.isList = false
+                try realm.write {
+                    realm.add(model)
+                }
+            }
+
         } catch {
             // handle error
             print(error)

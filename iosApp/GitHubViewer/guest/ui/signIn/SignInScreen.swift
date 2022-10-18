@@ -14,15 +14,14 @@ struct SignInScreen: View {
     @EnvironmentObject var graph: GraphObservable
     // router
     @EnvironmentObject var router: RouterGuest
+    // environment
+    @Environment(\.openURL) var openURL
     // form states
     @State private var error: String?
     // form value
     @State private var fields: [IField] = [
         NicknameField(),
     ]
-
-    // page values
-    @Environment(\.openURL) var openURL
 
     var body: some View {
         if viewModel.isShowProgressView {

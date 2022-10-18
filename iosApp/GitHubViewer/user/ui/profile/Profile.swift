@@ -15,6 +15,8 @@ struct Profile: View {
     @EnvironmentObject var graph: GraphObservable
     // router
     @EnvironmentObject var router: RouterUser
+    // theme
+    @Environment(\.colorScheme) var colorScheme
 
     @State private var isShowLogout: Bool = false
 
@@ -74,7 +76,7 @@ struct Profile: View {
                                 VStack(alignment: .leading) {
                                     Image(systemName: "briefcase.fill")
                                         .frame(width: 30, height: 30)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color.onBackground)
                                         .padding(.leading, 25)
                                         .padding(.trailing, 25)
                                         .padding(.top, 7)
@@ -94,11 +96,12 @@ struct Profile: View {
                                 VStack(alignment: .leading) {
                                     Image(systemName: "person.2.fill")
                                         .frame(width: 30, height: 30)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color.onBackground)
                                         .padding(.leading, 25)
                                         .padding(.trailing, 25)
                                         .padding(.top, 7)
                                         .padding(.bottom, 7)
+                                        .accentColor(Color.onBackground)
                                 }
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
@@ -114,7 +117,7 @@ struct Profile: View {
                                 VStack(alignment: .leading) {
                                     Image(systemName: "person.fill.viewfinder")
                                         .frame(width: 30, height: 30)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color.onBackground)
                                         .padding(.leading, 25)
                                         .padding(.trailing, 25)
                                         .padding(.top, 7)
@@ -136,7 +139,7 @@ struct Profile: View {
                                     Text(L10nProfile.labelBlog).font(.caption).fontWeight(.bold).padding(.bottom, 1)
                                     Link(destination: URL(string: viewModel.model?.blog ?? "")!) {
                                         Text(viewModel.model?.blog ?? "").font(.body)
-                                    }.accentColor(.primary)
+                                    }.accentColor(colorScheme == .dark ? .outline : .primary)
                                 }
                                 Spacer()
                             }
@@ -182,9 +185,11 @@ struct Profile: View {
                 Image(systemName: "rectangle.portrait.and.arrow.right")
                     .imageScale(.medium)
             }
-            NavigationLink(destination: Settings(viewModel.model!)) {
-                Image(systemName: "gearshape")
-                    .imageScale(.medium)
+            if let model = viewModel.model {
+                NavigationLink(destination: Settings(model)) {
+                    Image(systemName: "gearshape")
+                        .imageScale(.medium)
+                }
             }
         }).confirmationDialog(L10nProfile.dialogLogoutTitle, isPresented: $isShowLogout) {
             Button(L10nProfile.dialogLogoutConfirm, role: .destructive) {

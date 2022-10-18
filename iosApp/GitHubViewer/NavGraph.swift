@@ -23,16 +23,19 @@ struct NavGraph: View {
             }
             .environmentObject(graph)
             .environmentObject(routerOnboarding)
+            .accentColor(.orange)
         case .guest:
             NavigationView {
                 WelcomeScreen()
             }
             .environmentObject(graph)
             .environmentObject(routerGuest)
+            .accentColor(.orange)
         case .user:
             UserTabs()
                 .environmentObject(graph)
                 .environmentObject(routerUser)
+                .accentColor(.orange)
         }
     }
 }

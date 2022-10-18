@@ -9,78 +9,49 @@ import Kingfisher
 import SwiftUI
 
 struct ViewRepo: View {
-    var model: RepoModel
-    @State var heightKFImage = 30.0
+    let url: String
+    // model
+    @ObservedObject var viewModel = RepoViewModel()
+    // graph
+    @EnvironmentObject var graph: GraphObservable
+    // router
+    @EnvironmentObject var router: RouterUser
 
-    var titleName: AttributedString {
-        // attributedString.foregroundColor = .textTitle
-        // attributedString.font = .navigationBarTitle
-        return AttributedString("Name: \(model.name ?? "nil")")
+    init(url: String) {
+        self.url = url
     }
 
     var body: some View {
-        ScrollView {
-            VStack {
-                KFImage(URL(string: ConstantsApp.RANDOM_IMAGE)!)
-                    .placeholder {
-                        ProgressView()
-                    }
-                    .resizable()
-                    .fade(duration: 0.25)
-                    .forceRefresh()
-                    .onSuccess { _ in
-                        heightKFImage = .nan
-                    }
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: heightKFImage)
-
-                VStack(alignment: .leading) {
-                    Text(titleName)
-
-                    Divider().frame(height: 10)
-
-                    HStack {
-                        if model.isPrivate ?? false {
-                            // Text(L10nApp.typePrivate)
-                        } else {
-                            // Text(L10nApp.typePublic)
-                        }
-                        Spacer()
-                        // Text(L10nApp.typeRepo)
-                    }
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-
-                    Divider()
-
-                    HStack {
-                        Text(model.createdAt!)
-                        Spacer()
-                        // Text(L10nApp.createdAt)
-                    }
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-
-                    Divider()
-
-                    if model.description != nil {
-                        // Text(L10nApp.titleBio).font(.title2)
-                        Text(model.description!).padding(.top, 0.5)
+        VStack {
+            if viewModel.error != nil {
+                VStack {
+                    ErrorView(error: viewModel.error) {
+                        viewModel.retry(url)
                     }
                 }
-                .padding()
-
-                Spacer()
+            } else if viewModel.model == nil {
+                VStack {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+                }
+            } else {
+                if let model = viewModel.model {
+                    Text(model.description ?? "")
+                }
             }
-            .padding(.top)
-            .padding(.bottom)
-            .navigationBarTitle("", displayMode: .inline)
+        }.navigationBarItems(trailing: HStack {
+            if let model = viewModel.model {
+                NavigationLink(destination: SettingsRepo(model)) {
+                    Image(systemName: "gearshape")
+                        .imageScale(.medium)
+                }
+            }
+        })
+        .onAppear {
+            viewModel.readDb(url)
         }
-    }
-}
-
-struct ViewRepo_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewRepo(model: RepoModel.mock)
+        .task {
+            await viewModel.load(url)
+        }
     }
 }

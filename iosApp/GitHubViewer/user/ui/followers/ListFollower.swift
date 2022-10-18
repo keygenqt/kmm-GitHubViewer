@@ -23,7 +23,7 @@ struct ListFollower: View {
                 NavigationLink(destination: EmptyView()) {
                     ListFollowerItem(model: model)
                 }
-            }.accentColor(.black)
+            }.accentColor(Color.onBackground)
         }
     }
 }

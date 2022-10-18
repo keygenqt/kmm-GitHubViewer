@@ -6,8 +6,10 @@
   
 */
 
-"title" = "Обновление";
-"name" = "Имя";
-"is_private" = "Приватный";
-"visibility" = "Видимость";
-"description" = "Описание";
+"title" = "Обновить репку";
+"form_group_visibility" = "Видимость";
+"form_group_base" = "Основное";
+"form_label_name" = "Название";
+"form_label_desc" = "Описание";
+"form_label_is_private" = "Приватная репка";
+"form_button_save" = "Сохранить";

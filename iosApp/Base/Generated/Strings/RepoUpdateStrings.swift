@@ -10,16 +10,20 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10nRepoUpdate {
+  /// Save
+  internal static let formButtonSave = L10nRepoUpdate.tr("RepoUpdate", "form_button_save")
+  /// Base
+  internal static let formGroupBase = L10nRepoUpdate.tr("RepoUpdate", "form_group_base")
+  /// Visibility
+  internal static let formGroupVisibility = L10nRepoUpdate.tr("RepoUpdate", "form_group_visibility")
   /// Description
-  internal static let description = L10nRepoUpdate.tr("RepoUpdate", "description")
+  internal static let formLabelDesc = L10nRepoUpdate.tr("RepoUpdate", "form_label_desc")
   /// Private Repo
-  internal static let isPrivate = L10nRepoUpdate.tr("RepoUpdate", "is_private")
+  internal static let formLabelIsPrivate = L10nRepoUpdate.tr("RepoUpdate", "form_label_is_private")
   /// Name
-  internal static let name = L10nRepoUpdate.tr("RepoUpdate", "name")
+  internal static let formLabelName = L10nRepoUpdate.tr("RepoUpdate", "form_label_name")
   /// Repo Update
   internal static let title = L10nRepoUpdate.tr("RepoUpdate", "title")
-  /// Visibility
-  internal static let visibility = L10nRepoUpdate.tr("RepoUpdate", "visibility")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

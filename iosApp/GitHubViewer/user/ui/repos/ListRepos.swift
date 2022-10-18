@@ -17,10 +17,17 @@ struct ListRepos: View {
 
     var body: some View {
         AppList(viewModel: viewModel) { model in
-            NavigationLink(destination: ViewRepo(model: model)) {
+            NavigationLink(destination: ViewRepo(url: model.url!)) {
                 ListReposItem(model: model)
             }
-        }
+        }.navigationBarItems(trailing: HStack {
+            Button {
+                print("order")
+            } label: {
+                Image(systemName: "arrow.up.arrow.down.circle")
+                    .imageScale(.large)
+            }
+        })
     }
 }
 

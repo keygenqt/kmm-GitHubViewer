@@ -14,10 +14,16 @@ class RepoRealm: Object {
     @objc dynamic var language: String = ""
     @objc dynamic var createdAt: String = ""
     @objc dynamic var desc: String = ""
+    @objc dynamic var url: String = ""
     @objc dynamic var isPrivate: Bool = false
     @objc dynamic var stargazersCount: Int = 0
     @objc dynamic var forks: Int = 0
     @objc dynamic var watchers: Int = 0
+    @objc dynamic var isList: Bool = true
+
+    override static func primaryKey() -> String? {
+        return "url"
+    }
 }
 
 extension Array where Element == RepoRealm {
@@ -38,10 +44,12 @@ extension RepoRealm {
         model.language = language
         model.createdAt = createdAt
         model.description = desc
+        model.url = url
         model.isPrivate = isPrivate
         model.stargazersCount = stargazersCount
         model.forks = forks
         model.watchers = watchers
+        model.isList = isList
         return model
     }
 }

@@ -7,7 +7,9 @@
 */
 
 "title" = "Repo Update";
-"name" = "Name";
-"is_private" = "Private Repo";
-"visibility" = "Visibility";
-"description" = "Description";
+"form_group_visibility" = "Visibility";
+"form_group_base" = "Base";
+"form_label_name" = "Name";
+"form_label_desc" = "Description";
+"form_label_is_private" = "Private Repo";
+"form_button_save" = "Save";

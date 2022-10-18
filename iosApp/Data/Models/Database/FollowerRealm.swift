@@ -13,6 +13,10 @@ class FollowerRealm: Object {
     @objc dynamic var login: String = ""
     @objc dynamic var avatarUrl: String = ""
     @objc dynamic var url: String = ""
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 extension Array where Element == FollowerRealm {

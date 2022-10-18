@@ -41,6 +41,10 @@ class UserRealm: Object {
     @objc dynamic var following: Int = 0
     @objc dynamic var createdAt: Double = 0
     @objc dynamic var updatedAt: Double = 0
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 extension Array where Element == UserRealm {

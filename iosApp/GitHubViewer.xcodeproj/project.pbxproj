@@ -103,6 +103,11 @@
 		2FA5B97728F5544B0010DCFE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2FA5B97628F5544B0010DCFE /* swiftgen.yml */; };
 		2FAA263F270C1D5B00DE66FE /* AppGitHubViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */; };
 		2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */; };
+		2FC7A23B28FE809F0094F1C7 /* SettingsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7A23A28FE809F0094F1C7 /* SettingsRepo.swift */; };
+		2FC7A23D28FE80CC0094F1C7 /* SettingsRepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7A23C28FE80CC0094F1C7 /* SettingsRepoViewModel.swift */; };
+		2FC7A24028FE88B60094F1C7 /* NameRepoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7A23F28FE88B60094F1C7 /* NameRepoField.swift */; };
+		2FC7A24228FE88CD0094F1C7 /* DescRepoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7A24128FE88CD0094F1C7 /* DescRepoField.swift */; };
+		2FC7A24428FE894D0094F1C7 /* IsPrivateRepoField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC7A24328FE894D0094F1C7 /* IsPrivateRepoField.swift */; };
 		2FCD977128F6AE86005B27C8 /* AppKeyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD977028F6AE86005B27C8 /* AppKeyValue.swift */; };
 		2FCF3F5A2797EAD400A30F9A /* BasePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F592797EAD400A30F9A /* BasePreferences.swift */; };
 		2FCF3F5D2797EAF800A30F9A /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3F5C2797EAF800A30F9A /* AppPreferences.swift */; };
@@ -284,6 +289,11 @@
 		2FAA263B270C1D5B00DE66FE /* GitHubViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FAA263E270C1D5B00DE66FE /* AppGitHubViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGitHubViewer.swift; sourceTree = "<group>"; };
 		2FAA2640270C1D5B00DE66FE /* ViewRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepo.swift; sourceTree = "<group>"; };
+		2FC7A23A28FE809F0094F1C7 /* SettingsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepo.swift; sourceTree = "<group>"; };
+		2FC7A23C28FE80CC0094F1C7 /* SettingsRepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepoViewModel.swift; sourceTree = "<group>"; };
+		2FC7A23F28FE88B60094F1C7 /* NameRepoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameRepoField.swift; sourceTree = "<group>"; };
+		2FC7A24128FE88CD0094F1C7 /* DescRepoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescRepoField.swift; sourceTree = "<group>"; };
+		2FC7A24328FE894D0094F1C7 /* IsPrivateRepoField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPrivateRepoField.swift; sourceTree = "<group>"; };
 		2FCD977028F6AE86005B27C8 /* AppKeyValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeyValue.swift; sourceTree = "<group>"; };
 		2FCF3F592797EAD400A30F9A /* BasePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePreferences.swift; sourceTree = "<group>"; };
 		2FCF3F5C2797EAF800A30F9A /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
@@ -803,6 +813,25 @@
 			path = GitHubViewer;
 			sourceTree = "<group>";
 		};
+		2FC7A23928FE80730094F1C7 /* settingsRepo */ = {
+			isa = PBXGroup;
+			children = (
+				2FC7A23E28FE88920094F1C7 /* fields */,
+				2FC7A23A28FE809F0094F1C7 /* SettingsRepo.swift */,
+			);
+			path = settingsRepo;
+			sourceTree = "<group>";
+		};
+		2FC7A23E28FE88920094F1C7 /* fields */ = {
+			isa = PBXGroup;
+			children = (
+				2FC7A23F28FE88B60094F1C7 /* NameRepoField.swift */,
+				2FC7A24128FE88CD0094F1C7 /* DescRepoField.swift */,
+				2FC7A24328FE894D0094F1C7 /* IsPrivateRepoField.swift */,
+			);
+			path = fields;
+			sourceTree = "<group>";
+		};
 		2FCF3F572797EA7C00A30F9A /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -943,6 +972,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9ADC1128FC1E1B00B0F77E /* settings */,
+				2FC7A23928FE80730094F1C7 /* settingsRepo */,
 				2F9ADC0D28FC192300B0F77E /* profile */,
 				2FDBE2EC279BF9E10072D7BA /* tabs */,
 				2F3253A3271B11820010BDC8 /* repos */,
@@ -960,6 +990,7 @@
 				2FDBE2E9279BF95A0072D7BA /* RepoViewModel.swift */,
 				2F9ADC1628FC1E8000B0F77E /* ProfileViewModel.swift */,
 				2F9ADC1828FC1E8C00B0F77E /* SettingsViewModel.swift */,
+				2FC7A23C28FE80CC0094F1C7 /* SettingsRepoViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -1312,6 +1343,7 @@
 				2FE9BB9C28FB793C00FE0E4D /* AppList.swift in Sources */,
 				2FAA2641270C1D5B00DE66FE /* ViewRepo.swift in Sources */,
 				2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */,
+				2FC7A23B28FE809F0094F1C7 /* SettingsRepo.swift in Sources */,
 				2FD6D59328FD359F00F7BF93 /* UserNetwork.swift in Sources */,
 				2F3253A0271ADB380010BDC8 /* ListRepos.swift in Sources */,
 				2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */,
@@ -1345,6 +1377,7 @@
 				2FCF3F5D2797EAF800A30F9A /* AppPreferences.swift in Sources */,
 				2F3DC5EA2796A34C003D6916 /* CircularProgressIndicator.swift in Sources */,
 				2FDA857827AC709B0004F829 /* AppForm.swift in Sources */,
+				2FC7A23D28FE80CC0094F1C7 /* SettingsRepoViewModel.swift in Sources */,
 				2F37DC6F271C028F005DB8C4 /* ReposViewModel.swift in Sources */,
 				2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */,
 				2F66A3C32790A501004EB4B5 /* SignInScreen.swift in Sources */,
@@ -1356,6 +1389,7 @@
 				2F66A3BB2790A489004EB4B5 /* OnboardingViewModel.swift in Sources */,
 				2F66A3C92790A914004EB4B5 /* OnboardingStep1.swift in Sources */,
 				2FD91D442792C5BB00037359 /* WelcomeStrings.swift in Sources */,
+				2FC7A24428FE894D0094F1C7 /* IsPrivateRepoField.swift in Sources */,
 				2FCD977128F6AE86005B27C8 /* AppKeyValue.swift in Sources */,
 				2F7FB77928FACBFA00CA31BD /* ErrorListItemView.swift in Sources */,
 				2FDBE2EE279BFA1E0072D7BA /* UserTabs.swift in Sources */,
@@ -1370,11 +1404,13 @@
 				2F9205AD27AE804000D000C5 /* URL.swift in Sources */,
 				2FF932B1271C3486003DA3D8 /* FollowerData.swift in Sources */,
 				2F2D0BB427942716009D4FEC /* TextLabelSmall.swift in Sources */,
+				2FC7A24228FE88CD0094F1C7 /* DescRepoField.swift in Sources */,
 				2F2D0BA4279426AC009D4FEC /* TextDisplayLarge.swift in Sources */,
 				2F37DC77271C1324005DB8C4 /* LanguageExt.swift in Sources */,
 				2FD6D5A028FD8E7800F7BF93 /* LocationField.swift in Sources */,
 				2F37DC73271C033E005DB8C4 /* APIHandler.swift in Sources */,
 				2F3253A8271B1BCD0010BDC8 /* ListFollowerItem.swift in Sources */,
+				2FC7A24028FE88B60094F1C7 /* NameRepoField.swift in Sources */,
 				2F3253A6271B1BBD0010BDC8 /* ListFollower.swift in Sources */,
 				2FD91D462792C5BB00037359 /* ProfileStrings.swift in Sources */,
 				2FAA263F270C1D5B00DE66FE /* AppGitHubViewer.swift in Sources */,

@@ -24,4 +24,33 @@ class ReposNetwork: APIHandler {
             )
         }
     }
+
+    @discardableResult
+    func getRepo(_ url: String) async throws -> RepoModel {
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url, method: .get, headers: headers).handleResponse(
+                label: "getRepo",
+                continuation: continuation
+            )
+        }
+    }
+
+    @discardableResult
+    func updateRepo(
+        url: String,
+        name: String,
+        desc: String,
+        isPrivate: Bool
+    ) async throws -> RepoModel {
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url, method: .patch, parameters: [
+                "name": name,
+                "description": desc,
+                "isPrivate": isPrivate,
+            ], encoding: JSONEncoding.default, headers: headers).handleResponse(
+                label: "updateRepo",
+                continuation: continuation
+            )
+        }
+    }
 }

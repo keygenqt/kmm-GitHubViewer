@@ -13,7 +13,7 @@ struct UserData {
         do {
             let realm = try Realm()
             let list = realm.objects(UserRealm.self).map { $0 }
-            return list[0]
+            return list.isEmpty ? nil : list[0]
         } catch {
             // handle error
             print(error)
