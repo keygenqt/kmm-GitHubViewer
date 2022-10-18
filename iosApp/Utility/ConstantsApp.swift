@@ -24,5 +24,5 @@ struct ConstantsApp {
     static let RANDOM_IMAGE = "https://media.sproutsocial.com/uploads/2017/08/Social-Media-Video-Specs-Feature-Image.png"
 
     // Size list page
-    static let PAGE_LIMIT = 8
+    static let PAGE_LIMIT = 10
 }

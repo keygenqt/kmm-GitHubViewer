@@ -9,7 +9,23 @@ import SwiftUI
 
 struct AppList<T: Identifiable, Content: View>: View {
     @ObservedObject var viewModel: ViewModelList<T>
+
     var content: (T) -> Content
+
+    @Binding var toUp: Bool
+    @Binding var refreshable: Bool
+
+    init(
+        viewModel: ViewModelList<T>,
+        toUp: Binding<Bool> = .constant(true),
+        refreshable: Binding<Bool> = .constant(true),
+        @ViewBuilder content: @escaping (T) -> Content
+    ) {
+        self.viewModel = viewModel
+        self.content = content
+        _toUp = toUp
+        _refreshable = refreshable
+    }
 
     var body: some View {
         if viewModel.models.isEmpty && viewModel.error == nil {
@@ -35,7 +51,7 @@ struct AppList<T: Identifiable, Content: View>: View {
                                 }
                                 Spacer()
                             }.onAppear {
-                                if !viewModel.isLoading && !viewModel.isEnd {
+                                if !viewModel.isLoadingPage && !viewModel.isEnd {
                                     Task { await viewModel.load() }
                                 }
                             }
@@ -58,7 +74,9 @@ struct AppList<T: Identifiable, Content: View>: View {
                     }
                 }
                 .refreshable {
+                    refreshable = true
                     await viewModel.reload()
+                    refreshable = false
                 }
                 .onChange(of: viewModel.error) { error in
                     if error != nil, viewModel.page != 1 {
@@ -69,6 +87,16 @@ struct AppList<T: Identifiable, Content: View>: View {
                         }
                     }
                 }
+                .onChange(of: toUp, perform: { toUp in
+                    if toUp {
+                        if let firstElement = viewModel.models.first {
+                            withAnimation {
+                                sc.scrollTo(firstElement.id, anchor: .top)
+                            }
+                        }
+                        self.toUp = false
+                    }
+                })
 
             }.listStyle(.insetGrouped)
         }

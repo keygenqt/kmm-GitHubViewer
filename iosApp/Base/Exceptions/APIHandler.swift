@@ -36,7 +36,7 @@ extension DataRequest {
     ) {
         responseDecodable(queue: DispatchQueue(label: label)) { (response: DataResponse<T, AFError>) in
             // @todo emulate slow query
-            sleep(2)
+            sleep(3)
             completionHandler(response)
 
             let errors: (Int?) -> Void = { responseCode in

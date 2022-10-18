@@ -9,7 +9,8 @@ import Combine
 import Foundation
 
 class ViewModelList<T>: ObservableObject, Identifiable {
-    @Published var isLoading = true
+    @Published var isLoadingPage = true
+    @Published var loading = true
     @Published var isEnd = false
     @Published var error: NetworkError?
     @Published var models: [T] = []
@@ -37,7 +38,9 @@ class ViewModelList<T>: ObservableObject, Identifiable {
     ) {
         DispatchQueue.main.async {
             self.error = nil
-            self.isLoading = false
+            self.loading = false
+            self.isLoadingPage = false
+
             if error == nil {
                 if self.page == 1 {
                     self.models.removeAll()
@@ -65,8 +68,12 @@ class ViewModelList<T>: ObservableObject, Identifiable {
         if page != 1 {
             DispatchQueue.main.async {
                 self.error = nil
-                self.isLoading = true
+                self.isLoadingPage = true
+                self.loading = true
             }
+        }
+        DispatchQueue.main.async {
+            self.loading = true
         }
         do {
             let response = try await getPageNetwork(page: page)

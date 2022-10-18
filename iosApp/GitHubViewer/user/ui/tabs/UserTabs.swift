@@ -19,8 +19,6 @@ struct UserTabs: View {
         TabView(selection: $selection) {
             NavigationView {
                 ListRepos()
-                    .navigationBarTitle(L10nRepos.title)
-                    .navigationBarTitleDisplayMode(.large)
             }
             .tabItem {
                 VStack {
@@ -33,8 +31,6 @@ struct UserTabs: View {
 
             NavigationView {
                 ListFollower()
-                    .navigationBarTitle(L10nFollowers.title)
-                    .navigationBarTitleDisplayMode(.large)
             }
             .tabItem {
                 VStack {

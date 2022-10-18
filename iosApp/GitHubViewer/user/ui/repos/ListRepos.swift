@@ -14,18 +14,33 @@ struct ListRepos: View {
     @EnvironmentObject var graph: GraphObservable
     // router
     @EnvironmentObject var router: RouterUser
+    // states
+    @State var refreshable: Bool = false
 
     var body: some View {
-        AppList(viewModel: viewModel) { model in
+        AppList(viewModel: viewModel, refreshable: $refreshable) { model in
             NavigationLink(destination: ViewRepo(url: model.url!)) {
                 ListReposItem(model: model)
             }
-        }.navigationBarItems(trailing: HStack {
-            Button {
-                print("order")
-            } label: {
-                Image(systemName: "arrow.up.arrow.down.circle")
-                    .imageScale(.large)
+        }
+        .navigationBarTitle(L10nRepos.title)
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarItems(trailing: HStack {
+            if viewModel.loading && viewModel.page == 1 && !refreshable {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+            } else {
+                Button {
+                    viewModel.toggleOrder()
+                } label: {
+                    if viewModel.orderASC {
+                        Image(systemName: "arrow.up.arrow.down.circle")
+                            .imageScale(.large)
+                    } else {
+                        Image(systemName: "arrow.up.arrow.down.circle.fill")
+                            .imageScale(.large)
+                    }
+                }.disabled(viewModel.loading)
             }
         })
     }

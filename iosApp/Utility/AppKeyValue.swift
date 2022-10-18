@@ -10,6 +10,7 @@ import Foundation
 struct AppKeyValue {
     static let storage = UserDefaults.standard
 
+    static let keyRepoOrder = "keyRepoOrder"
     static let keyOnboarding = "keyOnboarding"
     static let keyUserAuth = "keyUserAuth"
 
@@ -19,6 +20,14 @@ struct AppKeyValue {
 
     static func setPassOnboarding(_ state: Bool) {
         storage.set(state, forKey: keyOnboarding)
+    }
+
+    static func isRepoOrderASC() -> Bool {
+        return storage.bool(forKey: keyRepoOrder)
+    }
+
+    static func setRepoOrderASC(_ state: Bool) {
+        storage.set(state, forKey: keyRepoOrder)
     }
 
     static func isAuth() -> Bool {

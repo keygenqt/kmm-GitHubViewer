@@ -21,6 +21,10 @@ struct AppGitHubViewer: App {
 
     class AppDelegate: NSObject, UIApplicationDelegate {
         func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+            // init value-key
+            UserDefaults.standard.register(defaults: [
+                AppKeyValue.keyRepoOrder: true,
+            ])
             // configure fb
             FirebaseApp.configure()
             // logging http
