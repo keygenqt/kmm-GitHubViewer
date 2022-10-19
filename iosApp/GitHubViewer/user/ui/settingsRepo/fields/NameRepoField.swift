@@ -13,7 +13,7 @@ private func checkIsBlank(label: String, text: String) -> String? {
 }
 
 // field
-struct NameRepoField: IField {
+struct NameRepoField: IFieldText {
     // params field
     var label: String = L10nRepoUpdate.formLabelName
     var value: String = ""

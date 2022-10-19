@@ -12,9 +12,7 @@ struct ReposData {
     func getList() -> [RepoRealm] {
         do {
             let realm = try Realm()
-            return realm.objects(RepoRealm.self)
-                .filter("isList=true")
-                .map { $0 }
+            return realm.objects(RepoRealm.self).filter("isList=true").map { $0 }
         } catch {
             // handle error
             print(error)
@@ -22,11 +20,24 @@ struct ReposData {
         return []
     }
 
-    func saveList(_ models: [RepoRealm]) {
+    func save(_ models: [RepoRealm]) {
         do {
             let realm = try Realm()
             try realm.write {
                 realm.add(models)
+            }
+        } catch {
+            // handle error
+            print(error)
+        }
+    }
+
+    func clear() {
+        do {
+            let realm = try Realm()
+            let list = realm.objects(RepoRealm.self)
+            try realm.write {
+                realm.delete(list)
             }
         } catch {
             // handle error
@@ -53,12 +64,12 @@ struct ReposData {
                     obj.id = model.id
                     obj.name = model.name
                     obj.language = model.language
-                    obj.createdAt = model.createdAt
                     obj.desc = model.desc
                     obj.isPrivate = model.isPrivate
                     obj.stargazersCount = model.stargazersCount
                     obj.forks = model.forks
                     obj.watchers = model.watchers
+                    obj.isList = model.isList
                 }
             } else {
                 model.isList = false
@@ -67,19 +78,6 @@ struct ReposData {
                 }
             }
 
-        } catch {
-            // handle error
-            print(error)
-        }
-    }
-
-    func clear() {
-        do {
-            let realm = try Realm()
-            let allUploadingObjects = realm.objects(RepoRealm.self)
-            try realm.write {
-                realm.delete(allUploadingObjects)
-            }
         } catch {
             // handle error
             print(error)

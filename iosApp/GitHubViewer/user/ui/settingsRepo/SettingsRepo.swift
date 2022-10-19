@@ -18,18 +18,21 @@ struct SettingsRepo: View {
     // form states
     @State private var error: String?
     // form value
-    @State private var fieldsBase: [IField] = []
-    @State private var fieldsOther: [IField] = []
+    @State private var fieldNameRepo: IFieldText
+    @State private var fieldDescRepo: IFieldText
+    @State private var fieldIsPrivate: IFieldSwitch
 
     init(_ model: RepoModel) {
         url = model.url ?? ""
-        _fieldsBase = State(initialValue: [
-            NameRepoField(value: model.name ?? ""),
-            DescRepoField(value: model.description ?? ""),
-        ])
-        _fieldsOther = State(initialValue: [
-            IsPrivateRepoField(value: (model.isPrivate ?? false) ? "true" : "false"),
-        ])
+        _fieldNameRepo = State(
+            initialValue: NameRepoField(value: model.name ?? "")
+        )
+        _fieldDescRepo = State(
+            initialValue: DescRepoField(value: model.description ?? "")
+        )
+        _fieldIsPrivate = State(
+            initialValue: IsPrivateRepoField(value: model.isPrivate ?? false)
+        )
     }
 
     var body: some View {
@@ -43,31 +46,29 @@ struct SettingsRepo: View {
             } else {
                 AppForm(error: $error) {
                     Section(header: Text(L10nRepoUpdate.formGroupBase)) {
-                        ForEach(0 ... fieldsBase.count - 1, id: \.self) {
-                            AppTextField(field: $fieldsBase[$0], initValidate: true) { error in
-                                self.error = error
-                            }
+                        AppFieldText(field: $fieldNameRepo, initValidate: true) { error in
+                            self.error = error
+                        }
+                        AppFieldText(field: $fieldDescRepo, initValidate: true) { error in
+                            self.error = error
                         }
                     }
+
                     Section(header: Text(L10nRepoUpdate.formGroupVisibility)) {
-                        ForEach(0 ... fieldsOther.count - 1, id: \.self) {
-                            AppTextField(field: $fieldsOther[$0], initValidate: true) { error in
-                                self.error = error
-                            }
-                        }
+                        AppFieldSwitch(field: $fieldIsPrivate)
                     }
 
                     Section {
                         Button(L10nRepoUpdate.formButtonSave) {
                             viewModel.update(
                                 url: url,
-                                name: fieldsBase[0].value,
-                                desc: fieldsBase[1].value,
-                                isPrivate: fieldsOther[0].value == "true"
+                                name: fieldNameRepo.value,
+                                desc: fieldDescRepo.value,
+                                isPrivate: fieldIsPrivate.value
                             )
                         }
                         .buttonStyle(BottomPrimaryStyle())
-                        .disabled(fieldsBase.isNotValid() || fieldsOther.isNotValid() || viewModel.loading)
+                        .disabled(!fieldNameRepo.isValid || !fieldDescRepo.isValid || viewModel.loading)
                         .listRowInsets(.init())
                         .listRowBackground(Color.clear)
                     }

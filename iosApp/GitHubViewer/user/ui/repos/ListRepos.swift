@@ -22,11 +22,12 @@ struct ListRepos: View {
             NavigationLink(destination: ViewRepo(url: model.url!)) {
                 ListReposItem(model: model)
             }
+//            .disabled(viewModel.loading && viewModel.page == 1) @todo bug update view page
         }
         .navigationBarTitle(L10nRepos.title)
         .navigationBarTitleDisplayMode(.large)
         .navigationBarItems(trailing: HStack {
-            if viewModel.loading && viewModel.page == 1 && !refreshable {
+            if viewModel.loading && viewModel.page == 1 && !viewModel.models.isEmpty && !refreshable {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .orange))
             } else {

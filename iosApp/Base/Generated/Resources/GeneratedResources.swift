@@ -25,6 +25,8 @@ internal enum Resources {
     internal static let accentColor = ColorAsset(name: "AccentColor")
     internal static let arrowBack = ImageAsset(name: "arrow_back")
     internal static let arrowForward = ImageAsset(name: "arrow_forward")
+    internal static let chart1 = ImageAsset(name: "chart_1")
+    internal static let chart2 = ImageAsset(name: "chart_2")
     internal static let phone = ImageAsset(name: "phone")
     internal static let bgWelcome = ImageAsset(name: "bg_welcome")
     internal static let splash = ImageAsset(name: "splash")

@@ -1,17 +1,17 @@
 //
-//  AppTextField.swift
+//  AppFieldText.swift
 //  GitHubViewer
 //
-//  Created by Виталий Зарубин on 03.02.2022.
+//  Created by Виталий Зарубин on 19.10.2022.
 //
 
-import Foundation
 import SwiftUI
 
-struct AppTextField: View {
-    @Binding var field: IField
+struct AppFieldText: View {
+    @Binding var field: IFieldText
+
     var initValidate: Bool = false
-    var actionError: (_ error: String?) -> Void = { _ in }
+    var actionError: (String?) -> Void = { _ in }
 
     @State private var error: String?
 

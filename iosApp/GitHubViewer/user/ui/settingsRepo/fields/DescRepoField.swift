@@ -8,7 +8,7 @@
 import Foundation
 
 // field
-struct DescRepoField: IField {
+struct DescRepoField: IFieldText {
     // params field
     var label: String = L10nRepoUpdate.formLabelDesc
     var value: String = ""

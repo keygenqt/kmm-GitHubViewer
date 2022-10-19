@@ -17,23 +17,32 @@ struct Settings: View {
     // form states
     @State private var error: String?
     // form value
-    @State private var fieldsAbout: [IField] = []
-    @State private var fieldsLinks: [IField] = []
-    @State private var fieldsBio: [IField] = []
+    @State private var fieldName: IFieldText
+    @State private var fieldCompany: IFieldText
+    @State private var fieldLocation: IFieldText
+    @State private var fieldBlog: IFieldText
+    @State private var fieldTwitter: IFieldText
+    @State private var fieldBio: IFieldText
 
     init(_ model: UserModel) {
-        _fieldsAbout = State(initialValue: [
-            NameField(value: model.name ?? ""),
-            CompanyField(value: model.company ?? ""),
-            LocationField(value: model.location ?? ""),
-        ])
-        _fieldsLinks = State(initialValue: [
-            BlogField(value: model.blog ?? ""),
-            TwitterField(value: model.twitterUsername ?? ""),
-        ])
-        _fieldsBio = State(initialValue: [
-            BioField(value: model.bio ?? ""),
-        ])
+        _fieldName = State(
+            initialValue: NameField(value: model.name ?? "")
+        )
+        _fieldCompany = State(
+            initialValue: CompanyField(value: model.company ?? "")
+        )
+        _fieldLocation = State(
+            initialValue: LocationField(value: model.location ?? "")
+        )
+        _fieldBlog = State(
+            initialValue: BlogField(value: model.blog ?? "")
+        )
+        _fieldTwitter = State(
+            initialValue: TwitterField(value: model.twitterUsername ?? "")
+        )
+        _fieldBio = State(
+            initialValue: BioField(value: model.bio ?? "")
+        )
     }
 
     var body: some View {
@@ -47,39 +56,48 @@ struct Settings: View {
             } else {
                 AppForm(error: $error) {
                     Section(header: Text(L10nSettings.formGroupAbout)) {
-                        ForEach(0 ... fieldsAbout.count - 1, id: \.self) {
-                            AppTextField(field: $fieldsAbout[$0], initValidate: true) { error in
-                                self.error = error
-                            }
+                        AppFieldText(field: $fieldName, initValidate: true) { error in
+                            self.error = error
+                        }
+                        AppFieldText(field: $fieldCompany, initValidate: true) { error in
+                            self.error = error
+                        }
+                        AppFieldText(field: $fieldLocation, initValidate: true) { error in
+                            self.error = error
                         }
                     }
                     Section(header: Text(L10nSettings.formGroupLinks)) {
-                        ForEach(0 ... fieldsLinks.count - 1, id: \.self) {
-                            AppTextField(field: $fieldsLinks[$0], initValidate: true) { error in
-                                self.error = error
-                            }
+                        AppFieldText(field: $fieldBlog, initValidate: true) { error in
+                            self.error = error
+                        }
+                        AppFieldText(field: $fieldTwitter, initValidate: true) { error in
+                            self.error = error
                         }
                     }
                     Section(header: Text(L10nSettings.formGroupBio)) {
-                        ForEach(0 ... fieldsBio.count - 1, id: \.self) {
-                            AppTextField(field: $fieldsBio[$0], initValidate: true) { error in
-                                self.error = error
-                            }
+                        AppFieldText(field: $fieldBio, initValidate: true) { error in
+                            self.error = error
                         }
                     }
                     Section {
                         Button(L10nSettings.formButtonSubmit) {
                             viewModel.update(
-                                name: fieldsAbout[0].value,
-                                blog: fieldsLinks[0].value,
-                                twitterUsername: fieldsLinks[1].value,
-                                company: fieldsAbout[1].value,
-                                location: fieldsAbout[2].value,
-                                bio: fieldsBio[0].value
+                                name: fieldName.value,
+                                blog: fieldBlog.value,
+                                twitterUsername: fieldTwitter.value,
+                                company: fieldCompany.value,
+                                location: fieldLocation.value,
+                                bio: fieldBio.value
                             )
                         }
                         .buttonStyle(BottomPrimaryStyle())
-                        .disabled(fieldsAbout.isNotValid() || fieldsLinks.isNotValid() || fieldsBio.isNotValid() || viewModel.loading)
+                        .disabled(!fieldName.isValid
+                            || !fieldBlog.isValid
+                            || !fieldTwitter.isValid
+                            || !fieldCompany.isValid
+                            || !fieldLocation.isValid
+                            || !fieldBio.isValid
+                            || viewModel.loading)
                         .listRowInsets(.init())
                         .listRowBackground(Color.clear)
                     }

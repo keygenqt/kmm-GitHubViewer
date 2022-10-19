@@ -19,9 +19,7 @@ struct SignInScreen: View {
     // form states
     @State private var error: String?
     // form value
-    @State private var fields: [IField] = [
-        NicknameField(),
-    ]
+    @State private var fieldNickname: IFieldText = NicknameField()
 
     var body: some View {
         if viewModel.isShowProgressView {
@@ -41,18 +39,16 @@ struct SignInScreen: View {
         } else {
             AppForm(error: $error) {
                 Section {
-                    ForEach(0 ... fields.count - 1, id: \.self) {
-                        AppTextField(field: $fields[$0]) { error in
-                            self.error = error
-                        }
+                    AppFieldText(field: $fieldNickname) { error in
+                        self.error = error
                     }
                 }
                 Section {
                     Button(L10nSignIn.formButtonSubmit) {
-                        openURL(AppHelper.getOauthLink(fields[0].value))
+                        openURL(AppHelper.getOauthLink(fieldNickname.value))
                     }
                     .buttonStyle(BottomPrimaryStyle())
-                    .disabled(fields.isNotValid())
+                    .disabled(!fieldNickname.isValid)
                     .listRowInsets(.init())
                     .listRowBackground(Color.clear)
                 }

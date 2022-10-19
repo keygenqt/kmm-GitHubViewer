@@ -10,6 +10,14 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10nRepo {
+  /// Copy of a repository
+  internal static let iconForksText = L10nRepo.tr("Repo", "icon_forks_text")
+  /// Forks
+  internal static let iconForksTitle = L10nRepo.tr("Repo", "icon_forks_title")
+  /// Positive ratings
+  internal static let iconStarText = L10nRepo.tr("Repo", "icon_star_text")
+  /// Star
+  internal static let iconStarTitle = L10nRepo.tr("Repo", "icon_star_title")
   /// Created
   internal static let labelCreatedAt = L10nRepo.tr("Repo", "label_created_at")
   /// Description

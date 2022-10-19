@@ -84,9 +84,13 @@
 		2F66A3CD2790A933004EB4B5 /* OnboardingStep3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3CC2790A933004EB4B5 /* OnboardingStep3.swift */; };
 		2F66A3CF2790A93F004EB4B5 /* OnboardingStep4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3CE2790A93F004EB4B5 /* OnboardingStep4.swift */; };
 		2F66A3D12790A94A004EB4B5 /* OnboardingStep5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F66A3D02790A94A004EB4B5 /* OnboardingStep5.swift */; };
-		2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBC27ADA1F7005A96B2 /* IField.swift */; };
+		2F68ABBD27ADA1F7005A96B2 /* IFieldText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBC27ADA1F7005A96B2 /* IFieldText.swift */; };
 		2F68ABBF27ADA232005A96B2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABBE27ADA232005A96B2 /* Extension.swift */; };
 		2F68ABC227ADA38B005A96B2 /* NicknameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68ABC127ADA38B005A96B2 /* NicknameField.swift */; };
+		2F6FB26628FFD0AC006F1DAF /* AppFieldText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FB26528FFD0AC006F1DAF /* AppFieldText.swift */; };
+		2F6FB26828FFD0BA006F1DAF /* AppFieldSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FB26728FFD0BA006F1DAF /* AppFieldSwitch.swift */; };
+		2F6FB26A29000766006F1DAF /* RepoViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FB26929000766006F1DAF /* RepoViewData.swift */; };
+		2F6FB26E29002757006F1DAF /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6FB26D29002757006F1DAF /* RoundedCorner.swift */; };
 		2F7DBF1027AFBB7A00718B36 /* EnvironmentSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */; };
 		2F7FB77928FACBFA00CA31BD /* ErrorListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FB77828FACBFA00CA31BD /* ErrorListItemView.swift */; };
 		2F7FB77B28FAD48E00CA31BD /* ButtonOutlineStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FB77A28FAD48E00CA31BD /* ButtonOutlineStyle.swift */; };
@@ -156,7 +160,6 @@
 		2FD91D492792C5BB00037359 /* ReposStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D3F2792C5BB00037359 /* ReposStrings.swift */; };
 		2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D6F2792E52000037359 /* TextBodyLarge.swift */; };
 		2FD91D722792EB0B00037359 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD91D712792EB0B00037359 /* String.swift */; };
-		2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857527AC707E0004F829 /* AppTextField.swift */; };
 		2FDA857827AC709B0004F829 /* AppForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA857727AC709B0004F829 /* AppForm.swift */; };
 		2FDBE2D8279BF0170072D7BA /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2D7279BF0170072D7BA /* Graph.swift */; };
 		2FDBE2DA279BF1C40072D7BA /* RouteGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE2D9279BF1C40072D7BA /* RouteGuest.swift */; };
@@ -268,9 +271,13 @@
 		2F66A3CC2790A933004EB4B5 /* OnboardingStep3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3.swift; sourceTree = "<group>"; };
 		2F66A3CE2790A93F004EB4B5 /* OnboardingStep4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep4.swift; sourceTree = "<group>"; };
 		2F66A3D02790A94A004EB4B5 /* OnboardingStep5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep5.swift; sourceTree = "<group>"; };
-		2F68ABBC27ADA1F7005A96B2 /* IField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IField.swift; sourceTree = "<group>"; };
+		2F68ABBC27ADA1F7005A96B2 /* IFieldText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFieldText.swift; sourceTree = "<group>"; };
 		2F68ABBE27ADA232005A96B2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2F68ABC127ADA38B005A96B2 /* NicknameField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameField.swift; sourceTree = "<group>"; };
+		2F6FB26528FFD0AC006F1DAF /* AppFieldText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFieldText.swift; sourceTree = "<group>"; };
+		2F6FB26728FFD0BA006F1DAF /* AppFieldSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFieldSwitch.swift; sourceTree = "<group>"; };
+		2F6FB26929000766006F1DAF /* RepoViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewData.swift; sourceTree = "<group>"; };
+		2F6FB26D29002757006F1DAF /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		2F7DBF0F27AFBB7A00718B36 /* EnvironmentSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSecret.swift; sourceTree = "<group>"; };
 		2F7EE42727B18BBC00E8E1D1 /* GitHubViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubViewer.entitlements; sourceTree = "<group>"; };
 		2F7FB77828FACBFA00CA31BD /* ErrorListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorListItemView.swift; sourceTree = "<group>"; };
@@ -342,7 +349,6 @@
 		2FD91D3F2792C5BB00037359 /* ReposStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposStrings.swift; sourceTree = "<group>"; };
 		2FD91D6F2792E52000037359 /* TextBodyLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBodyLarge.swift; sourceTree = "<group>"; };
 		2FD91D712792EB0B00037359 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		2FDA857527AC707E0004F829 /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		2FDA857727AC709B0004F829 /* AppForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppForm.swift; sourceTree = "<group>"; };
 		2FDBE2D7279BF0170072D7BA /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		2FDBE2D9279BF1C40072D7BA /* RouteGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteGuest.swift; sourceTree = "<group>"; };
@@ -479,6 +485,7 @@
 				2FF932AE271C3475003DA3D8 /* ReposData.swift */,
 				2FF932B0271C3486003DA3D8 /* FollowerData.swift */,
 				2FD6D59028FD335800F7BF93 /* UserData.swift */,
+				2F6FB26929000766006F1DAF /* RepoViewData.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -686,8 +693,9 @@
 		2F68ABB727ADA0FC005A96B2 /* Ui */ = {
 			isa = PBXGroup;
 			children = (
-				2FDA857527AC707E0004F829 /* AppTextField.swift */,
 				2FDA857727AC709B0004F829 /* AppForm.swift */,
+				2F6FB26528FFD0AC006F1DAF /* AppFieldText.swift */,
+				2F6FB26728FFD0BA006F1DAF /* AppFieldSwitch.swift */,
 			);
 			path = Ui;
 			sourceTree = "<group>";
@@ -695,7 +703,7 @@
 		2F68ABBB27ADA1B1005A96B2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				2F68ABBC27ADA1F7005A96B2 /* IField.swift */,
+				2F68ABBC27ADA1F7005A96B2 /* IFieldText.swift */,
 				2F68ABBE27ADA232005A96B2 /* Extension.swift */,
 			);
 			path = Utils;
@@ -1049,6 +1057,7 @@
 			isa = PBXGroup;
 			children = (
 				2FE9BB9928FB789900FE0E4D /* ViewModelList.swift */,
+				2F6FB26D29002757006F1DAF /* RoundedCorner.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1320,6 +1329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FD6D59E28FD8E6800F7BF93 /* CompanyField.swift in Sources */,
+				2F6FB26628FFD0AC006F1DAF /* AppFieldText.swift in Sources */,
 				2FDBE2EA279BF95A0072D7BA /* RepoViewModel.swift in Sources */,
 				2F9205AB27AE7D8100D000C5 /* ScopeFuncs.swift in Sources */,
 				2FD91D702792E52000037359 /* TextBodyLarge.swift in Sources */,
@@ -1346,9 +1356,9 @@
 				2FC7A23B28FE809F0094F1C7 /* SettingsRepo.swift in Sources */,
 				2FD6D59328FD359F00F7BF93 /* UserNetwork.swift in Sources */,
 				2F3253A0271ADB380010BDC8 /* ListRepos.swift in Sources */,
-				2FDA857627AC707E0004F829 /* AppTextField.swift in Sources */,
 				2F4784E027118374006FE3A5 /* FollowerModel.swift in Sources */,
 				2FDE1E2A28F813E400FEBD9F /* AuthModel.swift in Sources */,
+				2F6FB26E29002757006F1DAF /* RoundedCorner.swift in Sources */,
 				2F2D0BA8279426CA009D4FEC /* TextDisplaySmall.swift in Sources */,
 				2F3253A2271ADBFF0010BDC8 /* ListReposItem.swift in Sources */,
 				2F2D0BA02794268F009D4FEC /* TextBodyMedium.swift in Sources */,
@@ -1363,6 +1373,7 @@
 				2F3DC5EC27974A42003D6916 /* LottieView.swift in Sources */,
 				2F2D0BBA2794273E009D4FEC /* TextTitleSmall.swift in Sources */,
 				2F9ADC1728FC1E8000B0F77E /* ProfileViewModel.swift in Sources */,
+				2F6FB26A29000766006F1DAF /* RepoViewData.swift in Sources */,
 				2F37DC79271C1932005DB8C4 /* FollowerNetwork.swift in Sources */,
 				2F2D0BAC279426E5009D4FEC /* TextHeadlineMedium.swift in Sources */,
 				2FE9BB9A28FB789900FE0E4D /* ViewModelList.swift in Sources */,
@@ -1379,7 +1390,7 @@
 				2FDA857827AC709B0004F829 /* AppForm.swift in Sources */,
 				2FC7A23D28FE80CC0094F1C7 /* SettingsRepoViewModel.swift in Sources */,
 				2F37DC6F271C028F005DB8C4 /* ReposViewModel.swift in Sources */,
-				2F68ABBD27ADA1F7005A96B2 /* IField.swift in Sources */,
+				2F68ABBD27ADA1F7005A96B2 /* IFieldText.swift in Sources */,
 				2F66A3C32790A501004EB4B5 /* SignInScreen.swift in Sources */,
 				2F66A3BD2790A49E004EB4B5 /* SignInViewModel.swift in Sources */,
 				2FD91CF92792C0A100037359 /* AppStrings.swift in Sources */,
@@ -1412,6 +1423,7 @@
 				2F3253A8271B1BCD0010BDC8 /* ListFollowerItem.swift in Sources */,
 				2FC7A24028FE88B60094F1C7 /* NameRepoField.swift in Sources */,
 				2F3253A6271B1BBD0010BDC8 /* ListFollower.swift in Sources */,
+				2F6FB26828FFD0BA006F1DAF /* AppFieldSwitch.swift in Sources */,
 				2FD91D462792C5BB00037359 /* ProfileStrings.swift in Sources */,
 				2FAA263F270C1D5B00DE66FE /* AppGitHubViewer.swift in Sources */,
 				2FDBE2D8279BF0170072D7BA /* Graph.swift in Sources */,

@@ -17,6 +17,8 @@ struct ViewRepo: View {
     // router
     @EnvironmentObject var router: RouterUser
 
+    @State var refreshable: Bool = false
+
     init(url: String) {
         self.url = url
     }
@@ -36,17 +38,215 @@ struct ViewRepo: View {
                 }
             } else {
                 if let model = viewModel.model {
-                    Text(model.description ?? "")
+                    ScrollView {
+                        // image block
+                        VStack {
+                            ZStack {
+                                Image("chart_1").resizable().aspectRatio(contentMode: .fill)
+                                VStack {
+                                    HStack {
+                                        HStack {
+                                            Text(String(model.stargazersCount ?? 0)).font(.system(size: 56, weight: .heavy))
+                                            VStack(alignment: .leading) {
+                                                Text(L10nRepo.iconStarTitle).fontWeight(.bold).padding(.bottom, 0.1)
+                                                Text(L10nRepo.iconStarText).font(.caption)
+                                            }.padding(.leading, 5)
+                                        }
+                                        Spacer()
+                                    }
+                                    Spacer()
+                                }.padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+
+                            }.cornerRadius(50, corners: [.bottomLeft])
+
+                            ZStack {
+                                Image("chart_2").resizable().aspectRatio(contentMode: .fill)
+                                VStack {
+                                    HStack {
+                                        HStack {
+                                            Text(String(model.forks ?? 0)).font(.system(size: 56, weight: .heavy))
+                                            VStack(alignment: .leading) {
+                                                Text(L10nRepo.iconForksTitle).fontWeight(.bold).padding(.bottom, 0.1)
+                                                Text(L10nRepo.iconForksText).font(.caption)
+                                            }.padding(.leading, 5)
+                                        }
+                                        Spacer()
+                                    }
+                                    Spacer()
+                                }.padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+
+                            }.cornerRadius(50, corners: [.bottomLeft])
+                        }
+
+                        // item icons block
+                        HStack {
+                            VStack {
+                                Text(L10nRepo.openIssue.uppercased()).font(.caption)
+
+                                VStack(alignment: .leading) {
+                                    Image(systemName: "ladybug.fill")
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(Color.onBackground)
+                                        .padding(.leading, 25)
+                                        .padding(.trailing, 25)
+                                        .padding(.top, 7)
+                                        .padding(.bottom, 7)
+                                }
+                                .background(Color.surfaceVariant)
+                                .clipShape(Capsule())
+
+                                Text(String(model.openIssuesCount ?? 0))
+                            }
+
+                            Spacer()
+
+                            VStack {
+                                Text(L10nRepo.openWatchers.uppercased()).font(.caption)
+
+                                VStack(alignment: .leading) {
+                                    Image(systemName: "eye.fill")
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(Color.onBackground)
+                                        .padding(.leading, 25)
+                                        .padding(.trailing, 25)
+                                        .padding(.top, 7)
+                                        .padding(.bottom, 7)
+                                        .accentColor(Color.onBackground)
+                                }
+                                .background(Color.surfaceVariant)
+                                .clipShape(Capsule())
+
+                                Text(String(model.watchersCount ?? 0))
+                            }
+
+                            Spacer()
+
+                            VStack {
+                                Text(L10nRepo.labelSize.uppercased()).font(.caption)
+
+                                VStack(alignment: .leading) {
+                                    Image(systemName: "externaldrive.fill")
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(Color.onBackground)
+                                        .padding(.leading, 25)
+                                        .padding(.trailing, 25)
+                                        .padding(.top, 7)
+                                        .padding(.bottom, 7)
+                                }
+                                .background(Color.surfaceVariant)
+                                .clipShape(Capsule())
+
+                                Text(String(AppHelper.humanReadableByteCount((model.size ?? 0) * 1000)))
+                            }
+                        }
+                        .padding(EdgeInsets(top: 20, leading: 15, bottom: 15, trailing: 15))
+
+                        // list info
+                        VStack {
+                            if let value = viewModel.model?.fullName {
+                                if !value.isEmpty {
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(L10nRepo.labelFullName).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                            Text(value).font(.body)
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(EdgeInsets(top: 30, leading: 15, bottom: 5, trailing: 15))
+                                }
+                            }
+
+                            if let value = viewModel.model?.license {
+                                if !value.isEmpty {
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(L10nRepo.labelLicense).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                            Text(value).font(.body)
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
+                                }
+                            }
+
+                            if let value = viewModel.model?.visibility {
+                                if !value.isEmpty {
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(L10nRepo.labelVisibility).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                            Text(value.uppercased()).font(.body)
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
+                                }
+                            }
+
+                            if let value = viewModel.model?.owner {
+                                if !value.isEmpty {
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(L10nRepo.labelOwner).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                            Text(value).font(.body)
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
+                                }
+                            }
+
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(L10nRepo.labelUpdatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                    Text(viewModel.model?.updatedAt?.toDateFromat() ?? "").font(.body)
+                                }
+                                Spacer()
+                            }
+                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
+
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(L10nRepo.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                    Text(viewModel.model?.createdAt?.toDateFromat() ?? "").font(.body)
+                                }
+                                Spacer()
+                            }
+                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
+
+                            if let value = viewModel.model?.description {
+                                if !value.isEmpty {
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(L10nRepo.labelDescription).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                            Text(value).font(.body)
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 30, trailing: 15))
+                                }
+                            }
+                        }
+                        .background(Color.surfaceVariant)
+                    }.refreshable {
+                        refreshable = true
+                        await viewModel.load(url)
+                        refreshable = false
+                    }
                 }
             }
-        }.navigationBarItems(trailing: HStack {
-            if let model = viewModel.model {
+        }
+        .navigationBarItems(trailing: HStack {
+            if viewModel.loading && !refreshable && viewModel.model != nil {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+            } else if let model = viewModel.model {
                 NavigationLink(destination: SettingsRepo(model)) {
                     Image(systemName: "gearshape")
                         .imageScale(.medium)
                 }
             }
         })
+        .navigationBarTitle(viewModel.model?.name ?? "", displayMode: .inline)
         .onAppear {
             viewModel.readDb(url)
         }

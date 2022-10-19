@@ -30,7 +30,7 @@ struct ListFollower: View {
         .navigationBarTitle(L10nFollowers.title)
         .navigationBarTitleDisplayMode(.large)
         .navigationBarItems(trailing: HStack {
-            if viewModel.loading && viewModel.page == 1 && !refreshable {
+            if viewModel.loading && viewModel.page == 1 && !viewModel.models.isEmpty && !refreshable {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .orange))
             }

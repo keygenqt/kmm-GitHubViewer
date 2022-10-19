@@ -8,7 +8,7 @@
 import Foundation
 
 // field
-struct CompanyField: IField {
+struct CompanyField: IFieldText {
     // params field
     var label: String = L10nSettings.formCompany
     var value: String = ""

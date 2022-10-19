@@ -13,7 +13,7 @@ private func checkIsBlank(label: String, text: String) -> String? {
 }
 
 // field
-struct BlogField: IField {
+struct BlogField: IFieldText {
     // params field
     var label: String = L10nSettings.formBlog
     var value: String = ""

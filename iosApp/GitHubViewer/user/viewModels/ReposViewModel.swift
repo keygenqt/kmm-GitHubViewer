@@ -30,6 +30,6 @@ class ReposViewModel: ViewModelList<RepoModel> {
 
     override func saveList(response: [RepoModel]) {
         serviceData.clear()
-        serviceData.saveList(response.toRepoRealms())
+        serviceData.save(response.toRealms())
     }
 }

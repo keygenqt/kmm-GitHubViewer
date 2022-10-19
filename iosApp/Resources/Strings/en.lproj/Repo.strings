@@ -8,6 +8,12 @@
 
 "title" = "Repo";
 
+"icon_star_title" = "Star";
+"icon_star_text" = "Positive ratings";
+
+"icon_forks_title" = "Forks";
+"icon_forks_text" = "Copy of a repository";
+
 "label_size" = "Size";
 "open_watchers" = "Watchers";
 "open_issue" = "Issue";

@@ -33,7 +33,7 @@ private func getErrorIsNotMatch(label: String, text: String) -> String? {
 }
 
 // field
-struct NicknameField: IField {
+struct NicknameField: IFieldText {
     // params field
     var label: String = L10nSignIn.formNickname
     var value: String = ""

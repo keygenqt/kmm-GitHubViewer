@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array where Element == IField {
+extension Array where Element == IFieldText {
     func isValid() -> Bool {
         return !contains(where: { $0.isValid == false })
     }

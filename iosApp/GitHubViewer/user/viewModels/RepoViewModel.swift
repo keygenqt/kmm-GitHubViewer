@@ -11,6 +11,7 @@ class RepoViewModel: ObservableObject, Identifiable {
     var serviceNetwork = ReposNetwork()
     var serviceData = ReposData()
 
+    @Published var loading: Bool = true
     @Published var error: NetworkError?
     @Published var model: RepoModel?
 
@@ -25,6 +26,7 @@ class RepoViewModel: ObservableObject, Identifiable {
                 self.model = response
                 self.serviceData.save(response!.toRealm())
             }
+            self.loading = response == nil && error == nil
         }
     }
 

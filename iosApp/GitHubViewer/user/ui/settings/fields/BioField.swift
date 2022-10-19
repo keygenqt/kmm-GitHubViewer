@@ -13,7 +13,7 @@ private func checkIsBlank(label _: String, text: String) -> String? {
 }
 
 // field
-struct BioField: IField {
+struct BioField: IFieldText {
     // params field
     var label: String = ""
     var value: String = ""

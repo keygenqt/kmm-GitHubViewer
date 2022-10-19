@@ -8,7 +8,7 @@
 import Foundation
 
 // field
-struct TwitterField: IField {
+struct TwitterField: IFieldText {
     // params field
     var label: String = L10nSettings.formTwitterUsername
     var value: String = ""
