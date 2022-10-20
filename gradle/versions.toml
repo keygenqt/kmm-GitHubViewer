@@ -1,0 +1,349 @@
+[versions]
+# Base
+# https://kotlinlang.org/docs/releases.html#release-details
+kotlinVersion = "1.7.20"
+# https://github.com/pinterest/ktlint/releases
+ktlintVersion = "0.47.1"
+
+# Jetpack Compose
+# https://developer.android.com/jetpack/androidx/releases/compose
+composeVersion = "1.2.1"
+# https://developer.android.com/jetpack/androidx/releases/activity
+activityComposeVersion = "1.6.0"
+# https://developer.android.com/jetpack/androidx/releases/compose-material3
+material3Version = "1.0.0-rc01"
+# https://developer.android.com/jetpack/androidx/releases/compose-material
+materialVersion = "1.2.1"
+# https://developer.android.com/jetpack/androidx/releases/constraintlayout
+constraintLayoutVersion = "1.0.1"
+# https://developer.android.com/jetpack/androidx/releases/paging
+pagingComposeVersion = "1.0.0-alpha16"
+# https://google.github.io/accompanist/
+accompanistVersion = "0.26.5-rc"
+
+# Hilt
+# https://developer.android.com/jetpack/androidx/releases/hilt
+hiltVersion = "1.0.0"
+# https://mvnrepository.com/artifact/com.google.dagger/hilt-core
+hiltCoreVersion = "2.44"
+
+# Retrofit
+# https://github.com/square/retrofit/tags
+retrofitRetrofitVersions = "2.9.0"
+# https://github.com/Kotlin/kotlinx.serialization/releases
+serializationVersions = "1.4.0"
+# https://github.com/JakeWharton/retrofit2-kotlinx-serialization-converter/tags
+retrofitConverterVersions = "0.8.0"
+# https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor
+retrofitLoggingVersions = "4.10.0"
+
+# Database Room
+# https://developer.android.com/jetpack/androidx/releases/room
+roomVersion = "2.4.3"
+# https://github.com/sqlcipher/android-database-sqlcipher/tags
+androidDatabaseSqlcipherVersion = "4.5.2"
+# https://developer.android.com/jetpack/androidx/releases/sqlite
+sqliteVersion = "2.2.0"
+
+# Lottie
+# https://github.com/airbnb/lottie/blob/master/android-compose.md
+lottieVersions = "5.2.0"
+
+# Coil
+# https://coil-kt.github.io/coil/compose/
+coilVersion = "2.2.2"
+# https://developer.android.com/jetpack/androidx/releases/appcompat
+appcompatVersion = "1.5.1"
+
+#Firebase
+# https://firebase.google.com/support/release-notes/android
+firebaseAnalyticsVersions = "21.1.1"
+firebaseCrashlyticsVersions = "18.2.13"
+firebaseMessagingVersions = "23.0.8"
+
+# Other
+# https://github.com/JakeWharton/timber
+timberVersion = "5.0.1"
+# https://developer.android.com/jetpack/androidx/releases/startup
+startupVersion = "1.1.1"
+# https://developer.android.com/jetpack/androidx/releases/security
+securityCryptoVersion = "1.0.0"
+# https://github.com/Kotlin/kotlinx-datetime/tags
+kotlinxDatetimeVersion = "0.4.0"
+
+######################
+# accompanist
+######################
+# modules
+[libraries.accompanist_pager]
+module = "com.google.accompanist:accompanist-pager"
+[libraries.accompanist_swiperefresh]
+module = "com.google.accompanist:accompanist-swiperefresh"
+[libraries.accompanist_systemuicontroller]
+module = "com.google.accompanist:accompanist-systemuicontroller"
+[libraries.accompanist_navigation_animation]
+module = "com.google.accompanist:accompanist-navigation-animation"
+
+# versions
+[libraries.accompanist_pager.version]
+ref = "accompanistVersion"
+[libraries.accompanist_swiperefresh.version]
+ref = "accompanistVersion"
+[libraries.accompanist_systemuicontroller.version]
+ref = "accompanistVersion"
+[libraries.accompanist_navigation_animation.version]
+ref = "accompanistVersion"
+
+######################
+# coil
+######################
+# modules
+[libraries.coil_compose]
+module = "io.coil-kt:coil-compose"
+[libraries.coil_appcompat]
+module = "androidx.appcompat:appcompat"
+
+# versions
+[libraries.coil_compose.version]
+ref = "coilVersion"
+[libraries.coil_appcompat.version]
+ref = "appcompatVersion"
+
+######################
+# compose
+######################
+# modules
+[libraries.compose_ui]
+module = "androidx.compose.ui:ui"
+[libraries.compose_tooling]
+module = "androidx.compose.ui:ui-tooling"
+[libraries.compose_activity]
+module = "androidx.activity:activity-compose"
+[libraries.compose_icons]
+module = "androidx.compose.material:material-icons-extended"
+[libraries.compose_constraintlayout]
+module = "androidx.constraintlayout:constraintlayout-compose"
+[libraries.compose_material3]
+module = "androidx.compose.material3:material3"
+[libraries.compose_material]
+module = "androidx.compose.material:material"
+[libraries.compose_paging]
+module = "androidx.paging:paging-compose"
+
+# versions
+[libraries.compose_ui.version]
+ref = "composeVersion"
+[libraries.compose_tooling.version]
+ref = "composeVersion"
+[libraries.compose_activity.version]
+ref = "composeVersion"
+[libraries.compose_icons.version]
+ref = "composeVersion"
+[libraries.compose_constraintlayout.version]
+ref = "constraintLayoutVersion"
+[libraries.compose_material3.version]
+ref = "material3Version"
+[libraries.compose_material.version]
+ref = "materialVersion"
+[libraries.compose_paging.version]
+ref = "pagingComposeVersion"
+
+######################
+# firebase
+######################
+# modules
+[libraries.firebase_analytics]
+module = "com.google.firebase:firebase-analytics"
+[libraries.firebase_crashlytics]
+module = "com.google.firebase:firebase-crashlytics"
+[libraries.firebase_messaging]
+module = "com.google.firebase:firebase-messaging"
+
+# versions
+[libraries.firebase_analytics.version]
+ref = "firebaseAnalyticsVersions"
+[libraries.firebase_crashlytics.version]
+ref = "firebaseCrashlyticsVersions"
+[libraries.firebase_messaging.version]
+ref = "firebaseMessagingVersions"
+
+######################
+# hilt
+######################
+# modules
+[libraries.hilt_android]
+module = "com.google.dagger:hilt-android"
+[libraries.dagger_hilt_compiler]
+module = "com.google.dagger:hilt-compiler"
+[libraries.hilt_compiler]
+module = "androidx.hilt:hilt-compiler"
+[libraries.hilt_navigation_compose]
+module = "androidx.hilt:hilt-navigation-compose"
+
+# versions
+[libraries.hilt_android.version]
+ref = "hiltCoreVersion"
+[libraries.dagger_hilt_compiler.version]
+ref = "hiltCoreVersion"
+[libraries.hilt_compiler.version]
+ref = "hiltVersion"
+[libraries.hilt_navigation_compose.version]
+ref = "hiltVersion"
+
+######################
+# lottie
+######################
+# modules
+[libraries.lottie_core]
+module = "com.airbnb.android:lottie"
+[libraries.lottie_compose]
+module = "com.airbnb.android:lottie-compose"
+
+# versions
+[libraries.lottie_core.version]
+ref = "lottieVersions"
+[libraries.lottie_compose.version]
+ref = "lottieVersions"
+
+######################
+# other
+######################
+# modules
+[libraries.other_timber]
+module = "com.jakewharton.timber:timber"
+[libraries.other_startup]
+module = "androidx.startup:startup-runtime"
+[libraries.security_crypto]
+module = "androidx.security:security-crypto"
+[libraries.kotlinx_datetime]
+module = "org.jetbrains.kotlinx:kotlinx-datetime"
+[libraries.other_reflection]
+module = "org.jetbrains.kotlin:kotlin-reflect"
+
+# versions
+[libraries.other_timber.version]
+ref = "timberVersion"
+[libraries.other_startup.version]
+ref = "startupVersion"
+[libraries.security_crypto.version]
+ref = "securityCryptoVersion"
+[libraries.kotlinx_datetime.version]
+ref = "kotlinxDatetimeVersion"
+[libraries.other_reflection.version]
+ref = "kotlinVersion"
+
+######################
+# retrofit
+######################
+# modules
+[libraries.retrofit_serialization]
+module = "org.jetbrains.kotlinx:kotlinx-serialization-json"
+[libraries.retrofit_converter]
+module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter"
+[libraries.retrofit_retrofit]
+module = "com.squareup.retrofit2:retrofit"
+[libraries.retrofit_logging]
+module = "com.squareup.okhttp3:logging-interceptor"
+
+# versions
+[libraries.retrofit_serialization.version]
+ref = "serializationVersions"
+[libraries.retrofit_converter.version]
+ref = "retrofitConverterVersions"
+[libraries.retrofit_retrofit.version]
+ref = "retrofitRetrofitVersions"
+[libraries.retrofit_logging.version]
+ref = "retrofitLoggingVersions"
+
+######################
+# room
+######################
+# modules
+[libraries.room_core]
+module = "androidx.room:room-runtime"
+[libraries.room_ktx]
+module = "androidx.room:room-ktx"
+[libraries.room_compiler]
+module = "androidx.room:room-compiler"
+[libraries.room_sqlcipher]
+module = "net.zetetic:android-database-sqlcipher"
+[libraries.room_sqlite]
+module = "androidx.sqlite:sqlite"
+[libraries.room_paging]
+module = "androidx.room:room-paging"
+
+# versions
+[libraries.room_core.version]
+ref = "roomVersion"
+[libraries.room_ktx.version]
+ref = "roomVersion"
+[libraries.room_compiler.version]
+ref = "roomVersion"
+[libraries.room_paging.version]
+ref = "roomVersion"
+[libraries.room_sqlcipher.version]
+ref = "androidDatabaseSqlcipherVersion"
+[libraries.room_sqlite.version]
+ref = "sqliteVersion"
+
+[bundles]
+accompanist = [
+    "accompanist_pager",
+    "accompanist_swiperefresh",
+    "accompanist_systemuicontroller",
+    "accompanist_navigation_animation"
+]
+coil = [
+    "coil_compose",
+    "coil_appcompat"
+]
+compose = [
+    "compose_ui",
+    "compose_tooling",
+    "compose_activity",
+    "compose_icons",
+    "compose_constraintlayout",
+    "compose_material3",
+    "compose_material",
+    "compose_paging",
+]
+firebase = [
+    "firebase_analytics",
+    "firebase_crashlytics",
+    "firebase_messaging"
+]
+hilt = [
+    "hilt_android",
+    "hilt_navigation_compose"
+]
+hiltKapt = [
+    "hilt_compiler",
+    "dagger_hilt_compiler"
+]
+lottie = [
+    "lottie_core",
+    "lottie_compose",
+]
+other = [
+    "other_timber",
+    "other_startup",
+    "security_crypto",
+    "kotlinx_datetime",
+    "other_reflection",
+]
+retrofit = [
+    "retrofit_serialization",
+    "retrofit_converter",
+    "retrofit_retrofit",
+    "retrofit_logging",
+]
+room = [
+    "room_core",
+    "room_ktx",
+    "room_sqlcipher",
+    "room_sqlite",
+    "room_paging",
+]
+roomKapt = [
+    "room_compiler"
+]
