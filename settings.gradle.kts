@@ -44,23 +44,26 @@ val internalLibrariesEnable: String by settings
 
 // Include internal libraries
 
-// git@github.com:keygenqt/android-response-result.git
-include(":android-response-result")
-project(":android-response-result").projectDir =
-    File(settingsDir, "../libs/android-response-result")
+if (internalLibrariesEnable.toBoolean()) {
+    // git@github.com:keygenqt/android-response-result.git
+    include(":android-response-result")
+    project(":android-response-result").projectDir =
+        File(settingsDir, "../libs/android-response-result")
 
-// git@github.com:keygenqt/compose-forms.git
-include(":compose-forms")
-project(":compose-forms").projectDir = File(settingsDir, "../libs/compose-forms")
+    // git@github.com:keygenqt/compose-forms.git
+    include(":compose-forms")
+    project(":compose-forms").projectDir = File(settingsDir, "../libs/compose-forms")
 
-// git@github.com:keygenqt/compose-modifier-ext.git
-include(":compose-modifier-ext")
-project(":compose-modifier-ext").projectDir = File(settingsDir, "../libs/compose-modifier-ext")
+    // git@github.com:keygenqt/compose-modifier-ext.git
+    include(":compose-modifier-ext")
+    project(":compose-modifier-ext").projectDir = File(settingsDir, "../libs/compose-modifier-ext")
 
-// git@github.com:keygenqt/compose-routing.git
-include(":compose-routing")
-project(":compose-routing").projectDir = File(settingsDir, "../libs/compose-routing")
+    // git@github.com:keygenqt/compose-routing.git
+    include(":compose-routing")
+    project(":compose-routing").projectDir = File(settingsDir, "../libs/compose-routing")
 
-// git@github.com:keygenqt/keygenqt-accompanist.git
-include(":keygenqt-accompanist")
-project(":keygenqt-accompanist").projectDir = File(settingsDir, "../libs/keygenqt-accompanist")
+    // git@github.com:keygenqt/keygenqt-accompanist.git
+    include(":keygenqt-accompanist")
+    project(":keygenqt-accompanist").projectDir = File(settingsDir, "../libs/keygenqt-accompanist")
+}
+

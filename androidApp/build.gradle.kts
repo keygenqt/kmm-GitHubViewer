@@ -91,11 +91,15 @@ dependencies {
     // kmm
     implementation(project(":shared"))
     // libs
-    implementation(project(":android-response-result"))
-    implementation(project(":compose-forms"))
-    implementation(project(":compose-modifier-ext"))
-    implementation(project(":compose-routing"))
-    implementation(project(":keygenqt-accompanist"))
+    if (findProperty("internalLibrariesEnable").toString().toBoolean()) {
+        implementation(project(":android-response-result"))
+        implementation(project(":compose-forms"))
+        implementation(project(":compose-modifier-ext"))
+        implementation(project(":compose-routing"))
+        implementation(project(":keygenqt-accompanist"))
+    } else {
+        implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
+    }
 }
 dependencies {
 
