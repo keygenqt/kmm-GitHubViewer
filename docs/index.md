@@ -3,17 +3,22 @@ GitHub Viewer KMM
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
+### Android
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
+* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
+
 <p>
 <img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.08.49.gif" width="33%"/>
 <img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.07.05.gif" width="33%"/>
 </p>
 
-### Android
-* [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
-* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
-
 ### IOS
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
+
+<p>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.28.08.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.35.20.gif" width="33%"/>
+</p>
 
 ### Shared module
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
@@ -21,8 +26,8 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 
 ### Roadmap
 * Create android application ✅
+* Create iOS application  ✅
 * Move components android to shared module
-* Create IOS application with shared module
 
 # License
 
