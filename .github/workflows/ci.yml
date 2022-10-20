@@ -28,6 +28,9 @@ jobs:
         run: |
           [ -d docs/data ] && rm -r docs/data
           cp -r data docs/data
+
+      - name: Dokka
+        run: |
           gradle dokkaHtmlMultiModule
 
       - name: Api
