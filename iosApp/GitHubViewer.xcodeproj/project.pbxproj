@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F09989B2901463800383579 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F09989A2901463800383579 /* NavigationLazyView.swift */; };
 		2F123040270E2E5E00D0269E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F12303F270E2E5E00D0269E /* Colors.xcassets */; };
 		2F123044270E321800D0269E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F123043270E321800D0269E /* Assets.xcassets */; };
 		2F123046270E360700D0269E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F123045270E360700D0269E /* Color.swift */; };
@@ -193,6 +194,7 @@
 /* Begin PBXFileReference section */
 		09FC379476C95D60B4636DEE /* Pods_GitHubViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B60559C93BCB8414C2B29BE /* Pods-GitHubViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubViewer.debug.xcconfig"; path = "Target Support Files/Pods-GitHubViewer/Pods-GitHubViewer.debug.xcconfig"; sourceTree = "<group>"; };
+		2F09989A2901463800383579 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		2F12303F270E2E5E00D0269E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2F123043270E321800D0269E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F123045270E360700D0269E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -1058,6 +1060,7 @@
 			children = (
 				2FE9BB9928FB789900FE0E4D /* ViewModelList.swift */,
 				2F6FB26D29002757006F1DAF /* RoundedCorner.swift */,
+				2F09989A2901463800383579 /* NavigationLazyView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1378,6 +1381,7 @@
 				2F2D0BAC279426E5009D4FEC /* TextHeadlineMedium.swift in Sources */,
 				2FE9BB9A28FB789900FE0E4D /* ViewModelList.swift in Sources */,
 				2F66A3CB2790A927004EB4B5 /* OnboardingStep2.swift in Sources */,
+				2F09989B2901463800383579 /* NavigationLazyView.swift in Sources */,
 				2FF932B4271C9E1E003DA3D8 /* ErrorView.swift in Sources */,
 				2F4784DE2711835B006FE3A5 /* RepoModel.swift in Sources */,
 				2F7FB77B28FAD48E00CA31BD /* ButtonOutlineStyle.swift in Sources */,

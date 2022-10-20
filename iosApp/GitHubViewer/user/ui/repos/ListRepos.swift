@@ -19,7 +19,7 @@ struct ListRepos: View {
 
     var body: some View {
         AppList(viewModel: viewModel, refreshable: $refreshable) { model in
-            NavigationLink(destination: ViewRepo(url: model.url!)) {
+            NavigationLink(destination: NavigationLazyView(ViewRepo(url: model.url!))) {
                 ListReposItem(model: model)
             }
         }

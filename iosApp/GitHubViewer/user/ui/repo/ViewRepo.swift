@@ -248,12 +248,14 @@ struct ViewRepo: View {
                 }
             }
         })
-        .navigationBarTitle(viewModel.model?.name ?? "", displayMode: .inline)
+        .navigationBarTitle(L10nRepo.title, displayMode: .inline)
         .onAppear {
             viewModel.readDb(url)
         }
         .task {
-            await viewModel.loadAsync(url)
+            if !viewModel.loading {
+                await viewModel.loadAsync(url)
+            }
         }
     }
 }
