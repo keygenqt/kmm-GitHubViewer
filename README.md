@@ -18,8 +18,8 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-24_at_10.07.38.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-24_at_10.08.55.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.28.08.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.35.20.gif" width="33%"/>
 </p>
 
 ### Shared module
@@ -28,8 +28,8 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 
 ### Roadmap
 * Create android application ✅ 
-* Create IOS application with shared module :point_left:
-* Move components android to shared module :hourglass_flowing_sand:
+* Create IOS application with shared module ✅
+* Move components android to shared module :point_left:
 
 # License
 
