@@ -28,18 +28,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from(files(
-                "dependencies/accompanist.versions.toml",
-                "dependencies/coil.versions.toml",
-                "dependencies/compose.versions.toml",
-                "dependencies/firebase.versions.toml",
-                "dependencies/hilt.versions.toml",
-                "dependencies/lottie.versions.toml",
-                "dependencies/other.versions.toml",
-                "dependencies/retrofit.versions.toml",
-                "dependencies/room.versions.toml",
-                "dependencies/versions.toml"
-            ))
+            from(fileTree("dependencies"))
         }
     }
 }

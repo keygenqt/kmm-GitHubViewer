@@ -31,7 +31,7 @@ jobs:
 
       - name: Dokka
         run: |
-          gradle dokkaHtmlMultiModule --warning-mode all
+          gradle dokkaHtmlMultiModule --stacktrace
 
       - name: Api
         run: |
