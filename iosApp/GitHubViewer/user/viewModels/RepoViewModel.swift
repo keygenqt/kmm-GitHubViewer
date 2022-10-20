@@ -41,10 +41,14 @@ class RepoViewModel: ObservableObject, Identifiable {
             self.error = nil
             self.model = nil
         }
-        Task { await load(url) }
+        load(url)
     }
 
-    func load(_ url: String) async {
+    func load(_ url: String) {
+        Task { await loadAsync(url) }
+    }
+
+    func loadAsync(_ url: String) async {
         updateUI()
         do {
             let response = try await serviceNetwork.getRepo(url)

@@ -22,7 +22,6 @@ struct ListRepos: View {
             NavigationLink(destination: ViewRepo(url: model.url!)) {
                 ListReposItem(model: model)
             }
-//            .disabled(viewModel.loading && viewModel.page == 1) @todo bug update view page
         }
         .navigationBarTitle(L10nRepos.title)
         .navigationBarTitleDisplayMode(.large)

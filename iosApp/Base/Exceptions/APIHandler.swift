@@ -22,7 +22,7 @@ class APIHandler {
 
 extension DataRequest {
     func handleResponse<T: Decodable>(
-        label: String,
+        label: String = "",
         continuation: CheckedContinuation<T, Error>
     ) {
         handleResponse(label: label, continuation: continuation) { (_: DataResponse<T, AFError>) in
@@ -30,11 +30,11 @@ extension DataRequest {
     }
 
     func handleResponse<T: Decodable>(
-        label: String,
+        label: String = "",
         continuation: CheckedContinuation<T, Error>,
         completionHandler: @escaping (DataResponse<T, AFError>) -> Void
     ) {
-        responseDecodable(queue: DispatchQueue(label: label)) { (response: DataResponse<T, AFError>) in
+        responseDecodable(queue: label.isEmpty ? .main : DispatchQueue(label: label)) { (response: DataResponse<T, AFError>) in
             // @todo emulate slow query
             sleep(3)
             completionHandler(response)

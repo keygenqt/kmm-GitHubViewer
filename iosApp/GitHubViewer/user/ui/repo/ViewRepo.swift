@@ -21,6 +21,8 @@ struct ViewRepo: View {
 
     init(url: String) {
         self.url = url
+        viewModel.readDb(url)
+        viewModel.load(url)
     }
 
     var body: some View {
@@ -229,7 +231,7 @@ struct ViewRepo: View {
                         .background(Color.surfaceVariant)
                     }.refreshable {
                         refreshable = true
-                        await viewModel.load(url)
+                        await viewModel.loadAsync(url)
                         refreshable = false
                     }
                 }
@@ -251,7 +253,7 @@ struct ViewRepo: View {
             viewModel.readDb(url)
         }
         .task {
-            await viewModel.load(url)
+            await viewModel.loadAsync(url)
         }
     }
 }
