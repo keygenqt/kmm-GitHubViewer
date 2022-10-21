@@ -5,6 +5,7 @@
 //  Created by Виталий Зарубин on 13.01.2022.
 //
 
+import shared
 import SwiftUI
 
 struct WelcomeScreen: View {
@@ -14,6 +15,8 @@ struct WelcomeScreen: View {
     @EnvironmentObject var graph: GraphObservable
     // router
     @EnvironmentObject var router: RouterGuest
+
+    let greet = Greeting().greeting()
 
     var body: some View {
         ZStack {
@@ -55,7 +58,7 @@ struct WelcomeScreen: View {
 
                 HStack {
                     Spacer()
-                    TextBodySmall(text: L10nWelcome.version("0.0.1"))
+                    TextBodySmall(text: L10nWelcome.version("0.0.1") + " " + greet)
                 }
             }
             .navigationBarTitle(L10nWelcome.title)

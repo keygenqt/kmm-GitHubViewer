@@ -1,8 +1,11 @@
-platform :ios, '13.0'
+ENV['SWIFT_VERSION'] = '5'
 
 target 'GitHubViewer' do
   
   use_frameworks!
+
+  platform :ios, '14.1'
+  pod 'shared', :path => '../shared'
   
   pod 'Firebase/Analytics'      # https://firebase.google.com/docs/analytics/get-started?platform=ios
   pod 'Firebase/DynamicLinks'   # https://firebase.google.com/docs/dynamic-links/ios/create

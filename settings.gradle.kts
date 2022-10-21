@@ -3,14 +3,17 @@ pluginManagement {
     val spotlessVersion: String by settings
     val dokkaVersions: String by settings
     val kotlinVersion: String by settings
+    val multiplatformVersion: String by settings
 
     repositories {
-        gradlePluginPortal()
         google()
+        gradlePluginPortal()
         mavenCentral()
     }
 
     plugins {
+        // https://kotlinlang.org/docs/multiplatform.html
+        kotlin("multiplatform") version multiplatformVersion
         // https://github.com/Kotlin/kotlinx.serialization
         kotlin("plugin.serialization") version kotlinVersion
         // https://github.com/diffplug/spotless
@@ -21,7 +24,6 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()

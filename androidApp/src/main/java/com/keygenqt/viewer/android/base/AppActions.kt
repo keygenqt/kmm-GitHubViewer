@@ -20,7 +20,6 @@ import com.keygenqt.viewer.android.features.followers.navigation.actions.Followe
 import com.keygenqt.viewer.android.features.other.navigation.actions.OtherNavActions
 import com.keygenqt.viewer.android.features.profile.navigation.actions.ProfileNavActions
 import com.keygenqt.viewer.android.features.repos.navigation.actions.ReposNavActions
-import com.keygenqt.viewer.android.features.stats.navigation.actions.StatsNavActions
 
 /**
  * Base actions with all feature
@@ -29,5 +28,4 @@ class AppActions(override val controller: NavHostController) :
     ProfileNavActions,
     FollowersNavActions,
     ReposNavActions,
-    StatsNavActions,
     OtherNavActions

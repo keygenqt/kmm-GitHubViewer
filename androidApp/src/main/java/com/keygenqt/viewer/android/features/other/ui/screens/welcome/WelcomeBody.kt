@@ -42,6 +42,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.keygenqt.githubviewer.Greeting
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
@@ -131,7 +132,7 @@ fun WelcomeBody(
                         text = stringResource(
                             id = R.string.welcome_version,
                             BuildConfig.VERSION_NAME
-                        )
+                        ) + " " + Greeting().greeting()
                     )
                 }
             }
