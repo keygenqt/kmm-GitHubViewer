@@ -1783,7 +1783,8 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = EFAAG9GXN4;
 				ENABLE_PREVIEWS = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubViewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GitHubViewer;
@@ -1823,7 +1824,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = EFAAG9GXN4;
 				ENABLE_PREVIEWS = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubViewer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GitHubViewer;

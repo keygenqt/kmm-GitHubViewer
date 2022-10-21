@@ -6,13 +6,24 @@ target 'GitHubViewer' do
 
   platform :ios, '14.1'
   pod 'shared', :path => '../shared'
+
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+      end
+    end
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    end
+  end
   
   pod 'Firebase/Analytics'      # https://firebase.google.com/docs/analytics/get-started?platform=ios
   pod 'Firebase/DynamicLinks'   # https://firebase.google.com/docs/dynamic-links/ios/create
   pod 'Firebase/Crashlytics'    # https://firebase.google.com/docs/crashlytics/get-started?platform=ios
   
   pod 'AlertToast', '1.3.7'                         # toast
-  pod 'lottie-ios'                                  # lottie
+  pod 'lottie-ios', '3.5.0'                         # lottie
   pod 'SwiftGen', '6.5.1'                           # gen resources
   pod 'RealmSwift'                                  # db
   pod 'Kingfisher'                                  # images
