@@ -6,7 +6,7 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 ### Roadmap
 * Create android application ✅
 * Create IOS application with shared module ✅
-* Move components android to shared module :point_left:
+* Move services to shared module :point_left:
 
 ### Android
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
