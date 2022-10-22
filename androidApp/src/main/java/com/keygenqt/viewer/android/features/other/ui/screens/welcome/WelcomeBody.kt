@@ -46,6 +46,7 @@ import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
 import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.viewer.Greeting
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextDisplayMedium
@@ -131,7 +132,7 @@ fun WelcomeBody(
                         text = stringResource(
                             id = R.string.welcome_version,
                             BuildConfig.VERSION_NAME
-                        )
+                        ) + " " + Greeting().greeting()
                     )
                 }
             }

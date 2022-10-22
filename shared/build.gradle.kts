@@ -1,63 +1,61 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
 }
 
-version = "1.0"
-
 kotlin {
     android()
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
-    System.getenv("GITHUB_REPOSITORY") ?: run {
-//        TODO
-//        val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
-//            System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
-//            System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
-//            else -> ::iosX64
-//        }
-//
-//        iosTarget("ios") {}
-//
-//        cocoapods {
-//            summary = "Some description for the Shared Module"
-//            homepage = "Link to the Shared Module homepage"
-//            ios.deploymentTarget = "14.1"
-//            frameworkName = "shared"
-//            podfile = project.file("../iosApp/Podfile")
-//        }
+    cocoapods {
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        version = "1.0"
+        ios.deploymentTarget = "16"
+        podfile = project.file("../iosApp/Podfile")
+        framework {
+            baseName = "shared"
+        }
     }
-
+    
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
             }
         }
         val androidMain by getting
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.2")
-            }
+        val androidTest by getting
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
-        System.getenv("GITHUB_REPOSITORY") ?: run {
-//            TODO
-//            val iosMain by getting
-//            val iosTest by getting
+        val iosX64Test by getting
+        val iosArm64Test by getting
+        val iosSimulatorArm64Test by getting
+        val iosTest by creating {
+            dependsOn(commonTest)
+            iosX64Test.dependsOn(this)
+            iosArm64Test.dependsOn(this)
+            iosSimulatorArm64Test.dependsOn(this)
         }
     }
 }
 
 android {
-    compileSdkVersion(31)
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    namespace = "com.keygenqt.viewer"
+    compileSdk = 32
     defaultConfig {
-        minSdkVersion(23)
-        targetSdkVersion(31)
+        minSdk = 23
+        targetSdk = 32
     }
 }

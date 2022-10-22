@@ -32,7 +32,7 @@ struct NavGraph: View {
             .environmentObject(routerGuest)
             .accentColor(.orange)
         case .user:
-            UserTabs()
+            UserTabsScreen()
                 .environmentObject(graph)
                 .environmentObject(routerUser)
                 .accentColor(.orange)

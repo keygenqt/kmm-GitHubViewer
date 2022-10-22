@@ -39,7 +39,6 @@ import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.profile.navigation.graph.profileNavGraph
 import com.keygenqt.viewer.android.features.repos.navigation.graph.reposNavGraph
 import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
-import com.keygenqt.viewer.android.features.stats.navigation.graph.statsNavGraph
 import com.keygenqt.viewer.android.menu.MenuBottomBar
 import com.keygenqt.viewer.android.menu.MenuTab
 import com.keygenqt.viewer.android.utils.AuthUser
@@ -79,7 +78,6 @@ fun NavGraph(
             otherNavGraph(appActions)
             reposNavGraph(appActions)
             followersNavGraph(appActions)
-            statsNavGraph(appActions)
             profileNavGraph(appActions)
         }
 
@@ -106,7 +104,6 @@ fun NavGraph(
         when (tab) {
             MenuTab.REPOS -> appActions.toRepos()
             MenuTab.FOLLOWERS -> appActions.toFollowers()
-            // MenuTab.STATS -> appActions.toStatsMain() @todo
             MenuTab.PROFILE -> appActions.toProfile()
         }
     }

@@ -25,18 +25,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import coil.annotation.ExperimentalCoilApi
 import coil.compose.AsyncImagePainter
-import coil.compose.ImagePainter
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.lottie.LoadingBlockAnimation
 
 /**
  * Image user with default image
  */
-@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun AppImageUser(
     url: String,
