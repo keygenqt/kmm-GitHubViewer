@@ -66,4 +66,3 @@ if (internalLibrariesEnable.toBoolean()) {
     include(":keygenqt-accompanist")
     project(":keygenqt-accompanist").projectDir = File(settingsDir, "../libs/keygenqt-accompanist")
 }
-

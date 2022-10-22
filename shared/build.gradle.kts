@@ -14,7 +14,7 @@ kotlin {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         version = "1.0"
-        ios.deploymentTarget = "14.1"
+        ios.deploymentTarget = "16"
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
@@ -52,10 +52,10 @@ kotlin {
 }
 
 android {
-    namespace = "com.keygenqt.githubviewer"
-    compileSdk = 33
+    namespace = "com.keygenqt.viewer"
+    compileSdk = 32
     defaultConfig {
         minSdk = 23
-        targetSdk = 33
+        targetSdk = 32
     }
 }

@@ -23,7 +23,7 @@ struct LottieView: View {
 
 private struct LottieUIView: UIViewRepresentable {
     var name: String
-    var animationView = AnimationView()
+    var animationView = LottieAnimationView()
 
     func makeUIView(context _: UIViewRepresentableContext<LottieUIView>) -> UIView {
         let view = UIView(frame: .zero)

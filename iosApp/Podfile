@@ -1,20 +1,12 @@
-ENV['SWIFT_VERSION'] = '5'
-
 target 'GitHubViewer' do
-  
   use_frameworks!
-
-  platform :ios, '14.1'
-  pod 'shared', :path => '../shared'
-
+  platform :ios, '16'
+  
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
         config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
       end
-    end
-    installer.pods_project.build_configurations.each do |config|
-      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
     end
   end
   
@@ -31,4 +23,7 @@ target 'GitHubViewer' do
   pod 'AlamofireNetworkActivityLogger', '~> 3.4.0'  # HTTP Logger
   pod 'SwiftLint'                                   # code style
   pod 'SwiftFormat/CLI'                             # code style format
+  
+  ## KMM
+  pod 'shared', :path => '../shared'
 end
