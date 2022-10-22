@@ -1,0 +1,12 @@
+//
+//  Environment.xcconfig
+//  GitHubViewer
+//
+//  Created by Виталий Зарубин on 06.02.2022.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+github_client_id = {github_client_id}
+github_client_secret = {github_client_secret}
