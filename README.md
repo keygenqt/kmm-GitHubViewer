@@ -3,6 +3,8 @@ GitHub Viewer KMM
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
+![preview](https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-22_at_10.59.53.gif)
+
 ### Roadmap
 * Create android application ✅
 * Create IOS application with shared module ✅
