@@ -20,11 +20,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.paging.ReposRemoteMediator
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.features.repos.ui.screens.repos.ReposScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.utils.ConstantsPaging
+import com.keygenqt.viewer.data.storage.CrossStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,19 +39,19 @@ import javax.inject.Inject
 class ReposViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
-    private val preferences: BasePreferences,
+    private val storage: CrossStorage,
 ) : ViewModel() {
 
     /**
      * Is sort desc
      */
-    private val _isSortDescListRepo: MutableStateFlow<Boolean> =
-        MutableStateFlow(preferences.isSortDescListRepos)
+    private val _isSortASCListRepo: MutableStateFlow<Boolean> =
+        MutableStateFlow(storage.isRepoOrder)
 
     /**
      * StateFlow is sort desc
      */
-    val isSortDescListRepo: StateFlow<Boolean> get() = _isSortDescListRepo.asStateFlow()
+    val isSortASCListRepo: StateFlow<Boolean> get() = _isSortASCListRepo.asStateFlow()
 
     /**
      * Paging remote mediator [RepoModel]
@@ -59,7 +59,7 @@ class ReposViewModel @Inject constructor(
     @OptIn(ExperimentalPagingApi::class)
     val listRepo: Flow<PagingData<RepoModel>> = Pager(
         config = PagingConfig(pageSize = ConstantsPaging.PAGE_LIMIT),
-        remoteMediator = ReposRemoteMediator(apiService, dataService, preferences)
+        remoteMediator = ReposRemoteMediator(apiService, dataService, storage)
     ) {
         dataService.pagingSourceRepoModels()
     }.flow.cachedIn(viewModelScope)
@@ -68,9 +68,9 @@ class ReposViewModel @Inject constructor(
      * Toggle type sort
      */
     fun sortToggle() {
-        with(preferences) {
-            isSortDescListRepos = !isSortDescListRepos
-            _isSortDescListRepo.value = isSortDescListRepos
+        with(storage) {
+            isRepoOrder = !isRepoOrder
+            _isSortASCListRepo.value = isRepoOrder
         }
     }
 }

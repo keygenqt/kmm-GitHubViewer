@@ -18,10 +18,9 @@ package com.keygenqt.viewer.android.di
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.services.api.AppApi
 import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.base.StorageKMM
+import com.keygenqt.viewer.data.storage.CrossStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -54,27 +53,10 @@ object ModuleViewModel {
      */
     @Provides
     @ViewModelScoped
-    fun provideSharedPreferences(@ApplicationContext context: Context): BasePreferences {
-        return BasePreferences(
+    fun provideAppStorage(@ApplicationContext context: Context): CrossStorage {
+        return CrossStorage(
             EncryptedSharedPreferences.create(
-                BasePreferences::class.java.simpleName + "first",
-                MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
-                context,
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            )
-        )
-    }
-
-    /**
-     * Shared preferences
-     */
-    @Provides
-    @ViewModelScoped
-    fun provideAppStorage(@ApplicationContext context: Context): StorageKMM {
-        return StorageKMM(
-            EncryptedSharedPreferences.create(
-                BasePreferences::class.java.simpleName,
+                CrossStorage::class.java.simpleName,
                 MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
                 context,
                 EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,

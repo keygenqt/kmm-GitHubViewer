@@ -12,11 +12,11 @@ class ReposViewModel: ViewModelList<RepoModel> {
     var serviceNetwork = ReposNetwork()
     var serviceData = ReposData()
 
-    @Published var orderASC: Bool = AppKeyValue.isRepoOrderASC()
+    @Published var orderASC: Bool = ConstantsApp.STORAGE.isRepoOrder
 
     func toggleOrder() {
         orderASC = !orderASC
-        AppKeyValue.setRepoOrderASC(orderASC)
+        ConstantsApp.STORAGE.isRepoOrder = orderASC
         Task { await super.reload() }
     }
 

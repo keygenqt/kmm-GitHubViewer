@@ -14,5 +14,5 @@ enum Graph: String {
 }
 
 class GraphObservable: ObservableObject {
-    @Published var route: Graph = AppKeyValue.isAuth() ? .user : (AppKeyValue.isPassOnboarding() ? .guest : .onboarding)
+    @Published var route: Graph = ConstantsApp.STORAGE.authToken.isEmpty ? (ConstantsApp.STORAGE.isOnboardingDone ? .guest : .onboarding) : .user
 }

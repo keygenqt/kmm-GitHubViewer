@@ -38,10 +38,10 @@ fun ReposScreen(
 ) {
 
     val lazyRepos: LazyPagingItems<RepoModel> = viewModel.listRepo.collectAsLazyPagingItems()
-    val isSortDescListRepo: Boolean by viewModel.isSortDescListRepo.collectAsState()
+    val isSortASCListRepo: Boolean by viewModel.isSortASCListRepo.collectAsState()
 
     ReposBody(
-        isSortDescListRepo = isSortDescListRepo,
+        isSortASCListRepo = isSortASCListRepo,
         models = lazyRepos,
         onActions = onActions,
         navDispatcher = LocalNavigationDispatcher.current

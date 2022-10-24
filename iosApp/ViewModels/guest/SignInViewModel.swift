@@ -34,7 +34,7 @@ class SignInViewModel: ObservableObject, Identifiable {
         }
         do {
             let response = try await serviceNetwork.oauthCode(code: code)
-            AppKeyValue.setAuth(response)
+            ConstantsApp.STORAGE.authToken = response.accessToken ?? ""
             DispatchQueue.main.async {
                 action?()
             }

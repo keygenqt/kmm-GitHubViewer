@@ -11,7 +11,7 @@ import Foundation
 class APIHandler {
     var statusCode = Int.zero
     var headers: HTTPHeaders = [
-        "Authorization": "token \(AppKeyValue.getAuth().accessToken ?? "")",
+        "Authorization": "token \(ConstantsApp.STORAGE.authToken)",
         "Accept": "application/vnd.github.v3+json",
     ]
 

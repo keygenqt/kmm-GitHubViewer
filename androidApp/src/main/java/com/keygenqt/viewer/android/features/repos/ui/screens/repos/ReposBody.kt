@@ -48,7 +48,7 @@ import timber.log.Timber
  */
 @Composable
 fun ReposBody(
-    isSortDescListRepo: Boolean = false,
+    isSortASCListRepo: Boolean = false,
     models: LazyPagingItems<RepoModel>,
     navDispatcher: NavigationDispatcher? = null,
     onActions: (ReposActions) -> Unit = {},
@@ -71,7 +71,7 @@ fun ReposBody(
         topBarActions = {
             RotateIconSortIcon(
                 enabled = models.loadState.refresh !is LoadState.Loading,
-                isRotate = isSortDescListRepo
+                isRotate = !isSortASCListRepo
             ) {
                 scope.launch {
                     listState.animateScrollToItem(index = 0)

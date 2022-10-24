@@ -24,19 +24,19 @@ import com.keygenqt.requests.isEmpty
 import com.keygenqt.requests.isError
 import com.keygenqt.requests.success
 import com.keygenqt.viewer.android.data.models.FollowerModel
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.FollowerModelDataService
 import com.keygenqt.viewer.android.utils.ConstantsPaging.CACHE_TIMEOUT
+import com.keygenqt.viewer.data.storage.CrossStorage
 import kotlin.math.roundToInt
 
 @ExperimentalPagingApi
 class FollowersRemoteMediator(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
-    private val preferences: BasePreferences,
+    private val storage: CrossStorage,
 ) : RemoteMediator<Int, FollowerModel>() {
 
     companion object {
@@ -49,7 +49,7 @@ class FollowersRemoteMediator(
             sizeList = countFollowerModel()
         }
         // Refresh once per hour
-        return if (System.currentTimeMillis() - preferences.lastUpdateListFollowers >= CACHE_TIMEOUT) {
+        return if (System.currentTimeMillis() - storage.lastUpdateListFollowers >= CACHE_TIMEOUT) {
             InitializeAction.LAUNCH_INITIAL_REFRESH
         } else {
             InitializeAction.SKIP_INITIAL_REFRESH
@@ -80,7 +80,7 @@ class FollowersRemoteMediator(
                     dataService.withTransaction<FollowerModelDataService> {
                         if (loadType == LoadType.REFRESH) {
                             // change update timer
-                            preferences.lastUpdateListFollowers = System.currentTimeMillis()
+                            storage.lastUpdateListFollowers = System.currentTimeMillis()
                             // clear data
                             clearFollowerModel()
                         }

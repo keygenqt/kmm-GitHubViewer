@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import shared
 
 struct ConstantsApp {
+    // KMM storage
+    static let STORAGE: CrossStorage = CrossStorage(storage: UserDefaults.standard)
+    
     // Base URL
     static let API_URL = "https://api.github.com/"
 

@@ -72,13 +72,13 @@ interface ApiServiceGet {
      */
     suspend fun getUserRepos(
         @IntRange(from = 1) page: Int = 1,
-        isSortDesc: Boolean = false,
+        isSortASC: Boolean = false,
     ): ResponseResult<List<RepoModel>> {
         return withContext(Dispatchers.IO) {
             executeRefreshToken(api) {
                 api.getUserRepos(
                     page = page,
-                    direction = if (isSortDesc) "desc" else "asc"
+                    direction = if (isSortASC) "asc" else "desc"
                 )
                     .delay(BuildConfig.DEBUG)
                     .responseCheck()

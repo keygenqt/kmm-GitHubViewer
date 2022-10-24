@@ -24,19 +24,19 @@ import com.keygenqt.requests.isEmpty
 import com.keygenqt.requests.isError
 import com.keygenqt.requests.success
 import com.keygenqt.viewer.android.data.models.RepoModel
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
 import com.keygenqt.viewer.android.utils.ConstantsPaging.CACHE_TIMEOUT
+import com.keygenqt.viewer.data.storage.CrossStorage
 import kotlin.math.roundToInt
 
 @ExperimentalPagingApi
 class ReposRemoteMediator(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
-    private val preferences: BasePreferences,
+    private val storage: CrossStorage,
 ) : RemoteMediator<Int, RepoModel>() {
 
     companion object {
@@ -49,7 +49,7 @@ class ReposRemoteMediator(
             sizeList = countRepoModel()
         }
         // Refresh once per hour
-        return if (System.currentTimeMillis() - preferences.lastUpdateListRepos >= CACHE_TIMEOUT) {
+        return if (System.currentTimeMillis() - storage.lastUpdateListRepos >= CACHE_TIMEOUT) {
             InitializeAction.LAUNCH_INITIAL_REFRESH
         } else {
             InitializeAction.SKIP_INITIAL_REFRESH
@@ -74,14 +74,14 @@ class ReposRemoteMediator(
 
             val response = apiService.getUserRepos(
                 page = loadPage,
-                isSortDesc = preferences.isSortDescListRepos
+                isSortASC = storage.isRepoOrder
             )
                 .success { models ->
                     // save data
                     dataService.withTransaction<RepoModelDataService> {
                         if (loadType == LoadType.REFRESH) {
                             // change update timer
-                            preferences.lastUpdateListRepos = System.currentTimeMillis()
+                            storage.lastUpdateListRepos = System.currentTimeMillis()
                             // clear data
                             clearRepoModel()
                         }

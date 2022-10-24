@@ -24,14 +24,13 @@ import com.keygenqt.requests.isSucceeded
 import com.keygenqt.requests.success
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.exceptions.ResponseException
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import com.keygenqt.viewer.android.utils.AuthUser
-import com.keygenqt.viewer.base.StorageKMM
+import com.keygenqt.viewer.data.storage.CrossStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -50,8 +49,7 @@ import javax.inject.Inject
 class AppViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
-    private val preferences: BasePreferences,
-    private val storage: StorageKMM,
+    private val storage: CrossStorage,
     @ApplicationContext context: Context
 ) : ViewModel() {
 
@@ -68,7 +66,7 @@ class AppViewModel @Inject constructor(
     /**
      * Check is show onboarding
      */
-    var isOnboardingDone = lazy { preferences.isOnboardingDone }
+    var isOnboardingDone = lazy { storage.isOnboardingDone }
 
     init {
         // Listen errors responses
@@ -129,15 +127,6 @@ class AppViewModel @Inject constructor(
                 AuthUser.logout()
             }
         }
-
-        Timber.e("---------------")
-        Timber.e(storage.isOnboardingDone.toString())
-        storage.isOnboardingDone = !storage.isOnboardingDone
-        Timber.e(storage.isOnboardingDone.toString())
-        Timber.e("--------------- clearCache")
-        storage.clearCache()
-        Timber.e(storage.isOnboardingDone.toString())
-        Timber.e("---------------")
     }
 
     /**

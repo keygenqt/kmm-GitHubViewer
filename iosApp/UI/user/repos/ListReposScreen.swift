@@ -34,10 +34,10 @@ struct ListReposScreen: View {
                     viewModel.toggleOrder()
                 } label: {
                     if viewModel.orderASC {
-                        Image(systemName: "arrow.up.arrow.down.circle")
+                        Image(systemName: "arrow.up.arrow.down.circle.fill")
                             .imageScale(.large)
                     } else {
-                        Image(systemName: "arrow.up.arrow.down.circle.fill")
+                        Image(systemName: "arrow.up.arrow.down.circle")
                             .imageScale(.large)
                     }
                 }.disabled(viewModel.loading)
