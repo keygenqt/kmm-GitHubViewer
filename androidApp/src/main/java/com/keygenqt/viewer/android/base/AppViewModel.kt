@@ -31,6 +31,7 @@ import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
 import com.keygenqt.viewer.android.utils.AuthUser
+import com.keygenqt.viewer.base.StorageKMM
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -50,6 +51,7 @@ class AppViewModel @Inject constructor(
     private val apiService: AppApiService,
     private val dataService: AppDataService,
     private val preferences: BasePreferences,
+    private val storage: StorageKMM,
     @ApplicationContext context: Context
 ) : ViewModel() {
 
@@ -57,7 +59,7 @@ class AppViewModel @Inject constructor(
      * [MutableStateFlow] for start app and end splash
      */
     private val _isSplash: MutableStateFlow<Boolean> = MutableStateFlow(false)
-
+/**/
     /**
      * [StateFlow] for [_isSplash]
      */
@@ -127,6 +129,15 @@ class AppViewModel @Inject constructor(
                 AuthUser.logout()
             }
         }
+
+        Timber.e("---------------")
+        Timber.e(storage.isOnboardingDone.toString())
+        storage.isOnboardingDone = !storage.isOnboardingDone
+        Timber.e(storage.isOnboardingDone.toString())
+        Timber.e("--------------- clearCache")
+        storage.clearCache()
+        Timber.e(storage.isOnboardingDone.toString())
+        Timber.e("---------------")
     }
 
     /**

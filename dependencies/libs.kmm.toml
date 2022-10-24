@@ -9,6 +9,9 @@ kotlinxDatetimeVersion = "0.4.0"
 # Ktor
 # https://github.com/ktorio/ktor/releases
 ktorVersion = "2.1.2"
+# Security
+# https://developer.android.com/jetpack/androidx/releases/security
+securityCryptoVersion = "1.0.0"
 
 ##########################
 ## LIBRARIES
@@ -47,18 +50,28 @@ ref = "ktorVersion"
 [libraries.ktor-client-darwin.version]
 ref = "ktorVersion"
 
+# Security
+# Safely manage keys and encrypt files and sharedpreferences.
+[libraries.security-crypto]
+module = "androidx.security:security-crypto"
+# versions
+[libraries.security-crypto.version]
+ref = "securityCryptoVersion"
+
 ##########################
 ## BUNDLES
 ##########################
 
 [bundles]
 common = [
+    "security-crypto",
     "kotlinx-datetime",
     "ktor-client-core",
     "ktor-client-content-negotiation",
     "ktor-serialization-kotlinx-json",
 ]
 android = [
+    "security-crypto",
     "ktor-client-android",
 ]
 ios = [

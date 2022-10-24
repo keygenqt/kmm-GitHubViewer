@@ -66,8 +66,6 @@ firebaseMessagingVersions = "23.0.8"
 timberVersion = "5.0.1"
 # https://developer.android.com/jetpack/androidx/releases/startup
 startupVersion = "1.1.1"
-# https://developer.android.com/jetpack/androidx/releases/security
-securityCryptoVersion = "1.0.0"
 
 ######################
 # accompanist
@@ -211,8 +209,6 @@ ref = "lottieVersions"
 module = "com.jakewharton.timber:timber"
 [libraries.other_startup]
 module = "androidx.startup:startup-runtime"
-[libraries.security_crypto]
-module = "androidx.security:security-crypto"
 [libraries.other_reflection]
 module = "org.jetbrains.kotlin:kotlin-reflect"
 
@@ -221,8 +217,6 @@ module = "org.jetbrains.kotlin:kotlin-reflect"
 ref = "timberVersion"
 [libraries.other_startup.version]
 ref = "startupVersion"
-[libraries.security_crypto.version]
-ref = "securityCryptoVersion"
 [libraries.other_reflection.version]
 ref = "kotlinVersion"
 
@@ -321,7 +315,6 @@ lottie = [
 other = [
     "other_timber",
     "other_startup",
-    "security_crypto",
     "other_reflection",
 ]
 retrofit = [
