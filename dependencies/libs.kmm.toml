@@ -1,0 +1,66 @@
+##########################
+## VERSIONS
+##########################
+
+[versions]
+# kotlinx-datetime
+# https://github.com/Kotlin/kotlinx-datetime/tags
+kotlinxDatetimeVersion = "0.4.0"
+# Ktor
+# https://github.com/ktorio/ktor/releases
+ktorVersion = "2.1.2"
+
+##########################
+## LIBRARIES
+##########################
+
+# kotlinx-datetime
+# A multiplatform Kotlin library for working with date and time.
+[libraries.kotlinx-datetime]
+module = "org.jetbrains.kotlinx:kotlinx-datetime"
+# versions
+[libraries.kotlinx-datetime.version]
+ref = "kotlinxDatetimeVersion"
+
+# Ktor
+# Ktor is an asynchronous framework for creating microservices, web applications and more.
+# Written in Kotlin from the ground up.
+[libraries.ktor-client-core]
+module = "io.ktor:ktor-client-core"
+[libraries.ktor-client-content-negotiation]
+module = "io.ktor:ktor-client-content-negotiation"
+[libraries.ktor-serialization-kotlinx-json]
+module = "io.ktor:ktor-serialization-kotlinx-json"
+[libraries.ktor-client-android]
+module = "io.ktor:ktor-client-android"
+[libraries.ktor-client-darwin]
+module = "io.ktor:ktor-client-darwin"
+# versions
+[libraries.ktor-client-core.version]
+ref = "ktorVersion"
+[libraries.ktor-client-content-negotiation.version]
+ref = "ktorVersion"
+[libraries.ktor-serialization-kotlinx-json.version]
+ref = "ktorVersion"
+[libraries.ktor-client-android.version]
+ref = "ktorVersion"
+[libraries.ktor-client-darwin.version]
+ref = "ktorVersion"
+
+##########################
+## BUNDLES
+##########################
+
+[bundles]
+common = [
+    "kotlinx-datetime",
+    "ktor-client-core",
+    "ktor-client-content-negotiation",
+    "ktor-serialization-kotlinx-json",
+]
+android = [
+    "ktor-client-android",
+]
+ios = [
+    "ktor-client-darwin",
+]

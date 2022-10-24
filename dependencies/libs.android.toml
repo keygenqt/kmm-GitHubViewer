@@ -68,8 +68,6 @@ timberVersion = "5.0.1"
 startupVersion = "1.1.1"
 # https://developer.android.com/jetpack/androidx/releases/security
 securityCryptoVersion = "1.0.0"
-# https://github.com/Kotlin/kotlinx-datetime/tags
-kotlinxDatetimeVersion = "0.4.0"
 
 ######################
 # accompanist
@@ -215,8 +213,6 @@ module = "com.jakewharton.timber:timber"
 module = "androidx.startup:startup-runtime"
 [libraries.security_crypto]
 module = "androidx.security:security-crypto"
-[libraries.kotlinx_datetime]
-module = "org.jetbrains.kotlinx:kotlinx-datetime"
 [libraries.other_reflection]
 module = "org.jetbrains.kotlin:kotlin-reflect"
 
@@ -227,8 +223,6 @@ ref = "timberVersion"
 ref = "startupVersion"
 [libraries.security_crypto.version]
 ref = "securityCryptoVersion"
-[libraries.kotlinx_datetime.version]
-ref = "kotlinxDatetimeVersion"
 [libraries.other_reflection.version]
 ref = "kotlinVersion"
 
@@ -328,7 +322,6 @@ other = [
     "other_timber",
     "other_startup",
     "security_crypto",
-    "kotlinx_datetime",
     "other_reflection",
 ]
 retrofit = [

@@ -58,13 +58,17 @@ struct WelcomeScreen: View {
 
                 HStack {
                     Spacer()
-                    TextBodySmall(text: L10nWelcome.version("0.0.1") + " " + greet)
+                    TextBodySmall(text: L10nWelcome.version("0.0.1") + " " + greet + (!viewModel.list.isEmpty ? " Rockets: \(viewModel.list.count)" : ""))
                 }
             }
             .navigationBarTitle(L10nWelcome.title)
             .navigationBarTitleDisplayMode(.large)
             .padding(16)
+            .task {
+                await viewModel.getRockets()
+            }
         }
+
     }
 }
 

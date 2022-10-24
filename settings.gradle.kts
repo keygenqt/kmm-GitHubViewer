@@ -29,8 +29,11 @@ dependencyResolutionManagement {
         mavenCentral()
     }
     versionCatalogs {
+        create("kmm") {
+            from(files("dependencies/libs.kmm.toml"))
+        }
         create("libs") {
-            from(files("gradle/versions.toml"))
+            from(files("dependencies/libs.android.toml"))
         }
     }
 }

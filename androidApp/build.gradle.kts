@@ -101,6 +101,13 @@ dependencies {
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
     }
 }
+
+// Common
+dependencies {
+    implementation(kmm.bundles.common)
+}
+
+// Android
 dependencies {
 
     implementation(libs.bundles.accompanist)

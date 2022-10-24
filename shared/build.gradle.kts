@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin("plugin.serialization")
 }
 
 kotlin {
@@ -22,13 +23,21 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(kmm.bundles.common)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation(kmm.bundles.android)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -38,6 +47,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(kmm.bundles.ios)
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
