@@ -18,7 +18,7 @@ package com.keygenqt.viewer.android.di
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.keygenqt.viewer.android.extensions.checkValidJson
 import com.keygenqt.viewer.android.utils.AuthUser
-import com.keygenqt.viewer.android.utils.ConstantsApp
+import com.keygenqt.viewer.utils.AppConstants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -100,7 +100,7 @@ object HttpClientModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(ConstantsApp.API_URL)
+            .baseUrl(AppConstants.API_URL)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
     }

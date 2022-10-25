@@ -21,12 +21,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalUriHandler
 import com.keygenqt.forms.base.FormFieldsState
+import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.forms.SignInFieldsForm.SignInNickname
 import com.keygenqt.viewer.android.features.other.ui.viewModels.SignInViewModel
-import com.keygenqt.viewer.android.utils.ConstantsApp.DEBUG_CREDENTIAL_LOGIN
-import timber.log.Timber
+import com.keygenqt.viewer.utils.AppConstants
 
 /**
  * Base page fun for initialization
@@ -43,7 +43,7 @@ fun SignInScreen(
 
     val formFields = remember {
         FormFieldsState().apply {
-            add(SignInNickname, SignInNickname.state.default(DEBUG_CREDENTIAL_LOGIN))
+            add(SignInNickname, SignInNickname.state.default(if (BuildConfig.DEBUG) AppConstants.DEBUG_CREDENTIAL_LOGIN else ""))
         }
     }
 

@@ -19,8 +19,12 @@ struct SignInScreen: View {
     // form states
     @State private var error: String?
     // form value
+#if DEBUG
+    @State private var fieldNickname: IFieldText = NicknameField(value: ConstantsKMM.CONST.DEBUG_CREDENTIAL_LOGIN)
+#else
     @State private var fieldNickname: IFieldText = NicknameField()
-
+#endif
+    
     var body: some View {
         if viewModel.isShowProgressView {
             VStack {

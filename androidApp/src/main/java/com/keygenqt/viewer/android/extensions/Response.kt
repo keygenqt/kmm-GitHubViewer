@@ -19,10 +19,9 @@ import com.keygenqt.viewer.android.base.exceptions.DataException
 import com.keygenqt.viewer.android.base.exceptions.ResponseException
 import com.keygenqt.viewer.android.base.exceptions.toResponseException
 import com.keygenqt.viewer.android.utils.AppHelper.isValidJson
-import com.keygenqt.viewer.android.utils.ConstantsApp
+import com.keygenqt.viewer.utils.AppConstants
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -36,7 +35,7 @@ import retrofit2.Response
 fun <T> Response<T>.delay(enable: Boolean): Response<T> {
     if (enable) {
         runBlocking {
-            delay(ConstantsApp.DEBUG_DELAY)
+            delay(AppConstants.DEBUG_DELAY)
         }
     }
     return this

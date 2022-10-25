@@ -13,23 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.services.api.impl
-
-import com.keygenqt.viewer.android.data.requests.RefreshTokenRequest
-import com.keygenqt.viewer.android.data.responses.AuthResponse
-import com.keygenqt.viewer.utils.AppConstants
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.Url
+package com.keygenqt.viewer.interfaces
 
 /**
- * Api for refresh token
+ * Interface for models
  */
-interface ApiRefreshToken {
-    @POST
-    suspend fun refreshToken(
-        @Url url: String = AppConstants.AUTH_URL,
-        @Body request: RefreshTokenRequest
-    ): Response<AuthResponse>
+interface IModel {
+    val id: String
 }

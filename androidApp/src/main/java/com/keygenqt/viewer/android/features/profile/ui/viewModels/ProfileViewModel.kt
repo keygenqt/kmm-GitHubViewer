@@ -24,6 +24,7 @@ import com.keygenqt.viewer.android.features.profile.ui.screens.profile.ProfileSc
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.services.dataService.AppDataService
 import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
+import com.keygenqt.viewer.data.storage.CrossStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
@@ -34,7 +35,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val apiService: AppApiService,
-    private val dataService: AppDataService
+    private val dataService: AppDataService,
+    private val storage: CrossStorage
 ) : ViewModel() {
 
     /**
@@ -63,5 +65,10 @@ class ProfileViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun clearStorage() {
+        storage.clearCache()
+        storage.isOnboardingDone = true
     }
 }

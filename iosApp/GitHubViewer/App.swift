@@ -25,10 +25,10 @@ struct GitHubViewer: App {
             // configure fb
             FirebaseApp.configure()
             // logging http
-            #if DEBUG
-                NetworkActivityLogger.shared.level = .debug
-                NetworkActivityLogger.shared.startLogging()
-            #endif
+//            #if DEBUG
+//                NetworkActivityLogger.shared.level = .debug
+//                NetworkActivityLogger.shared.startLogging()
+//            #endif
             return true
         }
     }

@@ -12,7 +12,7 @@ class AuthNetwork: APIHandler {
     @discardableResult
     func oauthCode(code: String) async throws -> AuthModel {
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(ConstantsApp.AUTH_URL, method: .post, parameters: [
+            AF.request(ConstantsKMM.CONST.AUTH_URL, method: .post, parameters: [
                 "code": code,
                 "client_secret": EnvironmentSecret.clientSecret,
                 "client_id": EnvironmentSecret.clientId,

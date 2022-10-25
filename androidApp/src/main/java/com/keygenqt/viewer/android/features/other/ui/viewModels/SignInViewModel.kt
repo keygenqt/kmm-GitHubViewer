@@ -23,6 +23,7 @@ import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
 import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.utils.AuthUser
+import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -32,6 +33,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SignInViewModel @Inject constructor(
     private val apiService: AppApiService,
+    private val client: AppHttpClient,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -61,4 +63,10 @@ class SignInViewModel @Inject constructor(
             apiService.oauthCode(code = code).success { AuthUser.login(it) }
         }
     }
+
+//    private fun signIn(code: String) {
+//        query1.queryLaunch {
+//            client.post.oauthCode(code = code).success { AuthUser.login(it) }
+//        }
+//    }
 }

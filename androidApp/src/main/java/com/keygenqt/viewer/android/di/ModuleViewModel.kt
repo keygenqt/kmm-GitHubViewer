@@ -47,21 +47,4 @@ object ModuleViewModel {
      */
     @Provides
     fun provideUsersApiService(api: AppApi) = AppApiService(api)
-
-    /**
-     * Shared preferences
-     */
-    @Provides
-    @ViewModelScoped
-    fun provideAppStorage(@ApplicationContext context: Context): CrossStorage {
-        return CrossStorage(
-            EncryptedSharedPreferences.create(
-                CrossStorage::class.java.simpleName,
-                MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
-                context,
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            ) as EncryptedSharedPreferences
-        )
-    }
 }

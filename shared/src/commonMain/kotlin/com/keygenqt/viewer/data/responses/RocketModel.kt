@@ -3,6 +3,9 @@ package com.keygenqt.viewer.data.responses
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Test model query
+ */
 @Serializable
 data class RocketModel (
     @SerialName("flight_number")

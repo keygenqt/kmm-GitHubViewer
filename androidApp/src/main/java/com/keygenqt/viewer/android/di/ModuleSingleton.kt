@@ -16,7 +16,10 @@
 package com.keygenqt.viewer.android.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.base.AppDatabaseQualifier
 import com.keygenqt.viewer.android.base.AppDatabaseSecurityQualifier
@@ -24,9 +27,12 @@ import com.keygenqt.viewer.android.data.AppDatabase
 import com.keygenqt.viewer.android.data.AppSecurityDatabase
 import com.keygenqt.viewer.android.data.migrations.Migrations_1_2
 import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.data.storage.CrossStorage
+import com.keygenqt.viewer.services.AppHttpClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
@@ -101,4 +107,30 @@ object ModuleSingleton {
         @AppDatabaseQualifier db: AppDatabase,
         @AppDatabaseSecurityQualifier dbSecurity: AppSecurityDatabase,
     ) = AppDataService(db, dbSecurity)
+
+    /**
+     * Shared preferences
+     */
+    @Provides
+    fun provideAppStorage(@ApplicationContext context: Context): CrossStorage {
+        return CrossStorage(
+            EncryptedSharedPreferences.create(
+                CrossStorage::class.java.simpleName,
+                MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC),
+                context,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            ) as EncryptedSharedPreferences
+        )
+    }
+
+    /**
+     * Ktor http client
+     */
+    @Provides
+    fun provideAppHttpClient(
+        storage: CrossStorage,
+    ) = AppHttpClient(
+        token = storage.authToken
+    )
 }

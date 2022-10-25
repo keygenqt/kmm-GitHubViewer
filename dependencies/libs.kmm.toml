@@ -38,6 +38,8 @@ module = "io.ktor:ktor-serialization-kotlinx-json"
 module = "io.ktor:ktor-client-android"
 [libraries.ktor-client-darwin]
 module = "io.ktor:ktor-client-darwin"
+[libraries.ktor-client-logging]
+module = "io.ktor:ktor-client-logging"
 # versions
 [libraries.ktor-client-core.version]
 ref = "ktorVersion"
@@ -48,6 +50,8 @@ ref = "ktorVersion"
 [libraries.ktor-client-android.version]
 ref = "ktorVersion"
 [libraries.ktor-client-darwin.version]
+ref = "ktorVersion"
+[libraries.ktor-client-logging.version]
 ref = "ktorVersion"
 
 # Security
@@ -69,6 +73,7 @@ common = [
     "ktor-client-core",
     "ktor-client-content-negotiation",
     "ktor-serialization-kotlinx-json",
+    "ktor-client-logging",
 ]
 android = [
     "security-crypto",

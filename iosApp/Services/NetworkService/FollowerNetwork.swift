@@ -14,7 +14,7 @@ class FollowerNetwork: APIHandler {
         return try await withCheckedThrowingContinuation { continuation in
             AF.request(getUrl("user/followers"), method: .get, parameters: [
                 "page": page,
-                "per_page": ConstantsApp.PAGE_LIMIT,
+                "per_page": ConstantsKMM.CONST.PAGE_LIMIT,
             ], headers: headers).handleResponse(
                 label: "getListFollowers",
                 continuation: continuation

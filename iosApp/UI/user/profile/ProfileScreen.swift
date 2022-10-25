@@ -194,9 +194,11 @@ struct ProfileScreen: View {
         }).confirmationDialog(L10nProfile.dialogLogoutTitle, isPresented: $isShowLogout) {
             Button(L10nProfile.dialogLogoutConfirm, role: .destructive) {
                 graph.route = .guest
+                // remove token from http client
+                ConstantsKMM.CLIENT.clearToken()
                 // clear cache
-                ConstantsApp.STORAGE.clearCache()
-                ConstantsApp.STORAGE.isOnboardingDone = true
+                ConstantsKMM.STORAGE.clearCache()
+                ConstantsKMM.STORAGE.isOnboardingDone = true
             }
         } message: {
             Text(L10nProfile.dialogLogoutText)

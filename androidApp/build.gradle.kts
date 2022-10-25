@@ -45,8 +45,13 @@ android {
         )
 
         // Dynamic Links
+        buildConfigField(
+            "String",
+            "dynamicLinksHost",
+            """"${findProperty("dynamicLinksHost")}""""
+        )
+
         addManifestPlaceholders(mapOf("dynamicLinksHost" to findProperty("dynamicLinksHost").toString()))
-        buildConfigField("String", "dynamicLinksHost", """"${findProperty("dynamicLinksHost")}"""")
     }
 
     composeOptions {

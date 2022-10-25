@@ -1,8 +1,11 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
     kotlin("plugin.serialization")
+    id("com.codingfeline.buildkonfig")
 }
 
 kotlin {
@@ -24,6 +27,9 @@ kotlin {
     
     sourceSets {
         val commonMain by getting {
+
+
+
             dependencies {
                 implementation(kmm.bundles.common)
             }
@@ -60,6 +66,40 @@ kotlin {
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
         }
+    }
+}
+
+buildkonfig {
+    packageName = "com.keygenqt.viewer"
+
+    defaultConfigs {
+        // Secret DB
+        buildConfigField(
+            STRING,
+            "SECRET_DB",
+            findProperty("secret_db").toString().replace("\"", "")
+        )
+
+        // Client ID GitHub
+        buildConfigField(
+            STRING,
+            "GITHUB_CLIENT_ID",
+            findProperty("github_client_id").toString().replace("\"", "")
+        )
+
+        // Secret GitHub
+        buildConfigField(
+            STRING,
+            "GITHUB_CLIENT_SECRET",
+            findProperty("github_client_secret").toString().replace("\"", "")
+        )
+
+        // Dynamic Links
+        buildConfigField(
+            STRING,
+            "dynamicLinksHost",
+            findProperty("dynamicLinksHost").toString().replace("\"", "")
+        )
     }
 }
 

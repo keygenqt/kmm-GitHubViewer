@@ -11,12 +11,12 @@ import Foundation
 class APIHandler {
     var statusCode = Int.zero
     var headers: HTTPHeaders = [
-        "Authorization": "token \(ConstantsApp.STORAGE.authToken)",
+        "Authorization": "token \(ConstantsKMM.STORAGE.authToken)",
         "Accept": "application/vnd.github.v3+json",
     ]
 
     func getUrl(_ path: String) -> String {
-        return "\(ConstantsApp.API_URL)\(path)"
+        return "\(ConstantsKMM.CONST.API_URL)\(path)"
     }
 }
 

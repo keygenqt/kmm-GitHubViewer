@@ -14,11 +14,9 @@ class WelcomeViewModel: ObservableObject, Identifiable {
     @Published var list: [RocketModel] = []
     @Published var error: NetworkError?
     
-    var serviceNetwork = RocketNetwork()
-    
     func getRocketsAsync()  async throws -> [RocketModel] {
         return try await withCheckedThrowingContinuation { continuation in
-            serviceNetwork.getRockets { models, error in
+            ConstantsKMM.CLIENT.get.rockets { models, error in
                 if let models = models {
                     continuation.resume(returning: models)
                 } else {

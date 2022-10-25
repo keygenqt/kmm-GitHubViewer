@@ -10,6 +10,6 @@ import Foundation
 
 class OnboardingViewModel: ObservableObject, Identifiable {
     func disableOnboarding() {
-        ConstantsApp.STORAGE.isOnboardingDone = true
+        ConstantsKMM.STORAGE.isOnboardingDone = true
     }
 }

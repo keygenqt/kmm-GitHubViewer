@@ -14,7 +14,7 @@ class ReposNetwork: APIHandler {
         return try await withCheckedThrowingContinuation { continuation in
             AF.request(getUrl("user/repos"), method: .get, parameters: [
                 "page": page,
-                "per_page": ConstantsApp.PAGE_LIMIT,
+                "per_page": ConstantsKMM.CONST.PAGE_LIMIT,
                 "type": "owner",
                 "sort": "created",
                 "direction": orderASC ? "asc" : "desc",

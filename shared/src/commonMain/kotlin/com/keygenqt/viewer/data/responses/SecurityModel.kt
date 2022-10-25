@@ -13,32 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.utils
+package com.keygenqt.viewer.data.responses
 
-import com.keygenqt.viewer.android.BuildConfig
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
- * Base Constants for App
+ * Model auth tokens
  */
-object ConstantsApp {
-
-    /**
-     * Api url auth
-     */
-    const val AUTH_URL = "https://github.com/login/oauth/access_token"
-
-    /**
-     * Api url
-     */
-    const val API_URL = "https://api.github.com/"
-
-    /**
-     * For simulate slow internet
-     */
-    const val DEBUG_DELAY = 1000L
-
-    /**
-     * For debug credential login
-     */
-    val DEBUG_CREDENTIAL_LOGIN get() = if (BuildConfig.DEBUG) "keygenqt" else ""
-}
+@Serializable
+data class SecurityModel(
+    @SerialName("access_token")
+    val accessToken: String,
+    @SerialName("expires_in")
+    val expiresIn: Int,
+    @SerialName("refresh_token")
+    val refreshToken: String,
+    @SerialName("refresh_token_expires_in")
+    val refreshTokenExpiresIn: Int,
+)
