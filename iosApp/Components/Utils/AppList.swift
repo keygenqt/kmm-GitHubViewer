@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-import shared
 
-struct AppList<T: IModel, Content: View>: View {
+struct AppList<T: Identifiable, Content: View>: View {
     @ObservedObject var viewModel: ViewModelList<T>
 
     var content: (T) -> Content
@@ -69,8 +68,8 @@ struct AppList<T: IModel, Content: View>: View {
                         .listRowBackground(Color.red)
 
                     }.listRowInsets(EdgeInsets(top: 15, leading: 5, bottom: 25, trailing: 5))) {
-                        ForEach((0...viewModel.models.count-1), id: \.self) {
-                            content(viewModel.models[$0]).id(viewModel.models[$0].id)
+                        ForEach(viewModel.models) { model in
+                            content(model).id(model.id)
                         }
                     }
                 }

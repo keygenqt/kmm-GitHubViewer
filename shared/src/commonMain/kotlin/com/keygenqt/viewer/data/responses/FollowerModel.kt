@@ -15,7 +15,6 @@
  */
 package com.keygenqt.viewer.data.responses
 
-import com.keygenqt.viewer.interfaces.IModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -25,7 +24,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class FollowerModel(
     @SerialName("id")
-    override val id: String,
+    val id: String,
     @SerialName("login")
     val login: String,
     @SerialName("node_id")
@@ -60,4 +59,4 @@ data class FollowerModel(
     val type: String,
     @SerialName("site_admin")
     val siteAdmin: Boolean,
-): IModel
+)

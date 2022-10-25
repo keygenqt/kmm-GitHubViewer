@@ -15,7 +15,6 @@
  */
 package com.keygenqt.viewer.data.responses
 
-import com.keygenqt.viewer.interfaces.IModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -25,7 +24,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RepoModel(
     @SerialName("id")
-    override val id: String,
+    val id: String,
     @SerialName("name")
     val name: String,
     @SerialName("full_name")
@@ -176,7 +175,7 @@ data class RepoModel(
     val createdAt: String,
     @SerialName("updated_at")
     val updatedAt: String,
-): IModel
+)
 
 /**
  * Repo license model

@@ -107,7 +107,7 @@ android {
     namespace = "com.keygenqt.viewer"
     compileSdk = 32
     defaultConfig {
-        minSdk = 23
+        minSdk = 26
         targetSdk = 32
     }
 }

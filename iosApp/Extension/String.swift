@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import shared
 
 extension String {
     func matches(_ regex: String) -> Bool {
@@ -21,11 +22,8 @@ extension String {
         let remainingLetters = dropFirst().lowercased()
         return firstLetter + remainingLetters
     }
-
-    func toTimestamp() -> Double {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let dateString = dateFormatter.date(from: self)
-        return dateString!.timeIntervalSince1970
+    
+    func toFormatDateShort() -> String {
+        return LongKt.dateFormat(StringKt.toTimestamp(self), format: ConstantsKMM.CONST.FORMAT_DATE_SHORT)
     }
 }

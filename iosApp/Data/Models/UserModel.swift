@@ -110,8 +110,8 @@ class UserModel: Decodable, Identifiable {
         publicGists = try? container.decode(Int.self, forKey: .public_gists)
         followers = try? container.decode(Int.self, forKey: .followers)
         following = try? container.decode(Int.self, forKey: .following)
-        createdAt = try? container.decode(String.self, forKey: .created_at).toTimestamp()
-        updatedAt = try? container.decode(String.self, forKey: .updated_at).toTimestamp()
+//        createdAt = try? container.decode(String.self, forKey: .created_at).toTimestamp()
+//        updatedAt = try? container.decode(String.self, forKey: .updated_at).toTimestamp()
     }
 }
 

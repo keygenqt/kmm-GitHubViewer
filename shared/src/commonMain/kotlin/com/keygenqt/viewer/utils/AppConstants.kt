@@ -30,4 +30,9 @@ object AppConstants {
      * For debug credential login
      */
     const val DEBUG_CREDENTIAL_LOGIN = "keygenqt"
+
+    /**
+     * Format date short
+     */
+    const val FORMAT_DATE_SHORT = "dd.MM.yyyy"
 }

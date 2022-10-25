@@ -7,6 +7,7 @@
 
 import Kingfisher
 import SwiftUI
+import shared
 
 struct ViewRepoScreen: View {
     let url: String
@@ -197,23 +198,27 @@ struct ViewRepoScreen: View {
                                 }
                             }
 
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(L10nRepo.labelUpdatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-//                                    Text(viewModel.model?.updatedAt?.toDateFromat() ?? "").font(.body)
+                            if let value = viewModel.model?.updatedAt {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(L10nRepo.labelUpdatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                        Text(value.toFormatDateShort())
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
                             }
-                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
 
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(L10nRepo.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-//                                    Text(viewModel.model?.createdAt?.toDateFromat() ?? "").font(.body)
+                            if let value = viewModel.model?.createdAt {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(L10nRepo.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                        Text(value.toFormatDateShort())
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
                             }
-                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
 
                             if let value = viewModel.model?.desc {
                                 if !value.isEmpty {
