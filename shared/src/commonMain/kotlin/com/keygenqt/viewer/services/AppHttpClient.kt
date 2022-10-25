@@ -1,6 +1,5 @@
 package com.keygenqt.viewer.services
 
-import com.keygenqt.viewer.services.impl.DeleteNetwork
 import com.keygenqt.viewer.services.impl.GetNetwork
 import com.keygenqt.viewer.services.impl.PatchNetwork
 import com.keygenqt.viewer.services.impl.PostNetwork
@@ -8,11 +7,11 @@ import com.keygenqt.viewer.utils.AppConstants
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
-import io.ktor.client.plugins.logging.*
 
 class AppHttpClient(
     private var token: String
@@ -29,7 +28,6 @@ class AppHttpClient(
     val get by lazy { GetNetwork(httpClient) }
     val post by lazy { PostNetwork(httpClient) }
     val patch by lazy { PatchNetwork(httpClient) }
-    val delete by lazy { DeleteNetwork(httpClient) }
 
     private val json = Json {
         prettyPrint = true
@@ -53,6 +51,5 @@ class AppHttpClient(
         install(ContentNegotiation) {
             json(json)
         }
-
     }
 }

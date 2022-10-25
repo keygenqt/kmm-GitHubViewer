@@ -15,6 +15,7 @@
  */
 package com.keygenqt.viewer.data.responses
 
+import com.keygenqt.viewer.interfaces.IModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -24,7 +25,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RepoModel(
     @SerialName("id")
-    val id: String,
+    override val id: String,
     @SerialName("name")
     val name: String,
     @SerialName("full_name")
@@ -36,7 +37,7 @@ data class RepoModel(
     @SerialName("html_url")
     val htmlUrl: String,
     @SerialName("description")
-    val description: String?,
+    val desc: String?,
     @SerialName("fork")
     val fork: Boolean,
     @SerialName("url")
@@ -160,15 +161,55 @@ data class RepoModel(
     @SerialName("visibility")
     val visibility: String,
     @SerialName("permissions")
-    val permissions: Map<String, String>,
+    val permissions: RepoPermissionsModel,
     @SerialName("license")
-    val license: Map<String, String?>?,
+    val license: RepoLicenseModel?,
     @SerialName("forks")
     val forks: Int,
     @SerialName("open_issues")
     val openIssues: Int,
     @SerialName("watchers")
     val watchers: Int,
+    @SerialName("pushed_at")
+    val pushedAt: String,
+    @SerialName("created_at")
+    val createdAt: String,
+    @SerialName("updated_at")
+    val updatedAt: String,
+): IModel
+
+/**
+ * Repo license model
+ */
+@Serializable
+data class RepoLicenseModel(
+    @SerialName("key")
+    val key: String,
+    @SerialName("name")
+    val name: String,
+    @SerialName("spdx_id")
+    val spdxId: String,
+    @SerialName("url")
+    val url: String?,
+    @SerialName("node_id")
+    val nodeId: String,
+)
+
+/**
+ * Repo permissions model
+ */
+@Serializable
+data class RepoPermissionsModel(
+    @SerialName("admin")
+    val admin: Boolean,
+    @SerialName("maintain")
+    val maintain: Boolean,
+    @SerialName("push")
+    val push: Boolean,
+    @SerialName("triage")
+    val triage: Boolean,
+    @SerialName("pull")
+    val pull: Boolean,
 )
 
 /**
@@ -177,39 +218,39 @@ data class RepoModel(
 @Serializable
 data class RepoOwnerModel(
     @SerialName("id")
-    val ownerId: String,
+    val id: String,
     @SerialName("login")
-    val ownerLogin: String,
+    val login: String,
     @SerialName("node_id")
-    val ownerNodeId: String,
+    val nodeId: String,
     @SerialName("avatar_url")
-    val ownerAvatarUrl: String,
+    val avatarUrl: String,
     @SerialName("gravatar_id")
-    val ownerGravatarId: String,
+    val gravatarId: String,
     @SerialName("url")
-    val ownerUrl: String,
+    val url: String,
     @SerialName("html_url")
-    val ownerHtmlUrl: String,
+    val htmlUrl: String,
     @SerialName("followers_url")
-    val ownerFollowersUrl: String,
+    val followersUrl: String,
     @SerialName("following_url")
-    val ownerFollowingUrl: String,
+    val followingUrl: String,
     @SerialName("gists_url")
-    val ownerGistsUrl: String,
+    val gistsUrl: String,
     @SerialName("starred_url")
-    val ownerStarredUrl: String,
+    val starredUrl: String,
     @SerialName("subscriptions_url")
-    val ownerSubscriptionsUrl: String,
+    val subscriptionsUrl: String,
     @SerialName("organizations_url")
-    val ownerOrganizationsUrl: String,
+    val organizationsUrl: String,
     @SerialName("repos_url")
-    val ownerReposUrl: String,
+    val reposUrl: String,
     @SerialName("events_url")
-    val ownerEventsUrl: String,
+    val eventsUrl: String,
     @SerialName("received_events_url")
-    val ownerReceivedEventsUrl: String,
+    val receivedEventsUrl: String,
     @SerialName("type")
-    val ownerType: String,
+    val type: String,
     @SerialName("site_admin")
-    val ownerSiteAdmin: Boolean,
+    val siteAdmin: Boolean,
 )

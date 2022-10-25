@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import shared
 
 class SettingsRepoViewModel: ObservableObject, Identifiable {
     var serviceNetwork = ReposNetwork()
-    var serviceData = ReposData()
+//    var serviceData = ReposData()
 
     @Published var loading: Bool = false
     @Published var error: NetworkError?
@@ -22,7 +23,7 @@ class SettingsRepoViewModel: ObservableObject, Identifiable {
             if response == nil {
                 self.error = error
             } else {
-                self.serviceData.save(response!.toRealm())
+//                self.serviceData.save(response!.toRealm())
             }
             self.loading = false
         }
@@ -45,12 +46,11 @@ class SettingsRepoViewModel: ObservableObject, Identifiable {
         }
         Task {
             do {
-                let response = try await serviceNetwork.updateRepo(
-                    url: url,
+                let response = try await serviceNetwork.updateRepo(url: url, body: RepoRequest(
                     name: name,
-                    desc: desc,
+                    description: desc,
                     isPrivate: isPrivate
-                )
+                ))
                 updateUI(response: response)
             } catch let networkError as NetworkError {
                 updateUI(error: networkError)

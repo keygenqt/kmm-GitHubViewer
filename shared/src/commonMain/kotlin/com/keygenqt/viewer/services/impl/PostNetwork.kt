@@ -11,9 +11,7 @@ import io.ktor.client.request.*
 class PostNetwork(val client: HttpClient) {
 
     /**
-     * Query oauth github app
-     *
-     * @param code from github api for login user
+     * Get tokens GitHub rest api after oauth by code
      */
     @Throws(Exception::class)
     suspend fun oauth(

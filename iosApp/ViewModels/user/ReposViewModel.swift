@@ -11,7 +11,7 @@ import shared
 
 class ReposViewModel: ViewModelList<RepoModel> {
     var serviceNetwork = ReposNetwork()
-    var serviceData = ReposData()
+//    var serviceData = ReposData()
 
     @Published var orderASC: Bool = ConstantsKMM.STORAGE.isRepoOrder
 
@@ -22,29 +22,18 @@ class ReposViewModel: ViewModelList<RepoModel> {
     }
 
     override func getPageRealm() -> [RepoModel] {
-        return serviceData.getList().toRepoModels()
+        return []
+//        return serviceData.getList().toRepoModels()
     }
 
     override func getPageNetwork(page: Int) async throws -> [RepoModel] {
-        let response = try await reposAsync(page: page, orderASC: orderASC)
-        print(response)
         return try await serviceNetwork.getListRepo(page: page, orderASC: orderASC)
     }
 
     override func saveList(response: [RepoModel]) {
-        serviceData.clear()
-        serviceData.save(response.toRealms())
+//        serviceData.clear()
+//        serviceData.save(response.toRealms())
     }
     
-    func reposAsync(page: Int, orderASC: Bool) async throws -> [shared.RepoModel] {
-        return try await withCheckedThrowingContinuation { continuation in
-            ConstantsKMM.CLIENT.get.repos(page: Int32(page), isSortASC: orderASC) { models, error in
-                if let models = models {
-                    continuation.resume(returning: models)
-                } else {
-                    continuation.resume(throwing: error ?? NetworkError.notFound)
-                }
-            }
-        }
-    }
+
 }

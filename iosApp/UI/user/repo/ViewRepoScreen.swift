@@ -138,7 +138,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(AppHelper.humanReadableByteCount((model.size ?? 0) * 1000)))
+                                Text(String(AppHelper.humanReadableByteCount((Int(model.size)) * 1000)))
                             }
                         }
                         .padding(EdgeInsets(top: 20, leading: 15, bottom: 15, trailing: 15))
@@ -159,11 +159,11 @@ struct ViewRepoScreen: View {
                             }
 
                             if let value = viewModel.model?.license {
-                                if !value.isEmpty {
+                                if !value.name.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {
                                             Text(L10nRepo.labelLicense).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                            Text(value).font(.body)
+                                            Text(value.name).font(.body)
                                         }
                                         Spacer()
                                     }
@@ -185,11 +185,11 @@ struct ViewRepoScreen: View {
                             }
 
                             if let value = viewModel.model?.owner {
-                                if !value.isEmpty {
+                                if !value.login.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {
                                             Text(L10nRepo.labelOwner).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                            Text(value).font(.body)
+                                            Text(value.login).font(.body)
                                         }
                                         Spacer()
                                     }
@@ -200,7 +200,7 @@ struct ViewRepoScreen: View {
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(L10nRepo.labelUpdatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                    Text(viewModel.model?.updatedAt?.toDateFromat() ?? "").font(.body)
+//                                    Text(viewModel.model?.updatedAt?.toDateFromat() ?? "").font(.body)
                                 }
                                 Spacer()
                             }
@@ -209,13 +209,13 @@ struct ViewRepoScreen: View {
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(L10nRepo.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                    Text(viewModel.model?.createdAt?.toDateFromat() ?? "").font(.body)
+//                                    Text(viewModel.model?.createdAt?.toDateFromat() ?? "").font(.body)
                                 }
                                 Spacer()
                             }
                             .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
 
-                            if let value = viewModel.model?.description {
+                            if let value = viewModel.model?.desc {
                                 if !value.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {

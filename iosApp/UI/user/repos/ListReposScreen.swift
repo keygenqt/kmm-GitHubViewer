@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import shared
 
 struct ListReposScreen: View {
     // model
@@ -19,7 +20,7 @@ struct ListReposScreen: View {
 
     var body: some View {
         AppList(viewModel: viewModel, refreshable: $refreshable) { model in
-            NavigationLink(destination: NavigationLazyView(ViewRepoScreen(url: model.url!))) {
+            NavigationLink(destination: NavigationLazyView(ViewRepoScreen(url: model.url))) {
                 ListReposItem(model: model)
             }
         }
