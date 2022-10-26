@@ -20,26 +20,20 @@ struct ListFollowerScreen: View {
     @State var refreshable: Bool = false
 
     var body: some View {
-        AppList(viewModel: viewModel, refreshable: $refreshable) { model in
-            Link(destination: URL(string: model.url!)!) {
-                NavigationLink(destination: EmptyView()) {
-                    ListFollowerItem(model: model)
-                }
-            }.accentColor(Color.onBackground)
-        }
-        .navigationBarTitle(L10nFollowers.title)
-        .navigationBarTitleDisplayMode(.large)
-        .navigationBarItems(trailing: HStack {
-            if viewModel.loading && viewModel.page == 1 && !viewModel.models.isEmpty && !refreshable {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .orange))
-            }
-        })
-    }
-}
-
-struct ListFollower_Previews: PreviewProvider {
-    static var previews: some View {
-        ListFollowerScreen()
+       AppList(viewModel: viewModel, refreshable: $refreshable) { model in
+           Link(destination: URL(string: model.htmlUrl)!) {
+               NavigationLink(destination: EmptyView()) {
+                   ListFollowerItem(model: model)
+               }
+           }.accentColor(Color.onBackground)
+       }
+       .navigationBarTitle(L10nFollowers.title)
+       .navigationBarTitleDisplayMode(.large)
+       .navigationBarItems(trailing: HStack {
+           if viewModel.loading && viewModel.page == 1 && !viewModel.models.isEmpty && !refreshable {
+               ProgressView()
+                   .progressViewStyle(CircularProgressViewStyle(tint: .orange))
+           }
+       })
     }
 }

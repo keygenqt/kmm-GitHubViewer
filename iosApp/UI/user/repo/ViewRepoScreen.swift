@@ -7,6 +7,7 @@
 
 import Kingfisher
 import SwiftUI
+import shared
 
 struct ViewRepoScreen: View {
     let url: String
@@ -29,9 +30,9 @@ struct ViewRepoScreen: View {
         VStack {
             if viewModel.error != nil {
                 VStack {
-                    ErrorView(error: viewModel.error) {
-                        viewModel.retry(url)
-                    }
+                   ErrorView(error: viewModel.error) {
+                       viewModel.retry(url)
+                   }
                 }
             } else if viewModel.model == nil {
                 VStack {
@@ -48,7 +49,7 @@ struct ViewRepoScreen: View {
                                 VStack {
                                     HStack {
                                         HStack {
-                                            Text(String(model.stargazersCount ?? 0)).font(.system(size: 56, weight: .heavy))
+                                            Text(String(model.stargazersCount)).font(.system(size: 56, weight: .heavy))
                                             VStack(alignment: .leading) {
                                                 Text(L10nRepo.iconStarTitle).fontWeight(.bold).padding(.bottom, 0.1)
                                                 Text(L10nRepo.iconStarText).font(.caption)
@@ -66,7 +67,7 @@ struct ViewRepoScreen: View {
                                 VStack {
                                     HStack {
                                         HStack {
-                                            Text(String(model.forks ?? 0)).font(.system(size: 56, weight: .heavy))
+                                            Text(String(model.forks)).font(.system(size: 56, weight: .heavy))
                                             VStack(alignment: .leading) {
                                                 Text(L10nRepo.iconForksTitle).fontWeight(.bold).padding(.bottom, 0.1)
                                                 Text(L10nRepo.iconForksText).font(.caption)
@@ -97,7 +98,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(model.openIssuesCount ?? 0))
+                                Text(String(model.openIssuesCount))
                             }
 
                             Spacer()
@@ -118,7 +119,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(model.watchersCount ?? 0))
+                                Text(String(model.watchersCount))
                             }
 
                             Spacer()
@@ -138,7 +139,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(AppHelper.humanReadableByteCount((model.size ?? 0) * 1000)))
+                                Text(String(ConstantsKMM.HELPER.humanReadableByte(bytes: Int64(model.size * 1024))))
                             }
                         }
                         .padding(EdgeInsets(top: 20, leading: 15, bottom: 15, trailing: 15))
@@ -158,7 +159,7 @@ struct ViewRepoScreen: View {
                                 }
                             }
 
-                            if let value = viewModel.model?.license {
+                            if let value = viewModel.model?.license?.name {
                                 if !value.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {
@@ -184,7 +185,7 @@ struct ViewRepoScreen: View {
                                 }
                             }
 
-                            if let value = viewModel.model?.owner {
+                            if let value = viewModel.model?.owner.login {
                                 if !value.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {
@@ -197,25 +198,29 @@ struct ViewRepoScreen: View {
                                 }
                             }
 
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(L10nRepo.labelUpdatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                    Text(viewModel.model?.updatedAt?.toDateFromat() ?? "").font(.body)
+                            if let value = viewModel.model?.updatedAt {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(L10nRepo.labelUpdatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                        Text(value.toFormatDateShort())
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
                             }
-                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
 
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(L10nRepo.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                    Text(viewModel.model?.createdAt?.toDateFromat() ?? "").font(.body)
+                            if let value = viewModel.model?.createdAt {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(L10nRepo.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                        Text(value.toFormatDateShort())
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
                             }
-                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
 
-                            if let value = viewModel.model?.description {
+                            if let value = viewModel.model?.desc {
                                 if !value.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {
@@ -230,9 +235,9 @@ struct ViewRepoScreen: View {
                         }
                         .background(Color.surfaceVariant)
                     }.refreshable {
-                        refreshable = true
-                        await viewModel.loadAsync(url)
-                        refreshable = false
+                            refreshable = true
+                            await viewModel.loadAsync(url)
+                            refreshable = false
                     }
                 }
             }

@@ -29,12 +29,11 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.keygenqt.viewer.android.R
 import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.base.RotateIconSortIcon
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshList
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -48,7 +47,7 @@ import timber.log.Timber
  */
 @Composable
 fun ReposBody(
-    isSortDescListRepo: Boolean = false,
+    isSortASCListRepo: Boolean = false,
     models: LazyPagingItems<RepoModel>,
     navDispatcher: NavigationDispatcher? = null,
     onActions: (ReposActions) -> Unit = {},
@@ -62,7 +61,7 @@ fun ReposBody(
         // get flow
         val dataBack by it.onBackPressedData<RepoModel?>(null).collectAsState()
         // Data after back press
-        Timber.e(dataBack.toString())
+        Timber.d(dataBack.toString())
     }
 
     AppScaffold(
@@ -71,7 +70,7 @@ fun ReposBody(
         topBarActions = {
             RotateIconSortIcon(
                 enabled = models.loadState.refresh !is LoadState.Loading,
-                isRotate = isSortDescListRepo
+                isRotate = !isSortASCListRepo
             ) {
                 scope.launch {
                     listState.animateScrollToItem(index = 0)
@@ -104,14 +103,12 @@ fun ReposBody(
 @Composable
 private fun Preview() {
     AppTheme {
-        AppTheme {
-            ReposBody(
-                models = flowOf(
-                    PagingData.from(
-                        listOf(RepoModel.mock(), RepoModel.mock(), RepoModel.mock())
-                    )
-                ).collectAsLazyPagingItems()
-            )
-        }
+        ReposBody(
+            models = flowOf(
+                PagingData.from(
+                    listOf(RepoModel.mock(), RepoModel.mock(), RepoModel.mock())
+                )
+            ).collectAsLazyPagingItems()
+        )
     }
 }

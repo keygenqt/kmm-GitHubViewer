@@ -36,7 +36,6 @@ import com.keygenqt.viewer.android.compose.base.LanguageImage
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
 import com.keygenqt.viewer.android.compose.texts.TextTitleMedium
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.ReposActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -65,7 +64,7 @@ fun ReposItem(
             ) {
                 Row {
                     LanguageImage(
-                        language = model.language,
+                        language = model.language ?: "",
                     )
 
                     Spacer(modifier = Modifier.size(8.dp))
@@ -75,11 +74,11 @@ fun ReposItem(
                         text = model.name
                     )
                 }
-                if (model.description.isNotEmpty()) {
+                if (model.desc != null) {
                     Spacer(modifier = Modifier.size(8.dp))
                     TextTitleMedium(
                         color = MaterialTheme.colorScheme.onSurface,
-                        text = model.description
+                        text = model.desc
                     )
                 }
 
@@ -107,7 +106,7 @@ fun ReposItem(
                         )
                         ReposItemCount(
                             vectorImage = Icons.Filled.Visibility,
-                            count = model.watchers
+                            count = model.watchersCount
                         )
                     }
                     Column {

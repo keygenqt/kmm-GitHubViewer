@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import shared
 
 struct SettingsRepoScreen: View {
     var url: String
@@ -23,15 +24,15 @@ struct SettingsRepoScreen: View {
     @State private var fieldIsPrivate: IFieldSwitch
 
     init(_ model: RepoModel) {
-        url = model.url ?? ""
+        url = model.url
         _fieldNameRepo = State(
-            initialValue: NameRepoField(value: model.name ?? "")
+            initialValue: NameRepoField(value: model.name)
         )
         _fieldDescRepo = State(
-            initialValue: DescRepoField(value: model.description ?? "")
+            initialValue: DescRepoField(value: model.desc ?? "")
         )
         _fieldIsPrivate = State(
-            initialValue: IsPrivateRepoField(value: model.isPrivate ?? false)
+            initialValue: IsPrivateRepoField(value: model.isPrivate)
         )
     }
 

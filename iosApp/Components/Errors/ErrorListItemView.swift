@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ErrorListItemView: View {
-    var error: NetworkError?
+    var error: ResponseError?
     var action: (() -> Void)?
 
     var body: some View {
@@ -28,11 +28,5 @@ struct ErrorListItemView: View {
             .foregroundColor(.white)
             .cornerRadius(10)
         }
-    }
-}
-
-struct ErrorListItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        ErrorListItemView(error: NetworkError.notFound)
     }
 }

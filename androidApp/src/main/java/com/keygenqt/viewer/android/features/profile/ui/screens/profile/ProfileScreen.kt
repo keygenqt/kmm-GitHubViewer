@@ -35,11 +35,13 @@ fun ProfileScreen(
     onActions: (ProfileActions) -> Unit = {},
 ) {
     val model by viewModel.user.collectAsState(false)
-    val state1 by viewModel.query1.state.collectAsState()
+    val error by viewModel.error.collectAsState()
+    val loading by viewModel.loading.collectAsState()
 
     ProfileBody(
         model = model,
-        state1 = state1,
+        error = error,
+        loading = loading,
         onActions = onActions,
         uriHandler = LocalUriHandler.current,
         navDispatcher = LocalNavigationDispatcher.current

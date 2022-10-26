@@ -7,12 +7,14 @@
 
 import Combine
 import Foundation
+import shared
 
 class SignInViewModel: ObservableObject, Identifiable {
-    @Published var isShowProgressView = false
-    @Published var error: NetworkError?
-
+    
     var serviceNetwork = AuthNetwork()
+    
+    @Published var isShowProgressView = false
+    @Published var error: ResponseError?
 
     func authUser(url: URL, action: (() -> Void)?) {
         if url.path == "/oauth" {
@@ -33,13 +35,14 @@ class SignInViewModel: ObservableObject, Identifiable {
             self.error = nil
         }
         do {
-            let response = try await serviceNetwork.oauthCode(code: code)
-            AppKeyValue.setAuth(response)
+            let response = try await serviceNetwork.oauth(code: code)
+            ConstantsKMM.STORAGE.authToken = response.accessToken
+            ConstantsKMM.CLIENT.setToken(token: ConstantsKMM.STORAGE.authToken)
             DispatchQueue.main.async {
                 action?()
             }
-        } catch let networkError as NetworkError {
-            self.error = networkError
+        } catch let error as ResponseError {
+            self.error = error
         } catch {
             print("Unexpected error: \(error).")
         }

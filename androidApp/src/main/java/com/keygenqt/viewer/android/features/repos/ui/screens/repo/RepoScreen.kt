@@ -34,11 +34,13 @@ fun RepoScreen(
     onActions: (RepoActions) -> Unit = {},
 ) {
     val model by viewModel.repo.collectAsState(false)
-    val state1 by viewModel.query1.state.collectAsState()
+    val error by viewModel.error.collectAsState()
+    val loading by viewModel.loading.collectAsState()
 
     RepoBody(
         model = model,
-        state1 = state1,
+        error = error,
+        loading = loading,
         onActions = onActions,
         navDispatcher = LocalNavigationDispatcher.current
     )

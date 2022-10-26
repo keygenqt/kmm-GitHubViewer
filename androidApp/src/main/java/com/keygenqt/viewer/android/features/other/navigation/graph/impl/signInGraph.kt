@@ -19,14 +19,14 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navDeepLink
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
-import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.other.ui.actions.SignInActions
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
-import com.keygenqt.viewer.android.utils.AppHelper.getDynamicLink
+import com.keygenqt.viewer.utils.AppHelper
 
 /**
  * NavGraph for [SignInScreen]
@@ -39,7 +39,7 @@ fun NavGraphBuilder.signInGraph(
         route = OtherNavRoute.signIn.default.route,
         deepLinks = listOf(
             navDeepLink {
-                uriPattern = getDynamicLink("/oauth?code={code}&state={state}")
+                uriPattern = AppHelper.getDynamicLink("oauth?code={code}&state={state}")
             }
         )
     ) {

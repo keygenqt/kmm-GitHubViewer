@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -42,7 +41,6 @@ import com.keygenqt.viewer.android.theme.AppTheme
  * @param loading state call query to api
  * @param submitClick submit
  */
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SignInForm(
     formFields: FormFieldsState,

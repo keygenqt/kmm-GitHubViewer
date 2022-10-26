@@ -12,7 +12,7 @@ class ViewModelList<T>: ObservableObject, Identifiable {
     @Published var isLoadingPage = true
     @Published var loading = true
     @Published var isEnd = false
-    @Published var error: NetworkError?
+    @Published var error: ResponseError?
     @Published var models: [T] = []
 
     var page = 1
@@ -34,7 +34,7 @@ class ViewModelList<T>: ObservableObject, Identifiable {
 
     func endLoad(
         response: [T] = [],
-        error: NetworkError? = nil
+        error: ResponseError? = nil
     ) {
         DispatchQueue.main.async {
             self.error = nil
@@ -46,9 +46,10 @@ class ViewModelList<T>: ObservableObject, Identifiable {
                     self.models.removeAll()
                     self.saveList(response: response)
                 }
+                let limit = Int(ConstantsKMM.CONST.APP.PAGE_LIMIT)
                 self.models.append(contentsOf: response)
-                self.page = (self.models.count + ConstantsApp.PAGE_LIMIT) / ConstantsApp.PAGE_LIMIT
-                self.isEnd = response.count < ConstantsApp.PAGE_LIMIT
+                self.page = (self.models.count + limit) / limit
+                self.isEnd = response.count < limit
             } else {
                 self.error = error
             }
@@ -78,8 +79,8 @@ class ViewModelList<T>: ObservableObject, Identifiable {
         do {
             let response = try await getPageNetwork(page: page)
             endLoad(response: response)
-        } catch let networkError as NetworkError {
-            endLoad(error: networkError)
+        } catch let error as ResponseError {
+            endLoad(error: error)
         } catch {
             print("Unexpected error: \(error).")
         }

@@ -19,15 +19,19 @@ struct SignInScreen: View {
     // form states
     @State private var error: String?
     // form value
+#if DEBUG
+    @State private var fieldNickname: IFieldText = NicknameField(value: ConstantsKMM.CONST.APP.DEBUG_CREDENTIAL_LOGIN)
+#else
     @State private var fieldNickname: IFieldText = NicknameField()
-
+#endif
+    
     var body: some View {
         if viewModel.isShowProgressView {
             VStack {
                 if viewModel.error != nil {
-                    ErrorView(error: viewModel.error) {
-                        viewModel.clear()
-                    }
+                   ErrorView(error: viewModel.error) {
+                       viewModel.clear()
+                   }
                 } else {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))
@@ -45,7 +49,7 @@ struct SignInScreen: View {
                 }
                 Section {
                     Button(L10nSignIn.formButtonSubmit) {
-                        openURL(AppHelper.getOauthLink(fieldNickname.value))
+                        openURL(ConstantsKMM.HELPER.getOauthLink(login: fieldNickname.value, state: NSUUID().uuidString).toUrl())
                     }
                     .buttonStyle(BottomPrimaryStyle())
                     .disabled(!fieldNickname.isValid)

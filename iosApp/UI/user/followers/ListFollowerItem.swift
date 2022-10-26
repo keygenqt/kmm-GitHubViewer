@@ -7,13 +7,14 @@
 
 import Kingfisher
 import SwiftUI
+import shared
 
 struct ListFollowerItem: View {
     var model: FollowerModel
 
     var body: some View {
         HStack {
-            KFImage(URL(string: model.avatarUrl!)!)
+            KFImage(URL(string: model.avatarUrl)!)
                 .placeholder {
                     VStack(alignment: .leading) {
                         Image(systemName: "person.fill")
@@ -28,15 +29,9 @@ struct ListFollowerItem: View {
                 .frame(width: 30, height: 30)
                 .padding(8)
 
-            Text(model.login!)
+            Text(model.login)
 
             Spacer()
         }
-    }
-}
-
-struct ListFollowerItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ListFollowerItem(model: FollowerModel.mock)
     }
 }

@@ -27,11 +27,10 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.keygenqt.viewer.android.R
 import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshList
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.features.followers.ui.actions.FollowersActions
 import com.keygenqt.viewer.android.theme.AppTheme

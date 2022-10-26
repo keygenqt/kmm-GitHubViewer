@@ -49,6 +49,7 @@ fun NavGraphBuilder.profileGraph(
                 is ProfileActions.ActionUpdateUser -> viewModel.updateProfile()
                 is ProfileActions.ActionLogout -> scope.launch {
                     AuthUser.logout()
+                    viewModel.clearStorage()
                     navDispatcher.toRoutePopStack(appActions::toWelcome, appActions::toSignIn)
                 }
             }

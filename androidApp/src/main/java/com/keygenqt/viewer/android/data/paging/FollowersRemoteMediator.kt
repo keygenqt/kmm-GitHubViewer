@@ -19,24 +19,21 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.keygenqt.requests.error
-import com.keygenqt.requests.isEmpty
-import com.keygenqt.requests.isError
-import com.keygenqt.requests.success
 import com.keygenqt.viewer.android.data.models.FollowerModel
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
+import com.keygenqt.viewer.android.data.models.toModel
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
-import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.FollowerModelDataService
+import com.keygenqt.viewer.android.data.services.impl.FollowerModelDataService
 import com.keygenqt.viewer.android.utils.ConstantsPaging.CACHE_TIMEOUT
+import com.keygenqt.viewer.data.storage.CrossStorage
+import com.keygenqt.viewer.services.AppHttpClient
 import kotlin.math.roundToInt
 
 @ExperimentalPagingApi
 class FollowersRemoteMediator(
-    private val apiService: AppApiService,
+    private val client: AppHttpClient,
     private val dataService: AppDataService,
-    private val preferences: BasePreferences,
+    private val storage: CrossStorage,
 ) : RemoteMediator<Int, FollowerModel>() {
 
     companion object {
@@ -49,7 +46,7 @@ class FollowersRemoteMediator(
             sizeList = countFollowerModel()
         }
         // Refresh once per hour
-        return if (System.currentTimeMillis() - preferences.lastUpdateListFollowers >= CACHE_TIMEOUT) {
+        return if (System.currentTimeMillis() - storage.lastUpdateListFollowers >= CACHE_TIMEOUT) {
             InitializeAction.LAUNCH_INITIAL_REFRESH
         } else {
             InitializeAction.SKIP_INITIAL_REFRESH
@@ -72,28 +69,25 @@ class FollowersRemoteMediator(
                     .plus(1)
             }
 
-            val response = apiService.getUserFollowers(
+            val models = client.get.followers(
                 page = loadPage,
             )
-                .success { models ->
-                    // save data
-                    dataService.withTransaction<FollowerModelDataService> {
-                        if (loadType == LoadType.REFRESH) {
-                            // change update timer
-                            preferences.lastUpdateListFollowers = System.currentTimeMillis()
-                            // clear data
-                            clearFollowerModel()
-                        }
-                        insertFollowerModel(*models.toTypedArray())
-                        // add items count
-                        sizeList = countFollowerModel()
-                    }
-                }.error {
-                    throw it
+
+            // save data
+            dataService.withTransaction<FollowerModelDataService> {
+                if (loadType == LoadType.REFRESH) {
+                    // change update timer
+                    storage.lastUpdateListFollowers = System.currentTimeMillis()
+                    // clear data
+                    clearFollowerModel()
                 }
+                insertFollowerModel(*models.map { it.toModel() }.toTypedArray())
+                // add items count
+                sizeList = countFollowerModel()
+            }
 
             MediatorResult.Success(
-                endOfPaginationReached = response.isError || response.isEmpty
+                endOfPaginationReached = models.isEmpty()
             )
         } catch (e: Exception) {
             MediatorResult.Error(e)

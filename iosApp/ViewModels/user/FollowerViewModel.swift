@@ -7,13 +7,14 @@
 
 import Combine
 import Foundation
+import shared
 
 class FollowerViewModel: ViewModelList<FollowerModel> {
     var serviceNetwork = FollowerNetwork()
     var serviceData = FollowerData()
 
     override func getPageRealm() -> [FollowerModel] {
-        return serviceData.getList().toFollowerModels()
+        return serviceData.getList().toModels()
     }
 
     override func getPageNetwork(page: Int) async throws -> [FollowerModel] {
@@ -22,6 +23,6 @@ class FollowerViewModel: ViewModelList<FollowerModel> {
 
     override func saveList(response: [FollowerModel]) {
         serviceData.clear()
-        serviceData.saveList(response.toFollowerRealms())
+        serviceData.saveList(response.toRealms())
     }
 }

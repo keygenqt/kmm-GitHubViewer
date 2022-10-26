@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import shared
 
 struct ListReposScreen: View {
     // model
@@ -19,7 +20,7 @@ struct ListReposScreen: View {
 
     var body: some View {
         AppList(viewModel: viewModel, refreshable: $refreshable) { model in
-            NavigationLink(destination: NavigationLazyView(ViewRepoScreen(url: model.url!))) {
+            NavigationLink(destination: NavigationLazyView(ViewRepoScreen(url: model.url))) {
                 ListReposItem(model: model)
             }
         }
@@ -34,20 +35,14 @@ struct ListReposScreen: View {
                     viewModel.toggleOrder()
                 } label: {
                     if viewModel.orderASC {
-                        Image(systemName: "arrow.up.arrow.down.circle")
+                        Image(systemName: "arrow.up.arrow.down.circle.fill")
                             .imageScale(.large)
                     } else {
-                        Image(systemName: "arrow.up.arrow.down.circle.fill")
+                        Image(systemName: "arrow.up.arrow.down.circle")
                             .imageScale(.large)
                     }
                 }.disabled(viewModel.loading)
             }
         })
-    }
-}
-
-struct ListRepos_Previews: PreviewProvider {
-    static var previews: some View {
-        ListReposScreen()
     }
 }

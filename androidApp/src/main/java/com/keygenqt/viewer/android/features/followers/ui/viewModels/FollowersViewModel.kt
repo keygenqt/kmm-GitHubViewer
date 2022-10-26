@@ -20,11 +20,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.paging.FollowersRemoteMediator
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.android.features.followers.ui.screens.followers.FollowersScreen
-import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.utils.ConstantsPaging
+import com.keygenqt.viewer.data.storage.CrossStorage
+import com.keygenqt.viewer.services.AppHttpClient
+import com.keygenqt.viewer.utils.AppConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -34,9 +34,9 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class FollowersViewModel @Inject constructor(
-    private val apiService: AppApiService,
+    private val client: AppHttpClient,
     private val dataService: AppDataService,
-    private val preferences: BasePreferences,
+    private val storage: CrossStorage,
 ) : ViewModel() {
 
     /**
@@ -44,8 +44,8 @@ class FollowersViewModel @Inject constructor(
      */
     @OptIn(ExperimentalPagingApi::class)
     val listFollowers: Flow<PagingData<FollowerModel>> = Pager(
-        config = PagingConfig(pageSize = ConstantsPaging.PAGE_LIMIT),
-        remoteMediator = FollowersRemoteMediator(apiService, dataService, preferences)
+        config = PagingConfig(pageSize = AppConstants.App.PAGE_LIMIT),
+        remoteMediator = FollowersRemoteMediator(client, dataService, storage)
     ) {
         dataService.pagingSourceFollowerModels()
     }.flow.cachedIn(viewModelScope)

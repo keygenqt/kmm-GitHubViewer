@@ -44,10 +44,11 @@ import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.base.AppImageUser
 import com.keygenqt.viewer.android.compose.texts.*
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.UserModel
-import com.keygenqt.viewer.android.extensions.formatDate
 import com.keygenqt.viewer.android.theme.AppTheme
+import com.keygenqt.viewer.extensions.dateFormat
+import com.keygenqt.viewer.extensions.toTimestamp
+import com.keygenqt.viewer.utils.AppConstants
 
 @Composable
 fun ProfileInfo(
@@ -116,33 +117,42 @@ fun ProfileInfo(
         ) {
             Spacer(modifier = Modifier.size(20.dp))
 
-            InfoBlock(
-                label = stringResource(id = R.string.profile_label_email),
-                text = model.email
-            )
-            InfoBlock(
-                label = stringResource(id = R.string.profile_label_company),
-                text = model.company
-            )
-            InfoBlock(
-                label = stringResource(id = R.string.profile_label_blog),
-                text = model.blog,
-                onClick = {
-                    uriHandler?.openUri(model.blog)
-                }
-            )
-            InfoBlock(
-                label = stringResource(id = R.string.profile_label_location),
-                text = model.location
-            )
+            if (model.company != null) {
+                InfoBlock(
+                    label = stringResource(id = R.string.profile_label_company),
+                    text = model.company
+                )
+            }
+
+            if (model.blog != null) {
+                InfoBlock(
+                    label = stringResource(id = R.string.profile_label_blog),
+                    text = model.blog,
+                    onClick = {
+                        uriHandler?.openUri(model.blog)
+                    }
+                )
+            }
+
+            if (model.location != null) {
+                InfoBlock(
+                    label = stringResource(id = R.string.profile_label_location),
+                    text = model.location
+                )
+            }
+
             InfoBlock(
                 label = stringResource(id = R.string.profile_label_created_at),
-                text = model.createdAt.formatDate()
+                text = model.createdAt.toTimestamp().dateFormat(AppConstants.DateFormat.SHORT)
             )
-            InfoBlock(
-                label = stringResource(id = R.string.profile_label_bio),
-                text = model.bio
-            )
+
+            if (model.location != null) {
+                InfoBlock(
+                    label = stringResource(id = R.string.profile_label_bio),
+                    text = model.location
+                )
+            }
+
             Spacer(modifier = Modifier.size(20.dp))
         }
     }

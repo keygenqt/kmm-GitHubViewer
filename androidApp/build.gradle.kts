@@ -30,23 +30,7 @@ android {
             findProperty("secret_db").toString()
         )
 
-        // Client ID GitHub
-        buildConfigField(
-            "String",
-            "GITHUB_CLIENT_ID",
-            findProperty("github_client_id").toString()
-        )
-
-        // Secret GitHub
-        buildConfigField(
-            "String",
-            "GITHUB_CLIENT_SECRET",
-            findProperty("github_client_secret").toString()
-        )
-
-        // Dynamic Links
         addManifestPlaceholders(mapOf("dynamicLinksHost" to findProperty("dynamicLinksHost").toString()))
-        buildConfigField("String", "dynamicLinksHost", """"${findProperty("dynamicLinksHost")}"""")
     }
 
     composeOptions {

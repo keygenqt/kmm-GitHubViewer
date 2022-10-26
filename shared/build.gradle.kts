@@ -1,8 +1,11 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
     kotlin("plugin.serialization")
+    id("com.codingfeline.buildkonfig")
 }
 
 kotlin {
@@ -63,11 +66,38 @@ kotlin {
     }
 }
 
+buildkonfig {
+    packageName = "com.keygenqt.viewer"
+
+    defaultConfigs {
+        // Client ID GitHub
+        buildConfigField(
+            STRING,
+            "GITHUB_CLIENT_ID",
+            findProperty("github_client_id").toString().replace("\"", "")
+        )
+
+        // Secret GitHub
+        buildConfigField(
+            STRING,
+            "GITHUB_CLIENT_SECRET",
+            findProperty("github_client_secret").toString().replace("\"", "")
+        )
+
+        // Dynamic Links
+        buildConfigField(
+            STRING,
+            "dynamicLinksHost",
+            findProperty("dynamicLinksHost").toString().replace("\"", "")
+        )
+    }
+}
+
 android {
     namespace = "com.keygenqt.viewer"
     compileSdk = 32
     defaultConfig {
-        minSdk = 23
+        minSdk = 26
         targetSdk = 32
     }
 }

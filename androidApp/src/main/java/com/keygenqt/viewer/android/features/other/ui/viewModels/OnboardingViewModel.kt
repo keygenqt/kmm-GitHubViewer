@@ -16,8 +16,8 @@
 package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.keygenqt.viewer.android.data.preferences.BasePreferences
 import com.keygenqt.viewer.android.features.other.ui.screens.onboarding.OnboardingScreen
+import com.keygenqt.viewer.data.storage.CrossStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -26,13 +26,13 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class OnboardingViewModel @Inject constructor(
-    private val preferences: BasePreferences,
+    private val storage: CrossStorage,
 ) : ViewModel() {
 
     /**
      * Save onboarding done
      */
     fun doneOnboarding() {
-        preferences.isOnboardingDone = true
+        storage.isOnboardingDone = true
     }
 }

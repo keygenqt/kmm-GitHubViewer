@@ -5,41 +5,33 @@
 //  Created by Виталий Зарубин on 17.10.2022.
 //
 
-import Alamofire
 import Foundation
+import shared
 
-class UserNetwork: APIHandler {
-    @discardableResult
+class UserNetwork {
     func getUser() async throws -> UserModel {
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(getUrl("user"), method: .get, headers: headers).handleResponse(
-                label: "getUser",
-                continuation: continuation
-            )
+            ConstantsKMM.CLIENT.get.user { model, error in
+                if let model = model {
+                    continuation.resume(returning: model)
+                } else {
+                    continuation.resume(throwing: ResponseError.error(error?.localizedDescription))
+                }
+            }
         }
     }
-
-    @discardableResult
+    
     func updateUser(
-        name: String,
-        blog: String,
-        twitterUsername: String,
-        company: String,
-        location: String,
-        bio: String
+        body: UserRequest
     ) async throws -> UserModel {
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(getUrl("user"), method: .patch, parameters: [
-                "name": name,
-                "blog": blog,
-                "twitter_username": twitterUsername,
-                "company": company,
-                "location": location,
-                "bio": bio,
-            ], encoding: JSONEncoding.default, headers: headers).handleResponse(
-                label: "updateUser",
-                continuation: continuation
-            )
+            ConstantsKMM.CLIENT.patch.updateUser(body: body) { model, error in
+                if let model = model {
+                    continuation.resume(returning: model)
+                } else {
+                    continuation.resume(throwing: ResponseError.error(error?.localizedDescription))
+                }
+            }
         }
     }
 }

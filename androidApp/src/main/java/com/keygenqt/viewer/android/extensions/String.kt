@@ -15,7 +15,6 @@
  */
 package com.keygenqt.viewer.android.extensions
 
-import com.keygenqt.viewer.android.data.models.RepoVisibility
 import java.util.*
 
 /**
@@ -24,11 +23,4 @@ import java.util.*
  */
 fun String.capitalize(): String {
     return replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-}
-
-/**
- * Get RepoVisibility from string
- */
-fun String?.toRepoVisibility(): RepoVisibility {
-    return this?.let { RepoVisibility.valueOf(this.uppercase()) } ?: RepoVisibility.PUBLIC
 }

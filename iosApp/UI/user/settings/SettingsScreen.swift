@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import shared
 
 struct SettingsScreen: View {
     // model
@@ -26,7 +27,7 @@ struct SettingsScreen: View {
 
     init(_ model: UserModel) {
         _fieldName = State(
-            initialValue: NameField(value: model.name ?? "")
+            initialValue: NameField(value: model.name)
         )
         _fieldCompany = State(
             initialValue: CompanyField(value: model.company ?? "")
@@ -49,9 +50,9 @@ struct SettingsScreen: View {
         VStack {
             if viewModel.error != nil {
                 VStack {
-                    ErrorView(error: viewModel.error) {
-                        viewModel.retry()
-                    }
+                   ErrorView(error: viewModel.error) {
+                       viewModel.retry()
+                   }
                 }
             } else {
                 AppForm(error: $error) {

@@ -38,13 +38,15 @@ fun RepoUpdateScreen(
     onActions: (RepoUpdateActions) -> Unit = {},
 ) {
     val model by viewModel.repo.collectAsState(null)
-    val state1 by viewModel.query1.state.collectAsState()
+    val error by viewModel.error.collectAsState()
+    val loading by viewModel.loading.collectAsState()
+    val success by viewModel.success.collectAsState()
 
     LaunchedEffect(model) {
         model?.let {
             RepoUpdateName.state.setValue(it.name)
             RepoUpdatePrivate.state.setValue(it.isPrivate.toString())
-            RepoUpdateDescription.state.setValue(it.description)
+            RepoUpdateDescription.state.setValue(it.desc ?: "")
         }
     }
 
@@ -57,8 +59,10 @@ fun RepoUpdateScreen(
     }
 
     RepoUpdateBody(
+        error = error,
+        loading = loading,
+        success = success,
         formFields = formFields,
-        state1 = state1,
         onActions = onActions,
         localFocusManager = LocalFocusManager.current,
         softwareKeyboardController = LocalSoftwareKeyboardController.current,

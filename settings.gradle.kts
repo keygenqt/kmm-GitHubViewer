@@ -48,11 +48,6 @@ val internalLibrariesEnable: String by settings
 // Include internal libraries
 
 if (internalLibrariesEnable.toBoolean()) {
-    // git@github.com:keygenqt/android-response-result.git
-    include(":android-response-result")
-    project(":android-response-result").projectDir =
-        File(settingsDir, "../libs/android-response-result")
-
     // git@github.com:keygenqt/compose-forms.git
     include(":compose-forms")
     project(":compose-forms").projectDir = File(settingsDir, "../libs/compose-forms")

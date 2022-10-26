@@ -62,13 +62,21 @@ struct ReposData {
             if let obj = getModel(model.url) {
                 try realm.write {
                     obj.id = model.id
-                    obj.name = model.name
                     obj.language = model.language
-                    obj.desc = model.desc
                     obj.isPrivate = model.isPrivate
+                    obj.name = model.name
+                    obj.fullName = model.fullName
+                    obj.ownerName = model.ownerName
+                    obj.license = model.license
+                    obj.visibility = model.visibility
+                    obj.desc = model.desc
                     obj.stargazersCount = model.stargazersCount
                     obj.forks = model.forks
-                    obj.watchers = model.watchers
+                    obj.openIssuesCount = model.openIssuesCount
+                    obj.watchersCount = model.watchersCount
+                    obj.size = model.size
+                    obj.updatedAt = model.updatedAt
+                    obj.createdAt = model.createdAt
                     obj.isList = model.isList
                 }
             } else {

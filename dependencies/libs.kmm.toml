@@ -9,6 +9,12 @@ kotlinxDatetimeVersion = "0.4.0"
 # Ktor
 # https://github.com/ktorio/ktor/releases
 ktorVersion = "2.1.2"
+# Security
+# https://developer.android.com/jetpack/androidx/releases/security
+securityCryptoVersion = "1.0.0"
+# Napier
+# https://github.com/AAkira/Napier
+napierVersion = "2.6.1"
 
 ##########################
 ## LIBRARIES
@@ -35,6 +41,8 @@ module = "io.ktor:ktor-serialization-kotlinx-json"
 module = "io.ktor:ktor-client-android"
 [libraries.ktor-client-darwin]
 module = "io.ktor:ktor-client-darwin"
+[libraries.ktor-client-logging]
+module = "io.ktor:ktor-client-logging"
 # versions
 [libraries.ktor-client-core.version]
 ref = "ktorVersion"
@@ -46,6 +54,24 @@ ref = "ktorVersion"
 ref = "ktorVersion"
 [libraries.ktor-client-darwin.version]
 ref = "ktorVersion"
+[libraries.ktor-client-logging.version]
+ref = "ktorVersion"
+
+# Security
+# Safely manage keys and encrypt files and sharedpreferences.
+[libraries.security-crypto]
+module = "androidx.security:security-crypto"
+# versions
+[libraries.security-crypto.version]
+ref = "securityCryptoVersion"
+
+# Napier
+# Napier is a logger library for Kotlin Multiplatform.
+[libraries.napier]
+module = "io.github.aakira:napier"
+# versions
+[libraries.napier.version]
+ref = "napierVersion"
 
 ##########################
 ## BUNDLES
@@ -53,12 +79,16 @@ ref = "ktorVersion"
 
 [bundles]
 common = [
+    "security-crypto",
     "kotlinx-datetime",
     "ktor-client-core",
     "ktor-client-content-negotiation",
     "ktor-serialization-kotlinx-json",
+    "ktor-client-logging",
+    "napier",
 ]
 android = [
+    "security-crypto",
     "ktor-client-android",
 ]
 ios = [

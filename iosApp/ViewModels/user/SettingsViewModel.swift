@@ -6,17 +6,18 @@
 //
 
 import Foundation
+import shared
 
 class SettingsViewModel: ObservableObject, Identifiable {
     var serviceNetwork = UserNetwork()
     var serviceData = UserData()
 
     @Published var loading: Bool = false
-    @Published var error: NetworkError?
+    @Published var error: ResponseError?
 
     func updateUI(
         response: UserModel? = nil,
-        error: NetworkError? = nil
+        error: ResponseError? = nil
     ) {
         DispatchQueue.main.async {
             if response == nil {
@@ -48,17 +49,17 @@ class SettingsViewModel: ObservableObject, Identifiable {
         }
         Task {
             do {
-                let response = try await serviceNetwork.updateUser(
+                let response = try await serviceNetwork.updateUser(body: UserRequest(
                     name: name,
                     blog: blog,
                     twitterUsername: twitterUsername,
                     company: company,
                     location: location,
                     bio: bio
-                )
+                ))
                 updateUI(response: response)
-            } catch let networkError as NetworkError {
-                updateUI(error: networkError)
+            } catch let error as ResponseError {
+                updateUI(error: error)
             } catch {
                 print("Unexpected error: \(error).")
             }

@@ -58,9 +58,3 @@ struct UserTabsScreen: View {
         .accentColor(.orange)
     }
 }
-
-struct UserTabs_Previews: PreviewProvider {
-    static var previews: some View {
-        UserTabsScreen()
-    }
-}

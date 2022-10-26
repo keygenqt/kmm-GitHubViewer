@@ -17,17 +17,20 @@ package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.keygenqt.requests.ResponseStates
-import com.keygenqt.requests.success
-import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.viewer.android.data.models.toModel
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
-import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
+import com.keygenqt.viewer.android.data.services.impl.RepoModelDataService
+import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -35,25 +38,40 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class RepoViewModel @Inject constructor(
-    private val apiService: AppApiService,
+    private val client: AppHttpClient,
     private val dataService: AppDataService,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     /**
-     * State actions
-     */
-    val query1 = ResponseStates(this, ::errorHandlerStates)
-
-    /**
      * Repo id
      */
-    val id: String = savedStateHandle.get(ReposNavRoute.repo.default.argument0) ?: ""
+    val id: String = savedStateHandle[ReposNavRoute.repo.default.argument0] ?: ""
 
     /**
      * Repo url for update
      */
-    val url: String = savedStateHandle.get(ReposNavRoute.repo.default.argument1) ?: ""
+    val url: String = savedStateHandle[ReposNavRoute.repo.default.argument1] ?: ""
+
+    /**
+     * Error response
+     */
+    private val _error: MutableStateFlow<String?> = MutableStateFlow(null)
+
+    /**
+     * [StateFlow] for [_error]
+     */
+    val error: StateFlow<String?> get() = _error.asStateFlow()
+
+    /**
+     * Loading query
+     */
+    private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    /**
+     * [StateFlow] for [_loading]
+     */
+    val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
 
     /**
      * Listen repo model
@@ -68,12 +86,19 @@ class RepoViewModel @Inject constructor(
      * Query update repo
      */
     fun updateRepo() {
-        query1.queryLaunch {
-            apiService.getRepo(url).success {
-                dataService.withTransaction<RepoModelDataService> {
-                    updateRepoModel(it)
+        viewModelScope.launch {
+            _error.value = null
+            _loading.value = true
+            try {
+                client.get.repo(url = url).let {
+                    dataService.withTransaction<RepoModelDataService> {
+                        updateRepoModel(it.toModel())
+                    }
                 }
+            } catch (ex: Exception) {
+                _error.value = ex.localizedMessage ?: ""
             }
+            _loading.value = false
         }
     }
 }
