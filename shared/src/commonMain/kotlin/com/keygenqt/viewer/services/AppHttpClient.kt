@@ -41,7 +41,7 @@ class AppHttpClient(
             level = LogLevel.ALL
         }
         install(DefaultRequest) {
-            url(AppConstants.API_URL)
+            url(AppConstants.Links.API_URL)
             if (token.isNotBlank()) {
                 header(HttpHeaders.Authorization, "token $token")
             }

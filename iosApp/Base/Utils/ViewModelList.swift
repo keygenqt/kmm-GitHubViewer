@@ -46,7 +46,7 @@ class ViewModelList<T>: ObservableObject, Identifiable {
                     self.models.removeAll()
                     self.saveList(response: response)
                 }
-                let limit = Int(ConstantsKMM.CONST.PAGE_LIMIT)
+                let limit = Int(ConstantsKMM.CONST.APP.PAGE_LIMIT)
                 self.models.append(contentsOf: response)
                 self.page = (self.models.count + limit) / limit
                 self.isEnd = response.count < limit

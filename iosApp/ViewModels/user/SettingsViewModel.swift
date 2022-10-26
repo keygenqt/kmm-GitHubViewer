@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import shared
 
 class SettingsViewModel: ObservableObject, Identifiable {
     var serviceNetwork = UserNetwork()
-    var serviceData = UserData()
+//    var serviceData = UserData()
 
     @Published var loading: Bool = false
     @Published var error: NetworkError?
@@ -22,8 +23,8 @@ class SettingsViewModel: ObservableObject, Identifiable {
             if response == nil {
                 self.error = error
             } else {
-                self.serviceData.clear()
-                self.serviceData.saveUser(response!.toRealm())
+//                self.serviceData.clear()
+//                self.serviceData.saveUser(response!.toRealm())
             }
             self.loading = false
         }
@@ -48,14 +49,14 @@ class SettingsViewModel: ObservableObject, Identifiable {
         }
         Task {
             do {
-                let response = try await serviceNetwork.updateUser(
+                let response = try await serviceNetwork.updateUser(body: UserRequest(
                     name: name,
                     blog: blog,
                     twitterUsername: twitterUsername,
                     company: company,
                     location: location,
                     bio: bio
-                )
+                ))
                 updateUI(response: response)
             } catch let networkError as NetworkError {
                 updateUI(error: networkError)

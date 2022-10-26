@@ -32,7 +32,7 @@ class GetNetwork(val client: HttpClient) {
             url {
                 with(parameters) {
                     append("page", page.toString())
-                    append("per_page", AppConstants.PAGE_LIMIT.toString())
+                    append("per_page", AppConstants.App.PAGE_LIMIT.toString())
                     append("type", "owner")
                     append("sort", "created")
                     append("direction", if (isSortASC) "asc" else "desc")
@@ -62,7 +62,7 @@ class GetNetwork(val client: HttpClient) {
             url {
                 with(parameters) {
                     append("page", page.toString())
-                    append("per_page", AppConstants.PAGE_LIMIT.toString())
+                    append("per_page", AppConstants.App.PAGE_LIMIT.toString())
                 }
             }
         }.body()

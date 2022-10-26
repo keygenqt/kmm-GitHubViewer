@@ -17,4 +17,7 @@ struct ConstantsKMM {
     
     // KMM network service
     static let CONST: AppConstants = AppConstants()
+    
+    // KMM helper
+    static let HELPER: AppHelper = AppHelper()
 }

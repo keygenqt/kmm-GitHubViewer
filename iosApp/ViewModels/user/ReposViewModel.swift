@@ -34,6 +34,4 @@ class ReposViewModel: ViewModelList<RepoModel> {
 //        serviceData.clear()
 //        serviceData.save(response.toRealms())
     }
-    
-
 }

@@ -16,9 +16,9 @@ struct ListReposItem: View {
         HStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    Image(systemName: ConstantsLanguage.getIcon(language: model.language))
+                    Image(systemName: (model.language ?? "").getIconLanguage())
                         .frame(width: 30, height: 30)
-                        .foregroundColor(ConstantsLanguage.getColor(language: model.language))
+                        .foregroundColor((model.language ?? "").getColorLanguage())
                 }
                 .background(Color(white: 0.95))
                 .clipShape(Circle())

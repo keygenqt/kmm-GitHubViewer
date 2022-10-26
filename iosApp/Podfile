@@ -19,8 +19,6 @@ target 'GitHubViewer' do
   pod 'SwiftGen', '6.5.1'                           # gen resources
   pod 'RealmSwift'                                  # db
   pod 'Kingfisher'                                  # images
-  pod 'Alamofire', '~> 5.4.0'                       # HTTP client
-  pod 'AlamofireNetworkActivityLogger', '~> 3.4.0'  # HTTP Logger
   pod 'SwiftLint'                                   # code style
   pod 'SwiftFormat/CLI'                             # code style format
   

@@ -10,3 +10,4 @@ import Foundation
 import shared
 
 extension RepoModel: Identifiable {}
+extension FollowerModel: Identifiable {}

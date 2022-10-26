@@ -62,19 +62,19 @@ data class UserModel(
     @SerialName("name")
     val name: String,
     @SerialName("company")
-    val company: String,
+    val company: String?,
     @SerialName("blog")
-    val blog: String,
+    val blog: String?,
     @SerialName("location")
-    val location: String,
+    val location: String?,
     @SerialName("email")
-    val email: String,
+    val email: String?,
     @SerialName("hireable")
-    val hireable: String,
+    val hireable: String?,
     @SerialName("bio")
-    val bio: String,
+    val bio: String?,
     @SerialName("twitter_username")
-    val twitterUsername: String,
+    val twitterUsername: String?,
     @SerialName("public_repos")
     val publicRepos: Int,
     @SerialName("public_gists")
@@ -87,4 +87,21 @@ data class UserModel(
     val createdAt: String,
     @SerialName("updated_at")
     val updatedAt: String,
+    @SerialName("plan")
+    val plan: UserPlanModel,
+)
+
+/**
+ * User plan model
+ */
+@Serializable
+data class UserPlanModel(
+    @SerialName("name")
+    val name: String,
+    @SerialName("space")
+    val space: Int,
+    @SerialName("collaborators")
+    val collaborators: Int,
+    @SerialName("private_repos")
+    val privateRepos: Int,
 )

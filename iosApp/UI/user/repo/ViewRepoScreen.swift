@@ -49,7 +49,7 @@ struct ViewRepoScreen: View {
                                 VStack {
                                     HStack {
                                         HStack {
-                                            Text(String(model.stargazersCount ?? 0)).font(.system(size: 56, weight: .heavy))
+                                            Text(String(model.stargazersCount)).font(.system(size: 56, weight: .heavy))
                                             VStack(alignment: .leading) {
                                                 Text(L10nRepo.iconStarTitle).fontWeight(.bold).padding(.bottom, 0.1)
                                                 Text(L10nRepo.iconStarText).font(.caption)
@@ -67,7 +67,7 @@ struct ViewRepoScreen: View {
                                 VStack {
                                     HStack {
                                         HStack {
-                                            Text(String(model.forks ?? 0)).font(.system(size: 56, weight: .heavy))
+                                            Text(String(model.forks)).font(.system(size: 56, weight: .heavy))
                                             VStack(alignment: .leading) {
                                                 Text(L10nRepo.iconForksTitle).fontWeight(.bold).padding(.bottom, 0.1)
                                                 Text(L10nRepo.iconForksText).font(.caption)
@@ -98,7 +98,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(model.openIssuesCount ?? 0))
+                                Text(String(model.openIssuesCount))
                             }
 
                             Spacer()
@@ -119,7 +119,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(model.watchersCount ?? 0))
+                                Text(String(model.watchersCount))
                             }
 
                             Spacer()
@@ -139,7 +139,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(AppHelper.humanReadableByteCount((Int(model.size)) * 1000)))
+                                Text(String(ConstantsKMM.HELPER.humanReadableByte(bytes: Int64(model.size * 1024))))
                             }
                         }
                         .padding(EdgeInsets(top: 20, leading: 15, bottom: 15, trailing: 15))

@@ -153,15 +153,17 @@ struct ProfileScreen: View {
                                 Spacer()
                             }
                             .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
-
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(L10nProfile.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                    Text(viewModel.model?.createdAt?.toDateFromat() ?? "").font(.body)
+                            
+                            if let value = viewModel.model?.createdAt {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(L10nProfile.labelCreatedAt).font(.caption).fontWeight(.bold).padding(.bottom, 1)
+                                        Text(value.toFormatDateShort()).font(.body)
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
+                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
                             }
-                            .padding(EdgeInsets(top: 10, leading: 15, bottom: 5, trailing: 15))
 
                             HStack {
                                 VStack(alignment: .leading) {
@@ -205,6 +207,9 @@ struct ProfileScreen: View {
         }
         .onAppear {
             viewModel.readDb()
+        }
+        .task {
+            await viewModel.load()
         }
     }
 }

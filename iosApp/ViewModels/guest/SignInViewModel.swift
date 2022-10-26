@@ -10,6 +10,9 @@ import Foundation
 import shared
 
 class SignInViewModel: ObservableObject, Identifiable {
+    
+    var serviceNetwork = AuthNetwork()
+    
     @Published var isShowProgressView = false
     @Published var error: NetworkError?
 
@@ -27,24 +30,14 @@ class SignInViewModel: ObservableObject, Identifiable {
         }
     }
     
-    func oauthAsync(code: String) async throws -> SecurityModel {
-        return try await withCheckedThrowingContinuation { continuation in
-            ConstantsKMM.CLIENT.post.oauth(code: code) { model, error in
-                if let model = model {
-                    continuation.resume(returning: model)
-                } else {
-                    continuation.resume(throwing: error ?? NetworkError.notFound)
-                }
-            }
-        }
-    }
+
 
     func authUser(code: String, action: (() -> Void)?) async {
         DispatchQueue.main.async {
             self.error = nil
         }
         do {
-            let response = try await oauthAsync(code: code)
+            let response = try await serviceNetwork.oauth(code: code)
             ConstantsKMM.STORAGE.authToken = response.accessToken
             ConstantsKMM.CLIENT.setToken(token: ConstantsKMM.STORAGE.authToken)
             DispatchQueue.main.async {

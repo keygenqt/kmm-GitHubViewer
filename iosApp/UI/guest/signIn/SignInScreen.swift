@@ -20,7 +20,7 @@ struct SignInScreen: View {
     @State private var error: String?
     // form value
 #if DEBUG
-    @State private var fieldNickname: IFieldText = NicknameField(value: ConstantsKMM.CONST.DEBUG_CREDENTIAL_LOGIN)
+    @State private var fieldNickname: IFieldText = NicknameField(value: ConstantsKMM.CONST.APP.DEBUG_CREDENTIAL_LOGIN)
 #else
     @State private var fieldNickname: IFieldText = NicknameField()
 #endif
@@ -49,7 +49,7 @@ struct SignInScreen: View {
                 }
                 Section {
                     Button(L10nSignIn.formButtonSubmit) {
-                        openURL(AppHelper.getOauthLink(fieldNickname.value))
+                        openURL(ConstantsKMM.HELPER.getOauthLink(login: fieldNickname.value, state: NSUUID().uuidString).toUrl())
                     }
                     .buttonStyle(BottomPrimaryStyle())
                     .disabled(!fieldNickname.isValid)
