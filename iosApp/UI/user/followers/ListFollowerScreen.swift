@@ -37,9 +37,3 @@ struct ListFollowerScreen: View {
        })
     }
 }
-
-struct ListFollower_Previews: PreviewProvider {
-    static var previews: some View {
-        ListFollowerScreen()
-    }
-}

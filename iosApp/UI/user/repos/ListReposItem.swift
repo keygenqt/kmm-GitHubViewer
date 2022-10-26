@@ -78,12 +78,3 @@ struct ListReposItem: View {
         }
     }
 }
-
-//struct ListReposItem_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            ListReposItem(model: RepoModel.mock)
-//            ListReposItem(model: RepoModel.mock)
-//        }.previewLayout(.fixed(width: 300, height: 70))
-//    }
-//}

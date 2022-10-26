@@ -46,9 +46,3 @@ struct ListReposScreen: View {
         })
     }
 }
-
-struct ListRepos_Previews: PreviewProvider {
-    static var previews: some View {
-        ListReposScreen()
-    }
-}

@@ -29,7 +29,7 @@ struct SettingsRepoScreen: View {
             initialValue: NameRepoField(value: model.name)
         )
         _fieldDescRepo = State(
-            initialValue: DescRepoField(value: model.description)
+            initialValue: DescRepoField(value: model.desc ?? "")
         )
         _fieldIsPrivate = State(
             initialValue: IsPrivateRepoField(value: model.isPrivate)

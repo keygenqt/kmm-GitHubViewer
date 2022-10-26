@@ -35,9 +35,3 @@ struct ListFollowerItem: View {
         }
     }
 }
-
-//struct ListFollowerItem_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ListFollowerItem(model: FollowerModel.mock)
-//    }
-//}
