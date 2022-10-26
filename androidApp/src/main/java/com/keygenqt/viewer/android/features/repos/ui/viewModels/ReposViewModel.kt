@@ -20,11 +20,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.data.paging.ReposRemoteMediator
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.android.features.repos.ui.screens.repos.ReposScreen
-import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.utils.ConstantsPaging
 import com.keygenqt.viewer.data.storage.CrossStorage
+import com.keygenqt.viewer.services.AppHttpClient
+import com.keygenqt.viewer.utils.AppConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,7 +37,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class ReposViewModel @Inject constructor(
-    private val apiService: AppApiService,
+    private val client: AppHttpClient,
     private val dataService: AppDataService,
     private val storage: CrossStorage,
 ) : ViewModel() {
@@ -58,8 +58,8 @@ class ReposViewModel @Inject constructor(
      */
     @OptIn(ExperimentalPagingApi::class)
     val listRepo: Flow<PagingData<RepoModel>> = Pager(
-        config = PagingConfig(pageSize = ConstantsPaging.PAGE_LIMIT),
-        remoteMediator = ReposRemoteMediator(apiService, dataService, storage)
+        config = PagingConfig(pageSize = AppConstants.App.PAGE_LIMIT),
+        remoteMediator = ReposRemoteMediator(client, dataService, storage)
     ) {
         dataService.pagingSourceRepoModels()
     }.flow.cachedIn(viewModelScope)

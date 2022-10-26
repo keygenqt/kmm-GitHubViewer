@@ -39,7 +39,9 @@ fun SignInScreen(
     viewModel: SignInViewModel,
     onActions: (SignInActions) -> Unit = {},
 ) {
-    val state1 by viewModel.query1.state.collectAsState()
+    val error by viewModel.error.collectAsState()
+    val loading by viewModel.loading.collectAsState()
+    val response by viewModel.response.collectAsState()
 
     val formFields = remember {
         FormFieldsState().apply {
@@ -48,7 +50,9 @@ fun SignInScreen(
     }
 
     SignInBody(
-        state1 = state1,
+        error = error,
+        loading = loading,
+        response = response,
         onActions = onActions,
         formFields = formFields,
         uriHandler = LocalUriHandler.current,

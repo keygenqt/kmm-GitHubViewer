@@ -34,7 +34,7 @@ data class UserRequest(
     @SerialName("blog")
     val blog: String,
     @SerialName("twitter_username")
-    val twitterUsername: String,
+    val twitterUsername: String?,
     @SerialName("company")
     val company: String,
     @SerialName("location")

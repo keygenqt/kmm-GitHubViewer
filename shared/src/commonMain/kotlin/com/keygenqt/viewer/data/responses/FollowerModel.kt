@@ -65,7 +65,7 @@ fun createFollowerModel(
     id: String,
     login: String,
     avatarUrl: String,
-    url: String
+    htmlUrl: String
 ): FollowerModel {
     return FollowerModel(
         id = id,
@@ -73,8 +73,8 @@ fun createFollowerModel(
         nodeId = "",
         avatarUrl = avatarUrl,
         gravatarId = "",
-        url = url,
-        htmlUrl = "",
+        url = "",
+        htmlUrl = htmlUrl,
         followersUrl = "",
         followingUrl = "",
         gistsUrl = "",

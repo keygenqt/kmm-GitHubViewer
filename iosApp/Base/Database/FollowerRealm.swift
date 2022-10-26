@@ -13,7 +13,7 @@ class FollowerRealm: Object {
     @objc dynamic var id: String = ""
     @objc dynamic var login: String = ""
     @objc dynamic var avatarUrl: String = ""
-    @objc dynamic var url: String = ""
+    @objc dynamic var htmlUrl: String = ""
 
     override static func primaryKey() -> String? {
         return "id"
@@ -46,7 +46,7 @@ extension FollowerRealm {
             id: id,
             login: login,
             avatarUrl: avatarUrl,
-            url: url
+            htmlUrl: htmlUrl
         )
     }
 }
@@ -57,7 +57,7 @@ extension FollowerModel: Identifiable {
         realmModel.id = id
         realmModel.login = login
         realmModel.avatarUrl = avatarUrl
-        realmModel.url = url
+        realmModel.htmlUrl = htmlUrl
         return realmModel
     }
 }

@@ -45,10 +45,4 @@ enum class MenuTab(
         R.string.profile_title,
         Icons.Filled.Person
     );
-//    @todo
-//    STATS(
-//        StatsNav.navStatsMain.statsMainScreen.route,
-//        R.string.stats_title,
-//        Icons.Filled.BarChart
-//    );
 }

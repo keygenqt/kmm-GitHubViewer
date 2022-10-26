@@ -49,8 +49,6 @@ fun SettingsForm(
     formFields: FormFieldsState,
     loading: Boolean = false,
 ) {
-    val scope = rememberCoroutineScope()
-
     FormField(
         label = stringResource(id = R.string.settings_form_name),
         enabled = !loading,

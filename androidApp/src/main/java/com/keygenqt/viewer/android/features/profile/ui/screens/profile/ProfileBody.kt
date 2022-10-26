@@ -35,11 +35,9 @@ import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import com.keygenqt.requests.ResponseState
-import com.keygenqt.viewer.android.R
 import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.base.AppScaffold
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -48,27 +46,15 @@ import kotlinx.coroutines.launch
 @Composable
 fun ProfileBody(
     model: Any?,
+    error: String?,
+    loading: Boolean,
     uriHandler: UriHandler? = null,
-    state1: ResponseState = ResponseState.Start,
     navDispatcher: NavigationDispatcher? = null,
     onActions: (ProfileActions) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
     var showDialogLogout by remember { mutableStateOf(false) }
-
-    // state query 1
-    var loadingUser by remember { mutableStateOf(false) }
-
-    ProfileQueryState1(
-        state = state1,
-        loadingUser = {
-            loadingUser = true
-        },
-        clear = {
-            loadingUser = false
-        }
-    )
 
     AppScaffold(
         navigationDispatcher = navDispatcher,
@@ -98,7 +84,7 @@ fun ProfileBody(
             }
         },
         swipeRefreshEnable = true,
-        swipeRefreshLoading = loadingUser,
+        swipeRefreshLoading = loading,
         swipeRefreshAction = {
             onActions(ProfileActions.ActionUpdateUser)
         },
@@ -164,6 +150,10 @@ fun CloseDialog(
 @Composable
 private fun Preview() {
     AppTheme {
-        ProfileBody(UserModel.mock())
+        ProfileBody(
+            model = UserModel.mock(),
+            error = null,
+            loading = false,
+        )
     }
 }

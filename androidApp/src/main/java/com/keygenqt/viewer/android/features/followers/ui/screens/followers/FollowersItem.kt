@@ -29,15 +29,12 @@ import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.annotation.ExperimentalCoilApi
 import com.keygenqt.viewer.android.compose.base.AppImageUser
 import com.keygenqt.viewer.android.compose.texts.TextTitleLarge
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.theme.AppTheme
 import androidx.compose.material.MaterialTheme as MaterialTheme2
 
-@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun FollowersItem(
     model: FollowerModel,

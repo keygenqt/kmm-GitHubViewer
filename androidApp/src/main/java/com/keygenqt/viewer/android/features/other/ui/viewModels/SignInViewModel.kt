@@ -17,14 +17,17 @@ package com.keygenqt.viewer.android.features.other.ui.viewModels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.keygenqt.requests.ResponseStates
-import com.keygenqt.requests.success
-import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.viewer.android.data.models.toModel
 import com.keygenqt.viewer.android.features.other.ui.screens.signIn.SignInScreen
-import com.keygenqt.viewer.android.services.apiService.AppApiService
 import com.keygenqt.viewer.android.utils.AuthUser
+import com.keygenqt.viewer.data.responses.SecurityModel
 import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -32,15 +35,9 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val apiService: AppApiService,
     private val client: AppHttpClient,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-
-    /**
-     * State actions
-     */
-    val query1 = ResponseStates(this, ::errorHandlerStates)
 
     /**
      * Arg deep link code
@@ -52,6 +49,36 @@ class SignInViewModel @Inject constructor(
      */
     val state: String? = savedStateHandle["state"]
 
+    /**
+     * Error response
+     */
+    private val _error: MutableStateFlow<String?> = MutableStateFlow(null)
+
+    /**
+     * [StateFlow] for [_error]
+     */
+    val error: StateFlow<String?> get() = _error.asStateFlow()
+
+    /**
+     * Loading query
+     */
+    private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    /**
+     * [StateFlow] for [_loading]
+     */
+    val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
+
+    /**
+     * Error response
+     */
+    private val _response: MutableStateFlow<SecurityModel?> = MutableStateFlow(null)
+
+    /**
+     * [StateFlow] for [_response]
+     */
+    val response: StateFlow<SecurityModel?> get() = _response.asStateFlow()
+
     init {
         code?.let {
             signInCode(it)
@@ -59,14 +86,18 @@ class SignInViewModel @Inject constructor(
     }
 
     private fun signInCode(code: String) {
-        query1.queryLaunch {
-            apiService.oauthCode(code = code).success { AuthUser.login(it) }
+        viewModelScope.launch {
+            _error.value = null
+            _loading.value = true
+            try {
+                client.post.oauth(code = code).let {
+                    AuthUser.login(it.toModel())
+                    _response.value = it
+                }
+            } catch (ex: Exception) {
+                _error.value = ex.localizedMessage ?: ""
+            }
+            _loading.value = false
         }
     }
-
-//    private fun signIn(code: String) {
-//        query1.queryLaunch {
-//            client.post.oauthCode(code = code).success { AuthUser.login(it) }
-//        }
-//    }
 }

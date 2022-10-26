@@ -17,18 +17,21 @@ package com.keygenqt.viewer.android.features.repos.ui.viewModels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.keygenqt.requests.ResponseStates
-import com.keygenqt.requests.success
-import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
-import com.keygenqt.viewer.android.data.requests.RepoUpdateRequest
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.viewer.android.data.models.toModel
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.repos.ui.screens.repoUpdate.RepoUpdateScreen
-import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
+import com.keygenqt.viewer.android.data.services.impl.RepoModelDataService
+import com.keygenqt.viewer.data.requests.RepoRequest
+import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -36,15 +39,10 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class RepoUpdateModel @Inject constructor(
-    private val apiService: AppApiService,
+    private val client: AppHttpClient,
     private val dataService: AppDataService,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-
-    /**
-     * State actions
-     */
-    val query1 = ResponseStates(this, ::errorHandlerStates)
 
     /**
      * Repo id
@@ -55,6 +53,36 @@ class RepoUpdateModel @Inject constructor(
      * Repo url for update
      */
     val url: String = savedStateHandle.get(ReposNavRoute.repoUpdate.default.argument1) ?: ""
+
+    /**
+     * Error response
+     */
+    private val _error: MutableStateFlow<String?> = MutableStateFlow(null)
+
+    /**
+     * [StateFlow] for [_error]
+     */
+    val error: StateFlow<String?> get() = _error.asStateFlow()
+
+    /**
+     * Loading query
+     */
+    private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    /**
+     * [StateFlow] for [_loading]
+     */
+    val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
+
+    /**
+     * Success query
+     */
+    private val _success: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    /**
+     * [StateFlow] for [_loading]
+     */
+    val success: StateFlow<Boolean> get() = _success.asStateFlow()
 
     /**
      * Listen repo model
@@ -73,19 +101,28 @@ class RepoUpdateModel @Inject constructor(
         isPrivate: Boolean,
         description: String,
     ) {
-        query1.queryLaunch {
-            apiService.repoUpdate(
-                url = url,
-                request = RepoUpdateRequest(
-                    name = name,
-                    isPrivate = isPrivate,
-                    description = description,
-                )
-            ).success { model ->
-                dataService.withTransaction<RepoModelDataService> {
-                    updateRepoModel(model)
+        viewModelScope.launch {
+            _error.value = null
+            _loading.value = true
+            _success.value = false
+            try {
+                client.patch.updateRepo(
+                    url = url,
+                    body = RepoRequest(
+                        name = name,
+                        isPrivate = isPrivate,
+                        description = description,
+                    )
+                ).let {
+                    dataService.withTransaction<RepoModelDataService> {
+                        updateRepoModel(it.toModel())
+                        _success.value = true
+                    }
                 }
+            } catch (ex: Exception) {
+                _error.value = ex.localizedMessage ?: ""
             }
+            _loading.value = false
         }
     }
 }

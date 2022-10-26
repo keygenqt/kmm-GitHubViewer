@@ -30,7 +30,6 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.android.utils.ConstantsLanguage
 
 @Composable
 fun RotateIconSortIcon(

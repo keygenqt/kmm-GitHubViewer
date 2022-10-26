@@ -14,6 +14,7 @@ class UserRealm: Object {
     @objc dynamic var avatarUrl: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var company: String?
+    @objc dynamic var twitterUsername: String?
     @objc dynamic var publicRepos: Int32 = 0
     @objc dynamic var followers: Int32 = 0
     @objc dynamic var following: Int32 = 0
@@ -53,12 +54,13 @@ extension UserRealm {
             id: id,
             avatarUrl: avatarUrl,
             name: name,
+            company: company,
+            twitterUsername: twitterUsername,
             publicRepos: publicRepos,
             followers: followers,
             following: following,
             blog: blog,
             location: location,
-            company: company,
             bio: bio,
             createdAt: createdAt
         )
@@ -71,12 +73,13 @@ extension UserModel: Identifiable {
         realmModel.id = id
         realmModel.avatarUrl = avatarUrl
         realmModel.name = name
+        realmModel.company = company
+        realmModel.twitterUsername = twitterUsername
         realmModel.publicRepos = publicRepos
         realmModel.followers = followers
         realmModel.following = following
         realmModel.blog = blog
         realmModel.location = location
-        realmModel.company = company
         realmModel.bio = bio
         realmModel.createdAt = createdAt
         return realmModel

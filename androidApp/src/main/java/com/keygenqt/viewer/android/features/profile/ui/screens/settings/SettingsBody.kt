@@ -32,9 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.forms.base.FormFieldsState
 import com.keygenqt.modifier.imePaddingWithOutNavigationBars
-import com.keygenqt.requests.ResponseState
-import com.keygenqt.viewer.android.R
 import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.base.FormError
 import com.keygenqt.viewer.android.compose.base.FormSuccess
@@ -46,8 +45,10 @@ import com.keygenqt.viewer.android.theme.AppTheme
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SettingsBody(
+    error: String?,
+    loading: Boolean,
+    success: Boolean,
     formFields: FormFieldsState,
-    state1: ResponseState = ResponseState.Start,
     navDispatcher: NavigationDispatcher? = null,
     onActions: (SettingsActions) -> Unit = {},
 ) {
@@ -79,29 +80,6 @@ fun SettingsBody(
         }
     }
 
-    // state query 1
-    var loading by remember { mutableStateOf(false) }
-    var success by remember { mutableStateOf(false) }
-    var error: Int? by remember { mutableStateOf(null) }
-
-    SettingsQueryState1(
-        state = state1,
-        loading = {
-            loading = true
-        },
-        error = {
-            error = it.resId
-        },
-        success = {
-            success = true
-        },
-        clear = {
-            success = false
-            loading = false
-            error = null
-        }
-    )
-
     AppScaffold(
         navigationDispatcher = navDispatcher,
         topBarLoading = loading,
@@ -119,7 +97,7 @@ fun SettingsBody(
                 Spacer(modifier = Modifier.size(16.dp))
 
                 error?.let {
-                    FormError(text = stringResource(id = it))
+                    FormError(text = error.ifBlank { stringResource(id = R.string.error_exception_unknown) })
                     Spacer(modifier = Modifier.size(16.dp))
                     LaunchedEffect(it) { scrollState.animateScrollTo(0) }
                 }
@@ -158,6 +136,11 @@ fun SettingsBody(
 @Composable
 private fun Preview() {
     AppTheme {
-        SettingsBody(mockUserUpdateForm())
+        SettingsBody(
+            error = null,
+            loading = false,
+            success = false,
+            formFields = mockUserUpdateForm()
+        )
     }
 }

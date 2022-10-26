@@ -23,14 +23,8 @@ import java.util.concurrent.TimeUnit
  * @author Vitaliy Zarubin
  */
 object ConstantsPaging {
-
     /**
      * Lists refresh once per hour
      */
     val CACHE_TIMEOUT = TimeUnit.HOURS.toMillis(1)
-
-    /**
-     * Query page size
-     */
-    const val PAGE_LIMIT = 10
 }

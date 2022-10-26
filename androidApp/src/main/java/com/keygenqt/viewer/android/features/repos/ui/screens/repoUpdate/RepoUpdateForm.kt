@@ -47,8 +47,6 @@ fun RepoUpdateForm(
     formFields: FormFieldsState,
     loading: Boolean = false,
 ) {
-    val scope = rememberCoroutineScope()
-
     FormField(
         label = stringResource(id = R.string.repo_update_name),
         enabled = !loading,

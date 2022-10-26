@@ -26,7 +26,7 @@ import com.keygenqt.viewer.android.base.AppDatabaseSecurityQualifier
 import com.keygenqt.viewer.android.data.AppDatabase
 import com.keygenqt.viewer.android.data.AppSecurityDatabase
 import com.keygenqt.viewer.android.data.migrations.Migrations_1_2
-import com.keygenqt.viewer.android.services.dataService.AppDataService
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.data.storage.CrossStorage
 import com.keygenqt.viewer.services.AppHttpClient
 import dagger.Module
@@ -103,6 +103,7 @@ object ModuleSingleton {
      * Database management service
      */
     @Provides
+    @Singleton
     fun provideUsersDataService(
         @AppDatabaseQualifier db: AppDatabase,
         @AppDatabaseSecurityQualifier dbSecurity: AppSecurityDatabase,
@@ -112,6 +113,7 @@ object ModuleSingleton {
      * Shared preferences
      */
     @Provides
+    @Singleton
     fun provideAppStorage(@ApplicationContext context: Context): CrossStorage {
         return CrossStorage(
             EncryptedSharedPreferences.create(
@@ -128,9 +130,6 @@ object ModuleSingleton {
      * Ktor http client
      */
     @Provides
-    fun provideAppHttpClient(
-        storage: CrossStorage,
-    ) = AppHttpClient(
-        token = storage.authToken
-    )
+    @Singleton
+    fun provideAppHttpClient() = AppHttpClient()
 }

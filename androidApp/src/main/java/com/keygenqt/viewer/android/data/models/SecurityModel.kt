@@ -32,3 +32,10 @@ data class SecurityModel(
     val refreshToken: String,
     val refreshTokenExpiresIn: Int,
 ) : IModel
+
+fun com.keygenqt.viewer.data.responses.SecurityModel.toModel() = SecurityModel(
+    accessToken = this.accessToken,
+    expiresIn = this.expiresIn,
+    refreshToken = this.refreshToken,
+    refreshTokenExpiresIn = this.refreshTokenExpiresIn,
+)

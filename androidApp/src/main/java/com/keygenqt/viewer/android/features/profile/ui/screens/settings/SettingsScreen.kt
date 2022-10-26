@@ -34,18 +34,19 @@ fun SettingsScreen(
     viewModel: SettingsViewModel,
     onActions: (SettingsActions) -> Unit = {},
 ) {
-
-    val state1 by viewModel.query1.state.collectAsState()
     val model: UserModel? by viewModel.user.collectAsState(null)
+    val error by viewModel.error.collectAsState()
+    val loading by viewModel.loading.collectAsState()
+    val success by viewModel.success.collectAsState()
 
     LaunchedEffect(model) {
         model?.let {
             UserUpdateName.state.setValue(it.name)
-            UserUpdateBlog.state.setValue(it.blog)
-            UserUpdateTwitter.state.setValue(it.twitterUsername)
-            UserUpdateCompany.state.setValue(it.company)
-            UserUpdateLocation.state.setValue(it.location)
-            UserUpdateBio.state.setValue(it.bio)
+            UserUpdateBlog.state.setValue(it.blog ?: "")
+            UserUpdateTwitter.state.setValue(it.twitterUsername ?: "")
+            UserUpdateCompany.state.setValue(it.company ?: "")
+            UserUpdateLocation.state.setValue(it.location ?: "")
+            UserUpdateBio.state.setValue(it.bio ?: "")
         }
     }
 
@@ -61,7 +62,9 @@ fun SettingsScreen(
     }
 
     SettingsBody(
-        state1 = state1,
+        error = error,
+        loading = loading,
+        success = success,
         formFields = formFields,
         onActions = onActions,
         navDispatcher = LocalNavigationDispatcher.current

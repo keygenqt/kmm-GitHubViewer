@@ -16,17 +16,20 @@
 package com.keygenqt.viewer.android.features.profile.ui.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.keygenqt.requests.ResponseStates
-import com.keygenqt.requests.success
-import com.keygenqt.viewer.android.base.exceptions.errorHandlerStates
-import com.keygenqt.viewer.android.data.requests.UserUpdateRequest
+import androidx.lifecycle.viewModelScope
+import com.keygenqt.viewer.android.data.models.toModel
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
-import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
+import com.keygenqt.viewer.android.data.services.impl.UserModelDataService
+import com.keygenqt.viewer.data.requests.UserRequest
+import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -34,14 +37,39 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val apiService: AppApiService,
+    private val client: AppHttpClient,
     private val dataService: AppDataService
 ) : ViewModel() {
 
     /**
-     * State actions
+     * Error response
      */
-    val query1 = ResponseStates(this, ::errorHandlerStates)
+    private val _error: MutableStateFlow<String?> = MutableStateFlow(null)
+
+    /**
+     * [StateFlow] for [_error]
+     */
+    val error: StateFlow<String?> get() = _error.asStateFlow()
+
+    /**
+     * Loading query
+     */
+    private val _loading: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    /**
+     * [StateFlow] for [_loading]
+     */
+    val loading: StateFlow<Boolean> get() = _loading.asStateFlow()
+
+    /**
+     * Success query
+     */
+    private val _success: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    /**
+     * [StateFlow] for [_loading]
+     */
+    val success: StateFlow<Boolean> get() = _success.asStateFlow()
 
     /**
      * Listen user model
@@ -66,22 +94,29 @@ class SettingsViewModel @Inject constructor(
         location: String,
         bio: String,
     ) {
-        query1.queryLaunch {
-            apiService.userUpdate(
-                UserUpdateRequest(
-                    name = name,
-                    blog = blog,
-                    twitter_username = twitterUsername,
-                    company = company,
-                    location = location,
-                    bio = bio,
-                )
-            ).success {
-                dataService.withTransaction<UserModelDataService> {
-                    clearUserModel()
-                    insertUserModel(it)
+        viewModelScope.launch {
+            _error.value = null
+            _loading.value = true
+            _success.value = false
+            try {
+                client.patch.updateUser(UserRequest(
+                     name = name,
+                     blog = blog,
+                     twitterUsername = twitterUsername,
+                     company = company,
+                     location = location,
+                     bio = bio,
+                )).let {
+                    dataService.withTransaction<UserModelDataService> {
+                        clearUserModel()
+                        insertUserModel(it.toModel())
+                        _success.value = true
+                    }
                 }
+            } catch (ex: Exception) {
+                _error.value = ex.localizedMessage ?: ""
             }
+            _loading.value = false
         }
     }
 }

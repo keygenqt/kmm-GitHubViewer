@@ -17,7 +17,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
 class AppHttpClient(
-    private var token: String
+    private var token: String = ""
 ) {
 
     fun setToken(token: String) {

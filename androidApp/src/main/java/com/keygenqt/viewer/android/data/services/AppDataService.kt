@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.services.dataService
+package com.keygenqt.viewer.android.data.services
 
 import com.keygenqt.viewer.android.data.AppDatabase
 import com.keygenqt.viewer.android.data.AppSecurityDatabase
-import com.keygenqt.viewer.android.services.dataService.impl.FollowerModelDataService
-import com.keygenqt.viewer.android.services.dataService.impl.RepoModelDataService
-import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
-import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
+import com.keygenqt.viewer.android.data.services.impl.FollowerModelDataService
+import com.keygenqt.viewer.android.data.services.impl.RepoModelDataService
+import com.keygenqt.viewer.android.data.services.impl.SecurityModelDataService
+import com.keygenqt.viewer.android.data.services.impl.UserModelDataService
 
 /**
  * Base service module for work with db room

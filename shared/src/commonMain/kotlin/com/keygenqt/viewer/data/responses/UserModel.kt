@@ -110,12 +110,13 @@ fun createUserModel(
     id: String,
     avatarUrl: String,
     name: String,
+    company: String?,
+    twitterUsername: String?,
     publicRepos: Int,
     followers: Int,
     following: Int,
     blog: String?,
     location: String?,
-    company: String?,
     bio: String?,
     createdAt: String
 ): UserModel {
@@ -145,7 +146,7 @@ fun createUserModel(
         email = null,
         hireable = null,
         bio = bio,
-        twitterUsername = null,
+        twitterUsername = twitterUsername,
         publicRepos = publicRepos,
         publicGists = 0,
         followers = followers,

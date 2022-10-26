@@ -8,7 +8,7 @@ object AppHelper {
     /**
      * Generate dynamic link
      */
-    private fun getDynamicLink(path: String): String {
+    fun getDynamicLink(path: String): String {
         return "https://${BuildKonfig.dynamicLinksHost}/$path"
     }
 

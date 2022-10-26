@@ -51,18 +51,17 @@ import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.texts.TextBodyMedium
 import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
 import com.keygenqt.viewer.android.compose.texts.TextLabelSmall
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.extensions.capitalize
-import com.keygenqt.viewer.android.extensions.formatDate
-import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions
 import com.keygenqt.viewer.android.theme.AppTheme
+import com.keygenqt.viewer.extensions.dateFormat
+import com.keygenqt.viewer.extensions.toTimestamp
+import com.keygenqt.viewer.utils.AppConstants
 
 @Composable
 fun RepoInfo(
     model: RepoModel,
     lazyListState: LazyListState = rememberLazyListState(),
-    onActions: (ProfileActions) -> Unit = {},
 ) {
     LazyColumn(
         modifier = Modifier,
@@ -145,7 +144,7 @@ fun RepoInfo(
                             .padding(bottom = 4.dp)
                     ) {
                         Text(
-                            text = model.forksCount.toString(),
+                            text = model.forks.toString(),
                             color = MaterialTheme.colorScheme.onPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 60.sp
@@ -220,31 +219,37 @@ fun RepoInfo(
                         label = stringResource(id = R.string.repo_label_full_name),
                         text = model.fullName
                     )
-                    InfoBlock(
-                        label = stringResource(id = R.string.repo_label_license),
-                        text = model.license["name"] ?: ""
-                    )
+                    if (model.license != null) {
+                        InfoBlock(
+                            label = stringResource(id = R.string.repo_label_license),
+                            text = model.license
+                        )
+                    }
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_visibility),
                         text = model.visibility.name.capitalize()
                     )
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_owner),
-                        text = model.owner?.ownerLogin ?: ""
+                        text = model.ownerName
                     )
 
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_updated_at),
-                        text = model.updatedAt.formatDate()
+                        text = model.updatedAt.toTimestamp()
+                            .dateFormat(AppConstants.DateFormat.SHORT)
                     )
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_created_at),
-                        text = model.createdAt.formatDate()
+                        text = model.createdAt.toTimestamp()
+                            .dateFormat(AppConstants.DateFormat.SHORT)
                     )
-                    InfoBlock(
-                        label = stringResource(id = R.string.repo_label_description),
-                        text = model.description
-                    )
+                    if (model.desc != null) {
+                        InfoBlock(
+                            label = stringResource(id = R.string.repo_label_description),
+                            text = model.desc
+                        )
+                    }
                     Spacer(modifier = Modifier.size(20.dp))
                 }
             }

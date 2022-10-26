@@ -23,13 +23,12 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import com.keygenqt.requests.ResponseState
 import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.base.AppScaffold
-import com.keygenqt.viewer.android.data.mock.mock
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.features.repos.ui.actions.RepoActions
 import com.keygenqt.viewer.android.theme.AppTheme
@@ -41,25 +40,13 @@ import kotlinx.coroutines.launch
 @Composable
 fun RepoBody(
     model: Any?,
-    state1: ResponseState = ResponseState.Start,
+    error: String?,
+    loading: Boolean,
     navDispatcher: NavigationDispatcher? = null,
     onActions: (RepoActions) -> Unit = {},
 ) {
     val scope = rememberCoroutineScope()
     val lazyListState = rememberLazyListState()
-
-    // state query 1
-    var loadingRepo by remember { mutableStateOf(false) }
-
-    RepoQueryState1(
-        state = state1,
-        loadingRepo = {
-            loadingRepo = true
-        },
-        clear = {
-            loadingRepo = false
-        }
-    )
 
     AppScaffold(
         backData = model as? RepoModel,
@@ -83,7 +70,7 @@ fun RepoBody(
             }
         },
         swipeRefreshEnable = true,
-        swipeRefreshLoading = loadingRepo,
+        swipeRefreshLoading = loading,
         swipeRefreshAction = {
             onActions(RepoActions.ActionUpdateRepo)
         },
@@ -102,6 +89,10 @@ fun RepoBody(
 @Composable
 private fun Preview() {
     AppTheme {
-        RepoBody(RepoModel.mock())
+        RepoBody(
+            model = RepoModel.mock(),
+            error = null,
+            loading = false
+        )
     }
 }

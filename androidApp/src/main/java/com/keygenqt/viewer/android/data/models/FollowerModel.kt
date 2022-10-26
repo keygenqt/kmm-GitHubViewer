@@ -19,31 +19,31 @@ import androidx.compose.runtime.Immutable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.keygenqt.viewer.android.interfaces.IModel
-import kotlinx.serialization.Serializable
 
 /**
  * Follower model
  */
 @Entity
 @Immutable
-@Serializable
 data class FollowerModel(
     @PrimaryKey override val id: String,
     val login: String,
-    val nodeId: String,
     val avatarUrl: String,
-    val gravatarId: String,
-    val url: String,
     val htmlUrl: String,
-    val followersUrl: String,
-    val followingUrl: String,
-    val gistsUrl: String,
-    val starredUrl: String,
-    val subscriptionsUrl: String,
-    val organizationsUrl: String,
-    val reposUrl: String,
-    val eventsUrl: String,
-    val receivedEventsUrl: String,
-    val type: String,
-    val siteAdmin: Boolean,
-) : IModel
+) : IModel {
+    companion object {
+        fun mock() = FollowerModel(
+            id = "id",
+            login = "login",
+            avatarUrl = "https://api.keygenqt.com/api/ps/file/d00b98c9-1e22-45ab-ab9f-396fe4cc7a52.jpg",
+            htmlUrl = "https://keygenqt.com/",
+        )
+    }
+}
+
+fun com.keygenqt.viewer.data.responses.FollowerModel.toModel() = FollowerModel(
+    id = this.id,
+    login = this.login,
+    avatarUrl = this.avatarUrl,
+    htmlUrl = this.htmlUrl,
+)

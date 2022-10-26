@@ -12,6 +12,9 @@ ktorVersion = "2.1.2"
 # Security
 # https://developer.android.com/jetpack/androidx/releases/security
 securityCryptoVersion = "1.0.0"
+# Napier
+# https://github.com/AAkira/Napier
+napierVersion = "2.6.1"
 
 ##########################
 ## LIBRARIES
@@ -62,6 +65,14 @@ module = "androidx.security:security-crypto"
 [libraries.security-crypto.version]
 ref = "securityCryptoVersion"
 
+# Napier
+# Napier is a logger library for Kotlin Multiplatform.
+[libraries.napier]
+module = "io.github.aakira:napier"
+# versions
+[libraries.napier.version]
+ref = "napierVersion"
+
 ##########################
 ## BUNDLES
 ##########################
@@ -74,6 +85,7 @@ common = [
     "ktor-client-content-negotiation",
     "ktor-serialization-kotlinx-json",
     "ktor-client-logging",
+    "napier",
 ]
 android = [
     "security-crypto",

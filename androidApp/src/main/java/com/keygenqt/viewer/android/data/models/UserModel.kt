@@ -27,38 +27,49 @@ import kotlinx.serialization.Serializable
  */
 @Entity
 @Immutable
-@Serializable
 data class UserModel(
     @PrimaryKey override val id: String,
-    val login: String,
-    val nodeId: String,
     val avatarUrl: String,
-    val gravatarId: String,
-    val url: String,
-    val htmlUrl: String,
-    val followersUrl: String,
-    val followingUrl: String,
-    val gistsUrl: String,
-    val starredUrl: String,
-    val subscriptionsUrl: String,
-    val organizationsUrl: String,
-    val reposUrl: String,
-    val eventsUrl: String,
-    val receivedEventsUrl: String,
-    val type: String,
-    val siteAdmin: Boolean,
     val name: String,
-    val company: String,
-    val blog: String,
-    val location: String,
-    val email: String,
-    val hireable: String,
-    val bio: String,
-    val twitterUsername: String,
+    val company: String?,
+    val twitterUsername: String?,
     val publicRepos: Int,
-    val publicGists: Int,
     val followers: Int,
     val following: Int,
-    val createdAt: LocalDateTime?,
-    val updatedAt: LocalDateTime?,
-) : IModel
+    val blog: String?,
+    val location: String?,
+    val bio: String?,
+    val createdAt: String,
+) : IModel {
+    companion object {
+        fun mock() = UserModel(
+            id = "id",
+            avatarUrl = "https://api.keygenqt.com/api/ps/file/d00b98c9-1e22-45ab-ab9f-396fe4cc7a52.jpg",
+            name = "name",
+            company = "company",
+            twitterUsername = "twitterUsername",
+            publicRepos = 0,
+            followers = 0,
+            following = 0,
+            blog = "https://keygenqt.com/",
+            location = "location",
+            bio = "bio",
+            createdAt = "2016-02-15T10:21:09Z",
+        )
+    }
+}
+
+fun com.keygenqt.viewer.data.responses.UserModel.toModel() = UserModel(
+    id = this.id,
+    avatarUrl = this.avatarUrl,
+    name = this.name,
+    company = this.company,
+    twitterUsername = this.twitterUsername,
+    publicRepos = this.publicRepos,
+    followers = this.followers,
+    following = this.following,
+    blog = this.blog,
+    location = this.location,
+    bio = this.bio,
+    createdAt = this.createdAt,
+)

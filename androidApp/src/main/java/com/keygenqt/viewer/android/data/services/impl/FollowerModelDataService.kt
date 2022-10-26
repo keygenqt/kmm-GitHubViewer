@@ -13,14 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.services.dataService.impl
+package com.keygenqt.viewer.android.data.services.impl
 
 import androidx.paging.PagingSource
 import com.keygenqt.viewer.android.data.AppDatabase
 import com.keygenqt.viewer.android.data.dao.FollowerModelDao
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.interfaces.IAppDatabase
-import kotlinx.coroutines.flow.Flow
 
 /**
  * Service part for work with model [FollowerModel]

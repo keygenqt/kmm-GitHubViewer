@@ -15,30 +15,21 @@
  */
 package com.keygenqt.viewer.android.base
 
-import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.keygenqt.requests.RequestHandler
-import com.keygenqt.requests.isSucceeded
-import com.keygenqt.requests.success
-import com.keygenqt.viewer.android.R
-import com.keygenqt.viewer.android.base.exceptions.ResponseException
+import com.keygenqt.viewer.android.data.models.toModel
+import com.keygenqt.viewer.android.data.services.AppDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
-import com.keygenqt.viewer.android.services.apiService.AppApiService
-import com.keygenqt.viewer.android.services.dataService.AppDataService
-import com.keygenqt.viewer.android.services.dataService.impl.SecurityModelDataService
-import com.keygenqt.viewer.android.services.dataService.impl.UserModelDataService
+import com.keygenqt.viewer.android.data.services.impl.SecurityModelDataService
+import com.keygenqt.viewer.android.data.services.impl.UserModelDataService
 import com.keygenqt.viewer.android.utils.AuthUser
 import com.keygenqt.viewer.data.storage.CrossStorage
+import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -47,10 +38,9 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class AppViewModel @Inject constructor(
-    private val apiService: AppApiService,
+    private val client: AppHttpClient,
     private val dataService: AppDataService,
     private val storage: CrossStorage,
-    @ApplicationContext context: Context
 ) : ViewModel() {
 
     /**
@@ -69,20 +59,6 @@ class AppViewModel @Inject constructor(
     var isOnboardingDone = lazy { storage.isOnboardingDone }
 
     init {
-        // Listen errors responses
-        viewModelScope.launch {
-            RequestHandler.singleCollect {
-                val message = (it as? ResponseException)
-                    ?.let { ex -> context.getString(ex.resId) }
-                    ?: it.message
-                    ?: context.getString(R.string.error_something_wrong)
-                // show toast
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-                // logcat
-                Timber.e(it)
-            }
-        }
-
         // Listen refresh auth user
         viewModelScope.launch {
             AuthUser.singleCollectRefresh {
@@ -108,11 +84,12 @@ class AppViewModel @Inject constructor(
                             clearSecurityModel()
                             insertSecurityModel(model)
                         }
-                        Timber.e("Start app User")
+                        client.setToken(it.data?.accessToken ?: "")
                     }
                     else -> {
                         dataService.clearCacheAfterLogout()
                         Timber.e("Start app Guest")
+                        client.clearToken()
                     }
                 }
                 _isSplash.value = false
@@ -123,7 +100,9 @@ class AppViewModel @Inject constructor(
         viewModelScope.launch {
             dataService.getSecurityModel()?.let {
                 AuthUser.login(it)
+                client.setToken(it.accessToken)
             } ?: run {
+                client.clearToken()
                 AuthUser.logout()
             }
         }
@@ -134,14 +113,14 @@ class AppViewModel @Inject constructor(
      */
     private suspend fun queryRequiredForApp() {
         // first query get user
-        val responseUser = withContext(Dispatchers.IO) { apiService.getUser() }
-        if (responseUser.isSucceeded) {
-            responseUser.success {
-                dataService.withTransaction<UserModelDataService> {
-                    clearUserModel()
-                    insertUserModel(it)
-                }
+        try {
+            val response = client.get.user()
+            dataService.withTransaction<UserModelDataService> {
+                clearUserModel()
+                insertUserModel(response.toModel())
             }
+        } catch (ex: Exception) {
+            // @todo
         }
     }
 }

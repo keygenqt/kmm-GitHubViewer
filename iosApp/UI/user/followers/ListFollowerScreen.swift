@@ -21,7 +21,7 @@ struct ListFollowerScreen: View {
 
     var body: some View {
        AppList(viewModel: viewModel, refreshable: $refreshable) { model in
-           Link(destination: URL(string: model.url)!) {
+           Link(destination: URL(string: model.htmlUrl)!) {
                NavigationLink(destination: EmptyView()) {
                    ListFollowerItem(model: model)
                }
