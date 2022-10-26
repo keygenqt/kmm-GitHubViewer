@@ -58,7 +58,7 @@ struct WelcomeScreen: View {
 
                 HStack {
                     Spacer()
-                    TextBodySmall(text: L10nWelcome.version("0.0.1") + " " + greet)
+                    TextBodySmall(text: "\(L10nWelcome.version("0.0.1")) \(greet)")
                 }
             }
             .navigationBarTitle(L10nWelcome.title)

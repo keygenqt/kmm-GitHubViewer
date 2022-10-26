@@ -159,12 +159,12 @@ struct ViewRepoScreen: View {
                                 }
                             }
 
-                            if let value = viewModel.model?.license {
-                                if !value.name.isEmpty {
+                            if let value = viewModel.model?.license?.name {
+                                if !value.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {
                                             Text(L10nRepo.labelLicense).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                            Text(value.name).font(.body)
+                                            Text(value).font(.body)
                                         }
                                         Spacer()
                                     }
@@ -185,12 +185,12 @@ struct ViewRepoScreen: View {
                                 }
                             }
 
-                            if let value = viewModel.model?.owner {
-                                if !value.login.isEmpty {
+                            if let value = viewModel.model?.owner.login {
+                                if !value.isEmpty {
                                     HStack {
                                         VStack(alignment: .leading) {
                                             Text(L10nRepo.labelOwner).font(.caption).fontWeight(.bold).padding(.bottom, 1)
-                                            Text(value.login).font(.body)
+                                            Text(value).font(.body)
                                         }
                                         Spacer()
                                     }
@@ -235,9 +235,9 @@ struct ViewRepoScreen: View {
                         }
                         .background(Color.surfaceVariant)
                     }.refreshable {
-                        refreshable = true
-                        await viewModel.loadAsync(url)
-                        refreshable = false
+                            refreshable = true
+                            await viewModel.loadAsync(url)
+                            refreshable = false
                     }
                 }
             }

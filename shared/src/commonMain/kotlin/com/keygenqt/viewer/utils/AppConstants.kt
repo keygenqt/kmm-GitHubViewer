@@ -11,7 +11,7 @@ object AppConstants {
         /**
          * For simulate slow internet
          */
-        const val DEBUG_DELAY = 1000L
+        const val DEBUG_DELAY = 5000L
 
         /**
          * For debug credential login

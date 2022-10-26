@@ -11,7 +11,7 @@ import shared
 
 class ReposViewModel: ViewModelList<RepoModel> {
     var serviceNetwork = ReposNetwork()
-//    var serviceData = ReposData()
+    var serviceData = ReposData()
 
     @Published var orderASC: Bool = ConstantsKMM.STORAGE.isRepoOrder
 
@@ -22,8 +22,7 @@ class ReposViewModel: ViewModelList<RepoModel> {
     }
 
     override func getPageRealm() -> [RepoModel] {
-        return []
-//        return serviceData.getList().toRepoModels()
+        return serviceData.getList().toModels()
     }
 
     override func getPageNetwork(page: Int) async throws -> [RepoModel] {
@@ -31,7 +30,7 @@ class ReposViewModel: ViewModelList<RepoModel> {
     }
 
     override func saveList(response: [RepoModel]) {
-//        serviceData.clear()
-//        serviceData.save(response.toRealms())
+        serviceData.clear()
+        serviceData.save(response.toRealms())
     }
 }

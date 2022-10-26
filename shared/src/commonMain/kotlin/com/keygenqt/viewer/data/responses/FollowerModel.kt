@@ -60,3 +60,31 @@ data class FollowerModel(
     @SerialName("site_admin")
     val siteAdmin: Boolean,
 )
+
+fun createFollowerModel(
+    id: String,
+    login: String,
+    avatarUrl: String,
+    url: String
+): FollowerModel {
+    return FollowerModel(
+        id = id,
+        login = login,
+        nodeId = "",
+        avatarUrl = avatarUrl,
+        gravatarId = "",
+        url = url,
+        htmlUrl = "",
+        followersUrl = "",
+        followingUrl = "",
+        gistsUrl = "",
+        starredUrl = "",
+        subscriptionsUrl = "",
+        organizationsUrl = "",
+        reposUrl = "",
+        eventsUrl = "",
+        receivedEventsUrl = "",
+        type = "",
+        siteAdmin = false,
+    )
+}

@@ -30,9 +30,3 @@ struct ErrorListItemView: View {
         }
     }
 }
-
-//struct ErrorListItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ErrorListItemView(error: NetworkError.notFound)
-//    }
-//}

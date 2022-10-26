@@ -10,7 +10,7 @@ import shared
 
 class RepoViewModel: ObservableObject, Identifiable {
     var serviceNetwork = ReposNetwork()
-//    var serviceData = ReposData()
+    var serviceData = ReposData()
 
     @Published var loading: Bool = true
     @Published var error: ResponseError?
@@ -25,16 +25,16 @@ class RepoViewModel: ObservableObject, Identifiable {
                 self.error = error
             } else {
                 self.model = response
-//                self.serviceData.save(response!.toRealm())
+                self.serviceData.save(response!.toRealm())
             }
             self.loading = response == nil && error == nil
         }
     }
 
     func readDb(_ url: String) {
-//        DispatchQueue.main.async {
-//            self.model = self.serviceData.getModel(url)?.toModel()
-//        }
+        DispatchQueue.main.async {
+            self.model = self.serviceData.getModel(url)?.toModel()
+        }
     }
 
     func retry(_ url: String) {

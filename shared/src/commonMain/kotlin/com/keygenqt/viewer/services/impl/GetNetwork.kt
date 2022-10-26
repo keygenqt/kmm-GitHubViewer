@@ -9,6 +9,7 @@ import io.ktor.client.call.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.http.*
+import kotlinx.coroutines.delay
 
 class GetNetwork(val client: HttpClient) {
 
@@ -20,6 +21,7 @@ class GetNetwork(val client: HttpClient) {
         page: Int = 1,
         isSortASC: Boolean = false,
     ): List<RepoModel> {
+        delay(AppConstants.App.DEBUG_DELAY)
         return client.get("user/repos") {
             url {
                 with(parameters) {
@@ -40,6 +42,7 @@ class GetNetwork(val client: HttpClient) {
     suspend fun repo(
         url: String
     ): RepoModel {
+        delay(AppConstants.App.DEBUG_DELAY)
         return client.get(url).body()
     }
 

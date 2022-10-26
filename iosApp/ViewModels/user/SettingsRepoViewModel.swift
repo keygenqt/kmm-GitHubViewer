@@ -10,7 +10,7 @@ import shared
 
 class SettingsRepoViewModel: ObservableObject, Identifiable {
     var serviceNetwork = ReposNetwork()
-//    var serviceData = ReposData()
+    var serviceData = ReposData()
 
     @Published var loading: Bool = false
     @Published var error: ResponseError?
@@ -23,7 +23,7 @@ class SettingsRepoViewModel: ObservableObject, Identifiable {
             if response == nil {
                 self.error = error
             } else {
-//                self.serviceData.save(response!.toRealm())
+                self.serviceData.save(response!.toRealm())
             }
             self.loading = false
         }

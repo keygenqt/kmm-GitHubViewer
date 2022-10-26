@@ -10,13 +10,13 @@ import shared
 
 class ProfileViewModel: ObservableObject, Identifiable {
     var serviceNetwork = UserNetwork()
-//    var serviceData = UserData()
+    var serviceData = UserData()
 
     @Published var error: ResponseError?
     @Published var model: UserModel?
 
     init() {
-//        model = serviceData.getUser()?.toModel()
+        model = serviceData.getUser()?.toModel()
     }
 
     func updateUI(
@@ -28,16 +28,16 @@ class ProfileViewModel: ObservableObject, Identifiable {
                 self.error = error
             } else {
                 self.model = response
-//                self.serviceData.clear()
-//                self.serviceData.saveUser(response!.toRealm())
+                self.serviceData.clear()
+                self.serviceData.saveUser(response!.toRealm())
             }
         }
     }
 
     func readDb() {
-//        DispatchQueue.main.async {
-//            self.model = self.serviceData.getUser()?.toModel()
-//        }
+        DispatchQueue.main.async {
+            self.model = self.serviceData.getUser()?.toModel()
+        }
     }
 
     func retry() {

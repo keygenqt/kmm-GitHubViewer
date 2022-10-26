@@ -105,3 +105,58 @@ data class UserPlanModel(
     @SerialName("private_repos")
     val privateRepos: Int,
 )
+
+fun createUserModel(
+    id: String,
+    avatarUrl: String,
+    name: String,
+    publicRepos: Int,
+    followers: Int,
+    following: Int,
+    blog: String?,
+    location: String?,
+    company: String?,
+    bio: String?,
+    createdAt: String
+): UserModel {
+    return UserModel(
+        id = id,
+        login = "",
+        nodeId = "",
+        avatarUrl = avatarUrl,
+        gravatarId = "",
+        url = "",
+        htmlUrl = "",
+        followersUrl = "",
+        followingUrl = "",
+        gistsUrl = "",
+        starredUrl = "",
+        subscriptionsUrl = "",
+        organizationsUrl = "",
+        reposUrl = "",
+        eventsUrl = "",
+        receivedEventsUrl = "",
+        type = "",
+        siteAdmin = false,
+        name = name,
+        company = company,
+        blog = blog,
+        location = location,
+        email = null,
+        hireable = null,
+        bio = bio,
+        twitterUsername = null,
+        publicRepos = publicRepos,
+        publicGists = 0,
+        followers = followers,
+        following = following,
+        createdAt = createdAt,
+        updatedAt = "",
+        plan = UserPlanModel(
+            name = "free",
+            space = 0,
+            collaborators = 0,
+            privateRepos = 0,
+        ),
+    )
+}

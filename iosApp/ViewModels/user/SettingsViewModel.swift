@@ -10,7 +10,7 @@ import shared
 
 class SettingsViewModel: ObservableObject, Identifiable {
     var serviceNetwork = UserNetwork()
-//    var serviceData = UserData()
+    var serviceData = UserData()
 
     @Published var loading: Bool = false
     @Published var error: ResponseError?
@@ -23,8 +23,8 @@ class SettingsViewModel: ObservableObject, Identifiable {
             if response == nil {
                 self.error = error
             } else {
-//                self.serviceData.clear()
-//                self.serviceData.saveUser(response!.toRealm())
+                self.serviceData.clear()
+                self.serviceData.saveUser(response!.toRealm())
             }
             self.loading = false
         }
