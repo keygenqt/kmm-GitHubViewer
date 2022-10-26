@@ -27,9 +27,6 @@ kotlin {
     
     sourceSets {
         val commonMain by getting {
-
-
-
             dependencies {
                 implementation(kmm.bundles.common)
             }
@@ -73,13 +70,6 @@ buildkonfig {
     packageName = "com.keygenqt.viewer"
 
     defaultConfigs {
-        // Secret DB
-        buildConfigField(
-            STRING,
-            "SECRET_DB",
-            findProperty("secret_db").toString().replace("\"", "")
-        )
-
         // Client ID GitHub
         buildConfigField(
             STRING,
