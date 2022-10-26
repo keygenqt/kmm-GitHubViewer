@@ -29,9 +29,9 @@ struct SignInScreen: View {
         if viewModel.isShowProgressView {
             VStack {
                 if viewModel.error != nil {
-                    ErrorView(error: viewModel.error) {
-                        viewModel.clear()
-                    }
+                   ErrorView(error: viewModel.error) {
+                       viewModel.clear()
+                   }
                 } else {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .orange))

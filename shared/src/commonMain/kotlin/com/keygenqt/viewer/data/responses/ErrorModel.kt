@@ -13,23 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.android.services.api.impl
+package com.keygenqt.viewer.data.responses
 
-import com.keygenqt.viewer.android.data.requests.RefreshTokenRequest
-import com.keygenqt.viewer.android.data.responses.AuthResponse
-import com.keygenqt.viewer.utils.AppConstants
-import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.Url
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
- * Api for refresh token
+ * Error response model
  */
-interface ApiRefreshToken {
-    @POST
-    suspend fun refreshToken(
-        @Url url: String = AppConstants.Links.AUTH_URL,
-        @Body request: RefreshTokenRequest
-    ): Response<AuthResponse>
-}
+@Serializable
+data class ResponseErrorModel(
+    @SerialName("message")
+    val message: String,
+    @SerialName("documentation_url")
+    val documentationUrl: String
+)
+
+/**
+ * Error response [Exception]
+ */
+data class ResponseExceptionModel(
+    val code: Int,
+    override val message: String,
+    val documentationUrl: String
+) : RuntimeException()

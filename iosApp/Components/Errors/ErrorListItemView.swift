@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ErrorListItemView: View {
-    var error: NetworkError?
+    var error: ResponseError?
     var action: (() -> Void)?
 
     var body: some View {
@@ -31,8 +31,8 @@ struct ErrorListItemView: View {
     }
 }
 
-struct ErrorListItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        ErrorListItemView(error: NetworkError.notFound)
-    }
-}
+//struct ErrorListItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ErrorListItemView(error: NetworkError.notFound)
+//    }
+//}

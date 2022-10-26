@@ -35,7 +35,7 @@ import retrofit2.Response
 fun <T> Response<T>.delay(enable: Boolean): Response<T> {
     if (enable) {
         runBlocking {
-            delay(AppConstants.DEBUG_DELAY)
+            delay(AppConstants.App.DEBUG_DELAY)
         }
     }
     return this

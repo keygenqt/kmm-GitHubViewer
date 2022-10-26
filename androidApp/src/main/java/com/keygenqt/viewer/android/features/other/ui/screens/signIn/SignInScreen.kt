@@ -43,7 +43,7 @@ fun SignInScreen(
 
     val formFields = remember {
         FormFieldsState().apply {
-            add(SignInNickname, SignInNickname.state.default(if (BuildConfig.DEBUG) AppConstants.DEBUG_CREDENTIAL_LOGIN else ""))
+            add(SignInNickname, SignInNickname.state.default(if (BuildConfig.DEBUG) AppConstants.App.DEBUG_CREDENTIAL_LOGIN else ""))
         }
     }
 

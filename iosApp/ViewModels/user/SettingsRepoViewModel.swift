@@ -13,11 +13,11 @@ class SettingsRepoViewModel: ObservableObject, Identifiable {
 //    var serviceData = ReposData()
 
     @Published var loading: Bool = false
-    @Published var error: NetworkError?
+    @Published var error: ResponseError?
 
     func updateUI(
         response: RepoModel? = nil,
-        error: NetworkError? = nil
+        error: ResponseError? = nil
     ) {
         DispatchQueue.main.async {
             if response == nil {
@@ -52,8 +52,8 @@ class SettingsRepoViewModel: ObservableObject, Identifiable {
                     isPrivate: isPrivate
                 ))
                 updateUI(response: response)
-            } catch let networkError as NetworkError {
-                updateUI(error: networkError)
+            } catch let error as ResponseError {
+                updateUI(error: error)
             } catch {
                 print("Unexpected error: \(error).")
             }

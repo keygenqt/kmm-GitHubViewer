@@ -14,7 +14,7 @@ class SignInViewModel: ObservableObject, Identifiable {
     var serviceNetwork = AuthNetwork()
     
     @Published var isShowProgressView = false
-    @Published var error: NetworkError?
+    @Published var error: ResponseError?
 
     func authUser(url: URL, action: (() -> Void)?) {
         if url.path == "/oauth" {
@@ -29,8 +29,6 @@ class SignInViewModel: ObservableObject, Identifiable {
             // @todo error
         }
     }
-    
-
 
     func authUser(code: String, action: (() -> Void)?) async {
         DispatchQueue.main.async {
@@ -43,8 +41,8 @@ class SignInViewModel: ObservableObject, Identifiable {
             DispatchQueue.main.async {
                 action?()
             }
-        } catch let networkError as NetworkError {
-            self.error = networkError
+        } catch let error as ResponseError {
+            self.error = error
         } catch {
             print("Unexpected error: \(error).")
         }

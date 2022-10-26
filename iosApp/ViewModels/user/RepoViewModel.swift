@@ -13,12 +13,12 @@ class RepoViewModel: ObservableObject, Identifiable {
 //    var serviceData = ReposData()
 
     @Published var loading: Bool = true
-    @Published var error: NetworkError?
+    @Published var error: ResponseError?
     @Published var model: RepoModel?
 
     func updateUI(
         response: RepoModel? = nil,
-        error: NetworkError? = nil
+        error: ResponseError? = nil
     ) {
         DispatchQueue.main.async {
             if response == nil {
@@ -54,8 +54,8 @@ class RepoViewModel: ObservableObject, Identifiable {
         do {
             let response = try await serviceNetwork.getRepo(url)
             updateUI(response: response)
-        } catch let networkError as NetworkError {
-            updateUI(error: networkError)
+        } catch let error as ResponseError {
+            updateUI(error: error)
         } catch {
             print("Unexpected error: \(error).")
         }

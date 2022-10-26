@@ -30,9 +30,9 @@ struct ViewRepoScreen: View {
         VStack {
             if viewModel.error != nil {
                 VStack {
-                    ErrorView(error: viewModel.error) {
-                        viewModel.retry(url)
-                    }
+                   ErrorView(error: viewModel.error) {
+                       viewModel.retry(url)
+                   }
                 }
             } else if viewModel.model == nil {
                 VStack {

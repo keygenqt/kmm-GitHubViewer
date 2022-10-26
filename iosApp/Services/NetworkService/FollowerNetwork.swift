@@ -15,7 +15,7 @@ class FollowerNetwork {
                 if let models = models {
                     continuation.resume(returning: models)
                 } else {
-                    continuation.resume(throwing: error ?? NetworkError.notFound)
+                    continuation.resume(throwing: ResponseError.error(error?.localizedDescription))
                 }
             }
         }

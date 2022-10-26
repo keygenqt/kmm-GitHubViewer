@@ -2,23 +2,15 @@ package com.keygenqt.viewer.services.impl
 
 import com.keygenqt.viewer.data.responses.FollowerModel
 import com.keygenqt.viewer.data.responses.RepoModel
-import com.keygenqt.viewer.data.responses.RocketModel
 import com.keygenqt.viewer.data.responses.UserModel
 import com.keygenqt.viewer.utils.AppConstants
 import io.ktor.client.*
 import io.ktor.client.call.*
+import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
 class GetNetwork(val client: HttpClient) {
-
-    /**
-     * Test query without tokens from demo KMM
-     */
-    @Throws(Exception::class)
-    suspend fun rockets(): List<RocketModel> {
-        return client.get("https://api.spacexdata.com/v4/launches").body()
-    }
 
     /**
      * Get list repos user

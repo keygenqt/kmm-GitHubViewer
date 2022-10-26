@@ -50,9 +50,9 @@ struct SettingsScreen: View {
         VStack {
             if viewModel.error != nil {
                 VStack {
-                    ErrorView(error: viewModel.error) {
-                        viewModel.retry()
-                    }
+                   ErrorView(error: viewModel.error) {
+                       viewModel.retry()
+                   }
                 }
             } else {
                 AppForm(error: $error) {

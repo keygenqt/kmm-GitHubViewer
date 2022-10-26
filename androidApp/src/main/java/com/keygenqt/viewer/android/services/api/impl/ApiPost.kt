@@ -29,7 +29,7 @@ import retrofit2.http.Url
 interface ApiPost {
     @POST
     suspend fun oauth(
-        @Url url: String = AppConstants.AUTH_URL,
+        @Url url: String = AppConstants.Links.AUTH_URL,
         @Body request: AuthRequest
     ): Response<AuthResponse>
 }

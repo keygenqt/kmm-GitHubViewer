@@ -15,7 +15,7 @@ class UserNetwork {
                 if let model = model {
                     continuation.resume(returning: model)
                 } else {
-                    continuation.resume(throwing: error ?? NetworkError.notFound)
+                    continuation.resume(throwing: ResponseError.error(error?.localizedDescription))
                 }
             }
         }
@@ -29,7 +29,7 @@ class UserNetwork {
                 if let model = model {
                     continuation.resume(returning: model)
                 } else {
-                    continuation.resume(throwing: error ?? NetworkError.notFound)
+                    continuation.resume(throwing: ResponseError.error(error?.localizedDescription))
                 }
             }
         }

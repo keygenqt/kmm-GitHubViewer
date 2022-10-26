@@ -100,7 +100,7 @@ object HttpClientModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(AppConstants.API_URL)
+            .baseUrl(AppConstants.Links.API_URL)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
     }

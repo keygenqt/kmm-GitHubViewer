@@ -1,10 +1,13 @@
 package com.keygenqt.viewer.services
 
+import com.keygenqt.viewer.data.responses.ResponseErrorModel
+import com.keygenqt.viewer.data.responses.ResponseExceptionModel
 import com.keygenqt.viewer.services.impl.GetNetwork
 import com.keygenqt.viewer.services.impl.PatchNetwork
 import com.keygenqt.viewer.services.impl.PostNetwork
 import com.keygenqt.viewer.utils.AppConstants
 import io.ktor.client.*
+import io.ktor.client.call.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
@@ -36,10 +39,27 @@ class AppHttpClient(
     }
 
     val httpClient = HttpClient {
+
+        expectSuccess = false
+
+        HttpResponseValidator {
+            validateResponse { response ->
+                if (response.status != HttpStatusCode.OK) {
+                    val error: ResponseErrorModel = response.body()
+                    throw ResponseExceptionModel(
+                        code = response.status.value,
+                        message = error.message,
+                        documentationUrl = error.documentationUrl,
+                    )
+                }
+            }
+        }
+
         install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL
         }
+
         install(DefaultRequest) {
             url(AppConstants.Links.API_URL)
             if (token.isNotBlank()) {
@@ -48,6 +68,7 @@ class AppHttpClient(
             header(HttpHeaders.Accept, "application/vnd.github.v3+json")
             contentType(ContentType.Application.Json)
         }
+
         install(ContentNegotiation) {
             json(json)
         }
