@@ -19,9 +19,9 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
-import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.profile.navigation.route.ProfileNavRoute
 import com.keygenqt.viewer.android.features.profile.ui.actions.ProfileActions

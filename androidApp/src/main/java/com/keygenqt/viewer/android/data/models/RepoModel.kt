@@ -16,12 +16,9 @@
 package com.keygenqt.viewer.android.data.models
 
 import androidx.compose.runtime.Immutable
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.keygenqt.viewer.android.interfaces.IModel
-import kotlinx.datetime.LocalDateTime
-import kotlinx.serialization.Serializable
 
 /**
  * Enum for visibility model [RepoModel]

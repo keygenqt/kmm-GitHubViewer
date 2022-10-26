@@ -88,7 +88,7 @@ dependencies {
 
 // Common
 dependencies {
-    implementation(kmm.bundles.common)
+    implementation(kmm.bundles.android)
 }
 
 // Android

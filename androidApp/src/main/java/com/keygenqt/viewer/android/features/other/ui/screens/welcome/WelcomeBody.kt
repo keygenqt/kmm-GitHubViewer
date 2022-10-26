@@ -17,12 +17,10 @@ package com.keygenqt.viewer.android.features.other.ui.screens.welcome
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material.Card
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -42,11 +40,11 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.viewer.Greeting
 import com.keygenqt.viewer.android.BuildConfig
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.base.AppViewModel
-import com.keygenqt.routing.NavigationDispatcher
-import com.keygenqt.viewer.Greeting
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextBodySmall
 import com.keygenqt.viewer.android.compose.texts.TextDisplayMedium

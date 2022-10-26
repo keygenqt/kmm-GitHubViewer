@@ -15,7 +15,6 @@
  */
 package com.keygenqt.viewer.android.base
 
-import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.keygenqt.routing.NavigationDispatcher
 

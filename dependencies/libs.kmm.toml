@@ -79,7 +79,6 @@ ref = "napierVersion"
 
 [bundles]
 common = [
-    "security-crypto",
     "kotlinx-datetime",
     "ktor-client-core",
     "ktor-client-content-negotiation",
@@ -88,6 +87,7 @@ common = [
     "napier",
 ]
 android = [
+    "kotlinx-datetime",
     "security-crypto",
     "ktor-client-android",
 ]

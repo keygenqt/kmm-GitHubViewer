@@ -18,9 +18,9 @@ package com.keygenqt.viewer.android.features.other.navigation.graph.impl
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
+import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.base.AppActions
 import com.keygenqt.viewer.android.base.LocalNavigationDispatcher
-import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.extensions.composableAnimation
 import com.keygenqt.viewer.android.features.other.navigation.route.OtherNavRoute
 import com.keygenqt.viewer.android.features.other.ui.actions.OnboardingActions

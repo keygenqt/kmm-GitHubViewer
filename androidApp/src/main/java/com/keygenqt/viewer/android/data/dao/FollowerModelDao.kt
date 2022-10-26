@@ -21,7 +21,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.keygenqt.viewer.android.data.models.FollowerModel
-import kotlinx.coroutines.flow.Flow
 
 /**
  * Dao for model [FollowerModel]

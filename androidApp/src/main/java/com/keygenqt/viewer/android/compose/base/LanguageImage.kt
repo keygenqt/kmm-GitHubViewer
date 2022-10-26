@@ -34,8 +34,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.utils.AppConstants.Language.C
 import com.keygenqt.viewer.utils.AppConstants.Language.BASH
+import com.keygenqt.viewer.utils.AppConstants.Language.C
 import com.keygenqt.viewer.utils.AppConstants.Language.CPLUSPLUS
 import com.keygenqt.viewer.utils.AppConstants.Language.DART
 import com.keygenqt.viewer.utils.AppConstants.Language.ELIXIR

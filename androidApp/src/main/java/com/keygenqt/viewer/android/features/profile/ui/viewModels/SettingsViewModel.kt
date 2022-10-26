@@ -19,9 +19,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.viewer.android.data.models.toModel
 import com.keygenqt.viewer.android.data.services.AppDataService
+import com.keygenqt.viewer.android.data.services.impl.UserModelDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.settings.SettingsScreen
-import com.keygenqt.viewer.android.data.services.impl.UserModelDataService
 import com.keygenqt.viewer.data.requests.UserRequest
 import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -99,14 +99,16 @@ class SettingsViewModel @Inject constructor(
             _loading.value = true
             _success.value = false
             try {
-                client.patch.updateUser(UserRequest(
-                     name = name,
-                     blog = blog,
-                     twitterUsername = twitterUsername,
-                     company = company,
-                     location = location,
-                     bio = bio,
-                )).let {
+                client.patch.updateUser(
+                    UserRequest(
+                        name = name,
+                        blog = blog,
+                        twitterUsername = twitterUsername,
+                        company = company,
+                        location = location,
+                        bio = bio,
+                    )
+                ).let {
                     dataService.withTransaction<UserModelDataService> {
                         clearUserModel()
                         insertUserModel(it.toModel())

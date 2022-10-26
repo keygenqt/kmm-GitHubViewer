@@ -17,7 +17,6 @@ package com.keygenqt.viewer.android.data.dao
 
 import androidx.room.*
 import com.keygenqt.viewer.android.data.models.SecurityModel
-import kotlinx.coroutines.flow.Flow
 
 /**
  * Dao for model [SecurityModel]

@@ -19,9 +19,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.viewer.android.data.models.toModel
 import com.keygenqt.viewer.android.data.services.AppDataService
+import com.keygenqt.viewer.android.data.services.impl.UserModelDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.profile.ui.screens.profile.ProfileScreen
-import com.keygenqt.viewer.android.data.services.impl.UserModelDataService
 import com.keygenqt.viewer.data.storage.CrossStorage
 import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel

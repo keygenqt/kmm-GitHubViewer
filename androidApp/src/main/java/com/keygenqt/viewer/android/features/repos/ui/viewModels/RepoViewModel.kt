@@ -20,10 +20,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keygenqt.viewer.android.data.models.toModel
 import com.keygenqt.viewer.android.data.services.AppDataService
+import com.keygenqt.viewer.android.data.services.impl.RepoModelDataService
 import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.features.repos.navigation.route.ReposNavRoute
 import com.keygenqt.viewer.android.features.repos.ui.screens.repo.RepoScreen
-import com.keygenqt.viewer.android.data.services.impl.RepoModelDataService
 import com.keygenqt.viewer.services.AppHttpClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

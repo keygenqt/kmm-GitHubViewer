@@ -70,10 +70,12 @@ fun SignInBody(
             // clear focuses
             localFocusManager.clearFocus()
             // submit query
-            uriHandler?.openUri(AppHelper.getOauthLink(
-                login = formFields.get(SignInNickname).getValue(),
-                state = UUID.randomUUID().toString()
-            ))
+            uriHandler?.openUri(
+                AppHelper.getOauthLink(
+                    login = formFields.get(SignInNickname).getValue(),
+                    state = UUID.randomUUID().toString()
+                )
+            )
             // hide keyboard
             softwareKeyboardController?.hide()
         }

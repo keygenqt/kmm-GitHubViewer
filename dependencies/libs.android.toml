@@ -3,7 +3,7 @@
 # https://kotlinlang.org/docs/releases.html#release-details
 kotlinVersion = "1.7.20"
 # https://github.com/pinterest/ktlint/releases
-ktlintVersion = "0.47.1"
+ktlintVersion = "0.42.1"
 
 # Jetpack Compose
 # https://developer.android.com/jetpack/androidx/releases/compose

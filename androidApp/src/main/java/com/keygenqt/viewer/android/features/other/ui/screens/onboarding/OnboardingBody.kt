@@ -36,8 +36,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.keygenqt.modifier.disableHorizontalScroll
-import com.keygenqt.viewer.android.R
 import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.compose.base.AppScaffold
 import com.keygenqt.viewer.android.compose.texts.TextLabelLarge
 import com.keygenqt.viewer.android.features.other.ui.actions.OnboardingActions

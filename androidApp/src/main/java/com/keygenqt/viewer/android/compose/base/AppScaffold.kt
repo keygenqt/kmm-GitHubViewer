@@ -24,8 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.keygenqt.modifier.ifFalse
-import com.keygenqt.modifier.ifTrue
 import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.viewer.android.compose.overload.AppSwipeRefreshIndicator
 import com.keygenqt.viewer.android.extensions.AnimatedNavGraphState

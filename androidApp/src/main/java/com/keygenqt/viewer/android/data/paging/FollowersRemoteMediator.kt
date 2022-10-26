@@ -22,8 +22,8 @@ import androidx.paging.RemoteMediator
 import com.keygenqt.viewer.android.data.models.FollowerModel
 import com.keygenqt.viewer.android.data.models.toModel
 import com.keygenqt.viewer.android.data.services.AppDataService
-import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.data.services.impl.FollowerModelDataService
+import com.keygenqt.viewer.android.extensions.withTransaction
 import com.keygenqt.viewer.android.utils.ConstantsPaging.CACHE_TIMEOUT
 import com.keygenqt.viewer.data.storage.CrossStorage
 import com.keygenqt.viewer.services.AppHttpClient
