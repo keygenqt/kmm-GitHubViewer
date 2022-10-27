@@ -17,11 +17,9 @@ Android part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.h
 * Split of graphs
 * Routing
 * Graph animation
-* Service layer API
 * Service layer DB
 * Security Database
 * Security SharedPreferences
-* Serialization
 * OAuth with [Dynamic Links](https://firebase.google.com/docs/dynamic-links)
 * Error handling
 * States query for viewModel
@@ -34,12 +32,10 @@ Android part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.h
 * [Compose Modifier Extension](https://github.com/keygenqt/compose-modifier-ext)
 * [Compose Forms](https://github.com/keygenqt/compose-forms)
 * [Compose Routing](https://github.com/keygenqt/compose-routing)
-* [Android Response Result](https://github.com/keygenqt/android-response-result)
 
 ### Base Libraries
 * [Material You](https://m3.material.io/)
 * [Accompanist](https://google.github.io/accompanist/)
-* [Retrofit](https://square.github.io/retrofit/)
 * [Paging](https://developer.android.com/jetpack/androidx/releases/paging)
 * [Room](https://developer.android.com/training/data-storage/room)
 * [Hilt](https://dagger.dev/hilt/)
