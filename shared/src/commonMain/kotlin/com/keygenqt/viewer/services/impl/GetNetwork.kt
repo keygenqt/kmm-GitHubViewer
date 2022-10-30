@@ -36,12 +36,12 @@ class GetNetwork(val client: HttpClient) {
         page: Int = 1,
         isSortASC: Boolean = false,
     ): List<RepoModel> {
-        delay(AppConstants.App.DEBUG_DELAY)
+        delay(AppConstants.APP.DEBUG_DELAY.toLong())
         return client.get("user/repos") {
             url {
                 with(parameters) {
                     append("page", page.toString())
-                    append("per_page", AppConstants.App.PAGE_LIMIT.toString())
+                    append("per_page", AppConstants.APP.PAGE_LIMIT.toString())
                     append("type", "owner")
                     append("sort", "created")
                     append("direction", if (isSortASC) "asc" else "desc")
@@ -57,7 +57,7 @@ class GetNetwork(val client: HttpClient) {
     suspend fun repo(
         url: String
     ): RepoModel {
-        delay(AppConstants.App.DEBUG_DELAY)
+        delay(AppConstants.APP.DEBUG_DELAY.toLong())
         return client.get(url).body()
     }
 
@@ -72,7 +72,7 @@ class GetNetwork(val client: HttpClient) {
             url {
                 with(parameters) {
                     append("page", page.toString())
-                    append("per_page", AppConstants.App.PAGE_LIMIT.toString())
+                    append("per_page", AppConstants.APP.PAGE_LIMIT.toString())
                 }
             }
         }.body()

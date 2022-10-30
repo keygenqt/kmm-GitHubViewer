@@ -13,17 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer
+package com.keygenqt.viewer.extensions
 
-import kotlin.js.JsExport
-import kotlin.js.JsName
-
-@JsExport
-@JsName("Greeting")
-class Greeting {
-    private val platform: Platform = getPlatform()
-
-    fun greeting(): String {
-        return "Platform: (${platform.name})"
-    }
-}
+/**
+ * Format timestamp
+ */
+actual fun Long.dateFormat(format: String): String = "TODO"

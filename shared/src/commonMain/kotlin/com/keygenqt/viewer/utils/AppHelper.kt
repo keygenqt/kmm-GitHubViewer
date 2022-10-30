@@ -34,7 +34,7 @@ object AppHelper {
         login: String,
         state: String
     ): String {
-        return URLBuilder(AppConstants.Links.OAUTH_URL).apply {
+        return URLBuilder(AppConstants.LINKS.OAUTH_URL).apply {
             with(parameters) {
                 append("login", login)
                 append("state", state)

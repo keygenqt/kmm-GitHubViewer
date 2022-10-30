@@ -15,15 +15,8 @@
  */
 package com.keygenqt.viewer
 
-import kotlin.js.JsExport
-import kotlin.js.JsName
-
-@JsExport
-@JsName("Greeting")
-class Greeting {
-    private val platform: Platform = getPlatform()
-
-    fun greeting(): String {
-        return "Platform: (${platform.name})"
-    }
+class JSPlatform : Platform {
+    override val name: String = "Kotlin/JS"
 }
+
+actual fun getPlatform(): Platform = JSPlatform()

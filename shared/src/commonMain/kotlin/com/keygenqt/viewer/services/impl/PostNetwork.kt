@@ -32,7 +32,7 @@ class PostNetwork(val client: HttpClient) {
     suspend fun oauth(
         code: String
     ): SecurityModel {
-        return client.post(AppConstants.Links.AUTH_URL) {
+        return client.post(AppConstants.LINKS.AUTH_URL) {
             setBody(
                 AuthRequest(
                     code = code,

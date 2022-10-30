@@ -1,4 +1,5 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+import java.util.Date
 
 plugins {
     kotlin("multiplatform")
@@ -6,6 +7,7 @@ plugins {
     id("com.android.library")
     kotlin("plugin.serialization")
     id("com.codingfeline.buildkonfig")
+    id("dev.petuska.npm.publish") version "3.0.3"
 }
 
 kotlin {
@@ -14,10 +16,17 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    js(IR) {
+        moduleName = "shared"
+        version = "0.0.3"
+        nodejs()
+        binaries.library()
+    }
+
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
-        version = "1.0"
+        version = "0.0.1"
         ios.deploymentTarget = "16"
         podfile = project.file("../iosApp/Podfile")
         framework {
@@ -27,6 +36,12 @@ kotlin {
     }
     
     sourceSets {
+        all {
+            languageSettings.apply {
+                optIn("kotlin.js.ExperimentalJsExport")
+            }
+        }
+
         val commonMain by getting {
             dependencies {
                 implementation(kmm.bundles.common)
@@ -40,6 +55,18 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+        val jsMain by getting {
+            dependencies {
+                implementation(kmm.bundles.js)
+
+//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.346")
+//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.346")
+//                implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.9.3-pre.346")
+//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.3.0-pre.346")
+//                implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.346")
+//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.346")
             }
         }
         val androidTest by getting
@@ -100,5 +127,15 @@ android {
     defaultConfig {
         minSdk = 26
         targetSdk = 32
+    }
+}
+
+npmPublish {
+    packages {
+        named("js") {
+            packageJson {
+                version.set("0.0." + Date().time)
+            }
+        }
     }
 }

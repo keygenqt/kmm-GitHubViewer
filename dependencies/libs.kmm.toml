@@ -41,6 +41,8 @@ module = "io.ktor:ktor-serialization-kotlinx-json"
 module = "io.ktor:ktor-client-android"
 [libraries.ktor-client-darwin]
 module = "io.ktor:ktor-client-darwin"
+[libraries.ktor-client-js]
+module = "io.ktor:ktor-client-js"
 [libraries.ktor-client-logging]
 module = "io.ktor:ktor-client-logging"
 # versions
@@ -55,6 +57,8 @@ ref = "ktorVersion"
 [libraries.ktor-client-darwin.version]
 ref = "ktorVersion"
 [libraries.ktor-client-logging.version]
+ref = "ktorVersion"
+[libraries.ktor-client-js.version]
 ref = "ktorVersion"
 
 # Security
@@ -93,4 +97,7 @@ android = [
 ]
 ios = [
     "ktor-client-darwin",
+]
+js = [
+    "ktor-client-js",
 ]

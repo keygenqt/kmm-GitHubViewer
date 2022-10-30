@@ -76,7 +76,7 @@ class AppHttpClient(
         }
 
         install(DefaultRequest) {
-            url(AppConstants.Links.API_URL)
+            url(AppConstants.LINKS.API_URL)
             if (token.isNotBlank()) {
                 header(HttpHeaders.Authorization, "token $token")
             }
