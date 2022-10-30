@@ -15,6 +15,10 @@
  */
 package com.keygenqt.viewer.data.storage
 
+import kotlin.js.JsExport
+
+@Suppress("NON_EXPORTABLE_TYPE")
+@JsExport
 class CrossStorage(val storage: PlatformStorage) {
 
     private val ps: IStorage = getStorage(storage)
@@ -61,14 +65,14 @@ class CrossStorage(val storage: PlatformStorage) {
     /**
      * Saving list update data
      */
-    var lastUpdateListRepos: Long
-        get() = ps.getLong(KEYS.LAST_UPDATE_LIST_REPOS.name)
-        set(value) = ps.setLong(KEYS.LAST_UPDATE_LIST_REPOS.name, value)
+    var lastUpdateListRepos: Int
+        get() = ps.getInt(KEYS.LAST_UPDATE_LIST_REPOS.name)
+        set(value) = ps.setInt(KEYS.LAST_UPDATE_LIST_REPOS.name, value)
 
     /**
      * Saving list update data
      */
-    var lastUpdateListFollowers: Long
-        get() = ps.getLong(KEYS.LAST_UPDATE_LIST_FOLLOWERS.name)
-        set(value) = ps.setLong(KEYS.LAST_UPDATE_LIST_FOLLOWERS.name, value)
+    var lastUpdateListFollowers: Int
+        get() = ps.getInt(KEYS.LAST_UPDATE_LIST_FOLLOWERS.name)
+        set(value) = ps.setInt(KEYS.LAST_UPDATE_LIST_FOLLOWERS.name, value)
 }

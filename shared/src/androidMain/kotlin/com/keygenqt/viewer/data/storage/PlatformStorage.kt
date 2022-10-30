@@ -35,14 +35,6 @@ class AndroidPlatformStorage(
         .putInt(key, value)
         .apply()
 
-    override fun getLong(key: String): Long = storage
-        .getLong(key, 0L)
-
-    override fun setLong(key: String, value: Long) = storage
-        .edit()
-        .putLong(key, value)
-        .apply()
-
     override fun getBool(key: String): Boolean = storage
         .getBoolean(key, false)
 

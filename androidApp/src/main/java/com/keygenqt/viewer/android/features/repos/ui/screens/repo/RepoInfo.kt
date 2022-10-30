@@ -57,6 +57,7 @@ import com.keygenqt.viewer.android.theme.AppTheme
 import com.keygenqt.viewer.extensions.dateFormat
 import com.keygenqt.viewer.extensions.toTimestamp
 import com.keygenqt.viewer.utils.AppConstants
+import com.keygenqt.viewer.utils.AppHelper
 
 @Composable
 fun RepoInfo(
@@ -199,10 +200,7 @@ fun RepoInfo(
                 InfoBlockCount(
                     label = stringResource(id = R.string.repo_label_size),
                     vectorImage = Icons.Default.Storage,
-                    count = Formatter.formatShortFileSize(
-                        LocalContext.current,
-                        model.size.toLong() * 10000
-                    )
+                    count = AppHelper.humanReadableByte(model.size.toLong() * 10000.0)
                 )
             }
         }
@@ -237,12 +235,12 @@ fun RepoInfo(
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_updated_at),
                         text = model.updatedAt.toTimestamp()
-                            .dateFormat(AppConstants.DateFormat.SHORT)
+                            .dateFormat(AppConstants.DATE_FORMAT.SHORT)
                     )
                     InfoBlock(
                         label = stringResource(id = R.string.repo_label_created_at),
                         text = model.createdAt.toTimestamp()
-                            .dateFormat(AppConstants.DateFormat.SHORT)
+                            .dateFormat(AppConstants.DATE_FORMAT.SHORT)
                     )
                     if (model.desc != null) {
                         InfoBlock(

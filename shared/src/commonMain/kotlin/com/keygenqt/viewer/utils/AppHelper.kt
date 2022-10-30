@@ -18,7 +18,9 @@ package com.keygenqt.viewer.utils
 import com.keygenqt.viewer.BuildKonfig
 import com.keygenqt.viewer.extensions.round
 import io.ktor.http.*
+import kotlin.js.JsExport
 
+@JsExport
 object AppHelper {
     /**
      * Generate dynamic link
@@ -48,13 +50,13 @@ object AppHelper {
     /**
      * Bites to human string
      */
-    fun humanReadableByte(bytes: Long) = when {
-        bytes == Long.MIN_VALUE || bytes < 0 -> "N/A"
+    fun humanReadableByte(bytes: Double) = when {
+        bytes == Double.MIN_VALUE || bytes < 0 -> "N/A"
         bytes < 1024L -> "$bytes B"
-        bytes <= 0xfffccccccccccccL shr 40 -> "${(bytes.toDouble() / (0x1 shl 10)).round()} KiB"
-        bytes <= 0xfffccccccccccccL shr 30 -> "${(bytes.toDouble() / (0x1 shl 20)).round()} MiB"
-        bytes <= 0xfffccccccccccccL shr 30 -> "${(bytes.toDouble() / (0x1 shl 20)).round()} MiB"
-        bytes <= 0xfffccccccccccccL shr 20 -> "${(bytes.toDouble() / (0x1 shl 30)).round()} GiB"
+        bytes <= 0xfffccccccccccccL shr 40 -> "${(bytes / (0x1 shl 10)).round()} KiB"
+        bytes <= 0xfffccccccccccccL shr 30 -> "${(bytes / (0x1 shl 20)).round()} MiB"
+        bytes <= 0xfffccccccccccccL shr 30 -> "${(bytes / (0x1 shl 20)).round()} MiB"
+        bytes <= 0xfffccccccccccccL shr 20 -> "${(bytes / (0x1 shl 30)).round()} GiB"
         else -> "Too big"
     }
 }

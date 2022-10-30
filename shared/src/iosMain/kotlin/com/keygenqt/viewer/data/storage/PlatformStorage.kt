@@ -31,12 +31,6 @@ class IOSPlatformStorage(
     override fun setInt(key: String, value: Int) =
         storage.setInteger(value.toLong(), key)
 
-    override fun getLong(key: String) =
-        storage.integerForKey(key)
-
-    override fun setLong(key: String, value: Long) =
-        storage.setInteger(value, key)
-
     override fun getBool(key: String) =
         storage.boolForKey(key)
 

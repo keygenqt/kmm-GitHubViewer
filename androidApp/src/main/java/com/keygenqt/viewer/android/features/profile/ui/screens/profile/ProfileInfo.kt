@@ -143,7 +143,7 @@ fun ProfileInfo(
 
             InfoBlock(
                 label = stringResource(id = R.string.profile_label_created_at),
-                text = model.createdAt.toTimestamp().dateFormat(AppConstants.DateFormat.SHORT)
+                text = model.createdAt.toTimestamp().dateFormat(AppConstants.DATE_FORMAT.SHORT)
             )
 
             if (model.location != null) {

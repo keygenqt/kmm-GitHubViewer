@@ -17,26 +17,23 @@ package com.keygenqt.viewer.data.storage
 
 import org.w3c.dom.Storage
 
+@JsExport
 class StorageClass : Storage()
 
 actual typealias PlatformStorage = StorageClass
 
+@JsExport
 actual fun getStorage(storage: PlatformStorage): IStorage = JSPlatformStorage(storage)
 
+@JsExport
 class JSPlatformStorage(
-    private val storage: Storage
+    private val storage: StorageClass
 ) : IStorage {
 
     override fun getInt(key: String) =
         storage.getItem(key)?.toIntOrNull() ?: 0
 
     override fun setInt(key: String, value: Int) =
-        storage.setItem(key, value.toString())
-
-    override fun getLong(key: String) =
-        storage.getItem(key)?.toLongOrNull() ?: 0
-
-    override fun setLong(key: String, value: Long) =
         storage.setItem(key, value.toString())
 
     override fun getBool(key: String) =

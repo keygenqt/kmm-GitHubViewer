@@ -58,7 +58,7 @@ class ReposViewModel @Inject constructor(
      */
     @OptIn(ExperimentalPagingApi::class)
     val listRepo: Flow<PagingData<RepoModel>> = Pager(
-        config = PagingConfig(pageSize = AppConstants.App.PAGE_LIMIT),
+        config = PagingConfig(pageSize = AppConstants.APP.PAGE_LIMIT),
         remoteMediator = ReposRemoteMediator(client, dataService, storage)
     ) {
         dataService.pagingSourceRepoModels()

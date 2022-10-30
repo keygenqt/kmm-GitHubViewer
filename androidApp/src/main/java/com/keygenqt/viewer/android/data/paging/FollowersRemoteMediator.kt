@@ -77,7 +77,7 @@ class FollowersRemoteMediator(
             dataService.withTransaction<FollowerModelDataService> {
                 if (loadType == LoadType.REFRESH) {
                     // change update timer
-                    storage.lastUpdateListFollowers = System.currentTimeMillis()
+                    storage.lastUpdateListFollowers = (System.currentTimeMillis() / 1000).toInt()
                     // clear data
                     clearFollowerModel()
                 }

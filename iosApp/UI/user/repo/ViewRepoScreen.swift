@@ -139,7 +139,7 @@ struct ViewRepoScreen: View {
                                 .background(Color.surfaceVariant)
                                 .clipShape(Capsule())
 
-                                Text(String(ConstantsKMM.HELPER.humanReadableByte(bytes: Int64(model.size * 1024))))
+                                Text(String(ConstantsKMM.HELPER.humanReadableByte(bytes: Double(model.size * 1024))))
                             }
                         }
                         .padding(EdgeInsets(top: 20, leading: 15, bottom: 15, trailing: 15))

@@ -44,7 +44,7 @@ class FollowersViewModel @Inject constructor(
      */
     @OptIn(ExperimentalPagingApi::class)
     val listFollowers: Flow<PagingData<FollowerModel>> = Pager(
-        config = PagingConfig(pageSize = AppConstants.App.PAGE_LIMIT),
+        config = PagingConfig(pageSize = AppConstants.APP.PAGE_LIMIT),
         remoteMediator = FollowersRemoteMediator(client, dataService, storage)
     ) {
         dataService.pagingSourceFollowerModels()

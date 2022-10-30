@@ -77,7 +77,7 @@ class ReposRemoteMediator(
             dataService.withTransaction<RepoModelDataService> {
                 if (loadType == LoadType.REFRESH) {
                     // change update timer
-                    storage.lastUpdateListRepos = System.currentTimeMillis()
+                    storage.lastUpdateListRepos = (System.currentTimeMillis() / 1000).toInt()
                     // clear data
                     clearRepoModel()
                 }

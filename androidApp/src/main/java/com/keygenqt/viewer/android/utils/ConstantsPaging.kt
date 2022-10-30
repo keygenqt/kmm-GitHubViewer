@@ -26,5 +26,5 @@ object ConstantsPaging {
     /**
      * Lists refresh once per hour
      */
-    val CACHE_TIMEOUT = TimeUnit.HOURS.toMillis(1)
+    val CACHE_TIMEOUT = TimeUnit.HOURS.toSeconds(1)
 }

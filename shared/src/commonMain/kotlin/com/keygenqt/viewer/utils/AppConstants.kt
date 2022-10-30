@@ -19,14 +19,14 @@ import kotlin.js.JsExport
 
 @JsExport
 object AppConstants {
-    val APP = App
-    val LINKS = Links
-    val DATE_FORMAT = DateFormat
-    val LANGUAGE = Language
+    val APP = ConstantsApp
+    val LINKS = ConstantsLinks
+    val DATE_FORMAT = ConstantsDateFormat
+    val LANGUAGE = ConstantsLanguage
 }
 
 @JsExport
-object App {
+object ConstantsApp {
     /**
      * For simulate slow internet
      */
@@ -44,7 +44,7 @@ object App {
 }
 
 @JsExport
-object Links {
+object ConstantsLinks {
     /**
      * Api url auth
      */
@@ -66,12 +66,12 @@ object Links {
 }
 
 @JsExport
-object DateFormat {
+object ConstantsDateFormat {
     const val SHORT = "dd.MM.yyyy"
 }
 
 @JsExport
-object Language {
+object ConstantsLanguage {
     const val SWIFT = "swift"
     const val BASH = "shell"
     const val C = "c"

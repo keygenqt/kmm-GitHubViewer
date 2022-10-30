@@ -34,23 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.keygenqt.viewer.android.R
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.utils.AppConstants.Language.BASH
-import com.keygenqt.viewer.utils.AppConstants.Language.C
-import com.keygenqt.viewer.utils.AppConstants.Language.CPLUSPLUS
-import com.keygenqt.viewer.utils.AppConstants.Language.DART
-import com.keygenqt.viewer.utils.AppConstants.Language.ELIXIR
-import com.keygenqt.viewer.utils.AppConstants.Language.ERLANG
-import com.keygenqt.viewer.utils.AppConstants.Language.GROOVY
-import com.keygenqt.viewer.utils.AppConstants.Language.HASKELL
-import com.keygenqt.viewer.utils.AppConstants.Language.JAVA
-import com.keygenqt.viewer.utils.AppConstants.Language.JAVASCRIPT
-import com.keygenqt.viewer.utils.AppConstants.Language.KOTLIN
-import com.keygenqt.viewer.utils.AppConstants.Language.PHP
-import com.keygenqt.viewer.utils.AppConstants.Language.PYTHON
-import com.keygenqt.viewer.utils.AppConstants.Language.RUBY
-import com.keygenqt.viewer.utils.AppConstants.Language.RUST
-import com.keygenqt.viewer.utils.AppConstants.Language.SCALA
-import com.keygenqt.viewer.utils.AppConstants.Language.SWIFT
+import com.keygenqt.viewer.utils.AppConstants.LANGUAGE
 import java.util.*
 
 /**
@@ -61,43 +45,43 @@ fun LanguageImage(
     language: String,
 ) {
     val resId = when (language.lowercase(Locale.getDefault())) {
-        SWIFT -> R.drawable.ic_pl_swift_plain
-        BASH -> R.drawable.ic_pl_bash_plain
-        C -> R.drawable.ic_pl_c_plain
-        CPLUSPLUS -> R.drawable.ic_pl_cplusplus_plain
-        DART -> R.drawable.ic_pl_dart_plain
-        ELIXIR -> R.drawable.ic_pl_elixir_plain
-        ERLANG -> R.drawable.ic_pl_erlang_plain
-        GROOVY -> R.drawable.ic_pl_groovy_plain
-        HASKELL -> R.drawable.ic_pl_haskell_plain
-        JAVA -> R.drawable.ic_pl_java_plain
-        JAVASCRIPT -> R.drawable.ic_pl_javascript_plain
-        KOTLIN -> R.drawable.ic_pl_kotlin_plain
-        PHP -> R.drawable.ic_pl_php_plain
-        PYTHON -> R.drawable.ic_pl_python_plain
-        RUBY -> R.drawable.ic_pl_ruby_plain
-        RUST -> R.drawable.ic_pl_rust_plain
-        SCALA -> R.drawable.ic_pl_scala_plain
+        LANGUAGE.SWIFT -> R.drawable.ic_pl_swift_plain
+        LANGUAGE.BASH -> R.drawable.ic_pl_bash_plain
+        LANGUAGE.C -> R.drawable.ic_pl_c_plain
+        LANGUAGE.CPLUSPLUS -> R.drawable.ic_pl_cplusplus_plain
+        LANGUAGE.DART -> R.drawable.ic_pl_dart_plain
+        LANGUAGE.ELIXIR -> R.drawable.ic_pl_elixir_plain
+        LANGUAGE.ERLANG -> R.drawable.ic_pl_erlang_plain
+        LANGUAGE.GROOVY -> R.drawable.ic_pl_groovy_plain
+        LANGUAGE.HASKELL -> R.drawable.ic_pl_haskell_plain
+        LANGUAGE.JAVA -> R.drawable.ic_pl_java_plain
+        LANGUAGE.JAVASCRIPT -> R.drawable.ic_pl_javascript_plain
+        LANGUAGE.KOTLIN -> R.drawable.ic_pl_kotlin_plain
+        LANGUAGE.PHP -> R.drawable.ic_pl_php_plain
+        LANGUAGE.PYTHON -> R.drawable.ic_pl_python_plain
+        LANGUAGE.RUBY -> R.drawable.ic_pl_ruby_plain
+        LANGUAGE.RUST -> R.drawable.ic_pl_rust_plain
+        LANGUAGE.SCALA -> R.drawable.ic_pl_scala_plain
         else -> R.drawable.ic_github_original
     }
 
     val padding = when (language.lowercase(Locale.getDefault())) {
-        BASH -> 0.dp
-        C -> 0.dp
-        CPLUSPLUS -> 0.dp
-        DART -> 0.dp
-        ELIXIR -> 0.dp
-        ERLANG -> 0.dp
-        GROOVY -> 0.dp
-        HASKELL -> 0.dp
-        JAVA -> 0.dp
-        JAVASCRIPT -> 2.dp
-        KOTLIN -> 2.dp
-        PHP -> 0.dp
-        PYTHON -> 0.dp
-        RUBY -> 0.dp
-        RUST -> 0.dp
-        SCALA -> 0.dp
+        LANGUAGE.BASH -> 0.dp
+        LANGUAGE.C -> 0.dp
+        LANGUAGE.CPLUSPLUS -> 0.dp
+        LANGUAGE.DART -> 0.dp
+        LANGUAGE.ELIXIR -> 0.dp
+        LANGUAGE.ERLANG -> 0.dp
+        LANGUAGE.GROOVY -> 0.dp
+        LANGUAGE.HASKELL -> 0.dp
+        LANGUAGE.JAVA -> 0.dp
+        LANGUAGE.JAVASCRIPT -> 2.dp
+        LANGUAGE.KOTLIN -> 2.dp
+        LANGUAGE.PHP -> 0.dp
+        LANGUAGE.PYTHON -> 0.dp
+        LANGUAGE.RUBY -> 0.dp
+        LANGUAGE.RUST -> 0.dp
+        LANGUAGE.SCALA -> 0.dp
         else -> 0.dp
     }
 
@@ -124,6 +108,6 @@ fun LanguageImage(
 @Composable
 private fun Preview() {
     AppTheme {
-        LanguageImage(SWIFT)
+        LanguageImage(LANGUAGE.SWIFT)
     }
 }
