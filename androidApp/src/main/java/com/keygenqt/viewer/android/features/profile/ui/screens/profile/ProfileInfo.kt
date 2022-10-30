@@ -46,7 +46,7 @@ import com.keygenqt.viewer.android.compose.base.AppImageUser
 import com.keygenqt.viewer.android.compose.texts.*
 import com.keygenqt.viewer.android.data.models.UserModel
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.extensions.dateFormat
+import com.keygenqt.viewer.android.extensions.dateFormat
 import com.keygenqt.viewer.extensions.toTimestamp
 import com.keygenqt.viewer.utils.AppConstants
 

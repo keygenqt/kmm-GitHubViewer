@@ -13,9 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.extensions
+package com.keygenqt.viewer.utils
 
-/**
- * Format timestamp
- */
-expect fun Long.dateFormat(format: String): String
+import kotlinx.datetime.Instant
+import kotlinx.datetime.toNSDate
+import platform.Foundation.*
+
+actual object PlatformHelper {
+
+    /**
+     * Format timestamp iOS
+     */
+    fun dateFormat(time: Long, format: String): String =
+        Instant.fromEpochMilliseconds(time).toNSDate().let {
+            NSDateFormatter().apply {
+                timeZone = NSTimeZone.localTimeZone
+                locale = NSLocale.autoupdatingCurrentLocale
+                dateFormat = format
+            }.stringFromDate(it)
+        }
+}

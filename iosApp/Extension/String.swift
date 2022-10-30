@@ -24,7 +24,10 @@ extension String {
     }
     
     func toFormatDateShort() -> String {
-        return LongKt.dateFormat(StringKt.toTimestamp(self), format: ConstantsKMM.CONST.DATE_FORMAT.SHORT)
+        return ConstantsKMM.P_HELPER.dateFormat(
+            time: StringKt.toTimestamp(self),
+            format: ConstantsKMM.CONST.DATE_FORMAT.SHORT
+        )
     }
     
     func getIconLanguage() -> String {

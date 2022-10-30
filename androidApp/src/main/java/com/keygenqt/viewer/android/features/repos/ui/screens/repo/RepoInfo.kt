@@ -16,7 +16,6 @@
 package com.keygenqt.viewer.android.features.repos.ui.screens.repo
 
 import android.content.res.Configuration
-import android.text.format.Formatter
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -38,7 +37,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -54,7 +52,7 @@ import com.keygenqt.viewer.android.compose.texts.TextLabelSmall
 import com.keygenqt.viewer.android.data.models.RepoModel
 import com.keygenqt.viewer.android.extensions.capitalize
 import com.keygenqt.viewer.android.theme.AppTheme
-import com.keygenqt.viewer.extensions.dateFormat
+import com.keygenqt.viewer.android.extensions.dateFormat
 import com.keygenqt.viewer.extensions.toTimestamp
 import com.keygenqt.viewer.utils.AppConstants
 import com.keygenqt.viewer.utils.AppHelper

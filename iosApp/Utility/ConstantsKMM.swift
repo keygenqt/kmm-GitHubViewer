@@ -20,4 +20,7 @@ struct ConstantsKMM {
     
     // KMM helper
     static let HELPER: AppHelper = AppHelper()
+    
+    // KMM helper platform
+    static let P_HELPER: PlatformHelper = PlatformHelper()
 }

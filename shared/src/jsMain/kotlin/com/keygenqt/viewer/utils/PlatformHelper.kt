@@ -13,20 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.extensions
+package com.keygenqt.viewer.utils
 
 import kotlinx.datetime.Instant
-import kotlinx.datetime.toNSDate
-import platform.Foundation.*
+import kotlinx.datetime.toJSDate
+import kotlin.js.Date
 
-/**
- * Format timestamp
- */
-actual fun Long.dateFormat(format: String): String =
-    Instant.fromEpochMilliseconds(this).toNSDate().let {
-        NSDateFormatter().apply {
-            timeZone = NSTimeZone.localTimeZone
-            locale = NSLocale.autoupdatingCurrentLocale
-            dateFormat = format
-        }.stringFromDate(it)
-    }
+private fun <T> jsonAs(): T = js("({})") as T
+
+private fun option() = jsonAs<Date.LocaleOptions>()
+
+@JsExport
+actual object PlatformHelper {
+
+    /**
+     * Format timestamp js
+     */
+    fun dateFormat(time: Int, format: String): String =
+        Instant.fromEpochMilliseconds(time * 1000L)
+            .toJSDate()
+            .toLocaleDateString(locales = format, options = option().apply {
+                year = "numeric"
+                month = "long"
+                day = "2-digit"
+            })
+}

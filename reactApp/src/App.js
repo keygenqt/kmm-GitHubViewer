@@ -31,6 +31,9 @@ function App() {
         <p>
           AuthToken: {crossStorage.authToken}
         </p>
+        <div>
+          {shared.com.keygenqt.viewer.utils.PlatformHelper.dateFormat(1667165918,"ru-RU")}
+        </div>
       </header>
     </div>
   );

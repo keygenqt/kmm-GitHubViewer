@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.viewer.extensions
+package com.keygenqt.viewer.utils
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -21,11 +21,14 @@ import kotlinx.datetime.toJavaLocalDateTime
 import kotlinx.datetime.toLocalDateTime
 import java.time.format.DateTimeFormatter
 
-/**
- * Format timestamp
- */
-actual fun Long.dateFormat(format: String): String =
-    Instant.fromEpochMilliseconds(this)
-        .toLocalDateTime(TimeZone.UTC)
-        .toJavaLocalDateTime()
-        .format(DateTimeFormatter.ofPattern(format))
+actual object PlatformHelper {
+
+    /**
+     * Format timestamp android
+     */
+    fun dateFormat(time: Long, format: String): String =
+        Instant.fromEpochMilliseconds(time)
+            .toLocalDateTime(TimeZone.UTC)
+            .toJavaLocalDateTime()
+            .format(DateTimeFormatter.ofPattern(format))
+}
