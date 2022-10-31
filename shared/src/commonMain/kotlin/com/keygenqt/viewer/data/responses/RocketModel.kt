@@ -3,6 +3,7 @@ package com.keygenqt.viewer.data.responses
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import kotlin.js.JsName
 
 /**
  * Test model query

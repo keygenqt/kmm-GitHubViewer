@@ -31,6 +31,14 @@ import kotlin.js.JsExport
 class GetNetwork(val client: HttpClient) {
 
     /**
+     * Test query without tokens from demo KMM
+     */
+    @Throws(Exception::class)
+    suspend fun rockets(): List<RocketModel> {
+        return client.get("https://api.spacexdata.com/v4/launches").body()
+    }
+
+    /**
      * Get list repos user
      */
     @Throws(Exception::class)

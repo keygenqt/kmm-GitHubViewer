@@ -90,6 +90,9 @@ common = [
     "ktor-client-logging",
     "napier",
 ]
+commonMobile = [
+
+]
 android = [
     "kotlinx-datetime",
     "security-crypto",

@@ -1,5 +1,5 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
-import java.util.Date
+import java.util.*
 
 plugins {
     kotlin("multiplatform")
@@ -34,7 +34,7 @@ kotlin {
             baseName = "shared"
         }
     }
-    
+
     sourceSets {
         all {
             languageSettings.apply {
@@ -47,32 +47,17 @@ kotlin {
                 implementation(kmm.bundles.common)
             }
         }
+
         val androidMain by getting {
             dependencies {
                 implementation(kmm.bundles.android)
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
-        val jsMain by getting {
-            dependencies {
-                implementation(kmm.bundles.js)
 
-//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.346")
-//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.346")
-//                implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.9.3-pre.346")
-//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.3.0-pre.346")
-//                implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.346")
-//                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.346")
-            }
-        }
-        val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
+
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -82,14 +67,20 @@ kotlin {
                 implementation(kmm.bundles.ios)
             }
         }
-        val iosX64Test by getting
-        val iosArm64Test by getting
-        val iosSimulatorArm64Test by getting
-        val iosTest by creating {
-            dependsOn(commonTest)
-            iosX64Test.dependsOn(this)
-            iosArm64Test.dependsOn(this)
-            iosSimulatorArm64Test.dependsOn(this)
+
+        val mobileMain by creating {
+            dependsOn(commonMain)
+            androidMain.dependsOn(this)
+            iosMain.dependsOn(this)
+            dependencies {
+                implementation(kmm.bundles.commonMobile)
+            }
+        }
+
+        val jsMain by getting {
+            dependencies {
+                implementation(kmm.bundles.js)
+            }
         }
     }
 }

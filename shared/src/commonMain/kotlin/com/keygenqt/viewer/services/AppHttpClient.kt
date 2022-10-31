@@ -31,8 +31,16 @@ import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
+/**
+ * Get platform client
+ */
+expect fun httpClient(config: HttpClientConfig<*>.() -> Unit = {}): HttpClient
+
+/**
+ * Common service network
+ */
 class AppHttpClient(
-    private var token: String = ""
+    private var token: String = "",
 ) {
 
     fun setToken(token: String) {
@@ -42,7 +50,6 @@ class AppHttpClient(
     fun clearToken() {
         this.token = ""
     }
-
 
     val get by lazy { GetNetwork(httpClient) }
     val post by lazy { PostNetwork(httpClient) }
@@ -54,7 +61,7 @@ class AppHttpClient(
         ignoreUnknownKeys = true
     }
 
-    val httpClient = HttpClient {
+    val httpClient = httpClient {
 
         expectSuccess = false
 

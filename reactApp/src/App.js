@@ -8,11 +8,10 @@ function App() {
   const appConstants = shared.com.keygenqt.viewer.utils.AppConstants
   const appHelper = shared.com.keygenqt.viewer.utils.AppHelper
   const crossStorage = new shared.com.keygenqt.viewer.data.storage.CrossStorage(localStorage)
-  const appHttpClient = new shared.com.keygenqt.viewer.AppHttpClientJS("asdasdasd")
+  const appHttpClient = new shared.com.keygenqt.viewer.services.AppHttpClientJS("")
 
-  appHttpClient.rockets().then(async (response) => {
-    console.log("Success")
-    console.log(response)
+  appHttpClient.get.rockets().then(async (response) => {
+    console.log(response.toArray()[0].missionName)
   }).catch(async (response) => {
     console.log("Error")
     console.log(response)
