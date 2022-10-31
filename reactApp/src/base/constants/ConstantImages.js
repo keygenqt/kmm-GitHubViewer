@@ -15,11 +15,15 @@ import {ReactComponent as ruby} from "../../assets/images/languages/ruby-plain.s
 import {ReactComponent as rust} from "../../assets/images/languages/rust-plain.svg";
 import {ReactComponent as scala} from "../../assets/images/languages/scala-plain.svg";
 import {ReactComponent as swift} from "../../assets/images/languages/swift-plain.svg";
+import logo from "../../assets/images/layout/logo.png";
 
 /**
  * Apps constants images for easy import
  */
 export const ConstantImages = {
+    layout: {
+        logo: logo,
+    },
     languages: {
         bash: bash,
         c: c,
