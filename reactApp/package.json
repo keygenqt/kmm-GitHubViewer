@@ -3,16 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@js-joda/core": "^5.4.2",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/lab": "^5.0.0-alpha.100",
+    "@mui/material": "^5.10.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
+    "crypto-js": "^4.1.1",
+    "formik": "^2.2.9",
+    "i18next": "^21.8.14",
+    "i18next-browser-languagedetector": "^6.1.4",
+    "i18next-http-backend": "^1.4.1",
+    "lottie-react": "^2.3.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^11.18.1",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "shared": "file:../shared/build/packages/shared-0.0.1667211128533.tgz",
+    "shared": "file:../shared/build/packages/shared-0.0.1667215092114.tgz",
     "uuid": "^9.0.0",
     "wait-on": "^6.0.1",
     "web-vitals": "^2.1.4"
@@ -20,7 +35,8 @@
   "devDependencies": {
     "electron": "^20.3.3",
     "electron-builder": "^23.6.0",
-    "electron-is-dev": "^2.0.0"
+    "electron-is-dev": "^2.0.0",
+    "sass": "^1.54.0"
   },
   "scripts": {
     "react-start": "PORT=3001 GENERATE_SOURCEMAP=false react-scripts start",
