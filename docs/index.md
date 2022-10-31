@@ -9,6 +9,7 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * Create android application ✅
 * Create iOS application  ✅
 * Move network to shared module ✅
+* Create Electron React application 👈
 
 ### Android
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
@@ -25,6 +26,13 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 <p>
 <img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.28.08.gif" width="33%"/>
 <img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.35.20.gif" width="33%"/>
+</p>
+
+### React App
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/react/)
+
+<p>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screenshot_2022-10-31_at_13.47.42.png" width="100%"/>
 </p>
 
 ### Shared module

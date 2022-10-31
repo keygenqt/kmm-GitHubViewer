@@ -28,15 +28,16 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 <img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.35.20.gif" width="33%"/>
 </p>
 
+### React
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/react/)
+
+<p>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screenshot_2022-10-31_at_13.47.42.png" width="100%"/>
+</p>
+
 ### Shared module
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/shared/index.html)
-
-### React
-
-<p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screenshot_2022-10-30_at_17.49.19.png" width="100%"/>
-</p>
 
 # License
 

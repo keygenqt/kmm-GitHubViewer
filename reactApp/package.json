@@ -7,18 +7,30 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^7.5.0",
+    "cross-env": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "shared": "file:../shared/build/packages/shared-0.0.1667211128533.tgz",
     "uuid": "^9.0.0",
+    "wait-on": "^6.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "electron": "^20.3.3",
+    "electron-builder": "^23.6.0",
+    "electron-is-dev": "^2.0.0"
+  },
   "scripts": {
-    "start": "PORT=3000 GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "react-start": "PORT=3001 GENERATE_SOURCEMAP=false react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "npm run react-build && electron-builder --publish=always",
+    "build": "npm run react-build && npm run electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3001 && electron .\""
   },
   "eslintConfig": {
     "extends": [
@@ -37,5 +49,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "build": {
+    "appId": "com.mylibraryapp"
+  },
+  "main": "public/electron.js",
+  "homepage": "./"
 }

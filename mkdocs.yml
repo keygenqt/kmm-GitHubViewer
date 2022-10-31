@@ -10,8 +10,10 @@ nav:
   - 'Android':
       - 'About': android.md
       - 'API': api/androidApp/index.html
-  - 'IOS':
+  - 'iOS':
       - 'About': ios.md
+  - 'React App':
+      - 'About': react.md
   - 'Shared':
       - 'About': shared.md
       - 'API': api/shared/index.html
