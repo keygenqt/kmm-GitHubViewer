@@ -43,6 +43,7 @@ class AppHttpClient(
         this.token = ""
     }
 
+
     val get by lazy { GetNetwork(httpClient) }
     val post by lazy { PostNetwork(httpClient) }
     val patch by lazy { PatchNetwork(httpClient) }

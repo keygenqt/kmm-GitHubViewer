@@ -8,6 +8,16 @@ function App() {
   const appConstants = shared.com.keygenqt.viewer.utils.AppConstants
   const appHelper = shared.com.keygenqt.viewer.utils.AppHelper
   const crossStorage = new shared.com.keygenqt.viewer.data.storage.CrossStorage(localStorage)
+  const appHttpClient = new shared.com.keygenqt.viewer.AppHttpClientJS("asdasdasd")
+
+  appHttpClient.rockets().then(async (response) => {
+    console.log("Success")
+    console.log(response)
+  }).catch(async (response) => {
+    console.log("Error")
+    console.log(response)
+  });
+
 
   let uuid = require("uuid");
   crossStorage.authToken = uuid.v4()

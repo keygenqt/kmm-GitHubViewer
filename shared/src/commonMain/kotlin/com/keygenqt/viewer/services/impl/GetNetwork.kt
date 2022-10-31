@@ -17,6 +17,7 @@ package com.keygenqt.viewer.services.impl
 
 import com.keygenqt.viewer.data.responses.FollowerModel
 import com.keygenqt.viewer.data.responses.RepoModel
+import com.keygenqt.viewer.data.responses.RocketModel
 import com.keygenqt.viewer.data.responses.UserModel
 import com.keygenqt.viewer.utils.AppConstants
 import io.ktor.client.*
@@ -25,6 +26,7 @@ import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.coroutines.delay
+import kotlin.js.JsExport
 
 class GetNetwork(val client: HttpClient) {
 
