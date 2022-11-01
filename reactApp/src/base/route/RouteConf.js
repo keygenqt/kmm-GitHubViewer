@@ -1,23 +1,10 @@
 import {Route} from "react-router-dom";
 import * as React from "react";
-import {OnboardingPage, SignInPage, UserPage, WelcomePage} from "../../pages";
+import {OnboardingPage, SignInPage, WelcomePage} from "../../pages";
 
 export const RouteConf = {
     delay: 200,
     routes: {
-        user: {
-            path: '/onboarding',
-            render: function (key, path) {
-                return <Route
-                    key={key}
-                    exact
-                    path={path}
-                    element={
-                        <UserPage/>
-                    }
-                />
-            }
-        },
         onboarding: {
             path: '/',
             render: function (key, path) {

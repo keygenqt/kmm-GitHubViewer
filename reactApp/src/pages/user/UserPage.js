@@ -164,7 +164,8 @@ export function UserPage() {
                     <Button onClick={handleClose}>Dismiss</Button>
                     <Button onClick={() => {
                         handleClose()
-                        route.toLocation(routes.welcome)
+                        localStorage.setItem("code", "")
+                        window.location = "/"
                     }} autoFocus>
                         Confirm
                     </Button>

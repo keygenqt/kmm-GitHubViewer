@@ -36,11 +36,26 @@ object AppHelper {
         login: String,
         state: String
     ): String {
+        return getOauthLinkRedirect(
+            login = login,
+            state = state,
+            redirect = getDynamicLink("oauth")
+        )
+    }
+
+    /**
+     * Generate oauth link set redirect
+     */
+    fun getOauthLinkRedirect(
+        login: String,
+        state: String,
+        redirect: String,
+    ): String {
         return URLBuilder(AppConstants.LINKS.OAUTH_URL).apply {
             with(parameters) {
                 append("login", login)
                 append("state", state)
-                append("redirect_uri", getDynamicLink("oauth"))
+                append("redirect_uri", redirect)
                 append("allow_signup", false.toString())
                 append("client_id", BuildKonfig.GITHUB_CLIENT_ID)
             }

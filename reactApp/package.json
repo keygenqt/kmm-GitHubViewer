@@ -27,10 +27,11 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "shared": "file:../shared/build/packages/shared-0.0.1667215092114.tgz",
+    "shared": "file:../shared/build/packages/shared-0.0.1667328122860.tgz",
     "uuid": "^9.0.0",
     "wait-on": "^6.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "electron": "^20.3.3",
