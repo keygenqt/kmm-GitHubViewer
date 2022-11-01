@@ -11,6 +11,8 @@ export default function App() {
     const {route} = useContext(NavigateContext)
     const darkMode = useLocalStorage("darkMode", ValueType.bool);
 
+    document.body.style = `background: ${darkMode ? AppThemeDark.palette.background : AppTheme.palette.background};`;
+
     return (
         <ThemeProvider theme={darkMode ? AppThemeDark : AppTheme}>
             {route.render()}

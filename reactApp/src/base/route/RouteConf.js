@@ -6,7 +6,7 @@ export const RouteConf = {
     delay: 200,
     routes: {
         user: {
-            path: '/',
+            path: '/onboarding',
             render: function (key, path) {
                 return <Route
                     key={key}
@@ -19,7 +19,7 @@ export const RouteConf = {
             }
         },
         onboarding: {
-            path: '/onboarding',
+            path: '/',
             render: function (key, path) {
                 return <Route
                     key={key}

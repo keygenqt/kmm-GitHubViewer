@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect} from 'react';
+import {useContext} from 'react';
 import {
     Box,
     Button,
@@ -10,15 +10,13 @@ import {
     DialogTitle,
     Stack,
     Tab,
-    Tabs,
-    Typography,
-    useTheme
+    Tabs
 } from "@mui/material";
 import {FormatListBulleted, Logout, People, Person} from "@mui/icons-material";
 import {TabReposElement} from "./elements/TabReposElement";
 import {TabFollowersElement} from "./elements/TabFollowersElement";
 import {TabProfileElement} from "./elements/TabProfileElement";
-import {ConstantImages} from "../../base";
+import {ConstantImages, NavigateContext} from "../../base";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -56,21 +54,18 @@ function a11yProps(index: number) {
 
 export function UserPage() {
 
-    const theme = useTheme()
-
-    useEffect(() => {
-        document.body.style = `background: ${theme.palette.background};`;
-    });
+    const {route, routes} = useContext(NavigateContext)
 
     const [value, setValue] = React.useState(0);
     const [openLogout, setOpenLogout] = React.useState(false);
 
     const handleClickOpen = () => {
-        setOpenLogout(true);
+        setOpenLogout(true)
     };
 
     const handleClose = () => {
-        setOpenLogout(false);
+        setOpenLogout(false)
+        route.toLocation(routes.welcome)
     };
 
     return (
