@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Stack} from "@mui/material";
 
-export function FollowersPage() {
+export function TabProfileElement() {
     return (
         <Stack>
-            Follower
+            TabProfileElement
         </Stack>
     );
 }
 
-FollowersPage.propTypes = {};
+TabProfileElement.propTypes = {};

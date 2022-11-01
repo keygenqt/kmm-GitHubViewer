@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Stack} from "@mui/material";
 
-export function ReposPage() {
+export function TabReposElement() {
     return (
         <Stack>
-            Repos
+            TabReposElement
         </Stack>
     );
 }
 
-ReposPage.propTypes = {};
+TabReposElement.propTypes = {};

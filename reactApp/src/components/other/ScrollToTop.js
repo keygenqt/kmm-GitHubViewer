@@ -8,7 +8,7 @@ export function ScrollToTop() {
     const {pathname} = useLocation();
 
     useEffect(() => {
-        const el = document.getElementById("pageSelection")
+        const el = document.getElementById("root")
         el.scrollTo(0, 0);
     }, [pathname]);
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Stack} from "@mui/material";
 
-export function ErrorPage() {
+export function WelcomePage() {
     return (
         <Stack>
-            ErrorPage
+            WelcomePage
         </Stack>
     );
 }
 
-ErrorPage.propTypes = {};
+WelcomePage.propTypes = {};

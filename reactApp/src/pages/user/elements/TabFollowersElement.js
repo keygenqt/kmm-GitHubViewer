@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Stack} from "@mui/material";
 
-export function ErrorPage() {
+export function TabFollowersElement() {
     return (
         <Stack>
-            ErrorPage
+            TabFollowersElement
         </Stack>
     );
 }
 
-ErrorPage.propTypes = {};
+TabFollowersElement.propTypes = {};

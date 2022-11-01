@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Stack} from "@mui/material";
 
-export function ErrorPage() {
+export function SignInPage() {
     return (
         <Stack>
-            ErrorPage
+            Profile
         </Stack>
     );
 }
 
-ErrorPage.propTypes = {};
+SignInPage.propTypes = {};

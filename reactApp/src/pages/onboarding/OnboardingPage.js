@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Stack} from "@mui/material";
 
-export function ProfilePage() {
+export function OnboardingPage() {
     return (
         <Stack>
             Profile
@@ -9,4 +9,4 @@ export function ProfilePage() {
     );
 }
 
-ProfilePage.propTypes = {};
+OnboardingPage.propTypes = {};

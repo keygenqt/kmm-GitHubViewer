@@ -14,9 +14,11 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {ConstantImages} from "../base";
 import {FormatListBulleted, Logout, People, Person} from "@mui/icons-material";
-import {FollowersPage, ProfilePage, ReposPage} from "../pages";
+import {TabReposElement} from "./elements/TabReposElement";
+import {TabFollowersElement} from "./elements/TabFollowersElement";
+import {TabProfileElement} from "./elements/TabProfileElement";
+import {ConstantImages} from "../../base";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -38,7 +40,7 @@ function TabPanel(props: TabPanelProps) {
         >
             {value === index && (
                 <Box sx={{p: 3}}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
@@ -52,7 +54,7 @@ function a11yProps(index: number) {
     };
 }
 
-export function BaseLayout() {
+export function UserPage() {
 
     const theme = useTheme()
 
@@ -98,6 +100,7 @@ export function BaseLayout() {
                         }}
                         aria-label="Tabs menu"
                         sx={{
+                            width: 110,
                             borderRight: 1,
                             borderColor: 'divider',
                             '& .Mui-selected': {
@@ -139,13 +142,13 @@ export function BaseLayout() {
                 </Stack>
 
                 <TabPanel value={value} index={0}>
-                    <ReposPage/>
+                    <TabReposElement/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <FollowersPage/>
+                    <TabFollowersElement/>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <ProfilePage/>
+                    <TabProfileElement/>
                 </TabPanel>
             </Box>
 
@@ -174,4 +177,4 @@ export function BaseLayout() {
     );
 }
 
-BaseLayout.propTypes = {};
+UserPage.propTypes = {};

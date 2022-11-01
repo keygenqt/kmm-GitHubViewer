@@ -1,11 +1,11 @@
 import {Route} from "react-router-dom";
-import {BaseLayout} from "../../layouts/BaseLayout";
 import * as React from "react";
+import {OnboardingPage, SignInPage, UserPage, WelcomePage} from "../../pages";
 
 export const RouteConf = {
     delay: 200,
     routes: {
-        home: {
+        user: {
             path: '/',
             render: function (key, path) {
                 return <Route
@@ -13,7 +13,46 @@ export const RouteConf = {
                     exact
                     path={path}
                     element={
-                        <BaseLayout/>
+                        <UserPage/>
+                    }
+                />
+            }
+        },
+        onboarding: {
+            path: '/onboarding',
+            render: function (key, path) {
+                return <Route
+                    key={key}
+                    exact
+                    path={path}
+                    element={
+                        <OnboardingPage/>
+                    }
+                />
+            }
+        },
+        welcome: {
+            path: '/welcome',
+            render: function (key, path) {
+                return <Route
+                    key={key}
+                    exact
+                    path={path}
+                    element={
+                        <WelcomePage/>
+                    }
+                />
+            }
+        },
+        signIn: {
+            path: '/signIn',
+            render: function (key, path) {
+                return <Route
+                    key={key}
+                    exact
+                    path={path}
+                    element={
+                        <SignInPage/>
                     }
                 />
             }

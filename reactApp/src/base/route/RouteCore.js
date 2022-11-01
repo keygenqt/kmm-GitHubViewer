@@ -3,7 +3,6 @@ import {ScrollToTop} from "../../components";
 import {Route, Routes} from "react-router-dom";
 import {ValueType} from "./ValueType";
 import {ErrorPage} from "../../pages";
-import {BaseLayout} from "../../layouts/BaseLayout";
 
 export default class RouteCore {
 
@@ -321,13 +320,7 @@ export default class RouteCore {
                                 pageClassName={'Error-Page'}
                                 key={pageIndex}
                                 path={path}
-                                element={<BaseLayout
-                                    pageClassName={'Error-Page'}
-                                    isCenter={true}
-                                    disablePadding={true}
-                                >
-                                    <ErrorPage/>
-                                </BaseLayout>}
+                                element={<ErrorPage/>}
                             />
                         )
                     } else {
@@ -347,13 +340,7 @@ export default class RouteCore {
                     <Route
                         path="*"
                         element={
-                            <BaseLayout
-                                disablePadding={true}
-                                pageClassName={'Error-Page'}
-                                isCenter={true}
-                            >
-                                <ErrorPage/>
-                            </BaseLayout>
+                            <ErrorPage/>
                         }
                     />
                 </Routes>
