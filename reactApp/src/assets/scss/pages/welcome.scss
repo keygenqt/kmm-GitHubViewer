@@ -1,0 +1,36 @@
+.Welcome-Page .BgCircle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.Welcome-Page .BgCircle.Circle1 {
+  width: 600px;
+  height: 600px;
+  background: #ffe1eb;
+  right: -250px;
+  top: -250px;
+}
+
+.Welcome-Page .BgCircle.Circle2 {
+  width: 400px;
+  height: 400px;
+  background: #d8c7ff;
+  left: -210px;
+  bottom: 80px;
+}
+
+.Welcome-Page .BgCircle.Circle3 {
+  width: 30px;
+  height: 30px;
+  background: #7b4fdb;
+  left: 38%;
+  top: 100px;
+}
+
+.Welcome-Page .BgCircle.Circle4 {
+  width: 150px;
+  height: 150px;
+  background: #ec99b7;
+  left: 59%;
+  bottom: -101px;
+}

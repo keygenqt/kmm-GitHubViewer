@@ -10,3 +10,15 @@ body, html, #root {
   font-family: 'Albert Sans', 'Roboto', sans-serif;
   overflow: hidden;
 }
+
+button.MuiButton-sizeLarge {
+  line-height: 34px;
+}
+
+button.MuiButton-sizeMedium {
+  line-height: 30px;
+}
+
+button.MuiButton-sizeSmall {
+  line-height: 24px;
+}

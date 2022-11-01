@@ -4,7 +4,7 @@ import {Stack} from "@mui/material";
 export function SignInPage() {
     return (
         <Stack>
-            Profile
+            SignInPage
         </Stack>
     );
 }

@@ -1,9 +1,9 @@
 export const typography = {
     fontSize: 14,
     h1: {
-        fontSize: 110,
-        fontWeight: 'bold',
-        textTransform: "uppercase",
+        fontSize: 56,
+        fontWeight: '400',
+        textTransform: "none",
         fontFamily: [
             '"Albert Sans"',
             'Roboto',
@@ -17,9 +17,9 @@ export const typography = {
         },
     },
     h2: {
-        fontSize: 33,
-        fontWeight: 'bold',
-        textTransform: "uppercase",
+        fontSize: 36,
+        fontWeight: '400',
+        textTransform: "none",
         fontFamily: [
             '"Albert Sans"',
             'Roboto',
@@ -31,7 +31,7 @@ export const typography = {
     },
     h3: {
         fontSize: 24,
-        textTransform: "uppercase",
+        textTransform: "none",
         fontFamily: [
             '"Albert Sans"',
             'Roboto',
@@ -58,7 +58,7 @@ export const typography = {
         ].join(','),
     },
     h6: {
-
+        fontWeight: '400',
     },
     subtitle1: {
         fontSize: 14,

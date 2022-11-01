@@ -16,20 +16,20 @@ const steps = [
     {
         label: 'First stage',
         icon: ConstantLottie.step2,
-        iconWidth: 175,
+        iconWidth: 188,
         description:
             'Jetpack Compose application, MVVM and the whole latest stack surrounding this technology',
     },
     {
         label: 'Second stage',
         icon: ConstantLottie.step3,
-        iconWidth: 175,
+        iconWidth: 188,
         description: `Development of a shared KMM module for interacting with an ios application`,
     },
     {
         label: 'Third stage',
         icon: ConstantLottie.step4,
-        iconWidth: 270,
+        iconWidth: 290,
         description: `Application for ios on Swift using the previously developed shared module using KMM`,
     },
     {
@@ -63,44 +63,40 @@ export function OnboardingPage() {
     };
 
     return (
-        <Box sx={{
-            width: '100%',
-            height: '100%',
-            flexGrow: 1,
-            p: 3,
-            boxSizing: 'border-box'
-        }}>
+        <Stack
+            className={'Welcome-Page'}
+            spacing={3}
+            sx={{
+                p: 5,
+                height: '100%',
+                boxSizing: 'border-box'
+            }}
+            direction="column"
+            justifyContent="space-between"
+            alignItems="center"
+        >
+            <Box/>
 
-            <Box sx={{
-                position: 'relative',
-                height: 'calc(100% - 48px)'
-            }}>
-                <Stack align={'center'} spacing={3} sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: 0,
-                    right: 0,
-                    transform: 'translateY(-50%)'
+            <Stack align={'center'} spacing={3}>
+                <Lottie style={{
+                    width: steps[activeStep].iconWidth,
+                    margin: '0 auto'
+                }} animationData={steps[activeStep].icon}/>
+
+                <Typography variant="h6">
+                    {steps[activeStep].label}
+                </Typography>
+
+                <Typography variant="body1" style={{
+                    paddingTop: '20px',
+                    maxWidth: 400,
+                    margin: '0 auto'
                 }}>
-                    <Lottie style={{
-                        width: steps[activeStep].iconWidth,
-                        margin: '0 auto'
-                    }} animationData={steps[activeStep].icon}/>
+                    {steps[activeStep].description}
+                </Typography>
+            </Stack>
 
-                    <Typography variant="h6" style={{}}>
-                        {steps[activeStep].label}
-                    </Typography>
-
-                    <Typography variant="body1" style={{
-                        paddingTop: '20px',
-                        maxWidth: 400,
-                        margin: '0 auto'
-                    }}>
-                        {steps[activeStep].description}
-                    </Typography>
-
-                </Stack>
-            </Box>
+            <Box/>
 
             <MobileStepper
                 variant="dots"
@@ -109,15 +105,14 @@ export function OnboardingPage() {
                 activeStep={activeStep}
                 sx={{
                     width: '100%',
-                    flexGrow: 1,
+                    flexGrow: 'inherit',
                     boxSizing: 'border-box'
                 }}
                 nextButton={
                     (activeStep === maxSteps - 1 ? (
-                        <Button size="small" onClick={handleDone} sx={{
-                            padding: '5px 13px'
-                        }}>
-                            Finish
+                        <Button size="small" onClick={handleDone}>
+                            Done
+                            <KeyboardArrowRight/>
                         </Button>
                     ) : (
                         <Button size="small" onClick={handleNext}>
@@ -133,7 +128,7 @@ export function OnboardingPage() {
                     </Button>
                 }
             />
-        </Box>
+        </Stack>
     );
 }
 
