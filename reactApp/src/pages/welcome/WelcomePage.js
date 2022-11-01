@@ -60,7 +60,8 @@ export function WelcomePage() {
                     size={"large"}
                     variant="contained"
                     onClick={() => {
-                        route.toLocation(routes.signIn)
+                        // route.toLocation(routes.signIn)
+                        route.toLocation(routes.user)
                     }}
                 >
                     Get started

@@ -65,7 +65,6 @@ export function UserPage() {
 
     const handleClose = () => {
         setOpenLogout(false)
-        route.toLocation(routes.welcome)
     };
 
     return (
@@ -163,7 +162,10 @@ export function UserPage() {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Dismiss</Button>
-                    <Button onClick={handleClose} autoFocus>
+                    <Button onClick={() => {
+                        handleClose()
+                        route.toLocation(routes.welcome)
+                    }} autoFocus>
                         Confirm
                     </Button>
                 </DialogActions>
