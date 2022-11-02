@@ -29,7 +29,10 @@ function TabPanel(props: TabPanelProps) {
 
     return (
         <div
-            style={{width: '100%'}}
+            style={{
+                width: '100%',
+                height: '100%'
+            }}
             role="tabpanel"
             hidden={value !== index}
             id={`vertical-tabpanel-${index}`}
@@ -37,7 +40,10 @@ function TabPanel(props: TabPanelProps) {
             {...other}
         >
             {value === index && (
-                <Box sx={{p: 3}}>
+                <Box sx={{
+                    width: '100%',
+                    height: '100%'
+                }}>
                     {children}
                 </Box>
             )}
@@ -77,12 +83,12 @@ export function UserPage() {
                     position: 'relative'
                 }}>
                     <Box align={"center"} sx={{
-                        paddingTop: '20px',
-                        paddingBottom: 2,
+                        paddingTop: '13px',
+                        paddingBottom: '7px',
                         backgroundColor: 'secondary.main',
                     }}>
                         <img style={{
-                            maxWidth: 50
+                            maxWidth: 40
                         }} src={ConstantImages.layout.logo} alt={'Logo'}/>
                     </Box>
 
@@ -98,7 +104,7 @@ export function UserPage() {
                             borderRight: 1,
                             borderColor: 'divider',
                             '& .Mui-selected': {
-                                color: 'hwb(0deg 0% 100% / 87%)',
+                                color: 'hwb(0deg 0% 100% / 87%) !important',
                             },
                         }}
                     >

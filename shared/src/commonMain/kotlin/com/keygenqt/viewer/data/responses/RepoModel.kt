@@ -143,8 +143,6 @@ data class RepoModel(
     val openIssuesCount: Int,
     @SerialName("is_template")
     val isTemplate: Boolean,
-    @SerialName("topics")
-    val topics: List<String>,
     @SerialName("has_issues")
     val hasIssues: Boolean,
     @SerialName("has_projects")
@@ -182,6 +180,7 @@ data class RepoModel(
 /**
  * Repo license model
  */
+@JsExport
 @Serializable
 data class RepoLicenseModel(
     @SerialName("key")
@@ -199,6 +198,7 @@ data class RepoLicenseModel(
 /**
  * Repo permissions model
  */
+@JsExport
 @Serializable
 data class RepoPermissionsModel(
     @SerialName("admin")
@@ -216,6 +216,7 @@ data class RepoPermissionsModel(
 /**
  * Repo owner model
  */
+@JsExport
 @Serializable
 data class RepoOwnerModel(
     @SerialName("id")
@@ -354,7 +355,6 @@ fun createRepoModel(
         defaultBranch = "",
         openIssuesCount = openIssuesCount,
         isTemplate = false,
-        topics = emptyList(),
         hasIssues = false,
         hasProjects = false,
         hasWiki = false,
