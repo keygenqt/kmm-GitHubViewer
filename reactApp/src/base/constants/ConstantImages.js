@@ -16,6 +16,7 @@ import {ReactComponent as rust} from "../../assets/images/languages/rust-plain.s
 import {ReactComponent as scala} from "../../assets/images/languages/scala-plain.svg";
 import {ReactComponent as swift} from "../../assets/images/languages/swift-plain.svg";
 import logo from "../../assets/images/layout/logo.png";
+import logo192 from "../../assets/images/layout/logo192.png";
 
 /**
  * Apps constants images for easy import
@@ -23,6 +24,7 @@ import logo from "../../assets/images/layout/logo.png";
 export const ConstantImages = {
     layout: {
         logo: logo,
+        logo192: logo192,
     },
     languages: {
         bash: bash,

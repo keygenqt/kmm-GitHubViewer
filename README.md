@@ -32,7 +32,7 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/react/)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screenshot_2022-10-31_at_13.47.42.png" width="100%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-11-02_at_12.25.38.gif" width="100%"/>
 </p>
 
 ### Shared module

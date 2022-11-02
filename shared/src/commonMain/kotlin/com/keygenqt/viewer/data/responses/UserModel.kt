@@ -17,10 +17,12 @@ package com.keygenqt.viewer.data.responses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.js.JsExport
 
 /**
  * User model
  */
+@JsExport
 @Serializable
 data class UserModel(
     @SerialName("id")

@@ -3,28 +3,13 @@ import {useLocation, useNavigate, useNavigationType} from "react-router-dom";
 import RouteCore from "../route/RouteCore";
 import {RouteConf} from "../route/RouteConf";
 import {RouteUserConf} from "../route/RouteUserConf";
+import {ConstantKMM} from "../constants/ConstantKMM";
 
 export const NavigateContext = createContext({})
 
 export default function NavigateContextProvider(props) {
 
-    let conf = RouteConf
-
-    const code = localStorage.getItem("code")
-
-    if (code != null && code !== "") {
-        conf = RouteUserConf
-    }
-
-    else if (window.location.search.includes("code")) {
-        window.location.search.replace("?", "").split("&").forEach((value) => {
-            const [key, val] = value.split("=")
-            if (key === "code" && val !== "") {
-                localStorage.setItem(key, val)
-                conf = RouteUserConf
-            }
-        })
-    }
+    let conf = ConstantKMM.crossStorage.authToken ? RouteUserConf : RouteConf
 
     const location = useLocation()
     const navigate = useNavigate()

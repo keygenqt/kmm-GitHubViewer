@@ -15,8 +15,11 @@
  */
 package com.keygenqt.viewer.services.impl
 
+import com.keygenqt.viewer.BuildKonfig
+import com.keygenqt.viewer.data.requests.AuthRequest
 import com.keygenqt.viewer.data.responses.SecurityModel
 import com.keygenqt.viewer.services.AppHttpClient
+import com.keygenqt.viewer.utils.AppConstants
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.*
@@ -39,7 +42,17 @@ class PostPromise(private val client: AppHttpClient) {
         code: String
     ): Promise<SecurityModel> {
         return GlobalScope.promise {
-            client.post.oauth(code)
+            // https://github.com/Rob--W/cors-anywhere
+            // It's demo, open reverse proxy will do, but it's not very secure. For production application, the keys should be stored more securely.
+            client.httpClient.post("https://cors-anywhere.herokuapp.com/" + AppConstants.LINKS.AUTH_URL) {
+                setBody(
+                    AuthRequest(
+                        code = code,
+                        client_secret = BuildKonfig.GITHUB_CLIENT_SECRET,
+                        client_id = BuildKonfig.GITHUB_CLIENT_ID,
+                    )
+                )
+            }.body()
         }
     }
 }

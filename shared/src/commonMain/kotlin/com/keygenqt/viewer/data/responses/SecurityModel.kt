@@ -17,10 +17,12 @@ package com.keygenqt.viewer.data.responses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.js.JsExport
 
 /**
  * Model auth tokens
  */
+@JsExport
 @Serializable
 data class SecurityModel(
     @SerialName("access_token")

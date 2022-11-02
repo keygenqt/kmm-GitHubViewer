@@ -22,14 +22,29 @@
             margin: 0;
             height: 100%;
             width: 100%;
+            font-family: "Albert Sans", "Roboto", sans-serif;
             overflow: hidden;
         }
 
         .contentLoading {
-            display: table;
-            height: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
             width: 100%;
-            text-align: center;
+            height: 100%;
+            background: #9F7AFF;
         }
     </style>
 </head>
@@ -37,9 +52,7 @@
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root">
     <div class="contentLoading">
-        <div style="display: table-cell; vertical-align: middle">
-            <img style="width: 200px" alt="logo" src="%PUBLIC_URL%/logo192.png">
-        </div>
+        <img alt="logo" src="%PUBLIC_URL%/logo192.png">
     </div>
 </div>
 </body>

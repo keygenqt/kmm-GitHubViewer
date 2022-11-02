@@ -16,7 +16,7 @@ import {FormatListBulleted, Logout, People, Person} from "@mui/icons-material";
 import {TabReposElement} from "./elements/TabReposElement";
 import {TabFollowersElement} from "./elements/TabFollowersElement";
 import {TabProfileElement} from "./elements/TabProfileElement";
-import {ConstantImages, NavigateContext} from "../../base";
+import {ConstantImages, ConstantKMM, NavigateContext} from "../../base";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -164,7 +164,7 @@ export function UserPage() {
                     <Button onClick={handleClose}>Dismiss</Button>
                     <Button onClick={() => {
                         handleClose()
-                        localStorage.setItem("code", "")
+                        ConstantKMM.crossStorage.authToken = ""
                         window.location = "/"
                     }} autoFocus>
                         Confirm

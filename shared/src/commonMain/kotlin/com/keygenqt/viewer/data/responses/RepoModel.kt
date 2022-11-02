@@ -17,10 +17,12 @@ package com.keygenqt.viewer.data.responses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.js.JsExport
 
 /**
  * Repo model
  */
+@JsExport
 @Serializable
 data class RepoModel(
     @SerialName("id")
