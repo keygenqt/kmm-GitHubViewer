@@ -6,6 +6,7 @@ import step4 from "../../assets/lottie/step4.json";
 import step5 from "../../assets/lottie/step5.json";
 import welcome from "../../assets/lottie/welcome.json";
 import server from "../../assets/lottie/26409-server.json";
+import loader from "../../assets/lottie/block_loader.json";
 
 /**
  * Apps constants lottie json
@@ -13,6 +14,7 @@ import server from "../../assets/lottie/26409-server.json";
 export const ConstantLottie = {
     error404: error404,
     server: server,
+    loader: loader,
     welcome: welcome,
     step1: step1,
     step2: step2,
