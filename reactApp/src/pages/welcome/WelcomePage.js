@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Box, Button, Stack, Typography} from "@mui/material";
 import shared from "shared";
 import Lottie from "lottie-react";
-import {ConstantLottie, NavigateContext} from "../../base";
+import {ConstantKMM, ConstantLottie, NavigateContext} from "../../base";
 import {useContext} from "react";
 
 export function WelcomePage() {
 
-    const greeting = new shared.com.keygenqt.viewer.Greeting().greeting()
+    const greeting = ConstantKMM.greeting
 
     const {route, routes} = useContext(NavigateContext)
 

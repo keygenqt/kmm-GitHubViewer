@@ -2,17 +2,15 @@ import * as React from 'react';
 import {AppBar, Box, Button, FormGroup, Grid, IconButton, Stack, TextField, Toolbar, Typography} from "@mui/material";
 import {ArrowBack} from "@mui/icons-material";
 import {useContext} from "react";
-import {NavigateContext} from "../../base";
+import {ConstantKMM, NavigateContext} from "../../base";
 import {Formik} from "formik";
 import * as Yup from "yup";
-import shared from "shared";
 import {AlertError, AlertSuccess} from "../../components";
 
 export function SignInPage() {
 
     const {route} = useContext(NavigateContext)
 
-    const appHelper = shared.com.keygenqt.viewer.utils.AppHelper
     let uuid = require("uuid");
 
     return (
@@ -62,7 +60,7 @@ export function SignInPage() {
                         nickname: Yup.string().required('Nickname is required'),
                     })}
                     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
-                        window.open(appHelper.getOauthLink("keygenqt", uuid.v4()), '_blank')
+                        window.open(ConstantKMM.appHelper.getOauthLink(values.nickname, uuid.v4()), '_blank')
                     }}
                 >
                     {({
@@ -125,18 +123,6 @@ export function SignInPage() {
                         </form>
                     )}
                 </Formik>
-
-
-                {/*<iframe*/}
-                {/*    width={700}*/}
-                {/*    height={300}*/}
-                {/*    title="silent-token-renew"*/}
-                {/*    // src={*/}
-                {/*    src={"https://github.com/login/oauth/authorize?login=keygenqt&state=5e6297e9-89f5-43b7-84f1-8e7b3f83bf3e&redirect_uri=https%3A%2F%2Fkmm.keygenqt.com%2Foauth&allow_signup=false&client_id=Iv1.672a5d88dbc07ab2"}*/}
-                {/*    onLoad={(event) => {*/}
-                {/*        console.log(event)*/}
-                {/*    }}*/}
-                {/*/>*/}
             </Stack>
         </Box>
     );

@@ -8,13 +8,20 @@ let subWindow;
 function createWindow() {
 
     mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 680,
+        width: 2200,
+        height: 880,
         minWidth: 1200,
         minHeight: 680
     });
 
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
+
+    // mainWindow = new BrowserWindow({
+    //     width: 1200,
+    //     height: 680,
+    //     minWidth: 1200,
+    //     minHeight: 680
+    // });
 
     mainWindow.loadURL(
         isDev

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import {Box, Button, MobileStepper, Stack, Typography} from "@mui/material";
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
-import {ConstantLottie, NavigateContext} from "../../base";
+import {ConstantKMM, ConstantLottie, NavigateContext} from "../../base";
 import Lottie from "lottie-react";
 
 const steps = [
@@ -51,6 +51,7 @@ export function OnboardingPage() {
     const maxSteps = steps.length;
 
     const handleDone = () => {
+        ConstantKMM.crossStorage.isOnboardingDone = true
         route.toLocation(routes.welcome)
     };
 

@@ -1,6 +1,7 @@
 // constants
 export * from './constants/ConstantImages';
 export * from './constants/ConstantLottie';
+export * from './constants/ConstantKMM';
 // hooks
 export * from './hooks/WindowResize';
 export * from './hooks/WindowScroll';

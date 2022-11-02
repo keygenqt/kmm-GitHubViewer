@@ -1,12 +1,13 @@
 import {Route} from "react-router-dom";
 import * as React from "react";
 import {OnboardingPage, SignInPage, WelcomePage} from "../../pages";
+import {ConstantKMM} from "../constants/ConstantKMM";
 
 export const RouteConf = {
     delay: 200,
     routes: {
         onboarding: {
-            path: '/',
+            path: ConstantKMM.crossStorage.isOnboardingDone ? '/onboarding' : '/',
             render: function (key, path) {
                 return <Route
                     key={key}
@@ -19,7 +20,7 @@ export const RouteConf = {
             }
         },
         welcome: {
-            path: '/welcome',
+            path: ConstantKMM.crossStorage.isOnboardingDone ? '/' : '/welcome',
             render: function (key, path) {
                 return <Route
                     key={key}
