@@ -27,6 +27,12 @@ private fun option() = jsonAs<Date.LocaleOptions>()
 actual object PlatformHelper {
 
     /**
+     * Get timestamp for string
+     */
+    fun toTimestamp(time: String): Int =
+        time.let { (Instant.parse(it).toEpochMilliseconds() / 1000).toInt() }
+
+    /**
      * Format timestamp js
      */
     fun dateFormat(time: Int, format: String): String =

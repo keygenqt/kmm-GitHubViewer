@@ -17,6 +17,9 @@ import {ReactComponent as scala} from "../../assets/images/languages/scala-plain
 import {ReactComponent as swift} from "../../assets/images/languages/swift-plain.svg";
 import logo from "../../assets/images/layout/logo.png";
 import logo192 from "../../assets/images/layout/logo192.png";
+import chart_1 from "../../assets/images/repos/chart_1.png";
+import chart_2 from "../../assets/images/repos/chart_2.png";
+
 
 /**
  * Apps constants images for easy import
@@ -25,6 +28,10 @@ export const ConstantImages = {
     layout: {
         logo: logo,
         logo192: logo192,
+    },
+    repos: {
+        chart_1: chart_1,
+        chart_2: chart_2,
     },
     languages: {
         bash: bash,

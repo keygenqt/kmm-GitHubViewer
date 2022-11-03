@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useContext} from 'react';
 import {
     Box,
     Button,
@@ -12,11 +11,10 @@ import {
     Tab,
     Tabs
 } from "@mui/material";
-import {FormatListBulleted, Logout, People, Person} from "@mui/icons-material";
+import {FormatListBulleted, Logout, Person} from "@mui/icons-material";
 import {TabReposElement} from "./elements/TabReposElement";
-import {TabFollowersElement} from "./elements/TabFollowersElement";
 import {TabProfileElement} from "./elements/TabProfileElement";
-import {ConstantImages, ConstantKMM, NavigateContext} from "../../base";
+import {ConstantImages, ConstantKMM} from "../../base";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -60,10 +58,12 @@ function a11yProps(index: number) {
 
 export function UserPage() {
 
-    const {route, routes} = useContext(NavigateContext)
-
     const [value, setValue] = React.useState(0);
     const [openLogout, setOpenLogout] = React.useState(false);
+
+    const [modelsRepos, setModelsRepos] = React.useState([]);
+    const [modelsFollowers, setModelsFollowers] = React.useState([]);
+    const [modelUser, setModelUser] = React.useState(null);
 
     const handleClickOpen = () => {
         setOpenLogout(true)
@@ -114,18 +114,12 @@ export function UserPage() {
                             borderRadius: 5,
                             marginTop: 1,
                         }}/>} label="REPOS" {...a11yProps(0)} />
-                        <Tab icon={<People sx={{
-                            backgroundColor: 'secondary.main',
-                            padding: '4px 18px',
-                            borderRadius: 5,
-                            marginTop: 1,
-                        }}/>} label="FOLLOWER" {...a11yProps(1)} />
                         <Tab icon={<Person sx={{
                             backgroundColor: 'secondary.main',
                             padding: '4px 18px',
                             borderRadius: 5,
                             marginTop: 1,
-                        }}/>} label="PROFILE" {...a11yProps(2)} />
+                        }}/>} label="PROFILE" {...a11yProps(1)} />
                     </Tabs>
 
                     <Button variant="contained" color="secondary" style={{boxShadow: "none"}} sx={{
@@ -142,13 +136,24 @@ export function UserPage() {
                 </Stack>
 
                 <TabPanel value={value} index={0}>
-                    <TabReposElement/>
+                    <TabReposElement
+                        models={modelsRepos}
+                        updateModels={(models) => {
+                            setModelsRepos(models)
+                        }}
+                    />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <TabFollowersElement/>
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                    <TabProfileElement/>
+                    <TabProfileElement
+                        user={modelUser}
+                        updateUser={(model) => {
+                            setModelUser(model)
+                        }}
+                        models={modelsFollowers}
+                        updateModels={(models) => {
+                            setModelsFollowers(models)
+                        }}
+                    />
                 </TabPanel>
             </Box>
 

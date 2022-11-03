@@ -146,10 +146,10 @@ fun ProfileInfo(
                 text = model.createdAt.toTimestamp().dateFormat(AppConstants.DATE_FORMAT.SHORT)
             )
 
-            if (model.location != null) {
+            if (model.bio != null) {
                 InfoBlock(
                     label = stringResource(id = R.string.profile_label_bio),
-                    text = model.location
+                    text = model.bio
                 )
             }
 

@@ -198,7 +198,7 @@ fun RepoInfo(
                 InfoBlockCount(
                     label = stringResource(id = R.string.repo_label_size),
                     vectorImage = Icons.Default.Storage,
-                    count = AppHelper.humanReadableByte(model.size.toLong() * 10000.0)
+                    count = AppHelper.humanReadableByte(model.size.toLong() * 1024.0)
                 )
             }
         }

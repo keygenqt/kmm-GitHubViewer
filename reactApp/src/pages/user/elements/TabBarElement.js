@@ -11,8 +11,7 @@ export function TabBarElement(props) {
         isOrderASC = false,
         onRefreshClick = function () {
         },
-        onSettingsClick = function () {
-        },
+        onSettingsClick,
         onSortClick = null
     } = props
 
@@ -102,21 +101,21 @@ export function TabBarElement(props) {
                                     }}/>
                                 </IconButton>
 
-                                <IconButton
-                                    size="large"
-                                    edge="start"
-                                    color="inherit"
-                                    aria-label="menu"
-                                    onClick={onSettingsClick}
-                                >
-                                    <Settings/>
-                                </IconButton>
+                                {onSettingsClick ? (
+                                    <IconButton
+                                        size="large"
+                                        edge="start"
+                                        color="inherit"
+                                        aria-label="menu"
+                                        onClick={onSettingsClick}
+                                    >
+                                        <Settings/>
+                                    </IconButton>
+                                ) : null}
                             </>
                         )}
 
-
                     </Stack>
-
 
                 </Stack>
             </Toolbar>

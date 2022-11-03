@@ -1,4 +1,5 @@
 import error404 from "../../assets/lottie/74602-404-error-page-creative.json";
+import error from "../../assets/lottie/75279-error.json";
 import step1 from "../../assets/lottie/step1.json";
 import step2 from "../../assets/lottie/step2.json";
 import step3 from "../../assets/lottie/step3.json";
@@ -12,6 +13,7 @@ import loader from "../../assets/lottie/block_loader.json";
  * Apps constants lottie json
  */
 export const ConstantLottie = {
+    error: error,
     error404: error404,
     server: server,
     loader: loader,

@@ -1,8 +1,8 @@
 export const typography = {
     fontSize: 14,
     h1: {
-        fontSize: 56,
-        fontWeight: '400',
+        fontSize: 70,
+        fontWeight: '700',
         textTransform: "none",
         fontFamily: [
             '"Albert Sans"',
