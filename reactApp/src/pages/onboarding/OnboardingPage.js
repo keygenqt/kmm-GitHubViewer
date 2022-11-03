@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {useContext, useEffect} from 'react';
-import {Box, Button, MobileStepper, Stack, Typography} from "@mui/material";
+import {useContext} from 'react';
+import {Box, Button, MobileStepper, Stack, Typography, useTheme} from "@mui/material";
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
 import {ConstantKMM, ConstantLottie, NavigateContext} from "../../base";
 import Lottie from "lottie-react";
@@ -45,6 +45,7 @@ const steps = [
 
 export function OnboardingPage() {
 
+    const theme = useTheme()
     const {route, routes} = useContext(NavigateContext)
 
     const [activeStep, setActiveStep] = React.useState(0);
@@ -70,7 +71,8 @@ export function OnboardingPage() {
             sx={{
                 p: 5,
                 height: '100%',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                backgroundColor: theme.palette.background.default
             }}
             direction="column"
             justifyContent="space-between"
@@ -84,7 +86,7 @@ export function OnboardingPage() {
                     margin: '0 auto'
                 }} animationData={steps[activeStep].icon}/>
 
-                <Typography variant="h6">
+                <Typography variant="h6" color='text.primary'>
                     {steps[activeStep].label}
                 </Typography>
 
@@ -92,7 +94,7 @@ export function OnboardingPage() {
                     paddingTop: '20px',
                     maxWidth: 400,
                     margin: '0 auto'
-                }}>
+                }} color='text.primary'>
                     {steps[activeStep].description}
                 </Typography>
             </Stack>

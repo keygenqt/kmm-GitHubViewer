@@ -1,5 +1,17 @@
 import * as React from 'react';
-import {AppBar, Box, Button, FormGroup, Grid, IconButton, Stack, TextField, Toolbar, Typography} from "@mui/material";
+import {
+    AppBar,
+    Box,
+    Button,
+    FormGroup,
+    Grid,
+    IconButton,
+    Stack,
+    TextField,
+    Toolbar,
+    Typography,
+    useTheme
+} from "@mui/material";
 import {ArrowBack} from "@mui/icons-material";
 import {useContext} from "react";
 import {ConstantKMM, NavigateContext} from "../../base";
@@ -10,6 +22,7 @@ import {AlertError, AlertSuccess} from "../../components";
 export function SignInPage() {
 
     const {route} = useContext(NavigateContext)
+    const theme = useTheme()
 
     let uuid = require("uuid");
 
@@ -27,7 +40,9 @@ export function SignInPage() {
                 bottom: -175
             }
         }}>
-            <AppBar position="static" color={"secondary"} elevation={0}>
+            <AppBar position="static" color={"secondary"} elevation={0} sx={{
+                backgroundColor: theme.palette.secondary.main,
+            }}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -59,7 +74,7 @@ export function SignInPage() {
                     validationSchema={Yup.object().shape({
                         nickname: Yup.string().required('Nickname is required'),
                     })}
-                    onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
+                    onSubmit={async (values) => {
                         window.open(ConstantKMM.appHelper.getOauthLink(values.nickname, uuid.v4()), '_blank')
                     }}
                 >

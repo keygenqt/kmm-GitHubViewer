@@ -14,7 +14,8 @@ import {
 import {FormatListBulleted, Logout, Person} from "@mui/icons-material";
 import {TabReposElement} from "./elements/TabReposElement";
 import {TabProfileElement} from "./elements/TabProfileElement";
-import {ConstantImages, ConstantKMM} from "../../base";
+import {ConstantImages, ConstantKMM, useLocalStorage} from "../../base";
+import {ValueType} from "../../base/route/ValueType";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -57,6 +58,8 @@ function a11yProps(index: number) {
 }
 
 export function UserPage() {
+
+    const darkMode = useLocalStorage("darkMode", ValueType.bool);
 
     const [value, setValue] = React.useState(0);
     const [openLogout, setOpenLogout] = React.useState(false);
@@ -104,7 +107,7 @@ export function UserPage() {
                             borderRight: 1,
                             borderColor: 'divider',
                             '& .Mui-selected': {
-                                color: 'hwb(0deg 0% 100% / 87%) !important',
+                                color: darkMode ? 'white !important' : 'black !important',
                             },
                         }}
                     >

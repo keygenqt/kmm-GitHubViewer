@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useCallback, useEffect, useRef} from 'react';
+import {useCallback, useContext, useEffect, useRef} from 'react';
 import {
     Avatar,
     Box,
@@ -12,7 +12,7 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {ConstantImages, ConstantKMM, ConstantLottie} from "../../../base";
+import {ConstantImages, ConstantKMM, ConstantLottie, LanguageContext} from "../../../base";
 import {TabBarElement} from "./TabBarElement";
 import {LoadingElement} from "./LoadingElement";
 import {BugReport, CallSplit, Lock, LockOpen, Star, Storage, Visibility} from "@mui/icons-material";
@@ -137,6 +137,10 @@ export function TabReposElement(props) {
                 }}
                 onSettingsClick={() => {
                     console.log("ye")
+                }}
+                editTitle={"Edit profile"}
+                editOnClick={() => {
+
                 }}
             />
 
@@ -313,6 +317,8 @@ ItemRepo.propTypes = {
 function PageRepo(props) {
 
     const theme = useTheme()
+    const {isLocEn} = useContext(LanguageContext)
+
     const {modelAction} = props
 
     return (
@@ -320,7 +326,7 @@ function PageRepo(props) {
             <Box sx={{
                 padding: 2,
             }}>
-                <Typography variant="h6">
+                <Typography variant="h6" color='text.primary'>
                     {modelAction.fullName}
                 </Typography>
             </Box>
@@ -447,7 +453,7 @@ function PageRepo(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         ISSUE
                     </Typography>
                     <Box sx={{
@@ -457,9 +463,9 @@ function PageRepo(props) {
                         paddingTop: '8px',
                         paddingBottom: '5px'
                     }}>
-                        <BugReport fontSize={'large'}/>
+                        <BugReport fontSize={'large'} sx={{color: 'text.primary'}}/>
                     </Box>
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         {modelAction.openIssuesCount}
                     </Typography>
                 </Stack>
@@ -469,7 +475,7 @@ function PageRepo(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         ISSUE
                     </Typography>
                     <Box sx={{
@@ -479,9 +485,9 @@ function PageRepo(props) {
                         paddingTop: '8px',
                         paddingBottom: '5px'
                     }}>
-                        <Visibility fontSize={'large'}/>
+                        <Visibility fontSize={'large'} sx={{color: 'text.primary'}}/>
                     </Box>
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         {modelAction.watchersCount}
                     </Typography>
                 </Stack>
@@ -491,7 +497,7 @@ function PageRepo(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         ISSUE
                     </Typography>
                     <Box sx={{
@@ -501,9 +507,9 @@ function PageRepo(props) {
                         paddingTop: '8px',
                         paddingBottom: '5px'
                     }}>
-                        <Storage fontSize={'large'}/>
+                        <Storage fontSize={'large'} sx={{color: 'text.primary'}}/>
                     </Box>
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         {ConstantKMM.appHelper.humanReadableByte(modelAction.size * 1024)}
                     </Typography>
                 </Stack>
@@ -521,10 +527,10 @@ function PageRepo(props) {
                 <Stack
                     spacing={1}
                 >
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         Is visibility
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         {modelAction.visibility.toUpperCase()}
                     </Typography>
                 </Stack>
@@ -532,10 +538,10 @@ function PageRepo(props) {
                 <Stack
                     spacing={1}
                 >
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         Owner
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         {modelAction.owner.login}
                     </Typography>
                 </Stack>
@@ -543,13 +549,13 @@ function PageRepo(props) {
                 <Stack
                     spacing={1}
                 >
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         Updated
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         {ConstantKMM.platformHelper.dateFormat(
                             ConstantKMM.platformHelper.toTimestamp(modelAction.updatedAt),
-                            "en-EN"
+                            isLocEn ? "en-EN" : "ru-RU"
                         )}
                     </Typography>
                 </Stack>
@@ -557,13 +563,13 @@ function PageRepo(props) {
                 <Stack
                     spacing={1}
                 >
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         Created
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         {ConstantKMM.platformHelper.dateFormat(
                             ConstantKMM.platformHelper.toTimestamp(modelAction.createdAt),
-                            "en-EN"
+                            isLocEn ? "en-EN" : "ru-RU"
                         )}
                     </Typography>
                 </Stack>
@@ -571,10 +577,10 @@ function PageRepo(props) {
                 <Stack
                     spacing={1}
                 >
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         Description
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         {modelAction.desc}
                     </Typography>
                 </Stack>

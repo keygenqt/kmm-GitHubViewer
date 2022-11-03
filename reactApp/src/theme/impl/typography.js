@@ -62,7 +62,6 @@ export const typography = {
     },
     subtitle1: {
         fontSize: 14,
-        color: "#626262",
         '@media (max-width: 700px)': {
             fontSize: 14,
         },
@@ -78,7 +77,6 @@ export const typography = {
         fontSize: 16,
     },
     textCard: {
-        color: "#00000099",
         lineHeight: '22px',
         fontSize: 16,
         fontFamily: [
@@ -88,7 +86,6 @@ export const typography = {
         ].join(','),
     },
     textBlog: {
-        color: "#000000de",
         whiteSpace: 'pre-line',
         lineHeight: '25px',
         fontSize: 18,

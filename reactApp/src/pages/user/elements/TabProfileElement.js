@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {useCallback, useEffect, useRef} from 'react';
+import {useCallback, useContext, useEffect, useRef} from 'react';
 import {Avatar, Box, Card, CardActionArea, CardContent, CardMedia, Grid, Stack, Typography} from "@mui/material";
-import {ConstantKMM, ConstantLottie} from "../../../base";
+import {ConstantKMM, ConstantLottie, LanguageContext} from "../../../base";
 import {TabBarElement} from "./TabBarElement";
 import {ErrorElement} from "./ErrorElement";
 import {LoadingElement} from "./LoadingElement";
@@ -12,6 +12,8 @@ import {Group, GroupAdd, HomeRepairService} from "@mui/icons-material";
 let timeoutID
 
 export function TabProfileElement(props) {
+
+    const {t} = useContext(LanguageContext)
 
     const {
         models = [],
@@ -130,6 +132,10 @@ export function TabProfileElement(props) {
                 onSettingsClick={() => {
 
                 }}
+                editTitle={"Edit profile"}
+                editOnClick={() => {
+
+                }}
             />
 
             {loading || error ? (
@@ -150,10 +156,10 @@ export function TabProfileElement(props) {
                         overflowY: 'auto',
                         paddingX: 2
                     }}>
-                        <Typography gutterBottom variant="h6" component="div" sx={{
+                        <Typography gutterBottom variant="h6" component="div" color='text.primary' sx={{
                             paddingTop: 2
                         }}>
-                            Profile
+                            {t('profile.t_title_profile')}
                         </Typography>
 
                         <PageUser
@@ -169,7 +175,7 @@ export function TabProfileElement(props) {
                         <Stack
                             spacing={2}
                         >
-                            <Typography gutterBottom variant="h6" component="div" sx={{
+                            <Typography gutterBottom variant="h6" color='text.primary' sx={{
                                 marginBottom: '-16px'
                             }}>
                                 Followers
@@ -260,6 +266,8 @@ function PageUser(props) {
 
     const {model} = props
 
+    const {isLocEn} = useContext(LanguageContext)
+
     return (
         <Stack>
             <Box align={"center"} sx={{
@@ -289,7 +297,9 @@ function PageUser(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary' sx={{
+                        textTransform: 'capitalize'
+                    }}>
                         Pub Repos
                     </Typography>
                     <Box sx={{
@@ -299,9 +309,9 @@ function PageUser(props) {
                         paddingTop: '8px',
                         paddingBottom: '5px'
                     }}>
-                        <HomeRepairService fontSize={'large'}/>
+                        <HomeRepairService fontSize={'large'} sx={{color: 'text.primary'}}/>
                     </Box>
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         {model.publicRepos}
                     </Typography>
                 </Stack>
@@ -311,7 +321,9 @@ function PageUser(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary' sx={{
+                        textTransform: 'capitalize'
+                    }}>
                         Followers
                     </Typography>
                     <Box sx={{
@@ -321,9 +333,9 @@ function PageUser(props) {
                         paddingTop: '8px',
                         paddingBottom: '5px'
                     }}>
-                        <Group fontSize={'large'}/>
+                        <Group fontSize={'large'} sx={{color: 'text.primary'}}/>
                     </Box>
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         {model.followers}
                     </Typography>
                 </Stack>
@@ -333,7 +345,9 @@ function PageUser(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary' sx={{
+                        textTransform: 'capitalize'
+                    }}>
                         Following
                     </Typography>
                     <Box sx={{
@@ -343,9 +357,9 @@ function PageUser(props) {
                         paddingTop: '8px',
                         paddingBottom: '5px'
                     }}>
-                        <GroupAdd fontSize={'large'}/>
+                        <GroupAdd fontSize={'large'} sx={{color: 'text.primary'}}/>
                     </Box>
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         {model.following}
                     </Typography>
                 </Stack>
@@ -364,10 +378,10 @@ function PageUser(props) {
                     <Stack
                         spacing={1}
                     >
-                        <Typography variant="h6">
+                        <Typography variant="h6" color='text.primary'>
                             Company
                         </Typography>
-                        <Typography variant="body1">
+                        <Typography variant="body1" color='text.primary'>
                             {model.company}
                         </Typography>
                     </Stack>
@@ -377,10 +391,10 @@ function PageUser(props) {
                     <Stack
                         spacing={1}
                     >
-                        <Typography variant="h6">
+                        <Typography variant="h6" color='text.primary'>
                             Blog
                         </Typography>
-                        <Typography variant="body1">
+                        <Typography variant="body1" color='text.primary'>
                             {model.blog}
                         </Typography>
                     </Stack>
@@ -390,10 +404,10 @@ function PageUser(props) {
                     <Stack
                         spacing={1}
                     >
-                        <Typography variant="h6">
+                        <Typography variant="h6" color='text.primary'>
                             Location
                         </Typography>
-                        <Typography variant="body1">
+                        <Typography variant="body1" color='text.primary'>
                             {model.location}
                         </Typography>
                     </Stack>
@@ -402,13 +416,13 @@ function PageUser(props) {
                 <Stack
                     spacing={1}
                 >
-                    <Typography variant="h6">
+                    <Typography variant="h6" color='text.primary'>
                         Date created profile
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" color='text.primary'>
                         {ConstantKMM.platformHelper.dateFormat(
                             ConstantKMM.platformHelper.toTimestamp(model.createdAt),
-                            "en-EN"
+                            isLocEn ? "en-EN" : "ru-RU"
                         )}
                     </Typography>
                 </Stack>
@@ -417,15 +431,14 @@ function PageUser(props) {
                     <Stack
                         spacing={1}
                     >
-                        <Typography variant="h6">
+                        <Typography variant="h6" color='text.primary'>
                             Bio
                         </Typography>
-                        <Typography variant="body1">
+                        <Typography variant="body1" color='text.primary'>
                             {model.bio}
                         </Typography>
                     </Stack>
                 ) : null}
-
 
             </Stack>
         </Stack>
