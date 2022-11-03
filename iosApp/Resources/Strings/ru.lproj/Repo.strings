@@ -8,11 +8,11 @@
 
 "title" = "Репозиторий";
 
-"icon_star_title" = "Звездочек";
+"icon_star_title" = "Звездочки";
 "icon_star_text" = "Позитивные оценки";
 
 "icon_forks_title" = "Форки";
-"icon_forks_text" = "Копиb вашей репки";
+"icon_forks_text" = "Копии вашей репки";
 
 "label_size" = "Size";
 "open_watchers" = "Watchers";
