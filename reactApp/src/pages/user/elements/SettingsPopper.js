@@ -14,7 +14,7 @@ export function SettingsPopper(props) {
         editOnClick,
     } = props
 
-    const {i18n, isLocEn} = useContext(LanguageContext)
+    const {i18n, isLocEn, t} = useContext(LanguageContext)
     const darkMode = useLocalStorage("darkMode", ValueType.bool);
 
     const [switchLocEn, setSwitchLocEn] = React.useState(!isLocEn);
@@ -55,7 +55,9 @@ export function SettingsPopper(props) {
                         <ListItemIcon>
                             <Translate/>
                         </ListItemIcon>
-                        <ListItemText primary={<Typography variant="body1">Enable ru-RU</Typography>}/>
+                        <ListItemText primary={<Typography variant="body1">
+                            {t('common.menu_en_ru')}
+                        </Typography>}/>
                         <Typography variant="body2" color="text.secondary">
                             <Switch checked={switchLocEn}/>
                         </Typography>
@@ -68,7 +70,9 @@ export function SettingsPopper(props) {
                         <ListItemIcon>
                             <DarkMode/>
                         </ListItemIcon>
-                        <ListItemText primary={<Typography variant="body1">Theme Dark</Typography>}/>
+                        <ListItemText primary={<Typography variant="body1">
+                            {t('common.menu_theme')}
+                        </Typography>}/>
                         <Typography variant="body2" color="text.secondary">
                             <Switch checked={switchDark}/>
                         </Typography>

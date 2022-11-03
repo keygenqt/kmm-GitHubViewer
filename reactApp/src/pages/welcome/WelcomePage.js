@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useContext} from 'react';
 import {Box, Button, Stack, Typography} from "@mui/material";
 import Lottie from "lottie-react";
-import {ConstantKMM, ConstantLottie, NavigateContext, useLocalStorage} from "../../base";
+import {ConstantKMM, ConstantLottie, LanguageContext, NavigateContext, useLocalStorage} from "../../base";
 import {ValueType} from "../../base/route/ValueType";
 
 export function WelcomePage() {
@@ -11,6 +11,7 @@ export function WelcomePage() {
     const greeting = ConstantKMM.greeting
 
     const {route, routes} = useContext(NavigateContext)
+    const {t} = useContext(LanguageContext)
 
     return (
         <Stack
@@ -37,12 +38,11 @@ export function WelcomePage() {
                 position={'relative'}
             >
                 <Typography variant="h1" color='text.primary'>
-                    Welcome to GitHub Viewer!
+                    {t('welcome.title')}
                 </Typography>
 
                 <Typography variant="h6" color='text.primary'>
-                    The app is written using the latest stack on ios and android. Keywords: KMM, MVVM, Jetpack Compose,
-                    SwiftUI
+                    {t('welcome.subtitle')}
                 </Typography>
             </Stack>
 
@@ -65,11 +65,11 @@ export function WelcomePage() {
                         route.toLocation(routes.signIn)
                     }}
                 >
-                    Get started
+                    {t('welcome.btn')}
                 </Button>
 
                 <Typography variant="body2" align={"right"} color='text.secondary'>
-                    Version: 0.0.1 {greeting}
+                    {t('welcome.version')} {greeting}
                 </Typography>
             </Stack>
 

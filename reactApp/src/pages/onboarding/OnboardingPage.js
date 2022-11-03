@@ -2,50 +2,46 @@ import * as React from 'react';
 import {useContext} from 'react';
 import {Box, Button, MobileStepper, Stack, Typography, useTheme} from "@mui/material";
 import {KeyboardArrowLeft, KeyboardArrowRight} from "@mui/icons-material";
-import {ConstantKMM, ConstantLottie, NavigateContext} from "../../base";
+import {ConstantKMM, ConstantLottie, LanguageContext, NavigateContext} from "../../base";
 import Lottie from "lottie-react";
 
 const steps = [
     {
-        label: 'About the app',
         icon: ConstantLottie.step1,
         iconWidth: 200,
-        description: `This is a demo application using the open GitHub REST API.
-        The application is under development. Develop will take place in 3 stages.`,
+        label: 'onboarding.item_1_title',
+        description: 'onboarding.item_1_desc',
     },
     {
-        label: 'First stage',
         icon: ConstantLottie.step2,
         iconWidth: 188,
-        description:
-            'Jetpack Compose application, MVVM and the whole latest stack surrounding this technology',
+        label: 'onboarding.item_2_title',
+        description: 'onboarding.item_2_desc',
     },
     {
-        label: 'Second stage',
         icon: ConstantLottie.step3,
         iconWidth: 188,
-        description: `Development of a shared KMM module for interacting with an ios application`,
+        label: 'onboarding.item_3_title',
+        description: 'onboarding.item_3_desc',
     },
     {
-        label: 'Third stage',
         icon: ConstantLottie.step4,
         iconWidth: 290,
-        description: `Application for ios on Swift using the previously developed shared module using KMM`,
+        label: 'onboarding.item_4_title',
+        description: 'onboarding.item_4_desc',
     },
     {
-        label: 'Acknowledgments',
         icon: ConstantLottie.step5,
         iconWidth: 200,
-        description: `This app uses the latest Google & JetBrains & Apple.
-        Thank them for this opportunity!
-        Thank you for your interest!
-        Thanks to my wife for your patience :)`,
+        label: 'onboarding.item_5_title',
+        description: 'onboarding.item_5_desc',
     },
 ];
 
 export function OnboardingPage() {
 
     const theme = useTheme()
+    const {t} = useContext(LanguageContext)
     const {route, routes} = useContext(NavigateContext)
 
     const [activeStep, setActiveStep] = React.useState(0);
@@ -87,7 +83,7 @@ export function OnboardingPage() {
                 }} animationData={steps[activeStep].icon}/>
 
                 <Typography variant="h6" color='text.primary'>
-                    {steps[activeStep].label}
+                    {t(steps[activeStep].label)}
                 </Typography>
 
                 <Typography variant="body1" style={{
@@ -95,7 +91,7 @@ export function OnboardingPage() {
                     maxWidth: 400,
                     margin: '0 auto'
                 }} color='text.primary'>
-                    {steps[activeStep].description}
+                    {t(steps[activeStep].description)}
                 </Typography>
             </Stack>
 
@@ -114,12 +110,12 @@ export function OnboardingPage() {
                 nextButton={
                     (activeStep === maxSteps - 1 ? (
                         <Button size="small" onClick={handleDone}>
-                            Done
+                            {t('onboarding.btn_done')}
                             <KeyboardArrowRight/>
                         </Button>
                     ) : (
                         <Button size="small" onClick={handleNext}>
-                            Next
+                            {t('onboarding.btn_next')}
                             <KeyboardArrowRight/>
                         </Button>
                     ))
@@ -127,7 +123,7 @@ export function OnboardingPage() {
                 backButton={
                     <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
                         <KeyboardArrowLeft/>
-                        Back
+                        {t('onboarding.btn_back')}
                     </Button>
                 }
             />

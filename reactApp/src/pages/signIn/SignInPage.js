@@ -14,13 +14,14 @@ import {
 } from "@mui/material";
 import {ArrowBack} from "@mui/icons-material";
 import {useContext} from "react";
-import {ConstantKMM, NavigateContext} from "../../base";
+import {ConstantKMM, LanguageContext, NavigateContext} from "../../base";
 import {Formik} from "formik";
 import * as Yup from "yup";
 import {AlertError, AlertSuccess} from "../../components";
 
 export function SignInPage() {
 
+    const {t} = useContext(LanguageContext)
     const {route} = useContext(NavigateContext)
     const theme = useTheme()
 
@@ -58,7 +59,7 @@ export function SignInPage() {
                     </IconButton>
 
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Sign In
+                        {t('signIn.title')}
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -72,7 +73,7 @@ export function SignInPage() {
                         submit: null
                     }}
                     validationSchema={Yup.object().shape({
-                        nickname: Yup.string().required('Nickname is required'),
+                        nickname: Yup.string().required(t('signIn.input_nickname_error')),
                     })}
                     onSubmit={async (values) => {
                         window.open(ConstantKMM.appHelper.getOauthLink(values.nickname, uuid.v4()), '_blank')
@@ -116,7 +117,7 @@ export function SignInPage() {
                                             onBlur={handleBlur}
                                             onChange={handleChange}
                                             fullWidth
-                                            label="Nickname"
+                                            label={t('signIn.input_nickname')}
                                             variant="filled"
                                         />
                                     </Grid>
@@ -130,7 +131,7 @@ export function SignInPage() {
                                             type="submit"
                                             size={'medium'}
                                         >
-                                            Submit
+                                            {t('signIn.btn')}
                                         </Button>
                                     </Grid>
                                 </Grid>

@@ -132,7 +132,7 @@ export function TabProfileElement(props) {
                 onSettingsClick={() => {
 
                 }}
-                editTitle={"Edit profile"}
+                editTitle={t('common.menu_edit_profile')}
                 editOnClick={() => {
 
                 }}
@@ -159,7 +159,7 @@ export function TabProfileElement(props) {
                         <Typography gutterBottom variant="h6" component="div" color='text.primary' sx={{
                             paddingTop: 2
                         }}>
-                            {t('profile.t_title_profile')}
+                            {t('profile.title_profile')}
                         </Typography>
 
                         <PageUser
@@ -178,7 +178,7 @@ export function TabProfileElement(props) {
                             <Typography gutterBottom variant="h6" color='text.primary' sx={{
                                 marginBottom: '-16px'
                             }}>
-                                Followers
+                                {t('profile.title_follower')}
                             </Typography>
 
                             {modelsCard}
@@ -266,7 +266,7 @@ function PageUser(props) {
 
     const {model} = props
 
-    const {isLocEn} = useContext(LanguageContext)
+    const {isLocEn, t} = useContext(LanguageContext)
 
     return (
         <Stack>
@@ -298,9 +298,9 @@ function PageUser(props) {
                     alignItems="center"
                 >
                     <Typography variant="body1" color='text.primary' sx={{
-                        textTransform: 'capitalize'
+                        textTransform: 'uppercase'
                     }}>
-                        Pub Repos
+                        {t('profile.block_public_repos')}
                     </Typography>
                     <Box sx={{
                         backgroundColor: 'secondary.main',
@@ -322,9 +322,9 @@ function PageUser(props) {
                     alignItems="center"
                 >
                     <Typography variant="body1" color='text.primary' sx={{
-                        textTransform: 'capitalize'
+                        textTransform: 'uppercase'
                     }}>
-                        Followers
+                        {t('profile.block_followers')}
                     </Typography>
                     <Box sx={{
                         backgroundColor: 'secondary.main',
@@ -346,9 +346,9 @@ function PageUser(props) {
                     alignItems="center"
                 >
                     <Typography variant="body1" color='text.primary' sx={{
-                        textTransform: 'capitalize'
+                        textTransform: 'uppercase'
                     }}>
-                        Following
+                        {t('profile.block_following')}
                     </Typography>
                     <Box sx={{
                         backgroundColor: 'secondary.main',
@@ -379,7 +379,7 @@ function PageUser(props) {
                         spacing={1}
                     >
                         <Typography variant="h6" color='text.primary'>
-                            Company
+                            {t('profile.label_company')}
                         </Typography>
                         <Typography variant="body1" color='text.primary'>
                             {model.company}
@@ -392,7 +392,7 @@ function PageUser(props) {
                         spacing={1}
                     >
                         <Typography variant="h6" color='text.primary'>
-                            Blog
+                            {t('profile.label_blog')}
                         </Typography>
                         <Typography variant="body1" color='text.primary'>
                             {model.blog}
@@ -405,7 +405,7 @@ function PageUser(props) {
                         spacing={1}
                     >
                         <Typography variant="h6" color='text.primary'>
-                            Location
+                            {t('profile.label_location')}
                         </Typography>
                         <Typography variant="body1" color='text.primary'>
                             {model.location}
@@ -417,7 +417,7 @@ function PageUser(props) {
                     spacing={1}
                 >
                     <Typography variant="h6" color='text.primary'>
-                        Date created profile
+                        {t('profile.label_created_at')}
                     </Typography>
                     <Typography variant="body1" color='text.primary'>
                         {ConstantKMM.platformHelper.dateFormat(
@@ -432,7 +432,7 @@ function PageUser(props) {
                         spacing={1}
                     >
                         <Typography variant="h6" color='text.primary'>
-                            Bio
+                            {t('profile.label_bio')}
                         </Typography>
                         <Typography variant="body1" color='text.primary'>
                             {model.bio}

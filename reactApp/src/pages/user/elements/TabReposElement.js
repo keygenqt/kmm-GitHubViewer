@@ -35,6 +35,7 @@ export function TabReposElement(props) {
 
     const modelsCard = []
 
+    const {t} = useContext(LanguageContext)
     const [page, setPage] = React.useState(1);
     const [error, setError] = React.useState(null);
     const [end, setEnd] = React.useState(false);
@@ -117,7 +118,7 @@ export function TabReposElement(props) {
             height: '100%'
         }}>
             <TabBarElement
-                title={"Repos"}
+                title={t('repos.title')}
                 loading={loading}
                 isOrderASC={isOrderASC}
                 onSortClick={() => {
@@ -138,7 +139,7 @@ export function TabReposElement(props) {
                 onSettingsClick={() => {
                     console.log("ye")
                 }}
-                editTitle={"Edit profile"}
+                editTitle={t('common.menu_edit_repo')}
                 editOnClick={() => {
 
                 }}
@@ -317,7 +318,7 @@ ItemRepo.propTypes = {
 function PageRepo(props) {
 
     const theme = useTheme()
-    const {isLocEn} = useContext(LanguageContext)
+    const {isLocEn, t} = useContext(LanguageContext)
 
     const {modelAction} = props
 
@@ -370,11 +371,11 @@ function PageRepo(props) {
                             spacing={0}
                         >
                             <Typography variant="h6">
-                                Star
+                                {t('repos.chart_1_title')}
                             </Typography>
 
                             <Typography variant="body1" sx={{paddingBottom: 1}}>
-                                Positive ratings
+                                {t('repos.chart_1_subtitle')}
                             </Typography>
                         </Stack>
                     </Stack>
@@ -426,11 +427,11 @@ function PageRepo(props) {
                             spacing={0}
                         >
                             <Typography variant="h6">
-                                Forks
+                                {t('repos.chart_2_title')}
                             </Typography>
 
                             <Typography variant="body1" sx={{paddingBottom: 1}}>
-                                Copy of a repository
+                                {t('repos.chart_2_subtitle')}
                             </Typography>
                         </Stack>
                     </Stack>
@@ -453,8 +454,10 @@ function PageRepo(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1" color='text.primary'>
-                        ISSUE
+                    <Typography variant="body1" color='text.primary' sx={{
+                        textTransform: 'uppercase'
+                    }}>
+                        {t('repos.block_issue')}
                     </Typography>
                     <Box sx={{
                         backgroundColor: 'secondary.main',
@@ -475,8 +478,10 @@ function PageRepo(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1" color='text.primary'>
-                        ISSUE
+                    <Typography variant="body1" color='text.primary' sx={{
+                        textTransform: 'uppercase'
+                    }}>
+                        {t('repos.block_watchers')}
                     </Typography>
                     <Box sx={{
                         backgroundColor: 'secondary.main',
@@ -497,8 +502,10 @@ function PageRepo(props) {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Typography variant="body1" color='text.primary'>
-                        ISSUE
+                    <Typography variant="body1" color='text.primary' sx={{
+                        textTransform: 'uppercase'
+                    }}>
+                        {t('repos.block_size')}
                     </Typography>
                     <Box sx={{
                         backgroundColor: 'secondary.main',
@@ -528,7 +535,7 @@ function PageRepo(props) {
                     spacing={1}
                 >
                     <Typography variant="h6" color='text.primary'>
-                        Is visibility
+                        {t('repos.label_visibility')}
                     </Typography>
                     <Typography variant="body1" color='text.primary'>
                         {modelAction.visibility.toUpperCase()}
@@ -539,7 +546,7 @@ function PageRepo(props) {
                     spacing={1}
                 >
                     <Typography variant="h6" color='text.primary'>
-                        Owner
+                        {t('repos.label_owner')}
                     </Typography>
                     <Typography variant="body1" color='text.primary'>
                         {modelAction.owner.login}
@@ -550,7 +557,7 @@ function PageRepo(props) {
                     spacing={1}
                 >
                     <Typography variant="h6" color='text.primary'>
-                        Updated
+                        {t('repos.label_updated_at')}
                     </Typography>
                     <Typography variant="body1" color='text.primary'>
                         {ConstantKMM.platformHelper.dateFormat(
@@ -564,7 +571,7 @@ function PageRepo(props) {
                     spacing={1}
                 >
                     <Typography variant="h6" color='text.primary'>
-                        Created
+                        {t('repos.label_created_at')}
                     </Typography>
                     <Typography variant="body1" color='text.primary'>
                         {ConstantKMM.platformHelper.dateFormat(
@@ -578,7 +585,7 @@ function PageRepo(props) {
                     spacing={1}
                 >
                     <Typography variant="h6" color='text.primary'>
-                        Description
+                        {t('repos.label_description')}
                     </Typography>
                     <Typography variant="body1" color='text.primary'>
                         {modelAction.desc}

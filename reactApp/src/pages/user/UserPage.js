@@ -14,8 +14,9 @@ import {
 import {FormatListBulleted, Logout, Person} from "@mui/icons-material";
 import {TabReposElement} from "./elements/TabReposElement";
 import {TabProfileElement} from "./elements/TabProfileElement";
-import {ConstantImages, ConstantKMM, useLocalStorage} from "../../base";
+import {ConstantImages, ConstantKMM, LanguageContext, useLocalStorage} from "../../base";
 import {ValueType} from "../../base/route/ValueType";
+import {useContext} from "react";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -59,6 +60,7 @@ function a11yProps(index: number) {
 
 export function UserPage() {
 
+    const {t} = useContext(LanguageContext)
     const darkMode = useLocalStorage("darkMode", ValueType.bool);
 
     const [value, setValue] = React.useState(0);
@@ -116,13 +118,13 @@ export function UserPage() {
                             padding: '4px 18px',
                             borderRadius: 5,
                             marginTop: 1,
-                        }}/>} label="REPOS" {...a11yProps(0)} />
+                        }}/>} label={t('repos.title')} {...a11yProps(0)} />
                         <Tab icon={<Person sx={{
                             backgroundColor: 'secondary.main',
                             padding: '4px 18px',
                             borderRadius: 5,
                             marginTop: 1,
-                        }}/>} label="PROFILE" {...a11yProps(1)} />
+                        }}/>} label={t('profile.title_profile')} {...a11yProps(1)} />
                     </Tabs>
 
                     <Button variant="contained" color="secondary" style={{boxShadow: "none"}} sx={{
@@ -167,21 +169,23 @@ export function UserPage() {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    Exit the application
+                    {t('common.dialog_logout_title')}
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        You will be redirected to the login page. Is this what you want?
+                        {t('common.dialog_logout_desc')}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Dismiss</Button>
+                    <Button onClick={handleClose}>
+                        {t('common.dialog_btn_dismiss')}
+                    </Button>
                     <Button onClick={() => {
                         handleClose()
                         ConstantKMM.crossStorage.authToken = ""
                         window.location = "/"
                     }} autoFocus>
-                        Confirm
+                        {t('common.dialog_btn_confirm')}
                     </Button>
                 </DialogActions>
             </Dialog>
