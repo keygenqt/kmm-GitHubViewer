@@ -10,7 +10,7 @@ export const ruLocalization = {
             item_4_title: "Третий этап",
             item_4_desc: "Разработка \"shared\" модуля Kotlin Multiplatform для взаимодействия с приложениями.",
             item_5_title: "Четвертый этап",
-            item_5_desc: "Приложение React с применением разработанного раннее модуля \"shared\".\nНа этом все.",
+            item_5_desc: "Приложение React с применением разработанного раннее модуля \"shared\". На этом все.",
             btn_next: "Далее",
             btn_back: "Назад",
             btn_done: "Конец",

@@ -3,31 +3,17 @@
     <string name="onboarding_skip">Скип</string>
 
     <string name="onboarding_step1_title">О приложении</string>
-    <string name="onboarding_step1_text">
-        Это демострационное приложение с использованием отрытого GitHub REST API.
-        Приложение находится на стадии развития. Развите будет проходит в 3 этапа.
-    </string>
+    <string name="onboarding_step1_text">Это демострационное приложение Kotlin Multiplatform с использованием отрытого GitHub REST API. Развитие приложение проходило в 4 этапа.</string>
 
     <string name="onboarding_step2_title">Первый этап</string>
-    <string name="onboarding_step2_text">
-        Приложение на Jetpack Compose, MVVM и весь последний стек окрущающий эту технологию
-    </string>
+    <string name="onboarding_step2_text">Приложение на Jetpack Compose, MVVM и весь последний стек окрущающий эту технологию.</string>
 
     <string name="onboarding_step3_title">Второй этап</string>
-    <string name="onboarding_step3_text">
-        Разработка shared модуля KMM для взаимодействия с ios приложением
-    </string>
+    <string name="onboarding_step3_text">Приложение на swiftUI, MVVM и весь последний стек окрущающий эту технологию.</string>
 
     <string name="onboarding_step4_title">Третий этап</string>
-    <string name="onboarding_step4_text">
-        Приложение для ios на Swift с применением разработанного раннее модуля shared с использованием KMM
-    </string>
+    <string name="onboarding_step4_text">Разработка \"shared\" модуля Kotlin Multiplatform для взаимодействия с приложениями.</string>
 
-    <string name="onboarding_step5_title">Благодарности</string>
-    <string name="onboarding_step5_text">
-        В этом приложении испльзуется последний стек технологий Google &amp; JetBrains &amp; Apple.
-        Спасибо им за эту возможность!
-        Спасибо Вам за интерес!
-        Спасибо моей жене за терпение :)
-    </string>
+    <string name="onboarding_step5_title">Четвертый этап</string>
+    <string name="onboarding_step5_text">Приложение React с применением разработанного раннее модуля \"shared\". На этом все.</string>
 </resources>

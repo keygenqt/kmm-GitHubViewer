@@ -10,7 +10,7 @@ export const enLocalization = {
             item_4_title: "Third stage",
             item_4_desc: "Development of a \"shared\" Kotlin Multiplatform module for interaction with applications.",
             item_5_title: "Fourth stage",
-            item_5_desc: "React app using the \"shared\" module we developed earlier.\nThat's all.",
+            item_5_desc: "React app using the \"shared\" module we developed earlier. That's all.",
             btn_next: "Next",
             btn_back: "Back",
             btn_done: "Done",

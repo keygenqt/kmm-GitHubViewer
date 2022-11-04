@@ -83,13 +83,18 @@ private fun OnboardingAnimation(
         composition = composition,
         iterations = LottieConstants.IterateForever
     )
-    Box(modifier = modifier) {
+    Box(
+        modifier = modifier
+            .height(180.dp)
+            .width(230.dp)
+            .offset(y = 30.dp)
+    ) {
         LottieAnimation(
             composition = composition,
             progress = progress,
             modifier = Modifier
+                .fillMaxSize()
                 .align(Alignment.Center)
-                .size(150.dp)
         )
     }
 }

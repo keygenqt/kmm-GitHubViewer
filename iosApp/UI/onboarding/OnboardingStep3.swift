@@ -10,7 +10,7 @@ import SwiftUI
 struct OnboardingStep3: View {
     var body: some View {
         VStack {
-            LottieView(name: "step3").frame(width: 150, height: 130)
+            LottieView(name: "step3").frame(width: 230, height: 150)
 
             Spacer().frame(height: 30)
 
