@@ -193,7 +193,10 @@ export function TabBarElement(props) {
                             }}>
                                 <SettingsPopper
                                     editTitle={editTitle}
-                                    editOnClick={editOnClick}
+                                    editOnClick={() => {
+                                        setOpen(false)
+                                        editOnClick()
+                                    }}
                                 />
                             </Paper>
                         </Fade>

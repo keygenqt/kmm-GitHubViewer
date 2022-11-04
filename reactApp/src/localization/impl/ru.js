@@ -42,6 +42,13 @@ export const ruLocalization = {
             label_updated_at: 'Обновлено',
             label_created_at: 'Создано',
             label_description: 'Описание',
+            edit: {
+                form_name_label: 'Название',
+                form_description_label: 'Описание',
+                form_is_private: 'Приватная репка',
+                form_name_is_required: 'Имя обязательное',
+                form_description_is_required: 'Описание обязательное',
+            }
         },
         profile: {
             title_profile: 'Профайл',
@@ -54,6 +61,14 @@ export const ruLocalization = {
             label_location: 'Местонахождение',
             label_created_at: 'Дата создания профиля',
             label_bio: 'Биография',
+            edit: {
+                form_name_label: 'Имя',
+                form_blog_label: 'Сайт URL',
+                form_twitter_label: 'Twitter никнейм',
+                form_company_label: 'Компания',
+                form_location_label: 'Локация',
+                form_bio_label: 'О себе',
+            }
         },
         common: {
             dialog_logout_title: 'Выход из приложения',
@@ -64,6 +79,7 @@ export const ruLocalization = {
             menu_theme: 'Темная тема',
             menu_edit_profile: 'Редактировать',
             menu_edit_repo: 'Редактировать',
+            form_btn_save: 'Сохранить',
         }
     },
 };

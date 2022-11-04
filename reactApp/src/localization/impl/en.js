@@ -42,6 +42,13 @@ export const enLocalization = {
             label_updated_at: 'Updated',
             label_created_at: 'Created',
             label_description: 'Description',
+            edit: {
+                form_name_label: 'Name',
+                form_description_label: 'Description',
+                form_is_private: 'Private Repo',
+                form_name_is_required: 'Name is required',
+                form_description_is_required: 'Description is required',
+            }
         },
         profile: {
             title_profile: 'Profile',
@@ -54,16 +61,26 @@ export const enLocalization = {
             label_location: 'Location',
             label_created_at: 'Date created profile',
             label_bio: 'Bio',
+            edit: {
+                form_name_label: 'Name',
+                form_blog_label: 'Blog URL',
+                form_twitter_label: 'Twitter nickname',
+                form_company_label: 'Company',
+                form_location_label: 'Location',
+                form_bio_label: 'Bio',
+                form_name_is_required: 'Name is required',
+            }
         },
         common: {
             dialog_logout_title: 'Exit the application',
             dialog_logout_desc: 'You will be redirected to the login page. Is this what you want?',
-            dialog_btn_confirm: 'Confirm',
-            dialog_btn_dismiss: 'Dismiss',
             menu_en_ru: 'Enable ru-RU',
             menu_theme: 'Theme Dark',
             menu_edit_profile: 'Edit Profile',
             menu_edit_repo: 'Edit Repo',
+            dialog_btn_confirm: 'Confirm',
+            dialog_btn_dismiss: 'Dismiss',
+            form_btn_save: 'Save',
         }
     },
 };

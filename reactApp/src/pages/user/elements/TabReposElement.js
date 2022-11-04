@@ -3,12 +3,18 @@ import {useCallback, useContext, useEffect, useRef} from 'react';
 import {
     Avatar,
     Box,
+    Button,
     Card,
     CardActionArea,
     CardActions,
     CardContent,
+    CircularProgress,
+    FormControlLabel,
+    FormGroup,
     Grid,
     Stack,
+    Switch,
+    TextField,
     Typography,
     useTheme
 } from "@mui/material";
@@ -19,6 +25,11 @@ import {BugReport, CallSplit, Lock, LockOpen, Star, Storage, Visibility} from "@
 import Lottie from "lottie-react";
 import {ErrorElement} from "./ErrorElement";
 import PropTypes from "prop-types";
+import {EditDialogElement} from "./EditDialogElement";
+import {Formik} from "formik";
+import * as Yup from "yup";
+import {AlertError, AlertSuccess} from "../../../components";
+import shared from "shared";
 
 let timeoutID
 
@@ -44,6 +55,7 @@ export function TabReposElement(props) {
     const [isOrderASC, setIsOrderASC] = React.useState(ConstantKMM.crossStorage.isRepoOrder ?? false);
     const [data, setData] = React.useState(models);
     const [modelAction, setModelAction] = React.useState(models.length === 0 ? null : models[0]);
+    const [openEditDialog, setOpenEditDialog] = React.useState(false);
 
     useEffect(() => {
         clearTimeout(timeoutID)
@@ -113,89 +125,291 @@ export function TabReposElement(props) {
     })
 
     return (
-        <Stack sx={{
-            width: '100%',
-            height: '100%'
-        }}>
-            <TabBarElement
-                title={t('repos.title')}
-                loading={loading}
-                isOrderASC={isOrderASC}
-                onSortClick={() => {
-                    const result = !isOrderASC
-                    setIsOrderASC(result)
-                    setTimeout(() => {
-                        ConstantKMM.crossStorage.isRepoOrder = result
-                        setPage(1)
-                        setLoading(true)
-                    }, 350)
+        <>
+            <EditDialogElement
+                title={t('common.menu_edit_repo')}
+                open={openEditDialog}
+                onClose={() => {
+                    setOpenEditDialog(false)
                 }}
-                onRefreshClick={() => {
-                    setTimeout(() => {
-                        setPage(1)
-                        setLoading(true)
-                    }, 350)
-                }}
-                onSettingsClick={() => {
-                    console.log("ye")
-                }}
-                editTitle={t('common.menu_edit_repo')}
-                editOnClick={() => {
+            >
+                <EditForm
+                    modelAction={modelAction}
+                    onChangeModel={(model) => {
+                        let changeIndex = null
+                        for (let index = 0; index < data.length; index++) {
+                            if (data[index].id === model.id) {
+                                changeIndex = index
+                                break;
+                            }
+                        }
+                        if (changeIndex !== null) {
+                            data[changeIndex] = model
+                            setData(data)
+                            setModelAction(model)
+                        }
+                    }}
+                />
+            </EditDialogElement>
 
-                }}
-            />
+            <Stack sx={{
+                width: '100%',
+                height: '100%'
+            }}>
+                <TabBarElement
+                    title={t('repos.title')}
+                    loading={loading}
+                    isOrderASC={isOrderASC}
+                    onSortClick={() => {
+                        const result = !isOrderASC
+                        setIsOrderASC(result)
+                        setTimeout(() => {
+                            ConstantKMM.crossStorage.isRepoOrder = result
+                            setPage(1)
+                            setLoading(true)
+                        }, 350)
+                    }}
+                    onRefreshClick={() => {
+                        setTimeout(() => {
+                            setPage(1)
+                            setLoading(true)
+                        }, 350)
+                    }}
+                    onSettingsClick={() => {
+                        console.log("ye")
+                    }}
+                    editTitle={t('common.menu_edit_repo')}
+                    editOnClick={() => {
+                        setOpenEditDialog(true)
+                    }}
+                />
 
-            {loading || error ? (
-                error ? (
-                    <ErrorElement
-                        error={error}
-                    />
-                ) : (
-                    <LoadingElement/>
-                )
-            ) : (
-                <Grid container spacing={0} sx={{
-                    height: 'calc(100% - 64px)'
-                }}>
-                    <Grid ref={itemsRef} item xs={4} sx={{
-                        p: 2,
-                        height: '100%',
-                        overflowY: 'auto'
-                    }}>
-                        <Stack
-                            spacing={2}
-                        >
-                            {modelsCard}
-
-                            {end ? null : (
-                                <Box ref={loadingRef}>
-                                    <Lottie style={{
-                                        width: 60,
-                                        margin: 'auto',
-                                    }} animationData={ConstantLottie.loader}/>
-                                </Box>
-                            )}
-
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={8} sx={{
-                        height: '100%',
-                        overflowY: 'auto',
-                        paddingX: 2
-                    }}>
-                        <PageRepo
-                            modelAction={modelAction}
+                {loading || error ? (
+                    error ? (
+                        <ErrorElement
+                            error={error}
                         />
+                    ) : (
+                        <LoadingElement/>
+                    )
+                ) : (
+                    <Grid container spacing={0} sx={{
+                        height: 'calc(100% - 64px)'
+                    }}>
+                        <Grid ref={itemsRef} item xs={4} sx={{
+                            p: 2,
+                            height: '100%',
+                            overflowY: 'auto'
+                        }}>
+                            <Stack
+                                spacing={2}
+                            >
+                                {modelsCard}
+
+                                {end ? null : (
+                                    <Box ref={loadingRef}>
+                                        <Lottie style={{
+                                            width: 60,
+                                            margin: 'auto',
+                                        }} animationData={ConstantLottie.loader}/>
+                                    </Box>
+                                )}
+
+                            </Stack>
+                        </Grid>
+                        <Grid item xs={8} sx={{
+                            height: '100%',
+                            overflowY: 'auto',
+                            paddingX: 2
+                        }}>
+                            <PageRepo
+                                modelAction={modelAction}
+                            />
+                        </Grid>
                     </Grid>
-                </Grid>
-            )}
-        </Stack>
+                )}
+            </Stack>
+        </>
     )
 }
 
 TabReposElement.propTypes = {
     models: PropTypes.array.isRequired,
     updateModels: PropTypes.func.isRequired
+};
+
+function EditForm(props) {
+
+    const {t} = useContext(LanguageContext)
+
+    const [submitLoader, setSubmitLoader] = React.useState(false);
+
+    const {
+        modelAction,
+        onChangeModel
+    } = props
+
+    return (
+        <Stack sx={{
+            p: 3
+        }}>
+            <Formik
+                initialValues={{
+                    name: modelAction.name,
+                    description: modelAction.desc,
+                    isPrivate: modelAction.isPrivate,
+                    submit: null
+                }}
+                validationSchema={Yup.object().shape({
+                    name: Yup.string().required(t('repos.edit.form_name_is_required')),
+                    description: Yup.string().required(t('repos.edit.form_description_is_required')),
+                })}
+                onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
+                    setSubmitLoader(true);
+                    setStatus({success: null});
+                    setErrors({submit: null});
+
+                    try {
+
+                        await new Promise(r => setTimeout(r, 1000));
+
+                        const response = await ConstantKMM.httpClient.patch.updateRepo(
+                            modelAction.url,
+                            new shared.com.keygenqt.viewer.data.requests.RepoRequest(
+                                values.name,
+                                values.description,
+                                values.isPrivate,
+                            )
+                        )
+
+                        onChangeModel(response)
+
+                        setStatus({success: true});
+                        setSubmitLoader(false);
+                        setSubmitting(false);
+
+                    } catch (error) {
+                        setStatus({success: false});
+                        setSubmitLoader(false);
+                        setSubmitting(false);
+                    }
+                }}
+            >
+                {({
+                      status,
+                      errors,
+                      handleBlur,
+                      handleChange,
+                      handleSubmit,
+                      isSubmitting,
+                      touched,
+                      values,
+                      setFieldValue
+                  }) => (
+                    <form noValidate onSubmit={handleSubmit}>
+
+                        {errors.submit && (
+                            <AlertError>
+                                {errors.submit}
+                            </AlertError>
+                        )}
+
+                        {status && status.success && (
+                            <AlertSuccess>
+                                Success submit form!
+                            </AlertSuccess>
+                        )}
+
+                        <FormGroup>
+                            <Grid container spacing={2}>
+
+                                <Grid item xs={12}>
+                                    <TextField
+                                        disabled={isSubmitting}
+                                        type={'text'}
+                                        name={'name'}
+                                        value={values.name}
+                                        helperText={touched.name ? errors.name : ''}
+                                        error={Boolean(touched.name && errors.name)}
+                                        onBlur={handleBlur}
+                                        onChange={handleChange}
+                                        fullWidth
+                                        label={t('repos.edit.form_name_label')}
+                                        variant="filled"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    <TextField
+                                        disabled={isSubmitting}
+                                        type={'text'}
+                                        name={'description'}
+                                        value={values.description}
+                                        helperText={touched.description ? errors.description : ''}
+                                        error={Boolean(touched.description && errors.description)}
+                                        onBlur={handleBlur}
+                                        onChange={handleChange}
+                                        fullWidth
+                                        multiline
+                                        minRows={4}
+                                        maxRows={10}
+                                        label={t('repos.edit.form_description_label')}
+                                        variant="filled"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    <FormControlLabel
+                                        sx={{
+                                            color: errors.isPrivate ? '#d32f2f' : 'auto'
+                                        }}
+                                        control={<Switch
+                                            disabled={isSubmitting}
+                                            checked={values.isPrivate}
+                                            onChange={(event, checked) => setFieldValue('isPrivate', checked)}
+                                        />}
+                                        label={t('repos.edit.form_is_private') + (errors.isPrivate ? ` (${errors.isPrivate})` : '')}
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sx={{
+                                    textAlign: 'end'
+                                }}>
+                                    <Button
+                                        variant={"contained"}
+                                        disabled={isSubmitting}
+                                        type="submit"
+                                        size={'medium'}
+                                    >
+                                        <Stack
+                                            direction="row"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            spacing={2}
+                                        >
+                                            {submitLoader ? (
+                                                <CircularProgress size={'16px'}/>
+                                            ) : null}
+
+                                            <Box>
+                                                {t('common.form_btn_save')}
+                                            </Box>
+
+                                        </Stack>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </FormGroup>
+                    </form>
+                )}
+            </Formik>
+        </Stack>
+    )
+}
+
+EditForm.EditForm = {
+    modelAction: PropTypes.object.isRequired,
+    onChangeModel: PropTypes.func.isRequired
 };
 
 function ItemRepo(props) {
