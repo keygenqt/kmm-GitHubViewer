@@ -33,15 +33,18 @@ export function WelcomePage() {
             <Box className={'BgCircle Circle4'} sx={{background: darkMode ? '#e88fad' : '#ec99b7'}}/>
 
             <Stack
-                spacing={3}
-                alignItems="center"
+                spacing={2}
                 position={'relative'}
             >
-                <Typography variant="h1" color='text.primary'>
+                <Typography variant="h1" color='text.primary' sx={{
+                    whiteSpace: 'pre'
+                }}>
                     {t('welcome.title')}
                 </Typography>
 
-                <Typography variant="h6" color='text.primary'>
+                <Typography variant="h6" color='text.primary' sx={{
+                    whiteSpace: 'pre'
+                }}>
                     {t('welcome.subtitle')}
                 </Typography>
             </Stack>
@@ -50,6 +53,8 @@ export function WelcomePage() {
                 position: 'relative',
                 paddingTop: '10px',
                 width: 350,
+                marginTop: '-25px',
+                marginBottom: '-25px'
             }} animationData={ConstantLottie.welcome}/>
 
             <Stack

@@ -1,7 +1,7 @@
 export const typography = {
     fontSize: 14,
     h1: {
-        fontSize: 70,
+        fontSize: 60,
         fontWeight: '700',
         textTransform: "none",
         fontFamily: [
