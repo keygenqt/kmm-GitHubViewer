@@ -1,8 +1,7 @@
 IOS part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.html)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.28.08.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.35.20.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/preview-ios.gif" width="100%"/>
 </p>
 
 ### Architecture

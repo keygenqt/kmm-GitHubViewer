@@ -3,8 +3,6 @@ GitHub Viewer KMM
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
-![preview](https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-22_at_10.59.53.gif)
-
 ### Roadmap
 * Create android application ✅
 * Create iOS application ✅
@@ -16,23 +14,21 @@ Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https:/
 * [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.08.49.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.07.05.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/preview-android.gif" width="100%"/>
 </p>
 
 ### IOS
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.28.08.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.35.20.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/preview-ios.gif" width="100%"/>
 </p>
 
 ### React
 * [About](https://keygenqt.github.io/kmm-GitHubViewer/react/)
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-11-02_at_12.25.38.gif" width="100%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/preview-pc.gif" width="100%"/>
 </p>
 
 ### Shared module
