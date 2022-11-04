@@ -15,7 +15,7 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import {ConstantKMM, ConstantLottie, LanguageContext} from "../../../base";
+import {ConstantKMM, ConstantLottie, LanguageContext, useLocalStorage} from "../../../base";
 import {TabBarElement} from "./TabBarElement";
 import {ErrorElement} from "./ErrorElement";
 import {LoadingElement} from "./LoadingElement";
@@ -27,12 +27,14 @@ import {Formik} from "formik";
 import * as Yup from "yup";
 import shared from "shared";
 import {AlertError, AlertSuccess} from "../../../components";
+import {ValueType} from "../../../base/route/ValueType";
 
 let timeoutID
 
 export function TabProfileElement(props) {
 
     const {t} = useContext(LanguageContext)
+    const darkMode = useLocalStorage("darkMode", ValueType.bool);
 
     const {
         models = [],
@@ -187,9 +189,8 @@ export function TabProfileElement(props) {
                         height: 'calc(100% - 64px)'
                     }}>
 
-                        <Grid item xs={8} sx={{
+                        <Grid className={darkMode ? 'sectionDark' : 'section'} item xs={8} sx={{
                             height: '100%',
-                            overflowY: 'auto',
                             paddingX: 2
                         }}>
                             <Typography gutterBottom variant="h6" component="div" color='text.primary' sx={{
@@ -203,10 +204,9 @@ export function TabProfileElement(props) {
                             />
                         </Grid>
 
-                        <Grid ref={itemsRef} item xs={4} sx={{
+                        <Grid className={darkMode ? 'sectionDark' : 'section'} ref={itemsRef} item xs={4} sx={{
                             p: 2,
                             height: '100%',
-                            overflowY: 'auto'
                         }}>
                             <Stack
                                 spacing={2}

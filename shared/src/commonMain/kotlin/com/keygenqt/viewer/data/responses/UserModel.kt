@@ -96,6 +96,7 @@ data class UserModel(
 /**
  * User plan model
  */
+@JsExport
 @Serializable
 data class UserPlanModel(
     @SerialName("name")

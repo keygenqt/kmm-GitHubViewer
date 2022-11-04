@@ -16,6 +16,7 @@
 package com.keygenqt.viewer.data.requests
 
 import kotlinx.serialization.Serializable
+import kotlin.js.JsExport
 
 /**
  * Update repo request
@@ -24,6 +25,7 @@ import kotlinx.serialization.Serializable
  * @property description
  * @property isPrivate
  */
+@JsExport
 @Serializable
 data class RepoRequest(
     val name: String,

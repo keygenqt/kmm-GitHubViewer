@@ -17,6 +17,7 @@ package com.keygenqt.viewer.data.requests
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.js.JsExport
 
 /**
  * Update user request
@@ -27,6 +28,7 @@ import kotlinx.serialization.Serializable
  * @property location
  * @property bio
  */
+@JsExport
 @Serializable
 data class UserRequest(
     @SerialName("name")

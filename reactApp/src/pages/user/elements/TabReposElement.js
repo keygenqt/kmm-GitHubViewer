@@ -18,7 +18,7 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {ConstantImages, ConstantKMM, ConstantLottie, LanguageContext} from "../../../base";
+import {ConstantImages, ConstantKMM, ConstantLottie, LanguageContext, useLocalStorage} from "../../../base";
 import {TabBarElement} from "./TabBarElement";
 import {LoadingElement} from "./LoadingElement";
 import {BugReport, CallSplit, Lock, LockOpen, Star, Storage, Visibility} from "@mui/icons-material";
@@ -30,6 +30,7 @@ import {Formik} from "formik";
 import * as Yup from "yup";
 import {AlertError, AlertSuccess} from "../../../components";
 import shared from "shared";
+import {ValueType} from "../../../base/route/ValueType";
 
 let timeoutID
 
@@ -43,6 +44,7 @@ export function TabReposElement(props) {
 
     const itemsRef = useRef()
     const loadingRef = useRef()
+    const darkMode = useLocalStorage("darkMode", ValueType.bool);
 
     const modelsCard = []
 
@@ -196,10 +198,9 @@ export function TabReposElement(props) {
                     <Grid container spacing={0} sx={{
                         height: 'calc(100% - 64px)'
                     }}>
-                        <Grid ref={itemsRef} item xs={4} sx={{
+                        <Grid className={darkMode ? 'sectionDark' : 'section'} ref={itemsRef} item xs={4} sx={{
                             p: 2,
                             height: '100%',
-                            overflowY: 'auto'
                         }}>
                             <Stack
                                 spacing={2}
@@ -217,9 +218,8 @@ export function TabReposElement(props) {
 
                             </Stack>
                         </Grid>
-                        <Grid item xs={8} sx={{
+                        <Grid className={darkMode ? 'sectionDark' : 'section'} item xs={8} sx={{
                             height: '100%',
-                            overflowY: 'auto',
                             paddingX: 2
                         }}>
                             <PageRepo
