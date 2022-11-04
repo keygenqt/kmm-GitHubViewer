@@ -14,7 +14,6 @@ IOS part of the application [KMM](https://kotlinlang.org/docs/kmm-overview.html)
 * Theme dark/light 
 * Language ru/en 
 * Db [RealmSwift](https://github.com/realm/realm-swift) 
-* Http query [Alamofire](https://github.com/Alamofire/Alamofire)
 * Oauth with [Firebase dynamic links](https://firebase.google.com/docs/dynamic-links)
 * Forms components
 * Resources image, strings, colors, fonts, lottie, environment
