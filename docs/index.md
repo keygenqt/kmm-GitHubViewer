@@ -3,41 +3,25 @@ GitHub Viewer KMM
 
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
-[![picture](https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/data/btn_youtube.png)](https://youtu.be/Rk83ptXATEw)
+### Android
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
+* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
+
+### iOS
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
+
+### React App
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/react/)
+
+### Shared module
+* [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
+* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/shared/index.html)
 
 ### Roadmap
 * Create android application ✅
 * Create iOS application  ✅
 * Move network to shared module ✅
 * Create Electron React application ✅
-
-### Android
-* [About](https://keygenqt.github.io/kmm-GitHubViewer/android/)
-* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/androidApp/index.html)
-
-<p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.08.49.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-01-03_at_17.07.05.gif" width="33%"/>
-</p>
-
-### IOS
-* [About](https://keygenqt.github.io/kmm-GitHubViewer/ios/)
-
-<p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.28.08.gif" width="33%"/>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-10-20_at_17.35.20.gif" width="33%"/>
-</p>
-
-### React App
-* [About](https://keygenqt.github.io/kmm-GitHubViewer/react/)
-
-<p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screenshot_2022-10-31_at_13.47.42.png" width="100%"/>
-</p>
-
-### Shared module
-* [About](https://keygenqt.github.io/kmm-GitHubViewer/shared/)
-* [API](https://keygenqt.github.io/kmm-GitHubViewer/api/shared/index.html)
 
 # License
 
