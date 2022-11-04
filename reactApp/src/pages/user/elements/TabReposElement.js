@@ -44,6 +44,7 @@ export function TabReposElement(props) {
 
     const itemsRef = useRef()
     const loadingRef = useRef()
+    const pageRef = useRef()
     const darkMode = useLocalStorage("darkMode", ValueType.bool);
 
     const modelsCard = []
@@ -107,11 +108,18 @@ export function TabReposElement(props) {
             const div = itemsRef.current
             div.addEventListener("scroll", handleScrollRepo)
         }
+
     }, [handleScrollRepo, loading, data])
 
     useEffect(() => {
         updateModels(data)
     }, [data, updateModels])
+
+    useEffect(() => {
+        if (pageRef.current) {
+            pageRef.current.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    }, [modelAction])
 
     data.forEach((model, index) => {
         modelsCard.push(
@@ -218,7 +226,7 @@ export function TabReposElement(props) {
 
                             </Stack>
                         </Grid>
-                        <Grid className={darkMode ? 'sectionDark' : 'section'} item xs={8} sx={{
+                        <Grid ref={pageRef} className={darkMode ? 'sectionDark' : 'section'} item xs={8} sx={{
                             height: '100%',
                             paddingX: 2
                         }}>
@@ -559,7 +567,8 @@ function PageRepo(props) {
                         width: '100%',
                         backgroundColor: 'secondary.main',
                         paddingX: 6,
-                        paddingY: '25px',
+                        paddingY: '28px',
+                        borderRadius: '60px',
                         boxSizing: 'border-box',
                         backgroundImage: `url(${ConstantImages.repos.chart_1})`,
                         backgroundSize: '100% 100%',
@@ -606,7 +615,7 @@ function PageRepo(props) {
                         borderBottomLeftRadius: '60px',
                         borderBottomRightRadius: '60px',
                         paddingX: 6,
-                        paddingY: '14px',
+                        paddingY: '19px',
                         boxSizing: 'border-box',
                         backgroundImage: `url(${ConstantImages.repos.chart_2})`,
                         backgroundSize: '100% 100%',
@@ -745,27 +754,31 @@ function PageRepo(props) {
                     marginBottom: 3
                 }}
             >
-                <Stack
-                    spacing={1}
-                >
-                    <Typography variant="h6" color='text.primary'>
-                        {t('repos.label_visibility')}
-                    </Typography>
-                    <Typography variant="body1" color='text.primary'>
-                        {modelAction.visibility.toUpperCase()}
-                    </Typography>
-                </Stack>
+                {modelAction.visibility ? (
+                    <Stack
+                        spacing={1}
+                    >
+                        <Typography variant="h6" color='text.primary'>
+                            {t('repos.label_visibility')}
+                        </Typography>
+                        <Typography variant="body1" color='text.primary'>
+                            {modelAction.visibility.toUpperCase()}
+                        </Typography>
+                    </Stack>
+                ) : null}
 
-                <Stack
-                    spacing={1}
-                >
-                    <Typography variant="h6" color='text.primary'>
-                        {t('repos.label_owner')}
-                    </Typography>
-                    <Typography variant="body1" color='text.primary'>
-                        {modelAction.owner.login}
-                    </Typography>
-                </Stack>
+                {modelAction.owner ? (
+                    <Stack
+                        spacing={1}
+                    >
+                        <Typography variant="h6" color='text.primary'>
+                            {t('repos.label_owner')}
+                        </Typography>
+                        <Typography variant="body1" color='text.primary'>
+                            {modelAction.owner.login}
+                        </Typography>
+                    </Stack>
+                ) : null}
 
                 <Stack
                     spacing={1}
@@ -795,16 +808,18 @@ function PageRepo(props) {
                     </Typography>
                 </Stack>
 
-                <Stack
-                    spacing={1}
-                >
-                    <Typography variant="h6" color='text.primary'>
-                        {t('repos.label_description')}
-                    </Typography>
-                    <Typography variant="body1" color='text.primary'>
-                        {modelAction.desc}
-                    </Typography>
-                </Stack>
+                {modelAction.desc ? (
+                    <Stack
+                        spacing={1}
+                    >
+                        <Typography variant="h6" color='text.primary'>
+                            {t('repos.label_description')}
+                        </Typography>
+                        <Typography variant="body1" color='text.primary'>
+                            {modelAction.desc}
+                        </Typography>
+                    </Stack>
+                ) : null}
 
             </Stack>
         </>

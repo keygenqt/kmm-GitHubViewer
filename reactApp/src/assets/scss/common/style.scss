@@ -22,3 +22,31 @@ button.MuiButton-sizeMedium {
 button.MuiButton-sizeSmall {
   line-height: 24px;
 }
+
+/** Scroll **/
+.sectionDark,
+.section {
+  overflow: auto;
+}
+
+.sectionDark::-webkit-scrollbar,
+.section::-webkit-scrollbar {
+  width: 3px;
+  height: 6px;
+}
+
+.section::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background: #9f7aff;
+}
+
+.sectionDark::-webkit-scrollbar-track {
+  background-color: #494949;
+}
+
+.sectionDark::-webkit-scrollbar-thumb {
+  background: #c7baf6;
+}

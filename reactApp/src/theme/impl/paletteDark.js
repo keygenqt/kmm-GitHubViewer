@@ -7,7 +7,7 @@ export const paletteDark = () => {
         mode: 'dark',
         background: {
             paper: '#494949',
-            default: '#313131',
+            default: '#494949',
         },
         primary: {
             light: '#3d3050',

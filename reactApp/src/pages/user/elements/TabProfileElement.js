@@ -541,7 +541,7 @@ function PageUser(props) {
                 <Avatar sx={{
                     width: '100%',
                     borderRadius: '50px',
-                    height: 300,
+                    height: 340,
                     boxShadow: 'rgb(0 0 0 / 10%) 0px 3px 5px -1px, rgb(0 0 0 / 4%) 0px 5px 8px 0px, rgb(0 0 0 / 2%) 0px 1px 14px 0px',
                 }} src={model.avatarUrl} alt={'Logo'}/>
             </Box>
