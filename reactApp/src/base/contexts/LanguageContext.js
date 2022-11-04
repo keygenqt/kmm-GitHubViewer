@@ -7,7 +7,7 @@ export default function LanguageContextProvider(props) {
 
     const {t, i18n} = useTranslation()
 
-    const isLocEn = i18n.language === 'en'
+    const isLocEn = i18n.language === 'en' || i18n.language === 'en-GB'
 
     return (
         <LanguageContext.Provider
