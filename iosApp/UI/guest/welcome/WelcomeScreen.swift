@@ -35,7 +35,15 @@ struct WelcomeScreen: View {
             .edgesIgnoringSafeArea(.bottom)
 
             VStack {
-                TextTitleMedium(text: L10nWelcome.subtitle)
+                HStack {
+                    TextDisplayLarge(text: L10nWelcome.title)
+                    Spacer()
+                }.padding(.bottom, 30)
+                
+                HStack {
+                    TextTitleMedium(text: L10nWelcome.subtitle)
+                    Spacer()
+                }
 
                 Spacer()
 
@@ -61,8 +69,6 @@ struct WelcomeScreen: View {
                     TextBodySmall(text: "\(L10nWelcome.version("0.0.1")) \(greet)")
                 }
             }
-            .navigationBarTitle(L10nWelcome.title)
-            .navigationBarTitleDisplayMode(.large)
             .padding(16)
         }
 

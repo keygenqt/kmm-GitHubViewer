@@ -6,7 +6,7 @@
   
 */
 
-"title" = "Добро пожаловать";
+"title" = "Добро пожаловать в\nGitHub Viewer!";
 "subtitle" = "Приложение написано с использованием последнего стека на ios и android. KMM, MVVM, Jetpack Compose, SwiftUI";
 "version" = "Версия: %s";
 "btn_sign_in" = "Начать";
