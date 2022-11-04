@@ -1,6 +1,8 @@
 GitHub Viewer KMM
 ===================
 
+![picture](data/ic_preview.png)
+
 Demo application using open GitHub API and [Kotlin Multiplatform Mobile](https://kotlinlang.org/docs/mobile/home.html)
 
 [![picture](data/btn_youtube.png)](https://youtu.be/Rk83ptXATEw)
