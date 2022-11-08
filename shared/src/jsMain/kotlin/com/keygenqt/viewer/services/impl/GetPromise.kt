@@ -15,33 +15,23 @@
  */
 package com.keygenqt.viewer.services.impl
 
-import com.keygenqt.viewer.data.responses.FollowerModel
-import com.keygenqt.viewer.data.responses.RepoModel
-import com.keygenqt.viewer.data.responses.RocketModel
-import com.keygenqt.viewer.data.responses.UserModel
 import com.keygenqt.viewer.services.AppHttpClient
+import com.keygenqt.viewer.utils.wrapPromise
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.http.*
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.promise
-import kotlin.js.Promise
 
 @JsExport
 @Suppress("NON_EXPORTABLE_TYPE")
-@OptIn(DelicateCoroutinesApi::class)
 class GetPromise(private val client: AppHttpClient) {
 
     /**
-     * Test query without tokens from demo KMM
+     * Test query without tokens from demo KM
      */
-    fun rockets(): Promise<List<RocketModel>> {
-        return GlobalScope.promise {
-            client.get.rockets()
-        }
+    fun rockets() = wrapPromise {
+        client.get.rockets()
     }
 
     /**
@@ -50,13 +40,8 @@ class GetPromise(private val client: AppHttpClient) {
     fun repos(
         page: Int = 1,
         isSortASC: Boolean = false,
-    ): Promise<List<RepoModel>> {
-        return GlobalScope.promise {
-            client.get.repos(
-                page = page,
-                isSortASC = isSortASC
-            )
-        }
+    ) = wrapPromise {
+        client.get.repos(page, isSortASC)
     }
 
     /**
@@ -64,10 +49,8 @@ class GetPromise(private val client: AppHttpClient) {
      */
     fun repo(
         url: String
-    ): Promise<RepoModel> {
-        return GlobalScope.promise {
-            client.get.repo(url)
-        }
+    ) = wrapPromise {
+        client.get.repo(url)
     }
 
     /**
@@ -75,18 +58,14 @@ class GetPromise(private val client: AppHttpClient) {
      */
     fun followers(
         page: Int = 1
-    ): Promise<List<FollowerModel>> {
-        return GlobalScope.promise {
-            client.get.followers(page)
-        }
+    ) = wrapPromise {
+        client.get.followers(page)
     }
 
     /**
      * Get user
      */
-    fun user(): Promise<UserModel> {
-        return GlobalScope.promise {
-            client.get.user()
-        }
+    fun user() = wrapPromise {
+        client.get.user()
     }
 }

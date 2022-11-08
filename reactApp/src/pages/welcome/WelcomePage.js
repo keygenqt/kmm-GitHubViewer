@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import {Box, Button, Stack, Typography} from "@mui/material";
 import Lottie from "lottie-react";
 import {ConstantKMM, ConstantLottie, LanguageContext, NavigateContext, useLocalStorage} from "../../base";
@@ -12,6 +12,15 @@ export function WelcomePage() {
 
     const {route, routes} = useContext(NavigateContext)
     const {t} = useContext(LanguageContext)
+
+    // test query
+    useEffect(() => {
+        ConstantKMM.httpClient.get.rockets().then(async (response) => {
+            console.log(response.toArray().length)
+        }).catch(async (error) => {
+            console.log(error)
+        });
+    }, [])
 
     return (
         <Stack

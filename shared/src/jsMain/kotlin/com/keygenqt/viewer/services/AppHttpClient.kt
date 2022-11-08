@@ -32,12 +32,13 @@ actual fun httpClient(config: HttpClientConfig<*>.() -> Unit) = HttpClient(Js) {
  * JS service network
  */
 @JsExport
+@Suppress("NON_EXPORTABLE_TYPE")
 class AppHttpClientJS(
     private var token: String = ""
 ) {
     private val ktorClient = AppHttpClient(token)
 
-    val get = GetPromise(ktorClient)
-    val post = PostPromise(ktorClient)
-    val patch = PatchPromise(ktorClient)
+    val get by lazy { GetPromise(ktorClient) }
+    val post by lazy { PostPromise(ktorClient) }
+    val patch by lazy { PatchPromise(ktorClient) }
 }
